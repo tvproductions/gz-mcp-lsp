@@ -1,8 +1,10 @@
 # Documentation scope
 
-Product authorities: root README/AGENTS/CONTRIBUTING/SECURITY, the initial design in
+Product authorities: root README/AGENTS/CONTRIBUTING/SECURITY, the revised design and plan in
 `superpowers/specs/`, discovery reviews in `discovery/`, and
-`evidence/2026-10-28-initialization.md`.
+`evidence/2026-10-28-design-revision.md`. Initialization evidence is historical;
+revision 2 explicitly supersedes the earlier read-only scope without rewriting
+its observed results.
 
 Engineering policies, adoption guidance, update procedures and engineering
 utilities were inherited from gz-skills-first-starter v0.7.1. They remain binding

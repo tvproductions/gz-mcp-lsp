@@ -1,4 +1,8 @@
-# Reference implementation review — 2026-10-28
+# Initial reference implementation review — 2026-10-28
+
+Historical initialization review. The [revision-2 parity assessment](reference-parity.md)
+supersedes its read-only/inspiration scope. Correction: code-lens source exists but
+its tools.go registration is commented out; only the six documented tools register.
 
 Reviewed [Isaac Phi's mcp-language-server v0.1.1](https://github.com/isaacphi/mcp-language-server/tree/v0.1.1),
 commit `46e2950b7969334780675e7797e13f140d2d42ac`; release publication verified
@@ -9,7 +13,7 @@ This is architectural observation, not an execution audit or an upstream patch.
 | Area | Observed at v0.1.1 | Consequence for independent proposal |
 | --- | --- | --- |
 | Composition | main.go parses workspace/LSP executable and args; constructs client/watcher, initializes LSP before serving MCP | Keep startup orchestration explicit, avoid global chdir and separate protocol from lifecycle |
-| MCP | mark3labs/mcp-go stdio, recovery/logging; tools.go registers definition, references, hover, diagnostics, rename_symbol, edit_file and code-lens operations | Use official Python SDK; restrict to approved read-only semantics |
+| MCP | mark3labs/mcp-go stdio, recovery/logging; tools.go registers definition, references, hover, diagnostics, rename_symbol, edit_file (code-lens registration is commented out) | Use official Python SDK; revised parity includes guarded mutations and diagnostics |
 | Semantics | Definition/references locate named workspace symbols; hover takes a location; text rendering reads source context | Canonical URI/position queries; structured locations instead of ambiguous name matching or full-code extraction |
 | Wire | internal/lsp/transport.go reads Content-Length headers and JSON bodies, dispatches request/notification/response IDs to handler maps/channels | Independent byte-counted framing, serialized writes and bounded reads; no Go protocol-code reuse |
 | Requests | atomic IDs and pending-response map; Call accepts context but waits on the response channel without selecting ctx cancellation | Deadlines/cancellation must actually unblock pending work; EOF must fail every waiter |

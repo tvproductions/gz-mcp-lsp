@@ -1,7 +1,7 @@
 [project]
 name = "gz-mcp-lsp"
 version = "0.0.0"
-description = "Read-only LSP-to-MCP semantic navigation adapter (design stage)"
+description = "LSP-to-MCP semantic navigation and guarded source changes (design stage)"
 readme = "README.md"
 requires-python = ">=3.14,<3.15"
 license = "MIT"

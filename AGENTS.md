@@ -1,18 +1,23 @@
 # gz-mcp-lsp
 
-Read README.md, AGENTS.skills-first.md and the current initialization evidence at
-`docs/evidence/2026-10-28-initialization.md` before work. The adopted starter
+Read README.md, AGENTS.skills-first.md and current revision evidence at
+`docs/evidence/2026-10-28-design-revision.md` before work; initialization evidence
+at `docs/evidence/2026-10-28-initialization.md` remains historical. The adopted starter
 engineering policies in `docs/engineering/`, `docs/baseline-policy.md` and
 `docs/versioning.md` remain authoritative. Historical starter implementation
 instructions do not make its helper part of this product.
 
 ## Current boundary
 
-Initialization and design discovery only. Do not implement MCP/LSP runtime,
-semantic operations, a settings loader or a server entry point until human
-review approves the design. The candidate proposal is
-`docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`.
-Do not infer approval from scaffolding, documentation, CI or this file.
+Design revision and implementation planning only. The latest user direction
+expands intended functional scope to all six reference tools (definition,
+references, diagnostics, hover, rename_symbol, edit_file) plus the three bounded
+semantic extensions. Do not implement runtime, settings loader, semantic operations
+or write machinery until human approval of specification and plan.
+Read `docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`,
+`docs/discovery/reference-parity.md`, `docs/discovery/acceptance-matrix.md` and
+`docs/superpowers/plans/2026-10-28-reference-parity.md`. They are unapproved review
+artifacts; preparing a plan is explicitly authorized, executing it is not.
 
 Use adopted Superpowers for feature design and gz-skills gzs-router for portable
 engineering selection. The user explicitly selected lite through gzs-project-setup.
@@ -23,11 +28,13 @@ Project issues/PRs and review documents are the current planning authority.
 ## Product constraints
 
 Independent Python implementation using the official MCP Python SDK at its
-MCP boundary. One workspace, one ty process, stdio only. Read-only semantic
-navigation; no edit/refactor/code action/execute command/diagnostics tools,
-request-time installation, network service or orchestration framework.
-Prefer URI and explicit position inputs. Never infer an identifier position from
-a symbol's full range start. Preserve selection ranges separately.
+MCP boundary. One workspace, one ty process, stdio only. Six-tool functional parity
+includes diagnostics and guarded rename/edit; canonical navigation uses exact URI
+and identifier position, retaining full/selection range distinction. Mutations are
+disabled by default in the proposed runtime and require bounded operator authority,
+preview/apply and recovery evidence. No unsolicited LSP applyEdit, execute-command,
+code actions, generic filesystem management, request-time installation, hosted
+infrastructure, general LSP framework or second language server.
 No private source or project data in this public repository.
 
 ## Engineering and configuration

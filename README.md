@@ -1,10 +1,10 @@
 # gz-mcp-lsp
 
-Read-only semantic code navigation for AI coding agents, using existing language
-servers through the Model Context Protocol (MCP).
+An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
+reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: initialization and design discovery. No adapter runtime or accepted MCP
-capabilities exist yet. Human design review precedes implementation.**
+**Status: revised specification and implementation plan awaiting human approval.
+No adapter runtime or accepted MCP capabilities exist yet.**
 
 The intended path is:
 
@@ -12,16 +12,26 @@ The intended path is:
 Codex → MCP (stdio) → gz-mcp-lsp → LSP (stdio) → ty server
 ```
 
-The initial proposal covers one workspace and one Astral ty process. Definition,
-references, hover, document symbols, workspace symbols and implementations are
-candidates, not shipped features. Canonical semantic queries use document URI and
-explicit line/character positions. No editing, refactoring, diagnostics tool,
-automatic dependency installation, network service or hosted infrastructure is planned.
+The proposed scope is one workspace and one Astral ty process. Functional parity
+includes all six reference tools: definition, references, diagnostics, hover,
+rename_symbol and edit_file. Exact URI/identifier positions correct ambiguous
+name-resolution behavior. New tools are limited to document symbols, workspace
+symbols and implementations; hover carries semantic type information.
 
-Read the [architectural proposal and acceptance matrix](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),
-[initialization evidence](docs/evidence/2026-10-28-initialization.md),
-[reference review](docs/discovery/reference-review.md), and
-[license review](docs/discovery/licenses.md).
+Rename/edit use operator-enabled preview/apply with workspace containment,
+conflict checks and durable recovery; the design does not promise portable atomic
+multi-file changes. No request-time installation, network service, second language
+server or general-purpose LSP framework is planned. The complete milestone is
+accepted parity, semantic corrections/extensions, real Codex interoperability,
+engineering evidence, then a deliberate stop.
+
+Read the [revised architectural specification](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),
+[version-pinned parity assessment](docs/discovery/reference-parity.md),
+[acceptance matrix](docs/discovery/acceptance-matrix.md), and
+[unapproved implementation plan](docs/superpowers/plans/2026-10-28-reference-parity.md).
+Current [design-revision evidence](docs/evidence/2026-10-28-design-revision.md)
+is separate from the historical [initialization evidence](docs/evidence/2026-10-28-initialization.md).
+See the [license review](docs/discovery/licenses.md) for attribution/dependency boundaries.
 
 ## Development
 
@@ -95,8 +105,9 @@ Keep private code, paths, logs and credentials out of public fixtures and issues
 
 Isaac Phi's [mcp-language-server](https://github.com/isaacphi/mcp-language-server),
 reviewed at [v0.1.1](https://github.com/isaacphi/mcp-language-server/tree/v0.1.1),
-informed the idea of exposing language-server navigation through MCP and provided
-an architectural comparison. gz-mcp-lsp is an independent Python implementation;
+informed the idea of exposing language-server navigation through MCP and provides
+the functional baseline for the revised specification. gz-mcp-lsp is an independent
+Python implementation;
 no upstream source has been ported or copied. It is not an official fork or
 upstream continuation, and is not affiliated with Astral or OpenAI.
 

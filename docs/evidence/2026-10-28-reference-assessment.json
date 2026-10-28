@@ -1,0 +1,146 @@
+{
+  "assessment_date": "2026-10-28",
+  "repository": "https://github.com/isaacphi/mcp-language-server",
+  "latest_published_release": {
+    "tag": "v0.1.1",
+    "commit": "46e2950b7969334780675e7797e13f140d2d42ac",
+    "published_at": "2025-05-16T17:41:09Z"
+  },
+  "default_branch": {
+    "name": "main",
+    "commit": "e4395849a52e18555361abab60a060802c06bf50"
+  },
+  "release_to_default_diff": {
+    "commits_ahead": 1,
+    "changed_files": [
+      "go.mod",
+      "go.sum"
+    ],
+    "changes": [
+      "golang.org/x/text 0.24.0 to 0.25.0",
+      "golang.org/x/sync 0.13.0 to 0.14.0",
+      "go-spew promoted from indirect to direct"
+    ],
+    "source_and_test_bytes_unchanged": true
+  },
+  "executed": {
+    "command": "go test -json ./internal/logging ./internal/tools ./internal/utilities ./cmd/generate",
+    "checkout": "default branch assessment commit",
+    "go": "go1.27.3 darwin/arm64",
+    "exit_code": 0,
+    "packages": [
+      {
+        "package": "github.com/isaacphi/mcp-language-server/internal/logging",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/isaacphi/mcp-language-server/internal/tools",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/isaacphi/mcp-language-server/internal/utilities",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/isaacphi/mcp-language-server/cmd/generate",
+        "result": "pass"
+      }
+    ],
+    "test_and_subtest_events": {
+      "pass": 86,
+      "skip": 2
+    },
+    "skipped_tests": [
+      "TestAll",
+      "TestParseContents"
+    ]
+  },
+  "not_executed": [
+    "upstream language-server integration suites",
+    "upstream watcher tests",
+    "Go bridge against ty",
+    "Python adapter runtime/host acceptance"
+  ],
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "8806607e35db25a1fff954d238bcdb0e88c349dd974c6a8eeac66bcb133a4e8b"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "684a8a1166fc0e2005fe1568224329155a77b2b5c68364216857b3de958aa702"
+    },
+    {
+      "path": "ATTRIBUTION",
+      "sha256": "c900f28125cdccccccc50744f45164973c486a781b39a199b153a1d3a5925aca"
+    },
+    {
+      "path": "main.go",
+      "sha256": "46b02ca8aa6ba93a57f6f1ded7e356e21b5a9984fc44fd520b4a8eb3b4e4e286"
+    },
+    {
+      "path": "tools.go",
+      "sha256": "98d7a6b371261bce2aad4b7afa1d3ef4985e5307ec233a18e8d45d9efe2d84c0"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "81ba9a86a237954429c1b7b6c3e5978db51e0234fc4c5cad44bbe5cf4da2a4d8"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "06f5f684692c8a88768fc84e27a06a44926a59d718187ef92002faa9dfd092b4"
+    },
+    {
+      "path": "internal/lsp/client.go",
+      "sha256": "08bc1eea845a7f22e729bdc880ec07aba2b9f3ea48904a7e0c9d1af180bda605"
+    },
+    {
+      "path": "internal/lsp/transport.go",
+      "sha256": "78544704db3c8ebbe2d013def90a8fb2cc0b5ef00b5812f5e3d757c9c39a4eb6"
+    },
+    {
+      "path": "internal/lsp/server-request-handlers.go",
+      "sha256": "1ef74a07d47b779c1d7060e06d5810bf27b34800f4bfa94d36380f753eb2c352"
+    },
+    {
+      "path": "internal/tools/definition.go",
+      "sha256": "472f24a4c5256c72b1104f99032006e884f74eb31f772f4817bcc981782ccc4d"
+    },
+    {
+      "path": "internal/tools/references.go",
+      "sha256": "24624df1c3e8f23fa55518b17cb66230d980e52354f741f728a1d4a9d8b4c250"
+    },
+    {
+      "path": "internal/tools/diagnostics.go",
+      "sha256": "d3971f7da4da6b99f9cae3bb0e92be5dff0828005307fadb9e232e6cc848add4"
+    },
+    {
+      "path": "internal/tools/hover.go",
+      "sha256": "e4938f678ca00abe3ab71de349ebe32f87544c04ae8d597c5f6f0be9d585d1f2"
+    },
+    {
+      "path": "internal/tools/rename-symbol.go",
+      "sha256": "75946233d2fec440dd2ee54e12d6fd644cbc022341cbc92921ca8c8812da987a"
+    },
+    {
+      "path": "internal/tools/edit_file.go",
+      "sha256": "8e7bb92938c473395b9e1982c423bcceccbf59df8e26e4b09900eb096775de3d"
+    },
+    {
+      "path": "internal/utilities/edit.go",
+      "sha256": "a6a48f89d31ec226f7bd56ec8975bda0dd66b7f911878d8d01473a0b4a93fab1"
+    },
+    {
+      "path": "internal/watcher/watcher.go",
+      "sha256": "62332137dd965840a66e835462db3187581a2e3a67be0ca9d16fc099da869a25"
+    },
+    {
+      "path": "integrationtests/tests/common/framework.go",
+      "sha256": "48b99c8ff7173433fdab27927c5c6f90f8080bc612d95291ac557951ec1f2f65"
+    },
+    {
+      "path": "integrationtests/tests/common/helpers.go",
+      "sha256": "2dbf2e7ce8ea2b7a89d8f02b2877665eaafa1a42ee492074f482e0e568359785"
+    }
+  ]
+}

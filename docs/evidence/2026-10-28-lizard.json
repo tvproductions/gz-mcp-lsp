@@ -1,0 +1,53 @@
+{
+  "python": "3.14.10",
+  "scope": [
+    "src",
+    "tools/verify_distribution.py"
+  ],
+  "checker_sha256": "e469a03cf647d09a5df4e6afef4538e5aaacadfbc0dde8c435a8d759adf399b3",
+  "contract": "lizard-functions-v1",
+  "ceilings": [
+    20,
+    20,
+    20
+  ],
+  "modules": [
+    {
+      "file": "src/gz_mcp_lsp/__init__.py",
+      "sha256": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "tools/verify_distribution.py",
+      "sha256": "dd07daf974219e1be79e12185f7bf28e03d3c96c67b696f469c0049814e76559",
+      "functions": [
+        {
+          "name": "run",
+          "line": 16,
+          "complexity": 1
+        },
+        {
+          "name": "verify_archives",
+          "line": 21,
+          "complexity": 10
+        },
+        {
+          "name": "main",
+          "line": 40,
+          "complexity": 5
+        }
+      ],
+      "mean": 5.333333333333333
+    }
+  ],
+  "errors": [],
+  "lizard_version": "1.24.3",
+  "violations": [],
+  "aggregate": {
+    "functions": 3,
+    "maximum": 10,
+    "overall_mean": 5.333333333333333
+  },
+  "status": "passed"
+}

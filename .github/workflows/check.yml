@@ -1,4 +1,4 @@
-name: Check starter
+name: Check gz-mcp-lsp
 on: [push, pull_request]
 permissions:
   contents: read
@@ -9,25 +9,10 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
         with:
-          version: '0.13.5'
+          version: '0.13.6'
           python-version: '3.14.10'
           enable-cache: false
       - run: uv sync --locked --all-groups
       - run: uv run --locked pre-commit run --all-files
-      - run: uv run --locked skills-first-starter validate
       - run: uv build --no-sources
       - run: uv run --locked python tools/verify_distribution.py
-  xplane-baseline:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: baselines/xplane
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
-        with:
-          version: '0.13.5'
-          python-version: '3.12.16'
-          enable-cache: false
-      - run: uv sync --locked --all-groups
-      - run: uv run --locked python ../../tools/verify_xplane_baseline.py

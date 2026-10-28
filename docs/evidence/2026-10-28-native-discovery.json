@@ -1,0 +1,47 @@
+{
+  "host": "codex-cli 0.165.0 / macOS 26.6.2 arm64",
+  "method": "independent native app-server processes: initialize, initialized, config/read, skills/list forceReload; no model execution",
+  "marketplace_actual_commit": "27594dbaec853e6bde037b0aaf3f0427a3f053f9",
+  "superpowers": {
+    "release": "v7.0.1",
+    "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+    "skill_files_compared": 84,
+    "byte_differences": 0
+  },
+  "gz-skills": {
+    "release": "v0.8.0",
+    "commit": "75bcd11ee9371ecff1a7b3432d2af29d4bdbb788",
+    "skill_files_compared": 44,
+    "byte_differences": 0
+  },
+  "project": [
+    {
+      "name": "update-gz-template",
+      "enabled": true,
+      "path": "<PROJECT>/.agents/skills/update-gz-template/SKILL.md"
+    },
+    {
+      "name": "gz-skills:gzs-project-setup",
+      "enabled": true,
+      "path": "<CODEX>/plugins/cache/skills-first-starter/gz-skills/0.8.0/skills/gzs-project-setup/SKILL.md"
+    },
+    {
+      "name": "gz-skills:gzs-router",
+      "enabled": true,
+      "path": "<CODEX>/plugins/cache/skills-first-starter/gz-skills/0.8.0/skills/gzs-router/SKILL.md"
+    },
+    {
+      "name": "superpowers:using-superpowers",
+      "enabled": true,
+      "path": "<CODEX>/plugins/cache/skills-first-starter/superpowers/7.0.1/skills/using-superpowers/SKILL.md"
+    }
+  ],
+  "outside_project": [],
+  "backplane": "disabled, absent from discovered skill list",
+  "scope_correction": "native add enabled user defaults; native config/value/write disabled only these two new user defaults; project keeps enabled=true; outside control has neither identity",
+  "limitations": [
+    "CLI/app-server discovery proof, not current conversation dynamic reload or desktop UI workflow proof",
+    "No Backplane lifecycle/readiness claim",
+    "gz-skills 0.8.3 is newer; retained template selection needs reviewed update"
+  ]
+}

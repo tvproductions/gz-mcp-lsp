@@ -1,0 +1,412 @@
+{
+  "compatibility": "failed",
+  "cognitive_canary_failures": [
+    {
+      "case": "conditional_keywords",
+      "expected": 9,
+      "observed": 0
+    }
+  ],
+  "qualification_fixtures": {
+    "conditional_tuple": "def choose(x):\n    return (0 if x[0] else 0, 1 if x[1] else 0, 2 if x[2] else 0, 3 if x[3] else 0, 4 if x[4] else 0, 5 if x[5] else 0, 6 if x[6] else 0, 7 if x[7] else 0, 8 if x[8] else 0)\n",
+    "conditional_keywords": "def choose(x):\n    return dict(k0=0 if x[0] else 0, k1=1 if x[1] else 0, k2=2 if x[2] else 0, k3=3 if x[3] else 0, k4=4 if x[4] else 0, k5=5 if x[5] else 0, k6=6 if x[6] else 0, k7=7 if x[7] else 0, k8=8 if x[8] else 0)\n"
+  },
+  "date": "2026-10-28",
+  "python": "3.14.10",
+  "versions": {
+    "ruff": "0.17.3",
+    "complexipy": "8.3.0",
+    "lizard": "1.24.3"
+  },
+  "thresholds": {
+    "cyclomatic": 20,
+    "cognitive": 15
+  },
+  "synthetic_cases": {
+    "modern": {
+      "cognitive": {
+        "choose": 1,
+        "describe": 0,
+        "classify": 1
+      },
+      "cyclomatic": {
+        "choose": 2,
+        "describe": 1,
+        "classify": 4
+      },
+      "lizard": [
+        {
+          "name": "choose",
+          "line": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "describe",
+          "line": 7,
+          "cyclomatic": 1
+        },
+        {
+          "name": "classify",
+          "line": 10,
+          "cyclomatic": 5
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "flat_boundary": {
+      "cognitive": {
+        "flat": 19
+      },
+      "cyclomatic": {
+        "flat": 20
+      },
+      "lizard": [
+        {
+          "name": "flat",
+          "line": 1,
+          "cyclomatic": 20
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 1
+    },
+    "flat_exceeds": {
+      "cognitive": {
+        "flat": 20
+      },
+      "cyclomatic": {
+        "flat": 21
+      },
+      "lizard": [
+        {
+          "name": "flat",
+          "line": 1,
+          "cyclomatic": 21
+        }
+      ],
+      "ruff_exit": 1,
+      "complexipy_exit": 1
+    },
+    "nested_boundary": {
+      "cognitive": {
+        "nested": 15
+      },
+      "cyclomatic": {
+        "nested": 6
+      },
+      "lizard": [
+        {
+          "name": "nested",
+          "line": 1,
+          "cyclomatic": 6
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "nested_exceeds": {
+      "cognitive": {
+        "nested": 21
+      },
+      "cyclomatic": {
+        "nested": 7
+      },
+      "lizard": [
+        {
+          "name": "nested",
+          "line": 1,
+          "cyclomatic": 7
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 1
+    },
+    "conditional_tuple": {
+      "cognitive": {
+        "choose": 9
+      },
+      "cyclomatic": {
+        "choose": 1
+      },
+      "lizard": [
+        {
+          "name": "choose",
+          "line": 1,
+          "cyclomatic": 10
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "conditional_keywords": {
+      "cognitive": {
+        "choose": 0
+      },
+      "cyclomatic": {
+        "choose": 1
+      },
+      "lizard": [
+        {
+          "name": "choose",
+          "line": 1,
+          "cyclomatic": 10
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    }
+  },
+  "invalid_syntax_rejected": true,
+  "source": [
+    {
+      "lizard": [
+        {
+          "name": "run",
+          "line": 16,
+          "cyclomatic": 1
+        },
+        {
+          "name": "verify_archives",
+          "line": 21,
+          "cyclomatic": 10
+        },
+        {
+          "name": "main",
+          "line": 40,
+          "cyclomatic": 5
+        }
+      ],
+      "lizard_module_mean": 5.333333333333333,
+      "file": "tools/verify_distribution.py",
+      "sha256": "dd07daf974219e1be79e12185f7bf28e03d3c96c67b696f469c0049814e76559",
+      "functions": [
+        {
+          "name": "run",
+          "line": 16,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "verify_archives",
+          "line": 21,
+          "cognitive": 8,
+          "cyclomatic": 6
+        },
+        {
+          "name": "main",
+          "line": 40,
+          "cognitive": 2,
+          "cyclomatic": 3
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    },
+    {
+      "lizard": [
+        {
+          "name": "test_qualification_rejects_the_keyword_conditional_blind_spot.broken_keywords",
+          "line": 20,
+          "cyclomatic": 3
+        },
+        {
+          "name": "test_qualification_rejects_the_keyword_conditional_blind_spot",
+          "line": 17,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_source_encoding_is_independent_of_windows_legacy_locale.legacy_read",
+          "line": 50,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_source_encoding_is_independent_of_windows_legacy_locale",
+          "line": 44,
+          "cyclomatic": 1
+        }
+      ],
+      "lizard_module_mean": 1.5,
+      "file": "tools/engineering/test_evaluate_complexity.py",
+      "sha256": "d39e02195d21d0c3dbde594887a102bbc39292512ed9ab89fb092724579101d7",
+      "functions": [
+        {
+          "name": "ProbePortabilityTests::test_qualification_rejects_the_keyword_conditional_blind_spot",
+          "line": 17,
+          "cognitive": 3,
+          "cyclomatic": 3
+        },
+        {
+          "name": "ProbePortabilityTests::test_source_encoding_is_independent_of_windows_legacy_locale",
+          "line": 44,
+          "cognitive": 0,
+          "cyclomatic": 2
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    },
+    {
+      "lizard": [
+        {
+          "name": "executable",
+          "line": 31,
+          "cyclomatic": 2
+        },
+        {
+          "name": "nested",
+          "line": 39,
+          "cyclomatic": 2
+        },
+        {
+          "name": "flat",
+          "line": 49,
+          "cyclomatic": 2
+        },
+        {
+          "name": "ruff_check",
+          "line": 80,
+          "cyclomatic": 1
+        },
+        {
+          "name": "lizard_scores",
+          "line": 102,
+          "cyclomatic": 2
+        },
+        {
+          "name": "observe_case",
+          "line": 113,
+          "cyclomatic": 3
+        },
+        {
+          "name": "diagnostic_score",
+          "line": 154,
+          "cyclomatic": 2
+        },
+        {
+          "name": "verify_cases",
+          "line": 162,
+          "cyclomatic": 3
+        },
+        {
+          "name": "inspect_source",
+          "line": 198,
+          "cyclomatic": 8
+        },
+        {
+          "name": "evaluate",
+          "line": 227,
+          "cyclomatic": 9
+        },
+        {
+          "name": "main",
+          "line": 287,
+          "cyclomatic": 10
+        }
+      ],
+      "lizard_module_mean": 4.0,
+      "file": "tools/engineering/evaluate_complexity.py",
+      "sha256": "d39c19e4d2070e5a81c145aca9e81aa6e91193c90d44f072338b7e4c0a8f6155",
+      "functions": [
+        {
+          "name": "executable",
+          "line": 31,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "nested",
+          "line": 39,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "flat",
+          "line": 49,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "ruff_check",
+          "line": 80,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "lizard_scores",
+          "line": 102,
+          "cognitive": 1,
+          "cyclomatic": 1
+        },
+        {
+          "name": "observe_case",
+          "line": 113,
+          "cognitive": 2,
+          "cyclomatic": 1
+        },
+        {
+          "name": "diagnostic_score",
+          "line": 154,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "verify_cases",
+          "line": 162,
+          "cognitive": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "inspect_source",
+          "line": 198,
+          "cognitive": 6,
+          "cyclomatic": 1
+        },
+        {
+          "name": "evaluate",
+          "line": 227,
+          "cognitive": 6,
+          "cyclomatic": 1
+        },
+        {
+          "name": "main",
+          "line": 287,
+          "cognitive": 9,
+          "cyclomatic": 1
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    }
+  ],
+  "limitations": [
+    "Focused syntax and threshold checks, not complete Python grammar proof.",
+    "Exploratory Lizard observations; use complexity_check.py for authoritative lizard-functions-v1 enforcement.",
+    "Source violations remain visible; no refactoring or automatic baseline suppression."
+  ],
+  "lizard_aggregate": {
+    "population": "reported functions across the explicit source scope",
+    "functions": 18,
+    "maximum": 10,
+    "overall_function_weighted_mean": 3.6666666666666665,
+    "enforcement": "observational; authoritative gate is complexity_check.py (lizard-functions-v1)"
+  }
+}

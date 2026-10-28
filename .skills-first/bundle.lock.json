@@ -1,7 +1,10 @@
 {
   "schema_version": 1,
-  "name": "skills-first-starter",
-  "template_version": "0.7.1",
+  "starter": {
+    "repository": "https://github.com/tvproductions/gz-skills-first-starter.git",
+    "version": "0.7.1",
+    "revision": "27594dbaec853e6bde037b0aaf3f0427a3f053f9"
+  },
   "components": [
     {
       "name": "superpowers",

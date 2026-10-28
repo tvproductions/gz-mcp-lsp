@@ -33,3 +33,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Gz-mcp-lsp independently acknowledges Isaac Phi and:
+https://github.com/isaacphi/mcp-language-server
+Architectural reference: v0.1.1, commit 46e2950b7969334780675e7797e13f140d2d42ac.
+No source code, generated protocol code, tests or media from that project are
+redistributed here. Its BSD-3-Clause license has copyright text "2025 Phil Isaac";
+this notice preserves that distinction from the requested author attribution.
+This is not an official fork, continuation, or Astral/OpenAI affiliation.

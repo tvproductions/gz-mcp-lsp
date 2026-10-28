@@ -1,35 +1,28 @@
 [project]
-name = "skills-first-starter"
-version = "0.7.1"
-description = "Project-scoped SP + SP-BP + gz-skills adoption scaffold"
+name = "gz-mcp-lsp"
+version = "0.0.0"
+description = "Read-only LSP-to-MCP semantic navigation adapter (design stage)"
 readme = "README.md"
 requires-python = ">=3.14,<3.15"
 license = "MIT"
 license-files = ["LICENSE", "NOTICE"]
 dependencies = []
 
-[project.scripts]
-skills-first-starter = "skills_first_starter.cli:main"
-
 [build-system]
-requires = ["uv_build==0.13.5"]
+requires = ["uv_build==0.13.6"]
 build-backend = "uv_build"
 
 [tool.uv]
-required-version = "==0.13.5"
+required-version = "==0.13.6"
 python-preference = "only-managed"
 python-downloads-json-url = "https://raw.githubusercontent.com/astral-sh/uv/68677f5439c027db17b4db7821882a9881d376f6/crates/uv-python-managed/download-metadata.json"
 
 [tool.uv.build-backend]
-source-include = [
-    "bundle.json", "templates/**", ".agents/plugins/marketplace.json",
-    ".claude-plugin/marketplace.json", "starter.py", "tests/**", "tools/**",
-    "docs/**", "AGENTS.md", "ROADMAP.md", "CHANGELOG.md", ".python-version",
-    "uv.lock", ".pre-commit-config.yaml", ".github/workflows/**",
-    ".gitattributes", ".gitignore", ".github/dependabot.yml",
-    "baselines/xplane/pyproject.toml", "baselines/xplane/uv.lock",
-    "baselines/xplane/.python-version", "baselines/xplane/README.md",
-]
+source-include = ["tests/**", "tools/**", "docs/**", "AGENTS.md", "AGENTS.skills-first.md",
+                  "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md", ".python-version",
+                  "uv.lock", ".pre-commit-config.yaml", ".github/**",
+                  ".skills-first/**", ".codex/config.toml", ".agents/**",
+                  ".claude-plugin/marketplace.json", "bundle.json"]
 
 [tool.ruff]
 target-version = "py314"
@@ -42,13 +35,14 @@ select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM", "RUF"]
 [dependency-groups]
 dev = [
     "ruff==0.17.3",
-    "ty==0.0.92",
+    "ty==0.0.93",
     "pre-commit==4.7.0",
 ]
 hygiene = [
     "bandit==1.9.4",
+    "cohesion==1.2.0",
     # Defect reproducer only; not qualified as cognitive acceptance authority.
-    "complexipy==8.1.0",
+    "complexipy==8.3.0",
     "cosmic-ray==8.7.0",
     "coverage==7.17.0",
     "deptry==0.25.1",
@@ -74,18 +68,12 @@ snapshot-ignore = true
 python-version = "3.14"
 
 [tool.ty.src]
-include = ["src", "starter.py", "tests", "tools"]
+include = ["src", "tests", "tools"]
 
 [tool.importlinter]
-root_packages = ["skills_first_starter"]
-
-[[tool.importlinter.contracts]]
-name = "CLI implementation must not import its execution wrapper"
-type = "forbidden"
-source_modules = ["skills_first_starter.cli"]
-forbidden_modules = ["skills_first_starter.__main__"]
+root_packages = ["gz_mcp_lsp"]
+# Dependency-direction contracts will be added with reviewed runtime modules.
 
 [tool.deptry]
-known_first_party = ["skills_first_starter"]
-# Runtime dependency intent; developer utilities intentionally import hygiene tools.
+known_first_party = ["gz_mcp_lsp"]
 extend_exclude = ["tools/.*"]

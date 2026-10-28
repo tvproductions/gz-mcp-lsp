@@ -1,0 +1,134 @@
+{
+  "checked_date": "2026-10-28",
+  "scope": "direct scaffold tools only; runtime SDK is proposal only",
+  "packages": [
+    {
+      "package": "uv",
+      "selected": "0.13.6",
+      "latest_registry": "0.13.6",
+      "requires_python": ">=3.8",
+      "source": "https://pypi.org/pypi/uv/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "uv_build",
+      "selected": "0.13.6",
+      "latest_registry": "0.13.6",
+      "requires_python": ">=3.8",
+      "source": "https://pypi.org/pypi/uv_build/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "ruff",
+      "selected": "0.17.3",
+      "latest_registry": "0.17.3",
+      "requires_python": ">=3.7",
+      "source": "https://pypi.org/pypi/ruff/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "ty",
+      "selected": "0.0.93",
+      "latest_registry": "0.0.93",
+      "requires_python": ">=3.8",
+      "source": "https://pypi.org/pypi/ty/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "pre-commit",
+      "selected": "4.7.0",
+      "latest_registry": "4.7.0",
+      "requires_python": ">=3.11",
+      "source": "https://pypi.org/pypi/pre-commit/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "bandit",
+      "selected": "1.9.4",
+      "latest_registry": "1.9.4",
+      "requires_python": ">=3.10",
+      "source": "https://pypi.org/pypi/bandit/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "complexipy",
+      "selected": "8.3.0",
+      "latest_registry": "8.3.0",
+      "requires_python": "<3.16,>=3.8",
+      "source": "https://pypi.org/pypi/complexipy/json",
+      "decision": "selected for scaffold validation; cognitive acceptance remains blocked"
+    },
+    {
+      "package": "cosmic-ray",
+      "selected": "8.7.0",
+      "latest_registry": "8.7.0",
+      "requires_python": ">=3.9",
+      "source": "https://pypi.org/pypi/cosmic-ray/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "coverage",
+      "selected": "7.17.0",
+      "latest_registry": "7.17.0",
+      "requires_python": ">=3.11",
+      "source": "https://pypi.org/pypi/coverage/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "deptry",
+      "selected": "0.25.1",
+      "latest_registry": "0.25.1",
+      "requires_python": ">=3.10",
+      "source": "https://pypi.org/pypi/deptry/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "import-linter",
+      "selected": "2.15",
+      "latest_registry": "2.15",
+      "requires_python": ">=3.10",
+      "source": "https://pypi.org/pypi/import-linter/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "interrogate",
+      "selected": "1.7.0",
+      "latest_registry": "1.7.0",
+      "requires_python": ">=3.8",
+      "source": "https://pypi.org/pypi/interrogate/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "lizard",
+      "selected": "1.24.3",
+      "latest_registry": "1.24.3",
+      "requires_python": null,
+      "source": "https://pypi.org/pypi/lizard/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "pip-audit",
+      "selected": "2.10.1",
+      "latest_registry": "2.10.1",
+      "requires_python": ">=3.10",
+      "source": "https://pypi.org/pypi/pip-audit/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "vulture",
+      "selected": "2.16",
+      "latest_registry": "2.16",
+      "requires_python": ">=3.9",
+      "source": "https://pypi.org/pypi/vulture/json",
+      "decision": "adopt/retain latest registry selection"
+    },
+    {
+      "package": "cohesion",
+      "selected": "1.2.0",
+      "latest_registry": "1.2.0",
+      "requires_python": "<4.0.0,>=3.8.1",
+      "source": "https://pypi.org/pypi/cohesion/json",
+      "decision": "adopt/retain latest registry selection"
+    }
+  ]
+}

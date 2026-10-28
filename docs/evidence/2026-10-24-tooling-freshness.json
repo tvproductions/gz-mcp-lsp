@@ -1,0 +1,204 @@
+{
+  "checked_at_utc": "2026-10-24 17:17:12 UTC",
+  "mode": "read-only freshness review",
+  "baseline_commit": "c0a6945b2170e1cf5bee3e80738916f5b62d13a5",
+  "scope": "Direct selected Python/build/dev/hygiene tool pins, CI actions and independent plugin sources; no transitive freshness or vulnerability audit",
+  "python": {
+    "pin": "3.14.8",
+    "family": "3.14.x",
+    "latest_in_family": "3.14.9",
+    "release_url": "https://www.python.org/downloads/release/python-3149/",
+    "tag_source": "https://api.github.com/repos/python/cpython/git/matching-refs/tags/v3.14.",
+    "result": "STALE"
+  },
+  "tools": [
+    {
+      "tool": "uv",
+      "pin": "0.13.1",
+      "family": "0.13.x",
+      "latest_in_family": "0.13.5",
+      "latest_overall": "0.13.5",
+      "result": "STALE",
+      "source": "https://pypi.org/pypi/uv/json",
+      "target_requires_python": ">=3.8",
+      "target_uploaded": "2026-10-22T01:31:37.115588Z"
+    },
+    {
+      "tool": "uv_build",
+      "pin": "0.13.1",
+      "family": "0.13.x",
+      "latest_in_family": "0.13.5",
+      "latest_overall": "0.13.5",
+      "result": "STALE",
+      "source": "https://pypi.org/pypi/uv_build/json",
+      "target_requires_python": ">=3.8",
+      "target_uploaded": "2026-10-22T01:31:23.294562Z"
+    },
+    {
+      "tool": "ruff",
+      "pin": "0.15.22",
+      "family": "0.15.x",
+      "latest_in_family": "0.15.22",
+      "latest_overall": "0.17.2",
+      "result": "CURRENT",
+      "source": "https://pypi.org/pypi/ruff/json",
+      "target_requires_python": ">=3.7",
+      "target_uploaded": "2026-07-16T15:13:19.452734Z"
+    },
+    {
+      "tool": "ty",
+      "pin": "0.0.89",
+      "family": "0.0.x",
+      "latest_in_family": "0.0.91",
+      "latest_overall": "0.0.91",
+      "result": "STALE",
+      "source": "https://pypi.org/pypi/ty/json",
+      "target_requires_python": ">=3.8",
+      "target_uploaded": "2026-10-22T18:24:11.284857Z"
+    },
+    {
+      "tool": "pre-commit",
+      "pin": "4.7.0",
+      "family": "4.x",
+      "latest_in_family": "4.7.0",
+      "latest_overall": "4.7.0",
+      "result": "CURRENT",
+      "source": "https://pypi.org/pypi/pre-commit/json",
+      "target_requires_python": ">=3.11",
+      "target_uploaded": "2026-10-12T20:45:38.858255Z"
+    },
+    {
+      "tool": "complexipy",
+      "pin": "8.0.1",
+      "family": "8.x",
+      "latest_in_family": "8.1.0",
+      "latest_overall": "8.1.0",
+      "result": "STALE",
+      "source": "https://pypi.org/pypi/complexipy/json",
+      "target_requires_python": "<3.16,>=3.8",
+      "target_uploaded": "2026-10-19T02:39:53.549758Z"
+    },
+    {
+      "tool": "cosmic-ray",
+      "pin": "8.7.0",
+      "family": "8.x",
+      "latest_in_family": "8.7.0",
+      "latest_overall": "8.7.0",
+      "result": "CURRENT",
+      "source": "https://pypi.org/pypi/cosmic-ray/json",
+      "target_requires_python": ">=3.9",
+      "target_uploaded": "2026-08-09T14:57:54.376400Z"
+    },
+    {
+      "tool": "lizard",
+      "pin": "1.24.1",
+      "family": "1.24.x",
+      "latest_in_family": "1.24.3",
+      "latest_overall": "1.24.3",
+      "result": "STALE",
+      "source": "https://pypi.org/pypi/lizard/json",
+      "target_requires_python": null,
+      "target_uploaded": "2026-10-24T09:31:51.611933Z"
+    }
+  ],
+  "upstream": [
+    {
+      "repository": "astral-sh/uv",
+      "tag": "0.13.5",
+      "published_at": "2026-10-22T01:35:54Z",
+      "url": "https://github.com/astral-sh/uv/releases/tag/0.13.5",
+      "target_commitish": "46776a95d6686ac0160c10611327ce491e6b202f"
+    },
+    {
+      "repository": "astral-sh/ruff",
+      "tag": "0.17.2",
+      "published_at": "2026-10-22T18:39:46Z",
+      "url": "https://github.com/astral-sh/ruff/releases/tag/0.17.2",
+      "target_commitish": "30516b42ab972ffa2569e5efcfee81135da466d3"
+    },
+    {
+      "repository": "astral-sh/ty",
+      "tag": "0.0.91",
+      "published_at": "2026-10-22T18:26:12Z",
+      "url": "https://github.com/astral-sh/ty/releases/tag/0.0.91",
+      "target_commitish": "67fbd28745e4bf2f1afb97886c60960bac54f2c5"
+    },
+    {
+      "repository": "pre-commit/pre-commit",
+      "tag": "v4.7.0",
+      "published_at": "2026-10-13T15:35:39Z",
+      "url": "https://github.com/pre-commit/pre-commit/releases/tag/v4.7.0",
+      "target_commitish": "main"
+    },
+    {
+      "repository": "actions/checkout",
+      "tag": "v7.0.1",
+      "published_at": "2026-07-20T15:10:05Z",
+      "url": "https://github.com/actions/checkout/releases/tag/v7.0.1",
+      "target_commitish": "main"
+    },
+    {
+      "repository": "astral-sh/setup-uv",
+      "tag": "v10.3.2",
+      "published_at": "2026-10-22T08:47:11Z",
+      "url": "https://github.com/astral-sh/setup-uv/releases/tag/v10.3.2",
+      "target_commitish": "07a047e608db84b3d8c06cd9a7c7dcc9c355c18e"
+    },
+    {
+      "repository": "obra/superpowers",
+      "tag": "v7.0.1",
+      "published_at": "2026-10-21T21:05:11Z",
+      "url": "https://github.com/obra/superpowers/releases/tag/v7.0.1",
+      "target_commitish": "main"
+    },
+    {
+      "repository": "tvproductions/gz-skills",
+      "tag": "v0.8.0",
+      "published_at": "2026-10-12T01:47:09Z",
+      "url": "https://github.com/tvproductions/gz-skills/releases/tag/v0.8.0",
+      "target_commitish": "main"
+    },
+    {
+      "repository": "tvproductions/superpowers-backplane",
+      "result": "NO_RELEASE",
+      "error": "gh: Not Found (HTTP 404)",
+      "source": "https://api.github.com/repos/tvproductions/superpowers-backplane/releases/latest"
+    }
+  ],
+  "action_family_and_backplane_checks": {
+    "actions/checkout": {
+      "latest_in_selected_family": "v7.0.1",
+      "url": "https://github.com/actions/checkout/releases/tag/v7.0.1",
+      "revision": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    "astral-sh/setup-uv": {
+      "latest_in_selected_family": "v9.0.0",
+      "url": "https://github.com/astral-sh/setup-uv/releases/tag/v9.0.0",
+      "revision": "c771a70e6277c0a99b617c7a806ffedaca235ff9"
+    },
+    "tvproductions/superpowers-backplane": {
+      "repository_access_verified": true,
+      "published_releases": 0,
+      "head_revision": "fc5c59434362779b4c5608c41e5176371cbd7004",
+      "release_status": "NO_PUBLISHED_RELEASE",
+      "source": "https://github.com/tvproductions/superpowers-backplane/releases"
+    }
+  },
+  "decisions": {
+    "same_family_updates": "Recommend review and compatibility verification; none applied",
+    "newer_ruff_and_setup_uv_families": "Separate family review required; current pin is latest in its selected family, not latest overall",
+    "superpowers": "Review published v7.0.1 independently; no native update performed",
+    "backplane": "Still no published release; newer development HEAD is not activation/readiness approval",
+    "compatibility": "All proposed new versions untested in this review",
+    "workflow": "gzs-update-dependencies not available in active skill catalog; documented direct-source fallback used",
+    "mutation": "No pins, locks, environments, hooks, catalogs or native caches changed"
+  },
+  "input_sha256": {
+    ".python-version": "5abd4dc1efa09469b88916c8e4e027a8c266a9b6d06f43ac9da3e30cd00b4ab5",
+    "pyproject.toml": "6d46d7c679098efdc66f6bf2dc9fd33f9ad7837cba83dcdceff579186a558719",
+    "uv.lock": "c35aa9ef8cc60bddfbb785c4814f1050301e882250e774053b36588002c4ab30",
+    ".pre-commit-config.yaml": "9959e75e2bc1f7e8e4bb1ffc7ed0ed8313dd280f063f0c20164b9383bc57b7cc",
+    ".github/workflows/check.yml": "63057cb7086ef0a12a3e1783f87a0f14efb86f893e2b6c63eb9a22de96559042",
+    "bundle.json": "5e9ec0aeabc7ea3a09e6adfbfe42e648cc3de55d74f789efadb343f1dfd47f85"
+  }
+}

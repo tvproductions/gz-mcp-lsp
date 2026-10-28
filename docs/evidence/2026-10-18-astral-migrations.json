@@ -1,0 +1,1108 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-18T20:40:39.942327+00:00",
+  "scope": "Documentation fixtures, Windows only; no adopter or remote CI claim",
+  "document_sha256": "4684a37f2b6ef74bd9de658d1cab3442691d1fe2abe1facd2d6690df37294d87",
+  "environment_controls": [
+    "Inherited UV_* and Python source-path overrides removed",
+    "Network allowed for fixture lock/sync and pinned consumer ty installation; project versions retained in locks",
+    "No interpreter downloads",
+    "Temporary empty Git global config and no system Git config",
+    "Bytecode writes disabled"
+  ],
+  "fixtures": {
+    "application/before/summary.py": "from pathlib import Path\n\n\ndef summarize(values: list[int]) -> str:\n    label = Path(__file__).with_name(\"label.txt\").read_text(encoding=\"utf-8\").strip()\n    return f\"{label}: {sum(values)}\"\n\n\ndef main() -> None:\n    print(summarize([2, 5]))\n\n\nif __name__ == \"__main__\":\n    main()\n",
+    "application/before/label.txt": "Total\n",
+    "application/before/tests/test_summary.py": "import unittest\n\nfrom summary import summarize\n\n\nclass SummaryTests(unittest.TestCase):\n    def test_public_summary(self) -> None:\n        self.assertEqual(summarize([2, 5]), \"Total: 7\")\n",
+    "application/after/pyproject.toml": "[project]\nname = \"example-summary\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14,<3.15\"\ndependencies = []\n\n[project.scripts]\nexample-summary = \"example_summary:main\"\n\n[build-system]\nrequires = [\"uv_build==0.13.1\"]\nbuild-backend = \"uv_build\"\n\n[tool.uv]\nrequired-version = \"==0.13.1\"\npython-preference = \"only-managed\"\n\n[dependency-groups]\ndev = [\"ruff==0.15.22\", \"ty==0.0.89\", \"pre-commit==4.7.0\"]\n\n[tool.ruff]\ntarget-version = \"py314\"\nline-length = 100\n\n[tool.ruff.lint]\nselect = [\"E4\", \"E7\", \"E9\", \"F\", \"I\", \"UP\", \"B\", \"SIM\", \"RUF\"]\n\n[tool.ty.environment]\npython-version = \"3.14\"\n",
+    "application/after/src/example_summary/__init__.py": "from importlib.resources import files\n\n\ndef summarize(values: list[int]) -> str:\n    label = files(__package__).joinpath(\"label.txt\").read_text(encoding=\"utf-8\").strip()\n    return f\"{label}: {sum(values)}\"\n\n\ndef main() -> None:\n    print(summarize([2, 5]))\n",
+    "application/after/src/example_summary/label.txt": "Total\n",
+    "application/after/tests/test_summary.py": "import unittest\n\nfrom example_summary import summarize\n\n\nclass SummaryTests(unittest.TestCase):\n    def test_public_summary(self) -> None:\n        self.assertEqual(summarize([2, 5]), \"Total: 7\")\n",
+    "library/before/example_math/__init__.py": "def double(value: int) -> int:\n    return value * 2\n",
+    "library/before/tests/test_math.py": "import unittest\n\nfrom example_math import double\n\n\nclass MathTests(unittest.TestCase):\n    def test_public_double(self) -> None:\n        self.assertEqual(double(4), 8)\n",
+    "library/after/pyproject.toml": "[project]\nname = \"example-math\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14,<3.15\"\ndependencies = []\n\n[build-system]\nrequires = [\"uv_build==0.13.1\"]\nbuild-backend = \"uv_build\"\n\n[tool.uv]\nrequired-version = \"==0.13.1\"\npython-preference = \"only-managed\"\n\n[dependency-groups]\ndev = [\"ruff==0.15.22\", \"ty==0.0.89\", \"pre-commit==4.7.0\"]\n\n[tool.ruff]\ntarget-version = \"py314\"\nline-length = 100\n\n[tool.ruff.lint]\nselect = [\"E4\", \"E7\", \"E9\", \"F\", \"I\", \"UP\", \"B\", \"SIM\", \"RUF\"]\n\n[tool.ty.environment]\npython-version = \"3.14\"\n",
+    "library/after/src/example_math/__init__.py": "def double(value: int) -> int:\n    return value * 2\n",
+    "library/after/consumer.py": "from example_math import double\n\nresult: int = double(4)\nprint(result)\n",
+    "workspace/before/math_helpers.py": "def double(value: int) -> int:\n    return value * 2\n",
+    "workspace/before/app.py": "from math_helpers import double\n\n\ndef render() -> str:\n    return f\"Result: {double(4)}\"\n\n\ndef main() -> None:\n    print(render())\n\n\nif __name__ == \"__main__\":\n    main()\n",
+    "workspace/before/tests/test_app.py": "import unittest\n\nfrom app import render\n\n\nclass AppTests(unittest.TestCase):\n    def test_public_render(self) -> None:\n        self.assertEqual(render(), \"Result: 8\")\n",
+    "workspace/after/pyproject.toml": "[tool.uv.workspace]\nmembers = [\"packages/*\"]\n\n[tool.uv]\nrequired-version = \"==0.13.1\"\npython-preference = \"only-managed\"\n\n[dependency-groups]\ndev = [\"ruff==0.15.22\", \"ty==0.0.89\", \"pre-commit==4.7.0\"]\n\n[tool.ruff]\ntarget-version = \"py314\"\nline-length = 100\n\n[tool.ruff.lint]\nselect = [\"E4\", \"E7\", \"E9\", \"F\", \"I\", \"UP\", \"B\", \"SIM\", \"RUF\"]\n\n[tool.ty.environment]\npython-version = \"3.14\"\n",
+    "workspace/after/packages/app/pyproject.toml": "[project]\nname = \"example-workspace-app\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14,<3.15\"\ndependencies = [\"example-math==0.1.0\"]\n\n[project.scripts]\nexample-workspace-app = \"example_workspace_app:main\"\n\n[build-system]\nrequires = [\"uv_build==0.13.1\"]\nbuild-backend = \"uv_build\"\n\n[tool.uv.sources]\nexample-math = { workspace = true }\n",
+    "workspace/after/packages/app/src/example_workspace_app/__init__.py": "from example_math import double\n\n\ndef render() -> str:\n    return f\"Result: {double(4)}\"\n\n\ndef main() -> None:\n    print(render())\n",
+    "workspace/after/tests/test_app.py": "import unittest\n\nfrom example_workspace_app import render\n\n\nclass AppTests(unittest.TestCase):\n    def test_public_render(self) -> None:\n        self.assertEqual(render(), \"Result: 8\")\n",
+    "library/before/example_math/py.typed": "",
+    "library/after/src/example_math/py.typed": "",
+    "library/after/tests/test_math.py": "import unittest\n\nfrom example_math import double\n\n\nclass MathTests(unittest.TestCase):\n    def test_public_double(self) -> None:\n        self.assertEqual(double(4), 8)\n",
+    "workspace/after/packages/math/pyproject.toml": "[project]\nname = \"example-math\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14,<3.15\"\ndependencies = []\n\n[build-system]\nrequires = [\"uv_build==0.13.1\"]\nbuild-backend = \"uv_build\"\n",
+    "workspace/after/packages/math/src/example_math/__init__.py": "def double(value: int) -> int:\n    return value * 2\n",
+    "workspace/after/packages/math/src/example_math/py.typed": "",
+    "workspace/after/packages/math/tests/test_math.py": "import unittest\n\nfrom example_math import double\n\n\nclass MathTests(unittest.TestCase):\n    def test_public_double(self) -> None:\n        self.assertEqual(double(4), 8)\n",
+    "workspace/after/packages/app/tests/test_app.py": "import unittest\n\nfrom example_workspace_app import render\n\n\nclass AppTests(unittest.TestCase):\n    def test_public_render(self) -> None:\n        self.assertEqual(render(), \"Result: 8\")\n",
+    "application/after/.python-version": "3.14.8\n",
+    "application/after/.gitignore": ".venv/\ndist/\n__pycache__/\n",
+    "application/after/.pre-commit-config.yaml": "repos:\n  - repo: local\n    hooks:\n      - id: ruff-check\n        name: Ruff check\n        entry: uv run --locked ruff check .\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: ruff-format\n        name: Ruff format\n        entry: uv run --locked ruff format --check .\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: ty\n        name: ty\n        entry: uv run --locked ty check\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: unittest\n        name: unittest\n        entry: uv run --locked python -m unittest discover -s tests -v\n        language: system\n        pass_filenames: false\n        always_run: true\n",
+    "application/after/uv.lock": "version = 1\nrevision = 5\nrequires-python = \"==3.14.*\"\n\n[[package]]\nname = \"cfgv\"\nversion = \"3.5.0\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/4e/b5/721b8799b04bf9afe054a3899c6cf4e880fcf8563cc71c15610242490a0c/cfgv-3.5.0.tar.gz\", hash = \"sha256:d5b1034354820651caa73ede66a6294d6e95c1b00acc5e9b098e917404669132\", size = 7334, upload-time = \"2025-11-19T20:55:51.612Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/db/3c/33bac158f8ab7f89b2e59426d5fe2e4f63f7ed25df84c036890172b412b5/cfgv-3.5.0-py2.py3-none-any.whl\", hash = \"sha256:a8dc6b26ad22ff227d2634a65cb388215ce6cc96bbcc5cfde7641ae87e8dacc0\", size = 7445, upload-time = \"2025-11-19T20:55:50.744Z\" },\n]\n\n[[package]]\nname = \"distlib\"\nversion = \"0.4.4\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/68/bc/d36966de7304047a1001a7559fbf266c464bb5d8cc85464536ef8c9bcc32/distlib-0.4.4.tar.gz\", hash = \"sha256:ca4175b4ac7f71223cc30ed7248c45d2b38c2439d8ee6e498ab67ed63cf3508d\", size = 621304, upload-time = \"2026-10-16T13:56:34.203Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/c1/2b/238f02a4927fa2e27aa995371d240a468b52e42eae44a678434aff736b38/distlib-0.4.4-py2.py3-none-any.whl\", hash = \"sha256:cf09d55b1e85a89576b036aeb71550bfd68320f3f21761ca329eadadad918638\", size = 472099, upload-time = \"2026-10-16T13:56:32.053Z\" },\n]\n\n[[package]]\nname = \"example-summary\"\nversion = \"0.1.0\"\nsource = { editable = \".\" }\n\n[package.dev-dependencies]\ndev = [\n    { name = \"pre-commit\" },\n    { name = \"ruff\" },\n    { name = \"ty\" },\n]\n\n[package.metadata]\n\n[package.metadata.requires-dev]\ndev = [\n    { name = \"pre-commit\", specifier = \"==4.7.0\" },\n    { name = \"ruff\", specifier = \"==0.15.22\" },\n    { name = \"ty\", specifier = \"==0.0.89\" },\n]\n\n[[package]]\nname = \"filelock\"\nversion = \"4.2.2\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/d4/08/d8f81287742010e38daf3632380c8d80ede7b4df2716f8ca3d0a2b087d44/filelock-4.2.2.tar.gz\", hash = \"sha256:b29ff2ae9140bb17b3bc77c648dc4f010d9ac0955eccabff4f2b01dde859f787\", size = 651339, upload-time = \"2026-10-18T07:26:44.624Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/4e/53/35698fff350cb99c49ee01ae5cb1eb4408567792a286314ea984b53b5002/filelock-4.2.2-py3-none-any.whl\", hash = \"sha256:1851d2f14ca2901e98069d68333b33ad7409f56904e17b48cc0c32a0db8ed73a\", size = 162415, upload-time = \"2026-10-18T07:26:43.115Z\" },\n]\n\n[[package]]\nname = \"identify\"\nversion = \"2.6.20\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/53/35/d70c0006c7cee65999ea94a6273e60b2094f600a3d8b71b04318253fc643/identify-2.6.20.tar.gz\", hash = \"sha256:ad729860a923858d26917c2f4fb0a1d83d27a75b1e090c06440c573f048f3285\", size = 99681, upload-time = \"2026-09-26T20:29:07.187Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/fa/70/fffc9613501877c0a10a1ef73a165e6ded3e53f6e7502227fef56d973933/identify-2.6.20-py2.py3-none-any.whl\", hash = \"sha256:6a16b69b93187244e0548cbfd25b3e4a6f9a7a2ad784625c3bec2b8d27b81aaa\", size = 99506, upload-time = \"2026-09-26T20:29:06.054Z\" },\n]\n\n[[package]]\nname = \"nodeenv\"\nversion = \"1.11.0\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/9a/8e/105de02c1322cfada6d9710d9146ef8026419d433c9d08359a2d35805811/nodeenv-1.11.0.tar.gz\", hash = \"sha256:3ce8fe5b71d16e8af7039ca65257354100bc772965d6bc549070649e53b1b146\", size = 99301, upload-time = \"2026-09-26T11:29:21.367Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/54/c8/12811c9b48fde162bb72b6f2e78fada9a247a09d7bb5be2050a5d099c77b/nodeenv-1.11.0-py2.py3-none-any.whl\", hash = \"sha256:edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25\", size = 34277, upload-time = \"2026-09-26T11:29:19.933Z\" },\n]\n\n[[package]]\nname = \"packaging\"\nversion = \"26.3\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz\", hash = \"sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79\", size = 313412, upload-time = \"2026-08-04T18:15:28.737Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl\", hash = \"sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c\", size = 129956, upload-time = \"2026-08-04T18:15:27.159Z\" },\n]\n\n[[package]]\nname = \"platformdirs\"\nversion = \"4.13.4\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/b7/89/dfd269de936e76319cf27787d9eaaca513491f635d49b0fbe7cdb6d3bf6f/platformdirs-4.13.4.tar.gz\", hash = \"sha256:dd96496961684a7f42041923f842ec7494e09f5e87aded99117e1109cd40570e\", size = 62364, upload-time = \"2026-10-17T19:31:53.69Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/58/51/5614d0537dd830ca64d95a2f254bd66bdf3ac61d41cffcccaec62121fcfd/platformdirs-4.13.4-py3-none-any.whl\", hash = \"sha256:502ce08e9d36cf90579ee44e1e764838842fa658e4975ef47344fd053011d2c8\", size = 32782, upload-time = \"2026-10-17T19:31:52.293Z\" },\n]\n\n[[package]]\nname = \"pre-commit\"\nversion = \"4.7.0\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"cfgv\" },\n    { name = \"identify\" },\n    { name = \"nodeenv\" },\n    { name = \"pyyaml\" },\n    { name = \"virtualenv\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/3a/c3/6965c2690ddce885ec75121572d065a5b94c5a5d8d3e657927ecda9fd715/pre_commit-4.7.0.tar.gz\", hash = \"sha256:1f3deee12b914c8fa184bd2b5953391c2e4f36763e403d4a23dc9983fa7c6e86\", size = 198120, upload-time = \"2026-10-12T20:45:40.32Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/eb/83/ce0a196e4f7b20b11ce3aa1fc72fb973f64b7628d51c1b8aebad37fb7f81/pre_commit-4.7.0-py2.py3-none-any.whl\", hash = \"sha256:2e229038ad3656081b70c27913157e4b636ef306f643f024a8a8e3f0f7b2f877\", size = 226261, upload-time = \"2026-10-12T20:45:38.858Z\" },\n]\n\n[[package]]\nname = \"python-discovery\"\nversion = \"1.6.3\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"filelock\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/fc/54/fad125f5c48f7821644ee6f223ebfcedc4e23597c1a16eeb13d33aa4a91a/python_discovery-1.6.3.tar.gz\", hash = \"sha256:a62b301d96cf5489cb96ab023b32e068421867fdd5df2e42eece877869047fa2\", size = 88998, upload-time = \"2026-10-16T03:54:29.507Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/de/ec/643826e4d69b7bdce4213f221e8f5ed06d0a9dd69fa9b33342578d2cc8c8/python_discovery-1.6.3-py3-none-any.whl\", hash = \"sha256:cb7654125e3dcb594269a6feb56ac693f1f13b7c654493a93eba72dc22d18034\", size = 39386, upload-time = \"2026-10-16T03:54:28.237Z\" },\n]\n\n[[package]]\nname = \"pyyaml\"\nversion = \"6.0.3\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz\", hash = \"sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f\", size = 130960, upload-time = \"2025-09-25T21:33:16.546Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/9d/8c/f4bd7f6465179953d3ac9bc44ac1a8a3e6122cf8ada906b4f96c60172d43/pyyaml-6.0.3-cp314-cp314-macosx_10_13_x86_64.whl\", hash = \"sha256:8d1fab6bb153a416f9aeb4b8763bc0f22a5586065f86f7664fc23339fc1c1fac\", size = 181814, upload-time = \"2025-09-25T21:32:35.712Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bd/9c/4d95bb87eb2063d20db7b60faa3840c1b18025517ae857371c4dd55a6b3a/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl\", hash = \"sha256:34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310\", size = 173809, upload-time = \"2025-09-25T21:32:36.789Z\" },\n    { url = \"https://files.pythonhosted.org/packages/92/b5/47e807c2623074914e29dabd16cbbdd4bf5e9b2db9f8090fa64411fc5382/pyyaml-6.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl\", hash = \"sha256:501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7\", size = 766454, upload-time = \"2025-09-25T21:32:37.966Z\" },\n    { url = \"https://files.pythonhosted.org/packages/02/9e/e5e9b168be58564121efb3de6859c452fccde0ab093d8438905899a3a483/pyyaml-6.0.3-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl\", hash = \"sha256:b3bc83488de33889877a0f2543ade9f70c67d66d9ebb4ac959502e12de895788\", size = 836355, upload-time = \"2025-09-25T21:32:39.178Z\" },\n    { url = \"https://files.pythonhosted.org/packages/88/f9/16491d7ed2a919954993e48aa941b200f38040928474c9e85ea9e64222c3/pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl\", hash = \"sha256:c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5\", size = 794175, upload-time = \"2025-09-25T21:32:40.865Z\" },\n    { url = \"https://files.pythonhosted.org/packages/dd/3f/5989debef34dc6397317802b527dbbafb2b4760878a53d4166579111411e/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_aarch64.whl\", hash = \"sha256:7c6610def4f163542a622a73fb39f534f8c101d690126992300bf3207eab9764\", size = 755228, upload-time = \"2025-09-25T21:32:42.084Z\" },\n    { url = \"https://files.pythonhosted.org/packages/d7/ce/af88a49043cd2e265be63d083fc75b27b6ed062f5f9fd6cdc223ad62f03e/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_x86_64.whl\", hash = \"sha256:5190d403f121660ce8d1d2c1bb2ef1bd05b5f68533fc5c2ea899bd15f4399b35\", size = 789194, upload-time = \"2025-09-25T21:32:43.362Z\" },\n    { url = \"https://files.pythonhosted.org/packages/23/20/bb6982b26a40bb43951265ba29d4c246ef0ff59c9fdcdf0ed04e0687de4d/pyyaml-6.0.3-cp314-cp314-win_amd64.whl\", hash = \"sha256:4a2e8cebe2ff6ab7d1050ecd59c25d4c8bd7e6f400f5f82b96557ac0abafd0ac\", size = 156429, upload-time = \"2025-09-25T21:32:57.844Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f4/f4/a4541072bb9422c8a883ab55255f918fa378ecf083f5b85e87fc2b4eda1b/pyyaml-6.0.3-cp314-cp314-win_arm64.whl\", hash = \"sha256:93dda82c9c22deb0a405ea4dc5f2d0cda384168e466364dec6255b293923b2f3\", size = 143912, upload-time = \"2025-09-25T21:32:59.247Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7c/f9/07dd09ae774e4616edf6cda684ee78f97777bdd15847253637a6f052a62f/pyyaml-6.0.3-cp314-cp314t-macosx_10_13_x86_64.whl\", hash = \"sha256:02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3\", size = 189108, upload-time = \"2025-09-25T21:32:44.377Z\" },\n    { url = \"https://files.pythonhosted.org/packages/4e/78/8d08c9fb7ce09ad8c38ad533c1191cf27f7ae1effe5bb9400a46d9437fcf/pyyaml-6.0.3-cp314-cp314t-macosx_11_0_arm64.whl\", hash = \"sha256:c1ff362665ae507275af2853520967820d9124984e0f7466736aea23d8611fba\", size = 183641, upload-time = \"2025-09-25T21:32:45.407Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7b/5b/3babb19104a46945cf816d047db2788bcaf8c94527a805610b0289a01c6b/pyyaml-6.0.3-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl\", hash = \"sha256:6adc77889b628398debc7b65c073bcb99c4a0237b248cacaf3fe8a557563ef6c\", size = 831901, upload-time = \"2025-09-25T21:32:48.83Z\" },\n    { url = \"https://files.pythonhosted.org/packages/8b/cc/dff0684d8dc44da4d22a13f35f073d558c268780ce3c6ba1b87055bb0b87/pyyaml-6.0.3-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl\", hash = \"sha256:a80cb027f6b349846a3bf6d73b5e95e782175e52f22108cfa17876aaeff93702\", size = 861132, upload-time = \"2025-09-25T21:32:50.149Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b1/5e/f77dc6b9036943e285ba76b49e118d9ea929885becb0a29ba8a7c75e29fe/pyyaml-6.0.3-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl\", hash = \"sha256:00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c\", size = 839261, upload-time = \"2025-09-25T21:32:51.808Z\" },\n    { url = \"https://files.pythonhosted.org/packages/ce/88/a9db1376aa2a228197c58b37302f284b5617f56a5d959fd1763fb1675ce6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_aarch64.whl\", hash = \"sha256:66e1674c3ef6f541c35191caae2d429b967b99e02040f5ba928632d9a7f0f065\", size = 805272, upload-time = \"2025-09-25T21:32:52.941Z\" },\n    { url = \"https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl\", hash = \"sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65\", size = 829923, upload-time = \"2025-09-25T21:32:54.537Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl\", hash = \"sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9\", size = 174062, upload-time = \"2025-09-25T21:32:55.767Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl\", hash = \"sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b\", size = 149341, upload-time = \"2025-09-25T21:32:56.828Z\" },\n]\n\n[[package]]\nname = \"ruff\"\nversion = \"0.15.22\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/3a/06/ae069393fc66e8ff33036d4b368003833bf6e88ccf182e17e7a2f1c754fd/ruff-0.15.22.tar.gz\", hash = \"sha256:3f15175b1fb580126f58285a5dae6b2ea89000136d980c64499211f116b54809\", size = 4785063, upload-time = \"2026-07-16T15:14:13.244Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/23/18/ee54b7ae1e121be7a28ea6da4b67564ebb0530e183a54415ab7e3bcd2c4e/ruff-0.15.22-py3-none-linux_armv6l.whl\", hash = \"sha256:44423e73493737f5e7c5b41d475483898ff37afcdae38bc3da5085e29af1c2d8\", size = 10781258, upload-time = \"2026-07-16T15:13:19.452Z\" },\n    { url = \"https://files.pythonhosted.org/packages/2f/d2/2520cb14761ddbeaf57642a76942fc36adcbdbe53b4532241995f6fc485c/ruff-0.15.22-py3-none-macosx_10_12_x86_64.whl\", hash = \"sha256:b82c6482946e9eda7ff2e091d25b8bad3f718684e1916d41bd56873cee05b697\", size = 10999477, upload-time = \"2026-07-16T15:13:23.318Z\" },\n    { url = \"https://files.pythonhosted.org/packages/c9/10/74e53572aa758dfaa678c2a2646b5c5515d884b7ca56be4d2ce03ca4b560/ruff-0.15.22-py3-none-macosx_11_0_arm64.whl\", hash = \"sha256:11c1c715af53a09f714e011106bffc419751ec8232fcb5da42173284ea3fec6f\", size = 10466716, upload-time = \"2026-07-16T15:13:26.162Z\" },\n    { url = \"https://files.pythonhosted.org/packages/1e/cc/44eaaf0844e028182f2d0a8f2190d0f359159aed0a9e5ab861d892f1ae2a/ruff-0.15.22-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl\", hash = \"sha256:742a29cf29bddb7c8327895d6a10e0e6c5b38a96dd407af9b5d0857f809c0576\", size = 10892644, upload-time = \"2026-07-16T15:13:29.229Z\" },\n    { url = \"https://files.pythonhosted.org/packages/9f/21/8edf559014d2b0f82beea19cfb713993ad802ccda16868769979c6090a84/ruff-0.15.22-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl\", hash = \"sha256:72af58b951b0ae395935ae79763dc349bc0eb706319d28f7a33ad2cfb3cfc178\", size = 10576719, upload-time = \"2026-07-16T15:13:32.35Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bf/1e/3a13abd392a3b50b62e5938a831f9ab6e588358cacad5c18545b716d2182/ruff-0.15.22-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl\", hash = \"sha256:62d425005c1835eb24e2ee4161cb90e8db263415f4a71c8c72c33abaa6c0c224\", size = 11376494, upload-time = \"2026-07-16T15:13:35.958Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bf/3e/422d3d95bcf04dd78e1aeac22184d4f9a8fb2c01865d39d44618484a0317/ruff-0.15.22-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl\", hash = \"sha256:e8b9b3f8779a4f08c969defc3c8c35abffaa757e601ed5ae66d6d1db6519969a\", size = 12208370, upload-time = \"2026-07-16T15:13:39.185Z\" },\n    { url = \"https://files.pythonhosted.org/packages/1e/91/5d065a0e0a02bf4813f5119ad278462eed081d2b832eb7c021ade0ec9e65/ruff-0.15.22-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl\", hash = \"sha256:1e0dd1b2e4d3d585f897a0d137cbf4eaf6223bef4e8ce34d6bb12556c5f9249e\", size = 11581098, upload-time = \"2026-07-16T15:13:42.132Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f6/f9/a0d4871d12fae702eb1f41b686caf05f1f8b124dc6db6f784f53d74918fa/ruff-0.15.22-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\", hash = \"sha256:365523eb91d9224e1bcb03b022fbf0facb8f9e23792a2c53d9d4b3924bdbdebb\", size = 11399422, upload-time = \"2026-07-16T15:13:45.2Z\" },\n    { url = \"https://files.pythonhosted.org/packages/18/80/c843a5176cddbceb0b7e8dd41cf9993490796c1c469348d384f5a5c13c56/ruff-0.15.22-py3-none-manylinux_2_31_riscv64.whl\", hash = \"sha256:fabfd168afdf29fee5be98b831efa9683c94d7c5a3b58b9ce5a2e38444589a74\", size = 11381683, upload-time = \"2026-07-16T15:13:48.46Z\" },\n    { url = \"https://files.pythonhosted.org/packages/d4/00/8485de0ae92239438a36cfc51350db9b9e85c9ebdfaea91b18e422706662/ruff-0.15.22-py3-none-musllinux_1_2_aarch64.whl\", hash = \"sha256:225dbf095a87f1d9f90f5fd7924d2613ee452a75a4308c63a8f50f761787aa7c\", size = 10850295, upload-time = \"2026-07-16T15:13:51.655Z\" },\n    { url = \"https://files.pythonhosted.org/packages/fa/91/24977ec2ec72eaf15e4394ace2959fdff2dd1e14f03e005e838023407169/ruff-0.15.22-py3-none-musllinux_1_2_armv7l.whl\", hash = \"sha256:1877d63b9d24ed278744f1523fd11b85540566d54641f97c566d7d9dc5ca5296\", size = 10579640, upload-time = \"2026-07-16T15:13:54.79Z\" },\n    { url = \"https://files.pythonhosted.org/packages/9c/47/9b51216951974df1f263ac19da550d34252e0ed7218c25f10c5ef9ed7517/ruff-0.15.22-py3-none-musllinux_1_2_i686.whl\", hash = \"sha256:a1606c510bd7215680d32efab38965f7cdec3ef69f5170a3f4791404ffdd5262\", size = 11105077, upload-time = \"2026-07-16T15:13:57.915Z\" },\n    { url = \"https://files.pythonhosted.org/packages/c2/47/20e9d4a3b8016778acea5fc32bb50d35d207500a17ddb529ffa6996feef8/ruff-0.15.22-py3-none-musllinux_1_2_x86_64.whl\", hash = \"sha256:630479b18625f5ffc373f77603a22a9f8ac0acd7ff0501178b5db28ec71e9c64\", size = 11490980, upload-time = \"2026-07-16T15:14:01.032Z\" },\n    { url = \"https://files.pythonhosted.org/packages/4d/76/3f72d8fc38c1cb77b38c56a70da9d0c17700cc1cc50f9649c9d3c8f5ba71/ruff-0.15.22-py3-none-win32.whl\", hash = \"sha256:e5ba0e4a13fd14abbed2a77b517a3911290c6c6c59ef67784328d1668fab76cf\", size = 10789165, upload-time = \"2026-07-16T15:14:04.16Z\" },\n    { url = \"https://files.pythonhosted.org/packages/cb/46/4965251734c2b6fcdca1b1b187d20bcac3af0ee5b083b89c910bb961ce3a/ruff-0.15.22-py3-none-win_amd64.whl\", hash = \"sha256:9be63ba1eb936acd2d1342fb8337c356353706fce233b2a15a09a97037e6acde\", size = 11938297, upload-time = \"2026-07-16T15:14:07.316Z\" },\n    { url = \"https://files.pythonhosted.org/packages/57/c9/e69b1ff4c8b69093ef08b8919ab767af0569666865b39c30a8795d88d3c6/ruff-0.15.22-py3-none-win_arm64.whl\", hash = \"sha256:e1168075b72158510839f250027659cdd78476f40507dd517892304c41318661\", size = 11298172, upload-time = \"2026-07-16T15:14:10.51Z\" },\n]\n\n[[package]]\nname = \"ty\"\nversion = \"0.0.89\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/67/ea/dfb9bdbc168c50a568809466596751afa0c7da60da03b8c12906d1decde4/ty-0.0.89.tar.gz\", hash = \"sha256:bc1027b1ea95cca25c2a3a0b41433c809cf4b86a384d2b2434eba4bcd34548d4\", size = 7978241, upload-time = \"2026-10-16T10:35:05.249Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/c5/84/e199d9a3dc3c94c804ddd9e94b63dbe543ae7f39329574963b6a6a95872f/ty-0.0.89-py3-none-linux_armv6l.whl\", hash = \"sha256:739b087e8873e177ffda99ff8a3600a4a7704d06523a8e88c4493021eee40b8a\", size = 14254879, upload-time = \"2026-10-16T10:34:24.813Z\" },\n    { url = \"https://files.pythonhosted.org/packages/e5/d5/5afe09bf5c83c4e3a9e5913386a460e240a7029f2ae5fc96df5b43563a91/ty-0.0.89-py3-none-macosx_10_12_x86_64.whl\", hash = \"sha256:47ebc98480c8a301955e18a8bdd67ef07090071ad47349b3254f325d3d5ab4e7\", size = 13790417, upload-time = \"2026-10-16T10:34:27.672Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7e/f9/88648f0ba9400dfd642c1e8dc0aeecb87945b121f3ff51f3902883c016d6/ty-0.0.89-py3-none-macosx_11_0_arm64.whl\", hash = \"sha256:b0631291af5c850a15007c0ffb906d813966466e4ec12173c44977c0c5a2d51d\", size = 12856900, upload-time = \"2026-10-16T10:34:29.871Z\" },\n    { url = \"https://files.pythonhosted.org/packages/6a/89/baae2b407101c4cb02f19216123900c147af8fd87cdb1ed7eba139472734/ty-0.0.89-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl\", hash = \"sha256:3d768300ae16274ce656006e9199869ad68684b74400d963e1c82deddf3a22ad\", size = 13653330, upload-time = \"2026-10-16T10:34:32.296Z\" },\n    { url = \"https://files.pythonhosted.org/packages/ed/1d/293516c2e10a77134cfc40d22c3fc08edd8c5eadae9c75531ec8a9263348/ty-0.0.89-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl\", hash = \"sha256:3dd4c57ba58bab8f6c816b2c254db52b58834b5dbf8268287382f7a2f9735c8f\", size = 13986215, upload-time = \"2026-10-16T10:34:34.506Z\" },\n    { url = \"https://files.pythonhosted.org/packages/2f/c3/da911c8fc22d2664692432570619576b25c7cd0a586401cab08987763094/ty-0.0.89-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl\", hash = \"sha256:1af774c24117d366b69142d4f35edee518617f8b926d13560d0334cbe5aa3f85\", size = 14905008, upload-time = \"2026-10-16T10:34:36.632Z\" },\n    { url = \"https://files.pythonhosted.org/packages/5c/c3/aed8d920b9bbf7b582e9fc0305acb2f2c748ede788e7dba9d6952e939c78/ty-0.0.89-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl\", hash = \"sha256:a8147811b9b3bc2dc9338cd01c7893ac931fc3fae7aace169047ecbd627e6628\", size = 15278217, upload-time = \"2026-10-16T10:34:39.144Z\" },\n    { url = \"https://files.pythonhosted.org/packages/96/92/c6b4320f08fca44ffe279e5ddeb3eae12869c6341f596931accdefea1182/ty-0.0.89-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl\", hash = \"sha256:6d5f178c91d50fb62461b5e579028b7d2e92872e1d8f02e96ace26464c2277a6\", size = 15206289, upload-time = \"2026-10-16T10:34:41.626Z\" },\n    { url = \"https://files.pythonhosted.org/packages/3e/61/da22c714fd4f4dff642d60fb0d8bf8da1985d126f21cc89237f8bf707c92/ty-0.0.89-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\", hash = \"sha256:95a410f10b26cc3861757b626727db9d979deba7d2a3ab59f964fac8f0514fdc\", size = 14510395, upload-time = \"2026-10-16T10:34:44.063Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f0/32/5f9ce2377a77ad9ff36d8996edf86b1f069c1e8716e37c7d6d668402b110/ty-0.0.89-py3-none-manylinux_2_31_riscv64.whl\", hash = \"sha256:a70ab1a402746d7837407dc169e461fdf90945bc1eef0d3c0f1be543490060bf\", size = 14767366, upload-time = \"2026-10-16T10:34:46.154Z\" },\n    { url = \"https://files.pythonhosted.org/packages/63/72/2b28c71d6ebd97b5bb1378f1806598c5dd90278f7b99a431dd3879dddcfc/ty-0.0.89-py3-none-musllinux_1_2_aarch64.whl\", hash = \"sha256:b55c28a49bd2676eac9b3540a1dcc4cc053e4671c65dcec9fdad3dfe55fb148c\", size = 13670284, upload-time = \"2026-10-16T10:34:48.225Z\" },\n    { url = \"https://files.pythonhosted.org/packages/34/cc/68b8ebf98c9bc582fddc3d2b93f6e0f53719d1ddee1c5037dfa2e1cb8467/ty-0.0.89-py3-none-musllinux_1_2_armv7l.whl\", hash = \"sha256:4c9f22edeb8176f8ab189337e8cbd8f92b66744534a2886df9e252b52ade991c\", size = 13997891, upload-time = \"2026-10-16T10:34:50.556Z\" },\n    { url = \"https://files.pythonhosted.org/packages/cf/4d/a1d61e06092fd5726f48a8711bd32eac6af132308eb222a0027caba4f42d/ty-0.0.89-py3-none-musllinux_1_2_i686.whl\", hash = \"sha256:0c186185cad57a1469b851096b51345de7b625e353c1f4acd338402daed22fa7\", size = 14326247, upload-time = \"2026-10-16T10:34:53.005Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f8/d2/466d3762e330504a2c114dbbd0f0383229f9652dccd56277dde008bfe0da/ty-0.0.89-py3-none-musllinux_1_2_x86_64.whl\", hash = \"sha256:5e38302ac218d2404758241093b5542ed0345d4f569096589f1810034244e998\", size = 14661527, upload-time = \"2026-10-16T10:34:55.555Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b1/d5/dfd7ed5e4af472b20a11ef651da4bca55f9dc8be485cd152337f94caddde/ty-0.0.89-py3-none-win32.whl\", hash = \"sha256:0146637ed2321717280bfe4e4b20a18813b741da280e8039d7df2bf22b0251f1\", size = 13224078, upload-time = \"2026-10-16T10:34:57.735Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b4/14/1ee663c422e3a2d910c5cc27e7d84bd7709a3df0aca28a713843c6c3fa5d/ty-0.0.89-py3-none-win_amd64.whl\", hash = \"sha256:9fc56322a1aff29a19088d2025f3c42a6d25a7035668048bb908c9f8b66f480d\", size = 13727433, upload-time = \"2026-10-16T10:35:00.15Z\" },\n    { url = \"https://files.pythonhosted.org/packages/09/93/af8f7250920823ca6d582bcf0abf803fb92c8b99415ba7f40f2304102c6f/ty-0.0.89-py3-none-win_arm64.whl\", hash = \"sha256:1d4967c8f7bfd67c9708115b41d7049197c5d20c76fb2e136fe78b0437ada05b\", size = 13287101, upload-time = \"2026-10-16T10:35:02.918Z\" },\n]\n\n[[package]]\nname = \"virtualenv\"\nversion = \"21.14.11\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"distlib\" },\n    { name = \"filelock\" },\n    { name = \"packaging\" },\n    { name = \"platformdirs\" },\n    { name = \"python-discovery\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/7f/be/4d1d59d309db76b5808fcfd78bd5996f4e7241366691c38fc331a3136398/virtualenv-21.14.11.tar.gz\", hash = \"sha256:593052d8477ea8c55a842387ce111bd08c72618f0c1133c302cafe335e570a57\", size = 5503091, upload-time = \"2026-10-18T07:06:34.716Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/ce/6b/d85da8982b41190eafcb9df91dff9d83fc6989e98af4b5be4c8f85510c95/virtualenv-21.14.11-py3-none-any.whl\", hash = \"sha256:b319f8590a84e5de5f8f2c803ecd2237e9bc0ffa7c1e875e3169c107cecb7454\", size = 5495268, upload-time = \"2026-10-18T07:06:32.719Z\" },\n]\n",
+    "library/after/.python-version": "3.14.8\n",
+    "library/after/.gitignore": ".venv/\ndist/\n__pycache__/\n",
+    "library/after/.pre-commit-config.yaml": "repos:\n  - repo: local\n    hooks:\n      - id: ruff-check\n        name: Ruff check\n        entry: uv run --locked ruff check .\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: ruff-format\n        name: Ruff format\n        entry: uv run --locked ruff format --check .\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: ty\n        name: ty\n        entry: uv run --locked ty check\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: unittest\n        name: unittest\n        entry: uv run --locked python -m unittest discover -s tests -v\n        language: system\n        pass_filenames: false\n        always_run: true\n",
+    "library/after/uv.lock": "version = 1\nrevision = 5\nrequires-python = \"==3.14.*\"\n\n[[package]]\nname = \"cfgv\"\nversion = \"3.5.0\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/4e/b5/721b8799b04bf9afe054a3899c6cf4e880fcf8563cc71c15610242490a0c/cfgv-3.5.0.tar.gz\", hash = \"sha256:d5b1034354820651caa73ede66a6294d6e95c1b00acc5e9b098e917404669132\", size = 7334, upload-time = \"2025-11-19T20:55:51.612Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/db/3c/33bac158f8ab7f89b2e59426d5fe2e4f63f7ed25df84c036890172b412b5/cfgv-3.5.0-py2.py3-none-any.whl\", hash = \"sha256:a8dc6b26ad22ff227d2634a65cb388215ce6cc96bbcc5cfde7641ae87e8dacc0\", size = 7445, upload-time = \"2025-11-19T20:55:50.744Z\" },\n]\n\n[[package]]\nname = \"distlib\"\nversion = \"0.4.4\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/68/bc/d36966de7304047a1001a7559fbf266c464bb5d8cc85464536ef8c9bcc32/distlib-0.4.4.tar.gz\", hash = \"sha256:ca4175b4ac7f71223cc30ed7248c45d2b38c2439d8ee6e498ab67ed63cf3508d\", size = 621304, upload-time = \"2026-10-16T13:56:34.203Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/c1/2b/238f02a4927fa2e27aa995371d240a468b52e42eae44a678434aff736b38/distlib-0.4.4-py2.py3-none-any.whl\", hash = \"sha256:cf09d55b1e85a89576b036aeb71550bfd68320f3f21761ca329eadadad918638\", size = 472099, upload-time = \"2026-10-16T13:56:32.053Z\" },\n]\n\n[[package]]\nname = \"example-math\"\nversion = \"0.1.0\"\nsource = { editable = \".\" }\n\n[package.dev-dependencies]\ndev = [\n    { name = \"pre-commit\" },\n    { name = \"ruff\" },\n    { name = \"ty\" },\n]\n\n[package.metadata]\n\n[package.metadata.requires-dev]\ndev = [\n    { name = \"pre-commit\", specifier = \"==4.7.0\" },\n    { name = \"ruff\", specifier = \"==0.15.22\" },\n    { name = \"ty\", specifier = \"==0.0.89\" },\n]\n\n[[package]]\nname = \"filelock\"\nversion = \"4.2.2\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/d4/08/d8f81287742010e38daf3632380c8d80ede7b4df2716f8ca3d0a2b087d44/filelock-4.2.2.tar.gz\", hash = \"sha256:b29ff2ae9140bb17b3bc77c648dc4f010d9ac0955eccabff4f2b01dde859f787\", size = 651339, upload-time = \"2026-10-18T07:26:44.624Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/4e/53/35698fff350cb99c49ee01ae5cb1eb4408567792a286314ea984b53b5002/filelock-4.2.2-py3-none-any.whl\", hash = \"sha256:1851d2f14ca2901e98069d68333b33ad7409f56904e17b48cc0c32a0db8ed73a\", size = 162415, upload-time = \"2026-10-18T07:26:43.115Z\" },\n]\n\n[[package]]\nname = \"identify\"\nversion = \"2.6.20\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/53/35/d70c0006c7cee65999ea94a6273e60b2094f600a3d8b71b04318253fc643/identify-2.6.20.tar.gz\", hash = \"sha256:ad729860a923858d26917c2f4fb0a1d83d27a75b1e090c06440c573f048f3285\", size = 99681, upload-time = \"2026-09-26T20:29:07.187Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/fa/70/fffc9613501877c0a10a1ef73a165e6ded3e53f6e7502227fef56d973933/identify-2.6.20-py2.py3-none-any.whl\", hash = \"sha256:6a16b69b93187244e0548cbfd25b3e4a6f9a7a2ad784625c3bec2b8d27b81aaa\", size = 99506, upload-time = \"2026-09-26T20:29:06.054Z\" },\n]\n\n[[package]]\nname = \"nodeenv\"\nversion = \"1.11.0\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/9a/8e/105de02c1322cfada6d9710d9146ef8026419d433c9d08359a2d35805811/nodeenv-1.11.0.tar.gz\", hash = \"sha256:3ce8fe5b71d16e8af7039ca65257354100bc772965d6bc549070649e53b1b146\", size = 99301, upload-time = \"2026-09-26T11:29:21.367Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/54/c8/12811c9b48fde162bb72b6f2e78fada9a247a09d7bb5be2050a5d099c77b/nodeenv-1.11.0-py2.py3-none-any.whl\", hash = \"sha256:edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25\", size = 34277, upload-time = \"2026-09-26T11:29:19.933Z\" },\n]\n\n[[package]]\nname = \"packaging\"\nversion = \"26.3\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz\", hash = \"sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79\", size = 313412, upload-time = \"2026-08-04T18:15:28.737Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl\", hash = \"sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c\", size = 129956, upload-time = \"2026-08-04T18:15:27.159Z\" },\n]\n\n[[package]]\nname = \"platformdirs\"\nversion = \"4.13.4\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/b7/89/dfd269de936e76319cf27787d9eaaca513491f635d49b0fbe7cdb6d3bf6f/platformdirs-4.13.4.tar.gz\", hash = \"sha256:dd96496961684a7f42041923f842ec7494e09f5e87aded99117e1109cd40570e\", size = 62364, upload-time = \"2026-10-17T19:31:53.69Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/58/51/5614d0537dd830ca64d95a2f254bd66bdf3ac61d41cffcccaec62121fcfd/platformdirs-4.13.4-py3-none-any.whl\", hash = \"sha256:502ce08e9d36cf90579ee44e1e764838842fa658e4975ef47344fd053011d2c8\", size = 32782, upload-time = \"2026-10-17T19:31:52.293Z\" },\n]\n\n[[package]]\nname = \"pre-commit\"\nversion = \"4.7.0\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"cfgv\" },\n    { name = \"identify\" },\n    { name = \"nodeenv\" },\n    { name = \"pyyaml\" },\n    { name = \"virtualenv\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/3a/c3/6965c2690ddce885ec75121572d065a5b94c5a5d8d3e657927ecda9fd715/pre_commit-4.7.0.tar.gz\", hash = \"sha256:1f3deee12b914c8fa184bd2b5953391c2e4f36763e403d4a23dc9983fa7c6e86\", size = 198120, upload-time = \"2026-10-12T20:45:40.32Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/eb/83/ce0a196e4f7b20b11ce3aa1fc72fb973f64b7628d51c1b8aebad37fb7f81/pre_commit-4.7.0-py2.py3-none-any.whl\", hash = \"sha256:2e229038ad3656081b70c27913157e4b636ef306f643f024a8a8e3f0f7b2f877\", size = 226261, upload-time = \"2026-10-12T20:45:38.858Z\" },\n]\n\n[[package]]\nname = \"python-discovery\"\nversion = \"1.6.3\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"filelock\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/fc/54/fad125f5c48f7821644ee6f223ebfcedc4e23597c1a16eeb13d33aa4a91a/python_discovery-1.6.3.tar.gz\", hash = \"sha256:a62b301d96cf5489cb96ab023b32e068421867fdd5df2e42eece877869047fa2\", size = 88998, upload-time = \"2026-10-16T03:54:29.507Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/de/ec/643826e4d69b7bdce4213f221e8f5ed06d0a9dd69fa9b33342578d2cc8c8/python_discovery-1.6.3-py3-none-any.whl\", hash = \"sha256:cb7654125e3dcb594269a6feb56ac693f1f13b7c654493a93eba72dc22d18034\", size = 39386, upload-time = \"2026-10-16T03:54:28.237Z\" },\n]\n\n[[package]]\nname = \"pyyaml\"\nversion = \"6.0.3\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz\", hash = \"sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f\", size = 130960, upload-time = \"2025-09-25T21:33:16.546Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/9d/8c/f4bd7f6465179953d3ac9bc44ac1a8a3e6122cf8ada906b4f96c60172d43/pyyaml-6.0.3-cp314-cp314-macosx_10_13_x86_64.whl\", hash = \"sha256:8d1fab6bb153a416f9aeb4b8763bc0f22a5586065f86f7664fc23339fc1c1fac\", size = 181814, upload-time = \"2025-09-25T21:32:35.712Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bd/9c/4d95bb87eb2063d20db7b60faa3840c1b18025517ae857371c4dd55a6b3a/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl\", hash = \"sha256:34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310\", size = 173809, upload-time = \"2025-09-25T21:32:36.789Z\" },\n    { url = \"https://files.pythonhosted.org/packages/92/b5/47e807c2623074914e29dabd16cbbdd4bf5e9b2db9f8090fa64411fc5382/pyyaml-6.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl\", hash = \"sha256:501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7\", size = 766454, upload-time = \"2025-09-25T21:32:37.966Z\" },\n    { url = \"https://files.pythonhosted.org/packages/02/9e/e5e9b168be58564121efb3de6859c452fccde0ab093d8438905899a3a483/pyyaml-6.0.3-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl\", hash = \"sha256:b3bc83488de33889877a0f2543ade9f70c67d66d9ebb4ac959502e12de895788\", size = 836355, upload-time = \"2025-09-25T21:32:39.178Z\" },\n    { url = \"https://files.pythonhosted.org/packages/88/f9/16491d7ed2a919954993e48aa941b200f38040928474c9e85ea9e64222c3/pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl\", hash = \"sha256:c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5\", size = 794175, upload-time = \"2025-09-25T21:32:40.865Z\" },\n    { url = \"https://files.pythonhosted.org/packages/dd/3f/5989debef34dc6397317802b527dbbafb2b4760878a53d4166579111411e/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_aarch64.whl\", hash = \"sha256:7c6610def4f163542a622a73fb39f534f8c101d690126992300bf3207eab9764\", size = 755228, upload-time = \"2025-09-25T21:32:42.084Z\" },\n    { url = \"https://files.pythonhosted.org/packages/d7/ce/af88a49043cd2e265be63d083fc75b27b6ed062f5f9fd6cdc223ad62f03e/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_x86_64.whl\", hash = \"sha256:5190d403f121660ce8d1d2c1bb2ef1bd05b5f68533fc5c2ea899bd15f4399b35\", size = 789194, upload-time = \"2025-09-25T21:32:43.362Z\" },\n    { url = \"https://files.pythonhosted.org/packages/23/20/bb6982b26a40bb43951265ba29d4c246ef0ff59c9fdcdf0ed04e0687de4d/pyyaml-6.0.3-cp314-cp314-win_amd64.whl\", hash = \"sha256:4a2e8cebe2ff6ab7d1050ecd59c25d4c8bd7e6f400f5f82b96557ac0abafd0ac\", size = 156429, upload-time = \"2025-09-25T21:32:57.844Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f4/f4/a4541072bb9422c8a883ab55255f918fa378ecf083f5b85e87fc2b4eda1b/pyyaml-6.0.3-cp314-cp314-win_arm64.whl\", hash = \"sha256:93dda82c9c22deb0a405ea4dc5f2d0cda384168e466364dec6255b293923b2f3\", size = 143912, upload-time = \"2025-09-25T21:32:59.247Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7c/f9/07dd09ae774e4616edf6cda684ee78f97777bdd15847253637a6f052a62f/pyyaml-6.0.3-cp314-cp314t-macosx_10_13_x86_64.whl\", hash = \"sha256:02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3\", size = 189108, upload-time = \"2025-09-25T21:32:44.377Z\" },\n    { url = \"https://files.pythonhosted.org/packages/4e/78/8d08c9fb7ce09ad8c38ad533c1191cf27f7ae1effe5bb9400a46d9437fcf/pyyaml-6.0.3-cp314-cp314t-macosx_11_0_arm64.whl\", hash = \"sha256:c1ff362665ae507275af2853520967820d9124984e0f7466736aea23d8611fba\", size = 183641, upload-time = \"2025-09-25T21:32:45.407Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7b/5b/3babb19104a46945cf816d047db2788bcaf8c94527a805610b0289a01c6b/pyyaml-6.0.3-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl\", hash = \"sha256:6adc77889b628398debc7b65c073bcb99c4a0237b248cacaf3fe8a557563ef6c\", size = 831901, upload-time = \"2025-09-25T21:32:48.83Z\" },\n    { url = \"https://files.pythonhosted.org/packages/8b/cc/dff0684d8dc44da4d22a13f35f073d558c268780ce3c6ba1b87055bb0b87/pyyaml-6.0.3-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl\", hash = \"sha256:a80cb027f6b349846a3bf6d73b5e95e782175e52f22108cfa17876aaeff93702\", size = 861132, upload-time = \"2025-09-25T21:32:50.149Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b1/5e/f77dc6b9036943e285ba76b49e118d9ea929885becb0a29ba8a7c75e29fe/pyyaml-6.0.3-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl\", hash = \"sha256:00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c\", size = 839261, upload-time = \"2025-09-25T21:32:51.808Z\" },\n    { url = \"https://files.pythonhosted.org/packages/ce/88/a9db1376aa2a228197c58b37302f284b5617f56a5d959fd1763fb1675ce6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_aarch64.whl\", hash = \"sha256:66e1674c3ef6f541c35191caae2d429b967b99e02040f5ba928632d9a7f0f065\", size = 805272, upload-time = \"2025-09-25T21:32:52.941Z\" },\n    { url = \"https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl\", hash = \"sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65\", size = 829923, upload-time = \"2025-09-25T21:32:54.537Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl\", hash = \"sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9\", size = 174062, upload-time = \"2025-09-25T21:32:55.767Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl\", hash = \"sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b\", size = 149341, upload-time = \"2025-09-25T21:32:56.828Z\" },\n]\n\n[[package]]\nname = \"ruff\"\nversion = \"0.15.22\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/3a/06/ae069393fc66e8ff33036d4b368003833bf6e88ccf182e17e7a2f1c754fd/ruff-0.15.22.tar.gz\", hash = \"sha256:3f15175b1fb580126f58285a5dae6b2ea89000136d980c64499211f116b54809\", size = 4785063, upload-time = \"2026-07-16T15:14:13.244Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/23/18/ee54b7ae1e121be7a28ea6da4b67564ebb0530e183a54415ab7e3bcd2c4e/ruff-0.15.22-py3-none-linux_armv6l.whl\", hash = \"sha256:44423e73493737f5e7c5b41d475483898ff37afcdae38bc3da5085e29af1c2d8\", size = 10781258, upload-time = \"2026-07-16T15:13:19.452Z\" },\n    { url = \"https://files.pythonhosted.org/packages/2f/d2/2520cb14761ddbeaf57642a76942fc36adcbdbe53b4532241995f6fc485c/ruff-0.15.22-py3-none-macosx_10_12_x86_64.whl\", hash = \"sha256:b82c6482946e9eda7ff2e091d25b8bad3f718684e1916d41bd56873cee05b697\", size = 10999477, upload-time = \"2026-07-16T15:13:23.318Z\" },\n    { url = \"https://files.pythonhosted.org/packages/c9/10/74e53572aa758dfaa678c2a2646b5c5515d884b7ca56be4d2ce03ca4b560/ruff-0.15.22-py3-none-macosx_11_0_arm64.whl\", hash = \"sha256:11c1c715af53a09f714e011106bffc419751ec8232fcb5da42173284ea3fec6f\", size = 10466716, upload-time = \"2026-07-16T15:13:26.162Z\" },\n    { url = \"https://files.pythonhosted.org/packages/1e/cc/44eaaf0844e028182f2d0a8f2190d0f359159aed0a9e5ab861d892f1ae2a/ruff-0.15.22-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl\", hash = \"sha256:742a29cf29bddb7c8327895d6a10e0e6c5b38a96dd407af9b5d0857f809c0576\", size = 10892644, upload-time = \"2026-07-16T15:13:29.229Z\" },\n    { url = \"https://files.pythonhosted.org/packages/9f/21/8edf559014d2b0f82beea19cfb713993ad802ccda16868769979c6090a84/ruff-0.15.22-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl\", hash = \"sha256:72af58b951b0ae395935ae79763dc349bc0eb706319d28f7a33ad2cfb3cfc178\", size = 10576719, upload-time = \"2026-07-16T15:13:32.35Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bf/1e/3a13abd392a3b50b62e5938a831f9ab6e588358cacad5c18545b716d2182/ruff-0.15.22-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl\", hash = \"sha256:62d425005c1835eb24e2ee4161cb90e8db263415f4a71c8c72c33abaa6c0c224\", size = 11376494, upload-time = \"2026-07-16T15:13:35.958Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bf/3e/422d3d95bcf04dd78e1aeac22184d4f9a8fb2c01865d39d44618484a0317/ruff-0.15.22-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl\", hash = \"sha256:e8b9b3f8779a4f08c969defc3c8c35abffaa757e601ed5ae66d6d1db6519969a\", size = 12208370, upload-time = \"2026-07-16T15:13:39.185Z\" },\n    { url = \"https://files.pythonhosted.org/packages/1e/91/5d065a0e0a02bf4813f5119ad278462eed081d2b832eb7c021ade0ec9e65/ruff-0.15.22-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl\", hash = \"sha256:1e0dd1b2e4d3d585f897a0d137cbf4eaf6223bef4e8ce34d6bb12556c5f9249e\", size = 11581098, upload-time = \"2026-07-16T15:13:42.132Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f6/f9/a0d4871d12fae702eb1f41b686caf05f1f8b124dc6db6f784f53d74918fa/ruff-0.15.22-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\", hash = \"sha256:365523eb91d9224e1bcb03b022fbf0facb8f9e23792a2c53d9d4b3924bdbdebb\", size = 11399422, upload-time = \"2026-07-16T15:13:45.2Z\" },\n    { url = \"https://files.pythonhosted.org/packages/18/80/c843a5176cddbceb0b7e8dd41cf9993490796c1c469348d384f5a5c13c56/ruff-0.15.22-py3-none-manylinux_2_31_riscv64.whl\", hash = \"sha256:fabfd168afdf29fee5be98b831efa9683c94d7c5a3b58b9ce5a2e38444589a74\", size = 11381683, upload-time = \"2026-07-16T15:13:48.46Z\" },\n    { url = \"https://files.pythonhosted.org/packages/d4/00/8485de0ae92239438a36cfc51350db9b9e85c9ebdfaea91b18e422706662/ruff-0.15.22-py3-none-musllinux_1_2_aarch64.whl\", hash = \"sha256:225dbf095a87f1d9f90f5fd7924d2613ee452a75a4308c63a8f50f761787aa7c\", size = 10850295, upload-time = \"2026-07-16T15:13:51.655Z\" },\n    { url = \"https://files.pythonhosted.org/packages/fa/91/24977ec2ec72eaf15e4394ace2959fdff2dd1e14f03e005e838023407169/ruff-0.15.22-py3-none-musllinux_1_2_armv7l.whl\", hash = \"sha256:1877d63b9d24ed278744f1523fd11b85540566d54641f97c566d7d9dc5ca5296\", size = 10579640, upload-time = \"2026-07-16T15:13:54.79Z\" },\n    { url = \"https://files.pythonhosted.org/packages/9c/47/9b51216951974df1f263ac19da550d34252e0ed7218c25f10c5ef9ed7517/ruff-0.15.22-py3-none-musllinux_1_2_i686.whl\", hash = \"sha256:a1606c510bd7215680d32efab38965f7cdec3ef69f5170a3f4791404ffdd5262\", size = 11105077, upload-time = \"2026-07-16T15:13:57.915Z\" },\n    { url = \"https://files.pythonhosted.org/packages/c2/47/20e9d4a3b8016778acea5fc32bb50d35d207500a17ddb529ffa6996feef8/ruff-0.15.22-py3-none-musllinux_1_2_x86_64.whl\", hash = \"sha256:630479b18625f5ffc373f77603a22a9f8ac0acd7ff0501178b5db28ec71e9c64\", size = 11490980, upload-time = \"2026-07-16T15:14:01.032Z\" },\n    { url = \"https://files.pythonhosted.org/packages/4d/76/3f72d8fc38c1cb77b38c56a70da9d0c17700cc1cc50f9649c9d3c8f5ba71/ruff-0.15.22-py3-none-win32.whl\", hash = \"sha256:e5ba0e4a13fd14abbed2a77b517a3911290c6c6c59ef67784328d1668fab76cf\", size = 10789165, upload-time = \"2026-07-16T15:14:04.16Z\" },\n    { url = \"https://files.pythonhosted.org/packages/cb/46/4965251734c2b6fcdca1b1b187d20bcac3af0ee5b083b89c910bb961ce3a/ruff-0.15.22-py3-none-win_amd64.whl\", hash = \"sha256:9be63ba1eb936acd2d1342fb8337c356353706fce233b2a15a09a97037e6acde\", size = 11938297, upload-time = \"2026-07-16T15:14:07.316Z\" },\n    { url = \"https://files.pythonhosted.org/packages/57/c9/e69b1ff4c8b69093ef08b8919ab767af0569666865b39c30a8795d88d3c6/ruff-0.15.22-py3-none-win_arm64.whl\", hash = \"sha256:e1168075b72158510839f250027659cdd78476f40507dd517892304c41318661\", size = 11298172, upload-time = \"2026-07-16T15:14:10.51Z\" },\n]\n\n[[package]]\nname = \"ty\"\nversion = \"0.0.89\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/67/ea/dfb9bdbc168c50a568809466596751afa0c7da60da03b8c12906d1decde4/ty-0.0.89.tar.gz\", hash = \"sha256:bc1027b1ea95cca25c2a3a0b41433c809cf4b86a384d2b2434eba4bcd34548d4\", size = 7978241, upload-time = \"2026-10-16T10:35:05.249Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/c5/84/e199d9a3dc3c94c804ddd9e94b63dbe543ae7f39329574963b6a6a95872f/ty-0.0.89-py3-none-linux_armv6l.whl\", hash = \"sha256:739b087e8873e177ffda99ff8a3600a4a7704d06523a8e88c4493021eee40b8a\", size = 14254879, upload-time = \"2026-10-16T10:34:24.813Z\" },\n    { url = \"https://files.pythonhosted.org/packages/e5/d5/5afe09bf5c83c4e3a9e5913386a460e240a7029f2ae5fc96df5b43563a91/ty-0.0.89-py3-none-macosx_10_12_x86_64.whl\", hash = \"sha256:47ebc98480c8a301955e18a8bdd67ef07090071ad47349b3254f325d3d5ab4e7\", size = 13790417, upload-time = \"2026-10-16T10:34:27.672Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7e/f9/88648f0ba9400dfd642c1e8dc0aeecb87945b121f3ff51f3902883c016d6/ty-0.0.89-py3-none-macosx_11_0_arm64.whl\", hash = \"sha256:b0631291af5c850a15007c0ffb906d813966466e4ec12173c44977c0c5a2d51d\", size = 12856900, upload-time = \"2026-10-16T10:34:29.871Z\" },\n    { url = \"https://files.pythonhosted.org/packages/6a/89/baae2b407101c4cb02f19216123900c147af8fd87cdb1ed7eba139472734/ty-0.0.89-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl\", hash = \"sha256:3d768300ae16274ce656006e9199869ad68684b74400d963e1c82deddf3a22ad\", size = 13653330, upload-time = \"2026-10-16T10:34:32.296Z\" },\n    { url = \"https://files.pythonhosted.org/packages/ed/1d/293516c2e10a77134cfc40d22c3fc08edd8c5eadae9c75531ec8a9263348/ty-0.0.89-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl\", hash = \"sha256:3dd4c57ba58bab8f6c816b2c254db52b58834b5dbf8268287382f7a2f9735c8f\", size = 13986215, upload-time = \"2026-10-16T10:34:34.506Z\" },\n    { url = \"https://files.pythonhosted.org/packages/2f/c3/da911c8fc22d2664692432570619576b25c7cd0a586401cab08987763094/ty-0.0.89-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl\", hash = \"sha256:1af774c24117d366b69142d4f35edee518617f8b926d13560d0334cbe5aa3f85\", size = 14905008, upload-time = \"2026-10-16T10:34:36.632Z\" },\n    { url = \"https://files.pythonhosted.org/packages/5c/c3/aed8d920b9bbf7b582e9fc0305acb2f2c748ede788e7dba9d6952e939c78/ty-0.0.89-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl\", hash = \"sha256:a8147811b9b3bc2dc9338cd01c7893ac931fc3fae7aace169047ecbd627e6628\", size = 15278217, upload-time = \"2026-10-16T10:34:39.144Z\" },\n    { url = \"https://files.pythonhosted.org/packages/96/92/c6b4320f08fca44ffe279e5ddeb3eae12869c6341f596931accdefea1182/ty-0.0.89-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl\", hash = \"sha256:6d5f178c91d50fb62461b5e579028b7d2e92872e1d8f02e96ace26464c2277a6\", size = 15206289, upload-time = \"2026-10-16T10:34:41.626Z\" },\n    { url = \"https://files.pythonhosted.org/packages/3e/61/da22c714fd4f4dff642d60fb0d8bf8da1985d126f21cc89237f8bf707c92/ty-0.0.89-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\", hash = \"sha256:95a410f10b26cc3861757b626727db9d979deba7d2a3ab59f964fac8f0514fdc\", size = 14510395, upload-time = \"2026-10-16T10:34:44.063Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f0/32/5f9ce2377a77ad9ff36d8996edf86b1f069c1e8716e37c7d6d668402b110/ty-0.0.89-py3-none-manylinux_2_31_riscv64.whl\", hash = \"sha256:a70ab1a402746d7837407dc169e461fdf90945bc1eef0d3c0f1be543490060bf\", size = 14767366, upload-time = \"2026-10-16T10:34:46.154Z\" },\n    { url = \"https://files.pythonhosted.org/packages/63/72/2b28c71d6ebd97b5bb1378f1806598c5dd90278f7b99a431dd3879dddcfc/ty-0.0.89-py3-none-musllinux_1_2_aarch64.whl\", hash = \"sha256:b55c28a49bd2676eac9b3540a1dcc4cc053e4671c65dcec9fdad3dfe55fb148c\", size = 13670284, upload-time = \"2026-10-16T10:34:48.225Z\" },\n    { url = \"https://files.pythonhosted.org/packages/34/cc/68b8ebf98c9bc582fddc3d2b93f6e0f53719d1ddee1c5037dfa2e1cb8467/ty-0.0.89-py3-none-musllinux_1_2_armv7l.whl\", hash = \"sha256:4c9f22edeb8176f8ab189337e8cbd8f92b66744534a2886df9e252b52ade991c\", size = 13997891, upload-time = \"2026-10-16T10:34:50.556Z\" },\n    { url = \"https://files.pythonhosted.org/packages/cf/4d/a1d61e06092fd5726f48a8711bd32eac6af132308eb222a0027caba4f42d/ty-0.0.89-py3-none-musllinux_1_2_i686.whl\", hash = \"sha256:0c186185cad57a1469b851096b51345de7b625e353c1f4acd338402daed22fa7\", size = 14326247, upload-time = \"2026-10-16T10:34:53.005Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f8/d2/466d3762e330504a2c114dbbd0f0383229f9652dccd56277dde008bfe0da/ty-0.0.89-py3-none-musllinux_1_2_x86_64.whl\", hash = \"sha256:5e38302ac218d2404758241093b5542ed0345d4f569096589f1810034244e998\", size = 14661527, upload-time = \"2026-10-16T10:34:55.555Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b1/d5/dfd7ed5e4af472b20a11ef651da4bca55f9dc8be485cd152337f94caddde/ty-0.0.89-py3-none-win32.whl\", hash = \"sha256:0146637ed2321717280bfe4e4b20a18813b741da280e8039d7df2bf22b0251f1\", size = 13224078, upload-time = \"2026-10-16T10:34:57.735Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b4/14/1ee663c422e3a2d910c5cc27e7d84bd7709a3df0aca28a713843c6c3fa5d/ty-0.0.89-py3-none-win_amd64.whl\", hash = \"sha256:9fc56322a1aff29a19088d2025f3c42a6d25a7035668048bb908c9f8b66f480d\", size = 13727433, upload-time = \"2026-10-16T10:35:00.15Z\" },\n    { url = \"https://files.pythonhosted.org/packages/09/93/af8f7250920823ca6d582bcf0abf803fb92c8b99415ba7f40f2304102c6f/ty-0.0.89-py3-none-win_arm64.whl\", hash = \"sha256:1d4967c8f7bfd67c9708115b41d7049197c5d20c76fb2e136fe78b0437ada05b\", size = 13287101, upload-time = \"2026-10-16T10:35:02.918Z\" },\n]\n\n[[package]]\nname = \"virtualenv\"\nversion = \"21.14.11\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"distlib\" },\n    { name = \"filelock\" },\n    { name = \"packaging\" },\n    { name = \"platformdirs\" },\n    { name = \"python-discovery\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/7f/be/4d1d59d309db76b5808fcfd78bd5996f4e7241366691c38fc331a3136398/virtualenv-21.14.11.tar.gz\", hash = \"sha256:593052d8477ea8c55a842387ce111bd08c72618f0c1133c302cafe335e570a57\", size = 5503091, upload-time = \"2026-10-18T07:06:34.716Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/ce/6b/d85da8982b41190eafcb9df91dff9d83fc6989e98af4b5be4c8f85510c95/virtualenv-21.14.11-py3-none-any.whl\", hash = \"sha256:b319f8590a84e5de5f8f2c803ecd2237e9bc0ffa7c1e875e3169c107cecb7454\", size = 5495268, upload-time = \"2026-10-18T07:06:32.719Z\" },\n]\n",
+    "workspace/after/.python-version": "3.14.8\n",
+    "workspace/after/.gitignore": ".venv/\ndist/\n__pycache__/\n",
+    "workspace/after/.pre-commit-config.yaml": "repos:\n  - repo: local\n    hooks:\n      - id: ruff-check\n        name: Ruff check\n        entry: uv run --locked ruff check .\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: ruff-format\n        name: Ruff format\n        entry: uv run --locked ruff format --check .\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: ty\n        name: ty\n        entry: uv run --locked ty check\n        language: system\n        pass_filenames: false\n        always_run: true\n      - id: unittest\n        name: unittest\n        entry: uv run --locked python -m unittest discover -s tests -v\n        language: system\n        pass_filenames: false\n        always_run: true\n",
+    "workspace/after/uv.lock": "version = 1\nrevision = 5\nrequires-python = \"==3.14.*\"\n\n[manifest]\nmembers = [\n    \"example-math\",\n    \"example-workspace-app\",\n]\n\n[manifest.dependency-groups]\ndev = [\n    { name = \"pre-commit\", specifier = \"==4.7.0\" },\n    { name = \"ruff\", specifier = \"==0.15.22\" },\n    { name = \"ty\", specifier = \"==0.0.89\" },\n]\n\n[[package]]\nname = \"cfgv\"\nversion = \"3.5.0\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/4e/b5/721b8799b04bf9afe054a3899c6cf4e880fcf8563cc71c15610242490a0c/cfgv-3.5.0.tar.gz\", hash = \"sha256:d5b1034354820651caa73ede66a6294d6e95c1b00acc5e9b098e917404669132\", size = 7334, upload-time = \"2025-11-19T20:55:51.612Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/db/3c/33bac158f8ab7f89b2e59426d5fe2e4f63f7ed25df84c036890172b412b5/cfgv-3.5.0-py2.py3-none-any.whl\", hash = \"sha256:a8dc6b26ad22ff227d2634a65cb388215ce6cc96bbcc5cfde7641ae87e8dacc0\", size = 7445, upload-time = \"2025-11-19T20:55:50.744Z\" },\n]\n\n[[package]]\nname = \"distlib\"\nversion = \"0.4.4\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/68/bc/d36966de7304047a1001a7559fbf266c464bb5d8cc85464536ef8c9bcc32/distlib-0.4.4.tar.gz\", hash = \"sha256:ca4175b4ac7f71223cc30ed7248c45d2b38c2439d8ee6e498ab67ed63cf3508d\", size = 621304, upload-time = \"2026-10-16T13:56:34.203Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/c1/2b/238f02a4927fa2e27aa995371d240a468b52e42eae44a678434aff736b38/distlib-0.4.4-py2.py3-none-any.whl\", hash = \"sha256:cf09d55b1e85a89576b036aeb71550bfd68320f3f21761ca329eadadad918638\", size = 472099, upload-time = \"2026-10-16T13:56:32.053Z\" },\n]\n\n[[package]]\nname = \"example-math\"\nversion = \"0.1.0\"\nsource = { editable = \"packages/math\" }\n\n[[package]]\nname = \"example-workspace-app\"\nversion = \"0.1.0\"\nsource = { editable = \"packages/app\" }\ndependencies = [\n    { name = \"example-math\" },\n]\n\n[package.metadata]\nrequires-dist = [{ name = \"example-math\", editable = \"packages/math\" }]\n\n[[package]]\nname = \"filelock\"\nversion = \"4.2.2\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/d4/08/d8f81287742010e38daf3632380c8d80ede7b4df2716f8ca3d0a2b087d44/filelock-4.2.2.tar.gz\", hash = \"sha256:b29ff2ae9140bb17b3bc77c648dc4f010d9ac0955eccabff4f2b01dde859f787\", size = 651339, upload-time = \"2026-10-18T07:26:44.624Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/4e/53/35698fff350cb99c49ee01ae5cb1eb4408567792a286314ea984b53b5002/filelock-4.2.2-py3-none-any.whl\", hash = \"sha256:1851d2f14ca2901e98069d68333b33ad7409f56904e17b48cc0c32a0db8ed73a\", size = 162415, upload-time = \"2026-10-18T07:26:43.115Z\" },\n]\n\n[[package]]\nname = \"identify\"\nversion = \"2.6.20\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/53/35/d70c0006c7cee65999ea94a6273e60b2094f600a3d8b71b04318253fc643/identify-2.6.20.tar.gz\", hash = \"sha256:ad729860a923858d26917c2f4fb0a1d83d27a75b1e090c06440c573f048f3285\", size = 99681, upload-time = \"2026-09-26T20:29:07.187Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/fa/70/fffc9613501877c0a10a1ef73a165e6ded3e53f6e7502227fef56d973933/identify-2.6.20-py2.py3-none-any.whl\", hash = \"sha256:6a16b69b93187244e0548cbfd25b3e4a6f9a7a2ad784625c3bec2b8d27b81aaa\", size = 99506, upload-time = \"2026-09-26T20:29:06.054Z\" },\n]\n\n[[package]]\nname = \"nodeenv\"\nversion = \"1.11.0\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/9a/8e/105de02c1322cfada6d9710d9146ef8026419d433c9d08359a2d35805811/nodeenv-1.11.0.tar.gz\", hash = \"sha256:3ce8fe5b71d16e8af7039ca65257354100bc772965d6bc549070649e53b1b146\", size = 99301, upload-time = \"2026-09-26T11:29:21.367Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/54/c8/12811c9b48fde162bb72b6f2e78fada9a247a09d7bb5be2050a5d099c77b/nodeenv-1.11.0-py2.py3-none-any.whl\", hash = \"sha256:edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25\", size = 34277, upload-time = \"2026-09-26T11:29:19.933Z\" },\n]\n\n[[package]]\nname = \"packaging\"\nversion = \"26.3\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz\", hash = \"sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79\", size = 313412, upload-time = \"2026-08-04T18:15:28.737Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl\", hash = \"sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c\", size = 129956, upload-time = \"2026-08-04T18:15:27.159Z\" },\n]\n\n[[package]]\nname = \"platformdirs\"\nversion = \"4.13.4\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/b7/89/dfd269de936e76319cf27787d9eaaca513491f635d49b0fbe7cdb6d3bf6f/platformdirs-4.13.4.tar.gz\", hash = \"sha256:dd96496961684a7f42041923f842ec7494e09f5e87aded99117e1109cd40570e\", size = 62364, upload-time = \"2026-10-17T19:31:53.69Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/58/51/5614d0537dd830ca64d95a2f254bd66bdf3ac61d41cffcccaec62121fcfd/platformdirs-4.13.4-py3-none-any.whl\", hash = \"sha256:502ce08e9d36cf90579ee44e1e764838842fa658e4975ef47344fd053011d2c8\", size = 32782, upload-time = \"2026-10-17T19:31:52.293Z\" },\n]\n\n[[package]]\nname = \"pre-commit\"\nversion = \"4.7.0\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"cfgv\" },\n    { name = \"identify\" },\n    { name = \"nodeenv\" },\n    { name = \"pyyaml\" },\n    { name = \"virtualenv\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/3a/c3/6965c2690ddce885ec75121572d065a5b94c5a5d8d3e657927ecda9fd715/pre_commit-4.7.0.tar.gz\", hash = \"sha256:1f3deee12b914c8fa184bd2b5953391c2e4f36763e403d4a23dc9983fa7c6e86\", size = 198120, upload-time = \"2026-10-12T20:45:40.32Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/eb/83/ce0a196e4f7b20b11ce3aa1fc72fb973f64b7628d51c1b8aebad37fb7f81/pre_commit-4.7.0-py2.py3-none-any.whl\", hash = \"sha256:2e229038ad3656081b70c27913157e4b636ef306f643f024a8a8e3f0f7b2f877\", size = 226261, upload-time = \"2026-10-12T20:45:38.858Z\" },\n]\n\n[[package]]\nname = \"python-discovery\"\nversion = \"1.6.3\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"filelock\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/fc/54/fad125f5c48f7821644ee6f223ebfcedc4e23597c1a16eeb13d33aa4a91a/python_discovery-1.6.3.tar.gz\", hash = \"sha256:a62b301d96cf5489cb96ab023b32e068421867fdd5df2e42eece877869047fa2\", size = 88998, upload-time = \"2026-10-16T03:54:29.507Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/de/ec/643826e4d69b7bdce4213f221e8f5ed06d0a9dd69fa9b33342578d2cc8c8/python_discovery-1.6.3-py3-none-any.whl\", hash = \"sha256:cb7654125e3dcb594269a6feb56ac693f1f13b7c654493a93eba72dc22d18034\", size = 39386, upload-time = \"2026-10-16T03:54:28.237Z\" },\n]\n\n[[package]]\nname = \"pyyaml\"\nversion = \"6.0.3\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz\", hash = \"sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f\", size = 130960, upload-time = \"2025-09-25T21:33:16.546Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/9d/8c/f4bd7f6465179953d3ac9bc44ac1a8a3e6122cf8ada906b4f96c60172d43/pyyaml-6.0.3-cp314-cp314-macosx_10_13_x86_64.whl\", hash = \"sha256:8d1fab6bb153a416f9aeb4b8763bc0f22a5586065f86f7664fc23339fc1c1fac\", size = 181814, upload-time = \"2025-09-25T21:32:35.712Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bd/9c/4d95bb87eb2063d20db7b60faa3840c1b18025517ae857371c4dd55a6b3a/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl\", hash = \"sha256:34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310\", size = 173809, upload-time = \"2025-09-25T21:32:36.789Z\" },\n    { url = \"https://files.pythonhosted.org/packages/92/b5/47e807c2623074914e29dabd16cbbdd4bf5e9b2db9f8090fa64411fc5382/pyyaml-6.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl\", hash = \"sha256:501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7\", size = 766454, upload-time = \"2025-09-25T21:32:37.966Z\" },\n    { url = \"https://files.pythonhosted.org/packages/02/9e/e5e9b168be58564121efb3de6859c452fccde0ab093d8438905899a3a483/pyyaml-6.0.3-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl\", hash = \"sha256:b3bc83488de33889877a0f2543ade9f70c67d66d9ebb4ac959502e12de895788\", size = 836355, upload-time = \"2025-09-25T21:32:39.178Z\" },\n    { url = \"https://files.pythonhosted.org/packages/88/f9/16491d7ed2a919954993e48aa941b200f38040928474c9e85ea9e64222c3/pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl\", hash = \"sha256:c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5\", size = 794175, upload-time = \"2025-09-25T21:32:40.865Z\" },\n    { url = \"https://files.pythonhosted.org/packages/dd/3f/5989debef34dc6397317802b527dbbafb2b4760878a53d4166579111411e/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_aarch64.whl\", hash = \"sha256:7c6610def4f163542a622a73fb39f534f8c101d690126992300bf3207eab9764\", size = 755228, upload-time = \"2025-09-25T21:32:42.084Z\" },\n    { url = \"https://files.pythonhosted.org/packages/d7/ce/af88a49043cd2e265be63d083fc75b27b6ed062f5f9fd6cdc223ad62f03e/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_x86_64.whl\", hash = \"sha256:5190d403f121660ce8d1d2c1bb2ef1bd05b5f68533fc5c2ea899bd15f4399b35\", size = 789194, upload-time = \"2025-09-25T21:32:43.362Z\" },\n    { url = \"https://files.pythonhosted.org/packages/23/20/bb6982b26a40bb43951265ba29d4c246ef0ff59c9fdcdf0ed04e0687de4d/pyyaml-6.0.3-cp314-cp314-win_amd64.whl\", hash = \"sha256:4a2e8cebe2ff6ab7d1050ecd59c25d4c8bd7e6f400f5f82b96557ac0abafd0ac\", size = 156429, upload-time = \"2025-09-25T21:32:57.844Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f4/f4/a4541072bb9422c8a883ab55255f918fa378ecf083f5b85e87fc2b4eda1b/pyyaml-6.0.3-cp314-cp314-win_arm64.whl\", hash = \"sha256:93dda82c9c22deb0a405ea4dc5f2d0cda384168e466364dec6255b293923b2f3\", size = 143912, upload-time = \"2025-09-25T21:32:59.247Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7c/f9/07dd09ae774e4616edf6cda684ee78f97777bdd15847253637a6f052a62f/pyyaml-6.0.3-cp314-cp314t-macosx_10_13_x86_64.whl\", hash = \"sha256:02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3\", size = 189108, upload-time = \"2025-09-25T21:32:44.377Z\" },\n    { url = \"https://files.pythonhosted.org/packages/4e/78/8d08c9fb7ce09ad8c38ad533c1191cf27f7ae1effe5bb9400a46d9437fcf/pyyaml-6.0.3-cp314-cp314t-macosx_11_0_arm64.whl\", hash = \"sha256:c1ff362665ae507275af2853520967820d9124984e0f7466736aea23d8611fba\", size = 183641, upload-time = \"2025-09-25T21:32:45.407Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7b/5b/3babb19104a46945cf816d047db2788bcaf8c94527a805610b0289a01c6b/pyyaml-6.0.3-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl\", hash = \"sha256:6adc77889b628398debc7b65c073bcb99c4a0237b248cacaf3fe8a557563ef6c\", size = 831901, upload-time = \"2025-09-25T21:32:48.83Z\" },\n    { url = \"https://files.pythonhosted.org/packages/8b/cc/dff0684d8dc44da4d22a13f35f073d558c268780ce3c6ba1b87055bb0b87/pyyaml-6.0.3-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl\", hash = \"sha256:a80cb027f6b349846a3bf6d73b5e95e782175e52f22108cfa17876aaeff93702\", size = 861132, upload-time = \"2025-09-25T21:32:50.149Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b1/5e/f77dc6b9036943e285ba76b49e118d9ea929885becb0a29ba8a7c75e29fe/pyyaml-6.0.3-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl\", hash = \"sha256:00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c\", size = 839261, upload-time = \"2025-09-25T21:32:51.808Z\" },\n    { url = \"https://files.pythonhosted.org/packages/ce/88/a9db1376aa2a228197c58b37302f284b5617f56a5d959fd1763fb1675ce6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_aarch64.whl\", hash = \"sha256:66e1674c3ef6f541c35191caae2d429b967b99e02040f5ba928632d9a7f0f065\", size = 805272, upload-time = \"2025-09-25T21:32:52.941Z\" },\n    { url = \"https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl\", hash = \"sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65\", size = 829923, upload-time = \"2025-09-25T21:32:54.537Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl\", hash = \"sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9\", size = 174062, upload-time = \"2025-09-25T21:32:55.767Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl\", hash = \"sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b\", size = 149341, upload-time = \"2025-09-25T21:32:56.828Z\" },\n]\n\n[[package]]\nname = \"ruff\"\nversion = \"0.15.22\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/3a/06/ae069393fc66e8ff33036d4b368003833bf6e88ccf182e17e7a2f1c754fd/ruff-0.15.22.tar.gz\", hash = \"sha256:3f15175b1fb580126f58285a5dae6b2ea89000136d980c64499211f116b54809\", size = 4785063, upload-time = \"2026-07-16T15:14:13.244Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/23/18/ee54b7ae1e121be7a28ea6da4b67564ebb0530e183a54415ab7e3bcd2c4e/ruff-0.15.22-py3-none-linux_armv6l.whl\", hash = \"sha256:44423e73493737f5e7c5b41d475483898ff37afcdae38bc3da5085e29af1c2d8\", size = 10781258, upload-time = \"2026-07-16T15:13:19.452Z\" },\n    { url = \"https://files.pythonhosted.org/packages/2f/d2/2520cb14761ddbeaf57642a76942fc36adcbdbe53b4532241995f6fc485c/ruff-0.15.22-py3-none-macosx_10_12_x86_64.whl\", hash = \"sha256:b82c6482946e9eda7ff2e091d25b8bad3f718684e1916d41bd56873cee05b697\", size = 10999477, upload-time = \"2026-07-16T15:13:23.318Z\" },\n    { url = \"https://files.pythonhosted.org/packages/c9/10/74e53572aa758dfaa678c2a2646b5c5515d884b7ca56be4d2ce03ca4b560/ruff-0.15.22-py3-none-macosx_11_0_arm64.whl\", hash = \"sha256:11c1c715af53a09f714e011106bffc419751ec8232fcb5da42173284ea3fec6f\", size = 10466716, upload-time = \"2026-07-16T15:13:26.162Z\" },\n    { url = \"https://files.pythonhosted.org/packages/1e/cc/44eaaf0844e028182f2d0a8f2190d0f359159aed0a9e5ab861d892f1ae2a/ruff-0.15.22-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl\", hash = \"sha256:742a29cf29bddb7c8327895d6a10e0e6c5b38a96dd407af9b5d0857f809c0576\", size = 10892644, upload-time = \"2026-07-16T15:13:29.229Z\" },\n    { url = \"https://files.pythonhosted.org/packages/9f/21/8edf559014d2b0f82beea19cfb713993ad802ccda16868769979c6090a84/ruff-0.15.22-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl\", hash = \"sha256:72af58b951b0ae395935ae79763dc349bc0eb706319d28f7a33ad2cfb3cfc178\", size = 10576719, upload-time = \"2026-07-16T15:13:32.35Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bf/1e/3a13abd392a3b50b62e5938a831f9ab6e588358cacad5c18545b716d2182/ruff-0.15.22-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl\", hash = \"sha256:62d425005c1835eb24e2ee4161cb90e8db263415f4a71c8c72c33abaa6c0c224\", size = 11376494, upload-time = \"2026-07-16T15:13:35.958Z\" },\n    { url = \"https://files.pythonhosted.org/packages/bf/3e/422d3d95bcf04dd78e1aeac22184d4f9a8fb2c01865d39d44618484a0317/ruff-0.15.22-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl\", hash = \"sha256:e8b9b3f8779a4f08c969defc3c8c35abffaa757e601ed5ae66d6d1db6519969a\", size = 12208370, upload-time = \"2026-07-16T15:13:39.185Z\" },\n    { url = \"https://files.pythonhosted.org/packages/1e/91/5d065a0e0a02bf4813f5119ad278462eed081d2b832eb7c021ade0ec9e65/ruff-0.15.22-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl\", hash = \"sha256:1e0dd1b2e4d3d585f897a0d137cbf4eaf6223bef4e8ce34d6bb12556c5f9249e\", size = 11581098, upload-time = \"2026-07-16T15:13:42.132Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f6/f9/a0d4871d12fae702eb1f41b686caf05f1f8b124dc6db6f784f53d74918fa/ruff-0.15.22-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\", hash = \"sha256:365523eb91d9224e1bcb03b022fbf0facb8f9e23792a2c53d9d4b3924bdbdebb\", size = 11399422, upload-time = \"2026-07-16T15:13:45.2Z\" },\n    { url = \"https://files.pythonhosted.org/packages/18/80/c843a5176cddbceb0b7e8dd41cf9993490796c1c469348d384f5a5c13c56/ruff-0.15.22-py3-none-manylinux_2_31_riscv64.whl\", hash = \"sha256:fabfd168afdf29fee5be98b831efa9683c94d7c5a3b58b9ce5a2e38444589a74\", size = 11381683, upload-time = \"2026-07-16T15:13:48.46Z\" },\n    { url = \"https://files.pythonhosted.org/packages/d4/00/8485de0ae92239438a36cfc51350db9b9e85c9ebdfaea91b18e422706662/ruff-0.15.22-py3-none-musllinux_1_2_aarch64.whl\", hash = \"sha256:225dbf095a87f1d9f90f5fd7924d2613ee452a75a4308c63a8f50f761787aa7c\", size = 10850295, upload-time = \"2026-07-16T15:13:51.655Z\" },\n    { url = \"https://files.pythonhosted.org/packages/fa/91/24977ec2ec72eaf15e4394ace2959fdff2dd1e14f03e005e838023407169/ruff-0.15.22-py3-none-musllinux_1_2_armv7l.whl\", hash = \"sha256:1877d63b9d24ed278744f1523fd11b85540566d54641f97c566d7d9dc5ca5296\", size = 10579640, upload-time = \"2026-07-16T15:13:54.79Z\" },\n    { url = \"https://files.pythonhosted.org/packages/9c/47/9b51216951974df1f263ac19da550d34252e0ed7218c25f10c5ef9ed7517/ruff-0.15.22-py3-none-musllinux_1_2_i686.whl\", hash = \"sha256:a1606c510bd7215680d32efab38965f7cdec3ef69f5170a3f4791404ffdd5262\", size = 11105077, upload-time = \"2026-07-16T15:13:57.915Z\" },\n    { url = \"https://files.pythonhosted.org/packages/c2/47/20e9d4a3b8016778acea5fc32bb50d35d207500a17ddb529ffa6996feef8/ruff-0.15.22-py3-none-musllinux_1_2_x86_64.whl\", hash = \"sha256:630479b18625f5ffc373f77603a22a9f8ac0acd7ff0501178b5db28ec71e9c64\", size = 11490980, upload-time = \"2026-07-16T15:14:01.032Z\" },\n    { url = \"https://files.pythonhosted.org/packages/4d/76/3f72d8fc38c1cb77b38c56a70da9d0c17700cc1cc50f9649c9d3c8f5ba71/ruff-0.15.22-py3-none-win32.whl\", hash = \"sha256:e5ba0e4a13fd14abbed2a77b517a3911290c6c6c59ef67784328d1668fab76cf\", size = 10789165, upload-time = \"2026-07-16T15:14:04.16Z\" },\n    { url = \"https://files.pythonhosted.org/packages/cb/46/4965251734c2b6fcdca1b1b187d20bcac3af0ee5b083b89c910bb961ce3a/ruff-0.15.22-py3-none-win_amd64.whl\", hash = \"sha256:9be63ba1eb936acd2d1342fb8337c356353706fce233b2a15a09a97037e6acde\", size = 11938297, upload-time = \"2026-07-16T15:14:07.316Z\" },\n    { url = \"https://files.pythonhosted.org/packages/57/c9/e69b1ff4c8b69093ef08b8919ab767af0569666865b39c30a8795d88d3c6/ruff-0.15.22-py3-none-win_arm64.whl\", hash = \"sha256:e1168075b72158510839f250027659cdd78476f40507dd517892304c41318661\", size = 11298172, upload-time = \"2026-07-16T15:14:10.51Z\" },\n]\n\n[[package]]\nname = \"ty\"\nversion = \"0.0.89\"\nsource = { registry = \"https://pypi.org/simple\" }\nsdist = { url = \"https://files.pythonhosted.org/packages/67/ea/dfb9bdbc168c50a568809466596751afa0c7da60da03b8c12906d1decde4/ty-0.0.89.tar.gz\", hash = \"sha256:bc1027b1ea95cca25c2a3a0b41433c809cf4b86a384d2b2434eba4bcd34548d4\", size = 7978241, upload-time = \"2026-10-16T10:35:05.249Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/c5/84/e199d9a3dc3c94c804ddd9e94b63dbe543ae7f39329574963b6a6a95872f/ty-0.0.89-py3-none-linux_armv6l.whl\", hash = \"sha256:739b087e8873e177ffda99ff8a3600a4a7704d06523a8e88c4493021eee40b8a\", size = 14254879, upload-time = \"2026-10-16T10:34:24.813Z\" },\n    { url = \"https://files.pythonhosted.org/packages/e5/d5/5afe09bf5c83c4e3a9e5913386a460e240a7029f2ae5fc96df5b43563a91/ty-0.0.89-py3-none-macosx_10_12_x86_64.whl\", hash = \"sha256:47ebc98480c8a301955e18a8bdd67ef07090071ad47349b3254f325d3d5ab4e7\", size = 13790417, upload-time = \"2026-10-16T10:34:27.672Z\" },\n    { url = \"https://files.pythonhosted.org/packages/7e/f9/88648f0ba9400dfd642c1e8dc0aeecb87945b121f3ff51f3902883c016d6/ty-0.0.89-py3-none-macosx_11_0_arm64.whl\", hash = \"sha256:b0631291af5c850a15007c0ffb906d813966466e4ec12173c44977c0c5a2d51d\", size = 12856900, upload-time = \"2026-10-16T10:34:29.871Z\" },\n    { url = \"https://files.pythonhosted.org/packages/6a/89/baae2b407101c4cb02f19216123900c147af8fd87cdb1ed7eba139472734/ty-0.0.89-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl\", hash = \"sha256:3d768300ae16274ce656006e9199869ad68684b74400d963e1c82deddf3a22ad\", size = 13653330, upload-time = \"2026-10-16T10:34:32.296Z\" },\n    { url = \"https://files.pythonhosted.org/packages/ed/1d/293516c2e10a77134cfc40d22c3fc08edd8c5eadae9c75531ec8a9263348/ty-0.0.89-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl\", hash = \"sha256:3dd4c57ba58bab8f6c816b2c254db52b58834b5dbf8268287382f7a2f9735c8f\", size = 13986215, upload-time = \"2026-10-16T10:34:34.506Z\" },\n    { url = \"https://files.pythonhosted.org/packages/2f/c3/da911c8fc22d2664692432570619576b25c7cd0a586401cab08987763094/ty-0.0.89-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl\", hash = \"sha256:1af774c24117d366b69142d4f35edee518617f8b926d13560d0334cbe5aa3f85\", size = 14905008, upload-time = \"2026-10-16T10:34:36.632Z\" },\n    { url = \"https://files.pythonhosted.org/packages/5c/c3/aed8d920b9bbf7b582e9fc0305acb2f2c748ede788e7dba9d6952e939c78/ty-0.0.89-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl\", hash = \"sha256:a8147811b9b3bc2dc9338cd01c7893ac931fc3fae7aace169047ecbd627e6628\", size = 15278217, upload-time = \"2026-10-16T10:34:39.144Z\" },\n    { url = \"https://files.pythonhosted.org/packages/96/92/c6b4320f08fca44ffe279e5ddeb3eae12869c6341f596931accdefea1182/ty-0.0.89-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl\", hash = \"sha256:6d5f178c91d50fb62461b5e579028b7d2e92872e1d8f02e96ace26464c2277a6\", size = 15206289, upload-time = \"2026-10-16T10:34:41.626Z\" },\n    { url = \"https://files.pythonhosted.org/packages/3e/61/da22c714fd4f4dff642d60fb0d8bf8da1985d126f21cc89237f8bf707c92/ty-0.0.89-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\", hash = \"sha256:95a410f10b26cc3861757b626727db9d979deba7d2a3ab59f964fac8f0514fdc\", size = 14510395, upload-time = \"2026-10-16T10:34:44.063Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f0/32/5f9ce2377a77ad9ff36d8996edf86b1f069c1e8716e37c7d6d668402b110/ty-0.0.89-py3-none-manylinux_2_31_riscv64.whl\", hash = \"sha256:a70ab1a402746d7837407dc169e461fdf90945bc1eef0d3c0f1be543490060bf\", size = 14767366, upload-time = \"2026-10-16T10:34:46.154Z\" },\n    { url = \"https://files.pythonhosted.org/packages/63/72/2b28c71d6ebd97b5bb1378f1806598c5dd90278f7b99a431dd3879dddcfc/ty-0.0.89-py3-none-musllinux_1_2_aarch64.whl\", hash = \"sha256:b55c28a49bd2676eac9b3540a1dcc4cc053e4671c65dcec9fdad3dfe55fb148c\", size = 13670284, upload-time = \"2026-10-16T10:34:48.225Z\" },\n    { url = \"https://files.pythonhosted.org/packages/34/cc/68b8ebf98c9bc582fddc3d2b93f6e0f53719d1ddee1c5037dfa2e1cb8467/ty-0.0.89-py3-none-musllinux_1_2_armv7l.whl\", hash = \"sha256:4c9f22edeb8176f8ab189337e8cbd8f92b66744534a2886df9e252b52ade991c\", size = 13997891, upload-time = \"2026-10-16T10:34:50.556Z\" },\n    { url = \"https://files.pythonhosted.org/packages/cf/4d/a1d61e06092fd5726f48a8711bd32eac6af132308eb222a0027caba4f42d/ty-0.0.89-py3-none-musllinux_1_2_i686.whl\", hash = \"sha256:0c186185cad57a1469b851096b51345de7b625e353c1f4acd338402daed22fa7\", size = 14326247, upload-time = \"2026-10-16T10:34:53.005Z\" },\n    { url = \"https://files.pythonhosted.org/packages/f8/d2/466d3762e330504a2c114dbbd0f0383229f9652dccd56277dde008bfe0da/ty-0.0.89-py3-none-musllinux_1_2_x86_64.whl\", hash = \"sha256:5e38302ac218d2404758241093b5542ed0345d4f569096589f1810034244e998\", size = 14661527, upload-time = \"2026-10-16T10:34:55.555Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b1/d5/dfd7ed5e4af472b20a11ef651da4bca55f9dc8be485cd152337f94caddde/ty-0.0.89-py3-none-win32.whl\", hash = \"sha256:0146637ed2321717280bfe4e4b20a18813b741da280e8039d7df2bf22b0251f1\", size = 13224078, upload-time = \"2026-10-16T10:34:57.735Z\" },\n    { url = \"https://files.pythonhosted.org/packages/b4/14/1ee663c422e3a2d910c5cc27e7d84bd7709a3df0aca28a713843c6c3fa5d/ty-0.0.89-py3-none-win_amd64.whl\", hash = \"sha256:9fc56322a1aff29a19088d2025f3c42a6d25a7035668048bb908c9f8b66f480d\", size = 13727433, upload-time = \"2026-10-16T10:35:00.15Z\" },\n    { url = \"https://files.pythonhosted.org/packages/09/93/af8f7250920823ca6d582bcf0abf803fb92c8b99415ba7f40f2304102c6f/ty-0.0.89-py3-none-win_arm64.whl\", hash = \"sha256:1d4967c8f7bfd67c9708115b41d7049197c5d20c76fb2e136fe78b0437ada05b\", size = 13287101, upload-time = \"2026-10-16T10:35:02.918Z\" },\n]\n\n[[package]]\nname = \"virtualenv\"\nversion = \"21.14.11\"\nsource = { registry = \"https://pypi.org/simple\" }\ndependencies = [\n    { name = \"distlib\" },\n    { name = \"filelock\" },\n    { name = \"packaging\" },\n    { name = \"platformdirs\" },\n    { name = \"python-discovery\" },\n]\nsdist = { url = \"https://files.pythonhosted.org/packages/7f/be/4d1d59d309db76b5808fcfd78bd5996f4e7241366691c38fc331a3136398/virtualenv-21.14.11.tar.gz\", hash = \"sha256:593052d8477ea8c55a842387ce111bd08c72618f0c1133c302cafe335e570a57\", size = 5503091, upload-time = \"2026-10-18T07:06:34.716Z\" }\nwheels = [\n    { url = \"https://files.pythonhosted.org/packages/ce/6b/d85da8982b41190eafcb9df91dff9d83fc6989e98af4b5be4c8f85510c95/virtualenv-21.14.11-py3-none-any.whl\", hash = \"sha256:b319f8590a84e5de5f8f2c803ecd2237e9bc0ffa7c1e875e3169c107cecb7454\", size = 5495268, upload-time = \"2026-10-18T07:06:32.719Z\" },\n]\n"
+  },
+  "inventories": {
+    "application": [
+      {
+        "wheel": "example_summary-0.1.0-py3-none-any.whl",
+        "sha256": "5d3d6a69d10a596c231c864618647029875ade3e2382d61f0b9e11836460cb8f",
+        "files": [
+          "example_summary/",
+          "example_summary/__init__.py",
+          "example_summary/label.txt",
+          "example_summary-0.1.0.dist-info/",
+          "example_summary-0.1.0.dist-info/WHEEL",
+          "example_summary-0.1.0.dist-info/entry_points.txt",
+          "example_summary-0.1.0.dist-info/METADATA",
+          "example_summary-0.1.0.dist-info/RECORD"
+        ],
+        "requires_dist": []
+      }
+    ],
+    "library": [
+      {
+        "wheel": "example_math-0.1.0-py3-none-any.whl",
+        "sha256": "e9d86bca68225dfd68cb7f16d450cae6ddd955ae4fd2f49ec63044dd07858cf9",
+        "files": [
+          "example_math/",
+          "example_math/__init__.py",
+          "example_math/py.typed",
+          "example_math-0.1.0.dist-info/",
+          "example_math-0.1.0.dist-info/WHEEL",
+          "example_math-0.1.0.dist-info/METADATA",
+          "example_math-0.1.0.dist-info/RECORD"
+        ],
+        "requires_dist": []
+      }
+    ],
+    "workspace": [
+      {
+        "wheel": "example_math-0.1.0-py3-none-any.whl",
+        "sha256": "e9d86bca68225dfd68cb7f16d450cae6ddd955ae4fd2f49ec63044dd07858cf9",
+        "files": [
+          "example_math/",
+          "example_math/__init__.py",
+          "example_math/py.typed",
+          "example_math-0.1.0.dist-info/",
+          "example_math-0.1.0.dist-info/WHEEL",
+          "example_math-0.1.0.dist-info/METADATA",
+          "example_math-0.1.0.dist-info/RECORD"
+        ],
+        "requires_dist": []
+      },
+      {
+        "wheel": "example_workspace_app-0.1.0-py3-none-any.whl",
+        "sha256": "ad51a80c72539b15050b3356babd4a2a8c6013c7630fb9b3c282a0fa24cd6787",
+        "files": [
+          "example_workspace_app/",
+          "example_workspace_app/__init__.py",
+          "example_workspace_app-0.1.0.dist-info/",
+          "example_workspace_app-0.1.0.dist-info/WHEEL",
+          "example_workspace_app-0.1.0.dist-info/entry_points.txt",
+          "example_workspace_app-0.1.0.dist-info/METADATA",
+          "example_workspace_app-0.1.0.dist-info/RECORD"
+        ],
+        "requires_dist": [
+          "Requires-Dist: example-math==0.1.0"
+        ]
+      }
+    ]
+  },
+  "records": [
+    {
+      "case": "uv-version",
+      "argv": [
+        "uv",
+        "--version"
+      ],
+      "cwd": "<temporary>",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "uv 0.13.1 (62faed335 2026-10-13 x86_64-pc-windows-msvc)\n",
+      "stderr": ""
+    },
+    {
+      "case": "application-before-tests",
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "--python",
+        "3.14.8",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\application\\before",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_summary (test_summary.SummaryTests.test_public_summary) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nOK\n"
+    },
+    {
+      "case": "application-before-cli",
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "--python",
+        "3.14.8",
+        "python",
+        "summary.py"
+      ],
+      "cwd": "<temporary>\\application\\before",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Total: 7\n",
+      "stderr": ""
+    },
+    {
+      "case": "application-git-init",
+      "argv": [
+        "git",
+        "init"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Initialized empty Git repository in <temporary>/application/after/.git/\n",
+      "stderr": "hint: Using 'master' as the name for the initial branch. This default branch name\nhint: will change to \"main\" in Git 3.0. To configure the initial branch name\nhint: to use in all of your new repositories, which will suppress this warning,\nhint: call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\nhint:\nhint: Disable this message with \"git config set advice.defaultBranchName false\"\n"
+    },
+    {
+      "case": "application-lock",
+      "argv": [
+        "uv",
+        "lock"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nResolved 14 packages in 7ms\n"
+    },
+    {
+      "case": "application-sync",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--all-groups"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: .venv\nResolved 14 packages in 0.58ms\n   Building example-summary @ file:///<temporary>/application/after\n      Built example-summary @ file:///<temporary>/application/after\nPrepared 1 package in 20ms\nInstalled 14 packages in 48ms\n + cfgv==3.5.0\n + distlib==0.4.4\n + example-summary==0.1.0 (from file:///<temporary>/application/after)\n + filelock==4.2.2\n + identify==2.6.20\n + nodeenv==1.11.0\n + packaging==26.3\n + platformdirs==4.13.4\n + pre-commit==4.7.0\n + python-discovery==1.6.3\n + pyyaml==6.0.3\n + ruff==0.15.22\n + ty==0.0.89\n + virtualenv==21.14.11\n"
+    },
+    {
+      "case": "application-git-add",
+      "argv": [
+        "git",
+        "add",
+        "."
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "application-hook-install",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "install"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "pre-commit installed at .git\\hooks\\pre-commit\n",
+      "stderr": ""
+    },
+    {
+      "case": "application-provenance",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-c",
+        "import importlib.metadata as m,json,platform,shutil,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'tools':{n:{'version':m.version(n),'executable':shutil.which(n)} for n in ('ruff','ty','pre-commit')}}))"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "{\"python\": \"3.14.8\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\application\\\\after\\\\.venv\\\\Scripts\\\\python.exe\", \"tools\": {\"ruff\": {\"version\": \"0.15.22\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\application\\\\after\\\\.venv\\\\Scripts\\\\ruff.EXE\"}, \"ty\": {\"version\": \"0.0.89\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\application\\\\after\\\\.venv\\\\Scripts\\\\ty.EXE\"}, \"pre-commit\": {\"version\": \"4.7.0\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\application\\\\after\\\\.venv\\\\Scripts\\\\pre-commit.EXE\"}}}\n",
+      "stderr": ""
+    },
+    {
+      "case": "application-gate",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Ruff check...............................................................Passed\nRuff format..............................................................Passed\nty.......................................................................Passed\nunittest.................................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "case": "application-lock-check",
+      "argv": [
+        "uv",
+        "lock",
+        "--check"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 14 packages in 0.52ms\n"
+    },
+    {
+      "case": "application-build",
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources"
+      ],
+      "cwd": "<temporary>\\application\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_summary-0.1.0.tar.gz\nSuccessfully built dist\\example_summary-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "case": "application-application-venv",
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.14.8",
+        "<temporary>\\installed-application-application\\env"
+      ],
+      "cwd": "<temporary>\\installed-application-application",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: env\nActivate with: env\\Scripts\\activate\n"
+    },
+    {
+      "case": "application-application-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "<temporary>\\installed-application-application\\env\\Scripts\\python.exe",
+        "--no-deps",
+        "<temporary>\\application\\after\\dist\\example_summary-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "<temporary>\\installed-application-application",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nResolved 1 package in 1ms\nPrepared 1 package in 6ms\nInstalled 1 package in 6ms\n + example-summary==0.1.0 (from file:///<temporary>/application/after/dist/example_summary-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "application-application-dependency-check",
+      "argv": [
+        "uv",
+        "pip",
+        "check",
+        "--python",
+        "<temporary>\\installed-application-application\\env\\Scripts\\python.exe"
+      ],
+      "cwd": "<temporary>\\installed-application-application",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nChecked 1 package in 0.62ms\nAll installed packages are compatible\n"
+    },
+    {
+      "case": "application-application-installed-tests",
+      "argv": [
+        "<temporary>\\installed-application-application\\env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<temporary>\\application\\after\\tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\installed-application-application",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_summary (test_summary.SummaryTests.test_public_summary) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.008s\n\nOK\n"
+    },
+    {
+      "case": "application-application-origin",
+      "argv": [
+        "<temporary>\\installed-application-application\\env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import example_summary; print(example_summary.__file__)"
+      ],
+      "cwd": "<temporary>\\installed-application-application",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "<temporary>\\installed-application-application\\env\\Lib\\site-packages\\example_summary\\__init__.py\n",
+      "stderr": ""
+    },
+    {
+      "case": "application-application-cli",
+      "argv": [
+        "<temporary>\\installed-application-application\\env\\Scripts\\example-summary.exe"
+      ],
+      "cwd": "<temporary>\\installed-application-application",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Total: 7\n",
+      "stderr": ""
+    },
+    {
+      "case": "library-before-tests",
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "--python",
+        "3.14.8",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\library\\before",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_double (test_math.MathTests.test_public_double) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "library-git-init",
+      "argv": [
+        "git",
+        "init"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Initialized empty Git repository in <temporary>/library/after/.git/\n",
+      "stderr": "hint: Using 'master' as the name for the initial branch. This default branch name\nhint: will change to \"main\" in Git 3.0. To configure the initial branch name\nhint: to use in all of your new repositories, which will suppress this warning,\nhint: call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\nhint:\nhint: Disable this message with \"git config set advice.defaultBranchName false\"\n"
+    },
+    {
+      "case": "library-lock",
+      "argv": [
+        "uv",
+        "lock"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nResolved 14 packages in 7ms\n"
+    },
+    {
+      "case": "library-sync",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--all-groups"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: .venv\nResolved 14 packages in 0.57ms\n   Building example-math @ file:///<temporary>/library/after\n      Built example-math @ file:///<temporary>/library/after\nPrepared 1 package in 19ms\nInstalled 14 packages in 46ms\n + cfgv==3.5.0\n + distlib==0.4.4\n + example-math==0.1.0 (from file:///<temporary>/library/after)\n + filelock==4.2.2\n + identify==2.6.20\n + nodeenv==1.11.0\n + packaging==26.3\n + platformdirs==4.13.4\n + pre-commit==4.7.0\n + python-discovery==1.6.3\n + pyyaml==6.0.3\n + ruff==0.15.22\n + ty==0.0.89\n + virtualenv==21.14.11\n"
+    },
+    {
+      "case": "library-git-add",
+      "argv": [
+        "git",
+        "add",
+        "."
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "library-hook-install",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "install"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "pre-commit installed at .git\\hooks\\pre-commit\n",
+      "stderr": ""
+    },
+    {
+      "case": "library-provenance",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-c",
+        "import importlib.metadata as m,json,platform,shutil,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'tools':{n:{'version':m.version(n),'executable':shutil.which(n)} for n in ('ruff','ty','pre-commit')}}))"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "{\"python\": \"3.14.8\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\library\\\\after\\\\.venv\\\\Scripts\\\\python.exe\", \"tools\": {\"ruff\": {\"version\": \"0.15.22\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\library\\\\after\\\\.venv\\\\Scripts\\\\ruff.EXE\"}, \"ty\": {\"version\": \"0.0.89\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\library\\\\after\\\\.venv\\\\Scripts\\\\ty.EXE\"}, \"pre-commit\": {\"version\": \"4.7.0\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\library\\\\after\\\\.venv\\\\Scripts\\\\pre-commit.EXE\"}}}\n",
+      "stderr": ""
+    },
+    {
+      "case": "library-gate",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Ruff check...............................................................Passed\nRuff format..............................................................Passed\nty.......................................................................Passed\nunittest.................................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "case": "library-lock-check",
+      "argv": [
+        "uv",
+        "lock",
+        "--check"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 14 packages in 0.51ms\n"
+    },
+    {
+      "case": "library-build",
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_math-0.1.0.tar.gz\nSuccessfully built dist\\example_math-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "case": "library-consumer-types",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ty",
+        "check",
+        "consumer.py"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "case": "library-consumer-output",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "consumer.py"
+      ],
+      "cwd": "<temporary>\\library\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "8\n",
+      "stderr": ""
+    },
+    {
+      "case": "library-math-venv",
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.14.8",
+        "<temporary>\\installed-library-math\\env"
+      ],
+      "cwd": "<temporary>\\installed-library-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: env\nActivate with: env\\Scripts\\activate\n"
+    },
+    {
+      "case": "library-math-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "<temporary>\\installed-library-math\\env\\Scripts\\python.exe",
+        "--no-deps",
+        "<temporary>\\library\\after\\dist\\example_math-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "<temporary>\\installed-library-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nResolved 1 package in 0.95ms\nPrepared 1 package in 5ms\nInstalled 1 package in 4ms\n + example-math==0.1.0 (from file:///<temporary>/library/after/dist/example_math-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "library-math-dependency-check",
+      "argv": [
+        "uv",
+        "pip",
+        "check",
+        "--python",
+        "<temporary>\\installed-library-math\\env\\Scripts\\python.exe"
+      ],
+      "cwd": "<temporary>\\installed-library-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nChecked 1 package in 0.57ms\nAll installed packages are compatible\n"
+    },
+    {
+      "case": "library-math-installed-tests",
+      "argv": [
+        "<temporary>\\installed-library-math\\env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<temporary>\\library\\after\\tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\installed-library-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_double (test_math.MathTests.test_public_double) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "library-math-origin",
+      "argv": [
+        "<temporary>\\installed-library-math\\env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import example_math; print(example_math.__file__)"
+      ],
+      "cwd": "<temporary>\\installed-library-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "<temporary>\\installed-library-math\\env\\Lib\\site-packages\\example_math\\__init__.py\n",
+      "stderr": ""
+    },
+    {
+      "case": "typed-consumer-venv",
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.14.8",
+        "<temporary>\\typed-consumer\\env"
+      ],
+      "cwd": "<temporary>\\typed-consumer",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: env\nActivate with: env\\Scripts\\activate\n"
+    },
+    {
+      "case": "typed-consumer-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "<temporary>\\typed-consumer\\env\\Scripts\\python.exe",
+        "<temporary>\\library\\after\\dist\\example_math-0.1.0-py3-none-any.whl",
+        "ty==0.0.89"
+      ],
+      "cwd": "<temporary>\\typed-consumer",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nResolved 2 packages in 97ms\nInstalled 2 packages in 7ms\n + example-math==0.1.0 (from file:///<temporary>/library/after/dist/example_math-0.1.0-py3-none-any.whl)\n + ty==0.0.89\n"
+    },
+    {
+      "case": "typed-consumer-valid",
+      "argv": [
+        "<temporary>\\typed-consumer\\env\\Scripts\\ty.exe",
+        "check",
+        "--python",
+        "<temporary>\\typed-consumer\\env\\Scripts\\python.exe",
+        "--python-version",
+        "3.14",
+        "consumer.py"
+      ],
+      "cwd": "<temporary>\\typed-consumer",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "case": "typed-consumer-negative-control",
+      "argv": [
+        "<temporary>\\typed-consumer\\env\\Scripts\\ty.exe",
+        "check",
+        "--python",
+        "<temporary>\\typed-consumer\\env\\Scripts\\python.exe",
+        "--python-version",
+        "3.14",
+        "consumer.py"
+      ],
+      "cwd": "<temporary>\\typed-consumer",
+      "network_allowed": false,
+      "exit_code": 1,
+      "stdout": "error[invalid-argument-type]: Argument to function `double` is incorrect\n --> consumer.py:2:17\n  |\n2 | result = double(\"bad\")\n  |                 ^^^^^ Expected `int`, found `Literal[\"bad\"]`\ninfo: Function defined here\n --> env\\Lib\\site-packages\\example_math\\__init__.py:1:5\n  |\n1 | def double(value: int) -> int:\n  |     ^^^^^^ ---------- Parameter declared here\n\nFound 1 diagnostic\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-before-tests",
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "--python",
+        "3.14.8",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\workspace\\before",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_render (test_app.AppTests.test_public_render) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "workspace-before-cli",
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "--python",
+        "3.14.8",
+        "python",
+        "app.py"
+      ],
+      "cwd": "<temporary>\\workspace\\before",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Result: 8\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-git-init",
+      "argv": [
+        "git",
+        "init"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Initialized empty Git repository in <temporary>/workspace/after/.git/\n",
+      "stderr": "hint: Using 'master' as the name for the initial branch. This default branch name\nhint: will change to \"main\" in Git 3.0. To configure the initial branch name\nhint: to use in all of your new repositories, which will suppress this warning,\nhint: call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\nhint:\nhint: Disable this message with \"git config set advice.defaultBranchName false\"\n"
+    },
+    {
+      "case": "workspace-lock",
+      "argv": [
+        "uv",
+        "lock"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nResolved 15 packages in 6ms\n"
+    },
+    {
+      "case": "workspace-sync",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--all-groups",
+        "--all-packages"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": true,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: .venv\nResolved 15 packages in 0.90ms\n   Building example-math @ file:///<temporary>/workspace/after/packages/math\n   Building example-workspace-app @ file:///<temporary>/workspace/after/packages/app\n      Built example-math @ file:///<temporary>/workspace/after/packages/math\n      Built example-workspace-app @ file:///<temporary>/workspace/after/packages/app\nPrepared 2 packages in 27ms\nInstalled 15 packages in 48ms\n + cfgv==3.5.0\n + distlib==0.4.4\n + example-math==0.1.0 (from file:///<temporary>/workspace/after/packages/math)\n + example-workspace-app==0.1.0 (from file:///<temporary>/workspace/after/packages/app)\n + filelock==4.2.2\n + identify==2.6.20\n + nodeenv==1.11.0\n + packaging==26.3\n + platformdirs==4.13.4\n + pre-commit==4.7.0\n + python-discovery==1.6.3\n + pyyaml==6.0.3\n + ruff==0.15.22\n + ty==0.0.89\n + virtualenv==21.14.11\n"
+    },
+    {
+      "case": "workspace-git-add",
+      "argv": [
+        "git",
+        "add",
+        "."
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-hook-install",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "install"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "pre-commit installed at .git\\hooks\\pre-commit\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-provenance",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-c",
+        "import importlib.metadata as m,json,platform,shutil,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'tools':{n:{'version':m.version(n),'executable':shutil.which(n)} for n in ('ruff','ty','pre-commit')}}))"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "{\"python\": \"3.14.8\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\workspace\\\\after\\\\.venv\\\\Scripts\\\\python.exe\", \"tools\": {\"ruff\": {\"version\": \"0.15.22\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\workspace\\\\after\\\\.venv\\\\Scripts\\\\ruff.EXE\"}, \"ty\": {\"version\": \"0.0.89\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\workspace\\\\after\\\\.venv\\\\Scripts\\\\ty.EXE\"}, \"pre-commit\": {\"version\": \"4.7.0\", \"executable\": \"<user>\\\\AppData\\\\Local\\\\Temp\\\\astral-migrations-bi1ryz0r\\\\workspace\\\\after\\\\.venv\\\\Scripts\\\\pre-commit.EXE\"}}}\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-gate",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Ruff check...............................................................Passed\nRuff format..............................................................Passed\nty.......................................................................Passed\nunittest.................................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-lock-check",
+      "argv": [
+        "uv",
+        "lock",
+        "--check"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 15 packages in 0.69ms\n"
+    },
+    {
+      "case": "workspace-member-math",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--exact",
+        "--package",
+        "example-math",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/math/tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Uninstalled 14 packages in 43ms\ntest_public_double (test_math.MathTests.test_public_double) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "workspace-build-math",
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources",
+        "--package",
+        "example-math"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_math-0.1.0.tar.gz\nSuccessfully built dist\\example_math-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "case": "workspace-member-app",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--exact",
+        "--package",
+        "example-workspace-app",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/app/tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Installed 1 package in 6ms\ntest_public_render (test_app.AppTests.test_public_render) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "workspace-build-app",
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources",
+        "--package",
+        "example-workspace-app"
+      ],
+      "cwd": "<temporary>\\workspace\\after",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_workspace_app-0.1.0.tar.gz\nSuccessfully built dist\\example_workspace_app-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "case": "workspace-math-venv",
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.14.8",
+        "<temporary>\\installed-workspace-math\\env"
+      ],
+      "cwd": "<temporary>\\installed-workspace-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: env\nActivate with: env\\Scripts\\activate\n"
+    },
+    {
+      "case": "workspace-math-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "<temporary>\\installed-workspace-math\\env\\Scripts\\python.exe",
+        "--no-deps",
+        "<temporary>\\workspace\\after\\dist\\example_math-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "<temporary>\\installed-workspace-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nResolved 1 package in 1ms\nPrepared 1 package in 5ms\nInstalled 1 package in 4ms\n + example-math==0.1.0 (from file:///<temporary>/workspace/after/dist/example_math-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "workspace-math-dependency-check",
+      "argv": [
+        "uv",
+        "pip",
+        "check",
+        "--python",
+        "<temporary>\\installed-workspace-math\\env\\Scripts\\python.exe"
+      ],
+      "cwd": "<temporary>\\installed-workspace-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nChecked 1 package in 0.61ms\nAll installed packages are compatible\n"
+    },
+    {
+      "case": "workspace-math-installed-tests",
+      "argv": [
+        "<temporary>\\installed-workspace-math\\env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<temporary>\\workspace\\after\\packages\\math\\tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\installed-workspace-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_double (test_math.MathTests.test_public_double) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "workspace-math-origin",
+      "argv": [
+        "<temporary>\\installed-workspace-math\\env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import example_math; print(example_math.__file__)"
+      ],
+      "cwd": "<temporary>\\installed-workspace-math",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "<temporary>\\installed-workspace-math\\env\\Lib\\site-packages\\example_math\\__init__.py\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-app-venv",
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.14.8",
+        "<temporary>\\installed-workspace-app\\env"
+      ],
+      "cwd": "<temporary>\\installed-workspace-app",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: env\nActivate with: env\\Scripts\\activate\n"
+    },
+    {
+      "case": "workspace-app-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "<temporary>\\installed-workspace-app\\env\\Scripts\\python.exe",
+        "--no-deps",
+        "<temporary>\\workspace\\after\\dist\\example_math-0.1.0-py3-none-any.whl",
+        "<temporary>\\workspace\\after\\dist\\example_workspace_app-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "<temporary>\\installed-workspace-app",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nResolved 2 packages in 1ms\nPrepared 1 package in 10ms\nInstalled 2 packages in 6ms\n + example-math==0.1.0 (from file:///<temporary>/workspace/after/dist/example_math-0.1.0-py3-none-any.whl)\n + example-workspace-app==0.1.0 (from file:///<temporary>/workspace/after/dist/example_workspace_app-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "workspace-app-dependency-check",
+      "argv": [
+        "uv",
+        "pip",
+        "check",
+        "--python",
+        "<temporary>\\installed-workspace-app\\env\\Scripts\\python.exe"
+      ],
+      "cwd": "<temporary>\\installed-workspace-app",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.14.8 environment at: env\nChecked 2 packages in 0.70ms\nAll installed packages are compatible\n"
+    },
+    {
+      "case": "workspace-app-installed-tests",
+      "argv": [
+        "<temporary>\\installed-workspace-app\\env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<temporary>\\workspace\\after\\packages\\app\\tests",
+        "-v"
+      ],
+      "cwd": "<temporary>\\installed-workspace-app",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_public_render (test_app.AppTests.test_public_render) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    {
+      "case": "workspace-app-origin",
+      "argv": [
+        "<temporary>\\installed-workspace-app\\env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import example_workspace_app; print(example_workspace_app.__file__)"
+      ],
+      "cwd": "<temporary>\\installed-workspace-app",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "<temporary>\\installed-workspace-app\\env\\Lib\\site-packages\\example_workspace_app\\__init__.py\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-app-cli",
+      "argv": [
+        "<temporary>\\installed-workspace-app\\env\\Scripts\\example-workspace-app.exe"
+      ],
+      "cwd": "<temporary>\\installed-workspace-app",
+      "network_allowed": false,
+      "exit_code": 0,
+      "stdout": "Result: 8\n",
+      "stderr": ""
+    }
+  ],
+  "redaction_note": "User and checkout prefixes redacted, including JSON-escaped diagnostic paths; substantive outputs, exit codes and artifact hashes preserved."
+}

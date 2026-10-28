@@ -1,0 +1,716 @@
+[
+  {
+    "complexity": 0,
+    "file_name": "__init__.py",
+    "function_name": "<module>",
+    "path": "src\\skills_first_starter\\__init__.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "__main__.py",
+    "function_name": "<module>",
+    "path": "src\\skills_first_starter\\__main__.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "cli.py",
+    "function_name": "bundle",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "cli.py",
+    "function_name": "_write_candidate",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "cli.py",
+    "function_name": "project_config",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "cli.py",
+    "function_name": "_configuration_candidates",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "cli.py",
+    "function_name": "status",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "cli.py",
+    "function_name": "template_version",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "cli.py",
+    "function_name": "<module>",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "cli.py",
+    "function_name": "_adoption_root",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "cli.py",
+    "function_name": "_check_discovery_entry",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "cli.py",
+    "function_name": "profile_check",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "cli.py",
+    "function_name": "source_revision",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 4,
+    "file_name": "cli.py",
+    "function_name": "configure",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 7,
+    "file_name": "cli.py",
+    "function_name": "main",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 8,
+    "file_name": "cli.py",
+    "function_name": "_check_discovery",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 8,
+    "file_name": "cli.py",
+    "function_name": "_plan_writes",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 9,
+    "file_name": "cli.py",
+    "function_name": "_missing_config_tables",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 10,
+    "file_name": "cli.py",
+    "function_name": "_check_plugin_activation",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 10,
+    "file_name": "cli.py",
+    "function_name": "check_path",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 12,
+    "file_name": "cli.py",
+    "function_name": "_apply_writes",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 12,
+    "file_name": "cli.py",
+    "function_name": "backport",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 14,
+    "file_name": "cli.py",
+    "function_name": "validate_bundle",
+    "path": "src\\skills_first_starter\\cli.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::configure",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::setUp",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_active_backplane_is_not_silently_disabled",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_adoption_records_canonical_starter_repository",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_adoption_records_template_version_and_exact_revision",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_adoption_uses_utf8_and_preserves_host_config_bytes",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_adoption_writes_guidance_without_creating_skill_surfaces",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_backplane_is_pinned_but_disabled",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_concurrent_later_file_is_preserved_while_prior_write_rolls_back",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_conflict_blocks_all_writes",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_disabled_alternative_plugin_source_is_preserved",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_existing_legacy_skill_copy_blocks_duplicate_discovery",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_existing_other_marketplace_plugin_blocks_duplicate",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_existing_profile_and_rules_are_preserved",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_failed_replacement_preserves_existing_config_and_cleans_temporary_file",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_malformed_settings_do_not_get_overwritten",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_modified_project_guidance_is_preserved",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_moving_starter_ref_is_rejected",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_pending_profile_is_not_a_readiness_claim",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_preserves_existing_instructions_and_config",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_preview_never_writes",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_symlink_destination_is_rejected",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_version_command_reports_manifest_version",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_wheel_resources_match_authoritative_checkout",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "<module>",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_backport_assessment_preserves_records_and_does_not_follow_links",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_backport_inventory_is_bounded",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_gzkit_is_not_reconfigured",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_invalid_template_version_blocks_adoption_before_writes",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_legacy_unversioned_lock_requires_review_and_is_preserved",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_project_owned_skills_are_preserved",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_source_revision_recognizes_legacy_and_canonical_starter_origins",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 3,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_template_contains_no_authored_skills",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 4,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_second_adoption_is_noop",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 5,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_pins_are_immutable_and_marketplace_matches",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 5,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_preserves_extended_project_dependencies_and_settings",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 11,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_legacy_starter_skills_require_review_before_any_writes",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 13,
+    "file_name": "test_starter.py",
+    "function_name": "AdoptionTests::test_later_write_failure_rolls_back_created_and_replaced_files",
+    "path": "tests\\test_starter.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "complexity_check.py",
+    "function_name": "<module>",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "complexity_check.py",
+    "function_name": "main",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "complexity_check.py",
+    "function_name": "source_files",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 7,
+    "file_name": "complexity_check.py",
+    "function_name": "measure",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 8,
+    "file_name": "complexity_check.py",
+    "function_name": "assess",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 10,
+    "file_name": "complexity_check.py",
+    "function_name": "scope_path",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 10,
+    "file_name": "complexity_check.py",
+    "function_name": "visit",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 13,
+    "file_name": "complexity_check.py",
+    "function_name": "findings",
+    "path": "tools\\engineering\\complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "flat",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "ruff_check",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "<module>",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "diagnostic_score",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "executable",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "lizard_scores",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "nested",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "evaluate",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "observe_case",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "verify_cases",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 6,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "inspect_source",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 8,
+    "file_name": "evaluate_complexity.py",
+    "function_name": "main",
+    "path": "tools\\engineering\\evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_empty_module_and_script_are_not_function_scores",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_empty_scope_is_an_error",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_generated_directive_cannot_hide_function",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_inline_suite_reports_unsupported_measurement",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_missing_scope_and_symlink_fail_closed",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_parse_error_cannot_pass_partial_scope",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_unicode_multiline_suite",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_complexity_check.py",
+    "function_name": "branches",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_complexity_check.py",
+    "function_name": "<module>",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_boundary_and_all_three_failures",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_escaping_absolute_and_excluded_scopes_fail_before_discovery",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_nested_methods_async_generics_and_assertions",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::test_weighted_average_and_scope_deduplication",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 2,
+    "file_name": "test_complexity_check.py",
+    "function_name": "CountingTests::run_check",
+    "path": "tools\\engineering\\test_complexity_check.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "test_evaluate_complexity.py",
+    "function_name": "ProbePortabilityTests::test_source_encoding_is_independent_of_windows_legacy_locale",
+    "path": "tools\\engineering\\test_evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "test_evaluate_complexity.py",
+    "function_name": "<module>",
+    "path": "tools\\engineering\\test_evaluate_complexity.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "package_resources.py",
+    "function_name": "<module>",
+    "path": "tools\\package_resources.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 9,
+    "file_name": "package_resources.py",
+    "function_name": "main",
+    "path": "tools\\package_resources.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 0,
+    "file_name": "verify_distribution.py",
+    "function_name": "run",
+    "path": "tools\\verify_distribution.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 1,
+    "file_name": "verify_distribution.py",
+    "function_name": "<module>",
+    "path": "tools\\verify_distribution.py",
+    "refactor_plans": []
+  },
+  {
+    "complexity": 12,
+    "file_name": "verify_distribution.py",
+    "function_name": "main",
+    "path": "tools\\verify_distribution.py",
+    "refactor_plans": []
+  }
+]

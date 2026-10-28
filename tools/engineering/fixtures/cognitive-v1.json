@@ -1,0 +1,454 @@
+{
+  "contract": "gzkit-cognitive-v1",
+  "runtime": "CPython 3.14",
+  "cases": [
+    {
+      "name": "plain",
+      "source": "def plain():\n    return 1\n",
+      "scores": [
+        {
+          "name": "plain",
+          "line": 1,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "conditional_tuple",
+      "source": "def choose(flags):\n    return (0 if flags[0] else 0, 1 if flags[1] else 0, 2 if flags[2] else 0, 3 if flags[3] else 0, 4 if flags[4] else 0, 5 if flags[5] else 0, 6 if flags[6] else 0, 7 if flags[7] else 0, 8 if flags[8] else 0)\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 9
+        }
+      ]
+    },
+    {
+      "name": "conditional_keywords",
+      "source": "def choose(flags):\n    return dict(k0=0 if flags[0] else 0, k1=1 if flags[1] else 0, k2=2 if flags[2] else 0, k3=3 if flags[3] else 0, k4=4 if flags[4] else 0, k5=5 if flags[5] else 0, k6=6 if flags[6] else 0, k7=7 if flags[7] else 0, k8=8 if flags[8] else 0)\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 9
+        }
+      ]
+    },
+    {
+      "name": "module_for",
+      "source": "for item in (1,):\n    def inside(flag):\n        if flag:\n            return 1\n        return 0\n",
+      "scores": [
+        {
+          "name": "inside",
+          "line": 2,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "module_while",
+      "source": "while flag:\n    def inside(flag):\n        if flag:\n            return 1\n        return 0\n",
+      "scores": [
+        {
+          "name": "inside",
+          "line": 2,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "module_if",
+      "source": "if flag:\n    def inside(flag):\n        if flag:\n            return 1\n        return 0\n",
+      "scores": [
+        {
+          "name": "inside",
+          "line": 2,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "module_with",
+      "source": "with context:\n    def inside(flag):\n        if flag:\n            return 1\n        return 0\n",
+      "scores": [
+        {
+          "name": "inside",
+          "line": 2,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "module_for_else",
+      "source": "for item in ():\n    pass\nelse:\n    def fallback():\n        pass\n",
+      "scores": [
+        {
+          "name": "fallback",
+          "line": 4,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "module_match",
+      "source": "match value:\n    case _:\n        def inside(flag):\n            if flag:\n                pass\n",
+      "scores": [
+        {
+          "name": "inside",
+          "line": 3,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "class_under_module_loop",
+      "source": "for item in (1,):\n    class Holder:\n        def method(self, flag):\n            if flag:\n                pass\n",
+      "scores": [
+        {
+          "name": "Holder.method",
+          "line": 3,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "method_under_class_match",
+      "source": "class Holder:\n    match value:\n        case _:\n            def method(self, flag):\n                if flag:\n                    pass\n",
+      "scores": [
+        {
+          "name": "Holder.method",
+          "line": 4,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "guarded_duplicate_names",
+      "source": "if flag:\n    def choose(): pass\nelse:\n    def choose(): pass\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 2,
+          "score": 0
+        },
+        {
+          "name": "choose",
+          "line": 4,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "try_handler_finally",
+      "source": "try:\n    pass\nexcept Exception:\n    def handled(): pass\nfinally:\n    def finalized(): pass\n",
+      "scores": [
+        {
+          "name": "handled",
+          "line": 4,
+          "score": 0
+        },
+        {
+          "name": "finalized",
+          "line": 6,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "nested_function_folds",
+      "source": "def outer(flag):\n    def inner():\n        if flag:\n            pass\n    return inner\n",
+      "scores": [
+        {
+          "name": "outer",
+          "line": 1,
+          "score": 2
+        }
+      ]
+    },
+    {
+      "name": "nested_class_folds",
+      "source": "def factory(flag):\n    class Local:\n        def method(self):\n            if flag:\n                pass\n    return Local\n",
+      "scores": [
+        {
+          "name": "factory",
+          "line": 1,
+          "score": 3
+        }
+      ]
+    },
+    {
+      "name": "nested_classes_qualified",
+      "source": "class Outer:\n    class Inner:\n        def method(self):\n            pass\n",
+      "scores": [
+        {
+          "name": "Outer.Inner.method",
+          "line": 3,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "async_loops",
+      "source": "async def consume(stream):\n    async for item in stream:\n        if item:\n            pass\n",
+      "scores": [
+        {
+          "name": "consume",
+          "line": 1,
+          "score": 3
+        }
+      ]
+    },
+    {
+      "name": "async_context",
+      "source": "async def consume(context, flag):\n    async with context:\n        if flag:\n            pass\n",
+      "scores": [
+        {
+          "name": "consume",
+          "line": 1,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "elif_hybrid",
+      "source": "def choose(flag):\n    if flag > 1:\n        pass\n    elif flag > 0:\n        pass\n    else:\n        pass\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 3
+        }
+      ]
+    },
+    {
+      "name": "else_nested_if",
+      "source": "def choose(flag):\n    if flag > 1:\n        pass\n    else:\n        if flag > 0:\n            pass\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 4
+        }
+      ]
+    },
+    {
+      "name": "nested_conditional",
+      "source": "def choose(a, b):\n    return 1 if a else (2 if b else 3)\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 3
+        }
+      ]
+    },
+    {
+      "name": "like_boolean_sequence",
+      "source": "def choose(a, b, c):\n    return a and (b and c)\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "mixed_boolean_sequences",
+      "source": "def choose(a, b, c, d, e, f):\n    if a and b and c or d or e and f:\n        pass\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 4
+        }
+      ]
+    },
+    {
+      "name": "negated_boolean_sequence",
+      "source": "def choose(a, b):\n    return not (a and b)\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "comprehension_filters",
+      "source": "def select(rows):\n    return [c for r in rows if r for c in r if c if c > 1]\n",
+      "scores": [
+        {
+          "name": "select",
+          "line": 1,
+          "score": 3
+        }
+      ]
+    },
+    {
+      "name": "guard_and_case_body",
+      "source": "def select(value, flag):\n    match value:\n        case x if x and flag:\n            if flag:\n                pass\n",
+      "scores": [
+        {
+          "name": "select",
+          "line": 1,
+          "score": 5
+        }
+      ]
+    },
+    {
+      "name": "defaults",
+      "source": "def choose(a=1 if FLAG else 2, *, b=YES or NO):\n    pass\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 2
+        }
+      ]
+    },
+    {
+      "name": "nested_decorator",
+      "source": "def outer(flag):\n    @register(1 if flag else 2)\n    def inner():\n        pass\n",
+      "scores": [
+        {
+          "name": "outer",
+          "line": 1,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "lambda_body",
+      "source": "def choose(flag):\n    return lambda: 1 if flag else 2\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 2
+        }
+      ]
+    },
+    {
+      "name": "direct_recursion",
+      "source": "def factorial(n):\n    return 1 if n < 2 else n * factorial(n - 1)\n",
+      "scores": [
+        {
+          "name": "factorial",
+          "line": 1,
+          "score": 2
+        }
+      ]
+    },
+    {
+      "name": "method_recursion",
+      "source": "class Tree:\n    def depth(self, node):\n        return 1 + max(self.depth(c) for c in node)\n",
+      "scores": [
+        {
+          "name": "Tree.depth",
+          "line": 2,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "loop_and_try_else",
+      "source": "def consume(items):\n    for item in items:\n        pass\n    else:\n        pass\n    try:\n        pass\n    except OSError:\n        pass\n    else:\n        pass\n",
+      "scores": [
+        {
+          "name": "consume",
+          "line": 1,
+          "score": 4
+        }
+      ]
+    },
+    {
+      "name": "with_finally",
+      "source": "def read(path):\n    with open(path) as handle:\n        try:\n            return handle.read()\n        finally:\n            handle.close()\n",
+      "scores": [
+        {
+          "name": "read",
+          "line": 1,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "template_interpolation",
+      "source": "def render(flag):\n    return t\"{1 if flag else 2}\"\n",
+      "scores": [
+        {
+          "name": "render",
+          "line": 1,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "generic_function",
+      "source": "def identity[T](item: T) -> T:\n    return item\n",
+      "scores": [
+        {
+          "name": "identity",
+          "line": 1,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "name": "assignment_expression",
+      "source": "def choose(flag):\n    return (selected := 1 if flag else 0)\n",
+      "scores": [
+        {
+          "name": "choose",
+          "line": 1,
+          "score": 1
+        }
+      ]
+    },
+    {
+      "name": "function_free_module",
+      "source": "value = 1 if flag else 0\n",
+      "scores": []
+    },
+    {
+      "name": "ceiling_15",
+      "source": "def boundary(flags):\n    if flags[0]:\n        pass\n    if flags[1]:\n        pass\n    if flags[2]:\n        pass\n    if flags[3]:\n        pass\n    if flags[4]:\n        pass\n    if flags[5]:\n        pass\n    if flags[6]:\n        pass\n    if flags[7]:\n        pass\n    if flags[8]:\n        pass\n    if flags[9]:\n        pass\n    if flags[10]:\n        pass\n    if flags[11]:\n        pass\n    if flags[12]:\n        pass\n    if flags[13]:\n        pass\n    if flags[14]:\n        pass\n",
+      "scores": [
+        {
+          "name": "boundary",
+          "line": 1,
+          "score": 15
+        }
+      ]
+    },
+    {
+      "name": "ceiling_16",
+      "source": "def boundary(flags):\n    if flags[0]:\n        pass\n    if flags[1]:\n        pass\n    if flags[2]:\n        pass\n    if flags[3]:\n        pass\n    if flags[4]:\n        pass\n    if flags[5]:\n        pass\n    if flags[6]:\n        pass\n    if flags[7]:\n        pass\n    if flags[8]:\n        pass\n    if flags[9]:\n        pass\n    if flags[10]:\n        pass\n    if flags[11]:\n        pass\n    if flags[12]:\n        pass\n    if flags[13]:\n        pass\n    if flags[14]:\n        pass\n    if flags[15]:\n        pass\n",
+      "scores": [
+        {
+          "name": "boundary",
+          "line": 1,
+          "score": 16
+        }
+      ]
+    },
+    {
+      "name": "syntax_error",
+      "source": "def broken(:\n",
+      "error": "SyntaxError"
+    },
+    {
+      "name": "invalid_module_return",
+      "source": "return 1\n",
+      "error": "SyntaxError"
+    },
+    {
+      "name": "invalid_module_break",
+      "source": "break\n",
+      "error": "SyntaxError"
+    }
+  ]
+}

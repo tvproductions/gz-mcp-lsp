@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "scope": "Invented disposable Windows-only project behavior; no adopter acceptance or cross-platform claim",
+  "checked_at_utc": "2026-10-18T16:54:05.730197+00:00",
+  "platform": "Windows",
+  "python_version": "3.14.8",
+  "uv_version": "uv 0.13.1 (62faed335 2026-10-13 x86_64-pc-windows-msvc)",
+  "fixtures": {
+    "project/pyproject.toml": "[project]\nname = \"uv-dive-project\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14,<3.15\"\ndependencies = []\n[build-system]\nrequires = [\"uv_build==0.13.1\"]\nbuild-backend = \"uv_build\"\n[tool.uv]\nrequired-version = \"==0.13.1\"\npython-preference = \"only-managed\"\n",
+    "extra/pyproject.toml": "[project]\nname = \"uv-dive-extra\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14,<3.15\"\ndependencies = []\n[build-system]\nrequires = [\"uv_build==0.13.1\"]\nbuild-backend = \"uv_build\"\n[tool.uv]\nrequired-version = \"==0.13.1\"\npython-preference = \"only-managed\"\n",
+    "project/inline.py": "# /// script\n# requires-python = \">=3.14,<3.15\"\n# dependencies = []\n# ///\nimport importlib.util,json,sys;print(json.dumps({'project':importlib.util.find_spec('uv_dive_project') is not None,'extra':importlib.util.find_spec('uv_dive_extra') is not None,'version':'.'.join(map(str,sys.version_info[:3]))}))\n"
+  },
+  "package_module_content": "VALUE = 42\n",
+  "project_metadata_restored": true,
+  "records": [
+    {
+      "case": "uv-version",
+      "argv": [
+        "uv",
+        "--version"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "uv 0.13.1 (62faed335 2026-10-13 x86_64-pc-windows-msvc)\n",
+      "stderr": ""
+    },
+    {
+      "case": "create-project-lock",
+      "argv": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nResolved 1 package in 1ms\n"
+    },
+    {
+      "case": "sync-project",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nUsing CPython 3.14.8\nCreating virtual environment at: .venv\nResolved 1 package in 0.58ms\n   Building uv-dive-project @ file:///<temporary>/project\n      Built uv-dive-project @ file:///<temporary>/project\nPrepared 1 package in 5ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 1 package in 7ms\n + uv-dive-project==0.1.0 (from file:///<temporary>/project)\n"
+    },
+    {
+      "case": "clean-environment",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "import importlib.util,json,sys;print(json.dumps({'project':importlib.util.find_spec('uv_dive_project') is not None,'extra':importlib.util.find_spec('uv_dive_extra') is not None,'version':'.'.join(map(str,sys.version_info[:3]))}))"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": true, \"extra\": false, \"version\": \"3.14.8\"}\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n"
+    },
+    {
+      "case": "build-invented-extra",
+      "argv": [
+        "uv",
+        "build",
+        "--offline"
+      ],
+      "cwd": "<temporary>\\extra",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\uv_dive_extra-0.1.0.tar.gz\nSuccessfully built dist\\uv_dive_extra-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "case": "install-extra-only-in-disposable-env",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--offline",
+        "--no-deps",
+        "--python",
+        "<temporary>\\project\\.venv\\Scripts\\python.exe",
+        "<temporary>\\extra\\dist\\uv_dive_extra-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 1 package in 1ms\nPrepared 1 package in 3ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 1 package in 7ms\n + uv-dive-extra==0.1.0 (from file:///<temporary>/extra/dist/uv_dive_extra-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "locked-run-keeps-extra",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "import importlib.util,json,sys;print(json.dumps({'project':importlib.util.find_spec('uv_dive_project') is not None,'extra':importlib.util.find_spec('uv_dive_extra') is not None,'version':'.'.join(map(str,sys.version_info[:3]))}))"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": true, \"extra\": true, \"version\": \"3.14.8\"}\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n"
+    },
+    {
+      "case": "exact-run-removes-extra",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "--exact",
+        "python",
+        "-c",
+        "import importlib.util,json,sys;print(json.dumps({'project':importlib.util.find_spec('uv_dive_project') is not None,'extra':importlib.util.find_spec('uv_dive_extra') is not None,'version':'.'.join(map(str,sys.version_info[:3]))}))"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": true, \"extra\": false, \"version\": \"3.14.8\"}\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nUninstalled 1 package in 1ms\n"
+    },
+    {
+      "case": "reinstall-extra-for-sync-control",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--offline",
+        "--no-deps",
+        "--python",
+        "<temporary>\\project\\.venv\\Scripts\\python.exe",
+        "<temporary>\\extra\\dist\\uv_dive_extra-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 1 package in 1ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 1 package in 7ms\n + uv-dive-extra==0.1.0 (from file:///<temporary>/extra/dist/uv_dive_extra-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "exact-sync-removes-extra",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nResolved 1 package in 0.55ms\nUninstalled 1 package in 1ms\n - uv-dive-extra==0.1.0 (from file:///<temporary>/extra/dist/uv_dive_extra-0.1.0-py3-none-any.whl)\n"
+    },
+    {
+      "case": "after-exact-sync",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "import importlib.util,json,sys;print(json.dumps({'project':importlib.util.find_spec('uv_dive_project') is not None,'extra':importlib.util.find_spec('uv_dive_extra') is not None,'version':'.'.join(map(str,sys.version_info[:3]))}))"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": true, \"extra\": false, \"version\": \"3.14.8\"}\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n"
+    },
+    {
+      "case": "locked-run-with-overlay",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "--with",
+        "<temporary>\\extra\\dist\\uv_dive_extra-0.1.0-py3-none-any.whl",
+        "python",
+        "-c",
+        "import importlib.util,json,sys;print(json.dumps({'project':importlib.util.find_spec('uv_dive_project') is not None,'extra':importlib.util.find_spec('uv_dive_extra') is not None,'version':'.'.join(map(str,sys.version_info[:3]))}))"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": true, \"extra\": true, \"version\": \"3.14.8\"}\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nInstalled 1 package in 2ms\n"
+    },
+    {
+      "case": "locked-run-can-use-path-command",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "uv-dive-external.cmd"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "outside-project-executable\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n"
+    },
+    {
+      "case": "inline-script-no-script-lock",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "inline.py"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "error: Unable to find lockfile for Python script, but `--locked` was provided. To create a lockfile, run `uv lock --script`.\n"
+    },
+    {
+      "case": "create-separate-script-lock",
+      "argv": [
+        "uv",
+        "lock",
+        "--offline",
+        "--script",
+        "inline.py"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved in 0.85ms\n"
+    },
+    {
+      "case": "inline-script-separate-environment",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "inline.py"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": false, \"extra\": false, \"version\": \"3.14.8\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "python-script-uses-project-env",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "inline.py"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "{\"project\": true, \"extra\": false, \"version\": \"3.14.8\"}\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n"
+    },
+    {
+      "case": "uv-toml-overrides-pyproject",
+      "argv": [
+        "uv",
+        "lock",
+        "--check",
+        "--offline"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "warning: Found both a `uv.toml` file and a `[tool.uv]` section in an adjacent `pyproject.toml`. The following fields from `[tool.uv]` will be ignored in favor of the `uv.toml` file:\n- required-version\n- python-preference\nerror: Required uv version `==0.0.0` does not match the running version `0.13.1`. Update `uv` by running `uv self update 0.0.0`.\n"
+    },
+    {
+      "case": "locked-rejects-stale-metadata",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "print(\"executed\")"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nerror: The lockfile at `uv.lock` needs to be updated, but `--locked` was provided.\n\nhint: To update the lockfile, run `uv lock`.\n"
+    },
+    {
+      "case": "frozen-skips-metadata-check",
+      "argv": [
+        "uv",
+        "run",
+        "--frozen",
+        "--offline",
+        "python",
+        "-c",
+        "print(\"executed\")"
+      ],
+      "cwd": "<temporary>\\project",
+      "exit_code": 0,
+      "stdout": "executed\n",
+      "stderr": "warning: `VIRTUAL_ENV=<starter-checkout>\\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n   Building uv-dive-project @ file:///<temporary>/project\n      Built uv-dive-project @ file:///<temporary>/project\nUninstalled 1 package in 1ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 1 package in 7ms\n"
+    }
+  ],
+  "redactions": [
+    "Temporary root and starter checkout paths replaced with placeholders; no observed exit codes or substantive outputs changed."
+  ]
+}

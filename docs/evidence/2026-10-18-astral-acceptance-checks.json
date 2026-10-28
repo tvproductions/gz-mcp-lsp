@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-18T20:45:26.014519+00:00",
+  "scope": "Uncommitted Astral guidance implementation on Windows at base 1c107649154b9e62f87be6416f929b8c76234151; local checks only",
+  "protected_unchanged_files": [
+    "pyproject.toml",
+    "uv.lock",
+    ".python-version",
+    ".pre-commit-config.yaml",
+    ".github/workflows/check.yml",
+    "src/skills_first_starter/cli.py",
+    "bundle.json",
+    ".agents/plugins/marketplace.json",
+    ".claude-plugin/marketplace.json"
+  ],
+  "local_hook_exists": true,
+  "artifact_sha256": {
+    "skills_first_starter-0.4.0-py3-none-any.whl": "ada870eb067b6a8a8631c1d9963bc72fadc895b4fb18c7dfcf27951fd7c7ed89",
+    "skills_first_starter-0.4.0.tar.gz": "c6142e21747ff653c8abdc6dc214f2ee2987d4a58cc2fa16c73d21dd2563ba78",
+    "skills_first_starter-0.4.1-py3-none-any.whl": "60c81b95bf043d3836d07fbe207333f10e8fe0a111db6e8445a5cf77e8533c32",
+    "skills_first_starter-0.4.1.tar.gz": "773714026177ba494de9ad66050a36251f2a63ec0c54f18c090f5ceea3426647"
+  },
+  "records": [
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/package_resources.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--all-groups"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 44 packages in 0.58ms\nChecked 44 packages in 1ms\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "run",
+        "--all-files",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "Ruff check...............................................................Passed\n- hook id: ruff-check\n- duration: 0.05s\n\nAll checks passed!\n\nRuff format..............................................................Passed\n- hook id: ruff-format\n- duration: 0.05s\n\n12 files already formatted\n\nty.......................................................................Passed\n- hook id: ty\n- duration: 0.09s\n\nAll checks passed!\n\nunittest.................................................................Passed\n- hook id: unittest\n- duration: 0.63s\n\ntest_active_backplane_is_not_silently_disabled (test_starter.AdoptionTests.test_active_backplane_is_not_silently_disabled) ... ok\ntest_adoption_records_canonical_starter_repository (test_starter.AdoptionTests.test_adoption_records_canonical_starter_repository) ... ok\ntest_adoption_records_template_version_and_exact_revision (test_starter.AdoptionTests.test_adoption_records_template_version_and_exact_revision) ... ok\ntest_adoption_uses_utf8_and_preserves_host_config_bytes (test_starter.AdoptionTests.test_adoption_uses_utf8_and_preserves_host_config_bytes) ... ok\ntest_adoption_writes_guidance_without_creating_skill_surfaces (test_starter.AdoptionTests.test_adoption_writes_guidance_without_creating_skill_surfaces) ... ok\ntest_backplane_is_pinned_but_disabled (test_starter.AdoptionTests.test_backplane_is_pinned_but_disabled) ... ok\ntest_backport_assessment_preserves_records_and_does_not_follow_links (test_starter.AdoptionTests.test_backport_assessment_preserves_records_and_does_not_follow_links) ... ok\ntest_backport_inventory_is_bounded (test_starter.AdoptionTests.test_backport_inventory_is_bounded) ... ok\ntest_concurrent_later_file_is_preserved_while_prior_write_rolls_back (test_starter.AdoptionTests.test_concurrent_later_file_is_preserved_while_prior_write_rolls_back) ... ok\ntest_conflict_blocks_all_writes (test_starter.AdoptionTests.test_conflict_blocks_all_writes) ... ok\ntest_disabled_alternative_plugin_source_is_preserved (test_starter.AdoptionTests.test_disabled_alternative_plugin_source_is_preserved) ... ok\ntest_existing_legacy_skill_copy_blocks_duplicate_discovery (test_starter.AdoptionTests.test_existing_legacy_skill_copy_blocks_duplicate_discovery) ... ok\ntest_existing_other_marketplace_plugin_blocks_duplicate (test_starter.AdoptionTests.test_existing_other_marketplace_plugin_blocks_duplicate) ... ok\ntest_existing_profile_and_rules_are_preserved (test_starter.AdoptionTests.test_existing_profile_and_rules_are_preserved) ... ok\ntest_failed_replacement_preserves_existing_config_and_cleans_temporary_file (test_starter.AdoptionTests.test_failed_replacement_preserves_existing_config_and_cleans_temporary_file) ... ok\ntest_gzkit_is_not_reconfigured (test_starter.AdoptionTests.test_gzkit_is_not_reconfigured) ... ok\ntest_invalid_template_version_blocks_adoption_before_writes (test_starter.AdoptionTests.test_invalid_template_version_blocks_adoption_before_writes) ... ok\ntest_later_write_failure_rolls_back_created_and_replaced_files (test_starter.AdoptionTests.test_later_write_failure_rolls_back_created_and_replaced_files) ... ok\ntest_legacy_starter_skills_require_review_before_any_writes (test_starter.AdoptionTests.test_legacy_starter_skills_require_review_before_any_writes) ... ok\ntest_legacy_unversioned_lock_requires_review_and_is_preserved (test_starter.AdoptionTests.test_legacy_unversioned_lock_requires_review_and_is_preserved) ... ok\ntest_malformed_settings_do_not_get_overwritten (test_starter.AdoptionTests.test_malformed_settings_do_not_get_overwritten) ... ok\ntest_modified_project_guidance_is_preserved (test_starter.AdoptionTests.test_modified_project_guidance_is_preserved) ... ok\ntest_moving_starter_ref_is_rejected (test_starter.AdoptionTests.test_moving_starter_ref_is_rejected) ... ok\ntest_pending_profile_is_not_a_readiness_claim (test_starter.AdoptionTests.test_pending_profile_is_not_a_readiness_claim) ... ok\ntest_pins_are_immutable_and_marketplace_matches (test_starter.AdoptionTests.test_pins_are_immutable_and_marketplace_matches) ... ok\ntest_preserves_existing_instructions_and_config (test_starter.AdoptionTests.test_preserves_existing_instructions_and_config) ... ok\ntest_preserves_extended_project_dependencies_and_settings (test_starter.AdoptionTests.test_preserves_extended_project_dependencies_and_settings) ... ok\ntest_preview_never_writes (test_starter.AdoptionTests.test_preview_never_writes) ... ok\ntest_project_owned_skills_are_preserved (test_starter.AdoptionTests.test_project_owned_skills_are_preserved) ... ok\ntest_second_adoption_is_noop (test_starter.AdoptionTests.test_second_adoption_is_noop) ... ok\ntest_source_revision_recognizes_legacy_and_canonical_starter_origins (test_starter.AdoptionTests.test_source_revision_recognizes_legacy_and_canonical_starter_origins) ... ok\ntest_symlink_destination_is_rejected (test_starter.AdoptionTests.test_symlink_destination_is_rejected) ... ok\ntest_template_contains_no_authored_skills (test_starter.AdoptionTests.test_template_contains_no_authored_skills) ... ok\ntest_version_command_reports_manifest_version (test_starter.AdoptionTests.test_version_command_reports_manifest_version) ... ok\ntest_wheel_resources_match_authoritative_checkout (test_starter.AdoptionTests.test_wheel_resources_match_authoritative_checkout) ... ok\n\n----------------------------------------------------------------------\nRan 35 tests in 0.462s\n\nOK\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "skills-first-starter",
+        "validate"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"valid\",\n  \"template_version\": \"0.4.1\",\n  \"components\": [\n    {\n      \"name\": \"superpowers\",\n      \"repository\": \"https://github.com/obra/superpowers\",\n      \"release\": \"v7.0.0\",\n      \"revision\": \"bb92a77741419a4ab5f06e711a283343f1ada0c3\",\n      \"status\": \"released; selected independently of deferred Backplane\",\n      \"enabled_by_default\": true\n    },\n    {\n      \"name\": \"superpowers-backplane\",\n      \"repository\": \"https://github.com/tvproductions/superpowers-backplane\",\n      \"release\": null,\n      \"revision\": \"d0eeee829c491da02351e793544aa16ad96461bf\",\n      \"status\": \"pre-release; published commit, host acceptance incomplete\",\n      \"enabled_by_default\": false\n    },\n    {\n      \"name\": \"gz-skills\",\n      \"repository\": \"https://github.com/tvproductions/gz-skills\",\n      \"release\": \"v0.8.0\",\n      \"revision\": \"75bcd11ee9371ecff1a7b3432d2af29d4bdbb788\",\n      \"status\": \"released\",\n      \"enabled_by_default\": true\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "build"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\skills_first_starter-0.4.1.tar.gz\nSuccessfully built dist\\skills_first_starter-0.4.1-py3-none-any.whl\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\skills_first_starter-0.4.1.tar.gz\nSuccessfully built dist\\skills_first_starter-0.4.1-py3-none-any.whl\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/verify_distribution.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Wheel resources, sdist contents and isolated installed CLI checks passed.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'docs/baseline-policy.md', CRLF will be replaced by LF the next time Git touches it\n"
+    }
+  ],
+  "artifact_hash_scope": "Builds completed before this receipt was written; final candidate validation rebuilds with the receipt included. These are verification-run artifact identities, not published release artifacts."
+}

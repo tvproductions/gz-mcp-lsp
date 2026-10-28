@@ -1,0 +1,815 @@
+{
+  "date": "2026-10-18",
+  "python": "3.14.8",
+  "versions": {
+    "ruff": "0.15.22",
+    "complexipy": "8.0.1",
+    "lizard": "1.24.1"
+  },
+  "thresholds": {
+    "cyclomatic": 20,
+    "cognitive": 15
+  },
+  "synthetic_cases": {
+    "modern": {
+      "cognitive": {
+        "choose": 1,
+        "describe": 0,
+        "classify": 1
+      },
+      "cyclomatic": {
+        "choose": 2,
+        "describe": 1,
+        "classify": 4
+      },
+      "lizard": [
+        {
+          "name": "choose",
+          "line": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "describe",
+          "line": 7,
+          "cyclomatic": 1
+        },
+        {
+          "name": "classify",
+          "line": 10,
+          "cyclomatic": 5
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "flat_boundary": {
+      "cognitive": {
+        "flat": 19
+      },
+      "cyclomatic": {
+        "flat": 20
+      },
+      "lizard": [
+        {
+          "name": "flat",
+          "line": 1,
+          "cyclomatic": 20
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 1
+    },
+    "flat_exceeds": {
+      "cognitive": {
+        "flat": 20
+      },
+      "cyclomatic": {
+        "flat": 21
+      },
+      "lizard": [
+        {
+          "name": "flat",
+          "line": 1,
+          "cyclomatic": 21
+        }
+      ],
+      "ruff_exit": 1,
+      "complexipy_exit": 1
+    },
+    "nested_boundary": {
+      "cognitive": {
+        "nested": 15
+      },
+      "cyclomatic": {
+        "nested": 6
+      },
+      "lizard": [
+        {
+          "name": "nested",
+          "line": 1,
+          "cyclomatic": 6
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "nested_exceeds": {
+      "cognitive": {
+        "nested": 21
+      },
+      "cyclomatic": {
+        "nested": 7
+      },
+      "lizard": [
+        {
+          "name": "nested",
+          "line": 1,
+          "cyclomatic": 7
+        }
+      ],
+      "ruff_exit": 0,
+      "complexipy_exit": 1
+    }
+  },
+  "invalid_syntax_rejected": true,
+  "source": [
+    {
+      "lizard": [
+        {
+          "name": "bundle",
+          "line": 37,
+          "cyclomatic": 1
+        },
+        {
+          "name": "template_version",
+          "line": 41,
+          "cyclomatic": 3
+        },
+        {
+          "name": "validate_bundle",
+          "line": 51,
+          "cyclomatic": 16
+        },
+        {
+          "name": "check_path",
+          "line": 77,
+          "cyclomatic": 9
+        },
+        {
+          "name": "profile_check",
+          "line": 91,
+          "cyclomatic": 7
+        },
+        {
+          "name": "project_config",
+          "line": 107,
+          "cyclomatic": 17
+        },
+        {
+          "name": "configure",
+          "line": 150,
+          "cyclomatic": 30
+        },
+        {
+          "name": "status",
+          "line": 271,
+          "cyclomatic": 3
+        },
+        {
+          "name": "backport",
+          "line": 287,
+          "cyclomatic": 9
+        },
+        {
+          "name": "source_revision.git",
+          "line": 350,
+          "cyclomatic": 1
+        },
+        {
+          "name": "source_revision",
+          "line": 347,
+          "cyclomatic": 4
+        },
+        {
+          "name": "main",
+          "line": 379,
+          "cyclomatic": 7
+        }
+      ],
+      "lizard_module_mean": 8.916666666666666,
+      "file": "src/skills_first_starter/cli.py",
+      "sha256": "8e0ad5dc930fcf1de93d21d711fb3e86c037e25665bcfeb13630a9d74adb23c6",
+      "functions": [
+        {
+          "name": "bundle",
+          "line": 37,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "template_version",
+          "line": 41,
+          "cognitive": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "validate_bundle",
+          "line": 51,
+          "cognitive": 14,
+          "cyclomatic": 7
+        },
+        {
+          "name": "check_path",
+          "line": 77,
+          "cognitive": 10,
+          "cyclomatic": 6
+        },
+        {
+          "name": "profile_check",
+          "line": 91,
+          "cognitive": 3,
+          "cyclomatic": 3
+        },
+        {
+          "name": "project_config",
+          "line": 107,
+          "cognitive": 28,
+          "cyclomatic": 10
+        },
+        {
+          "name": "configure",
+          "line": 150,
+          "cognitive": 56,
+          "cyclomatic": 21
+        },
+        {
+          "name": "status",
+          "line": 271,
+          "cognitive": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "backport",
+          "line": 287,
+          "cognitive": 12,
+          "cyclomatic": 4
+        },
+        {
+          "name": "source_revision",
+          "line": 347,
+          "cognitive": 3,
+          "cyclomatic": 5
+        },
+        {
+          "name": "main",
+          "line": 379,
+          "cognitive": 7,
+          "cyclomatic": 6
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 3,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [
+        "`configure` is too complex (21 > 20)"
+      ],
+      "complexipy_over_15": [
+        {
+          "name": "project_config",
+          "line": 107,
+          "cognitive": 28,
+          "cyclomatic": 10
+        },
+        {
+          "name": "configure",
+          "line": 150,
+          "cognitive": 56,
+          "cyclomatic": 21
+        }
+      ]
+    },
+    {
+      "lizard": [
+        {
+          "name": "setUp",
+          "line": 16,
+          "cyclomatic": 1
+        },
+        {
+          "name": "configure",
+          "line": 21,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_preview_never_writes",
+          "line": 24,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_wheel_resources_match_authoritative_checkout",
+          "line": 30,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_second_adoption_is_noop",
+          "line": 45,
+          "cyclomatic": 5
+        },
+        {
+          "name": "test_preserves_existing_instructions_and_config",
+          "line": 57,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_preserves_extended_project_dependencies_and_settings",
+          "line": 67,
+          "cyclomatic": 5
+        },
+        {
+          "name": "test_adoption_uses_utf8_and_preserves_host_config_bytes.legacy_locale_read",
+          "line": 106,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_adoption_uses_utf8_and_preserves_host_config_bytes",
+          "line": 99,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_conflict_blocks_all_writes",
+          "line": 117,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_gzkit_is_not_reconfigured",
+          "line": 127,
+          "cyclomatic": 2
+        },
+        {
+          "name": "test_symlink_destination_is_rejected",
+          "line": 133,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_existing_legacy_skill_copy_blocks_duplicate_discovery",
+          "line": 141,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_existing_other_marketplace_plugin_blocks_duplicate",
+          "line": 149,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_pending_profile_is_not_a_readiness_claim",
+          "line": 157,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_existing_profile_and_rules_are_preserved",
+          "line": 162,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_malformed_settings_do_not_get_overwritten",
+          "line": 169,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_backplane_is_pinned_but_disabled",
+          "line": 175,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_active_backplane_is_not_silently_disabled",
+          "line": 184,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_adoption_writes_guidance_without_creating_skill_surfaces",
+          "line": 194,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_modified_project_guidance_is_preserved",
+          "line": 209,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_project_owned_skills_are_preserved",
+          "line": 217,
+          "cyclomatic": 2
+        },
+        {
+          "name": "test_backport_assessment_preserves_records_and_does_not_follow_links",
+          "line": 228,
+          "cyclomatic": 4
+        },
+        {
+          "name": "test_legacy_starter_skills_require_review_before_any_writes",
+          "line": 245,
+          "cyclomatic": 6
+        },
+        {
+          "name": "test_template_contains_no_authored_skills",
+          "line": 263,
+          "cyclomatic": 4
+        },
+        {
+          "name": "test_backport_inventory_is_bounded",
+          "line": 290,
+          "cyclomatic": 2
+        },
+        {
+          "name": "test_pins_are_immutable_and_marketplace_matches",
+          "line": 297,
+          "cyclomatic": 6
+        },
+        {
+          "name": "test_source_revision_recognizes_legacy_and_canonical_starter_origins.run_git",
+          "line": 328,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_source_revision_recognizes_legacy_and_canonical_starter_origins",
+          "line": 312,
+          "cyclomatic": 3
+        },
+        {
+          "name": "test_adoption_records_canonical_starter_repository",
+          "line": 346,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_adoption_records_template_version_and_exact_revision",
+          "line": 354,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_invalid_template_version_blocks_adoption_before_writes",
+          "line": 368,
+          "cyclomatic": 2
+        },
+        {
+          "name": "test_legacy_unversioned_lock_requires_review_and_is_preserved",
+          "line": 380,
+          "cyclomatic": 2
+        },
+        {
+          "name": "test_version_command_reports_manifest_version",
+          "line": 397,
+          "cyclomatic": 1
+        },
+        {
+          "name": "test_moving_starter_ref_is_rejected",
+          "line": 405,
+          "cyclomatic": 1
+        }
+      ],
+      "lizard_module_mean": 1.8857142857142857,
+      "file": "tests/test_starter.py",
+      "sha256": "adeb67f2911cb772f9a1b56593133eaa644e2df58bc2c8419025845eeecde71c",
+      "functions": [
+        {
+          "name": "AdoptionTests::setUp",
+          "line": 16,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::configure",
+          "line": 21,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_preview_never_writes",
+          "line": 24,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_wheel_resources_match_authoritative_checkout",
+          "line": 30,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_second_adoption_is_noop",
+          "line": 45,
+          "cognitive": 4,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_preserves_existing_instructions_and_config",
+          "line": 57,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_preserves_extended_project_dependencies_and_settings",
+          "line": 67,
+          "cognitive": 5,
+          "cyclomatic": 4
+        },
+        {
+          "name": "AdoptionTests::test_adoption_uses_utf8_and_preserves_host_config_bytes",
+          "line": 99,
+          "cognitive": 0,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_conflict_blocks_all_writes",
+          "line": 117,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_gzkit_is_not_reconfigured",
+          "line": 127,
+          "cognitive": 1,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_symlink_destination_is_rejected",
+          "line": 133,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_existing_legacy_skill_copy_blocks_duplicate_discovery",
+          "line": 141,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_existing_other_marketplace_plugin_blocks_duplicate",
+          "line": 149,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_pending_profile_is_not_a_readiness_claim",
+          "line": 157,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_existing_profile_and_rules_are_preserved",
+          "line": 162,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_malformed_settings_do_not_get_overwritten",
+          "line": 169,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_backplane_is_pinned_but_disabled",
+          "line": 175,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_active_backplane_is_not_silently_disabled",
+          "line": 184,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_adoption_writes_guidance_without_creating_skill_surfaces",
+          "line": 194,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_modified_project_guidance_is_preserved",
+          "line": 209,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_project_owned_skills_are_preserved",
+          "line": 217,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_backport_assessment_preserves_records_and_does_not_follow_links",
+          "line": 228,
+          "cognitive": 1,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_legacy_starter_skills_require_review_before_any_writes",
+          "line": 245,
+          "cognitive": 11,
+          "cyclomatic": 4
+        },
+        {
+          "name": "AdoptionTests::test_template_contains_no_authored_skills",
+          "line": 263,
+          "cognitive": 3,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_backport_inventory_is_bounded",
+          "line": 290,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_pins_are_immutable_and_marketplace_matches",
+          "line": 297,
+          "cognitive": 5,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_source_revision_recognizes_legacy_and_canonical_starter_origins",
+          "line": 312,
+          "cognitive": 3,
+          "cyclomatic": 4
+        },
+        {
+          "name": "AdoptionTests::test_adoption_records_canonical_starter_repository",
+          "line": 346,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_adoption_records_template_version_and_exact_revision",
+          "line": 354,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_invalid_template_version_blocks_adoption_before_writes",
+          "line": 368,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_legacy_unversioned_lock_requires_review_and_is_preserved",
+          "line": 380,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_version_command_reports_manifest_version",
+          "line": 397,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_moving_starter_ref_is_rejected",
+          "line": 405,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    },
+    {
+      "lizard": [
+        {
+          "name": "executable",
+          "line": 28,
+          "cyclomatic": 2
+        },
+        {
+          "name": "nested",
+          "line": 35,
+          "cyclomatic": 2
+        },
+        {
+          "name": "flat",
+          "line": 44,
+          "cyclomatic": 2
+        },
+        {
+          "name": "ruff_check",
+          "line": 74,
+          "cyclomatic": 1
+        },
+        {
+          "name": "lizard_scores",
+          "line": 96,
+          "cyclomatic": 2
+        },
+        {
+          "name": "observe_case",
+          "line": 107,
+          "cyclomatic": 3
+        },
+        {
+          "name": "diagnostic_score",
+          "line": 148,
+          "cyclomatic": 2
+        },
+        {
+          "name": "verify_cases",
+          "line": 156,
+          "cyclomatic": 3
+        },
+        {
+          "name": "inspect_source",
+          "line": 192,
+          "cyclomatic": 8
+        },
+        {
+          "name": "evaluate",
+          "line": 221,
+          "cyclomatic": 3
+        },
+        {
+          "name": "main",
+          "line": 261,
+          "cyclomatic": 9
+        }
+      ],
+      "lizard_module_mean": 3.3636363636363638,
+      "file": "tools/engineering/evaluate_complexity.py",
+      "sha256": "17fdccf417a0207998c4e6d657cff5506785321a432923eddbb66884580ccd45",
+      "functions": [
+        {
+          "name": "executable",
+          "line": 28,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "nested",
+          "line": 35,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "flat",
+          "line": 44,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "ruff_check",
+          "line": 74,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "lizard_scores",
+          "line": 96,
+          "cognitive": 1,
+          "cyclomatic": 1
+        },
+        {
+          "name": "observe_case",
+          "line": 107,
+          "cognitive": 2,
+          "cyclomatic": 1
+        },
+        {
+          "name": "diagnostic_score",
+          "line": 148,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "verify_cases",
+          "line": 156,
+          "cognitive": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "inspect_source",
+          "line": 192,
+          "cognitive": 6,
+          "cyclomatic": 1
+        },
+        {
+          "name": "evaluate",
+          "line": 221,
+          "cognitive": 2,
+          "cyclomatic": 1
+        },
+        {
+          "name": "main",
+          "line": 261,
+          "cognitive": 8,
+          "cyclomatic": 1
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    }
+  ],
+  "limitations": [
+    "Focused syntax and threshold checks, not complete Python grammar proof.",
+    "Exploratory Lizard observations; use complexity_check.py for authoritative lizard-functions-v1 enforcement.",
+    "Source violations remain visible; no refactoring or automatic baseline suppression."
+  ],
+  "lizard_aggregate": {
+    "population": "reported functions across the explicit source scope",
+    "functions": 58,
+    "maximum": 30,
+    "overall_function_weighted_mean": 3.6206896551724137,
+    "enforcement": "observational; authoritative gate is complexity_check.py (lizard-functions-v1)"
+  }
+}

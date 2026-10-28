@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-24",
+  "python": "3.14.9",
+  "platform": "Darwin",
+  "cosmic_ray": "8.7.0",
+  "probe_sha256": "e40cfa370a454506a4b2eb36b50b7f0073f0f532b8c5fa90af7ac142aeb936d8",
+  "fixtures": {
+    "specimen.py": "def checked() -> int:\n    return 1234\n\n\ndef unchecked() -> int:\n    return 4321\n",
+    "test_specimen.py": "import unittest\nimport specimen\n\n\nclass SpecimenTests(unittest.TestCase):\n    def test_checked(self):\n        self.assertEqual(specimen.checked(), 1234)\n",
+    "test_failing.py": "import unittest\nimport specimen\n\n\nclass SpecimenTests(unittest.TestCase):\n    def test_checked(self):\n        self.assertEqual(specimen.checked(), 0)\n"
+  },
+  "budget_seconds": 120,
+  "test_timeout_seconds": 5,
+  "observations": {
+    "commands": [
+      {
+        "argv": [
+          "<environment>/bin/python",
+          "-B",
+          "-m",
+          "unittest",
+          "test_specimen",
+          "-v"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "baseline",
+          "good.toml",
+          "--session-file",
+          "passing.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "dump",
+          "passing.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "baseline",
+          "failing.toml",
+          "--session-file",
+          "failing.sqlite"
+        ],
+        "exit": 1
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "dump",
+          "failing.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "baseline",
+          "timeout.toml",
+          "--session-file",
+          "timeout.sqlite"
+        ],
+        "exit": 1
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "dump",
+          "timeout.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "baseline",
+          "launch_error.toml",
+          "--session-file",
+          "launch_error.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "dump",
+          "launch_error.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "init",
+          "good.toml",
+          "mutations.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "exec",
+          "good.toml",
+          "mutations.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cosmic-ray",
+          "dump",
+          "mutations.sqlite"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/python",
+          "-B",
+          "-m",
+          "unittest",
+          "test_specimen",
+          "-v"
+        ],
+        "exit": 0
+      },
+      {
+        "argv": [
+          "<environment>/bin/cr-report",
+          "mutations.sqlite",
+          "--show-diff",
+          "--show-output"
+        ],
+        "exit": 0
+      }
+    ],
+    "controls": {
+      "passing": {
+        "cli_exit": 0,
+        "classification": "survived",
+        "worker_outcome": "normal",
+        "test_outcome": "survived"
+      },
+      "failing": {
+        "cli_exit": 1,
+        "classification": "killed",
+        "worker_outcome": "normal",
+        "test_outcome": "killed"
+      },
+      "timeout": {
+        "cli_exit": 1,
+        "classification": "timeout",
+        "worker_outcome": "normal",
+        "test_outcome": "killed"
+      },
+      "launch_error": {
+        "cli_exit": 0,
+        "classification": "tool_error",
+        "worker_outcome": "normal",
+        "test_outcome": "incompetent"
+      }
+    },
+    "counts": {
+      "killed": 2,
+      "survived": 2
+    },
+    "mutations": [
+      [
+        {
+          "job_id": "f3b9f4a952a94018b28fd432b4402c93",
+          "mutations": [
+            {
+              "module_path": "specimen.py",
+              "operator_name": "core/NumberReplacer",
+              "occurrence": 0,
+              "start_pos": [
+                2,
+                11
+              ],
+              "end_pos": [
+                2,
+                15
+              ],
+              "operator_args": {},
+              "definition_name": "checked"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "output": "",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -1,5 +1,5 @@\n def checked() -> int:\n-    return 1234\n+    return 1235\n \n \n def unchecked() -> int:"
+        }
+      ],
+      [
+        {
+          "job_id": "e579459b738546aab684d56d4b83f466",
+          "mutations": [
+            {
+              "module_path": "specimen.py",
+              "operator_name": "core/NumberReplacer",
+              "occurrence": 1,
+              "start_pos": [
+                2,
+                11
+              ],
+              "end_pos": [
+                2,
+                15
+              ],
+              "operator_args": {},
+              "definition_name": "checked"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "output": "",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -1,5 +1,5 @@\n def checked() -> int:\n-    return 1234\n+    return 1233\n \n \n def unchecked() -> int:"
+        }
+      ],
+      [
+        {
+          "job_id": "6aed78363de84128b7f46663d92c21b4",
+          "mutations": [
+            {
+              "module_path": "specimen.py",
+              "operator_name": "core/NumberReplacer",
+              "occurrence": 2,
+              "start_pos": [
+                6,
+                11
+              ],
+              "end_pos": [
+                6,
+                15
+              ],
+              "operator_args": {},
+              "definition_name": "unchecked"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "output": "",
+          "test_outcome": "survived",
+          "diff": "--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -3,5 +3,5 @@\n \n \n def unchecked() -> int:\n-    return 4321\n+    return 4322\n "
+        }
+      ],
+      [
+        {
+          "job_id": "c26ccd2223944a94a86a88f4b607fb2d",
+          "mutations": [
+            {
+              "module_path": "specimen.py",
+              "operator_name": "core/NumberReplacer",
+              "occurrence": 3,
+              "start_pos": [
+                6,
+                11
+              ],
+              "end_pos": [
+                6,
+                15
+              ],
+              "operator_args": {},
+              "definition_name": "unchecked"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "output": "",
+          "test_outcome": "survived",
+          "diff": "--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -3,5 +3,5 @@\n \n \n def unchecked() -> int:\n-    return 4321\n+    return 4320\n "
+        }
+      ]
+    ],
+    "report": "[job-id] f3b9f4a952a94018b28fd432b4402c93\nspecimen.py core/NumberReplacer 0\nworker outcome: WorkerOutcome.NORMAL, test outcome: TestOutcome.KILLED\n=== OUTPUT ===\n\n==============\n=== DIFF ===\n--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -1,5 +1,5 @@\n def checked() -> int:\n-    return 1234\n+    return 1235\n \n \n def unchecked() -> int:\n============\n[job-id] e579459b738546aab684d56d4b83f466\nspecimen.py core/NumberReplacer 1\nworker outcome: WorkerOutcome.NORMAL, test outcome: TestOutcome.KILLED\n=== OUTPUT ===\n\n==============\n=== DIFF ===\n--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -1,5 +1,5 @@\n def checked() -> int:\n-    return 1234\n+    return 1233\n \n \n def unchecked() -> int:\n============\n[job-id] 6aed78363de84128b7f46663d92c21b4\nspecimen.py core/NumberReplacer 2\nworker outcome: WorkerOutcome.NORMAL, test outcome: TestOutcome.SURVIVED\n=== OUTPUT ===\n\n==============\n=== DIFF ===\n--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -3,5 +3,5 @@\n \n \n def unchecked() -> int:\n-    return 4321\n+    return 4322\n \n============\n[job-id] c26ccd2223944a94a86a88f4b607fb2d\nspecimen.py core/NumberReplacer 3\nworker outcome: WorkerOutcome.NORMAL, test outcome: TestOutcome.SURVIVED\n=== OUTPUT ===\n\n==============\n=== DIFF ===\n--- mutation diff ---\n--- a/specimen.py\n+++ b/specimen.py\n@@ -3,5 +3,5 @@\n \n \n def unchecked() -> int:\n-    return 4321\n+    return 4320\n \n============\ntotal jobs: 4\ncomplete: 4 (100.00%)\nsurviving mutants: 2 (50.00%)\n",
+    "source_restored": true
+  }
+}

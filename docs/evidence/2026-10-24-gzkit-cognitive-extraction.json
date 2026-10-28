@@ -1,0 +1,710 @@
+{
+  "date": "2026-10-24",
+  "mode": "Read-only extraction feasibility; unchanged upstream code in an isolated disposable namespace",
+  "upstream": {
+    "repository": "https://github.com/tvproductions/gzkit",
+    "commit": "a32243e21ec0c7ab24dbf45b5600f4fa524dd6f3",
+    "scorer_blob_sha": "bfff5db7014f6000eb35a870f852f9a6c81da50a",
+    "tests_blob_sha": "b68e977bafd0b27324a1b7223c3c575e6122be59",
+    "license": "MIT; source license retained in the disposable review"
+  },
+  "environment": {
+    "python": "3.14.9",
+    "pydantic": "2.14.1",
+    "starter_dependencies_changed": false
+  },
+  "upstream_tests": {
+    "exit_code": 0,
+    "tests": 27,
+    "stderr": "test_a_file_that_does_not_parse_fails_naming_it (test_cognitive.TestTheEntryPoint.test_a_file_that_does_not_parse_fails_naming_it) ... ok\ntest_plain_output_is_one_function_per_line_in_score_order (test_cognitive.TestTheEntryPoint.test_plain_output_is_one_function_per_line_in_score_order) ... ok\ntest_running_the_module_exits_with_mains_code (test_cognitive.TestTheEntryPoint.test_running_the_module_exits_with_mains_code) ... ok\ntest_scores_print_highest_first_and_top_truncates (test_cognitive.TestTheEntryPoint.test_scores_print_highest_first_and_top_truncates) ... ok\ntest_a_case_guard_is_fundamental (test_cognitive.TestTheIncrementRules.test_a_case_guard_is_fundamental) ... ok\ntest_a_conditional_expression_nests (test_cognitive.TestTheIncrementRules.test_a_conditional_expression_nests) ... ok\ntest_a_default_value_is_scored_where_it_is_evaluated (test_cognitive.TestTheIncrementRules.test_a_default_value_is_scored_where_it_is_evaluated) ... ok\ntest_a_lambda_body_nests (test_cognitive.TestTheIncrementRules.test_a_lambda_body_nests) ... ok\ntest_a_like_operator_continued_in_parentheses_is_one_sequence (test_cognitive.TestTheIncrementRules.test_a_like_operator_continued_in_parentheses_is_one_sequence) ... ok\ntest_a_nested_function_decorator_is_scored_in_the_enclosure (test_cognitive.TestTheIncrementRules.test_a_nested_function_decorator_is_scored_in_the_enclosure) ... ok\ntest_comprehension_filters_count_and_their_for_clauses_do_not (test_cognitive.TestTheIncrementRules.test_comprehension_filters_count_and_their_for_clauses_do_not) ... ok\ntest_direct_recursion_costs_one_and_a_method_recurses_through_self (test_cognitive.TestTheIncrementRules.test_direct_recursion_costs_one_and_a_method_recurses_through_self) ... ok\ntest_each_conditional_expression_is_structural (test_cognitive.TestTheIncrementRules.test_each_conditional_expression_is_structural) ... ok\ntest_elif_and_else_are_hybrid_increments (test_cognitive.TestTheIncrementRules.test_elif_and_else_are_hybrid_increments) ... ok\ntest_else_if_is_a_nested_if_not_an_elif (test_cognitive.TestTheIncrementRules.test_else_if_is_a_nested_if_not_an_elif) ... ok\ntest_loop_else_and_try_else_are_hybrid (test_cognitive.TestTheIncrementRules.test_loop_else_and_try_else_are_hybrid) ... ok\ntest_negation_does_not_break_or_add_a_sequence (test_cognitive.TestTheIncrementRules.test_negation_does_not_break_or_add_a_sequence) ... ok\ntest_with_and_finally_add_nothing (test_cognitive.TestTheIncrementRules.test_with_and_finally_add_nothing) ... ok\ntest_a_class_inside_a_function_raises_nesting_for_its_methods (test_cognitive.TestTheScoredUnits.test_a_class_inside_a_function_raises_nesting_for_its_methods) ... ok\ntest_a_module_that_does_not_parse_raises (test_cognitive.TestTheScoredUnits.test_a_module_that_does_not_parse_raises) ... ok\ntest_async_constructs_score_as_their_sync_forms (test_cognitive.TestTheScoredUnits.test_async_constructs_score_as_their_sync_forms) ... ok\ntest_methods_carry_their_qualified_name_and_nested_defs_fold_in (test_cognitive.TestTheScoredUnits.test_methods_carry_their_qualified_name_and_nested_defs_fold_in) ... ok\ntest_a_flat_match_costs_one (test_cognitive.TestTheSpecWorkedExamples.test_a_flat_match_costs_one) ... ok\ntest_a_nested_function_raises_nesting_and_counts_toward_its_enclosure (test_cognitive.TestTheSpecWorkedExamples.test_a_nested_function_raises_nesting_and_counts_toward_its_enclosure) ... ok\ntest_mixed_boolean_operators_cost_one_per_sequence (test_cognitive.TestTheSpecWorkedExamples.test_mixed_boolean_operators_cost_one_per_sequence) ... ok\ntest_sum_of_primes_nests_three_deep (test_cognitive.TestTheSpecWorkedExamples.test_sum_of_primes_nests_three_deep) ... ok\ntest_try_adds_no_nesting_and_except_does (test_cognitive.TestTheSpecWorkedExamples.test_try_adds_no_nesting_and_except_does) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 0.320s\n\nOK\n"
+  },
+  "holdouts": [
+    {
+      "case": "tuple_conditionals",
+      "source": "def f(x):\n    return (0 if x[0] else 0, 1 if x[1] else 0, 2 if x[2] else 0, 3 if x[3] else 0, 4 if x[4] else 0, 5 if x[5] else 0, 6 if x[6] else 0, 7 if x[7] else 0, 8 if x[8] else 0)\n",
+      "expected_function_names": [
+        "f"
+      ],
+      "observed": [
+        {
+          "name": "f",
+          "line": 1,
+          "score": 9
+        }
+      ],
+      "discovery_complete": true
+    },
+    {
+      "case": "keyword_conditionals",
+      "source": "def f(x):\n    return dict(k0=0 if x[0] else 0, k1=1 if x[1] else 0, k2=2 if x[2] else 0, k3=3 if x[3] else 0, k4=4 if x[4] else 0, k5=5 if x[5] else 0, k6=6 if x[6] else 0, k7=7 if x[7] else 0, k8=8 if x[8] else 0)\n",
+      "expected_function_names": [
+        "f"
+      ],
+      "observed": [
+        {
+          "name": "f",
+          "line": 1,
+          "score": 9
+        }
+      ],
+      "discovery_complete": true
+    },
+    {
+      "case": "function_under_module_loop",
+      "source": "for item in (1,):\n    def f(x):\n        if x:\n            return 1\n        return 0\n",
+      "expected_function_names": [
+        "f"
+      ],
+      "observed": [],
+      "discovery_complete": false
+    },
+    {
+      "case": "function_under_module_match",
+      "source": "match 1:\n    case _:\n        def f(x):\n            if x:\n                return 1\n            return 0\n",
+      "expected_function_names": [
+        "f"
+      ],
+      "observed": [],
+      "discovery_complete": false
+    }
+  ],
+  "starter_corpus": {
+    "functions": 102,
+    "maximum": 13,
+    "over_15": [],
+    "discovery_mismatches": [],
+    "scores": [
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "findings",
+        "line": 102,
+        "score": 13
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_apply_writes",
+        "line": 270,
+        "score": 12
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_later_write_failure_rolls_back_created_and_replaced_files",
+        "line": 143,
+        "score": 12
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "check_path",
+        "line": 80,
+        "score": 10
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "backport",
+        "line": 352,
+        "score": 10
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "visit",
+        "line": 56,
+        "score": 10
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "validate_bundle",
+        "line": 54,
+        "score": 9
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_check_plugin_activation",
+        "line": 110,
+        "score": 9
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "scope_path",
+        "line": 29,
+        "score": 9
+      },
+      {
+        "file": "tools/package_resources.py",
+        "function": "main",
+        "line": 16,
+        "score": 9
+      },
+      {
+        "file": "tools/verify_distribution.py",
+        "function": "main",
+        "line": 54,
+        "score": 9
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_check_discovery",
+        "line": 196,
+        "score": 8
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_plan_writes",
+        "line": 233,
+        "score": 8
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "assess",
+        "line": 124,
+        "score": 8
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "main",
+        "line": 444,
+        "score": 7
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_legacy_starter_skills_require_review_before_any_writes",
+        "line": 375,
+        "score": 7
+      },
+      {
+        "file": "tools/verify_distribution.py",
+        "function": "verify_archives",
+        "line": 28,
+        "score": 7
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_missing_config_tables",
+        "line": 128,
+        "score": 6
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "main",
+        "line": 282,
+        "score": 6
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_check_discovery_entry",
+        "line": 176,
+        "score": 5
+      },
+      {
+        "file": "tools/engineering/evaluate_cosmic_ray.py",
+        "function": "classify",
+        "line": 43,
+        "score": 5
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_preserves_extended_project_dependencies_and_settings",
+        "line": 68,
+        "score": 4
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_update_skill_write_failure_rolls_back_prior_managed_outputs",
+        "line": 320,
+        "score": 4
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "profile_check",
+        "line": 94,
+        "score": 3
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "project_config",
+        "line": 148,
+        "score": 3
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_adoption_root",
+        "line": 164,
+        "score": 3
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "configure",
+        "line": 296,
+        "score": 3
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "source_revision",
+        "line": 412,
+        "score": 3
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_project_owned_skills_are_preserved",
+        "line": 344,
+        "score": 3
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_source_revision_recognizes_legacy_and_canonical_starter_origins",
+        "line": 445,
+        "score": 3
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "measure",
+        "line": 68,
+        "score": 3
+      },
+      {
+        "file": "tools/engineering/evaluate_cosmic_ray.py",
+        "function": "evaluate",
+        "line": 56,
+        "score": 3
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.run_check",
+        "line": 20,
+        "score": 3
+      },
+      {
+        "file": "tools/engineering/test_evaluate_complexity.py",
+        "function": "ProbePortabilityTests.test_qualification_rejects_the_keyword_conditional_blind_spot",
+        "line": 17,
+        "score": 3
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "template_version",
+        "line": 44,
+        "score": 2
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_configuration_candidates",
+        "line": 207,
+        "score": 2
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "status",
+        "line": 336,
+        "score": 2
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_second_adoption_is_noop",
+        "line": 46,
+        "score": 2
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_modified_update_skill_blocks_all_writes_and_is_preserved",
+        "line": 287,
+        "score": 2
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_alternate_surface_update_skill_requires_reconciliation",
+        "line": 309,
+        "score": 2
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_template_contains_only_the_approved_update_skill_and_wheel_copy",
+        "line": 393,
+        "score": 2
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "source_files",
+        "line": 46,
+        "score": 2
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "inspect_source",
+        "line": 193,
+        "score": 2
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "evaluate",
+        "line": 222,
+        "score": 2
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "_write_candidate",
+        "line": 253,
+        "score": 1
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_backport_assessment_preserves_records_and_does_not_follow_links",
+        "line": 358,
+        "score": 1
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_backport_inventory_is_bounded",
+        "line": 423,
+        "score": 1
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_pins_are_immutable_and_marketplace_matches",
+        "line": 430,
+        "score": 1
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_invalid_template_version_blocks_adoption_before_writes",
+        "line": 501,
+        "score": 1
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_legacy_unversioned_lock_requires_review_and_is_preserved",
+        "line": 513,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "function": "main",
+        "line": 157,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "executable",
+        "line": 29,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "nested",
+        "line": 36,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "diagnostic_score",
+        "line": 149,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "verify_cases",
+        "line": 157,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/evaluate_cosmic_ray.py",
+        "function": "require",
+        "line": 37,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/evaluate_cosmic_ray.py",
+        "function": "main",
+        "line": 164,
+        "score": 1
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_escaping_absolute_and_excluded_scopes_fail_before_discovery",
+        "line": 105,
+        "score": 1
+      },
+      {
+        "file": "src/skills_first_starter/cli.py",
+        "function": "bundle",
+        "line": 40,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.setUp",
+        "line": 17,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.configure",
+        "line": 22,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_preview_never_writes",
+        "line": 25,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_wheel_resources_match_authoritative_checkout",
+        "line": 31,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_preserves_existing_instructions_and_config",
+        "line": 58,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_adoption_uses_utf8_and_preserves_host_config_bytes",
+        "line": 100,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_conflict_blocks_all_writes",
+        "line": 118,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_failed_replacement_preserves_existing_config_and_cleans_temporary_file",
+        "line": 128,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_concurrent_later_file_is_preserved_while_prior_write_rolls_back",
+        "line": 169,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_disabled_alternative_plugin_source_is_preserved",
+        "line": 192,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_gzkit_is_not_reconfigured",
+        "line": 201,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_symlink_destination_is_rejected",
+        "line": 207,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_existing_legacy_skill_copy_blocks_duplicate_discovery",
+        "line": 215,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_existing_other_marketplace_plugin_blocks_duplicate",
+        "line": 223,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_pending_profile_is_not_a_readiness_claim",
+        "line": 231,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_existing_profile_and_rules_are_preserved",
+        "line": 236,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_malformed_settings_do_not_get_overwritten",
+        "line": 243,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_backplane_is_pinned_but_disabled",
+        "line": 249,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_active_backplane_is_not_silently_disabled",
+        "line": 258,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_adoption_seeds_only_the_canonical_template_update_skill",
+        "line": 268,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_update_skill_symlink_cannot_write_outside_project",
+        "line": 298,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_modified_project_guidance_is_preserved",
+        "line": 336,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_adoption_records_canonical_starter_repository",
+        "line": 479,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_adoption_records_template_version_and_exact_revision",
+        "line": 487,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_version_command_reports_manifest_version",
+        "line": 530,
+        "score": 0
+      },
+      {
+        "file": "tests/test_starter.py",
+        "function": "AdoptionTests.test_moving_starter_ref_is_rejected",
+        "line": 538,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "flat",
+        "line": 45,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "ruff_check",
+        "line": 75,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "lizard_scores",
+        "line": 97,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "function": "observe_case",
+        "line": 108,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "branches",
+        "line": 11,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_boundary_and_all_three_failures",
+        "line": 49,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_weighted_average_and_scope_deduplication",
+        "line": 58,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_nested_methods_async_generics_and_assertions",
+        "line": 71,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_empty_module_and_script_are_not_function_scores",
+        "line": 78,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_parse_error_cannot_pass_partial_scope",
+        "line": 84,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_generated_directive_cannot_hide_function",
+        "line": 91,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_missing_scope_and_symlink_fail_closed",
+        "line": 96,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_inline_suite_reports_unsupported_measurement",
+        "line": 117,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_unicode_multiline_suite",
+        "line": 122,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "function": "CountingTests.test_empty_scope_is_an_error",
+        "line": 127,
+        "score": 0
+      },
+      {
+        "file": "tools/engineering/test_evaluate_complexity.py",
+        "function": "ProbePortabilityTests.test_source_encoding_is_independent_of_windows_legacy_locale",
+        "line": 44,
+        "score": 0
+      },
+      {
+        "file": "tools/verify_distribution.py",
+        "function": "run",
+        "line": 16,
+        "score": 0
+      }
+    ],
+    "source_sha256": {
+      "src/skills_first_starter/__init__.py": "73347d532a7743e605183cb9508af5af0361ba7baa463a0e0fdec069a842139d",
+      "src/skills_first_starter/cli.py": "71574024bb9b13f09b68aed016f8424ea0e13b7b05c63b6bf28a6fe41b00c3fa",
+      "src/skills_first_starter/__main__.py": "d37d6d4f4a328b34a94665883f8b8caaaab2f25a680c4c2b4e8ed0a30718fbc0",
+      "tests/test_starter.py": "00f48928958e21f8ffb0a7d327801982cc48c66027721911b3c12e3d27bd0889",
+      "tools/package_resources.py": "59f0f794bf141a1ca7f6f5e3e4a8b2c3b740a520717b19aa7cdaf16831f43caf",
+      "tools/verify_distribution.py": "a3c4b29b69b98d6b39279c692b1b8b62121fdd6bb37b1997e1040c304d93cd43",
+      "tools/engineering/evaluate_cosmic_ray.py": "e40cfa370a454506a4b2eb36b50b7f0073f0f532b8c5fa90af7ac142aeb936d8",
+      "tools/engineering/complexity_check.py": "e469a03cf647d09a5df4e6afef4538e5aaacadfbc0dde8c435a8d759adf399b3",
+      "tools/engineering/evaluate_complexity.py": "af74cee11e0943fea598a604d2c32aa74d5e60345e0e09bfb3b2e26da30ea3f3",
+      "tools/engineering/test_complexity_check.py": "6464467a10610831f1bd17bc18c133c5f6414c599bb574150d4a6ab17de84d91",
+      "tools/engineering/test_evaluate_complexity.py": "d39e02195d21d0c3dbde594887a102bbc39292512ed9ab89fb092724579101d7"
+    }
+  },
+  "conclusion": "Strong extraction candidate; keyword conditional blind spot is covered, but generic discovery qualification is BLOCKED by definitions under module-level loops/match.",
+  "scope_limits": [
+    "No gzkit checkout edits, project extraction, package publication or starter scorer replacement performed.",
+    "The starter corpus observation does not qualify all Python grammar or the unrelated release baseline.",
+    "No separate extraction repository or issue was detected in the scoped organization/repository searches."
+  ]
+}

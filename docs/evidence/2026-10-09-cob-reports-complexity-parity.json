@@ -1,0 +1,6616 @@
+{
+  "python": "3.14.8",
+  "versions": {
+    "ruff": "0.15.18",
+    "complexipy": "8.0.1",
+    "lizard": "1.24.1",
+    "radon": "6.0.1",
+    "xenon": "0.9.3"
+  },
+  "scope": "tracked src/**/*.py only; no tests, archives, plugins or operational records",
+  "working_tree": "current local source, including pre-existing edits",
+  "summary": {
+    "files": 88,
+    "legacy_infractions": 51,
+    "legacy": {
+      "blocks": 688,
+      "types": {
+        "function": 570,
+        "class": 67,
+        "method": 51
+      },
+      "maximum": 100,
+      "overall_mean": 6.834302325581396,
+      "blocks_over_20": 43,
+      "modules_over_20": 8
+    },
+    "lizard": {
+      "functions": 649,
+      "maximum": 100,
+      "overall_mean": 7.149460708782743,
+      "functions_over_20": 42,
+      "modules_over_20": 12
+    },
+    "ruff_over_20": 8,
+    "cognitive_over_15": 72,
+    "matched_legacy_lizard": 621,
+    "equal_scores": 585,
+    "changed_threshold_verdicts": 1,
+    "legacy_fail_lizard_pass": 1,
+    "legacy_pass_lizard_fail": 0
+  },
+  "changed_verdicts": [
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 269,
+      "name": "commit_staged",
+      "lizard": 19,
+      "legacy": 22,
+      "ruff": 13,
+      "cognitive": 17
+    }
+  ],
+  "modules": [
+    {
+      "file": "src/anonymize.py",
+      "sha256": "f770f82c1cd0305944ac96a8dcc9c65f26ef5d1d40fec284b2942db7c807a71e",
+      "legacy_blocks": 13,
+      "lizard_functions": 12,
+      "legacy_mean": 4.230769230769231,
+      "lizard_mean": 4.5
+    },
+    {
+      "file": "src/cli.py",
+      "sha256": "47a9d2dbb343126347ad61a31e04a472c183377d56eb14a6341f979ebff62c33",
+      "legacy_blocks": 11,
+      "lizard_functions": 11,
+      "legacy_mean": 11.181818181818182,
+      "lizard_mean": 10.545454545454545
+    },
+    {
+      "file": "src/cob_reports/__init__.py",
+      "sha256": "305c3cc3f9fe218ca7a2b54f9a4ae2b2c3decfe9af30627091a129459c03ef77",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/cob_reports/applications/__init__.py",
+      "sha256": "e1f6fe62de29ea5cf7a1744dea5bb10e83a9f6cec50018178288230d8c69af93",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "sha256": "86fa6ef7915c2b3ad0a2c888cd0b90ddbd90be0c0b106444f84fe804c3122f55",
+      "legacy_blocks": 8,
+      "lizard_functions": 9,
+      "legacy_mean": 12.75,
+      "lizard_mean": 11.666666666666666
+    },
+    {
+      "file": "src/cob_reports/applications/cli.py",
+      "sha256": "f16380c451a885cadbbb624d60b758a4194d833a42d1ae8b12dc071f63939b69",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 49.5,
+      "lizard_mean": 49.5
+    },
+    {
+      "file": "src/cob_reports/applications/comparison.py",
+      "sha256": "874d4e257ad9739cddd463078eda5d61d7b02457ed0617db343495e1fbf3e342",
+      "legacy_blocks": 6,
+      "lizard_functions": 1,
+      "legacy_mean": 2.5,
+      "lizard_mean": 5.0
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "sha256": "fdebd8edf55ad48dd00515b0e37d437cd08328847dd2730b75bb5db20440da93",
+      "legacy_blocks": 7,
+      "lizard_functions": 7,
+      "legacy_mean": 8.285714285714286,
+      "lizard_mean": 8.428571428571429
+    },
+    {
+      "file": "src/cob_reports/applications/document_layout.py",
+      "sha256": "4983ad0560bd45167a56c19323ac1045541622afd1a7c090e1a84ef19e1f900f",
+      "legacy_blocks": 1,
+      "lizard_functions": 1,
+      "legacy_mean": 54.0,
+      "lizard_mean": 55.0
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "sha256": "bcbe2742a844a948153b4a5181448e9a928b1efa3017f0aa642d75ac9cc0b509",
+      "legacy_blocks": 13,
+      "lizard_functions": 5,
+      "legacy_mean": 6.769230769230769,
+      "lizard_mean": 15.2
+    },
+    {
+      "file": "src/cob_reports/applications/inspection.py",
+      "sha256": "6a60d293f7aeb4c5b6127913022a409c202200d76e88365e783eaabde9239eb2",
+      "legacy_blocks": 6,
+      "lizard_functions": 4,
+      "legacy_mean": 12.166666666666666,
+      "lizard_mean": 18.0
+    },
+    {
+      "file": "src/cob_reports/applications/layout_review.py",
+      "sha256": "cd009ceba0b7a99e15313a6f704f3d3f1792365a60933bff25975aad21e687a4",
+      "legacy_blocks": 4,
+      "lizard_functions": 4,
+      "legacy_mean": 19.25,
+      "lizard_mean": 19.5
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "sha256": "e4fe308094893d25aa47abf82403814432b9aafea4e201d7d24b5366b09bbc2a",
+      "legacy_blocks": 5,
+      "lizard_functions": 5,
+      "legacy_mean": 21.4,
+      "lizard_mean": 21.8
+    },
+    {
+      "file": "src/cob_reports/applications/publishing.py",
+      "sha256": "b085ef97b88c60a02e36a2952bb54341d895093f944b81cf827a8b7b28b11ed3",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 22.5,
+      "lizard_mean": 22.5
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "sha256": "2cd005e46b736f39d756d5c176849f8a563e59e35ed15b6a6e77d31729ee7ab4",
+      "legacy_blocks": 7,
+      "lizard_functions": 6,
+      "legacy_mean": 19.0,
+      "lizard_mean": 22.0
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "sha256": "416078a5516c56a9a13ae402e0884b4f175347eea5258dbced03a68af62f64a8",
+      "legacy_blocks": 12,
+      "lizard_functions": 14,
+      "legacy_mean": 24.5,
+      "lizard_mean": 22.142857142857142
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "sha256": "1e3343b88256954abb7b355880017560f164e135dc1bdded54488c6ef6e8b916",
+      "legacy_blocks": 6,
+      "lizard_functions": 6,
+      "legacy_mean": 7.333333333333333,
+      "lizard_mean": 7.333333333333333
+    },
+    {
+      "file": "src/cob_reports/applications/rotation.py",
+      "sha256": "7f54f63386f500be61f754635c3da832c7ee747bb3789e203aba1eb56554a5d0",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 27.5,
+      "lizard_mean": 28.5
+    },
+    {
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "sha256": "33b3b11a7808e6c9b2aaa1d7becd716a551255961767818897013c8363d45716",
+      "legacy_blocks": 1,
+      "lizard_functions": 3,
+      "legacy_mean": 80.0,
+      "lizard_mean": 29.0
+    },
+    {
+      "file": "src/cob_reports/applications/store.py",
+      "sha256": "cc2eabe8089cda288b80a85a8e8a155161626b72d826d06e3fb47ba08f73c17e",
+      "legacy_blocks": 4,
+      "lizard_functions": 4,
+      "legacy_mean": 6.75,
+      "lizard_mean": 7.0
+    },
+    {
+      "file": "src/cob_reports/applications/workbooks.py",
+      "sha256": "33d131969e34390d796626b69e0ff4dbc31d8c4867fa3e0950a54215557eb4d5",
+      "legacy_blocks": 4,
+      "lizard_functions": 2,
+      "legacy_mean": 10.0,
+      "lizard_mean": 19.5
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "sha256": "0dbb6dcb29f48566d640a38f5f7681c7f3330bbeee467790b5a67ae752acc914",
+      "legacy_blocks": 5,
+      "lizard_functions": 5,
+      "legacy_mean": 6.2,
+      "lizard_mean": 6.2
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "sha256": "e194c794a8ee8750d31df9dcbdd54faf8374ff8f260f32398d639461cd6bd577",
+      "legacy_blocks": 6,
+      "lizard_functions": 6,
+      "legacy_mean": 4.0,
+      "lizard_mean": 4.0
+    },
+    {
+      "file": "src/cob_reports/cases/__init__.py",
+      "sha256": "afd80e52309ef728424ba16871694df488ff02ed68639307a6eea521dc16fd7b",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/cob_reports/cases/apple_vision.py",
+      "sha256": "b88a1fb7830525e61a05a62d2fe3aa32506d187b541bc0b0d19299dc9f609971",
+      "legacy_blocks": 2,
+      "lizard_functions": 1,
+      "legacy_mean": 4.5,
+      "lizard_mean": 8.0
+    },
+    {
+      "file": "src/cob_reports/cases/artifacts.py",
+      "sha256": "5235d171791e31573bf5943d812818a3178873c6cbbb6f0b8225e5ad130d3344",
+      "legacy_blocks": 3,
+      "lizard_functions": 2,
+      "legacy_mean": 11.333333333333334,
+      "lizard_mean": 16.5
+    },
+    {
+      "file": "src/cob_reports/cases/attachment_roles.py",
+      "sha256": "12d13b96d71a26920aa2a1fd0bffdb95843ad09864beeaf94a96ad7a01a87d95",
+      "legacy_blocks": 3,
+      "lizard_functions": 3,
+      "legacy_mean": 9.666666666666666,
+      "lizard_mean": 9.0
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "sha256": "df539524eaad64fd930b4e96a439167b8656bae4e6a30962fdc84e0a674a7b88",
+      "legacy_blocks": 6,
+      "lizard_functions": 5,
+      "legacy_mean": 6.166666666666667,
+      "lizard_mean": 7.2
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "sha256": "8c51e5216fcf5a31861c84c1b5bb960cdcfebb5416b92631f21244d0ccb14549",
+      "legacy_blocks": 6,
+      "lizard_functions": 5,
+      "legacy_mean": 7.5,
+      "lizard_mean": 8.8
+    },
+    {
+      "file": "src/cob_reports/cases/documents.py",
+      "sha256": "4ba30240842f0ba1bb8db024da2e618a922742a4d14542edac785df977682c37",
+      "legacy_blocks": 2,
+      "lizard_functions": 1,
+      "legacy_mean": 12.5,
+      "lizard_mean": 24.0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence.py",
+      "sha256": "e0f92ac46a789da6afed3fe976a338c426fb27083adaa02d781315f608a8aa9a",
+      "legacy_blocks": 2,
+      "lizard_functions": 1,
+      "legacy_mean": 13.5,
+      "lizard_mean": 26.0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "sha256": "29ea4435b13dd998961e67cd1ce447f5586a9bd12579ccc5881f32030ac1303c",
+      "legacy_blocks": 11,
+      "lizard_functions": 10,
+      "legacy_mean": 6.090909090909091,
+      "lizard_mean": 6.6
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "sha256": "880496aabf1ad4b6fbe632057f920ebd37406d7abef1deefee6088c1cca624ea",
+      "legacy_blocks": 13,
+      "lizard_functions": 12,
+      "legacy_mean": 6.384615384615385,
+      "lizard_mean": 6.75
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_proposals.py",
+      "sha256": "dbdf8143c39dac8cb41717c610ce76e6cba55ddef0fd8b1c17df10cdea416a22",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 11.0,
+      "lizard_mean": 11.0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "sha256": "aa56ca76eb9a63e6afb4c6d06e95cf9643421caac3b868e0eb23b74deb7f35cf",
+      "legacy_blocks": 31,
+      "lizard_functions": 22,
+      "legacy_mean": 3.935483870967742,
+      "lizard_mean": 3.6818181818181817
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "sha256": "4e297755b20e83654bae47279e5d2f085455c4c1297aecdda4d004cb110b82c4",
+      "legacy_blocks": 13,
+      "lizard_functions": 13,
+      "legacy_mean": 6.230769230769231,
+      "lizard_mean": 6.230769230769231
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_sources.py",
+      "sha256": "ddc0434698a0c89f32b9f439c0d9084a0100f30db526c7fb659f25de3e7342cb",
+      "legacy_blocks": 1,
+      "lizard_functions": 1,
+      "legacy_mean": 10.0,
+      "lizard_mean": 10.0
+    },
+    {
+      "file": "src/cob_reports/cases/form_contract.py",
+      "sha256": "706396f8cf722bcf968efc7aaa5976be9f02b2273ec063454307e6224dca9895",
+      "legacy_blocks": 1,
+      "lizard_functions": 1,
+      "legacy_mean": 21.0,
+      "lizard_mean": 21.0
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "sha256": "0c2cc97e2ca4650510c53ca2043b76e3ded59287a7811fb7a71cf899eb47c8de",
+      "legacy_blocks": 14,
+      "lizard_functions": 10,
+      "legacy_mean": 5.857142857142857,
+      "lizard_mean": 6.6
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "sha256": "bf3a67828a8b60773dcaba1fd037f9df3dff6611350eb6d70d05a2a58aa1af73",
+      "legacy_blocks": 6,
+      "lizard_functions": 5,
+      "legacy_mean": 8.833333333333334,
+      "lizard_mean": 10.6
+    },
+    {
+      "file": "src/cob_reports/cases/local_model.py",
+      "sha256": "224e9026f263bbf9e4741f7d91f736483847ce0eee90437767e5a2cd298e7fe8",
+      "legacy_blocks": 4,
+      "lizard_functions": 4,
+      "legacy_mean": 8.75,
+      "lizard_mean": 9.25
+    },
+    {
+      "file": "src/cob_reports/cases/receipts.py",
+      "sha256": "4aca039c7058a42c6b395ddb5cafa99509f0d29a8fd5afe7e86960b7d43d6367",
+      "legacy_blocks": 3,
+      "lizard_functions": 2,
+      "legacy_mean": 9.0,
+      "lizard_mean": 8.5
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "sha256": "de730e9baf1a51865c7180d992f6079bdd1ee9fc6ee0d6bfdac5ae57b105c46a",
+      "legacy_blocks": 12,
+      "lizard_functions": 10,
+      "legacy_mean": 10.25,
+      "lizard_mean": 11.3
+    },
+    {
+      "file": "src/cob_reports/cases/staged_evidence.py",
+      "sha256": "1383b01c0306c79a1ca1b13c79cd603106d61f532a8e74eca52087b808359344",
+      "legacy_blocks": 2,
+      "lizard_functions": 1,
+      "legacy_mean": 13.0,
+      "lizard_mean": 23.0
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "sha256": "433967f284cc6ed4ea7c0ba9df6eb3344d826c98f9fe420aadb9a97b0ad5ca63",
+      "legacy_blocks": 6,
+      "lizard_functions": 6,
+      "legacy_mean": 11.166666666666666,
+      "lizard_mean": 11.333333333333334
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "sha256": "7972b56d8a7abaa2b5a829a5ba992cdffd2bee0b527f3f1b6044cc01da7366da",
+      "legacy_blocks": 10,
+      "lizard_functions": 9,
+      "legacy_mean": 11.3,
+      "lizard_mean": 12.222222222222221
+    },
+    {
+      "file": "src/cob_reports/cases/vision.py",
+      "sha256": "9883aab44c46d53ebad317e1dac2bec8c229121d4c350cbb4922de59a8be32c0",
+      "legacy_blocks": 2,
+      "lizard_functions": 1,
+      "legacy_mean": 8.0,
+      "lizard_mean": 15.0
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "sha256": "922e57ed92ce3cb715656c9061456f7ecfe0a36bd4cf0c89734347e8088cb6f3",
+      "legacy_blocks": 18,
+      "lizard_functions": 17,
+      "legacy_mean": 3.2222222222222223,
+      "lizard_mean": 3.176470588235294
+    },
+    {
+      "file": "src/cob_reports/jarvis.py",
+      "sha256": "916a96c45bc233a253811529b64864ab8d3a87db3e504211606f4f7cd587ada2",
+      "legacy_blocks": 4,
+      "lizard_functions": 3,
+      "legacy_mean": 8.75,
+      "lizard_mean": 11.0
+    },
+    {
+      "file": "src/cob_reports/local_model_check.py",
+      "sha256": "f05e8641f11b0842ecca5b981b54d1955d0dd333114580b7c0f58f2c58a83ddd",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 5.0,
+      "lizard_mean": 5.0
+    },
+    {
+      "file": "src/cob_reports/operational_store.py",
+      "sha256": "ed25061ad7c18b6920c9f12f8f3b40d8eca0dbc12b779912bc3d6dca755e1649",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 9.0,
+      "lizard_mean": 8.5
+    },
+    {
+      "file": "src/config.py",
+      "sha256": "b1f4d399021a683f9d4376fa1275130f5e069a5171f85963d36bf37af196534d",
+      "legacy_blocks": 25,
+      "lizard_functions": 23,
+      "legacy_mean": 6.16,
+      "lizard_mean": 6.565217391304348
+    },
+    {
+      "file": "src/describe.py",
+      "sha256": "ca891b3d7167331a8e7005082f85145a8a78bfc90f3da9c3fb4689faf6f2da71",
+      "legacy_blocks": 18,
+      "lizard_functions": 14,
+      "legacy_mean": 3.888888888888889,
+      "lizard_mean": 4.714285714285714
+    },
+    {
+      "file": "src/ingest/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "sha256": "05e797443ab9e86386a0642c72a54ab8db53b004895a6b7e2db82005734a6a8b",
+      "legacy_blocks": 26,
+      "lizard_functions": 26,
+      "legacy_mean": 4.153846153846154,
+      "lizard_mean": 4.115384615384615
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "sha256": "e2c927e028cd6ba6cb31fe1cc0f0202890a3553749c83e3f28fa25d5bfb6a61f",
+      "legacy_blocks": 25,
+      "lizard_functions": 23,
+      "legacy_mean": 4.16,
+      "lizard_mean": 4.3478260869565215
+    },
+    {
+      "file": "src/inventory/__init__.py",
+      "sha256": "b832caf5384d85d9130088d0936ed1317a03f59a8e964e12fbd1670eae9d0441",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "sha256": "532d9b16c3b2c97b7085f4726f774392b571c27d19d4a75a0be7263a01aa44f1",
+      "legacy_blocks": 10,
+      "lizard_functions": 10,
+      "legacy_mean": 3.1,
+      "lizard_mean": 3.1
+    },
+    {
+      "file": "src/inventory/export_calculations.py",
+      "sha256": "ee6228c4c17bc2d23a5916ab75da9f763ed0733339d48809dc89f93232dab4fd",
+      "legacy_blocks": 2,
+      "lizard_functions": 2,
+      "legacy_mean": 12.0,
+      "lizard_mean": 12.0
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "sha256": "f4d98ad57f51b5a2fbf62c63be1ae2999c587cd889c50070095f0eed93dc0c14",
+      "legacy_blocks": 7,
+      "lizard_functions": 9,
+      "legacy_mean": 3.4285714285714284,
+      "lizard_mean": 4.333333333333333
+    },
+    {
+      "file": "src/inventory/faculty_reports_main.py",
+      "sha256": "70eb40d12d24bbe8077a8b337600474d6a4ced96e3acdc6b336566eadd4829a8",
+      "legacy_blocks": 1,
+      "lizard_functions": 1,
+      "legacy_mean": 3.0,
+      "lizard_mean": 3.0
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "sha256": "f96d0b288e6ba2615986553221b9bbf13dcb9c90be34b10a3be496cb55866967",
+      "legacy_blocks": 8,
+      "lizard_functions": 8,
+      "legacy_mean": 2.5,
+      "lizard_mean": 2.5
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "sha256": "1abb8176dccc164347e11363d84e7c4cbf4ac1dcfaf2445575fd695668bc6702",
+      "legacy_blocks": 9,
+      "lizard_functions": 11,
+      "legacy_mean": 3.5555555555555554,
+      "lizard_mean": 3.272727272727273
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "sha256": "277caef28bddb9bf70bbd61f270262b299f966726b65dd352187ad73e2cae06b",
+      "legacy_blocks": 22,
+      "lizard_functions": 24,
+      "legacy_mean": 3.3181818181818183,
+      "lizard_mean": 3.25
+    },
+    {
+      "file": "src/inventory/report_formats.py",
+      "sha256": "a8f98d30ec3c131958f068f30e902a684b48d28a8046fedaeb259685367e717e",
+      "legacy_blocks": 4,
+      "lizard_functions": 4,
+      "legacy_mean": 5.5,
+      "lizard_mean": 5.5
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "sha256": "3ba4144245f77303174b377b1bf30ef246796f513b5e561b4119cc70c3cfc98e",
+      "legacy_blocks": 33,
+      "lizard_functions": 36,
+      "legacy_mean": 4.454545454545454,
+      "lizard_mean": 4.222222222222222
+    },
+    {
+      "file": "src/inventory/teaching_load_main.py",
+      "sha256": "c0e9d6412d790eafa86d1747a4f9aa32f1f7cfa292192ab53294c920cb1322a7",
+      "legacy_blocks": 1,
+      "lizard_functions": 2,
+      "legacy_mean": 11.0,
+      "lizard_mean": 6.0
+    },
+    {
+      "file": "src/ledger.py",
+      "sha256": "fa2c4be05a0e69c3c59a039c696dc8b009c6b65c4e883ab1e67071e012f53783",
+      "legacy_blocks": 3,
+      "lizard_functions": 3,
+      "legacy_mean": 3.3333333333333335,
+      "lizard_mean": 3.3333333333333335
+    },
+    {
+      "file": "src/maintenance.py",
+      "sha256": "95b61682ff5561510b0848de753e122074848c007f1b2a37e24855b09a9f913b",
+      "legacy_blocks": 12,
+      "lizard_functions": 13,
+      "legacy_mean": 5.5,
+      "lizard_mean": 5.461538461538462
+    },
+    {
+      "file": "src/registration/__init__.py",
+      "sha256": "9c4ce8a5a48c03b6d4bb2eedee70b744539696c9072d2fd5f60d93aa3ea3b932",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "sha256": "6444153d68caaca72ae929e703cca331c5b2edc321aef92130a0994c644f03d0",
+      "legacy_blocks": 38,
+      "lizard_functions": 42,
+      "legacy_mean": 5.552631578947368,
+      "lizard_mean": 5.142857142857143
+    },
+    {
+      "file": "src/registration/reports.py",
+      "sha256": "04007eba9b1ee883d2738b8bdcdb6b196833e04a839bf61d488a16282c69bd88",
+      "legacy_blocks": 12,
+      "lizard_functions": 12,
+      "legacy_mean": 4.75,
+      "lizard_mean": 4.75
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "sha256": "a9a5db19dcd9162834ef1125937cc23f73268ac87816eca6869384e4b6ad1b4c",
+      "legacy_blocks": 14,
+      "lizard_functions": 14,
+      "legacy_mean": 3.4285714285714284,
+      "lizard_mean": 3.4285714285714284
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "sha256": "c2d18aa60a93a6a9e487b2986b37cf74d244ce44df8a07e651a9e84ae9657967",
+      "legacy_blocks": 12,
+      "lizard_functions": 11,
+      "legacy_mean": 3.8333333333333335,
+      "lizard_mean": 4.090909090909091
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "sha256": "3b2b93a41d4a89261abe84a156500624d363264616a7faaf75969b034adc8982",
+      "legacy_blocks": 8,
+      "lizard_functions": 8,
+      "legacy_mean": 4.625,
+      "lizard_mean": 4.625
+    },
+    {
+      "file": "src/registration/tracker_state.py",
+      "sha256": "bf414a0308a6214611e1233c2c8cfebd44888efa2578a6a1c5c7188db541110e",
+      "legacy_blocks": 4,
+      "lizard_functions": 1,
+      "legacy_mean": 1.75,
+      "lizard_mean": 2.0
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "sha256": "c3627e8d630d1df356cad85fe3671b296a4a679a637b7bb33930ef918dfef104",
+      "legacy_blocks": 6,
+      "lizard_functions": 5,
+      "legacy_mean": 3.8333333333333335,
+      "lizard_mean": 4.4
+    },
+    {
+      "file": "src/rotation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "legacy_blocks": 0,
+      "lizard_functions": 0,
+      "legacy_mean": 0,
+      "lizard_mean": 0
+    },
+    {
+      "file": "src/rotation/catalog_loader.py",
+      "sha256": "c76a07afaf5c89c312d60f02bac742d5de7d1612c39c2cb6efd05159c969c10d",
+      "legacy_blocks": 2,
+      "lizard_functions": 3,
+      "legacy_mean": 4.5,
+      "lizard_mean": 4.333333333333333
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "sha256": "db5d7483022bd03fb456efa08ff39b59f4df1f1cc922525dfe775e51d126536c",
+      "legacy_blocks": 5,
+      "lizard_functions": 6,
+      "legacy_mean": 5.0,
+      "lizard_mean": 5.166666666666667
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "sha256": "0d809b1efdccda1aa0278d24d6f07b159bdf1074bdce05f45a4f717bebc97d69",
+      "legacy_blocks": 9,
+      "lizard_functions": 10,
+      "legacy_mean": 6.777777777777778,
+      "lizard_mean": 6.2
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "sha256": "3f1f0f709e6ba818ae1a6bf7c763cfd21b59770b1167051251c426c9cee138fe",
+      "legacy_blocks": 12,
+      "lizard_functions": 12,
+      "legacy_mean": 8.333333333333334,
+      "lizard_mean": 8.333333333333334
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "sha256": "6d9f0dd8042edc3e0122ee6e17f2a2e46b271aef3ee230068f487702a4119073",
+      "legacy_blocks": 4,
+      "lizard_functions": 5,
+      "legacy_mean": 11.75,
+      "lizard_mean": 10.6
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "sha256": "423161adb87ef22878a254bc92fe2eb7652bd4f0aaed1a56ee49877abdfe56d7",
+      "legacy_blocks": 14,
+      "lizard_functions": 14,
+      "legacy_mean": 5.285714285714286,
+      "lizard_mean": 5.285714285714286
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "sha256": "a3c77d67dbc16a60cb33cbf58dc1c60f070e9666fde7ea84902e2c9f3d9dce61",
+      "legacy_blocks": 8,
+      "lizard_functions": 8,
+      "legacy_mean": 4.5,
+      "lizard_mean": 4.25
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "sha256": "0039d81d4252e3fce968b58c8a9077004de60750be13b01f076216c1dd21b5de",
+      "legacy_blocks": 6,
+      "lizard_functions": 6,
+      "legacy_mean": 7.166666666666667,
+      "lizard_mean": 7.166666666666667
+    },
+    {
+      "file": "src/status.py",
+      "sha256": "cec9b3a32e8eed8cb3185b4dd5c24fa0a538e490954ecfddabd3fbe7bd6de4d5",
+      "legacy_blocks": 15,
+      "lizard_functions": 14,
+      "legacy_mean": 3.066666666666667,
+      "lizard_mean": 3.2857142857142856
+    },
+    {
+      "file": "src/terms.py",
+      "sha256": "8a7e333fd692537700f82d5f9713923cbc2e83e2f6094272f4f92b8276c3c427",
+      "legacy_blocks": 7,
+      "lizard_functions": 7,
+      "legacy_mean": 4.857142857142857,
+      "lizard_mean": 4.857142857142857
+    }
+  ],
+  "functions": [
+    {
+      "file": "src/anonymize.py",
+      "line": 124,
+      "name": "_generator_key",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 132,
+      "name": "_gen_value",
+      "lizard": 18,
+      "legacy": 18,
+      "ruff": 18,
+      "cognitive": 17
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 172,
+      "name": "_generate_row",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 178,
+      "name": "_schema_sha",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 183,
+      "name": "anonymize_csv",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 1,
+      "cognitive": 3
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 205,
+      "name": "_scan_sheet",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 214,
+      "name": "_column_names_from_header",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 3
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 218,
+      "name": "_anonymize_sheet",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 7
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 233,
+      "name": "anonymize_xlsx",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 269,
+      "name": "anonymize_path",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 285,
+      "name": "_write_meta",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/anonymize.py",
+      "line": 291,
+      "name": "cli_main",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cli.py",
+      "line": 25,
+      "name": "build_parser",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cli.py",
+      "line": 348,
+      "name": "_dispatch_enrolled_recon",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 8,
+      "cognitive": 9
+    },
+    {
+      "file": "src/cli.py",
+      "line": 379,
+      "name": "_dispatch_inventory",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 8,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cli.py",
+      "line": 417,
+      "name": "_dispatch_inventory_inbox",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cli.py",
+      "line": 434,
+      "name": "_dispatch_rotation",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cli.py",
+      "line": 459,
+      "name": "_dispatch_rotate",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cli.py",
+      "line": 472,
+      "name": "_dispatch_tracker",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cli.py",
+      "line": 491,
+      "name": "_dispatch_inbox",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cli.py",
+      "line": 507,
+      "name": "_dispatch_case",
+      "lizard": 35,
+      "legacy": 40,
+      "ruff": 29,
+      "cognitive": 46
+    },
+    {
+      "file": "src/cli.py",
+      "line": 686,
+      "name": "_dispatch_attended_case",
+      "lizard": 25,
+      "legacy": 27,
+      "ruff": 22,
+      "cognitive": 33
+    },
+    {
+      "file": "src/cli.py",
+      "line": 775,
+      "name": "main",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 18,
+      "cognitive": 28
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 15,
+      "name": "application_lifecycle",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 1,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 34,
+      "name": "event_date",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 47,
+      "name": "material_workflow",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 72,
+      "name": "_key",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 1,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 79,
+      "name": "_labels",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 91,
+      "name": "_signature",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 99,
+      "name": "_contact",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 126,
+      "name": "daily_work.record_change",
+      "lizard": 3,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "line": 112,
+      "name": "daily_work",
+      "lizard": 68,
+      "legacy": 68,
+      "ruff": 22,
+      "cognitive": 129
+    },
+    {
+      "file": "src/cob_reports/applications/cli.py",
+      "line": 16,
+      "name": "configure_parser",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/applications/cli.py",
+      "line": 112,
+      "name": "run",
+      "lizard": 98,
+      "legacy": 98,
+      "ruff": 31,
+      "cognitive": 107
+    },
+    {
+      "file": "src/cob_reports/applications/comparison.py",
+      "line": 55,
+      "name": "ownership",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 19,
+      "name": "_external",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 29,
+      "name": "_inventory",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 7,
+      "cognitive": 16
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 58,
+      "name": "_private_directory",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 65,
+      "name": "_write_once",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 79,
+      "name": "_verify_archive",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 7,
+      "cognitive": 11
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 102,
+      "name": "_archive",
+      "lizard": 7,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "line": 133,
+      "name": "stage_cutover",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 13,
+      "cognitive": 25
+    },
+    {
+      "file": "src/cob_reports/applications/document_layout.py",
+      "line": 15,
+      "name": "document_candidate",
+      "lizard": 55,
+      "legacy": 54,
+      "ruff": 13,
+      "cognitive": 81
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "line": 26,
+      "name": "record_selector",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "line": 50,
+      "name": "receipt_role",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "line": 113,
+      "name": "_text",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "line": 160,
+      "name": "reconcile_rows.cell",
+      "lizard": 3,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "line": 127,
+      "name": "reconcile_rows",
+      "lizard": 59,
+      "legacy": 59,
+      "ruff": 33,
+      "cognitive": 117
+    },
+    {
+      "file": "src/cob_reports/applications/inspection.py",
+      "line": 55,
+      "name": "_kind",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 9,
+      "cognitive": 9
+    },
+    {
+      "file": "src/cob_reports/applications/inspection.py",
+      "line": 76,
+      "name": "_profile",
+      "lizard": 25,
+      "legacy": 24,
+      "ruff": 8,
+      "cognitive": 37
+    },
+    {
+      "file": "src/cob_reports/applications/inspection.py",
+      "line": 136,
+      "name": "_legacy_parser",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/applications/inspection.py",
+      "line": 152,
+      "name": "inspect_plan",
+      "lizard": 32,
+      "legacy": 32,
+      "ruff": 13,
+      "cognitive": 48
+    },
+    {
+      "file": "src/cob_reports/applications/layout_review.py",
+      "line": 35,
+      "name": "_escape",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/applications/layout_review.py",
+      "line": 39,
+      "name": "_table",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/applications/layout_review.py",
+      "line": 52,
+      "name": "_source_view",
+      "lizard": 59,
+      "legacy": 58,
+      "ruff": 19,
+      "cognitive": 78
+    },
+    {
+      "file": "src/cob_reports/applications/layout_review.py",
+      "line": 258,
+      "name": "write_layout_review",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 10,
+      "cognitive": 17
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "line": 39,
+      "name": "_sample",
+      "lizard": 8,
+      "legacy": 7,
+      "ruff": 1,
+      "cognitive": 10
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "line": 58,
+      "name": "_flat_candidate",
+      "lizard": 23,
+      "legacy": 23,
+      "ruff": 5,
+      "cognitive": 45
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "line": 100,
+      "name": "_bind_headers",
+      "lizard": 13,
+      "legacy": 12,
+      "ruff": 5,
+      "cognitive": 13
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "line": 145,
+      "name": "prepare_sources",
+      "lizard": 44,
+      "legacy": 44,
+      "ruff": 16,
+      "cognitive": 75
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "line": 325,
+      "name": "discover_latest_sources",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 9,
+      "cognitive": 36
+    },
+    {
+      "file": "src/cob_reports/applications/publishing.py",
+      "line": 20,
+      "name": "_rotate_prior_html",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 11,
+      "cognitive": 27
+    },
+    {
+      "file": "src/cob_reports/applications/publishing.py",
+      "line": 61,
+      "name": "publish_report_html",
+      "lizard": 24,
+      "legacy": 24,
+      "ruff": 16,
+      "cognitive": 34
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "line": 46,
+      "name": "enrollment_term_scope",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 8,
+      "cognitive": 14
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "line": 91,
+      "name": "material_category",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "line": 128,
+      "name": "matrix_materials",
+      "lizard": 15,
+      "legacy": 15,
+      "ruff": 3,
+      "cognitive": 23
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "line": 151,
+      "name": "applicant_work_tables",
+      "lizard": 41,
+      "legacy": 41,
+      "ruff": 13,
+      "cognitive": 68
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "line": 292,
+      "name": "_receipt_date",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "line": 305,
+      "name": "operator_product",
+      "lizard": 54,
+      "legacy": 54,
+      "ruff": 20,
+      "cognitive": 94
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 53,
+      "name": "_date",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 65,
+      "name": "build_report",
+      "lizard": 41,
+      "legacy": 41,
+      "ruff": 8,
+      "cognitive": 58
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 196,
+      "name": "_display",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 202,
+      "name": "_csv",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 2,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 217,
+      "name": "_tables",
+      "lizard": 53,
+      "legacy": 53,
+      "ruff": 3,
+      "cognitive": 64
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 530,
+      "name": "_material_cells",
+      "lizard": 31,
+      "legacy": 31,
+      "ruff": 10,
+      "cognitive": 62
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 605,
+      "name": "_applicant_identity",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 609,
+      "name": "_work_tables",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 3,
+      "cognitive": 15
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 981,
+      "name": "render_report_files.table_cell",
+      "lizard": 9,
+      "legacy": null,
+      "ruff": 4,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 1171,
+      "name": "render_report_files.clip",
+      "lizard": 7,
+      "legacy": null,
+      "ruff": 4,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 704,
+      "name": "render_report_files",
+      "lizard": 100,
+      "legacy": 100,
+      "ruff": 53,
+      "cognitive": 218
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 1346,
+      "name": "write_report_package",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 8,
+      "cognitive": 11
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 1388,
+      "name": "load_previous_report",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "line": 1398,
+      "name": "verify_report_package",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 8,
+      "cognitive": 15
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "line": 22,
+      "name": "_private",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "line": 30,
+      "name": "_readonly",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "line": 36,
+      "name": "_snapshot",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "line": 45,
+      "name": "_database_digest",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "line": 53,
+      "name": "_rename_exclusive",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "line": 76,
+      "name": "retire_legacy",
+      "lizard": 30,
+      "legacy": 30,
+      "ruff": 16,
+      "cognitive": 28
+    },
+    {
+      "file": "src/cob_reports/applications/rotation.py",
+      "line": 23,
+      "name": "_sync_directory",
+      "lizard": 2,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/applications/rotation.py",
+      "line": 33,
+      "name": "rotate_processed_inputs",
+      "lizard": 55,
+      "legacy": 54,
+      "ruff": 39,
+      "cognitive": 72
+    },
+    {
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "line": 187,
+      "name": "write_status_inventory.counts",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "line": 269,
+      "name": "write_status_inventory.table",
+      "lizard": 4,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "line": 44,
+      "name": "write_status_inventory",
+      "lizard": 81,
+      "legacy": 80,
+      "ruff": 33,
+      "cognitive": 113
+    },
+    {
+      "file": "src/cob_reports/applications/store.py",
+      "line": 20,
+      "name": "persist_snapshot",
+      "lizard": 19,
+      "legacy": 18,
+      "ruff": 11,
+      "cognitive": 16
+    },
+    {
+      "file": "src/cob_reports/applications/store.py",
+      "line": 90,
+      "name": "_operations_schema",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/applications/store.py",
+      "line": 109,
+      "name": "record_successful_run",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/applications/store.py",
+      "line": 160,
+      "name": "rotation_state",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/applications/workbooks.py",
+      "line": 35,
+      "name": "_digest",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/applications/workbooks.py",
+      "line": 43,
+      "name": "reconcile_workbooks",
+      "lizard": 37,
+      "legacy": 36,
+      "ruff": 17,
+      "cognitive": 58
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "line": 14,
+      "name": "_external",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "line": 21,
+      "name": "archived_source_path",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "line": 31,
+      "name": "resolve_source",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "line": 42,
+      "name": "load_plan",
+      "lizard": 16,
+      "legacy": 16,
+      "ruff": 8,
+      "cognitive": 17
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "line": 84,
+      "name": "approve_plan",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "line": 31,
+      "name": "logo_html",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "line": 39,
+      "name": "brand_header",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "line": 45,
+      "name": "_font_face",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 7,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "line": 74,
+      "name": "approved_font_faces",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "line": 100,
+      "name": "embed_word_brand_fonts",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 7,
+      "cognitive": 11
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "line": 144,
+      "name": "pdf_brand_archive",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/apple_vision.py",
+      "line": 22,
+      "name": "recognize_image",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 6,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/cases/artifacts.py",
+      "line": 24,
+      "name": "fill_docx_template",
+      "lizard": 28,
+      "legacy": 28,
+      "ruff": 15,
+      "cognitive": 28
+    },
+    {
+      "file": "src/cob_reports/cases/artifacts.py",
+      "line": 96,
+      "name": "_all_paragraphs",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/attachment_roles.py",
+      "line": 19,
+      "name": "_checked_assignments",
+      "lizard": 14,
+      "legacy": 16,
+      "ruff": 10,
+      "cognitive": 18
+    },
+    {
+      "file": "src/cob_reports/cases/attachment_roles.py",
+      "line": 55,
+      "name": "confirm_attachment_roles",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/attachment_roles.py",
+      "line": 83,
+      "name": "read_attachment_roles",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "line": 29,
+      "name": "_sha256",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "line": 37,
+      "name": "_checked_recovery_root",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 4,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "line": 51,
+      "name": "_mark_obligation",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "line": 74,
+      "name": "verify_recovery_copy",
+      "lizard": 19,
+      "legacy": 19,
+      "ruff": 6,
+      "cognitive": 9
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "line": 118,
+      "name": "backup_operational_database",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "line": 59,
+      "name": "migrate_case_store",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "line": 118,
+      "name": "case_status",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 2,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "line": 170,
+      "name": "record_transition",
+      "lizard": 22,
+      "legacy": 22,
+      "ruff": 13,
+      "cognitive": 34
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "line": 254,
+      "name": "begin_case_operation",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "line": 281,
+      "name": "complete_case_operation",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/documents.py",
+      "line": 24,
+      "name": "read_document_pages",
+      "lizard": 24,
+      "legacy": 24,
+      "ruff": 11,
+      "cognitive": 29
+    },
+    {
+      "file": "src/cob_reports/cases/evidence.py",
+      "line": 21,
+      "name": "extract_intake_documents",
+      "lizard": 26,
+      "legacy": 26,
+      "ruff": 16,
+      "cognitive": 34
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 40,
+      "name": "_sha",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 44,
+      "name": "_document_bytes",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 56,
+      "name": "build_backup",
+      "lizard": 15,
+      "legacy": 15,
+      "ruff": 10,
+      "cognitive": 13
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 110,
+      "name": "_safe_name",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 114,
+      "name": "_read_payloads",
+      "lizard": 14,
+      "legacy": 14,
+      "ruff": 9,
+      "cognitive": 15
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 142,
+      "name": "_document_from_bytes",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 168,
+      "name": "_verified_parts",
+      "lizard": 24,
+      "legacy": 24,
+      "ruff": 15,
+      "cognitive": 25
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 227,
+      "name": "read_backup_parts",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 247,
+      "name": "verify_backup",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "line": 256,
+      "name": "recover_ini_candidate",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 39,
+      "name": "optionxform",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 43,
+      "name": "_parser",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 47,
+      "name": "_fact_keys",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 51,
+      "name": "_write_fact",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 3,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 77,
+      "name": "render_case_ini",
+      "lizard": 12,
+      "legacy": 12,
+      "ruff": 12,
+      "cognitive": 26
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 120,
+      "name": "_get",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 126,
+      "name": "_safe_section",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 130,
+      "name": "_read_fact",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 8,
+      "cognitive": 17
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 171,
+      "name": "_has_fact_part",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 175,
+      "name": "_allowed",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 8,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 193,
+      "name": "_row",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "line": 205,
+      "name": "parse_case_ini",
+      "lizard": 26,
+      "legacy": 26,
+      "ruff": 15,
+      "cognitive": 33
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_proposals.py",
+      "line": 22,
+      "name": "_claims_human_origin",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_proposals.py",
+      "line": 33,
+      "name": "propose_case_evidence",
+      "lizard": 16,
+      "legacy": 16,
+      "ruff": 11,
+      "cognitive": 21
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 19,
+      "name": "_checked_sha",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 25,
+      "name": "_checked_date",
+      "lizard": 4,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 52,
+      "name": "valid_sha",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 57,
+      "name": "valid_revision",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 64,
+      "name": "valid_locator",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 71,
+      "name": "valid_region",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 86,
+      "name": "valid_evidence",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 4,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 107,
+      "name": "valid_id",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 113,
+      "name": "valid_dates",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 128,
+      "name": "valid_sha",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 132,
+      "name": "unique_roles",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 147,
+      "name": "valid_id",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 169,
+      "name": "valid_id",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 176,
+      "name": "valid_term_id",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 182,
+      "name": "valid_credits",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 201,
+      "name": "valid_sha",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 205,
+      "name": "valid_rows",
+      "lizard": 15,
+      "legacy": 15,
+      "ruff": 8,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 234,
+      "name": "valid_sha",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 238,
+      "name": "has_evidence",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 243,
+      "name": "all_source_refs",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 247,
+      "name": "_walk_refs",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 6,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "line": 258,
+      "name": "validate_against_sources",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 6,
+      "cognitive": 10
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 24,
+      "name": "_sha",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 28,
+      "name": "_checked_root",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 41,
+      "name": "_checked_revision_dir",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 56,
+      "name": "_next_number",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 65,
+      "name": "_write_new",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 115,
+      "name": "_read_existing",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 138,
+      "name": "_mark_human_changes",
+      "lizard": 17,
+      "legacy": 17,
+      "ruff": 11,
+      "cognitive": 36
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 169,
+      "name": "_has_unknown",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 9
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 180,
+      "name": "write_proposed_revision",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 201,
+      "name": "write_edited_revision",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 249,
+      "name": "confirm_revision",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 271,
+      "name": "read_confirmed_revision",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "line": 279,
+      "name": "find_child_revision",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_sources.py",
+      "line": 9,
+      "name": "index_documents",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 5,
+      "cognitive": 15
+    },
+    {
+      "file": "src/cob_reports/cases/form_contract.py",
+      "line": 103,
+      "name": "resolve_reviewed_fields",
+      "lizard": 21,
+      "legacy": 21,
+      "ruff": 14,
+      "cognitive": 24
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 57,
+      "name": "markdown",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 74,
+      "name": "_checked_locations",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 87,
+      "name": "_sha256",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 95,
+      "name": "_docx_markdown",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 8,
+      "cognitive": 29
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 121,
+      "name": "_page_markdown",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 126,
+      "name": "_large_raster",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 140,
+      "name": "__init__",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 153,
+      "name": "ingest",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 186,
+      "name": "_ocr_page",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 3,
+      "cognitive": 8
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "line": 227,
+      "name": "reason",
+      "lizard": 18,
+      "legacy": 18,
+      "ruff": 7,
+      "cognitive": 10
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "line": 34,
+      "name": "ingest_eml",
+      "lizard": 28,
+      "legacy": 27,
+      "ruff": 18,
+      "cognitive": 25
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "line": 134,
+      "name": "parse_email_attachments",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 7,
+      "cognitive": 17
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "line": 160,
+      "name": "_safe_filename",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "line": 166,
+      "name": "_write_exclusive",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "line": 172,
+      "name": "_existing_receipt",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 9,
+      "cognitive": 12
+    },
+    {
+      "file": "src/cob_reports/cases/local_model.py",
+      "line": 18,
+      "name": "_validate_request",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/cases/local_model.py",
+      "line": 31,
+      "name": "_local_host",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/local_model.py",
+      "line": 51,
+      "name": "generate_local",
+      "lizard": 12,
+      "legacy": 11,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/local_model.py",
+      "line": 95,
+      "name": "chat_local",
+      "lizard": 10,
+      "legacy": 9,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/receipts.py",
+      "line": 52,
+      "name": "__post_init__",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 2,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/receipts.py",
+      "line": 66,
+      "name": "to_cli_json",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 53,
+      "name": "__init__",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 57,
+      "name": "handle_data",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 62,
+      "name": "_conversation",
+      "lizard": 19,
+      "legacy": 19,
+      "ruff": 14,
+      "cognitive": 33
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 98,
+      "name": "_validate_proposal",
+      "lizard": 20,
+      "legacy": 20,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 132,
+      "name": "propose_route",
+      "lizard": 12,
+      "legacy": 14,
+      "ruff": 7,
+      "cognitive": 10
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 218,
+      "name": "prepare_route_review",
+      "lizard": 13,
+      "legacy": 15,
+      "ruff": 6,
+      "cognitive": 10
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 287,
+      "name": "_read_saved_proposal",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 300,
+      "name": "confirm_route",
+      "lizard": 14,
+      "legacy": 14,
+      "ruff": 7,
+      "cognitive": 14
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 343,
+      "name": "confirm_outcomes",
+      "lizard": 8,
+      "legacy": 9,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "line": 385,
+      "name": "read_confirmed_outcomes",
+      "lizard": 18,
+      "legacy": 19,
+      "ruff": 6,
+      "cognitive": 9
+    },
+    {
+      "file": "src/cob_reports/cases/staged_evidence.py",
+      "line": 24,
+      "name": "extract_staged_documents",
+      "lizard": 23,
+      "legacy": 25,
+      "ruff": 8,
+      "cognitive": 25
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "line": 33,
+      "name": "_extract_dir",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "line": 46,
+      "name": "_document_record",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "line": 57,
+      "name": "_load_document",
+      "lizard": 41,
+      "legacy": 41,
+      "ruff": 13,
+      "cognitive": 52
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "line": 147,
+      "name": "_selected_sources",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 8,
+      "cognitive": 13
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "line": 177,
+      "name": "extract_spec_documents",
+      "lizard": 10,
+      "legacy": 9,
+      "ruff": 5,
+      "cognitive": 11
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "line": 213,
+      "name": "read_spec_documents",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 38,
+      "name": "_external_root",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 47,
+      "name": "_regular_file",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 56,
+      "name": "_sha256",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 64,
+      "name": "_write_new",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 75,
+      "name": "_write_new_atomic",
+      "lizard": 2,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 88,
+      "name": "stage_eml",
+      "lizard": 39,
+      "legacy": 39,
+      "ruff": 20,
+      "cognitive": 43
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 193,
+      "name": "_checked_stage",
+      "lizard": 22,
+      "legacy": 22,
+      "ruff": 13,
+      "cognitive": 22
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 241,
+      "name": "_checked_route_confirmation",
+      "lizard": 15,
+      "legacy": 15,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "line": 269,
+      "name": "commit_staged",
+      "lizard": 19,
+      "legacy": 22,
+      "ruff": 13,
+      "cognitive": 17
+    },
+    {
+      "file": "src/cob_reports/cases/vision.py",
+      "line": 28,
+      "name": "transcribe_image",
+      "lizard": 15,
+      "legacy": 15,
+      "ruff": 8,
+      "cognitive": 11
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 50,
+      "name": "_digest",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 59,
+      "name": "__init__",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 75,
+      "name": "_store",
+      "lizard": 2,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 83,
+      "name": "_stage",
+      "lizard": 5,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 98,
+      "name": "_receipt",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 116,
+      "name": "status",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 121,
+      "name": "start",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 139,
+      "name": "extract",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 154,
+      "name": "prepare_outcomes_review",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 163,
+      "name": "propose_outcomes",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 172,
+      "name": "confirm_outcomes",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 210,
+      "name": "confirm_identity",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 252,
+      "name": "assign_evidence",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 273,
+      "name": "_evidence_root",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 282,
+      "name": "propose_evidence",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 343,
+      "name": "submit_evidence_edit",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "line": 377,
+      "name": "confirm_evidence",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/cob_reports/jarvis.py",
+      "line": 22,
+      "name": "__init__",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/cob_reports/jarvis.py",
+      "line": 32,
+      "name": "_failure",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 8,
+      "cognitive": 13
+    },
+    {
+      "file": "src/cob_reports/jarvis.py",
+      "line": 61,
+      "name": "chat_jarvis",
+      "lizard": 22,
+      "legacy": 22,
+      "ruff": 12,
+      "cognitive": 22
+    },
+    {
+      "file": "src/cob_reports/local_model_check.py",
+      "line": 28,
+      "name": "_apple_marker",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/cob_reports/local_model_check.py",
+      "line": 41,
+      "name": "main",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 4,
+      "cognitive": 9
+    },
+    {
+      "file": "src/cob_reports/operational_store.py",
+      "line": 13,
+      "name": "_checked_path",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/cob_reports/operational_store.py",
+      "line": 35,
+      "name": "open_operational_store",
+      "lizard": 7,
+      "legacy": 8,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/config.py",
+      "line": 62,
+      "name": "_read_dotenv",
+      "lizard": 12,
+      "legacy": 12,
+      "ruff": 9,
+      "cognitive": 17
+    },
+    {
+      "file": "src/config.py",
+      "line": 87,
+      "name": "_deep_merge",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 6
+    },
+    {
+      "file": "src/config.py",
+      "line": 97,
+      "name": "_read_json",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/config.py",
+      "line": 105,
+      "name": "load_settings",
+      "lizard": 17,
+      "legacy": 17,
+      "ruff": 10,
+      "cognitive": 17
+    },
+    {
+      "file": "src/config.py",
+      "line": 151,
+      "name": "case_storage_roots",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 6,
+      "cognitive": 10
+    },
+    {
+      "file": "src/config.py",
+      "line": 177,
+      "name": "case_staging_root",
+      "lizard": 17,
+      "legacy": 17,
+      "ruff": 10,
+      "cognitive": 16
+    },
+    {
+      "file": "src/config.py",
+      "line": 208,
+      "name": "operational_database_paths",
+      "lizard": 23,
+      "legacy": 23,
+      "ruff": 10,
+      "cognitive": 19
+    },
+    {
+      "file": "src/config.py",
+      "line": 248,
+      "name": "verify_smb_case_mount",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 8,
+      "cognitive": 14
+    },
+    {
+      "file": "src/config.py",
+      "line": 276,
+      "name": "_resolve_root",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/config.py",
+      "line": 285,
+      "name": "_normalized",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/config.py",
+      "line": 289,
+      "name": "_is_at_or_below",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/config.py",
+      "line": 295,
+      "name": "ensure_output_path",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/config.py",
+      "line": 305,
+      "name": "data_root",
+      "lizard": 2,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/config.py",
+      "line": 312,
+      "name": "output_root",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/config.py",
+      "line": 338,
+      "name": "resolve_path",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/config.py",
+      "line": 348,
+      "name": "require_path",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/config.py",
+      "line": 364,
+      "name": "resolve_output_path",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/config.py",
+      "line": 374,
+      "name": "require_output_path",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/config.py",
+      "line": 387,
+      "name": "section",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/config.py",
+      "line": 395,
+      "name": "load_section",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/config.py",
+      "line": 403,
+      "name": "runtime_secret",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/config.py",
+      "line": 415,
+      "name": "validate_applications_html_destination",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 7,
+      "cognitive": 12
+    },
+    {
+      "file": "src/config.py",
+      "line": 438,
+      "name": "applications_html_destinations",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 5,
+      "cognitive": 12
+    },
+    {
+      "file": "src/describe.py",
+      "line": 81,
+      "name": "_file_meta",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/describe.py",
+      "line": 86,
+      "name": "_csv_columns",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/describe.py",
+      "line": 98,
+      "name": "_csv_row_count",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/describe.py",
+      "line": 106,
+      "name": "describe_csv",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/describe.py",
+      "line": 130,
+      "name": "_detect_header_row",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 4,
+      "cognitive": 9
+    },
+    {
+      "file": "src/describe.py",
+      "line": 141,
+      "name": "_detect_footer_row",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 4,
+      "cognitive": 11
+    },
+    {
+      "file": "src/describe.py",
+      "line": 155,
+      "name": "_describe_sheet",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 6,
+      "cognitive": 14
+    },
+    {
+      "file": "src/describe.py",
+      "line": 183,
+      "name": "describe_xlsx",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/describe.py",
+      "line": 207,
+      "name": "_describe_one_file",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/describe.py",
+      "line": 217,
+      "name": "_is_skippable",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/describe.py",
+      "line": 221,
+      "name": "describe_path",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/describe.py",
+      "line": 233,
+      "name": "_format_file",
+      "lizard": 12,
+      "legacy": 12,
+      "ruff": 7,
+      "cognitive": 23
+    },
+    {
+      "file": "src/describe.py",
+      "line": 265,
+      "name": "_format_text",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/describe.py",
+      "line": 276,
+      "name": "cli_main",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 98,
+      "name": "_find_xlsx_header",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 3,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 117,
+      "name": "_classify_grads_xlsx",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 142,
+      "name": "_grads_applicants_terms",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 156,
+      "name": "_grads_applicants_single_term_proposal",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 180,
+      "name": "_grads_applicants_multi_term_proposal",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 203,
+      "name": "_classify_grads_applicants",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 222,
+      "name": "_classify_tracker_xlsx",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 249,
+      "name": "_admits_columns",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 256,
+      "name": "_classify_admits_xlsx",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 286,
+      "name": "_student_roster_terms",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 306,
+      "name": "_bucket_for_terms",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 314,
+      "name": "_student_roster_single_proposal",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 357,
+      "name": "_student_roster_split_proposal",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 386,
+      "name": "_classify_student_roster",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 4
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 426,
+      "name": "classify",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 431,
+      "name": "plan",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 439,
+      "name": "_route_transform_grads_xlsx",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 486,
+      "name": "_route_split_grads_applicants_csv",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 513,
+      "name": "_route_split_student_roster_csv",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 3,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 542,
+      "name": "_route_convert_admits_xlsx",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 569,
+      "name": "execute",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 577,
+      "name": "_resolve_inbox_context",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 595,
+      "name": "_write_report",
+      "lizard": 3,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 629,
+      "name": "_resolve_classifier_ctx",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 646,
+      "name": "_ledger_record",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "line": 659,
+      "name": "sweep",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 58,
+      "name": "col_set",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 95,
+      "name": "extract_datestamp",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 101,
+      "name": "datestamp_from_name",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 115,
+      "name": "datestamp_from_path",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 135,
+      "name": "terms_from_name",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 159,
+      "name": "discover",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 166,
+      "name": "probe",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 197,
+      "name": "run_classifiers",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 212,
+      "name": "plan",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 227,
+      "name": "rotate_everything_except_dest",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 243,
+      "name": "rotate_older_than",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 6,
+      "cognitive": 11
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 266,
+      "name": "route_move",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 278,
+      "name": "route_remove",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 289,
+      "name": "execute_with",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 300,
+      "name": "_format_dest",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 307,
+      "name": "_init_event",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 1,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 322,
+      "name": "_print_item_banner",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 330,
+      "name": "_print_proposal",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 337,
+      "name": "_run_proposal",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 354,
+      "name": "_interactive_confirm",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 363,
+      "name": "_process_item",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 400,
+      "name": "sweep_inbox",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 5,
+      "cognitive": 9
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "line": 461,
+      "name": "build_inbox_report",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 6,
+      "cognitive": 14
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 16,
+      "name": "_find_sec_schools_column",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 23,
+      "name": "filter_cob_sections",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 37,
+      "name": "prepare_all_cob_data",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 65,
+      "name": "prepare_course_data_main",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 90,
+      "name": "audit_course_data",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 113,
+      "name": "audit_course_data_main",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 127,
+      "name": "_detect_faculty_column",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 151,
+      "name": "build_faculty_summary",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 6,
+      "cognitive": 11
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 199,
+      "name": "build_faculty_reports",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "line": 221,
+      "name": "build_faculty_reports_main",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/export_calculations.py",
+      "line": 21,
+      "name": "export_faculty_calculation_details",
+      "lizard": 20,
+      "legacy": 20,
+      "ruff": 7,
+      "cognitive": 54
+    },
+    {
+      "file": "src/inventory/export_calculations.py",
+      "line": 229,
+      "name": "export_all_faculty_calculations",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 57,
+      "name": "load_roster.normalize_keys",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 18,
+      "name": "load_roster",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 68,
+      "name": "load_schedule_data",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 95,
+      "name": "build_faculty_name.build_faculty_full",
+      "lizard": 13,
+      "legacy": null,
+      "ruff": 4,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 89,
+      "name": "build_faculty_name",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 6,
+      "cognitive": 20
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 123,
+      "name": "standardize_schedule_fields",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 149,
+      "name": "build_course_components",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 192,
+      "name": "compute_component_frequency",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "line": 229,
+      "name": "deduplicate_enrollment",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/faculty_reports_main.py",
+      "line": 32,
+      "name": "main",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 9,
+      "name": "strip_title_suffix",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 16,
+      "name": "tokens",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 22,
+      "name": "first_last_key_from_full",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 32,
+      "name": "first_last_key_from_parts",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 42,
+      "name": "last_name_sort_key",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 48,
+      "name": "acad_year",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 54,
+      "name": "last_two_digits",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "line": 60,
+      "name": "parse_roster_line",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 78,
+      "name": "_classify_course_sections.dest_for",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 58,
+      "name": "_classify_course_sections",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 5,
+      "cognitive": 10
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 104,
+      "name": "classify",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 109,
+      "name": "plan",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 116,
+      "name": "_route_split_course_sections",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 148,
+      "name": "execute",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 156,
+      "name": "_resolve_inbox_context",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 174,
+      "name": "_run_prune",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 184,
+      "name": "_write_report",
+      "lizard": 3,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 244,
+      "name": "sweep._post_execute",
+      "lizard": 3,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "line": 224,
+      "name": "sweep",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 6,
+      "cognitive": 8
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 16,
+      "name": "export_intermediate_csvs",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 4,
+      "cognitive": 13
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 219,
+      "name": "export_tight_csv",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 239,
+      "name": "generate_cob_summary",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 4,
+      "cognitive": 12
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 303,
+      "name": "compute_term_averages.overall_avg_for_term_cob",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 309,
+      "name": "compute_term_averages.overall_avg_for_term_dept",
+      "lizard": 3,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 285,
+      "name": "compute_term_averages",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 318,
+      "name": "start_year",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 326,
+      "name": "_unlink_quiet",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 333,
+      "name": "_top5_lines",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 345,
+      "name": "_sort_term_by_freq",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 354,
+      "name": "_term_section_rows",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 368,
+      "name": "_term_summary_stats",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 376,
+      "name": "_ay_summary_line",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 387,
+      "name": "_grand_summary_line",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 398,
+      "name": "_dept_freq_tables",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 429,
+      "name": "_dept_totals_table",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 445,
+      "name": "_dept_term_block",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 477,
+      "name": "_dept_faculty_section",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 524,
+      "name": "generate_department_summaries",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 567,
+      "name": "_faculty_dept",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 572,
+      "name": "_indiv_term_block",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 605,
+      "name": "_indiv_report_body",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 650,
+      "name": "_indiv_path",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "line": 660,
+      "name": "generate_individual_reports",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/inventory/report_formats.py",
+      "line": 9,
+      "name": "convert_markdown_to_html",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/report_formats.py",
+      "line": 76,
+      "name": "convert_markdown_to_word",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/inventory/report_formats.py",
+      "line": 123,
+      "name": "convert_markdown_to_pdf",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/inventory/report_formats.py",
+      "line": 158,
+      "name": "export_all_formats",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 7,
+      "cognitive": 9
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 23,
+      "name": "count_preps",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 42,
+      "name": "compare_faculty_roster",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 121,
+      "name": "export_teaching_load_intermediates",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 185,
+      "name": "export_tl_calculations",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 6,
+      "cognitive": 11
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 288,
+      "name": "_term_columns",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 297,
+      "name": "_start_year",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 304,
+      "name": "_is_excluded_code",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 315,
+      "name": "_join_display_codes",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 326,
+      "name": "_build_section1_course_catalog",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 7,
+      "cognitive": 10
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 409,
+      "name": "generate_tl_cob_summary",
+      "lizard": 18,
+      "legacy": 18,
+      "ruff": 6,
+      "cognitive": 26
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 497,
+      "name": "_comp_display_table",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 507,
+      "name": "_tl_dept_matrix_rows",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 2,
+      "cognitive": 16
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 533,
+      "name": "_tl_dept_totals_matrix",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 543,
+      "name": "_tl_ay_block",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 8
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 566,
+      "name": "_tl_grand_summary",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 573,
+      "name": "_tl_faculty_detail",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 590,
+      "name": "generate_tl_department_summaries",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 4,
+      "cognitive": 9
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 626,
+      "name": "_tl_unique_preps_lines._term_label",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 629,
+      "name": "_tl_unique_preps_lines._prep_terms",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 625,
+      "name": "_tl_unique_preps_lines",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 4,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 652,
+      "name": "_tl_prep_count_summary",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 669,
+      "name": "_tl_individual_body",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 697,
+      "name": "_tl_file_path",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 704,
+      "name": "generate_tl_individual_reports",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 4,
+      "cognitive": 12
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 758,
+      "name": "_deans_title_block",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 771,
+      "name": "_deans_section1_dept",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 6
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 802,
+      "name": "_deans_section1",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 821,
+      "name": "_deans_section2",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 850,
+      "name": "_variability_table",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 864,
+      "name": "_deans_section3",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 901,
+      "name": "_deans_section4._dept_row",
+      "lizard": 3,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 887,
+      "name": "_deans_section4",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 4,
+      "cognitive": 8
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 920,
+      "name": "_deans_section5",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 3,
+      "cognitive": 10
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 950,
+      "name": "_deans_section6",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 5
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 981,
+      "name": "_deans_section7",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "line": 1001,
+      "name": "generate_deans_overview",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 1,
+      "cognitive": 5
+    },
+    {
+      "file": "src/inventory/teaching_load_main.py",
+      "line": 145,
+      "name": "main._term_label",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/inventory/teaching_load_main.py",
+      "line": 34,
+      "name": "main",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 7,
+      "cognitive": 13
+    },
+    {
+      "file": "src/ledger.py",
+      "line": 27,
+      "name": "ledger_path",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/ledger.py",
+      "line": 32,
+      "name": "record",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/ledger.py",
+      "line": 59,
+      "name": "read",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 55,
+      "name": "__init__",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 65,
+      "name": "_has_columns",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 83,
+      "name": "extract_datestamp",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 89,
+      "name": "extract_grads_term",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 98,
+      "name": "_apply_moves",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 109,
+      "name": "rotate_flat",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 7,
+      "cognitive": 12
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 143,
+      "name": "rotate_grouped",
+      "lizard": 12,
+      "legacy": 12,
+      "ruff": 8,
+      "cognitive": 15
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 180,
+      "name": "rotate_prev",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 188,
+      "name": "_format_dir",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 260,
+      "name": "sweep._record",
+      "lizard": 4,
+      "legacy": null,
+      "ruff": 3,
+      "cognitive": null
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 270,
+      "name": "sweep._guard",
+      "lizard": 4,
+      "legacy": null,
+      "ruff": 3,
+      "cognitive": null
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 196,
+      "name": "sweep",
+      "lizard": 16,
+      "legacy": 17,
+      "ruff": 14,
+      "cognitive": 32
+    },
+    {
+      "file": "src/maintenance.py",
+      "line": 341,
+      "name": "build_rotate_report",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 61,
+      "name": "extract_datestamp",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 67,
+      "name": "find_latest_file",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 6,
+      "cognitive": 9
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 90,
+      "name": "rotate_to_source",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 9,
+      "cognitive": 13
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 141,
+      "name": "find_first_present",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 153,
+      "name": "autoguess_columns",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 173,
+      "name": "normalize_series",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 6,
+      "cognitive": 6
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 192,
+      "name": "normalize_col",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 219,
+      "name": "make_keyframe",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 243,
+      "name": "unique_by_key",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 254,
+      "name": "_assemble_name",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 6,
+      "cognitive": 13
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 269,
+      "name": "_pick_col",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 278,
+      "name": "assemble_display_columns",
+      "lizard": 14,
+      "legacy": 14,
+      "ruff": 3,
+      "cognitive": 14
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 305,
+      "name": "load_csv",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 309,
+      "name": "infer_datestamp",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 323,
+      "name": "enrolled_recon_main",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 332,
+      "name": "_build_argparser",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 364,
+      "name": "_as_list",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 370,
+      "name": "_discover_roster",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 384,
+      "name": "_auto_discover",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 5,
+      "cognitive": 10
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 399,
+      "name": "_fallback_default_grads",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 409,
+      "name": "_resolve_input_paths",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 4,
+      "cognitive": 10
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 448,
+      "name": "_load_inputs",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 3,
+      "cognitive": 12
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 464,
+      "name": "_coalesce",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 471,
+      "name": "_resolve_name_cols",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 6
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 495,
+      "name": "_resolve_columns",
+      "lizard": 15,
+      "legacy": 15,
+      "ruff": 1,
+      "cognitive": 10
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 551,
+      "name": "_build_keys_and_sets",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 4,
+      "cognitive": 14
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 637,
+      "name": "_is_grad_acad_prog",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 647,
+      "name": "_split_by_hold_status",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 689,
+      "name": "_build_grad_only_view._raw",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 664,
+      "name": "_build_grad_only_view",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 5,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 710,
+      "name": "_build_views.view_from_keys",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 709,
+      "name": "_build_views",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 751,
+      "name": "_count_by_major",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 770,
+      "name": "_resolve_output_paths.ofn",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 773,
+      "name": "_resolve_output_paths.audit_ofn",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 757,
+      "name": "_resolve_output_paths",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 802,
+      "name": "_write_outputs",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 816,
+      "name": "_build_summary",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 856,
+      "name": "_print_result",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 881,
+      "name": "_generate_reports",
+      "lizard": 5,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 919,
+      "name": "_do_rotation",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "line": 933,
+      "name": "main",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 36,
+      "name": "_render_kv_table",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 43,
+      "name": "_render_df_markdown",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 3,
+      "cognitive": 8
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 57,
+      "name": "_first_present",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 64,
+      "name": "_program_series",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 72,
+      "name": "_has_hold",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 81,
+      "name": "_headline_counts",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 2,
+      "cognitive": 7
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 108,
+      "name": "_program_breakdown",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 116,
+      "name": "_hold_matrix",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 143,
+      "name": "_detail_frame",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 167,
+      "name": "_students_with_holds",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 176,
+      "name": "_outreach_detail",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/reports.py",
+      "line": 196,
+      "name": "build_recon_report",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 5,
+      "cognitive": 14
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 61,
+      "name": "_resolve_term_label",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 95,
+      "name": "_discover_roster",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 111,
+      "name": "_require_inputs",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 137,
+      "name": "_gather_inputs._dir",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 130,
+      "name": "_gather_inputs",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 177,
+      "name": "_build_sheets",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 213,
+      "name": "_sheet_summary_line",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 229,
+      "name": "_summary_md",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 253,
+      "name": "_write_summary_report",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 287,
+      "name": "_emit_report",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 311,
+      "name": "_resolve_output_path",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 322,
+      "name": "_backup_prior_tracker",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 342,
+      "name": "build",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 6
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "line": 387,
+      "name": "build_main",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 61,
+      "name": "find_latest",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 6,
+      "cognitive": 8
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 86,
+      "name": "split_applicant_name",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 106,
+      "name": "_state_for",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 115,
+      "name": "_text_for",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 125,
+      "name": "_read_csv_safe",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 129,
+      "name": "_grad_filter",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 143,
+      "name": "_col",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 155,
+      "name": "_summer_terms_by_id",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 5,
+      "cognitive": 13
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 173,
+      "name": "compose_not_registered",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 210,
+      "name": "_admits_min_rank",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "line": 216,
+      "name": "compose_admits",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 3,
+      "cognitive": 6
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 51,
+      "name": "decode_cell_state",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 5,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 74,
+      "name": "_cell_fill_rgb",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 87,
+      "name": "_read_verbatim_sheet",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 97,
+      "name": "_header_index",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 102,
+      "name": "_read_row_annotations",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 119,
+      "name": "_read_keyed_sheet",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 142,
+      "name": "_find_admits_sheet",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "line": 150,
+      "name": "read_tracker",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 3
+    },
+    {
+      "file": "src/registration/tracker_state.py",
+      "line": 62,
+      "name": "__post_init__",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "line": 53,
+      "name": "_state_fill",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "line": 61,
+      "name": "_autosize",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 4
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "line": 72,
+      "name": "_write_data_sheet",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 7,
+      "cognitive": 12
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "line": 96,
+      "name": "_write_verbatim_sheet",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 11
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "line": 107,
+      "name": "write_tracker",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/rotation/catalog_loader.py",
+      "line": 47,
+      "name": "load_catalog_csv._clean_credit_hours",
+      "lizard": 4,
+      "legacy": null,
+      "ruff": 2,
+      "cognitive": null
+    },
+    {
+      "file": "src/rotation/catalog_loader.py",
+      "line": 23,
+      "name": "load_catalog_csv",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 8
+    },
+    {
+      "file": "src/rotation/catalog_loader.py",
+      "line": 84,
+      "name": "merge_catalog_with_history",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 6,
+      "cognitive": 7
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "line": 11,
+      "name": "load_degree_plan_csv",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "line": 27,
+      "name": "parse_degree_plan_pdf",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 9,
+      "cognitive": 24
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "line": 102,
+      "name": "load_all_degree_plans",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 7,
+      "cognitive": 12
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "line": 177,
+      "name": "build_degree_requirements_index._classify_level",
+      "lizard": 6,
+      "legacy": null,
+      "ruff": 4,
+      "cognitive": null
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "line": 144,
+      "name": "build_degree_requirements_index",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 6,
+      "cognitive": 8
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "line": 205,
+      "name": "_is_section_header",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 28,
+      "name": "load_historical_data",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 64,
+      "name": "_term_label",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 80,
+      "name": "_collect_available_terms",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 1,
+      "cognitive": 4
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 89,
+      "name": "infer_frequency_pattern",
+      "lizard": 18,
+      "legacy": 18,
+      "ruff": 8,
+      "cognitive": 17
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 143,
+      "name": "_is_alternating_year",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 165,
+      "name": "compute_section_stats",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 2,
+      "cognitive": 8
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 213,
+      "name": "compute_enrollment_trend",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 7,
+      "cognitive": 6
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 267,
+      "name": "suggest_faculty",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 5,
+      "cognitive": 8
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 359,
+      "name": "build_historical_catalog._first_last_term",
+      "lizard": 1,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "line": 328,
+      "name": "build_historical_catalog",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 33,
+      "name": "_normalize_term",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 52,
+      "name": "_extract_courses_from_cells",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 69,
+      "name": "parse_xlsx_rotation",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 8,
+      "cognitive": 11
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 116,
+      "name": "_find_header_row",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 3,
+      "cognitive": 12
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 127,
+      "name": "_parse_sections_cell",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 134,
+      "name": "_structured_row_to_overrides",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 2,
+      "cognitive": 9
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 158,
+      "name": "_parse_structured_table",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 4,
+      "cognitive": 10
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 185,
+      "name": "_parse_term_grid",
+      "lizard": 12,
+      "legacy": 12,
+      "ruff": 9,
+      "cognitive": 31
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 224,
+      "name": "_rotation_text_to_terms",
+      "lizard": 17,
+      "legacy": 17,
+      "ruff": 10,
+      "cognitive": 19
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 264,
+      "name": "parse_docx_rotation",
+      "lizard": 11,
+      "legacy": 11,
+      "ruff": 10,
+      "cognitive": 17
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 331,
+      "name": "import_all_submissions",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 8,
+      "cognitive": 13
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "line": 379,
+      "name": "import_overrides_main",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "line": 25,
+      "name": "load_overrides",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "line": 51,
+      "name": "apply_overrides",
+      "lizard": 18,
+      "legacy": 18,
+      "ruff": 13,
+      "cognitive": 45
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "line": 166,
+      "name": "compute_rotation_diff._build_lookup",
+      "lizard": 6,
+      "legacy": null,
+      "ruff": 3,
+      "cognitive": null
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "line": 154,
+      "name": "compute_rotation_diff",
+      "lizard": 16,
+      "legacy": 16,
+      "ruff": 11,
+      "cognitive": 32
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "line": 268,
+      "name": "validate_overrides_main",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 9,
+      "cognitive": 13
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 18,
+      "name": "load_locked_schedule",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 6,
+      "cognitive": 13
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 76,
+      "name": "_build_degree_lookup",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 3
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 89,
+      "name": "_catalog_field",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 95,
+      "name": "_locked_course_attrs",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 4,
+      "cognitive": 5
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 116,
+      "name": "_locked_course_rows",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 8
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 150,
+      "name": "_collect_locked_rows",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 178,
+      "name": "_unlocked_course_rows",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 217,
+      "name": "_collect_unlocked_rows",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 9
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 255,
+      "name": "generate_rotation_draft",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 5
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 295,
+      "name": "_alt_year_terms",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 6
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 304,
+      "name": "_irregular_terms",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 9
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 315,
+      "name": "_assign_terms_by_pattern",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 4,
+      "cognitive": 9
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 343,
+      "name": "_calculate_projected_sections",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 5,
+      "cognitive": 9
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "line": 373,
+      "name": "_dept_from_subject",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 38,
+      "name": "_resolve_paths",
+      "lizard": 7,
+      "legacy": 7,
+      "ruff": 2,
+      "cognitive": 6
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 85,
+      "name": "_setup_output_dirs",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 93,
+      "name": "_load_merged_catalog",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 6
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 143,
+      "name": "_build_data_only_draft",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 168,
+      "name": "_apply_and_diff",
+      "lizard": 6,
+      "legacy": 7,
+      "ruff": 5,
+      "cognitive": 10
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 199,
+      "name": "_write_reports",
+      "lizard": 5,
+      "legacy": 6,
+      "ruff": 4,
+      "cognitive": 4
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 226,
+      "name": "_export_formats",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "line": 237,
+      "name": "main",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "line": 14,
+      "name": "generate_structured_table",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 3,
+      "cognitive": 4
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "line": 65,
+      "name": "generate_term_grid",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 7,
+      "cognitive": 13
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "line": 137,
+      "name": "generate_diff_report",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 4,
+      "cognitive": 7
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "line": 170,
+      "name": "generate_department_reports",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "line": 187,
+      "name": "generate_rotation_summary",
+      "lizard": 13,
+      "legacy": 13,
+      "ruff": 12,
+      "cognitive": 17
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "line": 315,
+      "name": "_df_to_markdown_table",
+      "lizard": 9,
+      "legacy": 9,
+      "ruff": 6,
+      "cognitive": 10
+    },
+    {
+      "file": "src/status.py",
+      "line": 52,
+      "name": "_datestamp",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 1
+    },
+    {
+      "file": "src/status.py",
+      "line": 58,
+      "name": "_csv_rows",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/status.py",
+      "line": 67,
+      "name": "_files",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/status.py",
+      "line": 75,
+      "name": "_pending",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 2,
+      "cognitive": 5
+    },
+    {
+      "file": "src/status.py",
+      "line": 85,
+      "name": "_term_sorted.key",
+      "lizard": 2,
+      "legacy": null,
+      "ruff": 1,
+      "cognitive": null
+    },
+    {
+      "file": "src/status.py",
+      "line": 82,
+      "name": "_term_sorted",
+      "lizard": 1,
+      "legacy": 1,
+      "ruff": 2,
+      "cognitive": 2
+    },
+    {
+      "file": "src/status.py",
+      "line": 92,
+      "name": "_feed",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 1,
+      "cognitive": 0
+    },
+    {
+      "file": "src/status.py",
+      "line": 102,
+      "name": "_latest",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/status.py",
+      "line": 116,
+      "name": "survey_registration",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 1,
+      "cognitive": 2
+    },
+    {
+      "file": "src/status.py",
+      "line": 135,
+      "name": "survey_inventory",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 1,
+      "cognitive": 4
+    },
+    {
+      "file": "src/status.py",
+      "line": 151,
+      "name": "_survey",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/status.py",
+      "line": 173,
+      "name": "_recent_activity",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/status.py",
+      "line": 184,
+      "name": "format_status",
+      "lizard": 6,
+      "legacy": 6,
+      "ruff": 3,
+      "cognitive": 10
+    },
+    {
+      "file": "src/status.py",
+      "line": 206,
+      "name": "status_main",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/terms.py",
+      "line": 55,
+      "name": "canonize",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/terms.py",
+      "line": 63,
+      "name": "term_rank",
+      "lizard": 2,
+      "legacy": 2,
+      "ruff": 2,
+      "cognitive": 1
+    },
+    {
+      "file": "src/terms.py",
+      "line": 71,
+      "name": "term2_to_rank",
+      "lizard": 5,
+      "legacy": 5,
+      "ruff": 5,
+      "cognitive": 7
+    },
+    {
+      "file": "src/terms.py",
+      "line": 89,
+      "name": "next_term",
+      "lizard": 3,
+      "legacy": 3,
+      "ruff": 3,
+      "cognitive": 2
+    },
+    {
+      "file": "src/terms.py",
+      "line": 100,
+      "name": "roster_terms",
+      "lizard": 4,
+      "legacy": 4,
+      "ruff": 2,
+      "cognitive": 3
+    },
+    {
+      "file": "src/terms.py",
+      "line": 113,
+      "name": "find_roster_for_term",
+      "lizard": 8,
+      "legacy": 8,
+      "ruff": 6,
+      "cognitive": 11
+    },
+    {
+      "file": "src/terms.py",
+      "line": 136,
+      "name": "find_rosters_between",
+      "lizard": 10,
+      "legacy": 10,
+      "ruff": 5,
+      "cognitive": 13
+    }
+  ],
+  "limitations": [
+    "Function matching uses file and start line; class aggregates and unmatched/nested blocks require separate review.",
+    "Numeric 20/20/20 is an approximation, not Radon-equivalent scoring.",
+    "No application imports, source changes, dependency changes or gate installation."
+  ],
+  "source_revision": "c6d18e29d2b76c8a520a122edffce0d576dace6b",
+  "date": "2026-10-09",
+  "combined_gate_observation": {
+    "legacy_failing_functions": 43,
+    "legacy_failing_functions_missed": 0,
+    "additional_matched_function_failures": 31,
+    "combined_function_failures": 74,
+    "gate": "Lizard >20 OR Ruff >20 OR cognitive >15; source-scoped, exploratory"
+  }
+}

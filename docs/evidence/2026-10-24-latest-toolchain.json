@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-24",
+  "candidate": "0.7.0 unreleased",
+  "freshness": "CURRENT",
+  "strict_acceptance": "BLOCKED",
+  "blockers": [
+    "Complexipy keyword qualification fails; selected gzkit shared candidate has loop/match discovery gaps and is not integrated or qualified",
+    "Remaining wider baseline/deeper-analysis and native-host proofs are not claimed; routine Ubuntu CI has passed"
+  ],
+  "python": {
+    "selected": "3.14.9",
+    "observed": "3.14.9",
+    "approved_family": "User-confirmed N-1 stable Python minor policy; currently 3.14.x, latest patch required",
+    "latest_in_family": "3.14.9",
+    "source": "https://www.python.org/downloads/release/python-3149/"
+  },
+  "uv_observed": "uv 0.13.5 (46776a95d 2026-10-21 aarch64-apple-darwin)",
+  "tools": [
+    {
+      "name": "uv",
+      "selected": "0.13.5",
+      "latest": "0.13.5",
+      "freshness": "CURRENT",
+      "installed": null,
+      "source": "https://pypi.org/pypi/uv/json"
+    },
+    {
+      "name": "uv_build",
+      "selected": "0.13.5",
+      "latest": "0.13.5",
+      "freshness": "CURRENT",
+      "installed": null,
+      "source": "https://pypi.org/pypi/uv_build/json"
+    },
+    {
+      "name": "ruff",
+      "selected": "0.17.2",
+      "latest": "0.17.2",
+      "freshness": "CURRENT",
+      "installed": "0.17.2",
+      "source": "https://pypi.org/pypi/ruff/json"
+    },
+    {
+      "name": "ty",
+      "selected": "0.0.91",
+      "latest": "0.0.91",
+      "freshness": "CURRENT",
+      "installed": "0.0.91",
+      "source": "https://pypi.org/pypi/ty/json"
+    },
+    {
+      "name": "pre-commit",
+      "selected": "4.7.0",
+      "latest": "4.7.0",
+      "freshness": "CURRENT",
+      "installed": "4.7.0",
+      "source": "https://pypi.org/pypi/pre-commit/json"
+    },
+    {
+      "name": "complexipy",
+      "selected": "8.1.0",
+      "latest": "8.1.0",
+      "freshness": "CURRENT",
+      "installed": "8.1.0",
+      "source": "https://pypi.org/pypi/complexipy/json"
+    },
+    {
+      "name": "cosmic-ray",
+      "selected": "8.7.0",
+      "latest": "8.7.0",
+      "freshness": "CURRENT",
+      "installed": "8.7.0",
+      "source": "https://pypi.org/pypi/cosmic-ray/json"
+    },
+    {
+      "name": "lizard",
+      "selected": "1.24.3",
+      "latest": "1.24.3",
+      "freshness": "CURRENT",
+      "installed": "1.24.3",
+      "source": "https://pypi.org/pypi/lizard/json"
+    }
+  ],
+  "components": [
+    {
+      "name": "superpowers",
+      "repository": "https://github.com/obra/superpowers",
+      "release": "v7.0.1",
+      "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "status": "released; selected independently of deferred Backplane",
+      "enabled_by_default": true
+    },
+    {
+      "name": "superpowers-backplane",
+      "repository": "https://github.com/tvproductions/superpowers-backplane",
+      "release": null,
+      "revision": "d0eeee829c491da02351e793544aa16ad96461bf",
+      "status": "pre-release; published commit, host acceptance incomplete",
+      "enabled_by_default": false
+    },
+    {
+      "name": "gz-skills",
+      "repository": "https://github.com/tvproductions/gz-skills",
+      "release": "v0.8.0",
+      "revision": "75bcd11ee9371ecff1a7b3432d2af29d4bdbb788",
+      "status": "released",
+      "enabled_by_default": true
+    }
+  ],
+  "components_review": {
+    "SP": "v7.0.1 tag dereferenced and release notes reviewed; native loading not exercised",
+    "gz-skills": "v0.8.0 remains latest observed release",
+    "Backplane": "disabled, no published release; preserve the reviewed snapshot until readiness review rather than claiming it is latest main"
+  },
+  "ci_actions": {
+    "checkout": "v7.0.1 current; full SHA retained",
+    "setup-uv": "v10.3.2 latest observed; tag SHA verified; exact-commit Ubuntu CI succeeded"
+  },
+  "qualification": {
+    "compatibility": "failed",
+    "canary_failures": [
+      {
+        "case": "conditional_keywords",
+        "expected": 9,
+        "observed": 0
+      }
+    ]
+  },
+  "scope": "Latest selected baseline distributions checked live; uv lock --upgrade refreshed compatible transitives. Not a full transitive freshness/vulnerability audit. No machine-global tool or native cache changed.",
+  "input_sha256": {
+    ".python-version": "7651ce7dab58e5733ba35597459414699ca339dde25a68aac3d8a89a0c89e5c6",
+    "pyproject.toml": "9018444b1b4e5e9424868c15a19addd5cd7e77e7f9eac8fa0dd686bb7aad9349",
+    "uv.lock": "ae5ea1aca8facbde71f488bfb641af64ffdd144018a032e1a1fd28e2c74186ac",
+    ".github/workflows/check.yml": "2884c50369f3a6bbef8ce9e3f4d029528c00b2a3bb8e99362f4e287be9647f3a",
+    "bundle.json": "4b4c3a90bc708cb65dac5a167d2049cef9e9c7f242cfcf53d80c95186a9926f4",
+    ".agents/plugins/marketplace.json": "2c1fd4b6cd40b029d02b7f5fa62a941221f21ea26f399823fadc62c802089ae5",
+    ".claude-plugin/marketplace.json": "39200865f457c6d57b886c2fed6e0620625ec7b4eeba3fe50cabd3f4ef2d8bc3",
+    "tools/engineering/complexity_check.py": "e469a03cf647d09a5df4e6afef4538e5aaacadfbc0dde8c435a8d759adf399b3",
+    "tools/engineering/evaluate_complexity.py": "af74cee11e0943fea598a604d2c32aa74d5e60345e0e09bfb3b2e26da30ea3f3",
+    "templates/AGENTS.skills-first.md": "905890079f9f1ba348803a52aeea1257e8e0fa5692c398fc24cfd499120b82ee",
+    "tools/engineering/test_evaluate_complexity.py": "d39e02195d21d0c3dbde594887a102bbc39292512ed9ab89fb092724579101d7"
+  },
+  "remote_ci": {
+    "commit": "010a4620fd7af9f12e469bae080db4121075ae63",
+    "conclusion": "success",
+    "url": "https://github.com/tvproductions/gz-skills-first-starter/actions/runs/40131519562",
+    "scope": "Routine checks, bundle validation, source-independent build and installed artifact checks; no deeper hygiene/native discovery proof"
+  }
+}

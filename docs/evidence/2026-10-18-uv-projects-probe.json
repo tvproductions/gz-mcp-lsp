@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-18T16:59:14.459884+00:00",
+  "scope": "Invented Windows-only uv project/workspace semantics; undeclared import is an intentional negative control, not an adopter example",
+  "python_version": "3.14.8",
+  "uv_version": "uv 0.13.1 (62faed335 2026-10-13 x86_64-pc-windows-msvc)",
+  "subprocess_environment_adjustments": {
+    "VIRTUAL_ENV": "removed for disposable child commands",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "fixtures": {
+    "pyproject.toml": "[project]\nname=\"uv-projects-root\"\nversion=\"0.1.0\"\nrequires-python=\">=3.14,<3.15\"\ndependencies=[]\n[build-system]\nrequires=[\"uv_build==0.13.1\"]\nbuild-backend=\"uv_build\"\n[tool.uv]\nrequired-version=\"==0.13.1\"\npython-preference=\"only-managed\"\n[tool.uv.workspace]\nmembers=[\"packages/*\"]\n",
+    ".python-version": "3.14.8\n",
+    "src/uv_projects_root/__init__.py": "VALUE = 42\n",
+    "packages/uv-projects-app/pyproject.toml": "[project]\nname=\"uv-projects-app\"\nversion=\"0.1.0\"\nrequires-python=\">=3.14,<3.15\"\ndependencies=[\"uv-projects-core\"]\n[build-system]\nrequires=[\"uv_build==0.13.1\"]\nbuild-backend=\"uv_build\"\n[tool.uv.sources]\nuv-projects-core={workspace=true}\n",
+    "packages/uv-projects-app/src/uv_projects_app/__init__.py": "import uv_projects_core\nimport uv_projects_hidden\n",
+    "packages/uv-projects-core/pyproject.toml": "[project]\nname=\"uv-projects-core\"\nversion=\"0.1.0\"\nrequires-python=\">=3.14,<3.15\"\ndependencies=[]\n[build-system]\nrequires=[\"uv_build==0.13.1\"]\nbuild-backend=\"uv_build\"\n",
+    "packages/uv-projects-core/src/uv_projects_core/__init__.py": "VALUE = 42\n",
+    "packages/uv-projects-hidden/pyproject.toml": "[project]\nname=\"uv-projects-hidden\"\nversion=\"0.1.0\"\nrequires-python=\">=3.14,<3.15\"\ndependencies=[]\n[build-system]\nrequires=[\"uv_build==0.13.1\"]\nbuild-backend=\"uv_build\"\n",
+    "packages/uv-projects-hidden/src/uv_projects_hidden/__init__.py": "VALUE = 42\n"
+  },
+  "non_project_root_replacement": "[tool.uv]\nrequired-version=\"==0.13.1\"\npython-preference=\"only-managed\"\n[tool.uv.workspace]\nmembers=[\"packages/*\"]\n",
+  "notes": [
+    "Initial no-member assumption for a non-project root failed and was corrected using separate root controls.",
+    "Intermediate exploratory attempts hit Windows path bookkeeping and a same-size rapid source-edit observation. Final fixture keys use slash separators; source-change control uses different-size contents and disables bytecode writes. No uv cache diagnosis is claimed for the intermediate observation."
+  ],
+  "records": [
+    {
+      "case": "uv-version",
+      "argv": [
+        "uv",
+        "--version"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "uv 0.13.1 (62faed335 2026-10-13 x86_64-pc-windows-msvc)\n",
+      "stderr": ""
+    },
+    {
+      "case": "workspace-lock",
+      "argv": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nResolved 4 packages in 1ms\n"
+    },
+    {
+      "case": "default-packaged-root-sync",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.14.8\nCreating virtual environment at: .venv\nResolved 4 packages in 0.82ms\n   Building uv-projects-root @ file:///<temporary>/workspace\n      Built uv-projects-root @ file:///<temporary>/workspace\nPrepared 1 package in 5ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 1 package in 6ms\n + uv-projects-root==0.1.0 (from file:///<temporary>/workspace)\n"
+    },
+    {
+      "case": "packaged-root-default-member-selection",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "import importlib.util,json;print(json.dumps({n:importlib.util.find_spec('uv_projects_'+n) is not None for n in ('root','app','core','hidden')}))"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "{\"root\": true, \"app\": false, \"core\": false, \"hidden\": false}\n",
+      "stderr": ""
+    },
+    {
+      "case": "sync-all-members",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--all-packages"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 4 packages in 0.82ms\n   Building uv-projects-app @ file:///<temporary>/workspace/packages/uv-projects-app\n   Building uv-projects-core @ file:///<temporary>/workspace/packages/uv-projects-core\n   Building uv-projects-hidden @ file:///<temporary>/workspace/packages/uv-projects-hidden\n      Built uv-projects-app @ file:///<temporary>/workspace/packages/uv-projects-app\n      Built uv-projects-core @ file:///<temporary>/workspace/packages/uv-projects-core\n      Built uv-projects-hidden @ file:///<temporary>/workspace/packages/uv-projects-hidden\nPrepared 3 packages in 7ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 3 packages in 11ms\n + uv-projects-app==0.1.0 (from file:///<temporary>/workspace/packages/uv-projects-app)\n + uv-projects-core==0.1.0 (from file:///<temporary>/workspace/packages/uv-projects-core)\n + uv-projects-hidden==0.1.0 (from file:///<temporary>/workspace/packages/uv-projects-hidden)\n"
+    },
+    {
+      "case": "shared-env-hides-undeclared-import",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "import uv_projects_app; print(\"import passed\")"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "import passed\n",
+      "stderr": ""
+    },
+    {
+      "case": "selected-exact-app-reveals-undeclared-import",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "--package",
+        "uv-projects-app",
+        "--exact",
+        "python",
+        "-c",
+        "import uv_projects_app"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Uninstalled 2 packages in 1ms\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import uv_projects_app\n  File \"<temporary>\\workspace\\packages\\uv-projects-app\\src\\uv_projects_app\\__init__.py\", line 2, in <module>\n    import uv_projects_hidden\nModuleNotFoundError: No module named 'uv_projects_hidden'\n"
+    },
+    {
+      "case": "build-app-without-development-sources",
+      "argv": [
+        "uv",
+        "build",
+        "--offline",
+        "--no-sources",
+        "--package",
+        "uv-projects-app"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\uv_projects_app-0.1.0.tar.gz\nSuccessfully built dist\\uv_projects_app-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "case": "published-app-dependency-metadata",
+      "requires_dist": [
+        "Requires-Dist: uv-projects-core"
+      ]
+    },
+    {
+      "case": "local-source-changes-with-locked-run",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "--package",
+        "uv-projects-core",
+        "python",
+        "-c",
+        "import uv_projects_core; print(uv_projects_core.VALUE)"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "999\n",
+      "stderr": ""
+    },
+    {
+      "case": "lock-does-not-freeze-local-source",
+      "lock_sha256_before": "6d4f106fa081ed2c20150283fc237910b0500422029f80d64242079d4f34d67e",
+      "lock_sha256_after": "6d4f106fa081ed2c20150283fc237910b0500422029f80d64242079d4f34d67e",
+      "observed_value": 999
+    },
+    {
+      "case": "virtual-core-relock",
+      "argv": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 4 packages in 1ms\n"
+    },
+    {
+      "case": "declared-backend-does-not-defeat-package-false",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "--package",
+        "uv-projects-core",
+        "--exact",
+        "python",
+        "-c",
+        "import importlib.util;print(importlib.util.find_spec('uv_projects_core') is not None)"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "False\n",
+      "stderr": "Uninstalled 2 packages in 1ms\n"
+    },
+    {
+      "case": "non-project-root-relock",
+      "argv": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 3 packages in 1ms\nRemoved uv-projects-root v0.1.0\n"
+    },
+    {
+      "case": "non-project-root-default-sync",
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 3 packages in 0.73ms\n   Building uv-projects-core @ file:///<temporary>/workspace/packages/uv-projects-core\n      Built uv-projects-core @ file:///<temporary>/workspace/packages/uv-projects-core\nPrepared 1 package in 4ms\nwarning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.\n         If the cache and target directories are on different filesystems, hardlinking may not be supported.\n         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.\nInstalled 3 packages in 10ms\n + uv-projects-app==0.1.0 (from file:///<temporary>/workspace/packages/uv-projects-app)\n + uv-projects-core==0.1.0 (from file:///<temporary>/workspace/packages/uv-projects-core)\n + uv-projects-hidden==0.1.0 (from file:///<temporary>/workspace/packages/uv-projects-hidden)\n"
+    },
+    {
+      "case": "non-project-root-default-installs-all-members",
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "--offline",
+        "python",
+        "-c",
+        "import importlib.util,json;print(json.dumps({n:importlib.util.find_spec('uv_projects_'+n) is not None for n in ('root','app','core','hidden')}))"
+      ],
+      "cwd": "<temporary>/workspace",
+      "exit_code": 0,
+      "stdout": "{\"root\": false, \"app\": true, \"core\": true, \"hidden\": true}\n",
+      "stderr": ""
+    }
+  ]
+}

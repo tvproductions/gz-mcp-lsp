@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-26",
+  "template_version": "0.7.0",
+  "python": "3.14.10",
+  "uv": "0.13.5",
+  "inputs": {
+    "bundle.json": "4b4c3a90bc708cb65dac5a167d2049cef9e9c7f242cfcf53d80c95186a9926f4",
+    "pyproject.toml": "58b8efd9e6595f0f31c12bae683102bcf533f9550110ff433daa87fde06b54eb",
+    "uv.lock": "02bdb121dda3b597d66c41a0e4538c087b6d68a5797aa8a685181ac5a42ce3d0",
+    ".python-version": "4f4c88910b6d485ae689143880e5e81b595a48a51ecb391b2f14feaec106d180",
+    ".github/workflows/check.yml": "a38d27f2a410ee4de36b6467d2ba36e34cee123f96b18c476b71efa4bede313c",
+    ".github/dependabot.yml": "bdee450aca52c7b2aea6e3685674cbfe0ece23b580b6d7ad9d2f4e5d1fe1eb8c",
+    ".agents/plugins/marketplace.json": "2c1fd4b6cd40b029d02b7f5fa62a941221f21ea26f399823fadc62c802089ae5",
+    ".claude-plugin/marketplace.json": "39200865f457c6d57b886c2fed6e0620625ec7b4eeba3fe50cabd3f4ef2d8bc3",
+    "baselines/xplane/pyproject.toml": "6a93e477fd21b65d939c1f021b84af2381d344ebce3909738697378759c8f4d8",
+    "baselines/xplane/uv.lock": "46c4bbe585c0639d77f2964a6aee11d95380a36094ffb57322c8940e61bccd28",
+    "baselines/xplane/.python-version": "a05e0074505ce29f25abf3aebe4f7218d28e98411822f199e3272740be4e363c",
+    "src/skills_first_starter/cli.py": "0407c36db4d609017d6304f7e1b13bbff10b6ee7e3938a5597e6d8e061825a74",
+    "src/skills_first_starter/__init__.py": "73347d532a7743e605183cb9508af5af0361ba7baa463a0e0fdec069a842139d",
+    "src/skills_first_starter/__main__.py": "d37d6d4f4a328b34a94665883f8b8caaaab2f25a680c4c2b4e8ed0a30718fbc0",
+    "tools/package_resources.py": "4fe401c7c5f55ffe9dc1120c593df22b9aeeb3088005d4ef35fd51f61d155777",
+    "tools/verify_distribution.py": "910eb5c65fb821815bba9e4041835b0066d5aba7c6d24d2e9837c67bb6dd950b",
+    "tools/verify_xplane_baseline.py": "a87b73c506b6668bf792170f1bbc00bd0907de0029206a34452b6413f15aa751",
+    "tools/engineering/complexity_check.py": "e469a03cf647d09a5df4e6afef4538e5aaacadfbc0dde8c435a8d759adf399b3",
+    "tools/engineering/evaluate_complexity.py": "00bdaaf73d122493df46f63a125b9d046b68cc54259de42fd4b4183d9eaa8728",
+    "tools/engineering/evaluate_cosmic_ray.py": "e40cfa370a454506a4b2eb36b50b7f0073f0f532b8c5fa90af7ac142aeb936d8",
+    "tools/engineering/test_complexity_check.py": "6464467a10610831f1bd17bc18c133c5f6414c599bb574150d4a6ab17de84d91",
+    "tools/engineering/test_evaluate_complexity.py": "d39e02195d21d0c3dbde594887a102bbc39292512ed9ab89fb092724579101d7"
+  },
+  "coverage": {
+    "covered_lines": 225,
+    "num_statements": 252,
+    "percent_covered": 86.46408839779005,
+    "percent_covered_display": "86",
+    "missing_lines": 27,
+    "excluded_lines": 0,
+    "percent_statements_covered": 89.28571428571429,
+    "percent_statements_covered_display": "89",
+    "num_branches": 110,
+    "num_partial_branches": 22,
+    "covered_branches": 88,
+    "missing_branches": 22,
+    "percent_branches_covered": 80.0,
+    "percent_branches_covered_display": "80"
+  },
+  "bandit": {
+    "counts": {
+      "B101": 14,
+      "B603": 9,
+      "B404": 6,
+      "B607": 1
+    },
+    "medium_high": 0,
+    "review": "Assertions in probes/tests and argument-list subprocess boundaries; raw findings retained without suppressions"
+  },
+  "audits": {
+    "standard": {
+      "packages": 74,
+      "vulnerabilities": 0,
+      "skipped": 0
+    },
+    "xplane": {
+      "packages": 75,
+      "vulnerabilities": 0,
+      "skipped": 0
+    }
+  },
+  "lizard": {
+    "functions": 115,
+    "maximum": 16,
+    "overall_mean": 3.4
+  },
+  "mutation": {
+    "python": "3.14.10",
+    "source_sha256": "0407c36db4d609017d6304f7e1b13bbff10b6ee7e3938a5597e6d8e061825a74",
+    "baseline": {
+      "worker_outcome": "normal",
+      "test_outcome": "survived"
+    },
+    "samples": {
+      "initialization": {
+        "module_population": 659,
+        "scope_population": 659,
+        "selected": [
+          [
+            "891ec23d2c8e40cc8ece02dd87a84b25",
+            "core/NumberReplacer",
+            21
+          ],
+          [
+            "2dacde51e81d4b099e0f60a15feec17f",
+            "core/NumberReplacer",
+            21
+          ],
+          [
+            "fdcebb288b3541d9988618fe14f01769",
+            "core/AddNot",
+            25
+          ],
+          [
+            "fa201bce7a314cdab9433421dba66c4e",
+            "core/ReplaceAndWithOr",
+            25
+          ],
+          [
+            "6a52b2fc09474035acef5a7a9b72e855",
+            "core/ReplaceBinaryOperator_Div_Add",
+            25
+          ],
+          [
+            "c09d091c1b9a477bb9e52a3795316dbe",
+            "core/ReplaceBinaryOperator_Div_BitAnd",
+            25
+          ]
+        ],
+        "counts": {
+          "survived": 6
+        },
+        "source_restored": true
+      },
+      "check_path": {
+        "module_population": 659,
+        "scope_population": 36,
+        "selected": [
+          [
+            "4c52b899cc0d4b0bb054e4d034b0083e",
+            "core/ReplaceBinaryOperator_Div_Add",
+            84
+          ],
+          [
+            "09f16a0f657b455491a7068b914b6874",
+            "core/ReplaceBinaryOperator_Div_BitAnd",
+            84
+          ],
+          [
+            "3641d92cab1545969862e3a203c05c41",
+            "core/ReplaceBinaryOperator_Div_BitOr",
+            84
+          ],
+          [
+            "2f5cad18c9524e1e8577bac857675bb6",
+            "core/ReplaceBinaryOperator_Div_BitXor",
+            84
+          ],
+          [
+            "bd837bdad5b64b76bbf8f27291620985",
+            "core/ReplaceBinaryOperator_Div_FloorDiv",
+            84
+          ],
+          [
+            "b07cdc658f8642d3af39be4988d27703",
+            "core/ReplaceBinaryOperator_Div_LShift",
+            84
+          ]
+        ],
+        "counts": {
+          "killed": 6
+        },
+        "source_restored": true
+      }
+    }
+  },
+  "cognitive": {
+    "status": "deferred_by_maintainer",
+    "target": "0.7.1",
+    "ceiling": 15
+  },
+  "strict_acceptance": "conditional; no cognitive or native-host certification"
+}

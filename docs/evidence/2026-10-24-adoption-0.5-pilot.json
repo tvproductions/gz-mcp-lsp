@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-24",
+  "scope": "Disposable configuration/reconciliation proof only; not product Python acceptance or native setup/discovery",
+  "interpreter": "3.14.8 (main, Oct  9 2026, 15:11:09) [Clang 22.1.3 ]",
+  "old_release": {
+    "version": "0.4.1",
+    "revision": "0a93e18fda328f84fda955d6bc182f34e5d4febf"
+  },
+  "candidate_version": "0.5.0",
+  "candidate_reference_mode": "synthetic test SHA; no published-candidate claim",
+  "profile_mode": "explicit fixture settings in the upstream schema; upstream setup workflow not executed",
+  "results": {
+    "both_lane_selection_preserved": "PASS",
+    "preview_no_writes": "PASS",
+    "repeat_noop": "PASS",
+    "backplane_disabled": "PASS",
+    "older_managed_files_refused_without_writes": "PASS",
+    "reviewed_upgrade_noop": "PASS",
+    "app_metadata_lock_settings_preserved": "PASS",
+    "local_guidance_preserved_in_project_authority": "PASS",
+    "helper_readiness_remains_unverified": "PASS"
+  },
+  "input_sha256": {
+    "src/skills_first_starter/cli.py": "6fe21e42e3a8470d8655fed163f6a06c102b148ce109ae705323836f699b5e81",
+    "templates/AGENTS.skills-first.md": "421646054f7dbcca7a6f8735bbc9781b911c3f69cf2cf47c66d70e9c2a2ec636",
+    "bundle.json": "c43143480e721cc7e9d3c334cf8f31643e2276f719f49cde2bff28e6fa1eba57",
+    "docs/adoption-0.5.md": "4a3d3f0eef126f40c5b69004a4de11b15235e80162423f4813748e516e8d5cfd"
+  },
+  "commands": [
+    {
+      "scenario": "greenfield-lite-preview",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/greenfield-lite",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"preview\",\n  \"project\": \"<fixtures>/greenfield-lite\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\",\n    \"AGENTS.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "greenfield-lite-apply",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/greenfield-lite",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "--apply"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"project\": \"<fixtures>/greenfield-lite\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\",\n    \"AGENTS.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "greenfield-lite-repeat",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/greenfield-lite",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "--apply"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"project\": \"<fixtures>/greenfield-lite\",\n  \"writes\": [],\n  \"present\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\"\n  ],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "greenfield-heavy-preview",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/greenfield-heavy",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"preview\",\n  \"project\": \"<fixtures>/greenfield-heavy\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\",\n    \"AGENTS.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "greenfield-heavy-apply",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/greenfield-heavy",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "--apply"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"project\": \"<fixtures>/greenfield-heavy\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\",\n    \"AGENTS.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "greenfield-heavy-repeat",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/greenfield-heavy",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "--apply"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"project\": \"<fixtures>/greenfield-heavy\",\n  \"writes\": [],\n  \"present\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\"\n  ],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "brownfield-first-preview",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/brownfield",
+        "--starter-ref",
+        "0a93e18fda328f84fda955d6bc182f34e5d4febf"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"preview\",\n  \"project\": \"<fixtures>/brownfield\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.4.1\",\n    \"revision\": \"0a93e18fda328f84fda955d6bc182f34e5d4febf\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "brownfield-first-apply-old-release",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/brownfield",
+        "--starter-ref",
+        "0a93e18fda328f84fda955d6bc182f34e5d4febf",
+        "--apply"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"project\": \"<fixtures>/brownfield\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.4.1\",\n    \"revision\": \"0a93e18fda328f84fda955d6bc182f34e5d4febf\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "brownfield-new-version-conflict",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/brownfield",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "--apply"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "adoption blocked: conflicting [marketplaces.skills-first-starter] configuration; no files changed\n"
+    },
+    {
+      "scenario": "brownfield-target-candidates",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/target-candidates",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "--apply"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"project\": \"<fixtures>/target-candidates\",\n  \"writes\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\",\n    \"AGENTS.md\"\n  ],\n  \"present\": [],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "brownfield-reviewed-upgrade-noop",
+      "arguments": [
+        "configure",
+        "--project",
+        "<fixtures>/brownfield",
+        "--starter-ref",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"preview\",\n  \"project\": \"<fixtures>/brownfield\",\n  \"writes\": [],\n  \"present\": [\n    \".codex/config.toml\",\n    \".skills-first/bundle.lock.json\",\n    \"AGENTS.skills-first.md\"\n  ],\n  \"runtime_readiness\": \"unverified\",\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"next\": [\n    \"Review the project instructions fragment; link it from existing AGENTS.md if needed.\",\n    \"Profile selection belongs to canonical gz-skills setup; no profile is inferred or created.\",\n    \"Follow docs/adoption.md for native installation and a fresh-session discovery check.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "brownfield-reviewed-upgrade-status",
+      "arguments": [
+        "status",
+        "--project",
+        "<fixtures>/brownfield"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"configured\",\n  \"runtime_readiness\": \"unverified\",\n  \"pending_files\": [],\n  \"starter\": {\n    \"repository\": \"https://github.com/tvproductions/gz-skills-first-starter.git\",\n    \"version\": \"0.5.0\",\n    \"revision\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  },\n  \"components\": [\n    {\n      \"name\": \"superpowers\",\n      \"repository\": \"https://github.com/obra/superpowers\",\n      \"release\": \"v7.0.0\",\n      \"revision\": \"bb92a77741419a4ab5f06e711a283343f1ada0c3\",\n      \"status\": \"released; selected independently of deferred Backplane\",\n      \"enabled_by_default\": true\n    },\n    {\n      \"name\": \"superpowers-backplane\",\n      \"repository\": \"https://github.com/tvproductions/superpowers-backplane\",\n      \"release\": null,\n      \"revision\": \"d0eeee829c491da02351e793544aa16ad96461bf\",\n      \"status\": \"pre-release; published commit, host acceptance incomplete\",\n      \"enabled_by_default\": false\n    },\n    {\n      \"name\": \"gz-skills\",\n      \"repository\": \"https://github.com/tvproductions/gz-skills\",\n      \"release\": \"v0.8.0\",\n      \"revision\": \"75bcd11ee9371ecff1a7b3432d2af29d4bdbb788\",\n      \"status\": \"released\",\n      \"enabled_by_default\": true\n    }\n  ]\n}\n",
+      "stderr": ""
+    }
+  ]
+}

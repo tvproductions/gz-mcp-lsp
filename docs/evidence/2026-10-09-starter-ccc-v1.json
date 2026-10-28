@@ -1,0 +1,369 @@
+{
+  "python": "3.14.8",
+  "scope": [
+    "starter.py",
+    "tests",
+    "skills/python-engineering/scripts"
+  ],
+  "checker_sha256": "a11d58e8414b6cb26073023842906061532cd312fe528bd1a998c29e884210af",
+  "contract": "lizard-functions-v1",
+  "ceilings": [
+    20,
+    20,
+    20
+  ],
+  "modules": [
+    {
+      "file": "skills/python-engineering/scripts/complexity_check.py",
+      "sha256": "a11d58e8414b6cb26073023842906061532cd312fe528bd1a998c29e884210af",
+      "functions": [
+        {
+          "name": "source_files",
+          "line": 29,
+          "complexity": 11
+        },
+        {
+          "name": "visit",
+          "line": 51,
+          "complexity": 7
+        },
+        {
+          "name": "measure",
+          "line": 63,
+          "complexity": 8
+        },
+        {
+          "name": "findings",
+          "line": 97,
+          "complexity": 10
+        },
+        {
+          "name": "assess",
+          "line": 119,
+          "complexity": 7
+        },
+        {
+          "name": "main",
+          "line": 152,
+          "complexity": 3
+        }
+      ],
+      "mean": 7.666666666666667
+    },
+    {
+      "file": "skills/python-engineering/scripts/evaluate_complexity.py",
+      "sha256": "36ef7e8e66631ad55b18a92b1119a0baa90b9d5681b6e03a1c05bd542ea7f386",
+      "functions": [
+        {
+          "name": "nested",
+          "line": 19,
+          "complexity": 2
+        },
+        {
+          "name": "flat",
+          "line": 28,
+          "complexity": 2
+        },
+        {
+          "name": "ruff_check",
+          "line": 58,
+          "complexity": 1
+        },
+        {
+          "name": "lizard_scores",
+          "line": 78,
+          "complexity": 2
+        },
+        {
+          "name": "observe_case",
+          "line": 88,
+          "complexity": 3
+        },
+        {
+          "name": "diagnostic_score",
+          "line": 127,
+          "complexity": 1
+        },
+        {
+          "name": "verify_cases",
+          "line": 132,
+          "complexity": 3
+        },
+        {
+          "name": "inspect_source",
+          "line": 166,
+          "complexity": 8
+        },
+        {
+          "name": "evaluate",
+          "line": 195,
+          "complexity": 3
+        },
+        {
+          "name": "main",
+          "line": 235,
+          "complexity": 9
+        }
+      ],
+      "mean": 3.4
+    },
+    {
+      "file": "skills/python-engineering/scripts/test_complexity_check.py",
+      "sha256": "fbe4555f5bb852d79f9077164f98628b0ce3ba92fa0771868531d40c7b2d73eb",
+      "functions": [
+        {
+          "name": "branches",
+          "line": 11,
+          "complexity": 2
+        },
+        {
+          "name": "run_check",
+          "line": 20,
+          "complexity": 4
+        },
+        {
+          "name": "test_boundary_and_all_three_failures",
+          "line": 42,
+          "complexity": 2
+        },
+        {
+          "name": "test_weighted_average_and_scope_deduplication",
+          "line": 51,
+          "complexity": 2
+        },
+        {
+          "name": "test_nested_methods_async_generics_and_assertions",
+          "line": 64,
+          "complexity": 2
+        },
+        {
+          "name": "test_empty_module_and_script_are_not_function_scores",
+          "line": 71,
+          "complexity": 1
+        },
+        {
+          "name": "test_parse_error_cannot_pass_partial_scope",
+          "line": 77,
+          "complexity": 1
+        },
+        {
+          "name": "test_generated_directive_cannot_hide_function",
+          "line": 84,
+          "complexity": 1
+        },
+        {
+          "name": "test_missing_scope_and_symlink_fail_closed",
+          "line": 89,
+          "complexity": 1
+        },
+        {
+          "name": "test_inline_suite_reports_unsupported_measurement",
+          "line": 95,
+          "complexity": 1
+        },
+        {
+          "name": "test_unicode_multiline_suite",
+          "line": 100,
+          "complexity": 1
+        },
+        {
+          "name": "test_empty_scope_is_an_error",
+          "line": 105,
+          "complexity": 1
+        }
+      ],
+      "mean": 1.5833333333333333
+    },
+    {
+      "file": "starter.py",
+      "sha256": "0d6bc1c2bcc0117e6e2d8182f135b2b3d9fc6fe71e533b3c1caa72164eb2e810",
+      "functions": [
+        {
+          "name": "bundle",
+          "line": 30,
+          "complexity": 1
+        },
+        {
+          "name": "validate_bundle",
+          "line": 34,
+          "complexity": 16
+        },
+        {
+          "name": "check_path",
+          "line": 58,
+          "complexity": 9
+        },
+        {
+          "name": "profile_check",
+          "line": 72,
+          "complexity": 7
+        },
+        {
+          "name": "project_config",
+          "line": 88,
+          "complexity": 17
+        },
+        {
+          "name": "configure",
+          "line": 131,
+          "complexity": 31
+        },
+        {
+          "name": "status",
+          "line": 252,
+          "complexity": 3
+        },
+        {
+          "name": "backport",
+          "line": 267,
+          "complexity": 9
+        },
+        {
+          "name": "source_revision.git",
+          "line": 327,
+          "complexity": 1
+        },
+        {
+          "name": "source_revision",
+          "line": 324,
+          "complexity": 4
+        },
+        {
+          "name": "main",
+          "line": 347,
+          "complexity": 6
+        }
+      ],
+      "mean": 9.454545454545455
+    },
+    {
+      "file": "tests/test_starter.py",
+      "sha256": "5535829e594eab89c76b6b19d1c5e5ac376332b4054dfb4f106ab74c8313fba0",
+      "functions": [
+        {
+          "name": "setUp",
+          "line": 16,
+          "complexity": 1
+        },
+        {
+          "name": "configure",
+          "line": 21,
+          "complexity": 1
+        },
+        {
+          "name": "test_preview_never_writes",
+          "line": 24,
+          "complexity": 1
+        },
+        {
+          "name": "test_second_adoption_is_noop",
+          "line": 30,
+          "complexity": 5
+        },
+        {
+          "name": "test_preserves_existing_instructions_and_config",
+          "line": 42,
+          "complexity": 1
+        },
+        {
+          "name": "test_conflict_blocks_all_writes",
+          "line": 52,
+          "complexity": 1
+        },
+        {
+          "name": "test_gzkit_is_not_reconfigured",
+          "line": 62,
+          "complexity": 2
+        },
+        {
+          "name": "test_symlink_destination_is_rejected",
+          "line": 68,
+          "complexity": 1
+        },
+        {
+          "name": "test_existing_legacy_skill_copy_blocks_duplicate_discovery",
+          "line": 76,
+          "complexity": 1
+        },
+        {
+          "name": "test_existing_other_marketplace_plugin_blocks_duplicate",
+          "line": 84,
+          "complexity": 1
+        },
+        {
+          "name": "test_pending_profile_is_not_a_readiness_claim",
+          "line": 92,
+          "complexity": 1
+        },
+        {
+          "name": "test_existing_profile_and_rules_are_preserved",
+          "line": 97,
+          "complexity": 1
+        },
+        {
+          "name": "test_malformed_settings_do_not_get_overwritten",
+          "line": 104,
+          "complexity": 1
+        },
+        {
+          "name": "test_backplane_is_pinned_but_disabled",
+          "line": 110,
+          "complexity": 1
+        },
+        {
+          "name": "test_active_backplane_is_not_silently_disabled",
+          "line": 119,
+          "complexity": 1
+        },
+        {
+          "name": "test_frontdoor_is_present_and_modified_skill_is_preserved",
+          "line": 129,
+          "complexity": 1
+        },
+        {
+          "name": "test_backport_assessment_preserves_records_and_does_not_follow_links",
+          "line": 138,
+          "complexity": 4
+        },
+        {
+          "name": "test_other_frontdoor_discovery_is_not_duplicated",
+          "line": 155,
+          "complexity": 1
+        },
+        {
+          "name": "test_backport_inventory_is_bounded",
+          "line": 161,
+          "complexity": 2
+        },
+        {
+          "name": "test_pins_are_immutable_and_marketplace_matches",
+          "line": 168,
+          "complexity": 3
+        },
+        {
+          "name": "test_moving_starter_ref_is_rejected",
+          "line": 176,
+          "complexity": 1
+        }
+      ],
+      "mean": 1.5238095238095237
+    }
+  ],
+  "errors": [],
+  "lizard_version": "1.24.1",
+  "violations": [
+    {
+      "kind": "function",
+      "file": "starter.py",
+      "name": "configure",
+      "line": 131,
+      "complexity": 31
+    }
+  ],
+  "aggregate": {
+    "functions": 60,
+    "maximum": 31,
+    "overall_mean": 3.9166666666666665
+  },
+  "status": "failed"
+}

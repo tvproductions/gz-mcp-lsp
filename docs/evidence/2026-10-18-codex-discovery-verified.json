@@ -1,0 +1,377 @@
+{
+  "date": "2026-10-18",
+  "acceptance": "PASS",
+  "scope": "Windows Codex CLI/app-server 0.163.0, SP+gz-skills discovery and project enablement only",
+  "starter": {
+    "version": "0.4.0",
+    "revision": "b6f76dd75b4e6e779d6364cce0ff65bd73fda93a"
+  },
+  "prior_attempt": "2026-10-18-codex-discovery.json",
+  "trust": {
+    "user_explicitly_approved": true,
+    "project": "<DISPOSABLE>/adopter",
+    "native_method": "config/value/write",
+    "project_layer_loaded": true,
+    "invocation_overrides_used_for_final_snapshots": false
+  },
+  "native_plugins": [
+    {
+      "pluginId": "superpowers@skills-first-starter",
+      "name": "superpowers",
+      "marketplaceName": "skills-first-starter",
+      "version": "7.0.0",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "git",
+        "url": "https://github.com/obra/superpowers.git",
+        "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3"
+      },
+      "marketplaceSource": {
+        "sourceType": "git",
+        "source": "https://github.com/tvproductions/gz-skills-first-starter.git"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_USE"
+    },
+    {
+      "pluginId": "superpowers-backplane@skills-first-starter",
+      "name": "superpowers-backplane",
+      "marketplaceName": "skills-first-starter",
+      "version": "0.1.0",
+      "installed": true,
+      "enabled": false,
+      "source": {
+        "source": "git",
+        "url": "https://github.com/tvproductions/superpowers-backplane.git",
+        "ref": "d0eeee829c491da02351e793544aa16ad96461bf"
+      },
+      "marketplaceSource": {
+        "sourceType": "git",
+        "source": "https://github.com/tvproductions/gz-skills-first-starter.git"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_USE"
+    },
+    {
+      "pluginId": "gz-skills@skills-first-starter",
+      "name": "gz-skills",
+      "marketplaceName": "skills-first-starter",
+      "version": "0.8.0",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "git",
+        "url": "https://github.com/tvproductions/gz-skills.git",
+        "ref": "75bcd11ee9371ecff1a7b3432d2af29d4bdbb788"
+      },
+      "marketplaceSource": {
+        "sourceType": "git",
+        "source": "https://github.com/tvproductions/gz-skills-first-starter.git"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_USE"
+    }
+  ],
+  "effective_inside_plugins": {
+    "gz-skills@gz-skills": {
+      "enabled": false
+    },
+    "superpowers@skills-first-starter": {
+      "enabled": true
+    },
+    "superpowers-backplane@skills-first-starter": {
+      "enabled": false
+    },
+    "gz-skills@skills-first-starter": {
+      "enabled": true
+    }
+  },
+  "effective_outside_plugins": {
+    "superpowers@skills-first-starter": {
+      "enabled": false
+    },
+    "gz-skills@gz-skills": {
+      "enabled": true
+    },
+    "gz-skills@skills-first-starter": {
+      "enabled": false
+    }
+  },
+  "inside_skill_counts": {
+    "superpowers": 15,
+    "gz-skills": 20
+  },
+  "outside_starter_skill_count": 0,
+  "model_visible_inside": {
+    "superpowers:using-superpowers": {
+      "present": true,
+      "alias_path": "r6/using-superpowers/SKILL.md",
+      "full_path": "<USER_CODEX>/plugins/cache/skills-first-starter/superpowers/7.0.0/skills/using-superpowers/SKILL.md"
+    },
+    "gz-skills:gzs-router": {
+      "present": true,
+      "alias_path": "r5/gzs-router/SKILL.md",
+      "full_path": "<USER_CODEX>/plugins/cache/skills-first-starter/gz-skills/0.8.0/skills/gzs-router/SKILL.md"
+    },
+    "backplane_present": false
+  },
+  "model_visible_outside": {
+    "superpowers:using-superpowers": {
+      "present": false,
+      "path": null
+    },
+    "gz-skills:gzs-router": {
+      "present": true,
+      "path": "r2/gzs-router/SKILL.md"
+    },
+    "superpowers-backplane": {
+      "present": false,
+      "skills": []
+    }
+  },
+  "inside_model_turn": {
+    "thread_id": "01a14fb1-6aa7-7c81-a235-04aaa4d82a41",
+    "turn_completed": true,
+    "tool_calls": 0
+  },
+  "outside_model_turn": {
+    "thread_id": "01a14faf-8c05-77a2-863a-986acfe677b0",
+    "turn_completed": true,
+    "tool_calls": 0
+  },
+  "native_snapshot_threads": {
+    "inside": "01a14fb0-a651-73c0-85ab-ea7e44bfb524",
+    "outside": "01a14fb0-a84c-7601-b668-458b746122c0"
+  },
+  "verified_skill_files": [
+    {
+      "name": "gz-skills:gzs-agent-context-diet",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-agent-context-diet/SKILL.md",
+      "sha256": "3e62441ba50a3ef042e488be94e69d3b41e05bf979c4a4a0cda81bdebd3cd8f0"
+    },
+    {
+      "name": "gz-skills:gzs-change-review",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-change-review/SKILL.md",
+      "sha256": "2fa9da9ca7351cbaf5ee6370acacb826b176c29f88f2cdd58cf43f9527c47220"
+    },
+    {
+      "name": "gz-skills:gzs-cross-platform-python",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-cross-platform-python/SKILL.md",
+      "sha256": "b91ff2716f50ae9ccb4fe8cee2666f7fd93fc31ca0da6c6b2a381b5bbf079750"
+    },
+    {
+      "name": "gz-skills:gzs-dependency-risk-audit",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-dependency-risk-audit/SKILL.md",
+      "sha256": "912183c662efd5a5b1f8480a362af3d8beeaad3ba2ab5c90e3c45bdf258a56d0"
+    },
+    {
+      "name": "gz-skills:gzs-git-sync",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-git-sync/SKILL.md",
+      "sha256": "ce55e609057a84887204c7a53ba9474dd8d4e2afa598d3bc4978bb091097d092"
+    },
+    {
+      "name": "gz-skills:gzs-hexagonal-architecture-audit",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-hexagonal-architecture-audit/SKILL.md",
+      "sha256": "116d45539311a0afc1b01839560f0b03413e8d8916dcfbffc6e7abfff8920f83"
+    },
+    {
+      "name": "gz-skills:gzs-intent-audit",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-intent-audit/SKILL.md",
+      "sha256": "2ca84c69da73a3e15b1ab4be225d970db79b87e669d6fbc976bd0ca02b048679"
+    },
+    {
+      "name": "gz-skills:gzs-plan-audit",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-plan-audit/SKILL.md",
+      "sha256": "e9cdf335740691c8c74fca93d0d5b2edd5566d5c78146c2765ebd48f4666c232"
+    },
+    {
+      "name": "gz-skills:gzs-project-setup",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-project-setup/SKILL.md",
+      "sha256": "562f713db221df412c420518771c80b07e46f7fb035e389acf4b9ddc64b96b74"
+    },
+    {
+      "name": "gz-skills:gzs-pythonic-pattern-apply",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-pythonic-pattern-apply/SKILL.md",
+      "sha256": "99798e7c3ea91993f3774699fdbf5bb0d7d3df0dd0b31e6bef6c393260b94c19"
+    },
+    {
+      "name": "gz-skills:gzs-pythonic-pattern-detect",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-pythonic-pattern-detect/SKILL.md",
+      "sha256": "6d7601b9b4ab70d32ad64179156be030d9d6baebbba3cf1924dfa24f56e27286"
+    },
+    {
+      "name": "gz-skills:gzs-quality-gate",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-quality-gate/SKILL.md",
+      "sha256": "5cb8d9590029403c305d1bdaf97c5ffb2b9c8afa1fc553b4d3816e665db28337"
+    },
+    {
+      "name": "gz-skills:gzs-release",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-release/SKILL.md",
+      "sha256": "4da10bfc2b5ccdfa175d4d7dd6df4f100135394bc0c313850791adcb9f5d3559"
+    },
+    {
+      "name": "gz-skills:gzs-repository-hygiene",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-repository-hygiene/SKILL.md",
+      "sha256": "939a71a7af99e2dac81bcf86f4cdbcbf4b9badfcd2aedb5c6ed6e46a5ea9bdbb"
+    },
+    {
+      "name": "gz-skills:gzs-root-cause-debugging",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-root-cause-debugging/SKILL.md",
+      "sha256": "8abc9837f14607ba6a5424e22b12310c3761a7c76f883c287bef8ffb714cee78"
+    },
+    {
+      "name": "gz-skills:gzs-router",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-router/SKILL.md",
+      "sha256": "20dd28a2f67f0b8cf4d0f3b0594912973fa0b72d2f5f40d44b2d6fe9d4982a35"
+    },
+    {
+      "name": "gz-skills:gzs-session-handoff",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-session-handoff/SKILL.md",
+      "sha256": "259c22dc7aaf9e5d87cdfd67bea209beacbdfed7c4b0b9aef414c6a49945c84b"
+    },
+    {
+      "name": "gz-skills:gzs-tech-debt-review",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-tech-debt-review/SKILL.md",
+      "sha256": "75a6f2190b893860d4f62551c4cb0d626c9e8083ba80e5a25b771ad2632f5932"
+    },
+    {
+      "name": "gz-skills:gzs-test-driven-change",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-test-driven-change/SKILL.md",
+      "sha256": "cfc34dbaac3696b3460d2660c28fb3f94d7cbc5a07590c6567e0573a5a61d7ef"
+    },
+    {
+      "name": "gz-skills:gzs-update-dependencies",
+      "plugin_id": "gz-skills@skills-first-starter",
+      "relative_path": "skills/gzs-update-dependencies/SKILL.md",
+      "sha256": "a885460ccc926c119cd1009f48139a3422164d1408fc4347d7dff2b7b05c005b"
+    },
+    {
+      "name": "superpowers:brainstorming",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/brainstorming/SKILL.md",
+      "sha256": "6ee10d1481b8a2580d5336ff66c5c08acc9d4b251b13bbc3bfd31be99c261d43"
+    },
+    {
+      "name": "superpowers:diagnosing-superpowers",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/diagnosing-superpowers/SKILL.md",
+      "sha256": "5a652f8132cc901eb5ca61f89157839f87a2f20aed037fc7a2b51051bc37cd19"
+    },
+    {
+      "name": "superpowers:dispatching-parallel-agents",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/dispatching-parallel-agents/SKILL.md",
+      "sha256": "1968923066f3b707eb01d1992cdf4c42284c3855f70253b9cd5000ff45fca13c"
+    },
+    {
+      "name": "superpowers:executing-plans",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/executing-plans/SKILL.md",
+      "sha256": "f38e8f2ddcf079f65493adc713c1fed78421dfaf5f4dbf6b3a6b2b1d95466e71"
+    },
+    {
+      "name": "superpowers:finishing-a-development-branch",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/finishing-a-development-branch/SKILL.md",
+      "sha256": "8db5a922b242dd4e1bf824cb91c13b3e8d8e8a86d6ceaf7f0774eb9cce909d65"
+    },
+    {
+      "name": "superpowers:receiving-code-review",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/receiving-code-review/SKILL.md",
+      "sha256": "091df1629510af1b92fc4abd6f96732ebedb4cb2c0f3457e8f2740b0504a2438"
+    },
+    {
+      "name": "superpowers:requesting-code-review",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/requesting-code-review/SKILL.md",
+      "sha256": "2180e14a448e9410bec88e6646a2d1f0ce7fdd58de27388c1e052e929679d2bc"
+    },
+    {
+      "name": "superpowers:subagent-driven-development",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/subagent-driven-development/SKILL.md",
+      "sha256": "8dde5589ee083fb4999106d116f01c8fdaf3116a8a9813fdedeb80329de49046"
+    },
+    {
+      "name": "superpowers:systematic-debugging",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/systematic-debugging/SKILL.md",
+      "sha256": "51c6435d98c83c42c96ba7c35725a0b2c376cd487fb1a4e6bd0ddbe7e33ef202"
+    },
+    {
+      "name": "superpowers:test-driven-development",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/test-driven-development/SKILL.md",
+      "sha256": "64b03fce4aee5a97a93160cea8111f3ba13a17b7c001db4bd5836d67fd10705d"
+    },
+    {
+      "name": "superpowers:using-git-worktrees",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/using-git-worktrees/SKILL.md",
+      "sha256": "8cfb86f121269e8f7f12361e6795c4f6738828340e28964c9229d365666c9edd"
+    },
+    {
+      "name": "superpowers:using-superpowers",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/using-superpowers/SKILL.md",
+      "sha256": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba"
+    },
+    {
+      "name": "superpowers:verification-before-completion",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/verification-before-completion/SKILL.md",
+      "sha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
+    },
+    {
+      "name": "superpowers:writing-plans",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/writing-plans/SKILL.md",
+      "sha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a"
+    },
+    {
+      "name": "superpowers:writing-skills",
+      "plugin_id": "superpowers@skills-first-starter",
+      "relative_path": "skills/writing-skills/SKILL.md",
+      "sha256": "bbdfe742f853562e643a3d40d64476359d47881e39cef80a189283fa26d11ab9"
+    }
+  ],
+  "preservation": {
+    "existing_outside_visible_plugin_records_unchanged": 26,
+    "user_config_change": "only the approved disposable project's trust entry",
+    "user_config_before_sha256": "b2119c1a1372e707336cb0dcec9baaeb860ffb046079f6c77f905789d0d15c97",
+    "user_config_after_sha256": "69db19c1a4eb853969e7effaa5e8b53bb2291ec2b60535176b4f2b2d46dec350",
+    "no_post_trust_user_config_changes": true
+  },
+  "native_actions": {
+    "manual_plugin_add": false,
+    "native_runtime_installation_verified": true,
+    "marketplace_upgrade": "only skills-first-starter selected; no reported errors",
+    "backplane": "cached installed state reported; disabled, no skills loaded or lifecycle tested"
+  },
+  "limits": [
+    "CLI/app-server proof, not desktop UI or other harnesses",
+    "No upstream workflow correctness, hook-trust, Backplane readiness or adopter pilot claim",
+    "Only discovered SKILL.md bytes compared with pinned Git blobs; no complete supporting-file audit"
+  ]
+}

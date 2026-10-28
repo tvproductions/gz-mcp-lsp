@@ -1,0 +1,91 @@
+[project]
+name = "skills-first-starter"
+version = "0.7.1"
+description = "Project-scoped SP + SP-BP + gz-skills adoption scaffold"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+dependencies = []
+
+[project.scripts]
+skills-first-starter = "skills_first_starter.cli:main"
+
+[build-system]
+requires = ["uv_build==0.13.5"]
+build-backend = "uv_build"
+
+[tool.uv]
+required-version = "==0.13.5"
+python-preference = "only-managed"
+python-downloads-json-url = "https://raw.githubusercontent.com/astral-sh/uv/68677f5439c027db17b4db7821882a9881d376f6/crates/uv-python-managed/download-metadata.json"
+
+[tool.uv.build-backend]
+source-include = [
+    "bundle.json", "templates/**", ".agents/plugins/marketplace.json",
+    ".claude-plugin/marketplace.json", "starter.py", "tests/**", "tools/**",
+    "docs/**", "AGENTS.md", "ROADMAP.md", "CHANGELOG.md", ".python-version",
+    "uv.lock", ".pre-commit-config.yaml", ".github/workflows/**",
+    ".gitattributes", ".gitignore", ".github/dependabot.yml",
+    "baselines/xplane/pyproject.toml", "baselines/xplane/uv.lock",
+    "baselines/xplane/.python-version", "baselines/xplane/README.md",
+]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM", "RUF"]
+
+# Routine tools and explicit on-demand analysis stay out of runtime dependencies.
+[dependency-groups]
+dev = [
+    "ruff==0.17.3",
+    "ty==0.0.92",
+    "pre-commit==4.7.0",
+]
+hygiene = [
+    "bandit==1.9.4",
+    # Defect reproducer only; not qualified as cognitive acceptance authority.
+    "complexipy==8.1.0",
+    "cosmic-ray==8.7.0",
+    "coverage==7.17.0",
+    "deptry==0.25.1",
+    "import-linter==2.15",
+    "interrogate==1.7.0",
+    "lizard==1.24.3",
+    "pip-audit==2.10.1",
+    "vulture==2.16",
+]
+
+# C901 is deliberately absent from the routine lint selection above.
+[tool.ruff.lint.mccabe]
+max-complexity = 20
+
+[tool.complexipy]
+paths = ["src", "tests", "tools/engineering"]
+max-complexity-allowed = 15
+check-script = true
+no-ignore = true
+snapshot-ignore = true
+
+[tool.ty.environment]
+python-version = "3.14"
+
+[tool.ty.src]
+include = ["src", "starter.py", "tests", "tools"]
+
+[tool.importlinter]
+root_packages = ["skills_first_starter"]
+
+[[tool.importlinter.contracts]]
+name = "CLI implementation must not import its execution wrapper"
+type = "forbidden"
+source_modules = ["skills_first_starter.cli"]
+forbidden_modules = ["skills_first_starter.__main__"]
+
+[tool.deptry]
+known_first_party = ["skills_first_starter"]
+# Runtime dependency intent; developer utilities intentionally import hygiene tools.
+extend_exclude = ["tools/.*"]

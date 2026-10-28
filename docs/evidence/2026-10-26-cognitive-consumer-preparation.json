@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-26",
+  "mode": "consumer preparation; upstream engine pending",
+  "python": "3.14.10",
+  "uv": "0.13.5",
+  "engine": null,
+  "engine_qualification": "NOT PERFORMED: awaiting upcoming gzkit-owned candidate",
+  "fixture_cases": 42,
+  "consumer_regressions": 16,
+  "all_analyzer_regressions": 29,
+  "adoption_tests": 39,
+  "scorer_implementation_added": false,
+  "dependency_versions_changed": false,
+  "ceiling": 15,
+  "source_sha256": {
+    "tools/engineering/cognitive_check.py": "11d6c04a851d2a42da78a774eb8c99c35ab452fb826fc0c3225f04933df946fe",
+    "tools/engineering/cognitive_qualification.py": "deeb0810e5a53ceecb423356c5244987f65f1cfd10904322c447c3eeb2d88b9e",
+    "tools/engineering/test_cognitive_check.py": "34770798fd0d4a476e8d17b09895fd412f603e15a5fc971740dac82cd528eb73",
+    "tools/engineering/test_cognitive_qualification.py": "8ae4d27142a8fb441ae31796b967685b2de392425e59518dddf35918b3307c1b",
+    "tools/engineering/fixtures/cognitive-v1.json": "466c2d0836231335f0f9abe09cd6c73b509db113ae556952b62cf4a8fee00eee"
+  },
+  "gate": {
+    "routine": "passed",
+    "bundle_and_both_catalogs": "passed",
+    "source_independent_build": "passed",
+    "installed_distribution": "passed",
+    "sdist_qualification_resources": "passed"
+  },
+  "remote_ci": "unverified; local preparation not committed/pushed",
+  "issue_1": "open; genuine engine and corpus proof still required"
+}

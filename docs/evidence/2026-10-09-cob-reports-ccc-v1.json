@@ -1,0 +1,4233 @@
+{
+  "python": "3.14.8",
+  "scope": [
+    "src"
+  ],
+  "checker_sha256": "a11d58e8414b6cb26073023842906061532cd312fe528bd1a998c29e884210af",
+  "contract": "lizard-functions-v1",
+  "ceilings": [
+    20,
+    20,
+    20
+  ],
+  "modules": [
+    {
+      "file": "src/anonymize.py",
+      "sha256": "f770f82c1cd0305944ac96a8dcc9c65f26ef5d1d40fec284b2942db7c807a71e",
+      "functions": [
+        {
+          "name": "_generator_key",
+          "line": 124,
+          "complexity": 4
+        },
+        {
+          "name": "_gen_value",
+          "line": 132,
+          "complexity": 18
+        },
+        {
+          "name": "_generate_row",
+          "line": 172,
+          "complexity": 2
+        },
+        {
+          "name": "_schema_sha",
+          "line": 178,
+          "complexity": 2
+        },
+        {
+          "name": "anonymize_csv",
+          "line": 183,
+          "complexity": 4
+        },
+        {
+          "name": "_scan_sheet",
+          "line": 205,
+          "complexity": 3
+        },
+        {
+          "name": "_column_names_from_header",
+          "line": 214,
+          "complexity": 3
+        },
+        {
+          "name": "_anonymize_sheet",
+          "line": 218,
+          "complexity": 6
+        },
+        {
+          "name": "anonymize_xlsx",
+          "line": 233,
+          "complexity": 5
+        },
+        {
+          "name": "anonymize_path",
+          "line": 269,
+          "complexity": 3
+        },
+        {
+          "name": "_write_meta",
+          "line": 285,
+          "complexity": 1
+        },
+        {
+          "name": "cli_main",
+          "line": 291,
+          "complexity": 3
+        }
+      ],
+      "mean": 4.5
+    },
+    {
+      "file": "src/cli.py",
+      "sha256": "47a9d2dbb343126347ad61a31e04a472c183377d56eb14a6341f979ebff62c33",
+      "functions": [
+        {
+          "name": "build_parser",
+          "line": 25,
+          "complexity": 5
+        },
+        {
+          "name": "_dispatch_enrolled_recon",
+          "line": 348,
+          "complexity": 9
+        },
+        {
+          "name": "_dispatch_inventory",
+          "line": 379,
+          "complexity": 8
+        },
+        {
+          "name": "_dispatch_inventory_inbox",
+          "line": 417,
+          "complexity": 2
+        },
+        {
+          "name": "_dispatch_rotation",
+          "line": 434,
+          "complexity": 5
+        },
+        {
+          "name": "_dispatch_rotate",
+          "line": 459,
+          "complexity": 1
+        },
+        {
+          "name": "_dispatch_tracker",
+          "line": 472,
+          "complexity": 3
+        },
+        {
+          "name": "_dispatch_inbox",
+          "line": 491,
+          "complexity": 2
+        },
+        {
+          "name": "_dispatch_case",
+          "line": 507,
+          "complexity": 35
+        },
+        {
+          "name": "_dispatch_attended_case",
+          "line": 686,
+          "complexity": 25
+        },
+        {
+          "name": "main",
+          "line": 775,
+          "complexity": 21
+        }
+      ],
+      "mean": 10.545454545454545
+    },
+    {
+      "file": "src/cob_reports/__init__.py",
+      "sha256": "305c3cc3f9fe218ca7a2b54f9a4ae2b2c3decfe9af30627091a129459c03ef77",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/cob_reports/applications/__init__.py",
+      "sha256": "e1f6fe62de29ea5cf7a1744dea5bb10e83a9f6cec50018178288230d8c69af93",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/cob_reports/applications/actions.py",
+      "sha256": "86fa6ef7915c2b3ad0a2c888cd0b90ddbd90be0c0b106444f84fe804c3122f55",
+      "functions": [
+        {
+          "name": "application_lifecycle",
+          "line": 15,
+          "complexity": 7
+        },
+        {
+          "name": "event_date",
+          "line": 34,
+          "complexity": 4
+        },
+        {
+          "name": "material_workflow",
+          "line": 47,
+          "complexity": 7
+        },
+        {
+          "name": "_key",
+          "line": 72,
+          "complexity": 4
+        },
+        {
+          "name": "_labels",
+          "line": 79,
+          "complexity": 4
+        },
+        {
+          "name": "_signature",
+          "line": 91,
+          "complexity": 3
+        },
+        {
+          "name": "_contact",
+          "line": 99,
+          "complexity": 5
+        },
+        {
+          "name": "daily_work.record_change",
+          "line": 126,
+          "complexity": 3
+        },
+        {
+          "name": "daily_work",
+          "line": 112,
+          "complexity": 68
+        }
+      ],
+      "mean": 11.666666666666666
+    },
+    {
+      "file": "src/cob_reports/applications/cli.py",
+      "sha256": "f16380c451a885cadbbb624d60b758a4194d833a42d1ae8b12dc071f63939b69",
+      "functions": [
+        {
+          "name": "configure_parser",
+          "line": 16,
+          "complexity": 1
+        },
+        {
+          "name": "run",
+          "line": 112,
+          "complexity": 98
+        }
+      ],
+      "mean": 49.5
+    },
+    {
+      "file": "src/cob_reports/applications/comparison.py",
+      "sha256": "874d4e257ad9739cddd463078eda5d61d7b02457ed0617db343495e1fbf3e342",
+      "functions": [
+        {
+          "name": "ownership",
+          "line": 55,
+          "complexity": 5
+        }
+      ],
+      "mean": 5.0
+    },
+    {
+      "file": "src/cob_reports/applications/cutover.py",
+      "sha256": "fdebd8edf55ad48dd00515b0e37d437cd08328847dd2730b75bb5db20440da93",
+      "functions": [
+        {
+          "name": "_external",
+          "line": 19,
+          "complexity": 3
+        },
+        {
+          "name": "_inventory",
+          "line": 29,
+          "complexity": 10
+        },
+        {
+          "name": "_private_directory",
+          "line": 58,
+          "complexity": 3
+        },
+        {
+          "name": "_write_once",
+          "line": 65,
+          "complexity": 5
+        },
+        {
+          "name": "_verify_archive",
+          "line": 79,
+          "complexity": 10
+        },
+        {
+          "name": "_archive",
+          "line": 102,
+          "complexity": 7
+        },
+        {
+          "name": "stage_cutover",
+          "line": 133,
+          "complexity": 21
+        }
+      ],
+      "mean": 8.428571428571429
+    },
+    {
+      "file": "src/cob_reports/applications/document_layout.py",
+      "sha256": "4983ad0560bd45167a56c19323ac1045541622afd1a7c090e1a84ef19e1f900f",
+      "functions": [
+        {
+          "name": "document_candidate",
+          "line": 15,
+          "complexity": 55
+        }
+      ],
+      "mean": 55.0
+    },
+    {
+      "file": "src/cob_reports/applications/domain.py",
+      "sha256": "bcbe2742a844a948153b4a5181448e9a928b1efa3017f0aa642d75ac9cc0b509",
+      "functions": [
+        {
+          "name": "record_selector",
+          "line": 26,
+          "complexity": 4
+        },
+        {
+          "name": "receipt_role",
+          "line": 50,
+          "complexity": 2
+        },
+        {
+          "name": "_text",
+          "line": 113,
+          "complexity": 8
+        },
+        {
+          "name": "reconcile_rows.cell",
+          "line": 160,
+          "complexity": 3
+        },
+        {
+          "name": "reconcile_rows",
+          "line": 127,
+          "complexity": 59
+        }
+      ],
+      "mean": 15.2
+    },
+    {
+      "file": "src/cob_reports/applications/inspection.py",
+      "sha256": "6a60d293f7aeb4c5b6127913022a409c202200d76e88365e783eaabde9239eb2",
+      "functions": [
+        {
+          "name": "_kind",
+          "line": 55,
+          "complexity": 10
+        },
+        {
+          "name": "_profile",
+          "line": 76,
+          "complexity": 25
+        },
+        {
+          "name": "_legacy_parser",
+          "line": 136,
+          "complexity": 5
+        },
+        {
+          "name": "inspect_plan",
+          "line": 152,
+          "complexity": 32
+        }
+      ],
+      "mean": 18.0
+    },
+    {
+      "file": "src/cob_reports/applications/layout_review.py",
+      "sha256": "cd009ceba0b7a99e15313a6f704f3d3f1792365a60933bff25975aad21e687a4",
+      "functions": [
+        {
+          "name": "_escape",
+          "line": 35,
+          "complexity": 2
+        },
+        {
+          "name": "_table",
+          "line": 39,
+          "complexity": 4
+        },
+        {
+          "name": "_source_view",
+          "line": 52,
+          "complexity": 59
+        },
+        {
+          "name": "write_layout_review",
+          "line": 258,
+          "complexity": 13
+        }
+      ],
+      "mean": 19.5
+    },
+    {
+      "file": "src/cob_reports/applications/onboarding.py",
+      "sha256": "e4fe308094893d25aa47abf82403814432b9aafea4e201d7d24b5366b09bbc2a",
+      "functions": [
+        {
+          "name": "_sample",
+          "line": 39,
+          "complexity": 8
+        },
+        {
+          "name": "_flat_candidate",
+          "line": 58,
+          "complexity": 23
+        },
+        {
+          "name": "_bind_headers",
+          "line": 100,
+          "complexity": 13
+        },
+        {
+          "name": "prepare_sources",
+          "line": 145,
+          "complexity": 44
+        },
+        {
+          "name": "discover_latest_sources",
+          "line": 325,
+          "complexity": 21
+        }
+      ],
+      "mean": 21.8
+    },
+    {
+      "file": "src/cob_reports/applications/publishing.py",
+      "sha256": "b085ef97b88c60a02e36a2952bb54341d895093f944b81cf827a8b7b28b11ed3",
+      "functions": [
+        {
+          "name": "_rotate_prior_html",
+          "line": 20,
+          "complexity": 21
+        },
+        {
+          "name": "publish_report_html",
+          "line": 61,
+          "complexity": 24
+        }
+      ],
+      "mean": 22.5
+    },
+    {
+      "file": "src/cob_reports/applications/report_product.py",
+      "sha256": "2cd005e46b736f39d756d5c176849f8a563e59e35ed15b6a6e77d31729ee7ab4",
+      "functions": [
+        {
+          "name": "enrollment_term_scope",
+          "line": 46,
+          "complexity": 10
+        },
+        {
+          "name": "material_category",
+          "line": 91,
+          "complexity": 8
+        },
+        {
+          "name": "matrix_materials",
+          "line": 128,
+          "complexity": 15
+        },
+        {
+          "name": "applicant_work_tables",
+          "line": 151,
+          "complexity": 41
+        },
+        {
+          "name": "_receipt_date",
+          "line": 292,
+          "complexity": 4
+        },
+        {
+          "name": "operator_product",
+          "line": 305,
+          "complexity": 54
+        }
+      ],
+      "mean": 22.0
+    },
+    {
+      "file": "src/cob_reports/applications/reporting.py",
+      "sha256": "416078a5516c56a9a13ae402e0884b4f175347eea5258dbced03a68af62f64a8",
+      "functions": [
+        {
+          "name": "_date",
+          "line": 53,
+          "complexity": 4
+        },
+        {
+          "name": "build_report",
+          "line": 65,
+          "complexity": 41
+        },
+        {
+          "name": "_display",
+          "line": 196,
+          "complexity": 4
+        },
+        {
+          "name": "_csv",
+          "line": 202,
+          "complexity": 5
+        },
+        {
+          "name": "_tables",
+          "line": 217,
+          "complexity": 53
+        },
+        {
+          "name": "_material_cells",
+          "line": 530,
+          "complexity": 31
+        },
+        {
+          "name": "_applicant_identity",
+          "line": 605,
+          "complexity": 1
+        },
+        {
+          "name": "_work_tables",
+          "line": 609,
+          "complexity": 21
+        },
+        {
+          "name": "render_report_files.table_cell",
+          "line": 981,
+          "complexity": 9
+        },
+        {
+          "name": "render_report_files.clip",
+          "line": 1171,
+          "complexity": 7
+        },
+        {
+          "name": "render_report_files",
+          "line": 704,
+          "complexity": 100
+        },
+        {
+          "name": "write_report_package",
+          "line": 1346,
+          "complexity": 10
+        },
+        {
+          "name": "load_previous_report",
+          "line": 1388,
+          "complexity": 3
+        },
+        {
+          "name": "verify_report_package",
+          "line": 1398,
+          "complexity": 21
+        }
+      ],
+      "mean": 22.142857142857142
+    },
+    {
+      "file": "src/cob_reports/applications/retirement.py",
+      "sha256": "1e3343b88256954abb7b355880017560f164e135dc1bdded54488c6ef6e8b916",
+      "functions": [
+        {
+          "name": "_private",
+          "line": 22,
+          "complexity": 3
+        },
+        {
+          "name": "_readonly",
+          "line": 30,
+          "complexity": 2
+        },
+        {
+          "name": "_snapshot",
+          "line": 36,
+          "complexity": 3
+        },
+        {
+          "name": "_database_digest",
+          "line": 45,
+          "complexity": 2
+        },
+        {
+          "name": "_rename_exclusive",
+          "line": 53,
+          "complexity": 4
+        },
+        {
+          "name": "retire_legacy",
+          "line": 76,
+          "complexity": 30
+        }
+      ],
+      "mean": 7.333333333333333
+    },
+    {
+      "file": "src/cob_reports/applications/rotation.py",
+      "sha256": "7f54f63386f500be61f754635c3da832c7ee747bb3789e203aba1eb56554a5d0",
+      "functions": [
+        {
+          "name": "_sync_directory",
+          "line": 23,
+          "complexity": 2
+        },
+        {
+          "name": "rotate_processed_inputs",
+          "line": 33,
+          "complexity": 55
+        }
+      ],
+      "mean": 28.5
+    },
+    {
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "sha256": "33b3b11a7808e6c9b2aaa1d7becd716a551255961767818897013c8363d45716",
+      "functions": [
+        {
+          "name": "write_status_inventory.counts",
+          "line": 187,
+          "complexity": 2
+        },
+        {
+          "name": "write_status_inventory.table",
+          "line": 269,
+          "complexity": 4
+        },
+        {
+          "name": "write_status_inventory",
+          "line": 44,
+          "complexity": 81
+        }
+      ],
+      "mean": 29.0
+    },
+    {
+      "file": "src/cob_reports/applications/store.py",
+      "sha256": "cc2eabe8089cda288b80a85a8e8a155161626b72d826d06e3fb47ba08f73c17e",
+      "functions": [
+        {
+          "name": "persist_snapshot",
+          "line": 20,
+          "complexity": 19
+        },
+        {
+          "name": "_operations_schema",
+          "line": 90,
+          "complexity": 4
+        },
+        {
+          "name": "record_successful_run",
+          "line": 109,
+          "complexity": 4
+        },
+        {
+          "name": "rotation_state",
+          "line": 160,
+          "complexity": 1
+        }
+      ],
+      "mean": 7.0
+    },
+    {
+      "file": "src/cob_reports/applications/workbooks.py",
+      "sha256": "33d131969e34390d796626b69e0ff4dbc31d8c4867fa3e0950a54215557eb4d5",
+      "functions": [
+        {
+          "name": "_digest",
+          "line": 35,
+          "complexity": 2
+        },
+        {
+          "name": "reconcile_workbooks",
+          "line": 43,
+          "complexity": 37
+        }
+      ],
+      "mean": 19.5
+    },
+    {
+      "file": "src/cob_reports/applications/workflow.py",
+      "sha256": "0dbb6dcb29f48566d640a38f5f7681c7f3330bbeee467790b5a67ae752acc914",
+      "functions": [
+        {
+          "name": "_external",
+          "line": 14,
+          "complexity": 2
+        },
+        {
+          "name": "archived_source_path",
+          "line": 21,
+          "complexity": 3
+        },
+        {
+          "name": "resolve_source",
+          "line": 31,
+          "complexity": 5
+        },
+        {
+          "name": "load_plan",
+          "line": 42,
+          "complexity": 16
+        },
+        {
+          "name": "approve_plan",
+          "line": 84,
+          "complexity": 5
+        }
+      ],
+      "mean": 6.2
+    },
+    {
+      "file": "src/cob_reports/branding.py",
+      "sha256": "e194c794a8ee8750d31df9dcbdd54faf8374ff8f260f32398d639461cd6bd577",
+      "functions": [
+        {
+          "name": "logo_html",
+          "line": 31,
+          "complexity": 1
+        },
+        {
+          "name": "brand_header",
+          "line": 39,
+          "complexity": 1
+        },
+        {
+          "name": "_font_face",
+          "line": 45,
+          "complexity": 7
+        },
+        {
+          "name": "approved_font_faces",
+          "line": 74,
+          "complexity": 7
+        },
+        {
+          "name": "embed_word_brand_fonts",
+          "line": 100,
+          "complexity": 7
+        },
+        {
+          "name": "pdf_brand_archive",
+          "line": 144,
+          "complexity": 1
+        }
+      ],
+      "mean": 4.0
+    },
+    {
+      "file": "src/cob_reports/cases/__init__.py",
+      "sha256": "afd80e52309ef728424ba16871694df488ff02ed68639307a6eea521dc16fd7b",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/cob_reports/cases/apple_vision.py",
+      "sha256": "b88a1fb7830525e61a05a62d2fe3aa32506d187b541bc0b0d19299dc9f609971",
+      "functions": [
+        {
+          "name": "recognize_image",
+          "line": 22,
+          "complexity": 8
+        }
+      ],
+      "mean": 8.0
+    },
+    {
+      "file": "src/cob_reports/cases/artifacts.py",
+      "sha256": "5235d171791e31573bf5943d812818a3178873c6cbbb6f0b8225e5ad130d3344",
+      "functions": [
+        {
+          "name": "fill_docx_template",
+          "line": 24,
+          "complexity": 28
+        },
+        {
+          "name": "_all_paragraphs",
+          "line": 96,
+          "complexity": 5
+        }
+      ],
+      "mean": 16.5
+    },
+    {
+      "file": "src/cob_reports/cases/attachment_roles.py",
+      "sha256": "12d13b96d71a26920aa2a1fd0bffdb95843ad09864beeaf94a96ad7a01a87d95",
+      "functions": [
+        {
+          "name": "_checked_assignments",
+          "line": 19,
+          "complexity": 14
+        },
+        {
+          "name": "confirm_attachment_roles",
+          "line": 55,
+          "complexity": 2
+        },
+        {
+          "name": "read_attachment_roles",
+          "line": 83,
+          "complexity": 11
+        }
+      ],
+      "mean": 9.0
+    },
+    {
+      "file": "src/cob_reports/cases/case_recovery.py",
+      "sha256": "df539524eaad64fd930b4e96a439167b8656bae4e6a30962fdc84e0a674a7b88",
+      "functions": [
+        {
+          "name": "_sha256",
+          "line": 29,
+          "complexity": 2
+        },
+        {
+          "name": "_checked_recovery_root",
+          "line": 37,
+          "complexity": 8
+        },
+        {
+          "name": "_mark_obligation",
+          "line": 51,
+          "complexity": 2
+        },
+        {
+          "name": "verify_recovery_copy",
+          "line": 74,
+          "complexity": 19
+        },
+        {
+          "name": "backup_operational_database",
+          "line": 118,
+          "complexity": 5
+        }
+      ],
+      "mean": 7.2
+    },
+    {
+      "file": "src/cob_reports/cases/case_store.py",
+      "sha256": "8c51e5216fcf5a31861c84c1b5bb960cdcfebb5416b92631f21244d0ccb14549",
+      "functions": [
+        {
+          "name": "migrate_case_store",
+          "line": 59,
+          "complexity": 3
+        },
+        {
+          "name": "case_status",
+          "line": 118,
+          "complexity": 7
+        },
+        {
+          "name": "record_transition",
+          "line": 170,
+          "complexity": 22
+        },
+        {
+          "name": "begin_case_operation",
+          "line": 254,
+          "complexity": 6
+        },
+        {
+          "name": "complete_case_operation",
+          "line": 281,
+          "complexity": 6
+        }
+      ],
+      "mean": 8.8
+    },
+    {
+      "file": "src/cob_reports/cases/documents.py",
+      "sha256": "4ba30240842f0ba1bb8db024da2e618a922742a4d14542edac785df977682c37",
+      "functions": [
+        {
+          "name": "read_document_pages",
+          "line": 24,
+          "complexity": 24
+        }
+      ],
+      "mean": 24.0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence.py",
+      "sha256": "e0f92ac46a789da6afed3fe976a338c426fb27083adaa02d781315f608a8aa9a",
+      "functions": [
+        {
+          "name": "extract_intake_documents",
+          "line": 21,
+          "complexity": 26
+        }
+      ],
+      "mean": 26.0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "sha256": "29ea4435b13dd998961e67cd1ce447f5586a9bd12579ccc5881f32030ac1303c",
+      "functions": [
+        {
+          "name": "_sha",
+          "line": 40,
+          "complexity": 1
+        },
+        {
+          "name": "_document_bytes",
+          "line": 44,
+          "complexity": 2
+        },
+        {
+          "name": "build_backup",
+          "line": 56,
+          "complexity": 15
+        },
+        {
+          "name": "_safe_name",
+          "line": 110,
+          "complexity": 3
+        },
+        {
+          "name": "_read_payloads",
+          "line": 114,
+          "complexity": 14
+        },
+        {
+          "name": "_document_from_bytes",
+          "line": 142,
+          "complexity": 3
+        },
+        {
+          "name": "_verified_parts",
+          "line": 168,
+          "complexity": 24
+        },
+        {
+          "name": "read_backup_parts",
+          "line": 227,
+          "complexity": 2
+        },
+        {
+          "name": "verify_backup",
+          "line": 247,
+          "complexity": 1
+        },
+        {
+          "name": "recover_ini_candidate",
+          "line": 256,
+          "complexity": 1
+        }
+      ],
+      "mean": 6.6
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "sha256": "880496aabf1ad4b6fbe632057f920ebd37406d7abef1deefee6088c1cca624ea",
+      "functions": [
+        {
+          "name": "optionxform",
+          "line": 39,
+          "complexity": 1
+        },
+        {
+          "name": "_parser",
+          "line": 43,
+          "complexity": 1
+        },
+        {
+          "name": "_fact_keys",
+          "line": 47,
+          "complexity": 3
+        },
+        {
+          "name": "_write_fact",
+          "line": 51,
+          "complexity": 7
+        },
+        {
+          "name": "render_case_ini",
+          "line": 77,
+          "complexity": 12
+        },
+        {
+          "name": "_get",
+          "line": 120,
+          "complexity": 2
+        },
+        {
+          "name": "_safe_section",
+          "line": 126,
+          "complexity": 2
+        },
+        {
+          "name": "_read_fact",
+          "line": 130,
+          "complexity": 13
+        },
+        {
+          "name": "_has_fact_part",
+          "line": 171,
+          "complexity": 2
+        },
+        {
+          "name": "_allowed",
+          "line": 175,
+          "complexity": 8
+        },
+        {
+          "name": "_row",
+          "line": 193,
+          "complexity": 4
+        },
+        {
+          "name": "parse_case_ini",
+          "line": 205,
+          "complexity": 26
+        }
+      ],
+      "mean": 6.75
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_proposals.py",
+      "sha256": "dbdf8143c39dac8cb41717c610ce76e6cba55ddef0fd8b1c17df10cdea416a22",
+      "functions": [
+        {
+          "name": "_claims_human_origin",
+          "line": 22,
+          "complexity": 6
+        },
+        {
+          "name": "propose_case_evidence",
+          "line": 33,
+          "complexity": 16
+        }
+      ],
+      "mean": 11.0
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_records.py",
+      "sha256": "aa56ca76eb9a63e6afb4c6d06e95cf9643421caac3b868e0eb23b74deb7f35cf",
+      "functions": [
+        {
+          "name": "_checked_sha",
+          "line": 19,
+          "complexity": 2
+        },
+        {
+          "name": "_checked_date",
+          "line": 25,
+          "complexity": 4
+        },
+        {
+          "name": "valid_sha",
+          "line": 52,
+          "complexity": 1
+        },
+        {
+          "name": "valid_revision",
+          "line": 57,
+          "complexity": 2
+        },
+        {
+          "name": "valid_locator",
+          "line": 64,
+          "complexity": 2
+        },
+        {
+          "name": "valid_region",
+          "line": 71,
+          "complexity": 4
+        },
+        {
+          "name": "valid_evidence",
+          "line": 86,
+          "complexity": 7
+        },
+        {
+          "name": "valid_id",
+          "line": 107,
+          "complexity": 3
+        },
+        {
+          "name": "valid_dates",
+          "line": 113,
+          "complexity": 3
+        },
+        {
+          "name": "valid_sha",
+          "line": 128,
+          "complexity": 1
+        },
+        {
+          "name": "unique_roles",
+          "line": 132,
+          "complexity": 3
+        },
+        {
+          "name": "valid_id",
+          "line": 147,
+          "complexity": 3
+        },
+        {
+          "name": "valid_id",
+          "line": 169,
+          "complexity": 3
+        },
+        {
+          "name": "valid_term_id",
+          "line": 176,
+          "complexity": 3
+        },
+        {
+          "name": "valid_credits",
+          "line": 182,
+          "complexity": 5
+        },
+        {
+          "name": "valid_sha",
+          "line": 201,
+          "complexity": 1
+        },
+        {
+          "name": "valid_rows",
+          "line": 205,
+          "complexity": 15
+        },
+        {
+          "name": "valid_sha",
+          "line": 234,
+          "complexity": 1
+        },
+        {
+          "name": "has_evidence",
+          "line": 238,
+          "complexity": 3
+        },
+        {
+          "name": "all_source_refs",
+          "line": 243,
+          "complexity": 1
+        },
+        {
+          "name": "_walk_refs",
+          "line": 247,
+          "complexity": 6
+        },
+        {
+          "name": "validate_against_sources",
+          "line": 258,
+          "complexity": 8
+        }
+      ],
+      "mean": 3.6818181818181817
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_revisions.py",
+      "sha256": "4e297755b20e83654bae47279e5d2f085455c4c1297aecdda4d004cb110b82c4",
+      "functions": [
+        {
+          "name": "_sha",
+          "line": 24,
+          "complexity": 1
+        },
+        {
+          "name": "_checked_root",
+          "line": 28,
+          "complexity": 5
+        },
+        {
+          "name": "_checked_revision_dir",
+          "line": 41,
+          "complexity": 7
+        },
+        {
+          "name": "_next_number",
+          "line": 56,
+          "complexity": 3
+        },
+        {
+          "name": "_write_new",
+          "line": 65,
+          "complexity": 3
+        },
+        {
+          "name": "_read_existing",
+          "line": 115,
+          "complexity": 7
+        },
+        {
+          "name": "_mark_human_changes",
+          "line": 138,
+          "complexity": 17
+        },
+        {
+          "name": "_has_unknown",
+          "line": 169,
+          "complexity": 6
+        },
+        {
+          "name": "write_proposed_revision",
+          "line": 180,
+          "complexity": 2
+        },
+        {
+          "name": "write_edited_revision",
+          "line": 201,
+          "complexity": 13
+        },
+        {
+          "name": "confirm_revision",
+          "line": 249,
+          "complexity": 5
+        },
+        {
+          "name": "read_confirmed_revision",
+          "line": 271,
+          "complexity": 3
+        },
+        {
+          "name": "find_child_revision",
+          "line": 279,
+          "complexity": 9
+        }
+      ],
+      "mean": 6.230769230769231
+    },
+    {
+      "file": "src/cob_reports/cases/evidence_sources.py",
+      "sha256": "ddc0434698a0c89f32b9f439c0d9084a0100f30db526c7fb659f25de3e7342cb",
+      "functions": [
+        {
+          "name": "index_documents",
+          "line": 9,
+          "complexity": 10
+        }
+      ],
+      "mean": 10.0
+    },
+    {
+      "file": "src/cob_reports/cases/form_contract.py",
+      "sha256": "706396f8cf722bcf968efc7aaa5976be9f02b2273ec063454307e6224dca9895",
+      "functions": [
+        {
+          "name": "resolve_reviewed_fields",
+          "line": 103,
+          "complexity": 21
+        }
+      ],
+      "mean": 21.0
+    },
+    {
+      "file": "src/cob_reports/cases/ingestor.py",
+      "sha256": "0c2cc97e2ca4650510c53ca2043b76e3ded59287a7811fb7a71cf899eb47c8de",
+      "functions": [
+        {
+          "name": "markdown",
+          "line": 57,
+          "complexity": 3
+        },
+        {
+          "name": "_checked_locations",
+          "line": 74,
+          "complexity": 5
+        },
+        {
+          "name": "_sha256",
+          "line": 87,
+          "complexity": 2
+        },
+        {
+          "name": "_docx_markdown",
+          "line": 95,
+          "complexity": 13
+        },
+        {
+          "name": "_page_markdown",
+          "line": 121,
+          "complexity": 1
+        },
+        {
+          "name": "_large_raster",
+          "line": 126,
+          "complexity": 5
+        },
+        {
+          "name": "__init__",
+          "line": 140,
+          "complexity": 4
+        },
+        {
+          "name": "ingest",
+          "line": 153,
+          "complexity": 6
+        },
+        {
+          "name": "_ocr_page",
+          "line": 186,
+          "complexity": 9
+        },
+        {
+          "name": "reason",
+          "line": 227,
+          "complexity": 18
+        }
+      ],
+      "mean": 6.6
+    },
+    {
+      "file": "src/cob_reports/cases/intake.py",
+      "sha256": "bf3a67828a8b60773dcaba1fd037f9df3dff6611350eb6d70d05a2a58aa1af73",
+      "functions": [
+        {
+          "name": "ingest_eml",
+          "line": 34,
+          "complexity": 28
+        },
+        {
+          "name": "parse_email_attachments",
+          "line": 134,
+          "complexity": 10
+        },
+        {
+          "name": "_safe_filename",
+          "line": 160,
+          "complexity": 3
+        },
+        {
+          "name": "_write_exclusive",
+          "line": 166,
+          "complexity": 1
+        },
+        {
+          "name": "_existing_receipt",
+          "line": 172,
+          "complexity": 11
+        }
+      ],
+      "mean": 10.6
+    },
+    {
+      "file": "src/cob_reports/cases/local_model.py",
+      "sha256": "224e9026f263bbf9e4741f7d91f736483847ce0eee90437767e5a2cd298e7fe8",
+      "functions": [
+        {
+          "name": "_validate_request",
+          "line": 18,
+          "complexity": 4
+        },
+        {
+          "name": "_local_host",
+          "line": 31,
+          "complexity": 11
+        },
+        {
+          "name": "generate_local",
+          "line": 51,
+          "complexity": 12
+        },
+        {
+          "name": "chat_local",
+          "line": 95,
+          "complexity": 10
+        }
+      ],
+      "mean": 9.25
+    },
+    {
+      "file": "src/cob_reports/cases/receipts.py",
+      "sha256": "4aca039c7058a42c6b395ddb5cafa99509f0d29a8fd5afe7e86960b7d43d6367",
+      "functions": [
+        {
+          "name": "__post_init__",
+          "line": 52,
+          "complexity": 13
+        },
+        {
+          "name": "to_cli_json",
+          "line": 66,
+          "complexity": 4
+        }
+      ],
+      "mean": 8.5
+    },
+    {
+      "file": "src/cob_reports/cases/routing.py",
+      "sha256": "de730e9baf1a51865c7180d992f6079bdd1ee9fc6ee0d6bfdac5ae57b105c46a",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 53,
+          "complexity": 1
+        },
+        {
+          "name": "handle_data",
+          "line": 57,
+          "complexity": 2
+        },
+        {
+          "name": "_conversation",
+          "line": 62,
+          "complexity": 19
+        },
+        {
+          "name": "_validate_proposal",
+          "line": 98,
+          "complexity": 20
+        },
+        {
+          "name": "propose_route",
+          "line": 132,
+          "complexity": 12
+        },
+        {
+          "name": "prepare_route_review",
+          "line": 218,
+          "complexity": 13
+        },
+        {
+          "name": "_read_saved_proposal",
+          "line": 287,
+          "complexity": 6
+        },
+        {
+          "name": "confirm_route",
+          "line": 300,
+          "complexity": 14
+        },
+        {
+          "name": "confirm_outcomes",
+          "line": 343,
+          "complexity": 8
+        },
+        {
+          "name": "read_confirmed_outcomes",
+          "line": 385,
+          "complexity": 18
+        }
+      ],
+      "mean": 11.3
+    },
+    {
+      "file": "src/cob_reports/cases/staged_evidence.py",
+      "sha256": "1383b01c0306c79a1ca1b13c79cd603106d61f532a8e74eca52087b808359344",
+      "functions": [
+        {
+          "name": "extract_staged_documents",
+          "line": 24,
+          "complexity": 23
+        }
+      ],
+      "mean": 23.0
+    },
+    {
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "sha256": "433967f284cc6ed4ea7c0ba9df6eb3344d826c98f9fe420aadb9a97b0ad5ca63",
+      "functions": [
+        {
+          "name": "_extract_dir",
+          "line": 33,
+          "complexity": 3
+        },
+        {
+          "name": "_document_record",
+          "line": 46,
+          "complexity": 2
+        },
+        {
+          "name": "_load_document",
+          "line": 57,
+          "complexity": 41
+        },
+        {
+          "name": "_selected_sources",
+          "line": 147,
+          "complexity": 10
+        },
+        {
+          "name": "extract_spec_documents",
+          "line": 177,
+          "complexity": 10
+        },
+        {
+          "name": "read_spec_documents",
+          "line": 213,
+          "complexity": 2
+        }
+      ],
+      "mean": 11.333333333333334
+    },
+    {
+      "file": "src/cob_reports/cases/staging.py",
+      "sha256": "7972b56d8a7abaa2b5a829a5ba992cdffd2bee0b527f3f1b6044cc01da7366da",
+      "functions": [
+        {
+          "name": "_external_root",
+          "line": 38,
+          "complexity": 5
+        },
+        {
+          "name": "_regular_file",
+          "line": 47,
+          "complexity": 4
+        },
+        {
+          "name": "_sha256",
+          "line": 56,
+          "complexity": 2
+        },
+        {
+          "name": "_write_new",
+          "line": 64,
+          "complexity": 2
+        },
+        {
+          "name": "_write_new_atomic",
+          "line": 75,
+          "complexity": 2
+        },
+        {
+          "name": "stage_eml",
+          "line": 88,
+          "complexity": 39
+        },
+        {
+          "name": "_checked_stage",
+          "line": 193,
+          "complexity": 22
+        },
+        {
+          "name": "_checked_route_confirmation",
+          "line": 241,
+          "complexity": 15
+        },
+        {
+          "name": "commit_staged",
+          "line": 269,
+          "complexity": 19
+        }
+      ],
+      "mean": 12.222222222222221
+    },
+    {
+      "file": "src/cob_reports/cases/vision.py",
+      "sha256": "9883aab44c46d53ebad317e1dac2bec8c229121d4c350cbb4922de59a8be32c0",
+      "functions": [
+        {
+          "name": "transcribe_image",
+          "line": 28,
+          "complexity": 15
+        }
+      ],
+      "mean": 15.0
+    },
+    {
+      "file": "src/cob_reports/cases/workflow.py",
+      "sha256": "922e57ed92ce3cb715656c9061456f7ecfe0a36bd4cf0c89734347e8088cb6f3",
+      "functions": [
+        {
+          "name": "_digest",
+          "line": 50,
+          "complexity": 1
+        },
+        {
+          "name": "__init__",
+          "line": 59,
+          "complexity": 1
+        },
+        {
+          "name": "_store",
+          "line": 75,
+          "complexity": 2
+        },
+        {
+          "name": "_stage",
+          "line": 83,
+          "complexity": 5
+        },
+        {
+          "name": "_receipt",
+          "line": 98,
+          "complexity": 1
+        },
+        {
+          "name": "status",
+          "line": 116,
+          "complexity": 1
+        },
+        {
+          "name": "start",
+          "line": 121,
+          "complexity": 1
+        },
+        {
+          "name": "extract",
+          "line": 139,
+          "complexity": 2
+        },
+        {
+          "name": "prepare_outcomes_review",
+          "line": 154,
+          "complexity": 2
+        },
+        {
+          "name": "propose_outcomes",
+          "line": 163,
+          "complexity": 2
+        },
+        {
+          "name": "confirm_outcomes",
+          "line": 172,
+          "complexity": 4
+        },
+        {
+          "name": "confirm_identity",
+          "line": 210,
+          "complexity": 7
+        },
+        {
+          "name": "assign_evidence",
+          "line": 252,
+          "complexity": 4
+        },
+        {
+          "name": "_evidence_root",
+          "line": 273,
+          "complexity": 3
+        },
+        {
+          "name": "propose_evidence",
+          "line": 282,
+          "complexity": 6
+        },
+        {
+          "name": "submit_evidence_edit",
+          "line": 343,
+          "complexity": 6
+        },
+        {
+          "name": "confirm_evidence",
+          "line": 377,
+          "complexity": 6
+        }
+      ],
+      "mean": 3.176470588235294
+    },
+    {
+      "file": "src/cob_reports/jarvis.py",
+      "sha256": "916a96c45bc233a253811529b64864ab8d3a87db3e504211606f4f7cd587ada2",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 22,
+          "complexity": 1
+        },
+        {
+          "name": "_failure",
+          "line": 32,
+          "complexity": 10
+        },
+        {
+          "name": "chat_jarvis",
+          "line": 61,
+          "complexity": 22
+        }
+      ],
+      "mean": 11.0
+    },
+    {
+      "file": "src/cob_reports/local_model_check.py",
+      "sha256": "f05e8641f11b0842ecca5b981b54d1955d0dd333114580b7c0f58f2c58a83ddd",
+      "functions": [
+        {
+          "name": "_apple_marker",
+          "line": 28,
+          "complexity": 2
+        },
+        {
+          "name": "main",
+          "line": 41,
+          "complexity": 8
+        }
+      ],
+      "mean": 5.0
+    },
+    {
+      "file": "src/cob_reports/operational_store.py",
+      "sha256": "ed25061ad7c18b6920c9f12f8f3b40d8eca0dbc12b779912bc3d6dca755e1649",
+      "functions": [
+        {
+          "name": "_checked_path",
+          "line": 13,
+          "complexity": 10
+        },
+        {
+          "name": "open_operational_store",
+          "line": 35,
+          "complexity": 7
+        }
+      ],
+      "mean": 8.5
+    },
+    {
+      "file": "src/config.py",
+      "sha256": "b1f4d399021a683f9d4376fa1275130f5e069a5171f85963d36bf37af196534d",
+      "functions": [
+        {
+          "name": "_read_dotenv",
+          "line": 62,
+          "complexity": 12
+        },
+        {
+          "name": "_deep_merge",
+          "line": 87,
+          "complexity": 5
+        },
+        {
+          "name": "_read_json",
+          "line": 97,
+          "complexity": 3
+        },
+        {
+          "name": "load_settings",
+          "line": 105,
+          "complexity": 17
+        },
+        {
+          "name": "case_storage_roots",
+          "line": 151,
+          "complexity": 9
+        },
+        {
+          "name": "case_staging_root",
+          "line": 177,
+          "complexity": 17
+        },
+        {
+          "name": "operational_database_paths",
+          "line": 208,
+          "complexity": 23
+        },
+        {
+          "name": "verify_smb_case_mount",
+          "line": 248,
+          "complexity": 11
+        },
+        {
+          "name": "_resolve_root",
+          "line": 276,
+          "complexity": 3
+        },
+        {
+          "name": "_normalized",
+          "line": 285,
+          "complexity": 1
+        },
+        {
+          "name": "_is_at_or_below",
+          "line": 289,
+          "complexity": 2
+        },
+        {
+          "name": "ensure_output_path",
+          "line": 295,
+          "complexity": 2
+        },
+        {
+          "name": "data_root",
+          "line": 305,
+          "complexity": 2
+        },
+        {
+          "name": "output_root",
+          "line": 312,
+          "complexity": 4
+        },
+        {
+          "name": "resolve_path",
+          "line": 338,
+          "complexity": 3
+        },
+        {
+          "name": "require_path",
+          "line": 348,
+          "complexity": 2
+        },
+        {
+          "name": "resolve_output_path",
+          "line": 364,
+          "complexity": 2
+        },
+        {
+          "name": "require_output_path",
+          "line": 374,
+          "complexity": 2
+        },
+        {
+          "name": "section",
+          "line": 387,
+          "complexity": 3
+        },
+        {
+          "name": "load_section",
+          "line": 395,
+          "complexity": 1
+        },
+        {
+          "name": "runtime_secret",
+          "line": 403,
+          "complexity": 5
+        },
+        {
+          "name": "validate_applications_html_destination",
+          "line": 415,
+          "complexity": 13
+        },
+        {
+          "name": "applications_html_destinations",
+          "line": 438,
+          "complexity": 9
+        }
+      ],
+      "mean": 6.565217391304348
+    },
+    {
+      "file": "src/describe.py",
+      "sha256": "ca891b3d7167331a8e7005082f85145a8a78bfc90f3da9c3fb4689faf6f2da71",
+      "functions": [
+        {
+          "name": "_file_meta",
+          "line": 81,
+          "complexity": 1
+        },
+        {
+          "name": "_csv_columns",
+          "line": 86,
+          "complexity": 2
+        },
+        {
+          "name": "_csv_row_count",
+          "line": 98,
+          "complexity": 3
+        },
+        {
+          "name": "describe_csv",
+          "line": 106,
+          "complexity": 2
+        },
+        {
+          "name": "_detect_header_row",
+          "line": 130,
+          "complexity": 7
+        },
+        {
+          "name": "_detect_footer_row",
+          "line": 141,
+          "complexity": 9
+        },
+        {
+          "name": "_describe_sheet",
+          "line": 155,
+          "complexity": 11
+        },
+        {
+          "name": "describe_xlsx",
+          "line": 183,
+          "complexity": 3
+        },
+        {
+          "name": "_describe_one_file",
+          "line": 207,
+          "complexity": 3
+        },
+        {
+          "name": "_is_skippable",
+          "line": 217,
+          "complexity": 2
+        },
+        {
+          "name": "describe_path",
+          "line": 221,
+          "complexity": 5
+        },
+        {
+          "name": "_format_file",
+          "line": 233,
+          "complexity": 12
+        },
+        {
+          "name": "_format_text",
+          "line": 265,
+          "complexity": 3
+        },
+        {
+          "name": "cli_main",
+          "line": 276,
+          "complexity": 3
+        }
+      ],
+      "mean": 4.714285714285714
+    },
+    {
+      "file": "src/ingest/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/ingest/inbox.py",
+      "sha256": "05e797443ab9e86386a0642c72a54ab8db53b004895a6b7e2db82005734a6a8b",
+      "functions": [
+        {
+          "name": "_find_xlsx_header",
+          "line": 98,
+          "complexity": 7
+        },
+        {
+          "name": "_classify_grads_xlsx",
+          "line": 117,
+          "complexity": 3
+        },
+        {
+          "name": "_grads_applicants_terms",
+          "line": 142,
+          "complexity": 6
+        },
+        {
+          "name": "_grads_applicants_single_term_proposal",
+          "line": 156,
+          "complexity": 1
+        },
+        {
+          "name": "_grads_applicants_multi_term_proposal",
+          "line": 180,
+          "complexity": 2
+        },
+        {
+          "name": "_classify_grads_applicants",
+          "line": 203,
+          "complexity": 6
+        },
+        {
+          "name": "_classify_tracker_xlsx",
+          "line": 222,
+          "complexity": 7
+        },
+        {
+          "name": "_admits_columns",
+          "line": 249,
+          "complexity": 2
+        },
+        {
+          "name": "_classify_admits_xlsx",
+          "line": 256,
+          "complexity": 4
+        },
+        {
+          "name": "_student_roster_terms",
+          "line": 286,
+          "complexity": 6
+        },
+        {
+          "name": "_bucket_for_terms",
+          "line": 306,
+          "complexity": 4
+        },
+        {
+          "name": "_student_roster_single_proposal",
+          "line": 314,
+          "complexity": 6
+        },
+        {
+          "name": "_student_roster_split_proposal",
+          "line": 357,
+          "complexity": 2
+        },
+        {
+          "name": "_classify_student_roster",
+          "line": 386,
+          "complexity": 5
+        },
+        {
+          "name": "classify",
+          "line": 426,
+          "complexity": 1
+        },
+        {
+          "name": "plan",
+          "line": 431,
+          "complexity": 1
+        },
+        {
+          "name": "_route_transform_grads_xlsx",
+          "line": 439,
+          "complexity": 8
+        },
+        {
+          "name": "_route_split_grads_applicants_csv",
+          "line": 486,
+          "complexity": 5
+        },
+        {
+          "name": "_route_split_student_roster_csv",
+          "line": 513,
+          "complexity": 8
+        },
+        {
+          "name": "_route_convert_admits_xlsx",
+          "line": 542,
+          "complexity": 3
+        },
+        {
+          "name": "execute",
+          "line": 569,
+          "complexity": 1
+        },
+        {
+          "name": "_resolve_inbox_context",
+          "line": 577,
+          "complexity": 2
+        },
+        {
+          "name": "_write_report",
+          "line": 595,
+          "complexity": 3
+        },
+        {
+          "name": "_resolve_classifier_ctx",
+          "line": 629,
+          "complexity": 3
+        },
+        {
+          "name": "_ledger_record",
+          "line": 646,
+          "complexity": 3
+        },
+        {
+          "name": "sweep",
+          "line": 659,
+          "complexity": 8
+        }
+      ],
+      "mean": 4.115384615384615
+    },
+    {
+      "file": "src/ingest/inbox_core.py",
+      "sha256": "e2c927e028cd6ba6cb31fe1cc0f0202890a3553749c83e3f28fa25d5bfb6a61f",
+      "functions": [
+        {
+          "name": "col_set",
+          "line": 58,
+          "complexity": 2
+        },
+        {
+          "name": "extract_datestamp",
+          "line": 95,
+          "complexity": 2
+        },
+        {
+          "name": "datestamp_from_name",
+          "line": 101,
+          "complexity": 3
+        },
+        {
+          "name": "datestamp_from_path",
+          "line": 115,
+          "complexity": 4
+        },
+        {
+          "name": "terms_from_name",
+          "line": 135,
+          "complexity": 5
+        },
+        {
+          "name": "discover",
+          "line": 159,
+          "complexity": 6
+        },
+        {
+          "name": "probe",
+          "line": 166,
+          "complexity": 5
+        },
+        {
+          "name": "run_classifiers",
+          "line": 197,
+          "complexity": 3
+        },
+        {
+          "name": "plan",
+          "line": 212,
+          "complexity": 3
+        },
+        {
+          "name": "rotate_everything_except_dest",
+          "line": 227,
+          "complexity": 6
+        },
+        {
+          "name": "rotate_older_than",
+          "line": 243,
+          "complexity": 9
+        },
+        {
+          "name": "route_move",
+          "line": 266,
+          "complexity": 3
+        },
+        {
+          "name": "route_remove",
+          "line": 278,
+          "complexity": 1
+        },
+        {
+          "name": "execute_with",
+          "line": 289,
+          "complexity": 2
+        },
+        {
+          "name": "_format_dest",
+          "line": 300,
+          "complexity": 2
+        },
+        {
+          "name": "_init_event",
+          "line": 307,
+          "complexity": 7
+        },
+        {
+          "name": "_print_item_banner",
+          "line": 322,
+          "complexity": 2
+        },
+        {
+          "name": "_print_proposal",
+          "line": 330,
+          "complexity": 2
+        },
+        {
+          "name": "_run_proposal",
+          "line": 337,
+          "complexity": 4
+        },
+        {
+          "name": "_interactive_confirm",
+          "line": 354,
+          "complexity": 2
+        },
+        {
+          "name": "_process_item",
+          "line": 363,
+          "complexity": 7
+        },
+        {
+          "name": "sweep_inbox",
+          "line": 400,
+          "complexity": 9
+        },
+        {
+          "name": "build_inbox_report",
+          "line": 461,
+          "complexity": 11
+        }
+      ],
+      "mean": 4.3478260869565215
+    },
+    {
+      "file": "src/inventory/__init__.py",
+      "sha256": "b832caf5384d85d9130088d0936ed1317a03f59a8e964e12fbd1670eae9d0441",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/inventory/course_listings.py",
+      "sha256": "532d9b16c3b2c97b7085f4726f774392b571c27d19d4a75a0be7263a01aa44f1",
+      "functions": [
+        {
+          "name": "_find_sec_schools_column",
+          "line": 16,
+          "complexity": 3
+        },
+        {
+          "name": "filter_cob_sections",
+          "line": 23,
+          "complexity": 1
+        },
+        {
+          "name": "prepare_all_cob_data",
+          "line": 37,
+          "complexity": 4
+        },
+        {
+          "name": "prepare_course_data_main",
+          "line": 65,
+          "complexity": 1
+        },
+        {
+          "name": "audit_course_data",
+          "line": 90,
+          "complexity": 4
+        },
+        {
+          "name": "audit_course_data_main",
+          "line": 113,
+          "complexity": 1
+        },
+        {
+          "name": "_detect_faculty_column",
+          "line": 127,
+          "complexity": 6
+        },
+        {
+          "name": "build_faculty_summary",
+          "line": 151,
+          "complexity": 8
+        },
+        {
+          "name": "build_faculty_reports",
+          "line": 199,
+          "complexity": 2
+        },
+        {
+          "name": "build_faculty_reports_main",
+          "line": 221,
+          "complexity": 1
+        }
+      ],
+      "mean": 3.1
+    },
+    {
+      "file": "src/inventory/export_calculations.py",
+      "sha256": "ee6228c4c17bc2d23a5916ab75da9f763ed0733339d48809dc89f93232dab4fd",
+      "functions": [
+        {
+          "name": "export_faculty_calculation_details",
+          "line": 21,
+          "complexity": 20
+        },
+        {
+          "name": "export_all_faculty_calculations",
+          "line": 229,
+          "complexity": 4
+        }
+      ],
+      "mean": 12.0
+    },
+    {
+      "file": "src/inventory/faculty_data.py",
+      "sha256": "f4d98ad57f51b5a2fbf62c63be1ae2999c587cd889c50070095f0eed93dc0c14",
+      "functions": [
+        {
+          "name": "load_roster.normalize_keys",
+          "line": 57,
+          "complexity": 2
+        },
+        {
+          "name": "load_roster",
+          "line": 18,
+          "complexity": 4
+        },
+        {
+          "name": "load_schedule_data",
+          "line": 68,
+          "complexity": 4
+        },
+        {
+          "name": "build_faculty_name.build_faculty_full",
+          "line": 95,
+          "complexity": 13
+        },
+        {
+          "name": "build_faculty_name",
+          "line": 89,
+          "complexity": 6
+        },
+        {
+          "name": "standardize_schedule_fields",
+          "line": 123,
+          "complexity": 4
+        },
+        {
+          "name": "build_course_components",
+          "line": 149,
+          "complexity": 3
+        },
+        {
+          "name": "compute_component_frequency",
+          "line": 192,
+          "complexity": 2
+        },
+        {
+          "name": "deduplicate_enrollment",
+          "line": 229,
+          "complexity": 1
+        }
+      ],
+      "mean": 4.333333333333333
+    },
+    {
+      "file": "src/inventory/faculty_reports_main.py",
+      "sha256": "70eb40d12d24bbe8077a8b337600474d6a4ced96e3acdc6b336566eadd4829a8",
+      "functions": [
+        {
+          "name": "main",
+          "line": 32,
+          "complexity": 3
+        }
+      ],
+      "mean": 3.0
+    },
+    {
+      "file": "src/inventory/faculty_utils.py",
+      "sha256": "f96d0b288e6ba2615986553221b9bbf13dcb9c90be34b10a3be496cb55866967",
+      "functions": [
+        {
+          "name": "strip_title_suffix",
+          "line": 9,
+          "complexity": 2
+        },
+        {
+          "name": "tokens",
+          "line": 16,
+          "complexity": 1
+        },
+        {
+          "name": "first_last_key_from_full",
+          "line": 22,
+          "complexity": 3
+        },
+        {
+          "name": "first_last_key_from_parts",
+          "line": 32,
+          "complexity": 5
+        },
+        {
+          "name": "last_name_sort_key",
+          "line": 42,
+          "complexity": 3
+        },
+        {
+          "name": "acad_year",
+          "line": 48,
+          "complexity": 2
+        },
+        {
+          "name": "last_two_digits",
+          "line": 54,
+          "complexity": 2
+        },
+        {
+          "name": "parse_roster_line",
+          "line": 60,
+          "complexity": 2
+        }
+      ],
+      "mean": 2.5
+    },
+    {
+      "file": "src/inventory/inbox.py",
+      "sha256": "1abb8176dccc164347e11363d84e7c4cbf4ac1dcfaf2445575fd695668bc6702",
+      "functions": [
+        {
+          "name": "_classify_course_sections.dest_for",
+          "line": 78,
+          "complexity": 2
+        },
+        {
+          "name": "_classify_course_sections",
+          "line": 58,
+          "complexity": 10
+        },
+        {
+          "name": "classify",
+          "line": 104,
+          "complexity": 1
+        },
+        {
+          "name": "plan",
+          "line": 109,
+          "complexity": 1
+        },
+        {
+          "name": "_route_split_course_sections",
+          "line": 116,
+          "complexity": 4
+        },
+        {
+          "name": "execute",
+          "line": 148,
+          "complexity": 1
+        },
+        {
+          "name": "_resolve_inbox_context",
+          "line": 156,
+          "complexity": 2
+        },
+        {
+          "name": "_run_prune",
+          "line": 174,
+          "complexity": 3
+        },
+        {
+          "name": "_write_report",
+          "line": 184,
+          "complexity": 3
+        },
+        {
+          "name": "sweep._post_execute",
+          "line": 244,
+          "complexity": 3
+        },
+        {
+          "name": "sweep",
+          "line": 224,
+          "complexity": 6
+        }
+      ],
+      "mean": 3.272727272727273
+    },
+    {
+      "file": "src/inventory/report_builder.py",
+      "sha256": "277caef28bddb9bf70bbd61f270262b299f966726b65dd352187ad73e2cae06b",
+      "functions": [
+        {
+          "name": "export_intermediate_csvs",
+          "line": 16,
+          "complexity": 9
+        },
+        {
+          "name": "export_tight_csv",
+          "line": 219,
+          "complexity": 1
+        },
+        {
+          "name": "generate_cob_summary",
+          "line": 239,
+          "complexity": 8
+        },
+        {
+          "name": "compute_term_averages.overall_avg_for_term_cob",
+          "line": 303,
+          "complexity": 2
+        },
+        {
+          "name": "compute_term_averages.overall_avg_for_term_dept",
+          "line": 309,
+          "complexity": 3
+        },
+        {
+          "name": "compute_term_averages",
+          "line": 285,
+          "complexity": 1
+        },
+        {
+          "name": "start_year",
+          "line": 318,
+          "complexity": 2
+        },
+        {
+          "name": "_unlink_quiet",
+          "line": 326,
+          "complexity": 2
+        },
+        {
+          "name": "_top5_lines",
+          "line": 333,
+          "complexity": 3
+        },
+        {
+          "name": "_sort_term_by_freq",
+          "line": 345,
+          "complexity": 1
+        },
+        {
+          "name": "_term_section_rows",
+          "line": 354,
+          "complexity": 3
+        },
+        {
+          "name": "_term_summary_stats",
+          "line": 368,
+          "complexity": 2
+        },
+        {
+          "name": "_ay_summary_line",
+          "line": 376,
+          "complexity": 2
+        },
+        {
+          "name": "_grand_summary_line",
+          "line": 387,
+          "complexity": 2
+        },
+        {
+          "name": "_dept_freq_tables",
+          "line": 398,
+          "complexity": 3
+        },
+        {
+          "name": "_dept_totals_table",
+          "line": 429,
+          "complexity": 3
+        },
+        {
+          "name": "_dept_term_block",
+          "line": 445,
+          "complexity": 2
+        },
+        {
+          "name": "_dept_faculty_section",
+          "line": 477,
+          "complexity": 3
+        },
+        {
+          "name": "generate_department_summaries",
+          "line": 524,
+          "complexity": 7
+        },
+        {
+          "name": "_faculty_dept",
+          "line": 567,
+          "complexity": 2
+        },
+        {
+          "name": "_indiv_term_block",
+          "line": 572,
+          "complexity": 3
+        },
+        {
+          "name": "_indiv_report_body",
+          "line": 605,
+          "complexity": 3
+        },
+        {
+          "name": "_indiv_path",
+          "line": 650,
+          "complexity": 3
+        },
+        {
+          "name": "generate_individual_reports",
+          "line": 660,
+          "complexity": 8
+        }
+      ],
+      "mean": 3.25
+    },
+    {
+      "file": "src/inventory/report_formats.py",
+      "sha256": "a8f98d30ec3c131958f068f30e902a684b48d28a8046fedaeb259685367e717e",
+      "functions": [
+        {
+          "name": "convert_markdown_to_html",
+          "line": 9,
+          "complexity": 2
+        },
+        {
+          "name": "convert_markdown_to_word",
+          "line": 76,
+          "complexity": 7
+        },
+        {
+          "name": "convert_markdown_to_pdf",
+          "line": 123,
+          "complexity": 6
+        },
+        {
+          "name": "export_all_formats",
+          "line": 158,
+          "complexity": 7
+        }
+      ],
+      "mean": 5.5
+    },
+    {
+      "file": "src/inventory/teaching_load.py",
+      "sha256": "3ba4144245f77303174b377b1bf30ef246796f513b5e561b4119cc70c3cfc98e",
+      "functions": [
+        {
+          "name": "count_preps",
+          "line": 23,
+          "complexity": 1
+        },
+        {
+          "name": "compare_faculty_roster",
+          "line": 42,
+          "complexity": 5
+        },
+        {
+          "name": "export_teaching_load_intermediates",
+          "line": 121,
+          "complexity": 2
+        },
+        {
+          "name": "export_tl_calculations",
+          "line": 185,
+          "complexity": 8
+        },
+        {
+          "name": "_term_columns",
+          "line": 288,
+          "complexity": 3
+        },
+        {
+          "name": "_start_year",
+          "line": 297,
+          "complexity": 2
+        },
+        {
+          "name": "_is_excluded_code",
+          "line": 304,
+          "complexity": 4
+        },
+        {
+          "name": "_join_display_codes",
+          "line": 315,
+          "complexity": 5
+        },
+        {
+          "name": "_build_section1_course_catalog",
+          "line": 326,
+          "complexity": 8
+        },
+        {
+          "name": "generate_tl_cob_summary",
+          "line": 409,
+          "complexity": 18
+        },
+        {
+          "name": "_comp_display_table",
+          "line": 497,
+          "complexity": 2
+        },
+        {
+          "name": "_tl_dept_matrix_rows",
+          "line": 507,
+          "complexity": 11
+        },
+        {
+          "name": "_tl_dept_totals_matrix",
+          "line": 533,
+          "complexity": 2
+        },
+        {
+          "name": "_tl_ay_block",
+          "line": 543,
+          "complexity": 5
+        },
+        {
+          "name": "_tl_grand_summary",
+          "line": 566,
+          "complexity": 2
+        },
+        {
+          "name": "_tl_faculty_detail",
+          "line": 573,
+          "complexity": 2
+        },
+        {
+          "name": "generate_tl_department_summaries",
+          "line": 590,
+          "complexity": 8
+        },
+        {
+          "name": "_tl_unique_preps_lines._term_label",
+          "line": 626,
+          "complexity": 1
+        },
+        {
+          "name": "_tl_unique_preps_lines._prep_terms",
+          "line": 629,
+          "complexity": 1
+        },
+        {
+          "name": "_tl_unique_preps_lines",
+          "line": 625,
+          "complexity": 2
+        },
+        {
+          "name": "_tl_prep_count_summary",
+          "line": 652,
+          "complexity": 2
+        },
+        {
+          "name": "_tl_individual_body",
+          "line": 669,
+          "complexity": 2
+        },
+        {
+          "name": "_tl_file_path",
+          "line": 697,
+          "complexity": 2
+        },
+        {
+          "name": "generate_tl_individual_reports",
+          "line": 704,
+          "complexity": 11
+        },
+        {
+          "name": "_deans_title_block",
+          "line": 758,
+          "complexity": 1
+        },
+        {
+          "name": "_deans_section1_dept",
+          "line": 771,
+          "complexity": 5
+        },
+        {
+          "name": "_deans_section1",
+          "line": 802,
+          "complexity": 3
+        },
+        {
+          "name": "_deans_section2",
+          "line": 821,
+          "complexity": 3
+        },
+        {
+          "name": "_variability_table",
+          "line": 850,
+          "complexity": 2
+        },
+        {
+          "name": "_deans_section3",
+          "line": 864,
+          "complexity": 3
+        },
+        {
+          "name": "_deans_section4._dept_row",
+          "line": 901,
+          "complexity": 3
+        },
+        {
+          "name": "_deans_section4",
+          "line": 887,
+          "complexity": 3
+        },
+        {
+          "name": "_deans_section5",
+          "line": 920,
+          "complexity": 7
+        },
+        {
+          "name": "_deans_section6",
+          "line": 950,
+          "complexity": 5
+        },
+        {
+          "name": "_deans_section7",
+          "line": 981,
+          "complexity": 2
+        },
+        {
+          "name": "generate_deans_overview",
+          "line": 1001,
+          "complexity": 6
+        }
+      ],
+      "mean": 4.222222222222222
+    },
+    {
+      "file": "src/inventory/teaching_load_main.py",
+      "sha256": "c0e9d6412d790eafa86d1747a4f9aa32f1f7cfa292192ab53294c920cb1322a7",
+      "functions": [
+        {
+          "name": "main._term_label",
+          "line": 145,
+          "complexity": 1
+        },
+        {
+          "name": "main",
+          "line": 34,
+          "complexity": 11
+        }
+      ],
+      "mean": 6.0
+    },
+    {
+      "file": "src/ledger.py",
+      "sha256": "fa2c4be05a0e69c3c59a039c696dc8b009c6b65c4e883ab1e67071e012f53783",
+      "functions": [
+        {
+          "name": "ledger_path",
+          "line": 27,
+          "complexity": 1
+        },
+        {
+          "name": "record",
+          "line": 32,
+          "complexity": 3
+        },
+        {
+          "name": "read",
+          "line": 59,
+          "complexity": 6
+        }
+      ],
+      "mean": 3.3333333333333335
+    },
+    {
+      "file": "src/maintenance.py",
+      "sha256": "95b61682ff5561510b0848de753e122074848c007f1b2a37e24855b09a9f913b",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 55,
+          "complexity": 1
+        },
+        {
+          "name": "_has_columns",
+          "line": 65,
+          "complexity": 3
+        },
+        {
+          "name": "extract_datestamp",
+          "line": 83,
+          "complexity": 2
+        },
+        {
+          "name": "extract_grads_term",
+          "line": 89,
+          "complexity": 2
+        },
+        {
+          "name": "_apply_moves",
+          "line": 98,
+          "complexity": 5
+        },
+        {
+          "name": "rotate_flat",
+          "line": 109,
+          "complexity": 10
+        },
+        {
+          "name": "rotate_grouped",
+          "line": 143,
+          "complexity": 12
+        },
+        {
+          "name": "rotate_prev",
+          "line": 180,
+          "complexity": 5
+        },
+        {
+          "name": "_format_dir",
+          "line": 188,
+          "complexity": 2
+        },
+        {
+          "name": "sweep._record",
+          "line": 260,
+          "complexity": 4
+        },
+        {
+          "name": "sweep._guard",
+          "line": 270,
+          "complexity": 4
+        },
+        {
+          "name": "sweep",
+          "line": 196,
+          "complexity": 16
+        },
+        {
+          "name": "build_rotate_report",
+          "line": 341,
+          "complexity": 5
+        }
+      ],
+      "mean": 5.461538461538462
+    },
+    {
+      "file": "src/registration/__init__.py",
+      "sha256": "9c4ce8a5a48c03b6d4bb2eedee70b744539696c9072d2fd5f60d93aa3ea3b932",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/registration/enrolled_recon.py",
+      "sha256": "6444153d68caaca72ae929e703cca331c5b2edc321aef92130a0994c644f03d0",
+      "functions": [
+        {
+          "name": "extract_datestamp",
+          "line": 61,
+          "complexity": 2
+        },
+        {
+          "name": "find_latest_file",
+          "line": 67,
+          "complexity": 7
+        },
+        {
+          "name": "rotate_to_source",
+          "line": 90,
+          "complexity": 10
+        },
+        {
+          "name": "find_first_present",
+          "line": 141,
+          "complexity": 6
+        },
+        {
+          "name": "autoguess_columns",
+          "line": 153,
+          "complexity": 2
+        },
+        {
+          "name": "normalize_series",
+          "line": 173,
+          "complexity": 6
+        },
+        {
+          "name": "normalize_col",
+          "line": 192,
+          "complexity": 11
+        },
+        {
+          "name": "make_keyframe",
+          "line": 219,
+          "complexity": 4
+        },
+        {
+          "name": "unique_by_key",
+          "line": 243,
+          "complexity": 5
+        },
+        {
+          "name": "_assemble_name",
+          "line": 254,
+          "complexity": 10
+        },
+        {
+          "name": "_pick_col",
+          "line": 269,
+          "complexity": 4
+        },
+        {
+          "name": "assemble_display_columns",
+          "line": 278,
+          "complexity": 14
+        },
+        {
+          "name": "load_csv",
+          "line": 305,
+          "complexity": 2
+        },
+        {
+          "name": "infer_datestamp",
+          "line": 309,
+          "complexity": 4
+        },
+        {
+          "name": "enrolled_recon_main",
+          "line": 323,
+          "complexity": 4
+        },
+        {
+          "name": "_build_argparser",
+          "line": 332,
+          "complexity": 1
+        },
+        {
+          "name": "_as_list",
+          "line": 364,
+          "complexity": 4
+        },
+        {
+          "name": "_discover_roster",
+          "line": 370,
+          "complexity": 3
+        },
+        {
+          "name": "_auto_discover",
+          "line": 384,
+          "complexity": 8
+        },
+        {
+          "name": "_fallback_default_grads",
+          "line": 399,
+          "complexity": 4
+        },
+        {
+          "name": "_resolve_input_paths",
+          "line": 409,
+          "complexity": 13
+        },
+        {
+          "name": "_load_inputs",
+          "line": 448,
+          "complexity": 8
+        },
+        {
+          "name": "_coalesce",
+          "line": 464,
+          "complexity": 3
+        },
+        {
+          "name": "_resolve_name_cols",
+          "line": 471,
+          "complexity": 6
+        },
+        {
+          "name": "_resolve_columns",
+          "line": 495,
+          "complexity": 15
+        },
+        {
+          "name": "_build_keys_and_sets",
+          "line": 551,
+          "complexity": 13
+        },
+        {
+          "name": "_is_grad_acad_prog",
+          "line": 637,
+          "complexity": 1
+        },
+        {
+          "name": "_split_by_hold_status",
+          "line": 647,
+          "complexity": 2
+        },
+        {
+          "name": "_build_grad_only_view._raw",
+          "line": 689,
+          "complexity": 2
+        },
+        {
+          "name": "_build_grad_only_view",
+          "line": 664,
+          "complexity": 4
+        },
+        {
+          "name": "_build_views.view_from_keys",
+          "line": 710,
+          "complexity": 2
+        },
+        {
+          "name": "_build_views",
+          "line": 709,
+          "complexity": 2
+        },
+        {
+          "name": "_count_by_major",
+          "line": 751,
+          "complexity": 4
+        },
+        {
+          "name": "_resolve_output_paths.ofn",
+          "line": 770,
+          "complexity": 1
+        },
+        {
+          "name": "_resolve_output_paths.audit_ofn",
+          "line": 773,
+          "complexity": 1
+        },
+        {
+          "name": "_resolve_output_paths",
+          "line": 757,
+          "complexity": 4
+        },
+        {
+          "name": "_write_outputs",
+          "line": 802,
+          "complexity": 2
+        },
+        {
+          "name": "_build_summary",
+          "line": 816,
+          "complexity": 3
+        },
+        {
+          "name": "_print_result",
+          "line": 856,
+          "complexity": 1
+        },
+        {
+          "name": "_generate_reports",
+          "line": 881,
+          "complexity": 5
+        },
+        {
+          "name": "_do_rotation",
+          "line": 919,
+          "complexity": 7
+        },
+        {
+          "name": "main",
+          "line": 933,
+          "complexity": 6
+        }
+      ],
+      "mean": 5.142857142857143
+    },
+    {
+      "file": "src/registration/reports.py",
+      "sha256": "04007eba9b1ee883d2738b8bdcdb6b196833e04a839bf61d488a16282c69bd88",
+      "functions": [
+        {
+          "name": "_render_kv_table",
+          "line": 36,
+          "complexity": 2
+        },
+        {
+          "name": "_render_df_markdown",
+          "line": 43,
+          "complexity": 9
+        },
+        {
+          "name": "_first_present",
+          "line": 57,
+          "complexity": 3
+        },
+        {
+          "name": "_program_series",
+          "line": 64,
+          "complexity": 2
+        },
+        {
+          "name": "_has_hold",
+          "line": 72,
+          "complexity": 2
+        },
+        {
+          "name": "_headline_counts",
+          "line": 81,
+          "complexity": 8
+        },
+        {
+          "name": "_program_breakdown",
+          "line": 108,
+          "complexity": 2
+        },
+        {
+          "name": "_hold_matrix",
+          "line": 116,
+          "complexity": 3
+        },
+        {
+          "name": "_detail_frame",
+          "line": 143,
+          "complexity": 6
+        },
+        {
+          "name": "_students_with_holds",
+          "line": 167,
+          "complexity": 4
+        },
+        {
+          "name": "_outreach_detail",
+          "line": 176,
+          "complexity": 5
+        },
+        {
+          "name": "build_recon_report",
+          "line": 196,
+          "complexity": 11
+        }
+      ],
+      "mean": 4.75
+    },
+    {
+      "file": "src/registration/tracker.py",
+      "sha256": "a9a5db19dcd9162834ef1125937cc23f73268ac87816eca6869384e4b6ad1b4c",
+      "functions": [
+        {
+          "name": "_resolve_term_label",
+          "line": 61,
+          "complexity": 4
+        },
+        {
+          "name": "_discover_roster",
+          "line": 95,
+          "complexity": 4
+        },
+        {
+          "name": "_require_inputs",
+          "line": 111,
+          "complexity": 3
+        },
+        {
+          "name": "_gather_inputs._dir",
+          "line": 137,
+          "complexity": 1
+        },
+        {
+          "name": "_gather_inputs",
+          "line": 130,
+          "complexity": 6
+        },
+        {
+          "name": "_build_sheets",
+          "line": 177,
+          "complexity": 2
+        },
+        {
+          "name": "_sheet_summary_line",
+          "line": 213,
+          "complexity": 6
+        },
+        {
+          "name": "_summary_md",
+          "line": 229,
+          "complexity": 3
+        },
+        {
+          "name": "_write_summary_report",
+          "line": 253,
+          "complexity": 4
+        },
+        {
+          "name": "_emit_report",
+          "line": 287,
+          "complexity": 2
+        },
+        {
+          "name": "_resolve_output_path",
+          "line": 311,
+          "complexity": 3
+        },
+        {
+          "name": "_backup_prior_tracker",
+          "line": 322,
+          "complexity": 2
+        },
+        {
+          "name": "build",
+          "line": 342,
+          "complexity": 6
+        },
+        {
+          "name": "build_main",
+          "line": 387,
+          "complexity": 2
+        }
+      ],
+      "mean": 3.4285714285714284
+    },
+    {
+      "file": "src/registration/tracker_compose.py",
+      "sha256": "c2d18aa60a93a6a9e487b2986b37cf74d244ce44df8a07e651a9e84ae9657967",
+      "functions": [
+        {
+          "name": "find_latest",
+          "line": 61,
+          "complexity": 7
+        },
+        {
+          "name": "split_applicant_name",
+          "line": 86,
+          "complexity": 4
+        },
+        {
+          "name": "_state_for",
+          "line": 106,
+          "complexity": 4
+        },
+        {
+          "name": "_text_for",
+          "line": 115,
+          "complexity": 3
+        },
+        {
+          "name": "_read_csv_safe",
+          "line": 125,
+          "complexity": 1
+        },
+        {
+          "name": "_grad_filter",
+          "line": 129,
+          "complexity": 2
+        },
+        {
+          "name": "_col",
+          "line": 143,
+          "complexity": 2
+        },
+        {
+          "name": "_summer_terms_by_id",
+          "line": 155,
+          "complexity": 9
+        },
+        {
+          "name": "compose_not_registered",
+          "line": 173,
+          "complexity": 4
+        },
+        {
+          "name": "_admits_min_rank",
+          "line": 210,
+          "complexity": 2
+        },
+        {
+          "name": "compose_admits",
+          "line": 216,
+          "complexity": 7
+        }
+      ],
+      "mean": 4.090909090909091
+    },
+    {
+      "file": "src/registration/tracker_reader.py",
+      "sha256": "3b2b93a41d4a89261abe84a156500624d363264616a7faaf75969b034adc8982",
+      "functions": [
+        {
+          "name": "decode_cell_state",
+          "line": 51,
+          "complexity": 7
+        },
+        {
+          "name": "_cell_fill_rgb",
+          "line": 74,
+          "complexity": 7
+        },
+        {
+          "name": "_read_verbatim_sheet",
+          "line": 87,
+          "complexity": 4
+        },
+        {
+          "name": "_header_index",
+          "line": 97,
+          "complexity": 3
+        },
+        {
+          "name": "_read_row_annotations",
+          "line": 102,
+          "complexity": 4
+        },
+        {
+          "name": "_read_keyed_sheet",
+          "line": 119,
+          "complexity": 5
+        },
+        {
+          "name": "_find_admits_sheet",
+          "line": 142,
+          "complexity": 3
+        },
+        {
+          "name": "read_tracker",
+          "line": 150,
+          "complexity": 4
+        }
+      ],
+      "mean": 4.625
+    },
+    {
+      "file": "src/registration/tracker_state.py",
+      "sha256": "bf414a0308a6214611e1233c2c8cfebd44888efa2578a6a1c5c7188db541110e",
+      "functions": [
+        {
+          "name": "__post_init__",
+          "line": 62,
+          "complexity": 2
+        }
+      ],
+      "mean": 2.0
+    },
+    {
+      "file": "src/registration/tracker_writer.py",
+      "sha256": "c3627e8d630d1df356cad85fe3671b296a4a679a637b7bb33930ef918dfef104",
+      "functions": [
+        {
+          "name": "_state_fill",
+          "line": 53,
+          "complexity": 2
+        },
+        {
+          "name": "_autosize",
+          "line": 61,
+          "complexity": 4
+        },
+        {
+          "name": "_write_data_sheet",
+          "line": 72,
+          "complexity": 7
+        },
+        {
+          "name": "_write_verbatim_sheet",
+          "line": 96,
+          "complexity": 6
+        },
+        {
+          "name": "write_tracker",
+          "line": 107,
+          "complexity": 3
+        }
+      ],
+      "mean": 4.4
+    },
+    {
+      "file": "src/rotation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "mean": null
+    },
+    {
+      "file": "src/rotation/catalog_loader.py",
+      "sha256": "c76a07afaf5c89c312d60f02bac742d5de7d1612c39c2cb6efd05159c969c10d",
+      "functions": [
+        {
+          "name": "load_catalog_csv._clean_credit_hours",
+          "line": 47,
+          "complexity": 4
+        },
+        {
+          "name": "load_catalog_csv",
+          "line": 23,
+          "complexity": 3
+        },
+        {
+          "name": "merge_catalog_with_history",
+          "line": 84,
+          "complexity": 6
+        }
+      ],
+      "mean": 4.333333333333333
+    },
+    {
+      "file": "src/rotation/degree_plan_loader.py",
+      "sha256": "db5d7483022bd03fb456efa08ff39b59f4df1f1cc922525dfe775e51d126536c",
+      "functions": [
+        {
+          "name": "load_degree_plan_csv",
+          "line": 11,
+          "complexity": 1
+        },
+        {
+          "name": "parse_degree_plan_pdf",
+          "line": 27,
+          "complexity": 11
+        },
+        {
+          "name": "load_all_degree_plans",
+          "line": 102,
+          "complexity": 8
+        },
+        {
+          "name": "build_degree_requirements_index._classify_level",
+          "line": 177,
+          "complexity": 6
+        },
+        {
+          "name": "build_degree_requirements_index",
+          "line": 144,
+          "complexity": 2
+        },
+        {
+          "name": "_is_section_header",
+          "line": 205,
+          "complexity": 3
+        }
+      ],
+      "mean": 5.166666666666667
+    },
+    {
+      "file": "src/rotation/history_analyzer.py",
+      "sha256": "0d809b1efdccda1aa0278d24d6f07b159bdf1074bdce05f45a4f717bebc97d69",
+      "functions": [
+        {
+          "name": "load_historical_data",
+          "line": 28,
+          "complexity": 1
+        },
+        {
+          "name": "_term_label",
+          "line": 64,
+          "complexity": 2
+        },
+        {
+          "name": "_collect_available_terms",
+          "line": 80,
+          "complexity": 5
+        },
+        {
+          "name": "infer_frequency_pattern",
+          "line": 89,
+          "complexity": 18
+        },
+        {
+          "name": "_is_alternating_year",
+          "line": 143,
+          "complexity": 7
+        },
+        {
+          "name": "compute_section_stats",
+          "line": 165,
+          "complexity": 9
+        },
+        {
+          "name": "compute_enrollment_trend",
+          "line": 213,
+          "complexity": 7
+        },
+        {
+          "name": "suggest_faculty",
+          "line": 267,
+          "complexity": 7
+        },
+        {
+          "name": "build_historical_catalog._first_last_term",
+          "line": 359,
+          "complexity": 1
+        },
+        {
+          "name": "build_historical_catalog",
+          "line": 328,
+          "complexity": 5
+        }
+      ],
+      "mean": 6.2
+    },
+    {
+      "file": "src/rotation/import_overrides.py",
+      "sha256": "3f1f0f709e6ba818ae1a6bf7c763cfd21b59770b1167051251c426c9cee138fe",
+      "functions": [
+        {
+          "name": "_normalize_term",
+          "line": 33,
+          "complexity": 6
+        },
+        {
+          "name": "_extract_courses_from_cells",
+          "line": 52,
+          "complexity": 4
+        },
+        {
+          "name": "parse_xlsx_rotation",
+          "line": 69,
+          "complexity": 8
+        },
+        {
+          "name": "_find_header_row",
+          "line": 116,
+          "complexity": 9
+        },
+        {
+          "name": "_parse_sections_cell",
+          "line": 127,
+          "complexity": 2
+        },
+        {
+          "name": "_structured_row_to_overrides",
+          "line": 134,
+          "complexity": 8
+        },
+        {
+          "name": "_parse_structured_table",
+          "line": 158,
+          "complexity": 11
+        },
+        {
+          "name": "_parse_term_grid",
+          "line": 185,
+          "complexity": 12
+        },
+        {
+          "name": "_rotation_text_to_terms",
+          "line": 224,
+          "complexity": 17
+        },
+        {
+          "name": "parse_docx_rotation",
+          "line": 264,
+          "complexity": 11
+        },
+        {
+          "name": "import_all_submissions",
+          "line": 331,
+          "complexity": 9
+        },
+        {
+          "name": "import_overrides_main",
+          "line": 379,
+          "complexity": 3
+        }
+      ],
+      "mean": 8.333333333333334
+    },
+    {
+      "file": "src/rotation/overrides.py",
+      "sha256": "6d9f0dd8042edc3e0122ee6e17f2a2e46b271aef3ee230068f487702a4119073",
+      "functions": [
+        {
+          "name": "load_overrides",
+          "line": 25,
+          "complexity": 3
+        },
+        {
+          "name": "apply_overrides",
+          "line": 51,
+          "complexity": 18
+        },
+        {
+          "name": "compute_rotation_diff._build_lookup",
+          "line": 166,
+          "complexity": 6
+        },
+        {
+          "name": "compute_rotation_diff",
+          "line": 154,
+          "complexity": 16
+        },
+        {
+          "name": "validate_overrides_main",
+          "line": 268,
+          "complexity": 10
+        }
+      ],
+      "mean": 10.6
+    },
+    {
+      "file": "src/rotation/rotation_builder.py",
+      "sha256": "423161adb87ef22878a254bc92fe2eb7652bd4f0aaed1a56ee49877abdfe56d7",
+      "functions": [
+        {
+          "name": "load_locked_schedule",
+          "line": 18,
+          "complexity": 9
+        },
+        {
+          "name": "_build_degree_lookup",
+          "line": 76,
+          "complexity": 4
+        },
+        {
+          "name": "_catalog_field",
+          "line": 89,
+          "complexity": 3
+        },
+        {
+          "name": "_locked_course_attrs",
+          "line": 95,
+          "complexity": 5
+        },
+        {
+          "name": "_locked_course_rows",
+          "line": 116,
+          "complexity": 6
+        },
+        {
+          "name": "_collect_locked_rows",
+          "line": 150,
+          "complexity": 3
+        },
+        {
+          "name": "_unlocked_course_rows",
+          "line": 178,
+          "complexity": 2
+        },
+        {
+          "name": "_collect_unlocked_rows",
+          "line": 217,
+          "complexity": 5
+        },
+        {
+          "name": "generate_rotation_draft",
+          "line": 255,
+          "complexity": 6
+        },
+        {
+          "name": "_alt_year_terms",
+          "line": 295,
+          "complexity": 6
+        },
+        {
+          "name": "_irregular_terms",
+          "line": 304,
+          "complexity": 6
+        },
+        {
+          "name": "_assign_terms_by_pattern",
+          "line": 315,
+          "complexity": 10
+        },
+        {
+          "name": "_calculate_projected_sections",
+          "line": 343,
+          "complexity": 8
+        },
+        {
+          "name": "_dept_from_subject",
+          "line": 373,
+          "complexity": 1
+        }
+      ],
+      "mean": 5.285714285714286
+    },
+    {
+      "file": "src/rotation/rotation_main.py",
+      "sha256": "a3c77d67dbc16a60cb33cbf58dc1c60f070e9666fde7ea84902e2c9f3d9dce61",
+      "functions": [
+        {
+          "name": "_resolve_paths",
+          "line": 38,
+          "complexity": 7
+        },
+        {
+          "name": "_setup_output_dirs",
+          "line": 85,
+          "complexity": 3
+        },
+        {
+          "name": "_load_merged_catalog",
+          "line": 93,
+          "complexity": 5
+        },
+        {
+          "name": "_build_data_only_draft",
+          "line": 143,
+          "complexity": 4
+        },
+        {
+          "name": "_apply_and_diff",
+          "line": 168,
+          "complexity": 6
+        },
+        {
+          "name": "_write_reports",
+          "line": 199,
+          "complexity": 5
+        },
+        {
+          "name": "_export_formats",
+          "line": 226,
+          "complexity": 2
+        },
+        {
+          "name": "main",
+          "line": 237,
+          "complexity": 2
+        }
+      ],
+      "mean": 4.25
+    },
+    {
+      "file": "src/rotation/rotation_reports.py",
+      "sha256": "0039d81d4252e3fce968b58c8a9077004de60750be13b01f076216c1dd21b5de",
+      "functions": [
+        {
+          "name": "generate_structured_table",
+          "line": 14,
+          "complexity": 5
+        },
+        {
+          "name": "generate_term_grid",
+          "line": 65,
+          "complexity": 9
+        },
+        {
+          "name": "generate_diff_report",
+          "line": 137,
+          "complexity": 4
+        },
+        {
+          "name": "generate_department_reports",
+          "line": 170,
+          "complexity": 3
+        },
+        {
+          "name": "generate_rotation_summary",
+          "line": 187,
+          "complexity": 13
+        },
+        {
+          "name": "_df_to_markdown_table",
+          "line": 315,
+          "complexity": 9
+        }
+      ],
+      "mean": 7.166666666666667
+    },
+    {
+      "file": "src/status.py",
+      "sha256": "cec9b3a32e8eed8cb3185b4dd5c24fa0a538e490954ecfddabd3fbe7bd6de4d5",
+      "functions": [
+        {
+          "name": "_datestamp",
+          "line": 52,
+          "complexity": 2
+        },
+        {
+          "name": "_csv_rows",
+          "line": 58,
+          "complexity": 3
+        },
+        {
+          "name": "_files",
+          "line": 67,
+          "complexity": 6
+        },
+        {
+          "name": "_pending",
+          "line": 75,
+          "complexity": 6
+        },
+        {
+          "name": "_term_sorted.key",
+          "line": 85,
+          "complexity": 2
+        },
+        {
+          "name": "_term_sorted",
+          "line": 82,
+          "complexity": 1
+        },
+        {
+          "name": "_feed",
+          "line": 92,
+          "complexity": 2
+        },
+        {
+          "name": "_latest",
+          "line": 102,
+          "complexity": 3
+        },
+        {
+          "name": "survey_registration",
+          "line": 116,
+          "complexity": 3
+        },
+        {
+          "name": "survey_inventory",
+          "line": 135,
+          "complexity": 5
+        },
+        {
+          "name": "_survey",
+          "line": 151,
+          "complexity": 2
+        },
+        {
+          "name": "_recent_activity",
+          "line": 173,
+          "complexity": 3
+        },
+        {
+          "name": "format_status",
+          "line": 184,
+          "complexity": 6
+        },
+        {
+          "name": "status_main",
+          "line": 206,
+          "complexity": 2
+        }
+      ],
+      "mean": 3.2857142857142856
+    },
+    {
+      "file": "src/terms.py",
+      "sha256": "8a7e333fd692537700f82d5f9713923cbc2e83e2f6094272f4f92b8276c3c427",
+      "functions": [
+        {
+          "name": "canonize",
+          "line": 55,
+          "complexity": 2
+        },
+        {
+          "name": "term_rank",
+          "line": 63,
+          "complexity": 2
+        },
+        {
+          "name": "term2_to_rank",
+          "line": 71,
+          "complexity": 5
+        },
+        {
+          "name": "next_term",
+          "line": 89,
+          "complexity": 3
+        },
+        {
+          "name": "roster_terms",
+          "line": 100,
+          "complexity": 4
+        },
+        {
+          "name": "find_roster_for_term",
+          "line": 113,
+          "complexity": 8
+        },
+        {
+          "name": "find_rosters_between",
+          "line": 136,
+          "complexity": 10
+        }
+      ],
+      "mean": 4.857142857142857
+    }
+  ],
+  "errors": [],
+  "lizard_version": "1.24.1",
+  "violations": [
+    {
+      "kind": "function",
+      "file": "src/cli.py",
+      "name": "_dispatch_case",
+      "line": 507,
+      "complexity": 35
+    },
+    {
+      "kind": "function",
+      "file": "src/cli.py",
+      "name": "_dispatch_attended_case",
+      "line": 686,
+      "complexity": 25
+    },
+    {
+      "kind": "function",
+      "file": "src/cli.py",
+      "name": "main",
+      "line": 775,
+      "complexity": 21
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/actions.py",
+      "name": "daily_work",
+      "line": 112,
+      "complexity": 68
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/cli.py",
+      "name": "run",
+      "line": 112,
+      "complexity": 98
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/cli.py",
+      "complexity": 49.5
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/cutover.py",
+      "name": "stage_cutover",
+      "line": 133,
+      "complexity": 21
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/document_layout.py",
+      "name": "document_candidate",
+      "line": 15,
+      "complexity": 55
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/document_layout.py",
+      "complexity": 55.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/domain.py",
+      "name": "reconcile_rows",
+      "line": 127,
+      "complexity": 59
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/inspection.py",
+      "name": "_profile",
+      "line": 76,
+      "complexity": 25
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/inspection.py",
+      "name": "inspect_plan",
+      "line": 152,
+      "complexity": 32
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/layout_review.py",
+      "name": "_source_view",
+      "line": 52,
+      "complexity": 59
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/onboarding.py",
+      "name": "_flat_candidate",
+      "line": 58,
+      "complexity": 23
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/onboarding.py",
+      "name": "prepare_sources",
+      "line": 145,
+      "complexity": 44
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/onboarding.py",
+      "name": "discover_latest_sources",
+      "line": 325,
+      "complexity": 21
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/onboarding.py",
+      "complexity": 21.8
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/publishing.py",
+      "name": "_rotate_prior_html",
+      "line": 20,
+      "complexity": 21
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/publishing.py",
+      "name": "publish_report_html",
+      "line": 61,
+      "complexity": 24
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/publishing.py",
+      "complexity": 22.5
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/report_product.py",
+      "name": "applicant_work_tables",
+      "line": 151,
+      "complexity": 41
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/report_product.py",
+      "name": "operator_product",
+      "line": 305,
+      "complexity": 54
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/report_product.py",
+      "complexity": 22.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/reporting.py",
+      "name": "build_report",
+      "line": 65,
+      "complexity": 41
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/reporting.py",
+      "name": "_tables",
+      "line": 217,
+      "complexity": 53
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/reporting.py",
+      "name": "_material_cells",
+      "line": 530,
+      "complexity": 31
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/reporting.py",
+      "name": "_work_tables",
+      "line": 609,
+      "complexity": 21
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/reporting.py",
+      "name": "render_report_files",
+      "line": 704,
+      "complexity": 100
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/reporting.py",
+      "name": "verify_report_package",
+      "line": 1398,
+      "complexity": 21
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/reporting.py",
+      "complexity": 22.142857142857142
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/retirement.py",
+      "name": "retire_legacy",
+      "line": 76,
+      "complexity": 30
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/rotation.py",
+      "name": "rotate_processed_inputs",
+      "line": 33,
+      "complexity": 55
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/rotation.py",
+      "complexity": 28.5
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "name": "write_status_inventory",
+      "line": 44,
+      "complexity": 81
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/applications/status_inventory.py",
+      "complexity": 29.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/applications/workbooks.py",
+      "name": "reconcile_workbooks",
+      "line": 43,
+      "complexity": 37
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/artifacts.py",
+      "name": "fill_docx_template",
+      "line": 24,
+      "complexity": 28
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/case_store.py",
+      "name": "record_transition",
+      "line": 170,
+      "complexity": 22
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/documents.py",
+      "name": "read_document_pages",
+      "line": 24,
+      "complexity": 24
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/cases/documents.py",
+      "complexity": 24.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/evidence.py",
+      "name": "extract_intake_documents",
+      "line": 21,
+      "complexity": 26
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/cases/evidence.py",
+      "complexity": 26.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/evidence_backup.py",
+      "name": "_verified_parts",
+      "line": 168,
+      "complexity": 24
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/evidence_ini.py",
+      "name": "parse_case_ini",
+      "line": 205,
+      "complexity": 26
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/form_contract.py",
+      "name": "resolve_reviewed_fields",
+      "line": 103,
+      "complexity": 21
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/cases/form_contract.py",
+      "complexity": 21.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/intake.py",
+      "name": "ingest_eml",
+      "line": 34,
+      "complexity": 28
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/staged_evidence.py",
+      "name": "extract_staged_documents",
+      "line": 24,
+      "complexity": 23
+    },
+    {
+      "kind": "module",
+      "file": "src/cob_reports/cases/staged_evidence.py",
+      "complexity": 23.0
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/staged_spec.py",
+      "name": "_load_document",
+      "line": 57,
+      "complexity": 41
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/staging.py",
+      "name": "stage_eml",
+      "line": 88,
+      "complexity": 39
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/cases/staging.py",
+      "name": "_checked_stage",
+      "line": 193,
+      "complexity": 22
+    },
+    {
+      "kind": "function",
+      "file": "src/cob_reports/jarvis.py",
+      "name": "chat_jarvis",
+      "line": 61,
+      "complexity": 22
+    },
+    {
+      "kind": "function",
+      "file": "src/config.py",
+      "name": "operational_database_paths",
+      "line": 208,
+      "complexity": 23
+    }
+  ],
+  "aggregate": {
+    "functions": 649,
+    "maximum": 100,
+    "overall_mean": 7.149460708782743
+  },
+  "status": "failed"
+}

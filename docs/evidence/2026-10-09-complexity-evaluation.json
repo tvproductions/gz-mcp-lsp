@@ -1,0 +1,373 @@
+{
+  "date": "2026-10-09",
+  "python": "3.14.8",
+  "versions": {
+    "ruff": "0.15.18",
+    "complexipy": "8.0.1"
+  },
+  "thresholds": {
+    "cyclomatic": 20,
+    "cognitive": 15
+  },
+  "synthetic_cases": {
+    "modern": {
+      "cognitive": {
+        "choose": 1,
+        "describe": 0,
+        "classify": 1
+      },
+      "cyclomatic": {
+        "choose": 2,
+        "describe": 1,
+        "classify": 4
+      },
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "flat_boundary": {
+      "cognitive": {
+        "flat": 19
+      },
+      "cyclomatic": {
+        "flat": 20
+      },
+      "ruff_exit": 0,
+      "complexipy_exit": 1
+    },
+    "flat_exceeds": {
+      "cognitive": {
+        "flat": 20
+      },
+      "cyclomatic": {
+        "flat": 21
+      },
+      "ruff_exit": 1,
+      "complexipy_exit": 1
+    },
+    "nested_boundary": {
+      "cognitive": {
+        "nested": 15
+      },
+      "cyclomatic": {
+        "nested": 6
+      },
+      "ruff_exit": 0,
+      "complexipy_exit": 0
+    },
+    "nested_exceeds": {
+      "cognitive": {
+        "nested": 21
+      },
+      "cyclomatic": {
+        "nested": 7
+      },
+      "ruff_exit": 0,
+      "complexipy_exit": 1
+    }
+  },
+  "invalid_syntax_rejected": true,
+  "source": [
+    {
+      "file": "starter.py",
+      "sha256": "0d6bc1c2bcc0117e6e2d8182f135b2b3d9fc6fe71e533b3c1caa72164eb2e810",
+      "functions": [
+        {
+          "name": "bundle",
+          "line": 30,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "validate_bundle",
+          "line": 34,
+          "cognitive": 14,
+          "cyclomatic": 7
+        },
+        {
+          "name": "check_path",
+          "line": 58,
+          "cognitive": 10,
+          "cyclomatic": 6
+        },
+        {
+          "name": "profile_check",
+          "line": 72,
+          "cognitive": 3,
+          "cyclomatic": 3
+        },
+        {
+          "name": "project_config",
+          "line": 88,
+          "cognitive": 28,
+          "cyclomatic": 10
+        },
+        {
+          "name": "configure",
+          "line": 131,
+          "cognitive": 57,
+          "cyclomatic": 21
+        },
+        {
+          "name": "status",
+          "line": 252,
+          "cognitive": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "backport",
+          "line": 267,
+          "cognitive": 12,
+          "cyclomatic": 4
+        },
+        {
+          "name": "source_revision",
+          "line": 324,
+          "cognitive": 3,
+          "cyclomatic": 5
+        },
+        {
+          "name": "main",
+          "line": 347,
+          "cognitive": 6,
+          "cyclomatic": 5
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [
+        "`configure` is too complex (21 > 20)"
+      ],
+      "complexipy_over_15": [
+        {
+          "name": "project_config",
+          "line": 88,
+          "cognitive": 28,
+          "cyclomatic": 10
+        },
+        {
+          "name": "configure",
+          "line": 131,
+          "cognitive": 57,
+          "cyclomatic": 21
+        }
+      ]
+    },
+    {
+      "file": "tests/test_starter.py",
+      "sha256": "5535829e594eab89c76b6b19d1c5e5ac376332b4054dfb4f106ab74c8313fba0",
+      "functions": [
+        {
+          "name": "AdoptionTests::setUp",
+          "line": 16,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::configure",
+          "line": 21,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_preview_never_writes",
+          "line": 24,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_second_adoption_is_noop",
+          "line": 30,
+          "cognitive": 4,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_preserves_existing_instructions_and_config",
+          "line": 42,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_conflict_blocks_all_writes",
+          "line": 52,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_gzkit_is_not_reconfigured",
+          "line": 62,
+          "cognitive": 1,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_symlink_destination_is_rejected",
+          "line": 68,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_existing_legacy_skill_copy_blocks_duplicate_discovery",
+          "line": 76,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_existing_other_marketplace_plugin_blocks_duplicate",
+          "line": 84,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_pending_profile_is_not_a_readiness_claim",
+          "line": 92,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_existing_profile_and_rules_are_preserved",
+          "line": 97,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_malformed_settings_do_not_get_overwritten",
+          "line": 104,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_backplane_is_pinned_but_disabled",
+          "line": 110,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_active_backplane_is_not_silently_disabled",
+          "line": 119,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_frontdoor_is_present_and_modified_skill_is_preserved",
+          "line": 129,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_backport_assessment_preserves_records_and_does_not_follow_links",
+          "line": 138,
+          "cognitive": 1,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_other_frontdoor_discovery_is_not_duplicated",
+          "line": 155,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_backport_inventory_is_bounded",
+          "line": 161,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "AdoptionTests::test_pins_are_immutable_and_marketplace_matches",
+          "line": 168,
+          "cognitive": 2,
+          "cyclomatic": 1
+        },
+        {
+          "name": "AdoptionTests::test_moving_starter_ref_is_rejected",
+          "line": 176,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    },
+    {
+      "file": "skills/python-engineering/scripts/evaluate_complexity.py",
+      "sha256": "10662cca6bcc865e562ecc55bb1811ed10a0157b5d106a15b132c457ce156152",
+      "functions": [
+        {
+          "name": "nested",
+          "line": 18,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "flat",
+          "line": 27,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "ruff_check",
+          "line": 57,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "observe_case",
+          "line": 77,
+          "cognitive": 2,
+          "cyclomatic": 1
+        },
+        {
+          "name": "diagnostic_score",
+          "line": 115,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "verify_cases",
+          "line": 120,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "inspect_source",
+          "line": 147,
+          "cognitive": 5,
+          "cyclomatic": 1
+        },
+        {
+          "name": "evaluate",
+          "line": 171,
+          "cognitive": 2,
+          "cyclomatic": 1
+        },
+        {
+          "name": "main",
+          "line": 207,
+          "cognitive": 4,
+          "cyclomatic": 1
+        },
+        {
+          "name": "<module>",
+          "line": 1,
+          "cognitive": 1,
+          "cyclomatic": null
+        }
+      ],
+      "ruff_over_20": [],
+      "complexipy_over_15": []
+    }
+  ],
+  "limitations": [
+    "Focused syntax and threshold checks, not complete Python grammar proof.",
+    "Different complexity measures; Xenon module/overall averages are not retained.",
+    "Source violations remain visible; no refactoring or automatic baseline suppression."
+  ]
+}

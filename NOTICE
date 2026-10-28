@@ -1,0 +1,35 @@
+Skills-first starter references independently maintained projects:
+- Superpowers: https://github.com/obra/superpowers (Jesse Vincent / upstream owners)
+- Superpowers Backplane: https://github.com/tvproductions/superpowers-backplane
+- GovZero skills: https://github.com/tvproductions/gz-skills
+- Reference adopter: https://github.com/tvproductions/xplane-fdau
+Upstream licenses and release status remain authoritative. No upstream skills
+are copied into this repository. Original starter code and text use LICENSE.
+
+Cognitive qualification examples in tools/engineering/fixtures/cognitive-v1.json
+adapt small MIT-licensed metric examples from gzkit's tests/complexity/test_cognitive.py
+at a32243e21ec0c7ab24dbf45b5600f4fa524dd6f3:
+https://github.com/tvproductions/gzkit
+No upstream scoring implementation is copied here. The applicable notice follows:
+
+MIT License
+
+Copyright (c) 2026 g0
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

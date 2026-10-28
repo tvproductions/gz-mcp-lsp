@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-26 America/Chicago",
+  "freshness_review_utc": "2026-10-27 00:36 UTC",
+  "version": "0.7.1",
+  "python": "3.14.10",
+  "uv": "0.13.5",
+  "inputs": {
+    "bundle.json": "598972d505c444b8fcb90abfa56cd477e73d14437ad23b54860d14adcf45d446",
+    "pyproject.toml": "f5a9770fa5749d031911e52961e80791b69d2be197b3d6307129d7636e978b13",
+    "uv.lock": "e006a1e0aae04893765136d37e46cdaaadcfbbcf8481abcd41e10d377dd5b4db",
+    ".python-version": "4f4c88910b6d485ae689143880e5e81b595a48a51ecb391b2f14feaec106d180",
+    ".github/workflows/check.yml": "a38d27f2a410ee4de36b6467d2ba36e34cee123f96b18c476b71efa4bede313c",
+    ".github/dependabot.yml": "bdee450aca52c7b2aea6e3685674cbfe0ece23b580b6d7ad9d2f4e5d1fe1eb8c",
+    "baselines/xplane/pyproject.toml": "1f9d15a71fbb9284678d2acbcc8c63a52c3922f677970a208f0e748832439955",
+    "baselines/xplane/uv.lock": "2cdafce0b99ba6626690aa2b41492218bb51688b3cfd4d65a15ce06c5a72f8b5",
+    "baselines/xplane/.python-version": "a05e0074505ce29f25abf3aebe4f7218d28e98411822f199e3272740be4e363c",
+    "NOTICE": "fb61b6bd22fde5538ecb10bea24f52633ab5bdca40f4b394d5920575d681b1e2",
+    "tools/verify_distribution.py": "e9169c522f67caf4ad23a317344b2742e0920537e4b5979fc88e2f773d1ac68b",
+    "tools/engineering/cognitive_check.py": "11d6c04a851d2a42da78a774eb8c99c35ab452fb826fc0c3225f04933df946fe",
+    "tools/engineering/cognitive_qualification.py": "deeb0810e5a53ceecb423356c5244987f65f1cfd10904322c447c3eeb2d88b9e",
+    "tools/engineering/test_cognitive_check.py": "34770798fd0d4a476e8d17b09895fd412f603e15a5fc971740dac82cd528eb73",
+    "tools/engineering/test_cognitive_qualification.py": "8ae4d27142a8fb441ae31796b967685b2de392425e59518dddf35918b3307c1b",
+    "tools/engineering/fixtures/cognitive-v1.json": "466c2d0836231335f0f9abe09cd6c73b509db113ae556952b62cf4a8fee00eee"
+  },
+  "latest_registry_versions": {
+    "uv": "0.13.5",
+    "uv-build": "0.13.5",
+    "ruff": "0.17.3",
+    "ty": "0.0.92",
+    "pre-commit": "4.7.0",
+    "complexipy": "8.2.0",
+    "cosmic-ray": "8.7.0",
+    "lizard": "1.24.3",
+    "coverage": "7.17.0",
+    "interrogate": "1.7.0",
+    "vulture": "2.16",
+    "bandit": "1.9.4",
+    "deptry": "0.25.1",
+    "pip-audit": "2.10.1",
+    "import-linter": "2.15"
+  },
+  "selected": {
+    "standard": {
+      "dev": [
+        "ruff==0.17.3",
+        "ty==0.0.92",
+        "pre-commit==4.7.0"
+      ],
+      "hygiene": [
+        "bandit==1.9.4",
+        "complexipy==8.1.0",
+        "cosmic-ray==8.7.0",
+        "coverage==7.17.0",
+        "deptry==0.25.1",
+        "import-linter==2.15",
+        "interrogate==1.7.0",
+        "lizard==1.24.3",
+        "pip-audit==2.10.1",
+        "vulture==2.16"
+      ]
+    },
+    "xplane": {
+      "dev": [
+        "ruff==0.17.3",
+        "ty==0.0.92",
+        "pre-commit==4.7.0",
+        "uv_build==0.13.5"
+      ],
+      "hygiene": [
+        "bandit==1.9.4",
+        "complexipy==8.2.0",
+        "cosmic-ray==8.7.0",
+        "coverage==7.17.0",
+        "deptry==0.25.1",
+        "import-linter==2.15",
+        "interrogate==1.7.0",
+        "lizard==1.24.3",
+        "pip-audit==2.10.1",
+        "vulture==2.16"
+      ]
+    }
+  },
+  "cognitive": {
+    "engine": null,
+    "ceiling": 15,
+    "exception": "explicit maintainer publication direction; upstream integration unscheduled",
+    "qualification": "not performed on a real engine"
+  },
+  "tests": {
+    "adoption": 39,
+    "analyzer_total": 29,
+    "new_consumer": 16,
+    "fixture_cases": 42
+  },
+  "consumer_coverage": {
+    "covered_lines": 131,
+    "num_statements": 143,
+    "percent_covered": 89.3491124260355,
+    "percent_covered_display": "89",
+    "missing_lines": 12,
+    "excluded_lines": 0,
+    "percent_statements_covered": 91.60839160839161,
+    "percent_statements_covered_display": "92",
+    "num_branches": 26,
+    "num_partial_branches": 6,
+    "covered_branches": 20,
+    "missing_branches": 6,
+    "percent_branches_covered": 76.92307692307692,
+    "percent_branches_covered_display": "77"
+  },
+  "bandit_new_consumer_findings": 0,
+  "audits": {
+    "standard": {
+      "packages": 74,
+      "vulnerabilities": 0,
+      "skipped": 0
+    },
+    "xplane": {
+      "packages": 75,
+      "vulnerabilities": 0,
+      "skipped": 0
+    }
+  },
+  "lizard": {
+    "functions": 147,
+    "maximum": 16,
+    "overall_mean": 3.435374149659864
+  },
+  "retained_noncurrent_component": {
+    "name": "gz-skills",
+    "selected": "v0.8.0",
+    "latest": "v0.8.3",
+    "owner": "starter maintainer",
+    "revisit": "2026-11-02 or next scoped plugin maintenance"
+  },
+  "release_status": "candidate; exact-commit CI and publication must be verified separately"
+}

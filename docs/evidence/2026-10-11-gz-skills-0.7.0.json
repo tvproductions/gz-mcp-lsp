@@ -1,0 +1,52 @@
+{
+  "release": "v0.7.0",
+  "revision": "6ebf803e4a2775d3742c84984a03548275b7c926",
+  "checks": [
+    {
+      "check": "codex-tagged-marketplace",
+      "exit": 0
+    },
+    {
+      "check": "codex-tagged-install",
+      "exit": 0
+    },
+    {
+      "check": "claude-tagged-marketplace",
+      "exit": 0
+    },
+    {
+      "check": "claude-tagged-install",
+      "exit": 0
+    },
+    {
+      "check": "uvx-tagged-snapshot",
+      "exit": 0
+    },
+    {
+      "check": "codex-tagged-contents",
+      "version": "0.7.0",
+      "skills": 19,
+      "changed_bodies_match_release": true
+    },
+    {
+      "check": "claude-tagged-contents",
+      "version": "0.7.0",
+      "skills": 19,
+      "changed_bodies_match_release": true
+    },
+    {
+      "check": "uvx-snapshot-contents",
+      "skills": 5,
+      "runtime_policy_instructions_present": true
+    },
+    {
+      "check": "opencode-tagged-startup",
+      "status": "unverified",
+      "reason": "Disposable startup exceeded the 60-second timeout; no model was invoked."
+    }
+  ],
+  "limitations": [
+    "Fresh-session workflow execution and combined SP/SP-BP readiness are not established by installation.",
+    "OpenCode native tagged startup and complete skill discovery remain unverified; adapter tests passed."
+  ]
+}

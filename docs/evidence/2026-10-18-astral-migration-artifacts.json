@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-18T20:41:49.939973+00:00",
+  "scope": "Windows rebuild of retained migration fixtures; wheel hashes match the installed-behavior receipt",
+  "source_receipt": "2026-10-18-astral-migrations.json",
+  "current_guide_sha256": "ed8564750934e5ffdb3fdaba15a0707b27ceb139fe9ff641f80cd77e0f88fcf0",
+  "guide_change_since_source_receipt": "Added prose warning about workspace substitutions and this evidence link; fenced fixture contents unchanged",
+  "records": [
+    {
+      "project": "application",
+      "package": null,
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_summary-0.1.0.tar.gz\nSuccessfully built dist\\example_summary-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "project": "library",
+      "package": null,
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_math-0.1.0.tar.gz\nSuccessfully built dist\\example_math-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "project": "workspace",
+      "package": "example-math",
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources",
+        "--package",
+        "example-math"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_math-0.1.0.tar.gz\nSuccessfully built dist\\example_math-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "project": "workspace",
+      "package": "example-workspace-app",
+      "argv": [
+        "uv",
+        "build",
+        "--no-sources",
+        "--package",
+        "example-workspace-app"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist\\example_workspace_app-0.1.0.tar.gz\nSuccessfully built dist\\example_workspace_app-0.1.0-py3-none-any.whl\n"
+    }
+  ],
+  "inventories": [
+    {
+      "project": "application",
+      "artifact": "example_summary-0.1.0-py3-none-any.whl",
+      "sha256": "5d3d6a69d10a596c231c864618647029875ade3e2382d61f0b9e11836460cb8f",
+      "files": [
+        "example_summary/",
+        "example_summary/__init__.py",
+        "example_summary/label.txt",
+        "example_summary-0.1.0.dist-info/",
+        "example_summary-0.1.0.dist-info/WHEEL",
+        "example_summary-0.1.0.dist-info/entry_points.txt",
+        "example_summary-0.1.0.dist-info/METADATA",
+        "example_summary-0.1.0.dist-info/RECORD"
+      ]
+    },
+    {
+      "project": "application",
+      "artifact": "example_summary-0.1.0.tar.gz",
+      "sha256": "e3e21b29d6aca03b4b548e8cb307bffeb6a947bc4555956c64bedfdb91da9ffe",
+      "files": [
+        "example_summary-0.1.0/PKG-INFO",
+        "example_summary-0.1.0/pyproject.toml",
+        "example_summary-0.1.0/pyproject.toml.orig",
+        "example_summary-0.1.0",
+        "example_summary-0.1.0/src",
+        "example_summary-0.1.0/src/example_summary",
+        "example_summary-0.1.0/src/example_summary/__init__.py",
+        "example_summary-0.1.0/src/example_summary/label.txt"
+      ]
+    },
+    {
+      "project": "library",
+      "artifact": "example_math-0.1.0-py3-none-any.whl",
+      "sha256": "e9d86bca68225dfd68cb7f16d450cae6ddd955ae4fd2f49ec63044dd07858cf9",
+      "files": [
+        "example_math/",
+        "example_math/__init__.py",
+        "example_math/py.typed",
+        "example_math-0.1.0.dist-info/",
+        "example_math-0.1.0.dist-info/WHEEL",
+        "example_math-0.1.0.dist-info/METADATA",
+        "example_math-0.1.0.dist-info/RECORD"
+      ]
+    },
+    {
+      "project": "library",
+      "artifact": "example_math-0.1.0.tar.gz",
+      "sha256": "4c760b997ddb7ce2d247467d1481389866e3d1c6e0787da6956c4e5512af1e5d",
+      "files": [
+        "example_math-0.1.0/PKG-INFO",
+        "example_math-0.1.0/pyproject.toml",
+        "example_math-0.1.0/pyproject.toml.orig",
+        "example_math-0.1.0",
+        "example_math-0.1.0/src",
+        "example_math-0.1.0/src/example_math",
+        "example_math-0.1.0/src/example_math/__init__.py",
+        "example_math-0.1.0/src/example_math/py.typed"
+      ]
+    },
+    {
+      "project": "workspace",
+      "artifact": "example_math-0.1.0-py3-none-any.whl",
+      "sha256": "e9d86bca68225dfd68cb7f16d450cae6ddd955ae4fd2f49ec63044dd07858cf9",
+      "files": [
+        "example_math/",
+        "example_math/__init__.py",
+        "example_math/py.typed",
+        "example_math-0.1.0.dist-info/",
+        "example_math-0.1.0.dist-info/WHEEL",
+        "example_math-0.1.0.dist-info/METADATA",
+        "example_math-0.1.0.dist-info/RECORD"
+      ]
+    },
+    {
+      "project": "workspace",
+      "artifact": "example_math-0.1.0.tar.gz",
+      "sha256": "d9acb8ede6d0b6118056aaf22f44f7c449582e74ba9bc0ae8d86412d752f20f8",
+      "files": [
+        "example_math-0.1.0/PKG-INFO",
+        "example_math-0.1.0/pyproject.toml",
+        "example_math-0.1.0/pyproject.toml.orig",
+        "example_math-0.1.0",
+        "example_math-0.1.0/src",
+        "example_math-0.1.0/src/example_math",
+        "example_math-0.1.0/src/example_math/__init__.py",
+        "example_math-0.1.0/src/example_math/py.typed"
+      ]
+    },
+    {
+      "project": "workspace",
+      "artifact": "example_workspace_app-0.1.0-py3-none-any.whl",
+      "sha256": "ad51a80c72539b15050b3356babd4a2a8c6013c7630fb9b3c282a0fa24cd6787",
+      "files": [
+        "example_workspace_app/",
+        "example_workspace_app/__init__.py",
+        "example_workspace_app-0.1.0.dist-info/",
+        "example_workspace_app-0.1.0.dist-info/WHEEL",
+        "example_workspace_app-0.1.0.dist-info/entry_points.txt",
+        "example_workspace_app-0.1.0.dist-info/METADATA",
+        "example_workspace_app-0.1.0.dist-info/RECORD"
+      ]
+    },
+    {
+      "project": "workspace",
+      "artifact": "example_workspace_app-0.1.0.tar.gz",
+      "sha256": "36b4cc89997c93ef261158b4cdba528caef10458bb48ff116611bddd7b75c2fb",
+      "files": [
+        "example_workspace_app-0.1.0/PKG-INFO",
+        "example_workspace_app-0.1.0/pyproject.toml",
+        "example_workspace_app-0.1.0/pyproject.toml.orig",
+        "example_workspace_app-0.1.0",
+        "example_workspace_app-0.1.0/src",
+        "example_workspace_app-0.1.0/src/example_workspace_app",
+        "example_workspace_app-0.1.0/src/example_workspace_app/__init__.py"
+      ]
+    }
+  ],
+  "redaction_note": "User and checkout prefixes redacted, including JSON-escaped diagnostic paths; substantive outputs, exit codes and artifact hashes preserved."
+}

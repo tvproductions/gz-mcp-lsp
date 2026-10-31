@@ -8,6 +8,7 @@ import tarfile
 import tempfile
 import tomllib
 import zipfile
+from email import message_from_string
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,8 +28,10 @@ def verify_archives(wheel: Path, sdist: Path, version: str) -> None:
         if any(name.startswith(("skills_first_starter/", "tests/", "tools/")) for name in names):
             raise ValueError("Wheel includes starter runtime or development files")
         info = archive.read(f"gz_mcp_lsp-{version}.dist-info/METADATA").decode()
-        if "Name: gz-mcp-lsp\n" not in info or "Requires-Dist:" in info:
-            raise ValueError("Unexpected design-stage distribution identity or dependencies")
+        metadata = message_from_string(info)
+        dependencies = {value.replace(" ", "") for value in metadata.get_all("Requires-Dist", [])}
+        if metadata["Name"] != "gz-mcp-lsp" or dependencies != {"mcp==2.3.0"}:
+            raise ValueError("Unexpected distribution identity or dependencies")
     with tarfile.open(sdist) as archive:
         names = archive.getnames()
         if any("/.venv/" in name for name in names):

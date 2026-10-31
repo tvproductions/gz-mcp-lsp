@@ -1,0 +1,40 @@
+{
+  "mcp": "2.3.0",
+  "dataclass_schema": {
+    "$defs": {
+      "Position": {
+        "properties": {
+          "line": {
+            "title": "Line",
+            "type": "integer"
+          },
+          "character": {
+            "title": "Character",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "line",
+          "character"
+        ],
+        "title": "Position",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "position": {
+        "$ref": "#/$defs/Position"
+      }
+    },
+    "required": [
+      "position"
+    ],
+    "title": "locateArguments",
+    "type": "object"
+  },
+  "structured_result": {
+    "line": 2,
+    "character": 4
+  },
+  "cancellation_propagates": true
+}

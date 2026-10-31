@@ -3,8 +3,8 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: revised specification and implementation plan awaiting human approval.
-No adapter runtime or accepted MCP capabilities exist yet.**
+**Status: specification and plan approved on 2026-10-31; implementation starting.
+No runtime capabilities have been accepted yet.**
 
 The intended path is:
 
@@ -28,7 +28,7 @@ engineering evidence, then a deliberate stop.
 Read the [revised architectural specification](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),
 [version-pinned parity assessment](docs/discovery/reference-parity.md),
 [acceptance matrix](docs/discovery/acceptance-matrix.md), and
-[unapproved implementation plan](docs/superpowers/plans/2026-10-28-reference-parity.md).
+[approved implementation plan](docs/superpowers/plans/2026-10-28-reference-parity.md).
 Current [design-revision evidence](docs/evidence/2026-10-28-design-revision.md)
 is separate from the historical [initialization evidence](docs/evidence/2026-10-28-initialization.md).
 See the [license review](docs/discovery/licenses.md) for attribution/dependency boundaries.

@@ -11,4 +11,13 @@ enabled = true
 enabled = false
 
 [plugins."gz-skills@skills-first-starter"]
+enabled = false
+
+# Independent project override; starter provenance remains v0.7.1.
+[marketplaces."gz-skills"]
+source_type = "git"
+source = "https://github.com/tvproductions/gz-skills.git"
+ref = "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3"
+
+[plugins."gz-skills@gz-skills"]
 enabled = true

@@ -1,0 +1,21 @@
+{
+  "project": [
+    {
+      "name": "gz-skills:gzs-router",
+      "path": "<USER>/.codex/plugins/cache/gz-skills/gz-skills/0.8.3/skills/gzs-router/SKILL.md",
+      "enabled": true
+    },
+    {
+      "name": "superpowers:using-superpowers",
+      "path": "<USER>/.codex/plugins/cache/skills-first-starter/superpowers/7.0.1/skills/using-superpowers/SKILL.md",
+      "enabled": true
+    }
+  ],
+  "gz_skills_release": "v0.8.3",
+  "gz_skills_revision": "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3",
+  "compared_skill_files": 44,
+  "byte_differences": 0,
+  "outside_control": "neither identity discovered in fresh /tmp process",
+  "backplane": "disabled",
+  "note": "Independent override; original shared marketplace disabled for gz-skills only in project; new native user defaults explicitly disabled after add"
+}

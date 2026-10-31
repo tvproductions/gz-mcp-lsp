@@ -10,11 +10,10 @@
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: UNAPPROVED PLAN. Every task below is future work. No runtime task has started.**
-The user expressly requested planning before approval, overriding the usual workflow
-ordering for plan preparation only. It does not approve the approach, public schema,
-write guarantees or execution. Resolve the specification's four review decisions
-and obtain human approval before executing even T0. Do not invoke execution skills now.
+**STATUS: APPROVED by the user on 2026-10-31.** Execute using the native inline
+workflow with test-first verification; completion/acceptance must be evidenced.
+Approval does not waive cognitive qualification or plugin reconciliation and does
+not authorize a tag/release or expansion beyond the stated milestone.
 
 ## Global Constraints
 
@@ -84,7 +83,7 @@ behavior, not environment/setup failure.
 
 ## Phase 0 — acceptance prerequisites
 
-### T0: Close setup/version prerequisites and establish runtime test contract
+### Task 0: Close setup/version prerequisites and establish runtime test contract
 
 **Files:** modify pyproject.toml, uv.lock, tools/verify_distribution.py,
 tests/test_distribution.py, README.md; add tests/integration/__init__.py and
@@ -104,7 +103,7 @@ and exact test/server executable provenance; no adapter tool behavior yet.
 
 ## Phase 1 — reliable MCP–LSP interoperability
 
-### T1: Configuration, URI policy and coordinate value types
+### Task 1: Configuration, URI policy and coordinate value types
 
 **Files:** create models.py, config.py, workspace.py, tests/test_config.py,
 tests/test_workspace.py; modify README JSON example after contract is implemented.
@@ -119,7 +118,7 @@ Offset is a UTF-8 byte offset for safe byte slicing; no disk writes in this task
 - [ ] Run `uv run --locked python -m unittest discover -s tests -p 'test_workspace.py' -v` and the config suite; establish behavior-red, then implement exact signatures/defaults/limits from spec using stdlib only. Include file identity, excluded scope and manifest limits.
 - [ ] Run both suites green, routine gate and commit. Gate: identity/coordinate tests pass before LSP can query or edit anything.
 
-### T2: Bounded independent JSON-RPC transport
+### Task 2: Bounded independent JSON-RPC transport
 
 **Files:** create lsp_transport.py, tests/test_lsp_transport.py; create tests/support/fake_lsp.py for subsequent process tasks.
 
@@ -135,7 +134,7 @@ Reader loop starts/stops under Session; no product subprocess launched by transp
 - [ ] Run `uv run --locked python -m unittest discover -s tests -p test_lsp_transport.py -v`, verify red, implement serialization/reader/dispatch/deadline ownership, then run green. Do not copy generated Go protocol classes.
 - [ ] Run routine gate and commit. Gate: C2/C4 transport assertions, not yet real-server interoperability.
 
-### T3: One ty process, official SDK composition and minimal public path
+### Task 3: One ty process, official SDK composition and minimal public path
 
 **Files:** create session.py, mcp_api.py, cli.py, __main__.py;
 create tests/test_session.py, tests/test_mcp_api.py; modify pyproject.toml entry
@@ -153,7 +152,7 @@ Intermediate catalog exposes implemented tools only; do not stub success for rem
 - [ ] Run those suites red, implement lifecycle/stdio composition and missing cleanup; keep no semantic success stubs. Update artifact tests to exercise installed `--help`/bad config and package origin without source-path injection.
 - [ ] Verify actual pinned ty initialization through the transport and a minimal SDK stdio read path using the T4 fixture, recording negotiated capabilities. T3 may be committed before this joint integration gate, but phase 1 is not accepted until T4 supplies it. Routine gate and commit.
 
-### T4: Saved-file documents, bounded generations and real interoperability fixture
+### Task 4: Saved-file documents, bounded generations and real interoperability fixture
 
 **Files:** create documents.py, tests/test_documents.py,
 tests/integration/test_interoperability.py and synthetic semantic_workspace package
@@ -173,7 +172,7 @@ Tests use an independently authored fixture manifest with explicit expected call
 
 ## Phase 2 — all six reference capabilities, with required corrections
 
-### T5: Definition, references and hover with precise positions and source parity
+### Task 5: Definition, references and hover with precise positions and source parity
 
 **Files:** create navigation.py, source_text.py, tests/test_navigation.py,
 tests/test_source_text.py, tests/integration/test_navigation.py; extend mcp_api.py
@@ -192,7 +191,7 @@ in source_text.py returns full/selection/source scope, not a new semantic positi
 - [ ] Run unit suites red; implement mapping/source extraction/normalization and three SDK tool wrappers using canonical signatures; run green. Preserve complete source behavior for supported P1 fixtures, not just locations.
 - [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_navigation.py -v`; direct ty identifier and adapter calls must agree on exact expected call sites/imports, exclude same-name decoy, include declarations only when requested. Record keyword control and caller-provided coordinate provenance; do not add +4 to inputs. Verify empty/limits/source statuses and changed dependencies. Gate P1/P2/P4/S1/S5; routine gate, commit.
 
-### T6: Current pull diagnostics, including unchanged/dependency behavior
+### Task 6: Current pull diagnostics, including unchanged/dependency behavior
 
 **Files:** create diagnostics.py, tests/test_diagnostics.py,
 tests/integration/test_diagnostics.py; extend mcp_api.py and synthetic error/fix fixture.
@@ -207,7 +206,7 @@ URI+generation; returns normalized current full list even for valid unchanged re
 - [ ] Run `uv run --locked python -m unittest discover -s tests -p test_diagnostics.py -v` red, implement capability-bound pull handling and SDK wrapper, then green. No sleeps or push-cache fallback.
 - [ ] Run same-pattern real integration suite to prove error→repair→empty and dependency edits through actual ty/MCP. Gate P3/S6 diagnostic portion; routine gate, commit.
 
-### T7: Pure immutable edit plans and preview identity
+### Task 7: Pure immutable edit plans and preview identity
 
 **Files:** create edit_plan.py, tests/test_edit_plan.py, tests/fixtures/edit_cases.json.
 
@@ -223,7 +222,7 @@ No filesystem side effects or random approval flags inside the planner.
 - [ ] Run `uv run --locked python -m unittest discover -s tests -p test_edit_plan.py -v` red then implement pure planning with exact preimages, no clamping, count/byte bounds and both text WorkspaceEdit forms. Contradictory changes/documentChanges fail before any IO.
 - [ ] Run green plus zero-write spy tests, routine gate and commit. Gate W2/W3; preview tokens are content identity, not human consent.
 
-### T8: Guarded POSIX filesystem transactions and durable recovery
+### Task 8: Guarded POSIX filesystem transactions and durable recovery
 
 **Files:** create filesystem.py, tests/test_filesystem.py,
 tests/integration/test_recovery.py; extend fake subprocess support for crash injection only in tests.
@@ -239,7 +238,7 @@ and changed files match spec; no SDK/LSP imports. Supports macOS/Linux guarded l
 - [ ] Run unit suite red, implement no-follow directory-relative validation, all-file staging/verified before-images, durable transitions and rollback rules. Recovery receipts survive preview expiry/session restart. Lookup committed receipts before ordinary expired-plan checks; no replay of an incomplete journal.
 - [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_recovery.py -v` with disposable subprocess crash at journal/replace/receipt boundaries. Actual process exit and restart must restore safe states or lock mutations with per-file recovery status. Unsupported platform/filesystem capabilities fail closed. Gate W4–W7; run routine gate/commit. Do not claim cross-file atomicity from per-file replace.
 
-### T9: Rename/edit MCP tools and post-commit semantics
+### Task 9: Rename/edit MCP tools and post-commit semantics
 
 **Files:** create mutations.py, tests/test_mutations.py,
 tests/integration/test_mutations.py; extend mcp_api.py/documents.py only at their public seams.
@@ -260,7 +259,7 @@ SDK wrappers use action preview/apply and validate mutually exclusive fields.
 
 ## Phase 3 — bounded ty navigation extensions
 
-### T10: Public document symbols, workspace symbols and implementations
+### Task 10: Public document symbols, workspace symbols and implementations
 
 **Files:** extend navigation.py/mcp_api.py; create tests/test_symbols.py,
 tests/integration/test_symbols.py; extend class hierarchy and duplicate-symbol fixture.
@@ -279,7 +278,7 @@ Internal document-symbol source support from T5 is reused, not duplicated.
 
 ## Phase 4 — installed Codex acceptance, engineering closure and stop
 
-### T11: Installed distribution and actual Codex host acceptance
+### Task 11: Installed distribution and actual Codex host acceptance
 
 **Files:** extend tools/verify_distribution.py/tests/test_distribution.py,
 .github/workflows/check.yml, README.md, SECURITY.md, CONTRIBUTING.md;
@@ -298,7 +297,7 @@ No new framework/host launcher product API.
 - [ ] In disposable synthetic workspace, use actual Codex version/trust/stdio registration to discover and invoke all nine tools. First read-only startup: read successes and both mutation rejections; then operator write-enabled profile: previews and approved rename/edit apply, exact file assertions and fresh follow-up semantics. Configure mutation tool approval policy using current official host docs, not invented consent metadata.
 - [ ] Observe a **denied host mutation approval** and compare before/after hashes; inspect actual host transcript, not only direct SDK results. If this harness cannot exercise approval interaction, H2 remains UNKNOWN and host acceptance is not passed. Capture timeout/ty death/EOF cleanup and PID reaping. Gate G4 = H1–H3/E2 measured; routine gate/commit with sanitized receipts.
 
-### T12: Full affected-input engineering acceptance and plan reconciliation
+### Task 12: Full affected-input engineering acceptance and plan reconciliation
 
 **Files:** project evidence and owning configuration/contracts only when justified;
 no new product capabilities. Add explicit Import Linter contracts for SDK-only boundary,
@@ -311,7 +310,7 @@ semantic→port direction and filesystem isolation in pyproject.toml.
 - [ ] Close T0 cognitive/gz-skills evidence with correct sources/native discovery and current pins. If unavailable, list owner/external condition and explicitly withhold strict E3/E4/terminal acceptance; do not describe partial work as full accepted parity milestone.
 - [ ] Use gzs-plan-audit/intent comparison to map each P/S/C/D/W/H/E row to exact observed evidence. All required rows need observed PASS or a human-approved scope revision before any altered claim; an exception does not silently become strict conformance. Gate G5: engineering acceptance complete; routine gate/commit.
 
-### T13: Accept the bounded milestone and stop
+### Task 13: Accept the bounded milestone and stop
 
 **Files:** CHANGELOG.md, ROADMAP.md, product evidence index and final report.
 

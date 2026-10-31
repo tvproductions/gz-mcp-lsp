@@ -1,11 +1,10 @@
 # gz-mcp-lsp reference parity and semantic-navigation specification
 
-Revision 2, 2026-10-28. **DRAFT FOR HUMAN APPROVAL — implementation prohibited.**
-The latest user direction supersedes revision 1's read-only scope: all six Go
-reference tools, including diagnostics, rename and editing, are required functional
-scope. This document and the [implementation plan](../plans/2026-10-28-reference-parity.md)
-are review artifacts, not acceptance or permission to execute. Lite governance,
-Superpowers design/planning, project/starter gates and disabled Backplane remain.
+Revision 2 approved by the user on 2026-10-31. Implementation is authorized under
+the [approved plan](../plans/2026-10-28-reference-parity.md). Runtime and engineering
+acceptance remain separate observed gates. The accepted scope includes all six Go
+reference tools, the three bounded ty extensions, guarded writes, real Codex proof
+and a deliberate stop. Lite governance and disabled Backplane remain.
 
 ## Objective, baseline and deliberate stop
 
@@ -338,14 +337,16 @@ filesystems. Windows may receive read-only support after its own protocol/URI te
 write safety remains disabled there until an equivalent guarded filesystem adapter
 is verified. Do not claim universal portability from one host.
 
-## Human review decisions and execution boundary
+## Approved decisions and execution boundary
 
-1. Approve behavioral parity with deliberate URI/position/structured-result schema
+The user approved these proposed choices on 2026-10-31:
+
+1. Behavioral parity with deliberate URI/position/structured-result schema
    changes, or request an explicit compatibility interface (never name-guess semantics).
-2. Approve enabled-only preview/apply write flow and recoverable multi-file guarantee,
+2. Enabled-only preview/apply write flow and recoverable multi-file guarantee,
    quiescent-workspace assumption and POSIX write scope. Strong crash-atomicity or
    concurrent noncooperating writers require redesign before implementation.
-3. Approve conservative rescan/restart saved-file consistency, external-target
+3. Conservative rescan/restart saved-file consistency, external-target
    metadata-only policy, proposed size/time budgets and initial OS matrix.
 4. Resolve ownership/availability of the qualified cognitive engine and approve
    the gz-skills reconciliation before claiming strict engineering acceptance.

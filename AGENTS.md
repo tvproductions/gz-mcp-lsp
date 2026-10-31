@@ -9,15 +9,12 @@ instructions do not make its helper part of this product.
 
 ## Current boundary
 
-Design revision and implementation planning only. The latest user direction
-expands intended functional scope to all six reference tools (definition,
-references, diagnostics, hover, rename_symbol, edit_file) plus the three bounded
-semantic extensions. Do not implement runtime, settings loader, semantic operations
-or write machinery until human approval of specification and plan.
+The user approved revision-2 specification and plan on 2026-10-31. Execute the
+approved tasks with test-first verification and explicit acceptance evidence.
 Read `docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`,
 `docs/discovery/reference-parity.md`, `docs/discovery/acceptance-matrix.md` and
-`docs/superpowers/plans/2026-10-28-reference-parity.md`. They are unapproved review
-artifacts; preparing a plan is explicitly authorized, executing it is not.
+`docs/superpowers/plans/2026-10-28-reference-parity.md`. Approval authorizes
+implementation, not a claim of capability/engineering acceptance or publication.
 
 Use adopted Superpowers for feature design and gz-skills gzs-router for portable
 engineering selection. The user explicitly selected lite through gzs-project-setup.

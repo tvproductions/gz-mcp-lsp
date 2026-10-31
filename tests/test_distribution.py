@@ -13,7 +13,7 @@ from tools.verify_distribution import verify_archives
 class DistributionGuardTests(unittest.TestCase):
     """Keep starter payloads and unintended runtime requirements out of the wheel."""
 
-    def test_design_stage_artifacts_are_accepted(self):
+    def test_runtime_artifacts_are_accepted(self):
         """A correctly identified minimal package passes the archive guard."""
         self.check_artifacts()
 
@@ -40,7 +40,7 @@ class DistributionGuardTests(unittest.TestCase):
 
     def check_artifacts(
         self,
-        metadata="Name: gz-mcp-lsp\nVersion: 0.0.0\n",
+        metadata="Name: gz-mcp-lsp\nVersion: 0.0.0\nRequires-Dist: mcp==2.3.0\n",
         extra_wheel_file=None,
         extra_source_file=None,
     ):

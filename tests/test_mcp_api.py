@@ -17,7 +17,8 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         config = Config(Path("/tmp"), Path("/usr/bin/true"))
         server = create_server(config, Session(config))
         self.assertEqual(
-            {tool.name for tool in await server.list_tools()}, {"definition", "references", "hover"}
+            {tool.name for tool in await server.list_tools()},
+            {"definition", "references", "hover", "diagnostics"},
         )
 
     async def test_help_and_bad_config_have_no_stdout_protocol_logs(self):

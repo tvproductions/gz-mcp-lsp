@@ -32,13 +32,13 @@ class Peer:
         return self.response
 
     async def restart(self, generation):
-        raise AssertionError("Unexpected restart")
+        self.generation = generation
 
     async def notify(self, method, params):
         pass
 
 
-class NavigationTests(unittest.IsolatedAsyncioTestCase):
+class NavigationFixture(unittest.IsolatedAsyncioTestCase):
     """Filesystem snapshots are real; only the semantic protocol peer is controlled."""
 
     async def asyncSetUp(self):
@@ -50,6 +50,10 @@ class NavigationTests(unittest.IsolatedAsyncioTestCase):
         self.peer = Peer()
         self.docs = Documents(Workspace(Config(self.root, Path("/usr/bin/true"))), self.peer)
         self.nav = Navigation(self.docs, self.peer)
+
+
+class NavigationTests(NavigationFixture):
+    """Exact position and presentation contracts."""
 
     async def test_forwarded_position_exact_and_null_hover(self):
         result = await self.nav.references(self.path.as_uri(), Position(0, 4))

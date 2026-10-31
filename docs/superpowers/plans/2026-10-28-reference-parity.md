@@ -202,9 +202,9 @@ URI+generation; returns normalized current full list even for valid unchanged re
 
 **Test assertion anchors:** `self.assertEqual(repaired["result"]["items"], [])`; `self.assertEqual(error.code, "PROTOCOL_ERROR")` for unmatched unchanged reports; `self.assertNotEqual(dependency_generation, previous_generation)`.
 
-- [ ] Write `test_full_and_unchanged_resultid`, `test_unchanged_without_cache_is_protocol_error`, `test_pull_error_is_not_empty_success`, `test_repair_and_dependency_change`. Assert cache invalidates on generation change, full current diagnostics used, codes/severity/ranges preserved, related-document external reads denied.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_diagnostics.py -v` red, implement capability-bound pull handling and SDK wrapper, then green. No sleeps or push-cache fallback.
-- [ ] Run same-pattern real integration suite to prove error→repair→empty and dependency edits through actual ty/MCP. Gate P3/S6 diagnostic portion; routine gate, commit.
+- [x] Write `test_full_and_unchanged_resultid`, `test_unchanged_without_cache_is_protocol_error`, `test_pull_error_is_not_empty_success`, `test_repair_and_dependency_change`. Assert cache invalidates on generation change, full current diagnostics used, codes/severity/ranges preserved, related-document external reads denied.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_diagnostics.py -v` red, implement capability-bound pull handling and SDK wrapper, then green. No sleeps or push-cache fallback.
+- [x] Run same-pattern real integration suite to prove error→repair→empty and dependency edits through actual ty/MCP. Gate P3/S6 diagnostic portion; routine gate, commit.
 
 ### Task 7: Pure immutable edit plans and preview identity
 

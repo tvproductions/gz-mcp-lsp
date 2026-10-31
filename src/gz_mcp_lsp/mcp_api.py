@@ -10,6 +10,7 @@ from mcp.server import MCPServer
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 
 from gz_mcp_lsp.config import Config
+from gz_mcp_lsp.diagnostics import Diagnostics
 from gz_mcp_lsp.documents import Documents
 from gz_mcp_lsp.models import AdapterError, Position, Result
 from gz_mcp_lsp.navigation import Navigation
@@ -60,6 +61,7 @@ def create_server(config: Config, session: Session) -> MCPServer:
     """Let the SDK own MCP negotiation, stdio and lifespan cancellation."""
     documents = Documents(Workspace(config), session)
     navigation = Navigation(documents, session)
+    diagnostic_service = Diagnostics(documents, session)
 
     @asynccontextmanager
     async def lifespan(server: MCPServer):
@@ -101,5 +103,12 @@ def create_server(config: Config, session: Session) -> MCPServer:
     async def hover(uri: StrictStr, position: InputPosition) -> types.CallToolResult:
         """Retrieve ty's semantic hover and inferred type text at an exact UTF-16 position."""
         return await invoke("hover", lambda: navigation.hover(uri, position.domain()))
+
+    @server.tool(annotations=read, structured_output=False)
+    async def diagnostics(uri: StrictStr, context_lines: ContextLines = 0) -> types.CallToolResult:
+        """Return current pull diagnostics, retaining severities, codes and exact ranges."""
+        return await invoke(
+            "diagnostics", lambda: diagnostic_service.diagnostics(uri, context_lines)
+        )
 
     return server

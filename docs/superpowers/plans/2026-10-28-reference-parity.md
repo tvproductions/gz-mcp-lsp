@@ -114,9 +114,9 @@ Offset is a UTF-8 byte offset for safe byte slicing; no disk writes in this task
 
 **Test assertion anchors:** `self.assertFalse(config.mutations_enabled)`; `self.assertEqual(workspace.offset(snapshot, Position(0, 3)), 5)`; `with self.assertRaises(AdapterError): workspace.offset(snapshot, Position(0, 2))` for `a😀b\r\n`.
 
-- [ ] Write `test_mutations_default_disabled`, `test_reject_unknown_config_and_env_override`, `test_uri_containment_aliases`, `test_utf16_offsets`. Assert mutations false; traversal/remote/query/fragment/NUL denied; for text `a😀b\r\n`, Position(0,3) maps to byte 5 and Position(0,2) raises INVALID_INPUT; bool/fraction positions rejected.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p 'test_workspace.py' -v` and the config suite; establish behavior-red, then implement exact signatures/defaults/limits from spec using stdlib only. Include file identity, excluded scope and manifest limits.
-- [ ] Run both suites green, routine gate and commit. Gate: identity/coordinate tests pass before LSP can query or edit anything.
+- [x] Write `test_mutations_default_disabled`, `test_reject_unknown_config_and_env_override`, `test_uri_containment_aliases`, `test_utf16_offsets`. Assert mutations false; traversal/remote/query/fragment/NUL denied; for text `a😀b\r\n`, Position(0,3) maps to byte 5 and Position(0,2) raises INVALID_INPUT; bool/fraction positions rejected.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p 'test_workspace.py' -v` and the config suite; establish behavior-red, then implement exact signatures/defaults/limits from spec using stdlib only. Include file identity, excluded scope and manifest limits.
+- [x] Run both suites green, routine gate and commit. Gate: identity/coordinate tests pass before LSP can query or edit anything.
 
 ### Task 2: Bounded independent JSON-RPC transport
 
@@ -130,9 +130,9 @@ Reader loop starts/stops under Session; no product subprocess launched by transp
 
 **Test assertion anchors:** `self.assertEqual(result_by_id, {1: "first", 2: "second"})` despite reversed response arrival; `self.assertEqual(client.pending_count, 0)` after timeout/EOF (pending_count is a test observation, not a public API).
 
-- [ ] Write IsolatedAsyncioTestCase tests `test_fragmented_unicode_frame`, `test_two_writers_do_not_interleave`, `test_out_of_order_ids`, `test_cancel_late_response`, `test_eof_fails_all_waiters`, `test_invalid_or_oversized_frame`. Assert UTF-8 byte count, exact ID correlation, deadlines bounded and pending map empty after cancel/EOF; invalid duplicate Content-Length closes session.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_lsp_transport.py -v`, verify red, implement serialization/reader/dispatch/deadline ownership, then run green. Do not copy generated Go protocol classes.
-- [ ] Run routine gate and commit. Gate: C2/C4 transport assertions, not yet real-server interoperability.
+- [x] Write IsolatedAsyncioTestCase tests `test_fragmented_unicode_frame`, `test_two_writers_do_not_interleave`, `test_out_of_order_ids`, `test_cancel_late_response`, `test_eof_fails_all_waiters`, `test_invalid_or_oversized_frame`. Assert UTF-8 byte count, exact ID correlation, deadlines bounded and pending map empty after cancel/EOF; invalid duplicate Content-Length closes session.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_lsp_transport.py -v`, verify red, implement serialization/reader/dispatch/deadline ownership, then run green. Do not copy generated Go protocol classes.
+- [x] Run routine gate and commit. Gate: C2/C4 transport assertions, not yet real-server interoperability.
 
 ### Task 3: One ty process, official SDK composition and minimal public path
 

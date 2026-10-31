@@ -166,9 +166,9 @@ Tests use an independently authored fixture manifest with explicit expected call
 
 **Test assertion anchors:** `self.assertNotEqual(before_generation, after_generation)` after an unopened-file byte change; `self.assertLessEqual(max_live_children, 1)`; `self.assertEqual(error.code, "STALE_DOCUMENT")` for a mid-query change.
 
-- [ ] Write tests `test_open_once_close_eviction`, `test_negotiated_change_versions`, `test_generation_restart_reaps_before_spawn`, `test_unopened_change_create_delete_rename`, `test_midquery_manifest_change_rejected`. Verify exactly one live child, new saved contents visible, no mtime-only shortcut and STALE_DOCUMENT on result races. Use spies/fake server for sync forms plus actual ty for indexing outcomes.
-- [ ] Run unit tests red then implement document/session generation behavior; run `uv run --locked python -m unittest discover -s tests/integration -p test_interoperability.py -v`. Missing ty is a hard failure, not skipped acceptance. Assert actual hover/definition request to ty through initialized session, including unopened consumer/config changes and restart consistency.
-- [ ] Run routine gate and installed stdio smoke, record G1 actual MCP→adapter→ty response with correct fixture result, commit. Proving SDK communication alone does not pass G1.
+- [x] Write tests `test_open_once_close_eviction`, `test_negotiated_change_versions`, `test_generation_restart_reaps_before_spawn`, `test_unopened_change_create_delete_rename`, `test_midquery_manifest_change_rejected`. Verify exactly one live child, new saved contents visible, no mtime-only shortcut and STALE_DOCUMENT on result races. Use spies/fake server for sync forms plus actual ty for indexing outcomes.
+- [x] Run unit tests red then implement document/session generation behavior; run `uv run --locked python -m unittest discover -s tests/integration -p test_interoperability.py -v`. Missing ty is a hard failure, not skipped acceptance. Assert actual hover/definition request to ty through initialized session, including unopened consumer/config changes and restart consistency.
+- [x] Run routine gate and installed stdio smoke, record G1 actual MCP→adapter→ty response with correct fixture result, commit. Proving SDK communication alone does not pass G1.
 
 ## Phase 2 — all six reference capabilities, with required corrections
 
@@ -187,9 +187,9 @@ in source_text.py returns full/selection/source scope, not a new semantic positi
 
 **Test assertion anchors:** `self.assertEqual(sent_params["position"], {"line": 0, "character": 4})` for the invented one-line definition; `self.assertEqual(expected_call_sites, observed_call_sites)`; `self.assertNotIn(decoy_uri, reference_uris)`.
 
-- [ ] Write `test_forwarded_position_is_exact`, `test_locationlink_ranges_remain_distinct`, `test_full_decorated_nested_source`, `test_ast_utf8_columns_differ_from_utf16`, `test_external_source_not_read`, `test_null_hover_variants`. Assert every envelope/schema and no declaration-start substitution.
-- [ ] Run unit suites red; implement mapping/source extraction/normalization and three SDK tool wrappers using canonical signatures; run green. Preserve complete source behavior for supported P1 fixtures, not just locations.
-- [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_navigation.py -v`; direct ty identifier and adapter calls must agree on exact expected call sites/imports, exclude same-name decoy, include declarations only when requested. Record keyword control and caller-provided coordinate provenance; do not add +4 to inputs. Verify empty/limits/source statuses and changed dependencies. Gate P1/P2/P4/S1/S5; routine gate, commit.
+- [x] Write `test_forwarded_position_is_exact`, `test_locationlink_ranges_remain_distinct`, `test_full_decorated_nested_source`, `test_ast_utf8_columns_differ_from_utf16`, `test_external_source_not_read`, `test_null_hover_variants`. Assert every envelope/schema and no declaration-start substitution.
+- [x] Run unit suites red; implement mapping/source extraction/normalization and three SDK tool wrappers using canonical signatures; run green. Preserve complete source behavior for supported P1 fixtures, not just locations.
+- [x] Run `uv run --locked python -m unittest discover -s tests/integration -p test_navigation.py -v`; direct ty identifier and adapter calls must agree on exact expected call sites/imports, exclude same-name decoy, include declarations only when requested. Record keyword control and caller-provided coordinate provenance; do not add +4 to inputs. Verify empty/limits/source statuses and changed dependencies. Gate P1/P2/P4/S1/S5; routine gate, commit.
 
 ### Task 6: Current pull diagnostics, including unchanged/dependency behavior
 

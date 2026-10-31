@@ -2,6 +2,7 @@
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tarfile
@@ -30,7 +31,7 @@ def verify_archives(wheel: Path, sdist: Path, version: str) -> None:
         info = archive.read(f"gz_mcp_lsp-{version}.dist-info/METADATA").decode()
         metadata = message_from_string(info)
         dependencies = {value.replace(" ", "") for value in metadata.get_all("Requires-Dist", [])}
-        if metadata["Name"] != "gz-mcp-lsp" or dependencies != {"mcp==2.3.0"}:
+        if metadata["Name"] != "gz-mcp-lsp" or dependencies != {"mcp==2.3.0", "pydantic==2.14.2"}:
             raise ValueError("Unexpected distribution identity or dependencies")
     with tarfile.open(sdist) as archive:
         names = archive.getnames()
@@ -82,7 +83,39 @@ def main() -> None:
         )
         if invalid.returncode == 0 or invalid.stdout or "INVALID_INPUT" not in invalid.stderr:
             raise ValueError("Installed CLI did not reject missing settings cleanly")
-    print("Wheel/sdist identity, installed import and CLI passed; semantic acceptance separate.")
+        ty = shutil.which("ty")
+        if ty is None:
+            raise ValueError("Pinned actual ty required for installed semantic verification")
+        workspace = (directory / "workspace").resolve()
+        workspace.mkdir()
+        source = workspace / "probe.py"
+        source.write_text(
+            "def installed_probe(value: str) -> str:\n    return value\n", encoding="utf-8"
+        )
+        settings = directory / "settings.json"
+        settings.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "workspace_root": str(workspace),
+                    "ty_executable": str(Path(ty).resolve()),
+                }
+            ),
+            encoding="utf-8",
+        )
+        probe = directory / "probe.py"
+        shutil.copyfile(ROOT / "tools" / "installed_stdio_probe.py", probe)
+        result = run(
+            str(python),
+            "-I",
+            str(probe),
+            str(executable),
+            str(settings),
+            source.as_uri(),
+            cwd=directory,
+        )
+        print(result.stdout.strip())
+    print("Wheel/sdist identity, installed import/CLI and actual ty semantic stdio probe passed.")
 
 
 if __name__ == "__main__":

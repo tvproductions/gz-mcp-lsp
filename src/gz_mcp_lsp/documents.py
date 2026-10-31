@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from dataclasses import replace
 
 from gz_mcp_lsp.models import AdapterError, Json, Snapshot
-from gz_mcp_lsp.session import Session
+from gz_mcp_lsp.ports import SessionPort
 from gz_mcp_lsp.workspace import Workspace
 
 
@@ -20,7 +20,7 @@ def end_position(data: bytes) -> dict[str, Json]:
 class Documents:
     """Hold one operation lease through its post-query generation check."""
 
-    def __init__(self, workspace: Workspace, session: Session):
+    def __init__(self, workspace: Workspace, session: SessionPort):
         self.workspace = workspace
         self.session = session
         self.lock = asyncio.Lock()

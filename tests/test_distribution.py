@@ -40,7 +40,7 @@ class DistributionGuardTests(unittest.TestCase):
 
     def check_artifacts(
         self,
-        metadata="Name: gz-mcp-lsp\nVersion: 0.0.0\nRequires-Dist: mcp==2.3.0\n",
+        metadata="Name: gz-mcp-lsp\nVersion: 0.0.0\nRequires-Dist: mcp==2.3.0\nRequires-Dist: pydantic==2.14.2\n",
         extra_wheel_file=None,
         extra_source_file=None,
     ):

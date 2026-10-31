@@ -16,7 +16,9 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
     async def test_intermediate_catalog_has_no_success_stubs(self):
         config = Config(Path("/tmp"), Path("/usr/bin/true"))
         server = create_server(config, Session(config))
-        self.assertEqual(await server.list_tools(), [])
+        self.assertEqual(
+            {tool.name for tool in await server.list_tools()}, {"definition", "references", "hover"}
+        )
 
     async def test_help_and_bad_config_have_no_stdout_protocol_logs(self):
         help_reply = subprocess.run(
@@ -38,3 +40,15 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotEqual(invalid.returncode, 0)
         self.assertEqual(invalid.stdout, "")
         self.assertIn("INVALID_INPUT", invalid.stderr)
+
+    async def test_coordinates_are_strict_at_sdk_boundary(self):
+        from mcp.server.mcpserver.exceptions import ToolError
+
+        config = Config(Path("/tmp"), Path("/usr/bin/true"))
+        server = create_server(config, Session(config))
+        for value in (True, 1.0, "1"):
+            with self.assertRaises(ToolError):
+                await server.call_tool(
+                    "hover",
+                    {"uri": "file:///tmp/source.py", "position": {"line": value, "character": 4}},
+                )

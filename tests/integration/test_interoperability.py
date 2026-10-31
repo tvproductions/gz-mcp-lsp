@@ -14,18 +14,22 @@ from gz_mcp_lsp.workspace import Workspace
 FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "semantic_workspace"
 
 
-class InteroperabilityTests(unittest.IsolatedAsyncioTestCase):
+class TyFixture(unittest.IsolatedAsyncioTestCase):
     """A fresh real server sees saved workspace changes without readiness sleeps."""
 
     async def asyncSetUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
-        self.root = Path(self.temporary.name) / "workspace"
+        self.root = (Path(self.temporary.name) / "workspace").resolve()
         shutil.copytree(FIXTURE, self.root)
         ty = shutil.which("ty")
         self.assertIsNotNone(ty, "Actual pinned ty is required for integration acceptance")
         assert ty is not None
         self.config = Config(self.root, Path(ty))
+
+
+class InteroperabilityTests(TyFixture):
+    """Observe real semantic requests after bounded generation transitions."""
 
     async def test_real_ty_initialization_hover_and_definition(self):
         uri = (self.root / "sample" / "runtime.py").as_uri()

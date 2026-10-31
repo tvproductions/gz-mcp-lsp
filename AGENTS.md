@@ -1,12 +1,12 @@
 # gz-mcp-lsp
 
-Read the active handoff at `docs/handoffs/2026-10-31-r0-read-boundary.md` first.
+Read the active handoff at `docs/handoffs/2026-10-31-t10-read-tools.md` first.
 Latest user direction: seven read tools first, write parity afterward. The user
 approved that short design in conversation on 2026-10-31; its record is
 `docs/superpowers/specs/2026-10-31-read-first-milestones-design.md`.
 The revised execution plan at `docs/superpowers/plans/2026-10-31-read-first.md`
-was reviewed in conversation and approved with “looks good”. R0 is complete;
-resume with T10 only on a new instruction, then hand off before the next package.
+was reviewed in conversation and approved with “looks good”. R0 and T10 are complete;
+resume with T11 only on a new instruction, then hand off before the next package.
 
 T8 is incomplete and paused. Preserve its work, all three T9 drafts and backup
 hashes. The older T8 handoff/evidence remain historical continuation records;

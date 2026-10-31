@@ -50,7 +50,15 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         server = create_server(config, Session(config))
         self.assertEqual(
             {tool.name for tool in await server.list_tools()},
-            {"definition", "references", "hover", "diagnostics"},
+            {
+                "definition",
+                "references",
+                "hover",
+                "diagnostics",
+                "document_symbols",
+                "workspace_symbols",
+                "implementations",
+            },
         )
 
     async def test_help_and_bad_config_have_no_stdout_protocol_logs(self):
@@ -113,7 +121,16 @@ class ReadOnlyIntegration(TyFixture):
             server = create_server(config, session)
             tools = await server.list_tools()
             self.assertEqual(
-                {tool.name for tool in tools}, {"definition", "references", "hover", "diagnostics"}
+                {tool.name for tool in tools},
+                {
+                    "definition",
+                    "references",
+                    "hover",
+                    "diagnostics",
+                    "document_symbols",
+                    "workspace_symbols",
+                    "implementations",
+                },
             )
             for tool in tools:
                 self.assertIsNotNone(tool.annotations)
@@ -123,9 +140,23 @@ class ReadOnlyIntegration(TyFixture):
             async with session:
                 uri = (self.root / "sample" / "runtime.py").as_uri()
                 params = {"uri": uri, "position": {"line": 3, "character": 4}}
-                for operation in ("definition", "references", "hover", "diagnostics"):
+                for operation in (
+                    "definition",
+                    "references",
+                    "hover",
+                    "diagnostics",
+                    "document_symbols",
+                    "workspace_symbols",
+                    "implementations",
+                ):
                     with self.subTest(operation=operation):
-                        arguments = {"uri": uri} if operation == "diagnostics" else params
+                        arguments = (
+                            {"uri": uri}
+                            if operation in {"diagnostics", "document_symbols"}
+                            else params
+                        )
+                        if operation == "workspace_symbols":
+                            arguments = {"query": "run_configured_cli"}
                         result = await server.call_tool(operation, arguments)
                         self.assertIsInstance(result, types.CallToolResult)
                         assert isinstance(result, types.CallToolResult)

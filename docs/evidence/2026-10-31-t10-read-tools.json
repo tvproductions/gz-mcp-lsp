@@ -1,0 +1,127 @@
+{
+  "observed_utc": "2026-10-31T20:26:44.422871+00:00",
+  "base": "4bf7e6384ad1239f1c9bf2efc3e96bff9db23448",
+  "scope": "T10 only; three preserved T9 drafts archived for exact candidate gate, restored unchanged",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.10",
+  "uv": "uv 0.13.6 (329bf9448 2026-10-26 aarch64-apple-darwin)",
+  "gate": [
+    {
+      "command": "uv sync --locked --all-groups",
+      "exit": 0,
+      "seconds": 3.59,
+      "log": "t10-gate-1.log"
+    },
+    {
+      "command": "uv run --locked pre-commit run --all-files",
+      "exit": 0,
+      "seconds": 161.89,
+      "log": "t10-gate-2.log"
+    },
+    {
+      "command": "uv build --no-sources",
+      "exit": 0,
+      "seconds": 1.73,
+      "log": "t10-gate-3.log"
+    },
+    {
+      "command": "uv run --locked python tools/verify_distribution.py",
+      "exit": 0,
+      "seconds": 21.81,
+      "log": "t10-gate-4.log"
+    }
+  ],
+  "separate_checks": [
+    {
+      "command": "uv run --locked ruff check --select C901 src/gz_mcp_lsp",
+      "exit": 0,
+      "seconds": 1.03,
+      "log": "t10-gate-5.log"
+    },
+    {
+      "command": "uv run --locked --group hygiene python tools/engineering/complexity_check.py --root . --paths src/gz_mcp_lsp --output .superpowers/sdd/2026-10-31-read-first/t10-runtime-lizard.json",
+      "exit": 0,
+      "seconds": 3.87,
+      "log": "t10-gate-6.log"
+    }
+  ],
+  "lizard": {
+    "functions": 141,
+    "maximum": 19,
+    "overall_mean": 5.212765957446808
+  },
+  "focused_tests": {
+    "boundary_unit": 14,
+    "standalone_real_ty_integration": 2,
+    "recursive_symbol_pattern_includes_both": 16,
+    "result": "PASS"
+  },
+  "negative_controls": [
+    "Missing public operations, seven-tool catalog and workspace resolution capability failed before implementation",
+    "Resolving previously URI-only symbols changed sort order and exposed incorrect list-based identity matching; per-symbol comparison fixes it"
+  ],
+  "source_hashes": {
+    "src/gz_mcp_lsp/mcp_api.py": "6b12eda5226ed9f45872f309fc9bf22e28d93f6888ed46c1d573bfe4527c8d52",
+    "src/gz_mcp_lsp/config.py": "391ac54b722d8fa83dda3daf571f4825d070ce7485aa291dcf1eb083f361b38b",
+    "src/gz_mcp_lsp/models.py": "cc90f38eb549afb137111671635679126fe73c82723db6baa6effc0a0003d04b",
+    "src/gz_mcp_lsp/diagnostics.py": "b10c33145813c2d4a061048e6e759107e7e3d3e43073cb0e96adbda10cca7c23",
+    "src/gz_mcp_lsp/documents.py": "58f42a8677026d6a4b309cd84e4ce0fc499221587ec414d2681d148cda2198d5",
+    "src/gz_mcp_lsp/filesystem.py": "9863a727a1593161ac294fbca63d3ab9d6f37f2cad6437329fbdb8ad291deee2",
+    "src/gz_mcp_lsp/ports.py": "c64df9bfdd644abac4e2291c59064342dbc0aa0820eb67800d8e5ead82d1d75a",
+    "src/gz_mcp_lsp/session.py": "85ff3595b90421d470444bbbc7abf0326656208987a0d5a6f4c66ee11ab9cd5a",
+    "src/gz_mcp_lsp/__init__.py": "204b25f8ffc6bc0408f676e4c86011715b34f16dcd2e8b2c6e0b0a698a466422",
+    "src/gz_mcp_lsp/lsp_transport.py": "183539c9e2dbd05dae8efccbb64cb9b8092d7510ea36d994f8e41092581bd632",
+    "src/gz_mcp_lsp/cli.py": "3d8bc2c3704ba601c446a637cd331a2f53c216892a79d5fab59b767572b204b9",
+    "src/gz_mcp_lsp/symbol_values.py": "7684d868d0ba3b7a42cb6c58ea50f04bec89ad20cffffa22ee651681e7dfe20e",
+    "src/gz_mcp_lsp/source_text.py": "7e90917ec44f390d1a37f74d53bd40d08c8076cc6c71508a07ca9a3e4b84b3e0",
+    "src/gz_mcp_lsp/operation_values.py": "fa3d57fd3e58e5862367d90eeed24f9dd63195a95ada15995f060a0a87ed6fb2",
+    "src/gz_mcp_lsp/navigation.py": "7818652e8d8e843b7b5a21c30753ec50f4bbccbed9385a08b6b4820db3022219",
+    "src/gz_mcp_lsp/workspace.py": "096d35402c7c7e2ef71e40a4353d7860cc6ebc5b8830388138425fa883896291",
+    "src/gz_mcp_lsp/protocol_values.py": "74bf76c5aeb6e2b946a45db9e835d6a51b6305191f5aea2934c89ed2b2fca7f2",
+    "src/gz_mcp_lsp/edit_plan.py": "47ba90826ce27db1b3f1e43dcae0dee60404963cc08584e71efb4cd413d87fa7",
+    "src/gz_mcp_lsp/__main__.py": "ad64fb5d6b0097ece165c727f4fa6f33a9b6f950f3b1aaf211a39de0095fc863",
+    "src/gz_mcp_lsp/coordinates.py": "0376a2e03cf1d43a2f489f6d01ffbe50a668a00ead2d5f536d5e95125253f375",
+    "tests/test_diagnostics.py": "e21aa14f9d8247a6bfa59ba512eb7921b865e52dedf0dfcd11c9ab0458e53807",
+    "tests/test_navigation.py": "fd940357fa2e08019f62dae3717da891f030f4c17a784b2176cc70e89e601448",
+    "tests/test_mcp_api.py": "8f40def78705a1debb45e2fca04ad9434b1fc7409f069acb8db50a7a9c325e4a",
+    "tests/test_session.py": "2fd899561bd3229304b2ec69d380ae14aeecc7c8caa53b7d2114d4c7aac45b0c",
+    "tests/test_lsp_transport.py": "4d4cfff3d84af1aa12881a30be11dcd06c76da65256f8208ee84f28ca932b215",
+    "tests/test_edit_plan.py": "d20207ba711625eec76100b6da09ea71690276395b01f6e7b1c5652d2151d658",
+    "tests/test_workspace.py": "71a3386e8165d1c6068d81a6f0e192eb8800694882b24ac691581e372f65588c",
+    "tests/test_filesystem.py": "dff34f633c0048c63d7463070651701d1f449395fcd8fbcd1a959303a4072954",
+    "tests/test_distribution.py": "aa9080f746e69bf02b45a079c687a84c9e2313db9a753875904e2366b38dfc97",
+    "tests/test_config.py": "52fa23794f17c8e47bdf0bea4a640114cffc1760267a08a3518f03ab4761ac09",
+    "tests/test_symbols.py": "7a7eacf44697da277f188778e2549c9b362c2605326dbe02364cf079dbc108a5",
+    "tests/test_documents.py": "a43a1117c4dd220b0f4faa08eb9b0dd12b958fca91687579ae1a4e767b84607b",
+    "tests/test_source_text.py": "62649e165c2533f1e9327b2f5bb2398d7d8e570a67dcee2526c4f1bdecef9f41",
+    "tests/integration/test_interoperability.py": "bb56f95d16648f1ddbfba64ceac907535554a8ba82df3e119539ceae10b89d1d",
+    "tests/integration/test_diagnostics.py": "2ff48147ee35cab812cc58763cdfa2f5be0d913a6559a573aaad4887c530a202",
+    "tests/integration/test_navigation.py": "195f718278c4b6932da71d22e8392526ba6fafb682873f1ecb59ad1e9a6f8f82",
+    "tests/integration/test_recovery.py": "f4c8efd4cd94ad5d7f474a046d11f0d49898af9441f90548c3a34d413d1b4eb2",
+    "tests/integration/__init__.py": "68396d8761d394cd45d81d05aadeac4e7f9a241e44d8f01a243010b03f575704",
+    "tests/integration/test_symbols.py": "24067b41f22dea5b014e3b5e450e228d8263a57670227cbc13a3dcd8ab272f2a",
+    "tests/support/transaction_driver.py": "92136052b6c7f12dcf0fd064cfe2d2e1e59880788cafaf22da84e610822b9b62",
+    "tests/support/fake_lsp.py": "2c7ae298e349f65ed1e4c521cf390bc3870157c59cadde062737bda759a4d009",
+    "tests/fixtures/semantic_workspace/sample/registration.py": "4020eb99e2891044200927492801086a3a2ef3d766f51f191fa8a64d24d11b16",
+    "tests/fixtures/semantic_workspace/sample/__init__.py": "a5a455a6955a334e5d99f0dbc3c49d69574d61ad9ec15aebce9ac47ad015dbca",
+    "tests/fixtures/semantic_workspace/sample/hierarchy.py": "617e9c8f12a335cbb54aee2da3a3712f5b2bdf702099bddc08255adb247654bb",
+    "tests/fixtures/semantic_workspace/sample/runtime.py": "a1e26d76ff9197639f08303ea5659d68bc790e66692b020d09fae3f13f624bfb",
+    "tests/fixtures/semantic_workspace/sample/decoy.py": "dd440f4361a19198e2353ced0a55b7c171660b86d65ad9d5e0b24d8b6c7d1bb1",
+    "tests/fixtures/semantic_workspace/sample/rotation.py": "3e9f0760141e3e35dcdc75e2eefd0220ca3401913a3c573bc7e95d1d2b9fe5a9",
+    "tests/fixtures/semantic_workspace/sample/inventory.py": "4413f0101147cce17bdc28657256c3b3394786dda001e7c18cd61833a8f22826"
+  },
+  "preserved_t9_hashes": {
+    "src/gz_mcp_lsp/mutations.py": "3314623240fd733bf7acb13219f50a123f767d6da5a34342a14b966fd3a84e7c",
+    "tests/test_mutations.py": "eadf5771d935c194e820acdf7d8a0389d7211c043c36fc4465d99fc3a45e84b6",
+    "tests/integration/test_mutations.py": "e92c34fbd8d0248cef68b51f54a75e07a46d89f388bba8015b50a2804eec2e54"
+  },
+  "remaining": [
+    "T11 installed-seven-tool and actual Codex dogfood acceptance pending",
+    "No T10 Linux run or exact-commit CI observed",
+    "T8 metadata/private-storage/full write-safety incomplete; T9 drafts unaccepted",
+    "Qualified cognitive scorer unavailable; strict engineering acceptance incomplete",
+    "Whole-branch independent review pending",
+    "No new push, release or tag"
+  ],
+  "documentation_rebuild": "Build/distribution verifier repeated after README and handoff updates; runtime/test source hashes unchanged."
+}

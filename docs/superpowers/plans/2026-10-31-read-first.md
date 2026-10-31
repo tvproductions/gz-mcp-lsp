@@ -21,7 +21,8 @@ this plan does not upgrade dependencies.
 
 **Status: APPROVED on 2026-10-31.** The user reviewed this plan in conversation,
 confirmed write-enabled configuration rejection and repository dogfooding, then
-approved it with “looks good”. Execute R0 only in this bounded package.
+approved it with “looks good”. R0 was the first bounded package; the user then
+explicitly resumed T10. R0/T10 are complete; T11 requires a new resume instruction.
 It supersedes the older
 plan's execution order, catalog assertions and single terminal acceptance gate;
 unchanged task contracts remain references. Existing receipts and completed
@@ -83,6 +84,7 @@ existing byte-verified archive/restore procedure and verify restoration afterwar
 | --- | --- |
 | config.py, cli.py, mcp_api.py; test_config.py, test_mcp_api.py | R0 read composition, configuration refusal and catalog boundary |
 | navigation.py, mcp_api.py; test_symbols.py, integration/test_symbols.py | T10 semantic discovery and implementation wrappers |
+| symbol_values.py | T10 pure validation/normalization of hierarchical, flat and unresolved symbol values |
 | tools/verify_distribution.py, test_distribution.py, integration/test_installed_server.py, docs/examples/, CI | T11 installed read behavior, platform and actual host evidence |
 | pyproject.toml only for justified analyzer contracts; docs/evidence/ | T12 effective policy and independent acceptance evidence |
 | README, ROADMAP, CHANGELOG, docs/handoffs/ and acceptance matrix | T13 accurate read result, remaining write work and deliberate stop |
@@ -121,21 +123,21 @@ configuration remains compatible. Do not remove persisted settings or write modu
 `async implementations(uri: str, position: Position) -> Result`.
 Reuse existing document-symbol source support and SDK result/error wrappers.
 
-- [ ] Extend tests/test_symbols.py and tests/integration/test_symbols.py with
+- [x] Extend tests/test_symbols.py and tests/integration/test_symbols.py with
   `test_nested_symbol_ranges`, `test_uri_only_symbol_never_guesses_position`,
   `test_duplicate_names_preserved`, `test_implementation_supported_empty_unsupported`,
   and `test_exact_read_tool_catalog`. Assert full versus selection ranges, honest
   unresolved symbols, stable ordering, result limits, capability checks and exactly
   the seven names in Global Constraints. Assert all annotations are read-only and
   no rename/edit preview or executor is callable.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_symbols.py -v`
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_symbols.py -v`
   and observe assertion-level failures, then implement the methods and wrappers
   in navigation.py/mcp_api.py. Preserve exact caller coordinates and strict inputs.
-- [ ] Run unit tests green and
+- [x] Run unit tests green and
   `uv run --locked python -m unittest discover -s tests/integration -p test_symbols.py -v`
   through pinned ty/MCP with nested declarations, duplicate names and subclass/member
   overrides. Missing ty fails; no acceptance skip. Keep P1–P4 regressions green.
-- [ ] Run the complete candidate gate, record S2–S4 evidence and seven-tool inventory,
+- [x] Run the complete candidate gate, record S2–S4 evidence and seven-tool inventory,
   commit with normal hooks and hand off. This is no claim of actual Codex acceptance.
 
 ## Task 11: installed read distribution and actual Codex acceptance
@@ -156,8 +158,9 @@ and actual Codex using that same preinstalled executable. Retain host-native for
   Dogfood this repository's Python adapter, tests and engineering tools as the
   primary practical workspace. Record the candidate revision and actual workspace
   manifest, including any preserved drafts, without accepting those drafts as
-  runtime implementation. Starting with a symbol query, select a returned identifier
-  position and trace a real cross-module definition/reference path; verify hover,
+  runtime implementation. Starting with a workspace symbol query, obtain a real
+  identifier selection from document_symbols or explicit source inspection when
+  workspace results contain only full ranges. Trace a cross-module definition/reference path; verify hover,
   diagnostics, document hierarchy and supported implementation results against source.
   Keep exact edge-case assertions in synthetic fixtures; empty results are valid
   when the queried real code has no implementations or diagnostics.

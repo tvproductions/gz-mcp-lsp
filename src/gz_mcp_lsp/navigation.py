@@ -8,6 +8,7 @@ from gz_mcp_lsp.operation_values import context_limit, envelope, require_capabil
 from gz_mcp_lsp.ports import SessionPort
 from gz_mcp_lsp.protocol_values import position_json, range_json, range_value
 from gz_mcp_lsp.source_text import declaration
+from gz_mcp_lsp.symbol_values import symbol_items, symbol_value, symbols
 
 
 def locations(value: Json) -> list[dict[str, Json]]:
@@ -58,6 +59,102 @@ class Navigation:
     def __init__(self, documents: Documents, session: SessionPort):
         self.documents = documents
         self.session = session
+
+    def _scopes(self, items: list[dict[str, Json]]) -> None:
+        """Mark external/unavailable targets without reading their source contents."""
+        pending = list(items)
+        while pending:
+            item = pending.pop()
+            uri = item["uri"]
+            assert isinstance(uri, str)
+            try:
+                self.documents.workspace.path(uri)
+            except AdapterError as error:
+                item["source_scope"] = (
+                    "unavailable" if error.code == "SOURCE_UNAVAILABLE" else "external"
+                )
+            else:
+                item["source_scope"] = "workspace"
+            children = item.get("children", [])
+            assert isinstance(children, list)
+            for child in children:
+                assert isinstance(child, dict)
+                pending.append(child)
+
+    async def document_symbols(self, uri: str) -> Result:
+        """Return explicit document hierarchy or honest flat symbol metadata."""
+        async with self.documents.query(uri) as snapshot:
+            assert snapshot is not None
+            require_capability(self.session, "documentSymbolProvider")
+            raw = await self.session.rpc.request(
+                "textDocument/documentSymbol",
+                {"textDocument": {"uri": snapshot.uri}},
+                timeout=self.documents.workspace.config.limits.request_seconds,
+            )
+            found = symbols(raw, snapshot.uri)
+            self._scopes(found)
+            return envelope(
+                "document_symbols", {"symbols": list(found)}, self.documents, [snapshot]
+            )
+
+    async def workspace_symbols(self, query: str, resolve: bool = False) -> Result:
+        """Keep ambiguous names and URI-only locations; resolve only by explicit request."""
+        if not isinstance(query, str) or type(resolve) is not bool:
+            raise AdapterError(
+                "INVALID_INPUT", "Expected a symbol query string and Boolean resolve"
+            )
+        async with self.documents.query(None):
+            require_capability(self.session, "workspaceSymbolProvider")
+            capability = self.session.capabilities["workspaceSymbolProvider"]
+            if resolve and not (
+                isinstance(capability, dict) and capability.get("resolveProvider") is True
+            ):
+                raise AdapterError("UNSUPPORTED", "Workspace symbol resolution is unavailable")
+            raw = symbol_items(
+                await self.session.rpc.request(
+                    "workspace/symbol",
+                    {"query": query},
+                    timeout=self.documents.workspace.config.limits.request_seconds,
+                )
+            )
+            symbols(raw)  # Validate the entire result before issuing resolution requests.
+            if resolve:
+                raw = await self._resolve_symbols(raw)
+            found = symbols(raw)
+            self._scopes(found)
+            return envelope("workspace_symbols", {"symbols": list(found)}, self.documents, [])
+
+    async def _resolve_symbols(self, raw: list[Json]) -> list[Json]:
+        resolved: list[Json] = []
+        for item in raw:
+            before = symbol_value(item, None)
+            if before["resolved"]:
+                resolved.append(item)
+                continue
+            reply = await self.session.rpc.request(
+                "workspaceSymbol/resolve",
+                item,
+                timeout=self.documents.workspace.config.limits.request_seconds,
+            )
+            after = symbol_value(reply, None)
+            if any(before[key] != after[key] for key in ("name", "kind", "uri")):
+                raise AdapterError("PROTOCOL_ERROR", "Workspace resolution changed symbol identity")
+            resolved.append(reply)
+        return resolved
+
+    async def implementations(self, uri: str, position: Position) -> Result:
+        """Forward exact identifier coordinates, retaining full and selection target ranges."""
+        async with self.documents.query(uri) as snapshot:
+            assert snapshot is not None
+            require_capability(self.session, "implementationProvider")
+            self.documents.workspace.offset(snapshot, position)
+            found = locations(
+                await self._query("textDocument/implementation", snapshot.uri, position)
+            )
+            self._scopes(found)
+            return envelope(
+                "implementations", {"locations": list(found)}, self.documents, [snapshot]
+            )
 
     async def _query(
         self, method: str, uri: str, position: Position, extra: dict[str, Json] | None = None

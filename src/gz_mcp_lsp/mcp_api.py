@@ -113,4 +113,25 @@ def create_server(config: Config, session: Session) -> MCPServer:
             "diagnostics", lambda: diagnostic_service.diagnostics(uri, context_lines)
         )
 
+    @server.tool(annotations=read, structured_output=False)
+    async def document_symbols(uri: StrictStr) -> types.CallToolResult:
+        """List document symbols, preserving hierarchy and identifier selection ranges."""
+        return await invoke("document_symbols", lambda: navigation.document_symbols(uri))
+
+    @server.tool(annotations=read, structured_output=False)
+    async def workspace_symbols(
+        query: StrictStr, resolve: StrictBool = False
+    ) -> types.CallToolResult:
+        """Discover workspace symbols without choosing an ambiguous name or guessing a position."""
+        return await invoke(
+            "workspace_symbols", lambda: navigation.workspace_symbols(query, resolve)
+        )
+
+    @server.tool(annotations=read, structured_output=False)
+    async def implementations(uri: StrictStr, position: InputPosition) -> types.CallToolResult:
+        """Find known class and member implementations at an exact UTF-16 identifier position."""
+        return await invoke(
+            "implementations", lambda: navigation.implementations(uri, position.domain())
+        )
+
     return server

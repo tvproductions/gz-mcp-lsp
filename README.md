@@ -9,9 +9,12 @@ No complete runtime milestone has been accepted yet.**
 The [read-first design](docs/superpowers/specs/2026-10-31-read-first-milestones-design.md)
 and [revised plan](docs/superpowers/plans/2026-10-31-read-first.md) put seven read
 tools and actual Codex acceptance before guarded writes. Read
-the [active handoff](docs/handoffs/2026-10-31-r0-read-boundary.md) to resume.
+the [active handoff](docs/handoffs/2026-10-31-t10-read-tools.md) to resume.
 The [R0 evidence](docs/evidence/2026-10-31-r0-read-boundary.md) records enforced
 read-only composition and the passing isolated candidate gate.
+The [T10 evidence](docs/evidence/2026-10-31-t10-read-tools.md) records all seven
+read tools through actual ty/SDK fixtures; installed seven-tool and Codex dogfood
+acceptance remain the next package.
 The [T8 checkpoint](docs/evidence/2026-10-31-t8-continuation.md) records preserved
 write work: ACL/xattr loss and unobserved Linux writes keep T8 incomplete and paused.
 
@@ -64,15 +67,16 @@ If machine uv differs, use `uv tool run --from uv==0.13.6 uv ...`; ensure nested
 hooks resolve uv 0.13.6 too. Do not bypass the project version check.
 The four routine hooks run Ruff check/format, ty and unittest. The unittest hook
 runs distribution guards and semantic/runtime tests, including actual-ty fixtures
-for the four implemented read tools. Packaging tests alone are not semantic
+for the seven implemented read tools. Packaging tests alone are not semantic
 adapter acceptance. Inherited
 engineering utility tests run separately, outside the routine gate. Deeper adoption/release
 analysis remains outside routine hooks and CI; see the evidence record.
 
 Install the unreleased wheel for distribution inspection with
 `uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.0.0-py3-none-any.whl`.
-The development CLI currently exposes definition, references, hover and diagnostics;
-the other three read tools and actual Codex acceptance remain pending. No PyPI
+The development CLI exposes definition, references, hover, diagnostics,
+document_symbols, workspace_symbols and implementations. Installed seven-tool
+and actual Codex dogfood acceptance remain pending. No PyPI
 release or tag has been published. Claim platform support only from the relevant
 candidate receipts; Windows runtime support remains a proposed validation target.
 

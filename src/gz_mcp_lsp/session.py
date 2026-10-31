@@ -101,6 +101,7 @@ class Session:
                         "workspace": {
                             "configuration": True,
                             "workspaceFolders": True,
+                            "symbol": {"resolveSupport": {"properties": ["location.range"]}},
                             "workspaceEdit": {"documentChanges": True},
                         },
                         "textDocument": {

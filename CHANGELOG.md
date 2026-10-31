@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add document_symbols, workspace_symbols and implementations: seven read tools
+  with actual-ty/SDK evidence. Preserve hierarchy, duplicate names, full/selection
+  ranges and explicit unresolved/unsupported results. Read generations and complete
+  result limits apply to all three additions. Actual Codex dogfooding remains T11.
+
 - Refresh the R0-to-T10 resume handoff for the user-requested implementation-branch
   Git sync, preserving local-only T9 drafts and ledger backups separately from
   committed source. Exact push/CI/alignment observations remain separate evidence.

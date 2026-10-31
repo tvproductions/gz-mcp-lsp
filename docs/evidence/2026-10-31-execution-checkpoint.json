@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-31",
+  "branch": "implementation/reference-parity",
+  "head": "a872e25ba2f5014b65596ada8f0ebf0164a5abee",
+  "candidate": "HEAD plus uncommitted Task 8 changes and Task 9 drafts",
+  "tree_sha256": "38792f2dc7c0227a22d4a43a204bd4de731611e801668e6e915ec59eb7cde245",
+  "file_sha256": {
+    "pyproject.toml": "2cb67c933e5101dceaf32f2d5f4dca60b81a5d2024f51a2f9953f34df2452f45",
+    "src/gz_mcp_lsp/__init__.py": "204b25f8ffc6bc0408f676e4c86011715b34f16dcd2e8b2c6e0b0a698a466422",
+    "src/gz_mcp_lsp/__main__.py": "ad64fb5d6b0097ece165c727f4fa6f33a9b6f950f3b1aaf211a39de0095fc863",
+    "src/gz_mcp_lsp/cli.py": "3d8bc2c3704ba601c446a637cd331a2f53c216892a79d5fab59b767572b204b9",
+    "src/gz_mcp_lsp/config.py": "8faa005d5113f1320ba658d081ae78fa1ceba87349af4b9bbf832534ddfc29d3",
+    "src/gz_mcp_lsp/coordinates.py": "0376a2e03cf1d43a2f489f6d01ffbe50a668a00ead2d5f536d5e95125253f375",
+    "src/gz_mcp_lsp/diagnostics.py": "b10c33145813c2d4a061048e6e759107e7e3d3e43073cb0e96adbda10cca7c23",
+    "src/gz_mcp_lsp/documents.py": "58f42a8677026d6a4b309cd84e4ce0fc499221587ec414d2681d148cda2198d5",
+    "src/gz_mcp_lsp/edit_plan.py": "47ba90826ce27db1b3f1e43dcae0dee60404963cc08584e71efb4cd413d87fa7",
+    "src/gz_mcp_lsp/filesystem.py": "b1c3ed80abd497722aeb78a367f250113e79c834ba0224f59f1688bd3c007f8c",
+    "src/gz_mcp_lsp/lsp_transport.py": "183539c9e2dbd05dae8efccbb64cb9b8092d7510ea36d994f8e41092581bd632",
+    "src/gz_mcp_lsp/mcp_api.py": "340fba5cbbd0f07dcd8ef9b12efa8c9bd1ea894c5d6231ced8f29ca414f64fcf",
+    "src/gz_mcp_lsp/models.py": "cc90f38eb549afb137111671635679126fe73c82723db6baa6effc0a0003d04b",
+    "src/gz_mcp_lsp/mutations.py": "3314623240fd733bf7acb13219f50a123f767d6da5a34342a14b966fd3a84e7c",
+    "src/gz_mcp_lsp/navigation.py": "494bb58d4165812f17bd86ca3ee62b13185b51a268e8aa85e9dcb20905ee1fa8",
+    "src/gz_mcp_lsp/operation_values.py": "fa3d57fd3e58e5862367d90eeed24f9dd63195a95ada15995f060a0a87ed6fb2",
+    "src/gz_mcp_lsp/ports.py": "c64df9bfdd644abac4e2291c59064342dbc0aa0820eb67800d8e5ead82d1d75a",
+    "src/gz_mcp_lsp/protocol_values.py": "74bf76c5aeb6e2b946a45db9e835d6a51b6305191f5aea2934c89ed2b2fca7f2",
+    "src/gz_mcp_lsp/session.py": "d10a08acf5f7b40259acaa8eee18fdfa5e5a769fb25833baba2e6737aa78d316",
+    "src/gz_mcp_lsp/source_text.py": "7e90917ec44f390d1a37f74d53bd40d08c8076cc6c71508a07ca9a3e4b84b3e0",
+    "src/gz_mcp_lsp/workspace.py": "096d35402c7c7e2ef71e40a4353d7860cc6ebc5b8830388138425fa883896291",
+    "tests/fixtures/semantic_workspace/sample/__init__.py": "a5a455a6955a334e5d99f0dbc3c49d69574d61ad9ec15aebce9ac47ad015dbca",
+    "tests/fixtures/semantic_workspace/sample/decoy.py": "dd440f4361a19198e2353ced0a55b7c171660b86d65ad9d5e0b24d8b6c7d1bb1",
+    "tests/fixtures/semantic_workspace/sample/inventory.py": "4413f0101147cce17bdc28657256c3b3394786dda001e7c18cd61833a8f22826",
+    "tests/fixtures/semantic_workspace/sample/registration.py": "4020eb99e2891044200927492801086a3a2ef3d766f51f191fa8a64d24d11b16",
+    "tests/fixtures/semantic_workspace/sample/rotation.py": "3e9f0760141e3e35dcdc75e2eefd0220ca3401913a3c573bc7e95d1d2b9fe5a9",
+    "tests/fixtures/semantic_workspace/sample/runtime.py": "a1e26d76ff9197639f08303ea5659d68bc790e66692b020d09fae3f13f624bfb",
+    "tests/integration/__init__.py": "68396d8761d394cd45d81d05aadeac4e7f9a241e44d8f01a243010b03f575704",
+    "tests/integration/test_diagnostics.py": "2ff48147ee35cab812cc58763cdfa2f5be0d913a6559a573aaad4887c530a202",
+    "tests/integration/test_interoperability.py": "bb56f95d16648f1ddbfba64ceac907535554a8ba82df3e119539ceae10b89d1d",
+    "tests/integration/test_mutations.py": "e92c34fbd8d0248cef68b51f54a75e07a46d89f388bba8015b50a2804eec2e54",
+    "tests/integration/test_navigation.py": "195f718278c4b6932da71d22e8392526ba6fafb682873f1ecb59ad1e9a6f8f82",
+    "tests/integration/test_recovery.py": "9cc7c8931f0f004e2a3079569773249b2b3a5d9ddc511471b26ebef5848b261b",
+    "tests/support/fake_lsp.py": "2c7ae298e349f65ed1e4c521cf390bc3870157c59cadde062737bda759a4d009",
+    "tests/support/transaction_driver.py": "cef9e713f9efeefd8e864bbf326184a66fefc6cf87cb719c3259bf5413d0550c",
+    "tests/test_config.py": "17841b2b0c794d8ad887f4463ba26883186cdb532417d8ab9e1444abfeaf832a",
+    "tests/test_diagnostics.py": "e21aa14f9d8247a6bfa59ba512eb7921b865e52dedf0dfcd11c9ab0458e53807",
+    "tests/test_distribution.py": "aa9080f746e69bf02b45a079c687a84c9e2313db9a753875904e2366b38dfc97",
+    "tests/test_documents.py": "a43a1117c4dd220b0f4faa08eb9b0dd12b958fca91687579ae1a4e767b84607b",
+    "tests/test_edit_plan.py": "d20207ba711625eec76100b6da09ea71690276395b01f6e7b1c5652d2151d658",
+    "tests/test_filesystem.py": "c674570af8ab22066198fd26ccfb79fa8052261ea618a5b46cc91729f3c86c9b",
+    "tests/test_lsp_transport.py": "4d4cfff3d84af1aa12881a30be11dcd06c76da65256f8208ee84f28ca932b215",
+    "tests/test_mcp_api.py": "26ccd103d3ef1eb389207be8b9220afd5ba07a53623f41d7af817d745ecc5707",
+    "tests/test_mutations.py": "eadf5771d935c194e820acdf7d8a0389d7211c043c36fc4465d99fc3a45e84b6",
+    "tests/test_navigation.py": "fd940357fa2e08019f62dae3717da891f030f4c17a784b2176cc70e89e601448",
+    "tests/test_session.py": "2fd899561bd3229304b2ec69d380ae14aeecc7c8caa53b7d2114d4c7aac45b0c",
+    "tests/test_source_text.py": "62649e165c2533f1e9327b2f5bb2398d7d8e570a67dcee2526c4f1bdecef9f41",
+    "tests/test_workspace.py": "71a3386e8165d1c6068d81a6f0e192eb8800694882b24ac691581e372f65588c",
+    "uv.lock": "53f51c61613c4471e1ea8173c5fe184e397a950969553a221acf98972432cf81"
+  },
+  "tree_unchanged_during_gate": true,
+  "gate": [
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--locked",
+        "--all-groups"
+      ],
+      "exit_code": 0,
+      "log": "gate-0.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "exit_code": 1,
+      "log": "gate-1.log"
+    },
+    {
+      "command": [
+        "uv",
+        "build",
+        "--no-sources"
+      ],
+      "exit_code": 0,
+      "log": "gate-2.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/verify_distribution.py"
+      ],
+      "exit_code": 0,
+      "log": "gate-3.log"
+    }
+  ],
+  "routine": {
+    "ruff_check": "PASS",
+    "ruff_format": "FAIL",
+    "ty": "FAIL: 3 diagnostics",
+    "unittest": "FAIL: 90 tests, 2 errors in unregistered mutation-tool integration"
+  },
+  "strict_acceptance": "INCOMPLETE",
+  "publication": "No implementation push, tag or release",
+  "on_demand_observed": {
+    "C901": "PASS",
+    "lizard": {
+      "status": "passed",
+      "aggregate": {
+        "functions": 135,
+        "maximum": 20,
+        "overall_mean": 5.207407407407407
+      },
+      "violations": []
+    },
+    "qualified_cognitive": "UNKNOWN; no passing substitute"
+  }
+}

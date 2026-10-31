@@ -6,6 +6,10 @@ reliable ty-backed semantic navigation for Codex through MCP.
 **Status: specification and plan approved on 2026-10-31; implementation starting.
 No runtime capabilities have been accepted yet.**
 
+Current implementation progress and failing/open gates are recorded in the
+[T8 checkpoint](docs/evidence/2026-10-31-t8-continuation.md): routine candidate
+gate passes, but ACL/xattr loss and unobserved Linux writes keep T8 incomplete.
+
 The intended path is:
 
 ```text

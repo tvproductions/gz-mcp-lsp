@@ -220,6 +220,7 @@ def plan_workspace_edit(
             {
                 "uri": s.uri,
                 "identity": asdict(s.identity),
+                "parents": [asdict(parent) for parent in s.parents],
                 "version": s.version,
                 "before": s.sha256,
                 "after": hashlib.sha256(data).hexdigest(),

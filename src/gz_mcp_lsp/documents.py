@@ -87,15 +87,19 @@ class Documents:
     @asynccontextmanager
     async def query(self, uri: str | None) -> AsyncGenerator[Snapshot | None]:
         """Own lease cleanup for failed/cancelled operations as well as successful reads."""
-        snapshot = await self.prepare(uri)
-        generation = self.session.generation
         try:
-            yield snapshot
-        except BaseException:
-            self.lock.release()
-            raise
-        else:
-            await self.finish(generation)
+            async with asyncio.timeout(self.workspace.config.limits.request_seconds):
+                snapshot = await self.prepare(uri)
+                generation = self.session.generation
+                try:
+                    yield snapshot
+                except BaseException:
+                    self.lock.release()
+                    raise
+                else:
+                    await self.finish(generation)
+        except TimeoutError as error:
+            raise AdapterError("TIMEOUT", "Semantic operation deadline exceeded", True) from error
 
     async def committed(self, snapshots: Sequence[Snapshot]) -> None:
         """Honor negotiated change form; the next prepare still enforces a restart."""

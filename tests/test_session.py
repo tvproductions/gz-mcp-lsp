@@ -102,3 +102,19 @@ class SessionTests(ProcessFixture):
         child_pid = int((self.root / "fake-pid").read_text())
         with self.assertRaises(ProcessLookupError):
             os.kill(child_pid, 0)
+
+    async def test_malformed_ready_stream_reaps_without_waiting_for_host(self):
+        async with Session(self.config) as session:
+            child = session.process
+            assert child is not None
+            with self.assertRaises(AdapterError) as failure:
+                await session.rpc.request("corrupt", {}, timeout=1)
+            self.assertEqual(failure.exception.code, "PROTOCOL_ERROR")
+            await asyncio.wait_for(child.wait(), 2)
+            self.assertIsNotNone(child.returncode)
+
+    async def test_stderr_flood_does_not_block_protocol_or_retain_unbounded_logs(self):
+        async with Session(self.config) as session:
+            response = await session.rpc.request("stderr-flood", {}, timeout=2)
+            self.assertEqual(response, "drained")
+            self.assertLessEqual(len(session.stderr_tail), 4096)

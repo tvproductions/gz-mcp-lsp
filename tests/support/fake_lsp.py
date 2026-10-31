@@ -63,6 +63,13 @@ def main():
                     },
                 }
             )
+        elif method == "corrupt":
+            sys.stdout.buffer.write(b"Bad-header\r\n\r\n")
+            sys.stdout.buffer.flush()
+        elif method == "stderr-flood":
+            sys.stderr.buffer.write(b"x" * 131072)
+            sys.stderr.buffer.flush()
+            send({"jsonrpc": "2.0", "id": message["id"], "result": "drained"})
         elif method == "shutdown":
             if mode != "hang-shutdown":
                 send({"jsonrpc": "2.0", "id": message["id"], "result": None})

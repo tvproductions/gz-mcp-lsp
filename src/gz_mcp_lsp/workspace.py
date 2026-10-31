@@ -4,6 +4,7 @@ import hashlib
 import os
 import re
 import stat
+from contextlib import contextmanager
 from pathlib import Path
 from urllib.parse import unquote_to_bytes, urlsplit
 
@@ -12,6 +13,18 @@ from gz_mcp_lsp.coordinates import byte_offset
 from gz_mcp_lsp.models import AdapterError, FileIdentity, Position, Snapshot
 
 BLOCKED_DIRECTORIES = {".git", ".venv", "__pycache__", "node_modules", ".superpowers"}
+
+
+def file_identity(info: os.stat_result) -> FileIdentity:
+    """Retain ownership as well as object, link and permission identity."""
+    return FileIdentity(
+        info.st_dev,
+        info.st_ino,
+        info.st_mode,
+        0 if stat.S_ISDIR(info.st_mode) else info.st_nlink,
+        info.st_uid,
+        info.st_gid,
+    )
 
 
 class Workspace:
@@ -51,7 +64,7 @@ class Workspace:
         current = self.root
         try:
             for part in relative.parts:
-                if part in BLOCKED_DIRECTORIES:
+                if part in BLOCKED_DIRECTORIES or part.startswith(".gz-mcp-lsp-"):
                     raise AdapterError("OUTSIDE_WORKSPACE", "Excluded workspace storage")
                 current /= part
                 if stat.S_ISLNK(current.lstat().st_mode):
@@ -60,16 +73,18 @@ class Workspace:
             raise AdapterError("SOURCE_UNAVAILABLE", "Document is not readable") from error
         return path
 
-    def open_source(self, path: Path) -> int:
-        """Anchor POSIX source reads in no-follow directory handles, including parents."""
+    @contextmanager
+    def parent_handle(self, path: Path):
+        """Yield the anchored parent handle and every directory identity in its chain."""
         if os.open not in os.supports_dir_fd or not hasattr(os, "O_NOFOLLOW"):
-            raise AdapterError("UNSUPPORTED", "Guarded source reads unavailable on this platform")
+            raise AdapterError("UNSUPPORTED", "Guarded directory handles unavailable")
         flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
         parent = os.open(self.root, flags)
         try:
             info = os.fstat(parent)
             if (info.st_dev, info.st_ino) != self._root_identity:
                 raise AdapterError("STALE_DOCUMENT", "Workspace root identity changed", True)
+            identities = [file_identity(info)]
             parts = path.relative_to(self.root).parts
             if not parts:
                 raise AdapterError("INVALID_INPUT", "Document must be a file")
@@ -77,15 +92,23 @@ class Workspace:
                 child = os.open(part, flags, dir_fd=parent)
                 os.close(parent)
                 parent = child
-            return os.open(parts[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=parent)
+                identities.append(file_identity(os.fstat(parent)))
+            yield parent, tuple(identities)
         finally:
             os.close(parent)
+
+    def open_source(self, path: Path, parents: list[FileIdentity]) -> int:
+        """Open a no-follow source descriptor and retain its parent identity chain."""
+        with self.parent_handle(path) as (parent, identities):
+            parents.extend(identities)
+            return os.open(path.name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=parent)
 
     def read(self, uri: str) -> Snapshot:
         """Read a regular UTF-8 file with size bounds and detectable-race checks."""
         path = self.path(uri)
         try:
-            descriptor = self.open_source(path)
+            parents = []
+            descriptor = self.open_source(path, parents)
             with os.fdopen(descriptor, "rb") as stream:
                 before = os.fstat(stream.fileno())
                 if not stat.S_ISREG(before.st_mode):
@@ -102,8 +125,10 @@ class Workspace:
                 raise AdapterError("INVALID_INPUT", "Document must be UTF-8 text")
         except (OSError, UnicodeError) as error:
             raise AdapterError("SOURCE_UNAVAILABLE", "Cannot read UTF-8 source") from error
-        identity = FileIdentity(before.st_dev, before.st_ino, before.st_mode, before.st_nlink)
-        return Snapshot(path.as_uri(), data, hashlib.sha256(data).hexdigest(), 1, identity)
+        identity = file_identity(before)
+        return Snapshot(
+            path.as_uri(), data, hashlib.sha256(data).hexdigest(), 1, identity, tuple(parents)
+        )
 
     @staticmethod
     def stamp(info: os.stat_result) -> tuple[int, ...]:

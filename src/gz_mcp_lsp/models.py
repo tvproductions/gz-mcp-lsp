@@ -63,6 +63,8 @@ class FileIdentity:
     inode: int
     mode: int
     links: int
+    owner: int = -1
+    group: int = -1
 
 
 @dataclass(frozen=True)
@@ -74,3 +76,4 @@ class Snapshot:
     sha256: str
     version: int
     identity: FileIdentity
+    parents: tuple[FileIdentity, ...] = ()

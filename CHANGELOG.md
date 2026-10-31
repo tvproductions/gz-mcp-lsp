@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Checkpoint guarded filesystem transactions and durable recovery; fix corrupt-state
+  validation and nested-volume authorization, and exercise rollback process crashes.
+  T8 remains incomplete: native probes demonstrate ACL/xattr loss, and Linux write
+  acceptance is unobserved. Preserve unfinished T9 drafts without registering tools.
+
 - User approved the specification and implementation plan on 2026-10-31.
 - Add strict JSON configuration, saved-workspace identity and UTF-16 coordinates,
   bounded LSP framing/cancellation, one-process lifecycle and document generations.

@@ -54,11 +54,20 @@ class Session:
             self.rpc._fail(AdapterError("SERVER_EXITED", "Language-server stderr stream failed"))
 
     async def _watch(self) -> None:
-        assert self.process is not None
-        await self.process.wait()
-        if self.state not in ("STOPPING", "CLOSED"):
-            self.state = "FAILED"
-            self.rpc._fail(AdapterError("SERVER_EXITED", "Language-server process exited"))
+        """Reap on process death or terminal transport failure, without a host retry."""
+        process, rpc = self.process, self._rpc
+        if process is None or rpc is None:
+            return
+        exited = asyncio.create_task(process.wait())
+        try:
+            await asyncio.wait((exited, rpc.failure), return_when=asyncio.FIRST_COMPLETED)
+            if self.state not in ("STOPPING", "CLOSED"):
+                self.state = "FAILED"
+                rpc._fail(AdapterError("SERVER_EXITED", "Language-server session failed"))
+                await self.close()
+        finally:
+            exited.cancel()
+            await asyncio.gather(exited, return_exceptions=True)
 
     async def _start(self) -> None:
         self.state = "STARTING"
@@ -183,7 +192,11 @@ class Session:
                 if self.process is not None:
                     await self._reap()
             finally:
-                tasks = [task for task in (self._stderr, self._watcher) if task is not None]
+                tasks = [
+                    task
+                    for task in (self._stderr, self._watcher)
+                    if task is not None and task is not asyncio.current_task()
+                ]
                 for task in tasks:
                     task.cancel()
                 await asyncio.gather(*tasks, return_exceptions=True)

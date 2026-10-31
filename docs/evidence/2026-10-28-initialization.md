@@ -235,3 +235,10 @@ This initialization is development scaffolding, not a SemVer release bundle.
 Every major including 1.0.0 requires a newly written PRD; none is claimed here.
 Release eligibility: NO (design unapproved, runtime absent, freshness/cognitive
 acceptance open). Human review is next. No runtime work proceeds automatically.
+
+## Subsequent implementation checkpoint — 2026-10-31
+
+The historical disposition above is not current implementation state. See the
+[T8 checkpoint](2026-10-31-t8-continuation.md): specification/plan approval and
+read-path implementation are recorded separately; T8 metadata/platform safety and
+full strict milestone acceptance remain incomplete. No release is authorized.

@@ -1,5 +1,13 @@
 # gz-mcp-lsp
 
+Read the current formal resume handoff at
+`docs/handoffs/2026-10-31-t8-continuation.md` first.
+
+Read the current T8 checkpoint at
+`docs/evidence/2026-10-31-t8-continuation.md` before resuming implementation.
+The user selected one bounded work package per handoff. Resume with T8 only;
+preserve the unfinished T9 drafts and hand off before advancing to T9.
+
 Read README.md, AGENTS.skills-first.md and current revision evidence at
 `docs/evidence/2026-10-28-design-revision.md` before work; initialization evidence
 at `docs/evidence/2026-10-28-initialization.md` remains historical. The adopted starter

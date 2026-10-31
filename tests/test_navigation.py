@@ -126,3 +126,19 @@ class NavigationTests(NavigationFixture):
         with self.assertRaises(AdapterError) as failure:
             await self.nav.hover(self.path.as_uri(), Position(0, 4))
         self.assertEqual(failure.exception.code, "RESULT_LIMIT")
+
+    async def test_workspace_admission_is_inside_semantic_deadline(self):
+        import asyncio
+        from dataclasses import replace
+
+        config = self.docs.workspace.config
+        self.docs.workspace.config = replace(
+            config, limits=replace(config.limits, request_seconds=1)
+        )
+        await self.docs.lock.acquire()
+        try:
+            with self.assertRaises(AdapterError) as failure:
+                await asyncio.wait_for(self.nav.hover(self.path.as_uri(), Position(0, 4)), 1.5)
+            self.assertEqual(failure.exception.code, "TIMEOUT")
+        finally:
+            self.docs.lock.release()

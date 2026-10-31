@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Refresh the R0-to-T10 resume handoff for the user-requested implementation-branch
+  Git sync, preserving local-only T9 drafts and ledger backups separately from
+  committed source. Exact push/CI/alignment observations remain separate evidence.
+
 - Enforce read-only JSON and direct MCP composition: reject enabled writes with
   UNSUPPORTED before ty/recovery startup. Prove CLI zero-launch rejection and
   real-ty reads without transaction initialization. R0 candidate gate passes;

@@ -9,8 +9,39 @@ one package per handoff under the [approved plan](../superpowers/plans/2026-10-3
 Active workspace is `~/.codex/worktrees/359d/gz-mcp-lsp`, branch
 implementation/reference-parity. The local commit containing this handoff follows
 base 2685a9c982fe35328608deab0e6188aa53b34fe7; resolve exact current SHA from Git.
-The original main checkout is unchanged. No implementation push or exact-commit CI
-was performed; do not infer remote backup, release or complete milestone acceptance.
+R0 implementation commit is 7554bd07eade2a5b6934dfdb0f92d6043fcf8cbd.
+The original main checkout is unchanged. At R0 completion no implementation push
+or exact-commit CI had been performed. The user then requested this resumable
+handoff and Git sync; that authorizes an ordinary push of this implementation
+branch, without merging main, publishing a release or advancing T10.
+
+## Git sync and durable local state
+
+The sync checkpoint containing this update follows R0 commit 7554bd0. Fetch before
+resuming and compare HEAD with origin/implementation/reference-parity; inspect
+GitHub Actions for that exact SHA. Sync observation is recorded after the push in
+Git-common storage at `handoffs/2026-10-31-r0-sync/sync-receipt.json` and in the final
+handoff response. This source document does not predict a successful push or CI.
+GitHub retains exact-commit checks even when the local receipt is unavailable.
+
+The sync candidate has no runtime changes after the source-hashed R0 gate, whose
+four commands all passed. Reuse that same-input gate for this handoff-only update
+and run normal commit hooks with uv 0.13.6. Observe Linux CI on the exact pushed
+candidate separately; CI success does not establish the deferred metadata policy,
+actual Codex acceptance, cognitive qualification or full write-safety acceptance.
+
+Git-common `handoffs/2026-10-31-r0-sync/` also holds a byte-verified copy of the three
+T9 drafts, both plans' progress ledgers and a manifest. Those files and ignored
+test logs are **local only**, not included in the pushed branch. A new clone must
+not assume those drafts/ledgers exist; use committed plans/evidence for context and
+transfer the local backup explicitly if continuing the drafts elsewhere. A normal
+restart in this worktree needs no restore. Never overwrite newer files from backup.
+
+First action on resume: read AGENTS.md and this handoff, verify Git/source/draft
+hashes and sync receipt, then take the T10 brief from the approved plan. Expected
+package result is seven actual read tools with real-ty evidence and a new bounded
+handoff. Stop before host-acceptance or write-parity packages unless separately
+instructed. Preserve standing plan approval; do not ask for it merely after restart.
 
 Read [R0 evidence](../evidence/2026-10-31-r0-read-boundary.md) and its
 [source-hashed receipt](../evidence/2026-10-31-r0-read-boundary.json), then the

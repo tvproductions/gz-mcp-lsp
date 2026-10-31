@@ -148,9 +148,9 @@ Intermediate catalog exposes implemented tools only; do not stub success for rem
 
 **Test assertion anchors:** `self.assertEqual(fake.initialize_count, 1)`; `self.assertEqual(fake.initialized_count, 1)`; `self.assertFalse(reply["applied"])`; `self.assertIsNotNone(child.returncode)` after cleanup.
 
-- [ ] Write `test_initialize_once_handlers_ready`, `test_applyedit_denied`, `test_startup_failure_reaped`, `test_parent_eof_and_shutdown_timeout`, `test_stdio_no_log_bytes`, SDK initialize/tools/list/call tests. Assert callbacks before initialized, correct configuration cardinality, UTF-16 negotiation and no leaked child after repeated cleanup. Use fake subprocess, never a readiness sleep.
-- [ ] Run those suites red, implement lifecycle/stdio composition and missing cleanup; keep no semantic success stubs. Update artifact tests to exercise installed `--help`/bad config and package origin without source-path injection.
-- [ ] Verify actual pinned ty initialization through the transport and a minimal SDK stdio read path using the T4 fixture, recording negotiated capabilities. T3 may be committed before this joint integration gate, but phase 1 is not accepted until T4 supplies it. Routine gate and commit.
+- [x] Write `test_initialize_once_handlers_ready`, `test_applyedit_denied`, `test_startup_failure_reaped`, `test_parent_eof_and_shutdown_timeout`, `test_stdio_no_log_bytes`, SDK initialize/tools/list/call tests. Assert callbacks before initialized, correct configuration cardinality, UTF-16 negotiation and no leaked child after repeated cleanup. Use fake subprocess, never a readiness sleep.
+- [x] Run those suites red, implement lifecycle/stdio composition and missing cleanup; keep no semantic success stubs. Update artifact tests to exercise installed `--help`/bad config and package origin without source-path injection.
+- [x] Verify actual pinned ty initialization through the transport and a minimal SDK stdio read path using the T4 fixture, recording negotiated capabilities. T3 may be committed before this joint integration gate, but phase 1 is not accepted until T4 supplies it. Routine gate and commit.
 
 ### Task 4: Saved-file documents, bounded generations and real interoperability fixture
 

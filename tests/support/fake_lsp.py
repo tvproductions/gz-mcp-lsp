@@ -1,6 +1,7 @@
 """Independently authored subprocess peer for lifecycle fault injection."""
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -22,6 +23,7 @@ def receive():
 
 
 def main():
+    Path("fake-pid").write_text(str(os.getpid()))
     mode = Path("fake-mode").read_text() if Path("fake-mode").exists() else "normal"
     while (message := receive()) is not None:
         with Path("fake-events").open("a") as stream:

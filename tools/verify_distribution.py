@@ -68,9 +68,21 @@ def main() -> None:
             raise ValueError("Installed version differs from metadata")
         if not Path(installed["origin"]).is_relative_to(environment):
             raise ValueError("Import did not originate from the clean environment")
-    print(
-        "Wheel/sdist identity and isolated installed import passed; no runtime capability tested."
-    )
+        executable = scripts / ("gz-mcp-lsp.exe" if os.name == "nt" else "gz-mcp-lsp")
+        help_result = run(str(executable), "--help", cwd=directory)
+        if "--config" not in help_result.stdout:
+            raise ValueError("Installed entry point did not expose explicit configuration")
+        invalid = subprocess.run(
+            [str(executable), "--config", str(directory / "missing.json")],
+            cwd=directory,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=10,
+        )
+        if invalid.returncode == 0 or invalid.stdout or "INVALID_INPUT" not in invalid.stderr:
+            raise ValueError("Installed CLI did not reject missing settings cleanly")
+    print("Wheel/sdist identity, installed import and CLI passed; semantic acceptance separate.")
 
 
 if __name__ == "__main__":

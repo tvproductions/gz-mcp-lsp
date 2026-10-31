@@ -10,6 +10,9 @@ dependencies = [
     "mcp==2.3.0",
 ]
 
+[project.scripts]
+gz-mcp-lsp = "gz_mcp_lsp.cli:main"
+
 [build-system]
 requires = ["uv_build==0.13.6"]
 build-backend = "uv_build"

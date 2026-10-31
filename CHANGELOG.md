@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Set the product's initial development version to 0.1.0 at user direction;
+  no tag or release publication.
+- Update ty to 0.0.95 and six transitive development/hygiene dependencies;
+  update the pinned setup-uv action to v10.3.3.
+- Independently select gz-skills v0.8.3 and reconcile project catalogs, provenance
+  and native marketplace source while retaining starter v0.7.1, lite and disabled
+  Backplane. See the [update receipt](docs/evidence/2026-10-31-dependency-update.md).
 - Revise the intended objective to six-tool Go reference parity, corrected semantic
   targeting, three bounded ty navigation extensions, actual Codex acceptance and stop.
 - Pin source assessment to latest release v0.1.1 and main e4395849, distinguishing

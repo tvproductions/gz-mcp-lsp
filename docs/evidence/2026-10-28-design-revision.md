@@ -1,5 +1,10 @@
 # Reference parity design revision receipt — 2026-10-28
 
+Follow-up: the [October 31 dependency update](2026-10-31-dependency-update.md)
+supersedes this receipt's current tool/plugin freshness selections and tracks
+independent gz-skills reconciliation. The source assessment, unapproved design
+and implementation boundary below remain unchanged.
+
 ## Authorized work and result
 
 User direction: revise the architecture and prepare a Superpowers implementation

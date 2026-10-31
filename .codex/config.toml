@@ -1,8 +1,8 @@
 
 [marketplaces."skills-first-starter"]
 source_type = "git"
-source = "https://github.com/tvproductions/gz-skills-first-starter.git"
-ref = "27594dbaec853e6bde037b0aaf3f0427a3f053f9"
+source = "https://github.com/tvproductions/gz-mcp-lsp.git"
+ref = "main"
 
 [plugins."superpowers@skills-first-starter"]
 enabled = true

@@ -174,7 +174,7 @@ Generic maintenance belongs in gz-skills: use its discovered
 `gzs-update-dependencies` for authorized dependency/tool updates and
 `gzs-dependency-risk-audit` for risk assessments. The starter supplies baseline
 policy and stack-specific binding guidance. Do not create a duplicate local
-maintenance skill or generic freshness reporter. The pinned gz-skills v0.8.0
+maintenance skill or generic freshness reporter. The project-selected gz-skills v0.8.3
 supplies freshness-only review and template/plugin inventory. Review mode leaves
 pins and environments unchanged; preserve project policy and profile choices.
 

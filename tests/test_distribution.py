@@ -36,11 +36,11 @@ class DistributionGuardTests(unittest.TestCase):
     def test_source_environment_leakage_is_rejected(self):
         """Source archives must not expose the local development environment."""
         with self.assertRaisesRegex(ValueError, "environment"):
-            self.check_artifacts(extra_source_file="gz_mcp_lsp-0.0.0/.venv/secret")
+            self.check_artifacts(extra_source_file="gz_mcp_lsp-0.1.0/.venv/secret")
 
     def check_artifacts(
         self,
-        metadata="Name: gz-mcp-lsp\nVersion: 0.0.0\n",
+        metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\n",
         extra_wheel_file=None,
         extra_source_file=None,
     ):
@@ -50,13 +50,13 @@ class DistributionGuardTests(unittest.TestCase):
             wheel, sdist = root / "product.whl", root / "product.tar.gz"
             with zipfile.ZipFile(wheel, "w") as archive:
                 archive.writestr("gz_mcp_lsp/py.typed", "")
-                archive.writestr("gz_mcp_lsp-0.0.0.dist-info/METADATA", metadata)
+                archive.writestr("gz_mcp_lsp-0.1.0.dist-info/METADATA", metadata)
                 if extra_wheel_file:
                     archive.writestr(extra_wheel_file, "")
             with tarfile.open(sdist, "w:gz") as archive:
-                names = ["gz_mcp_lsp-0.0.0/tests/README.md"]
+                names = ["gz_mcp_lsp-0.1.0/tests/README.md"]
                 if extra_source_file:
                     names.append(extra_source_file)
                 for name in names:
                     archive.addfile(tarfile.TarInfo(name), io.BytesIO())
-            verify_archives(wheel, sdist, "0.0.0")
+            verify_archives(wheel, sdist, "0.1.0")

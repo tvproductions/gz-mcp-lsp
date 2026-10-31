@@ -6,6 +6,10 @@ Product authorities: root README/AGENTS/CONTRIBUTING/SECURITY, the revised desig
 revision 2 explicitly supersedes the earlier read-only scope without rewriting
 its observed results.
 
+The [October 31 dependency-update receipt](evidence/2026-10-31-dependency-update.md)
+supersedes earlier tool/plugin freshness conclusions for its changed inputs.
+It does not approve the specification or implementation plan.
+
 Engineering policies, adoption guidance, update procedures and engineering
 utilities were inherited from gz-skills-first-starter v0.7.1. They remain binding
 where applicable. Starter evidence predating this product is historical upstream

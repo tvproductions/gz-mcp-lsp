@@ -37,8 +37,8 @@ See the [license review](docs/discovery/licenses.md) for attribution/dependency 
 
 Use uv 0.13.6 and its managed CPython 3.14.10. The exact interpreter is in
 `.python-version`; dependencies and tools are resolved in `uv.lock`. This is a
-standalone `src/gz_mcp_lsp` package using uv_build. Version `0.0.0` is an
-unreleased scaffold marker, independent of starter version 0.7.1.
+standalone `src/gz_mcp_lsp` package using uv_build. Version `0.1.0` identifies the
+unreleased development package, independent of starter version 0.7.1.
 
 ```bash
 git clone https://github.com/tvproductions/gz-mcp-lsp.git
@@ -59,7 +59,7 @@ engineering utility tests run separately, outside the routine gate. Deeper adopt
 analysis remains outside routine hooks and CI; see the evidence record.
 
 Install only the scaffold wheel for packaging inspection with
-`uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.0.0-py3-none-any.whl`.
+`uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.1.0-py3-none-any.whl`.
 There is no usable MCP command or published installation yet. No PyPI release or
 tag has been published. Development was observed on macOS arm64; CI verifies
 Linux. Windows runtime support remains a proposed validation target.
@@ -120,6 +120,14 @@ their provenance and notices. Historical starter documents describe that project
 not delivered adapter behavior; see [documentation scope](docs/README.md).
 Superpowers and gz-skills remain independently owned native plugins; Backplane
 is deferred and disabled. The user selected the lite lane.
+
+The project independently selects gz-skills v0.8.3 while retaining the adopted
+starter v0.7.1. Its existing `skills-first-starter` marketplace identity now reads
+this repository's project-owned catalog on `main`; every component in that catalog
+has an immutable full commit pin. This reconciles the newer plugin without a
+second discovery source or a shared-starter update. See the
+[dependency-update receipt](docs/evidence/2026-10-31-dependency-update.md) for
+rollback pins, verification and native loading evidence.
 
 Original project work and inherited starter material use the [MIT license](LICENSE).
 Upstream projects and future dependencies retain their own licenses; see [NOTICE](NOTICE).

@@ -1,0 +1,1128 @@
+{
+  "checked_date": "2026-10-31",
+  "mode": "update",
+  "base_commit": "3d6a869cd8cc1d20d20efa7984d88403f769409b",
+  "lock_sha256": "e6df63613dcf4df900dd857588766a880c23c69f728d30889b6534b92ff690d1",
+  "python": {
+    "selected": "3.14.10",
+    "support": ">=3.14,<3.15",
+    "latest_selected_family": "3.14.10",
+    "latest_upstream_family": "3.15.2",
+    "decision": "retain approved 3.14 family",
+    "source": "https://www.python.org/downloads/"
+  },
+  "python_packages": [
+    {
+      "name": "aiohappyeyeballs",
+      "current": "2.7.1",
+      "previous": "2.7.1",
+      "latest_stable": "2.7.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/aiohappyeyeballs/"
+    },
+    {
+      "name": "aiohttp",
+      "current": "3.14.5",
+      "previous": "3.14.5",
+      "latest_stable": "3.14.5",
+      "decision": "retain",
+      "source": "https://pypi.org/project/aiohttp/"
+    },
+    {
+      "name": "aiosignal",
+      "current": "1.4.0",
+      "previous": "1.4.0",
+      "latest_stable": "1.4.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/aiosignal/"
+    },
+    {
+      "name": "anybadge",
+      "current": "1.16.0",
+      "previous": "1.16.0",
+      "latest_stable": "1.16.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/anybadge/"
+    },
+    {
+      "name": "attrs",
+      "current": "26.1.0",
+      "previous": "26.1.0",
+      "latest_stable": "26.1.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/attrs/"
+    },
+    {
+      "name": "bandit",
+      "current": "1.9.4",
+      "previous": "1.9.4",
+      "latest_stable": "1.9.4",
+      "decision": "retain",
+      "source": "https://pypi.org/project/bandit/"
+    },
+    {
+      "name": "boolean-py",
+      "current": "5.0",
+      "previous": "5.0",
+      "latest_stable": "5.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/boolean-py/"
+    },
+    {
+      "name": "cachecontrol",
+      "current": "0.14.4",
+      "previous": "0.14.4",
+      "latest_stable": "0.14.4",
+      "decision": "retain",
+      "source": "https://pypi.org/project/cachecontrol/"
+    },
+    {
+      "name": "certifi",
+      "current": "2026.10.23",
+      "previous": "2026.10.23",
+      "latest_stable": "2026.10.23",
+      "decision": "retain",
+      "source": "https://pypi.org/project/certifi/"
+    },
+    {
+      "name": "cfgv",
+      "current": "3.5.0",
+      "previous": "3.5.0",
+      "latest_stable": "3.5.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/cfgv/"
+    },
+    {
+      "name": "charset-normalizer",
+      "current": "3.5.2",
+      "previous": "3.5.2",
+      "latest_stable": "3.5.2",
+      "decision": "retain",
+      "source": "https://pypi.org/project/charset-normalizer/"
+    },
+    {
+      "name": "click",
+      "current": "8.5.0",
+      "previous": "8.5.0",
+      "latest_stable": "8.5.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/click/"
+    },
+    {
+      "name": "cohesion",
+      "current": "1.2.0",
+      "previous": "1.2.0",
+      "latest_stable": "1.2.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/cohesion/"
+    },
+    {
+      "name": "colorama",
+      "current": "0.4.6",
+      "previous": "0.4.6",
+      "latest_stable": "0.4.6",
+      "decision": "retain",
+      "source": "https://pypi.org/project/colorama/"
+    },
+    {
+      "name": "complexipy",
+      "current": "8.3.0",
+      "previous": "8.3.0",
+      "latest_stable": "8.3.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/complexipy/"
+    },
+    {
+      "name": "cosmic-ray",
+      "current": "8.7.0",
+      "previous": "8.7.0",
+      "latest_stable": "8.7.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/cosmic-ray/"
+    },
+    {
+      "name": "coverage",
+      "current": "7.17.0",
+      "previous": "7.17.0",
+      "latest_stable": "7.17.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/coverage/"
+    },
+    {
+      "name": "cyclonedx-python-lib",
+      "current": "11.12.0",
+      "previous": "11.12.0",
+      "latest_stable": "11.12.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/cyclonedx-python-lib/"
+    },
+    {
+      "name": "decorator",
+      "current": "5.3.1",
+      "previous": "5.3.1",
+      "latest_stable": "5.3.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/decorator/"
+    },
+    {
+      "name": "defusedxml",
+      "current": "0.7.1",
+      "previous": "0.7.1",
+      "latest_stable": "0.7.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/defusedxml/"
+    },
+    {
+      "name": "deptry",
+      "current": "0.25.1",
+      "previous": "0.25.1",
+      "latest_stable": "0.25.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/deptry/"
+    },
+    {
+      "name": "distlib",
+      "current": "0.4.4",
+      "previous": "0.4.4",
+      "latest_stable": "0.4.4",
+      "decision": "retain",
+      "source": "https://pypi.org/project/distlib/"
+    },
+    {
+      "name": "exit-codes",
+      "current": "1.3.0",
+      "previous": "1.3.0",
+      "latest_stable": "1.3.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/exit-codes/"
+    },
+    {
+      "name": "filelock",
+      "current": "4.2.6",
+      "previous": "4.2.4",
+      "latest_stable": "4.2.6",
+      "decision": "updated",
+      "source": "https://pypi.org/project/filelock/"
+    },
+    {
+      "name": "frozenlist",
+      "current": "1.8.0",
+      "previous": "1.8.0",
+      "latest_stable": "1.8.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/frozenlist/"
+    },
+    {
+      "name": "gitdb",
+      "current": "4.0.12",
+      "previous": "4.0.12",
+      "latest_stable": "4.0.12",
+      "decision": "retain",
+      "source": "https://pypi.org/project/gitdb/"
+    },
+    {
+      "name": "gitpython",
+      "current": "3.2.1",
+      "previous": "3.2.1",
+      "latest_stable": "3.2.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/gitpython/"
+    },
+    {
+      "name": "grimp",
+      "current": "3.18",
+      "previous": "3.18",
+      "latest_stable": "3.18",
+      "decision": "retain",
+      "source": "https://pypi.org/project/grimp/"
+    },
+    {
+      "name": "identify",
+      "current": "2.6.20",
+      "previous": "2.6.20",
+      "latest_stable": "2.6.20",
+      "decision": "retain",
+      "source": "https://pypi.org/project/identify/"
+    },
+    {
+      "name": "idna",
+      "current": "3.20",
+      "previous": "3.20",
+      "latest_stable": "3.20",
+      "decision": "retain",
+      "source": "https://pypi.org/project/idna/"
+    },
+    {
+      "name": "import-linter",
+      "current": "2.15",
+      "previous": "2.15",
+      "latest_stable": "2.15",
+      "decision": "retain",
+      "source": "https://pypi.org/project/import-linter/"
+    },
+    {
+      "name": "interrogate",
+      "current": "1.7.0",
+      "previous": "1.7.0",
+      "latest_stable": "1.7.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/interrogate/"
+    },
+    {
+      "name": "license-expression",
+      "current": "30.4.4",
+      "previous": "30.4.4",
+      "latest_stable": "30.4.4",
+      "decision": "retain",
+      "source": "https://pypi.org/project/license-expression/"
+    },
+    {
+      "name": "lizard",
+      "current": "1.24.3",
+      "previous": "1.24.3",
+      "latest_stable": "1.24.3",
+      "decision": "retain",
+      "source": "https://pypi.org/project/lizard/"
+    },
+    {
+      "name": "markdown-it-py",
+      "current": "4.2.0",
+      "previous": "4.2.0",
+      "latest_stable": "4.2.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/markdown-it-py/"
+    },
+    {
+      "name": "mdurl",
+      "current": "0.1.2",
+      "previous": "0.1.2",
+      "latest_stable": "0.1.2",
+      "decision": "retain",
+      "source": "https://pypi.org/project/mdurl/"
+    },
+    {
+      "name": "msgpack",
+      "current": "1.2.4",
+      "previous": "1.2.4",
+      "latest_stable": "1.2.4",
+      "decision": "retain",
+      "source": "https://pypi.org/project/msgpack/"
+    },
+    {
+      "name": "multidict",
+      "current": "7.2.1",
+      "previous": "7.2.0",
+      "latest_stable": "7.2.1",
+      "decision": "updated",
+      "source": "https://pypi.org/project/multidict/"
+    },
+    {
+      "name": "nodeenv",
+      "current": "1.12.0",
+      "previous": "1.11.0",
+      "latest_stable": "1.12.0",
+      "decision": "updated",
+      "source": "https://pypi.org/project/nodeenv/"
+    },
+    {
+      "name": "packageurl-python",
+      "current": "0.17.6",
+      "previous": "0.17.6",
+      "latest_stable": "0.17.6",
+      "decision": "retain",
+      "source": "https://pypi.org/project/packageurl-python/"
+    },
+    {
+      "name": "packaging",
+      "current": "26.3",
+      "previous": "26.3",
+      "latest_stable": "26.3",
+      "decision": "retain",
+      "source": "https://pypi.org/project/packaging/"
+    },
+    {
+      "name": "parso",
+      "current": "0.8.7",
+      "previous": "0.8.7",
+      "latest_stable": "0.8.7",
+      "decision": "retain",
+      "source": "https://pypi.org/project/parso/"
+    },
+    {
+      "name": "pathspec",
+      "current": "1.1.1",
+      "previous": "1.1.1",
+      "latest_stable": "1.1.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pathspec/"
+    },
+    {
+      "name": "pip",
+      "current": "26.2.2",
+      "previous": "26.2.2",
+      "latest_stable": "26.2.2",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pip/"
+    },
+    {
+      "name": "pip-api",
+      "current": "0.0.35",
+      "previous": "0.0.35",
+      "latest_stable": "0.0.35",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pip-api/"
+    },
+    {
+      "name": "pip-audit",
+      "current": "2.10.1",
+      "previous": "2.10.1",
+      "latest_stable": "2.10.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pip-audit/"
+    },
+    {
+      "name": "pip-requirements-parser",
+      "current": "32.0.1",
+      "previous": "32.0.1",
+      "latest_stable": "32.0.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pip-requirements-parser/"
+    },
+    {
+      "name": "platformdirs",
+      "current": "4.14.2",
+      "previous": "4.13.5",
+      "latest_stable": "4.14.2",
+      "decision": "updated",
+      "source": "https://pypi.org/project/platformdirs/"
+    },
+    {
+      "name": "pre-commit",
+      "current": "4.7.0",
+      "previous": "4.7.0",
+      "latest_stable": "4.7.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pre-commit/"
+    },
+    {
+      "name": "propcache",
+      "current": "0.5.4",
+      "previous": "0.5.4",
+      "latest_stable": "0.5.4",
+      "decision": "retain",
+      "source": "https://pypi.org/project/propcache/"
+    },
+    {
+      "name": "py",
+      "current": "1.11.0",
+      "previous": "1.11.0",
+      "latest_stable": "1.11.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/py/"
+    },
+    {
+      "name": "py-serializable",
+      "current": "2.1.0",
+      "previous": "2.1.0",
+      "latest_stable": "2.1.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/py-serializable/"
+    },
+    {
+      "name": "pygments",
+      "current": "2.21.0",
+      "previous": "2.21.0",
+      "latest_stable": "2.21.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pygments/"
+    },
+    {
+      "name": "pyparsing",
+      "current": "3.3.3",
+      "previous": "3.3.3",
+      "latest_stable": "3.3.3",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pyparsing/"
+    },
+    {
+      "name": "python-discovery",
+      "current": "1.9.0",
+      "previous": "1.6.4",
+      "latest_stable": "1.9.0",
+      "decision": "updated",
+      "source": "https://pypi.org/project/python-discovery/"
+    },
+    {
+      "name": "pyyaml",
+      "current": "6.0.3",
+      "previous": "6.0.3",
+      "latest_stable": "6.0.3",
+      "decision": "retain",
+      "source": "https://pypi.org/project/pyyaml/"
+    },
+    {
+      "name": "requests",
+      "current": "2.34.2",
+      "previous": "2.34.2",
+      "latest_stable": "2.34.2",
+      "decision": "retain",
+      "source": "https://pypi.org/project/requests/"
+    },
+    {
+      "name": "requirements-parser",
+      "current": "0.13.1",
+      "previous": "0.13.1",
+      "latest_stable": "0.13.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/requirements-parser/"
+    },
+    {
+      "name": "rich",
+      "current": "15.0.0",
+      "previous": "15.0.0",
+      "latest_stable": "15.0.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/rich/"
+    },
+    {
+      "name": "ruff",
+      "current": "0.17.3",
+      "previous": "0.17.3",
+      "latest_stable": "0.17.3",
+      "decision": "retain",
+      "source": "https://pypi.org/project/ruff/"
+    },
+    {
+      "name": "smmap",
+      "current": "5.0.3",
+      "previous": "5.0.3",
+      "latest_stable": "5.0.3",
+      "decision": "retain",
+      "source": "https://pypi.org/project/smmap/"
+    },
+    {
+      "name": "sortedcontainers",
+      "current": "2.4.0",
+      "previous": "2.4.0",
+      "latest_stable": "2.4.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/sortedcontainers/"
+    },
+    {
+      "name": "sqlalchemy",
+      "current": "2.1.6",
+      "previous": "2.1.6",
+      "latest_stable": "2.1.6",
+      "decision": "retain",
+      "source": "https://pypi.org/project/sqlalchemy/"
+    },
+    {
+      "name": "stevedore",
+      "current": "5.9.1",
+      "previous": "5.9.1",
+      "latest_stable": "5.9.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/stevedore/"
+    },
+    {
+      "name": "tabulate",
+      "current": "0.10.0",
+      "previous": "0.10.0",
+      "latest_stable": "0.10.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/tabulate/"
+    },
+    {
+      "name": "toml",
+      "current": "0.10.2",
+      "previous": "0.10.2",
+      "latest_stable": "0.10.2",
+      "decision": "retain",
+      "source": "https://pypi.org/project/toml/"
+    },
+    {
+      "name": "tomli",
+      "current": "2.5.0",
+      "previous": "2.5.0",
+      "latest_stable": "2.5.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/tomli/"
+    },
+    {
+      "name": "tomli-w",
+      "current": "1.2.0",
+      "previous": "1.2.0",
+      "latest_stable": "1.2.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/tomli-w/"
+    },
+    {
+      "name": "ty",
+      "current": "0.0.95",
+      "previous": "0.0.93",
+      "latest_stable": "0.0.95",
+      "decision": "updated",
+      "source": "https://pypi.org/project/ty/"
+    },
+    {
+      "name": "typing-extensions",
+      "current": "4.16.0",
+      "previous": "4.16.0",
+      "latest_stable": "4.16.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/typing-extensions/"
+    },
+    {
+      "name": "urllib3",
+      "current": "2.8.0",
+      "previous": "2.8.0",
+      "latest_stable": "2.8.0",
+      "decision": "retain",
+      "source": "https://pypi.org/project/urllib3/"
+    },
+    {
+      "name": "uv",
+      "current": "0.13.6",
+      "previous": "0.13.6",
+      "latest_stable": "0.13.6",
+      "decision": "retain",
+      "source": "https://pypi.org/project/uv/"
+    },
+    {
+      "name": "uv_build",
+      "current": "0.13.6",
+      "previous": "0.13.6",
+      "latest_stable": "0.13.6",
+      "decision": "retain",
+      "source": "https://pypi.org/project/uv_build/"
+    },
+    {
+      "name": "virtualenv",
+      "current": "21.15.2",
+      "previous": "21.14.13",
+      "latest_stable": "21.15.2",
+      "decision": "updated",
+      "source": "https://pypi.org/project/virtualenv/"
+    },
+    {
+      "name": "vulture",
+      "current": "2.16",
+      "previous": "2.16",
+      "latest_stable": "2.16",
+      "decision": "retain",
+      "source": "https://pypi.org/project/vulture/"
+    },
+    {
+      "name": "yarl",
+      "current": "1.25.1",
+      "previous": "1.25.1",
+      "latest_stable": "1.25.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/yarl/"
+    },
+    {
+      "name": "yattag",
+      "current": "1.16.1",
+      "previous": "1.16.1",
+      "latest_stable": "1.16.1",
+      "decision": "retain",
+      "source": "https://pypi.org/project/yattag/"
+    }
+  ],
+  "audit": {
+    "dependencies": [
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.7.1",
+        "vulns": []
+      },
+      {
+        "name": "aiohttp",
+        "version": "3.14.5",
+        "vulns": []
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.4.0",
+        "vulns": []
+      },
+      {
+        "name": "anybadge",
+        "version": "1.16.0",
+        "vulns": []
+      },
+      {
+        "name": "attrs",
+        "version": "26.1.0",
+        "vulns": []
+      },
+      {
+        "name": "bandit",
+        "version": "1.9.4",
+        "vulns": []
+      },
+      {
+        "name": "boolean-py",
+        "version": "5.0",
+        "vulns": []
+      },
+      {
+        "name": "cachecontrol",
+        "version": "0.14.4",
+        "vulns": []
+      },
+      {
+        "name": "certifi",
+        "version": "2026.10.23",
+        "vulns": []
+      },
+      {
+        "name": "cfgv",
+        "version": "3.5.0",
+        "vulns": []
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.5.2",
+        "vulns": []
+      },
+      {
+        "name": "click",
+        "version": "8.5.0",
+        "vulns": []
+      },
+      {
+        "name": "cohesion",
+        "version": "1.2.0",
+        "vulns": []
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6",
+        "vulns": []
+      },
+      {
+        "name": "complexipy",
+        "version": "8.3.0",
+        "vulns": []
+      },
+      {
+        "name": "cosmic-ray",
+        "version": "8.7.0",
+        "vulns": []
+      },
+      {
+        "name": "coverage",
+        "version": "7.17.0",
+        "vulns": []
+      },
+      {
+        "name": "cyclonedx-python-lib",
+        "version": "11.12.0",
+        "vulns": []
+      },
+      {
+        "name": "decorator",
+        "version": "5.3.1",
+        "vulns": []
+      },
+      {
+        "name": "defusedxml",
+        "version": "0.7.1",
+        "vulns": []
+      },
+      {
+        "name": "deptry",
+        "version": "0.25.1",
+        "vulns": []
+      },
+      {
+        "name": "distlib",
+        "version": "0.4.4",
+        "vulns": []
+      },
+      {
+        "name": "exit-codes",
+        "version": "1.3.0",
+        "vulns": []
+      },
+      {
+        "name": "filelock",
+        "version": "4.2.6",
+        "vulns": []
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0",
+        "vulns": []
+      },
+      {
+        "name": "gitdb",
+        "version": "4.0.12",
+        "vulns": []
+      },
+      {
+        "name": "gitpython",
+        "version": "3.2.1",
+        "vulns": []
+      },
+      {
+        "name": "grimp",
+        "version": "3.18",
+        "vulns": []
+      },
+      {
+        "name": "identify",
+        "version": "2.6.20",
+        "vulns": []
+      },
+      {
+        "name": "idna",
+        "version": "3.20",
+        "vulns": []
+      },
+      {
+        "name": "import-linter",
+        "version": "2.15",
+        "vulns": []
+      },
+      {
+        "name": "interrogate",
+        "version": "1.7.0",
+        "vulns": []
+      },
+      {
+        "name": "license-expression",
+        "version": "30.4.4",
+        "vulns": []
+      },
+      {
+        "name": "lizard",
+        "version": "1.24.3",
+        "vulns": []
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.2.0",
+        "vulns": []
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2",
+        "vulns": []
+      },
+      {
+        "name": "msgpack",
+        "version": "1.2.4",
+        "vulns": []
+      },
+      {
+        "name": "multidict",
+        "version": "7.2.1",
+        "vulns": []
+      },
+      {
+        "name": "nodeenv",
+        "version": "1.12.0",
+        "vulns": []
+      },
+      {
+        "name": "packageurl-python",
+        "version": "0.17.6",
+        "vulns": []
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "vulns": []
+      },
+      {
+        "name": "parso",
+        "version": "0.8.7",
+        "vulns": []
+      },
+      {
+        "name": "pathspec",
+        "version": "1.1.1",
+        "vulns": []
+      },
+      {
+        "name": "pip",
+        "version": "26.2.2",
+        "vulns": []
+      },
+      {
+        "name": "pip-api",
+        "version": "0.0.35",
+        "vulns": []
+      },
+      {
+        "name": "pip-audit",
+        "version": "2.10.1",
+        "vulns": []
+      },
+      {
+        "name": "pip-requirements-parser",
+        "version": "32.0.1",
+        "vulns": []
+      },
+      {
+        "name": "platformdirs",
+        "version": "4.14.2",
+        "vulns": []
+      },
+      {
+        "name": "pre-commit",
+        "version": "4.7.0",
+        "vulns": []
+      },
+      {
+        "name": "propcache",
+        "version": "0.5.4",
+        "vulns": []
+      },
+      {
+        "name": "py",
+        "version": "1.11.0",
+        "vulns": []
+      },
+      {
+        "name": "py-serializable",
+        "version": "2.1.0",
+        "vulns": []
+      },
+      {
+        "name": "pygments",
+        "version": "2.21.0",
+        "vulns": []
+      },
+      {
+        "name": "pyparsing",
+        "version": "3.3.3",
+        "vulns": []
+      },
+      {
+        "name": "python-discovery",
+        "version": "1.9.0",
+        "vulns": []
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3",
+        "vulns": []
+      },
+      {
+        "name": "requests",
+        "version": "2.34.2",
+        "vulns": []
+      },
+      {
+        "name": "requirements-parser",
+        "version": "0.13.1",
+        "vulns": []
+      },
+      {
+        "name": "rich",
+        "version": "15.0.0",
+        "vulns": []
+      },
+      {
+        "name": "ruff",
+        "version": "0.17.3",
+        "vulns": []
+      },
+      {
+        "name": "smmap",
+        "version": "5.0.3",
+        "vulns": []
+      },
+      {
+        "name": "sortedcontainers",
+        "version": "2.4.0",
+        "vulns": []
+      },
+      {
+        "name": "sqlalchemy",
+        "version": "2.1.6",
+        "vulns": []
+      },
+      {
+        "name": "stevedore",
+        "version": "5.9.1",
+        "vulns": []
+      },
+      {
+        "name": "tabulate",
+        "version": "0.10.0",
+        "vulns": []
+      },
+      {
+        "name": "toml",
+        "version": "0.10.2",
+        "vulns": []
+      },
+      {
+        "name": "tomli",
+        "version": "2.5.0",
+        "vulns": []
+      },
+      {
+        "name": "tomli-w",
+        "version": "1.2.0",
+        "vulns": []
+      },
+      {
+        "name": "ty",
+        "version": "0.0.95",
+        "vulns": []
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.16.0",
+        "vulns": []
+      },
+      {
+        "name": "urllib3",
+        "version": "2.8.0",
+        "vulns": []
+      },
+      {
+        "name": "virtualenv",
+        "version": "21.15.2",
+        "vulns": []
+      },
+      {
+        "name": "vulture",
+        "version": "2.16",
+        "vulns": []
+      },
+      {
+        "name": "yarl",
+        "version": "1.25.1",
+        "vulns": []
+      },
+      {
+        "name": "yattag",
+        "version": "1.16.1",
+        "vulns": []
+      }
+    ],
+    "fixes": []
+  },
+  "native_prepublication": {
+    "installation": "native codex plugin add with command-scoped local marketplace override",
+    "release": "v0.8.3",
+    "commit": "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3",
+    "complete_skill_tree_files": 44,
+    "byte_differences": 0,
+    "fresh_app_server_scopes": [
+      {
+        "scope": "project",
+        "gz_skills": 20,
+        "superpowers": 15,
+        "project_update_skill": true,
+        "errors": []
+      },
+      {
+        "scope": "outside_project",
+        "gz_skills": 0,
+        "superpowers": 0,
+        "project_update_skill": false,
+        "errors": []
+      }
+    ],
+    "global_marketplace_plugin_defaults_unchanged": true,
+    "configured_git_source_refresh": "post-publication observation reported in final handoff"
+  },
+  "remaining_acceptance": {
+    "qualified_cognitive_engine": "UNKNOWN; upstream issue remains open",
+    "product_runtime": "absent; implementation remains unapproved",
+    "other_harness_discovery": "not rerun"
+  },
+  "product_version": {
+    "previous": "0.0.0",
+    "current": "0.1.0",
+    "status": "unreleased development version; user directed"
+  },
+  "same_version_artifact_refresh": {
+    "package": "grimp",
+    "version": "3.18",
+    "added_wheels": [
+      {
+        "url": "https://files.pythonhosted.org/packages/e0/89/ca91f3a223f9b1dce8aaf23a7b92a8afdb3c7bf6597348c793f3eef6e5d1/grimp-3.18-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+        "hash": "sha256:5083d474794a20d8b3d53c2955d9cc6e590fe3d55a467ec6e4940d2d1413e5d3",
+        "size": 2276232,
+        "upload-time": "2026-10-30T09:05:29.668Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/51/24/b782fc977992e0460991e9bde35e15d40e41057427ded9e8612a87a00400/grimp-3.18-cp314-cp314-manylinux2014_armv7l.manylinux_2_17_armv7l.whl",
+        "hash": "sha256:e3e101de453ba3a5ed7e6776857e12e75913a71254779240b952b00fb99be327",
+        "size": 2224038,
+        "upload-time": "2026-10-30T09:05:40.995Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/5d/7e/d95e166c2aafc14a20bdcda3e251c197d411d765e674db7d3a48532b5e14/grimp-3.18-cp314-cp314-manylinux2014_i686.manylinux_2_17_i686.whl",
+        "hash": "sha256:d5ca964848d32b871a6b5755ec9e2c8499945268fb07065805616c2f0ccc7b94",
+        "size": 2365371,
+        "upload-time": "2026-10-30T09:06:08.213Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/b5/a3/c092a0c5458378962e11df965e6588743d9544019e1c0b375a2d144e2b7f/grimp-3.18-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+        "hash": "sha256:742661cf3af03b9cae83abbd47a86e3fee2e5241c9c0ca1506ee3a2d9d21c835",
+        "size": 2630405,
+        "upload-time": "2026-10-30T09:05:49.75Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/41/bf/2f7fff6f1a7ed5209fdc42455c7aeb76d5e64017db1641cf30ee9e8c39dd/grimp-3.18-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+        "hash": "sha256:cc513ef2584df912b7bc165a7a1d549cf8f6032e80fc11cf947ca9c2fcf3c5a2",
+        "size": 2359624,
+        "upload-time": "2026-10-30T09:05:58.832Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/d7/bd/defaf1fa6f19173b1b4bcf87311a9bc72d66e6e6cddd57cec8473fd4030e/grimp-3.18-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "hash": "sha256:47ff6d75a2b8db5c0b98be66be74ff7d7ba6d603feca3b5cbe6684a849ffb08c",
+        "size": 2286960,
+        "upload-time": "2026-10-30T09:06:19.997Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/30/38/8962a691c78fde0be777e67805e994944000551882dce617b03a99d5e02b/grimp-3.18-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+        "hash": "sha256:34090d38fba4223a6a9a5cc8f5c7523fdd9db7dfaef80dd90376d45242e59704",
+        "size": 2276732,
+        "upload-time": "2026-10-30T09:05:31.154Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/b0/ad/1c0ac6be3ea422ed8431bb392a0041c11300164761f2d2d3200e4f222f1d/grimp-3.18-cp314-cp314t-manylinux2014_armv7l.manylinux_2_17_armv7l.whl",
+        "hash": "sha256:3463911ead5015eaa91da3721b84c900cdcaec22d149133827a76ea86d798cb1",
+        "size": 2220324,
+        "upload-time": "2026-10-30T09:05:42.395Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/09/00/a30fdaa8c0793db7dfc17590f341e1e82b30989602338205030d4e4394d0/grimp-3.18-cp314-cp314t-manylinux2014_i686.manylinux_2_17_i686.whl",
+        "hash": "sha256:b989ad42e66d2ffb75dddfbc14bb980790fbbce6f58fdccc3df99cebf4661689",
+        "size": 2365815,
+        "upload-time": "2026-10-30T09:06:09.694Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/2b/19/1965cf2d8d218f0d763872c32362cf5dc05eb5c192c7a5996089e41e048a/grimp-3.18-cp314-cp314t-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+        "hash": "sha256:4390a69445c586c1ad1c4aaab9e3ec44fcd3f662c04476dbb77b3b6dde5ed6ac",
+        "size": 2629781,
+        "upload-time": "2026-10-30T09:05:51.184Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/26/eb/26a06c8eab6a252c8c1e0a3bbe3cf71ddd9b0e3c288c6ee474df635e3f3b/grimp-3.18-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+        "hash": "sha256:a34f3414a8f944d1b30b958fe571f5ca07cd6fa8fd7dcffea89e995a6cd5ee0f",
+        "size": 2359278,
+        "upload-time": "2026-10-30T09:06:00.328Z"
+      },
+      {
+        "url": "https://files.pythonhosted.org/packages/cb/02/d9497138b299b45eebe856159605752be9304fd661ab87f507fdbc10fa2e/grimp-3.18-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "hash": "sha256:98e62116c9a323f00b580b6d9a4aade24d047bdf37b3a4f5098098aa055063be",
+        "size": 2290843,
+        "upload-time": "2026-10-30T09:06:21.903Z"
+      }
+    ],
+    "removed_wheels": 0,
+    "source": "https://pypi.org/pypi/grimp/3.18/json",
+    "verified_url_and_sha256": true
+  }
+}

@@ -1,12 +1,17 @@
 # gz-mcp-lsp
 
-Read the current formal resume handoff at
-`docs/handoffs/2026-10-31-t8-continuation.md` first.
+Read the active handoff at `docs/handoffs/2026-10-31-r0-read-boundary.md` first.
+Latest user direction: seven read tools first, write parity afterward. The user
+approved that short design in conversation on 2026-10-31; its record is
+`docs/superpowers/specs/2026-10-31-read-first-milestones-design.md`.
+The revised execution plan at `docs/superpowers/plans/2026-10-31-read-first.md`
+was reviewed in conversation and approved with “looks good”. R0 is complete;
+resume with T10 only on a new instruction, then hand off before the next package.
 
-Read the current T8 checkpoint at
-`docs/evidence/2026-10-31-t8-continuation.md` before resuming implementation.
-The user selected one bounded work package per handoff. Resume with T8 only;
-preserve the unfinished T9 drafts and hand off before advancing to T9.
+T8 is incomplete and paused. Preserve its work, all three T9 drafts and backup
+hashes. The older T8 handoff/evidence remain historical continuation records;
+their T8-only execution direction is superseded. Continue single-writer ownership
+and one bounded work package per handoff after plan approval.
 
 Read README.md, AGENTS.skills-first.md and current revision evidence at
 `docs/evidence/2026-10-28-design-revision.md` before work; initialization evidence
@@ -17,12 +22,14 @@ instructions do not make its helper part of this product.
 
 ## Current boundary
 
-The user approved revision-2 specification and plan on 2026-10-31. Execute the
-approved tasks with test-first verification and explicit acceptance evidence.
+The user approved revision-2 specification and plan on 2026-10-31, then selected
+read-first milestones. That newer direction pauses the old execution sequence.
+Read the active design/plan above and retain the existing contract documents:
 Read `docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`,
 `docs/discovery/reference-parity.md`, `docs/discovery/acceptance-matrix.md` and
-`docs/superpowers/plans/2026-10-28-reference-parity.md`. Approval authorizes
-implementation, not a claim of capability/engineering acceptance or publication.
+`docs/superpowers/plans/2026-10-28-reference-parity.md`. After revised-plan review,
+use test-first verification and explicit acceptance evidence. No capability,
+engineering acceptance or publication follows from plan approval alone.
 
 Use adopted Superpowers for feature design and gz-skills gzs-router for portable
 engineering selection. The user explicitly selected lite through gzs-project-setup.

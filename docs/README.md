@@ -2,9 +2,14 @@
 
 Product authorities: root README/AGENTS/CONTRIBUTING/SECURITY, the revised design and plan in
 `superpowers/specs/`, discovery reviews in `discovery/`, and
-`evidence/2026-10-28-design-revision.md`. Initialization evidence is historical;
-revision 2 explicitly supersedes the earlier read-only scope without rewriting
-its observed results.
+`evidence/2026-10-28-design-revision.md`. The user-approved
+[read-first amendment](superpowers/specs/2026-10-31-read-first-milestones-design.md)
+now separates seven-tool read acceptance from later full write parity. Its
+[execution plan](superpowers/plans/2026-10-31-read-first.md) is approved; the
+[active handoff](handoffs/2026-10-31-r0-read-boundary.md) records R0 completion,
+T10 next and paused T8/T9. Earlier
+scope/sequence documents and initialization evidence retain historical meaning;
+the amendment changes no observed result or completed task receipt.
 
 Engineering policies, adoption guidance, update procedures and engineering
 utilities were inherited from gz-skills-first-starter v0.7.1. They remain binding

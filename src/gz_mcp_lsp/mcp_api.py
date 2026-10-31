@@ -59,6 +59,8 @@ async def invoke(operation: str, call: Callable[[], Awaitable[Result]]) -> types
 
 def create_server(config: Config, session: Session) -> MCPServer:
     """Let the SDK own MCP negotiation, stdio and lifespan cancellation."""
+    if config.mutations_enabled:
+        raise AdapterError("UNSUPPORTED", "This read-only server does not support mutations")
     documents = Documents(Workspace(config), session)
     navigation = Navigation(documents, session)
     diagnostic_service = Diagnostics(documents, session)

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Enforce read-only JSON and direct MCP composition: reject enabled writes with
+  UNSUPPORTED before ty/recovery startup. Prove CLI zero-launch rejection and
+  real-ty reads without transaction initialization. R0 candidate gate passes;
+  the three read extensions and actual Codex dogfooding remain next-stage work.
+
+- Record the user-approved seven-tool read-first milestone and prepare its revised
+  execution plan for review. Put read extensions, installed ty/Codex proof and
+  separate engineering assessment before guarded rename/edit parity. Pause T8,
+  preserve T9 drafts and retain all later write-safety gates. Documentation only.
+
 - Checkpoint guarded filesystem transactions and durable recovery; fix corrupt-state
   validation and nested-volume authorization, and exercise rollback process crashes.
   T8 remains incomplete: native probes demonstrate ACL/xattr loss, and Linux write

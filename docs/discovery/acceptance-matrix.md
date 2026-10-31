@@ -1,15 +1,39 @@
 # Parity, semantic and interoperability acceptance gates
 
-Design revision 2, 2026-10-28. **All runtime rows are NOT RUN / NOT ACCEPTED.**
-The task is planning only. This matrix defines future evidence, not current results.
-The [specification](../superpowers/specs/2026-10-28-semantic-navigation-design.md)
-and [plan](../superpowers/plans/2026-10-28-reference-parity.md) are unapproved.
+Revision-2 contracts with the user-approved
+[read-first milestone amendment](../superpowers/specs/2026-10-31-read-first-milestones-design.md),
+2026-10-31. The [revised execution plan](../superpowers/plans/2026-10-31-read-first.md)
+was reviewed in chat and approved. This matrix defines required assertions; execution receipts in
+docs/evidence/ own observed results. Some implementation evidence exists, but no
+complete product milestone is accepted by this matrix or by task checkboxes.
 
 For every future row retain: project commit, immutable fixture identity, Python/SDK/
 ty/host versions, command or native session, expected and observed results, exit
 code, source hashes and redacted artifacts. PASS requires observed assertions;
 FAIL/UNKNOWN/required skips prevent acceptance. Mock, real-ty, installed-distribution
 and Codex-host receipts are separate. Upstream source inspection is not a Python PASS.
+
+## Milestone applicability
+
+| Milestone | Required assertions | Completion boundary |
+| --- | --- | --- |
+| R: reads | P1–P4, S1–S5, diagnostic S6; C1–C5 and D1–D3 read portions; H1/H3; applicable E1–E5 | Exactly seven read tools, installed actual-ty and actual-Codex proof, no writer initialization/source writes, separately stated engineering status, bounded handoff and stop |
+| W: full parity | All P/S/C/D/W/H/E assertions below, with nine tools | Complete rename/edit, metadata and platform write safety, actual host approval/denial, full engineering acceptance and final stop |
+
+For R, C1 requires seven names, with no registered rename/edit or preview tools.
+Add boundary assertions: write-enabled configuration is explicitly refused before
+child startup/state access; normal read composition never constructs Transactions;
+all read invocations preserve source hashes and create no recovery storage.
+C4/C5 exclude active-commit/recovery obligations until W; D1's adapter-controlled
+post-write synchronization and D3's write-specific hardlink/identity-race checks
+remain W requirements. Read URI/containment/identity/freshness checks remain required.
+H3 covers read host failure/cleanup and resulting source hashes in R. P5/P6, W1–W8,
+H2 and post-write S6 remain required for W, not PASS or removed from the project.
+E5 measures each claimed read OS independently; Linux write/recovery UNKNOWN does
+not block read capability evidence. All applicable E checks still cover shipped
+code. Cognitive qualification continues to block strict engineering acceptance.
+Read capability acceptance alone does not authorize release or claim full parity.
+The STOP row below applies to W; R has its own bounded handoff and stop.
 
 ## Reference parity and semantic correction
 
@@ -74,7 +98,8 @@ partial application as success: redesign precedes implementation.
 | E5 | License/dependency review and Isaac Phi attribution retained; public synthetic fixtures only; OS behavior measured on each claimed host, unsupported Windows writes disabled | T0/T8/T11/T12 |
 | STOP | All P/S/C/D/W/H/E required rows accepted, material decisions closed, evidence linked, no required skipped/unknown gate; record terminal milestone and stop with no release/additional server/capability work | T13 |
 
-Current engineering evidence from initialization is historical scaffold evidence.
-This design change does not convert it into runtime acceptance. Cognitive qualification
-and gz-skills reconciliation remain open blockers; their work packages have explicit
-closure requirements and are not indefinite removals from the milestone.
+Engineering evidence from initialization remains historical scaffold evidence.
+This amendment does not convert it into runtime acceptance. Cognitive qualification
+remains an open strict-acceptance blocker. Later receipts record gz-skills source
+reconciliation; verify its current applicability and native discovery before claiming
+closure. Neither assertion is inferred from this matrix alone.

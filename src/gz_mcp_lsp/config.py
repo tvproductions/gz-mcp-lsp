@@ -116,6 +116,8 @@ def parse_config(payload: object) -> Config:
     enabled = mutations.get("enabled", False)
     if type(enabled) is not bool:
         raise AdapterError("INVALID_INPUT", "Mutation enablement must be boolean")
+    if enabled:
+        raise AdapterError("UNSUPPORTED", "This read-only server does not support mutations")
     raw_roots = mutations.get("writable_roots", [])
     if not isinstance(raw_roots, list) or len(raw_roots) > 100:
         raise AdapterError("INVALID_INPUT", "Invalid writable roots")
@@ -132,8 +134,6 @@ def parse_config(payload: object) -> Config:
     state = absolute_path(data["state_directory"]) if "state_directory" in data else None
     if state is not None and state.resolve().is_relative_to(root):
         raise AdapterError("INVALID_INPUT", "Recovery storage must be outside the source workspace")
-    if enabled and (not roots or state is None):
-        raise AdapterError("INVALID_INPUT", "Writes require explicit roots and recovery storage")
     return Config(
         root,
         executable,

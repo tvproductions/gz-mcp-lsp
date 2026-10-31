@@ -1,5 +1,13 @@
 # Reference Parity and ty Semantic Navigation Implementation Plan
 
+**Execution order superseded, 2026-10-31:** use the
+[approved read-first plan](2026-10-31-read-first.md) and its
+[approved milestone design](../specs/2026-10-31-read-first-milestones-design.md).
+This document retains historical task IDs, checkboxes and unchanged contracts.
+Its writes-before-extensions order, nine-tool T10 assertion and combined T11–T13
+gate are superseded by separate read and write milestones. Do not resume T8 from
+this older approval; it is incomplete and paused under the latest user direction.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Deliver accepted six-tool functional reference parity, corrected semantic targeting, the three specified ty navigation extensions and actual Codex interoperability, then stop.

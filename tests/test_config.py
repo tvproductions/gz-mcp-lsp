@@ -2,6 +2,8 @@
 
 import json
 import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -38,6 +40,52 @@ class ConfigurationTests(unittest.TestCase):
         self.assertFalse(config.mutations_enabled)
         self.assertEqual(config.workspace_root, self.root)
         self.assertEqual(config.writable_roots, ())
+
+    def test_read_config_rejects_enabled_mutations(self):
+        state = self.root.parent / f"{self.root.name}-state"
+        with self.assertRaises(AdapterError) as failure:
+            self.load(
+                mutations={"enabled": True, "writable_roots": [str(self.root)]},
+                state_directory=str(state),
+            )
+        self.assertEqual(failure.exception.code, "UNSUPPORTED")
+        self.assertFalse(state.exists())
+
+    def test_write_enabled_cli_exits_before_starting_ty(self):
+        marker = self.root / "launched"
+        executable = self.root / "synthetic-ty"
+        executable.write_text(
+            f"#!{sys.executable}\nfrom pathlib import Path\n"
+            f"Path({str(marker)!r}).write_bytes(b'launched')\n",
+            encoding="utf-8",
+        )
+        executable.chmod(0o700)
+        self.payload["ty_executable"] = str(executable)
+        state = self.root.parent / f"{self.root.name}-state"
+        self.settings.write_text(
+            json.dumps(
+                self.payload
+                | {
+                    "mutations": {"enabled": True, "writable_roots": [str(self.root)]},
+                    "state_directory": str(state),
+                }
+            ),
+            encoding="utf-8",
+        )
+        reply = subprocess.run(
+            [sys.executable, "-m", "gz_mcp_lsp", "--config", str(self.settings)],
+            input="",
+            capture_output=True,
+            encoding="utf-8",
+            errors="strict",
+            timeout=10,
+            check=False,
+        )
+        self.assertFalse(marker.exists(), "The rejected configuration launched ty")
+        self.assertEqual(reply.returncode, 2, reply.stderr)
+        self.assertEqual(reply.stdout, "")
+        self.assertIn("UNSUPPORTED", reply.stderr)
+        self.assertFalse(state.exists())
 
     def test_reject_unknown_config_and_invalid_budgets(self):
         for changes in [

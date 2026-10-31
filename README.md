@@ -3,12 +3,17 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: specification and plan approved on 2026-10-31; implementation starting.
-No runtime capabilities have been accepted yet.**
+**Status: read-first design and execution plan approved on 2026-10-31.
+No complete runtime milestone has been accepted yet.**
 
-Current implementation progress and failing/open gates are recorded in the
-[T8 checkpoint](docs/evidence/2026-10-31-t8-continuation.md): routine candidate
-gate passes, but ACL/xattr loss and unobserved Linux writes keep T8 incomplete.
+The [read-first design](docs/superpowers/specs/2026-10-31-read-first-milestones-design.md)
+and [revised plan](docs/superpowers/plans/2026-10-31-read-first.md) put seven read
+tools and actual Codex acceptance before guarded writes. Read
+the [active handoff](docs/handoffs/2026-10-31-r0-read-boundary.md) to resume.
+The [R0 evidence](docs/evidence/2026-10-31-r0-read-boundary.md) records enforced
+read-only composition and the passing isolated candidate gate.
+The [T8 checkpoint](docs/evidence/2026-10-31-t8-continuation.md) records preserved
+write work: ACL/xattr loss and unobserved Linux writes keep T8 incomplete and paused.
 
 The intended path is:
 
@@ -17,10 +22,11 @@ Codex → MCP (stdio) → gz-mcp-lsp → LSP (stdio) → ty server
 ```
 
 The proposed scope is one workspace and one Astral ty process. Functional parity
-includes all six reference tools: definition, references, diagnostics, hover,
-rename_symbol and edit_file. Exact URI/identifier positions correct ambiguous
-name-resolution behavior. New tools are limited to document symbols, workspace
-symbols and implementations; hover carries semantic type information.
+eventually includes all six reference tools. The first milestone is definition,
+references, diagnostics, hover, document_symbols, workspace_symbols and
+implementations. Exact URI/identifier positions correct ambiguous name resolution;
+hover carries semantic type information. A later milestone adds rename_symbol and
+edit_file for full reference parity, after a deliberate read-acceptance handoff.
 
 Rename/edit use operator-enabled preview/apply with workspace containment,
 conflict checks and durable recovery; the design does not promise portable atomic
@@ -56,22 +62,25 @@ uv run --locked python tools/verify_distribution.py
 
 If machine uv differs, use `uv tool run --from uv==0.13.6 uv ...`; ensure nested
 hooks resolve uv 0.13.6 too. Do not bypass the project version check.
-The four routine hooks run Ruff check/format, ty and unittest. At this stage,
-the unittest hook runs distribution guard tests. There are no semantic runtime
-tests yet; packaging tests are not semantic adapter acceptance. Inherited
+The four routine hooks run Ruff check/format, ty and unittest. The unittest hook
+runs distribution guards and semantic/runtime tests, including actual-ty fixtures
+for the four implemented read tools. Packaging tests alone are not semantic
+adapter acceptance. Inherited
 engineering utility tests run separately, outside the routine gate. Deeper adoption/release
 analysis remains outside routine hooks and CI; see the evidence record.
 
-Install only the scaffold wheel for packaging inspection with
+Install the unreleased wheel for distribution inspection with
 `uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.0.0-py3-none-any.whl`.
-There is no usable MCP command or published installation yet. No PyPI release or
-tag has been published. Development was observed on macOS arm64; CI verifies
-Linux. Windows runtime support remains a proposed validation target.
+The development CLI currently exposes definition, references, hover and diagnostics;
+the other three read tools and actual Codex acceptance remain pending. No PyPI
+release or tag has been published. Claim platform support only from the relevant
+candidate receipts; Windows runtime support remains a proposed validation target.
 
 ## Codex registration proposal
 
 The following is a **future example**, not an executable installation instruction.
-It assumes the review approves a `gz-mcp-lsp --config` command and settings schema.
+The development `gz-mcp-lsp --config` command exists; actual Codex registration
+and seven-tool read acceptance remain later plan work.
 Provision the adapter and ty before registration; do not use request-time `uvx`
 or another launcher that may fetch dependencies.
 
@@ -94,8 +103,10 @@ Example proposed application `settings.json`:
 }
 ```
 
-No settings loader exists. Application configuration will use JSON, without
-environment-variable overrides. Codex's native TOML remains its own contract.
+The settings loader uses project-owned JSON without environment-variable overrides.
+This read-only server explicitly rejects `mutations.enabled=true` with `UNSUPPORTED`
+before starting ty or initializing recovery storage. Codex's native TOML remains
+its own contract.
 The host supports stdio launch commands in trusted project `.codex/config.toml`;
 see [official Codex MCP documentation](https://learn.chatgpt.com/docs/extend/mcp).
 Do not add this hypothetical entry to the adopted engineering plugin configuration yet.

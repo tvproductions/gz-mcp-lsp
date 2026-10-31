@@ -1,5 +1,13 @@
 # gz-mcp-lsp reference parity and semantic-navigation specification
 
+**Read-first amendment, 2026-10-31:** the user selected the
+[two-milestone design](2026-10-31-read-first-milestones-design.md): accept seven
+read tools through actual Codex, hand off, then address write parity separately.
+That design supersedes the delivery order and single terminal gate below; unchanged
+tool contracts and all later write-safety requirements remain. The
+[revised execution plan](../plans/2026-10-31-read-first.md) was reviewed in chat
+and approved on 2026-10-31; execution retains one bounded package per handoff.
+
 Revision 2 approved by the user on 2026-10-31. Implementation is authorized under
 the [approved plan](../plans/2026-10-28-reference-parity.md). Runtime and engineering
 acceptance remain separate observed gates. The accepted scope includes all six Go
@@ -8,10 +16,11 @@ and a deliberate stop. Lite governance and disabled Backplane remain.
 
 ## Objective, baseline and deliberate stop
 
-Independently implement the Python counterpart through: reference parity → correct
-deficiencies → add the bounded ty navigation extensions → prove Codex interoperability
-and correctness → stop. Semantic navigation remains the motivation; write tools
-must be safe enough to include rather than quietly omitted. No source port/copy,
+Independently implement the Python counterpart through: read capabilities and
+bounded navigation extensions → actual Codex read acceptance and handoff → later
+guarded write parity → full acceptance and stop. Semantic navigation remains the
+immediate motivation; write tools remain required for the later full-parity claim.
+No source port/copy,
 second server, network service, automatic dependency installation, code actions,
 execute-command tool or general LSP framework.
 
@@ -351,8 +360,9 @@ The user approved these proposed choices on 2026-10-31:
 4. Resolve ownership/availability of the qualified cognitive engine and approve
    the gz-skills reconciliation before claiming strict engineering acceptance.
 
-The implementation plan covers all six tools and three extensions in finite phases;
-no indefinite deferral. Terminal milestone: accepted reference parity, corrected
+The amended plan separates read acceptance from the later full-parity milestone,
+with a deliberate handoff before write work resumes. Full terminal milestone:
+accepted reference parity, corrected
 semantic targeting, accepted ty extensions, real Codex interoperability, engineering
 evidence or clearly incomplete gates, and a deliberate stop. **Full milestone cannot
 be claimed while required engineering gates are incomplete.** No automatic release,

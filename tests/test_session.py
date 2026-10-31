@@ -15,7 +15,9 @@ from gz_mcp_lsp.models import AdapterError
 from gz_mcp_lsp.session import Session
 
 
-class SessionTests(unittest.IsolatedAsyncioTestCase):
+class ProcessFixture(unittest.IsolatedAsyncioTestCase):
+    """Shared subprocess fixture without inherited test execution."""
+
     """A fake executable permits deterministic failure injection at the byte boundary."""
 
     async def asyncSetUp(self):
@@ -29,6 +31,10 @@ class SessionTests(unittest.IsolatedAsyncioTestCase):
         self.config = Config(
             self.root, self.executable, limits=replace(Limits(), shutdown_seconds=1)
         )
+
+
+class SessionTests(ProcessFixture):
+    """Actual process readiness and teardown."""
 
     async def test_initialize_once_handlers_ready_and_applyedit_denied(self):
         session = Session(self.config)

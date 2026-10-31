@@ -1,6 +1,6 @@
 # gz-mcp-lsp
 
-Read the active handoff at `docs/handoffs/2026-10-31-t10-read-tools.md` first.
+Read the active handoff at `docs/handoffs/2026-10-31-t11-resume.md` first.
 Latest user direction: seven read tools first, write parity afterward. The user
 approved that short design in conversation on 2026-10-31; its record is
 `docs/superpowers/specs/2026-10-31-read-first-milestones-design.md`.
@@ -90,6 +90,10 @@ CLI, configuration, schemas and behavior. No tag/release publication without
 explicit authorization. Initialization is not release acceptance.
 
 ## Git synchronization
+
+Use `gh` for all GitHub reads and authorized writes, including `gh api`. Use
+`git` for repository operations, fetch and push. Do not substitute GitHub
+connectors or browser automation unless the user requests it.
 
 Follow the starter's preserved Git synchronization ritual in
 `docs/STARTER-AGENTS.md#git-synchronization-ritual`: inspect/fetch and review the

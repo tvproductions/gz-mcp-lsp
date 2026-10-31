@@ -9,7 +9,7 @@ No complete runtime milestone has been accepted yet.**
 The [read-first design](docs/superpowers/specs/2026-10-31-read-first-milestones-design.md)
 and [revised plan](docs/superpowers/plans/2026-10-31-read-first.md) put seven read
 tools and actual Codex acceptance before guarded writes. Read
-the [active handoff](docs/handoffs/2026-10-31-t10-read-tools.md) to resume.
+the [active handoff](docs/handoffs/2026-10-31-t11-resume.md) to resume.
 The [R0 evidence](docs/evidence/2026-10-31-r0-read-boundary.md) records enforced
 read-only composition and the passing isolated candidate gate.
 The [T10 evidence](docs/evidence/2026-10-31-t10-read-tools.md) records all seven

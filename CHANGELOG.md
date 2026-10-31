@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Prepare a fresh T11 resume handoff and user-requested branch sync, preserving
+  task pacing, standing approvals and local-only drafts. Record the user's `gh`
+  preference for all GitHub operations. No runtime behavior changed.
+
 - Add document_symbols, workspace_symbols and implementations: seven read tools
   with actual-ty/SDK evidence. Preserve hierarchy, duplicate names, full/selection
   ranges and explicit unresolved/unsupported results. Read generations and complete

@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- User approved the specification and implementation plan on 2026-10-31.
+- Add strict JSON configuration, saved-workspace identity and UTF-16 coordinates,
+  bounded LSP framing/cancellation, one-process lifecycle and document generations.
+- Verify actual ty/MCP definition source, precise references and hover, including
+  three synthetic cross-module callers and a same-name negative control.
+- Add current pull diagnostics and immutable, zero-effect edit previews; transaction
+  application, remaining tools and full host/engineering acceptance are in progress.
+- Reconcile independent gz-skills 0.8.3 with actual native discovery; cognitive
+  scoring qualification still blocks strict acceptance.
+
+### Design revision history
+
 - Revise the intended objective to six-tool Go reference parity, corrected semantic
   targeting, three bounded ty navigation extensions, actual Codex acceptance and stop.
 - Pin source assessment to latest release v0.1.1 and main e4395849, distinguishing

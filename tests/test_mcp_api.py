@@ -53,3 +53,14 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                     "hover",
                     {"uri": "file:///tmp/source.py", "position": {"line": value, "character": 4}},
                 )
+
+    async def test_help_does_not_load_protocol_runtime(self):
+        script = (
+            "import sys; from gz_mcp_lsp.cli import main; "
+            "exec(\"try:\\n main(['--help'])\\nexcept SystemExit:\\n pass\"); "
+            "raise SystemExit(1 if 'mcp' in sys.modules else 0)"
+        )
+        result = subprocess.run(
+            [sys.executable, "-c", script], capture_output=True, text=True, timeout=10, check=False
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)

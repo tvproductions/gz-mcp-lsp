@@ -218,9 +218,9 @@ No filesystem side effects or random approval flags inside the planner.
 
 **Test assertion anchors:** `self.assertEqual(plan_edits(snapshot, edits), b"axb\r\n")` for replacing the emoji range; `self.assertEqual(before_hashes, after_preview_hashes)`; `self.assertEqual(error.code, "CONFLICT")` for overlapping ranges.
 
-- [ ] Write `test_edits_use_original_snapshot`, `test_adjacent_legal_overlap_rejected`, `test_duplicate_aliases_rejected`, `test_utf16_crlf_eof_bytes`, `test_resource_op_rejects_entire_edit`, `test_versions_and_digest`. Assert Position(0,1)..(0,3) on `a😀b\r\n` replaced by `x` yields exactly `axb\r\n`; coincident inserts fail; annotations/base hashes are bound to digest.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_edit_plan.py -v` red then implement pure planning with exact preimages, no clamping, count/byte bounds and both text WorkspaceEdit forms. Contradictory changes/documentChanges fail before any IO.
-- [ ] Run green plus zero-write spy tests, routine gate and commit. Gate W2/W3; preview tokens are content identity, not human consent.
+- [x] Write `test_edits_use_original_snapshot`, `test_adjacent_legal_overlap_rejected`, `test_duplicate_aliases_rejected`, `test_utf16_crlf_eof_bytes`, `test_resource_op_rejects_entire_edit`, `test_versions_and_digest`. Assert Position(0,1)..(0,3) on `a😀b\r\n` replaced by `x` yields exactly `axb\r\n`; coincident inserts fail; annotations/base hashes are bound to digest.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_edit_plan.py -v` red then implement pure planning with exact preimages, no clamping, count/byte bounds and both text WorkspaceEdit forms. Contradictory changes/documentChanges fail before any IO.
+- [x] Run green plus zero-write spy tests, routine gate and commit. Gate W2/W3; preview tokens are content identity, not human consent.
 
 ### Task 8: Guarded POSIX filesystem transactions and durable recovery
 

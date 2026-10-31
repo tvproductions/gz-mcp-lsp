@@ -2,7 +2,7 @@
 
 import ast
 
-from gz_mcp_lsp.coordinates import byte_offset
+from gz_mcp_lsp.coordinates import byte_offset, line_records
 from gz_mcp_lsp.models import Json, Position, Range, Snapshot
 from gz_mcp_lsp.protocol_values import range_json, range_value
 
@@ -47,7 +47,8 @@ def declaration(snapshot: Snapshot, selection: Range, symbols: Json) -> dict[str
     server_source = symbol_declaration(snapshot, selection, symbols)
     try:
         tree = ast.parse(snapshot.data)
-        lines = snapshot.data.split(b"\n")
+        records = line_records(snapshot.data)
+        lines = [line for _, line in records]
         candidates = []
         for node in ast.walk(tree):
             if not isinstance(
@@ -77,9 +78,9 @@ def declaration(snapshot: Snapshot, selection: Range, symbols: Json) -> dict[str
                 0  # Include indentation for an independently complete nested source block.
             )
         start = ast_position(lines, first_line, first_column)
-        begin = sum(len(line) + 1 for line in lines[:first_line]) + first_column
+        begin = records[first_line][0] + first_column
         assert node.end_lineno is not None and node.end_col_offset is not None
-        finish = sum(len(line) + 1 for line in lines[: node.end_lineno - 1]) + node.end_col_offset
+        finish = records[node.end_lineno - 1][0] + node.end_col_offset
         return {
             "source_status": "complete",
             "source_scope": "declaration",

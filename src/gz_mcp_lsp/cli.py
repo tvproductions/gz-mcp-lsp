@@ -6,9 +6,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from gz_mcp_lsp.config import load_config
-from gz_mcp_lsp.mcp_api import create_server
 from gz_mcp_lsp.models import AdapterError
-from gz_mcp_lsp.session import Session
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -18,6 +16,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     arguments = parser.parse_args(argv)
     try:
         config = load_config(arguments.config)
+        from gz_mcp_lsp.mcp_api import create_server
+        from gz_mcp_lsp.session import Session
+
         create_server(config, Session(config)).run(transport="stdio")
     except AdapterError as error:
         print(f"{error.code}: {error.message}", file=sys.stderr)

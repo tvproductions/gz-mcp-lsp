@@ -1,0 +1,5 @@
+[
+  {"source":"abc\r\n","start":[0,0],"end":[0,0],"new_text":"prefix ","expected":"prefix abc\r\n"},
+  {"source":"abc\r\n","start":[0,1],"end":[0,2],"new_text":"","expected":"ac\r\n"},
+  {"source":"abc\r\n","start":[1,0],"end":[1,0],"new_text":"tail","expected":"abc\r\ntail"}
+]

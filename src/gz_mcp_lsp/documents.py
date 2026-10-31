@@ -6,6 +6,7 @@ from collections.abc import AsyncGenerator, Sequence
 from contextlib import asynccontextmanager
 from dataclasses import replace
 
+from gz_mcp_lsp.coordinates import line_records
 from gz_mcp_lsp.models import AdapterError, Json, Snapshot
 from gz_mcp_lsp.ports import SessionPort
 from gz_mcp_lsp.workspace import Workspace
@@ -13,8 +14,11 @@ from gz_mcp_lsp.workspace import Workspace
 
 def end_position(data: bytes) -> dict[str, Json]:
     """Return the UTF-16 EOF coordinate, retaining the final empty line."""
-    lines = data.decode("utf-8").split("\n")
-    return {"line": len(lines) - 1, "character": len(lines[-1].encode("utf-16-le")) // 2}
+    lines = line_records(data)
+    return {
+        "line": len(lines) - 1,
+        "character": len(lines[-1][1].decode("utf-8").encode("utf-16-le")) // 2,
+    }
 
 
 class Documents:

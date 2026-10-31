@@ -1,1 +1,1 @@
-"""Read-only semantic navigation adapter; runtime awaits design approval."""
+"""Precise ty-backed semantic navigation and guarded source-change adapter."""

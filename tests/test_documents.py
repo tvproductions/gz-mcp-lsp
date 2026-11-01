@@ -73,12 +73,12 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
             self.fail(f"Document coordination absent: {error}")
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
+        self.root = Path(temporary.name).resolve()
         self.a = self.root / "a.py"
         self.b = self.root / "b.py"
         self.a.write_bytes(b"value = 1\n")
         self.b.write_bytes(b"other = 2\n")
-        self.config = Config(self.root, self.a, request_timeout_seconds=0.15)
+        self.config = Config(self.root, self.a, request_timeout_seconds=5)
         self.session = FakeSession()
         self.documents = Documents(Workspace(self.config), cast("Session", self.session))
         await self.documents.start()
@@ -199,10 +199,10 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
                 return await context.rpc.request("hover", {}, timeout=1)
 
         a = asyncio.create_task(reader())
-        await old_rpc.started.wait()
+        await asyncio.wait_for(old_rpc.started.wait(), 10)
         self.b.write_bytes(b"other = 8\n")
         b = asyncio.create_task(self._generation_value())
-        await self.documents.invalidated.wait()
+        await asyncio.wait_for(self.documents.invalidated.wait(), 10)
         self.assertFalse(self.session.restart_started.is_set())
         old_rpc.release.set()
         with self.assertRaises(AdapterError) as raised:
@@ -229,7 +229,7 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
                     await asyncio.Event().wait()
 
             task = asyncio.create_task(reader())
-            await entered.wait()
+            await asyncio.wait_for(entered.wait(), 10)
             task.cancel()
             with self.assertRaises(asyncio.CancelledError):
                 await task
@@ -240,6 +240,7 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(AdapterError) as stale:
             async with self.documents.generation():
                 self.b.write_bytes(b"other = 5\n")
+                self.documents.workspace.config = replace(self.config, request_timeout_seconds=0.15)
                 with self.assertRaises(AdapterError) as busy:
                     await self._generation_value()
                 self.assertIn(busy.exception.code, {"WORKSPACE_BUSY", "TIMEOUT"})
@@ -251,6 +252,7 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(AdapterError) as raised:
             async with self.documents.generation():
                 self.b.write_bytes(b"other = 6\n")
+                self.documents.workspace.config = replace(self.config, request_timeout_seconds=0.15)
                 with suppress(AdapterError):
                     await self._generation_value()
         self.assertEqual(raised.exception.code, "STALE_DOCUMENT")
@@ -363,6 +365,7 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_exclusive_does_not_expire_after_drain(self):
         """The drain deadline never interrupts a held transaction body."""
+        self.documents.workspace.config = replace(self.config, request_timeout_seconds=0.05)
         async with self.documents.exclusive():
             self.documents.workspace.config = replace(self.config, request_timeout_seconds=0.001)
             # An event-loop timer is a deadline negative control, not a readiness sleep.

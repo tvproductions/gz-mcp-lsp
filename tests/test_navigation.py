@@ -26,7 +26,7 @@ class NavigationTests(unittest.IsolatedAsyncioTestCase):
             self.fail(f"Hover absent: {error}")
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
+        self.root = Path(temporary.name).resolve()
         self.source = self.root / "main.py"
         self.source.write_bytes(b"answer = 42\n")
         self.config = Config(self.root, self.source)
@@ -90,7 +90,7 @@ class NavigationTests(unittest.IsolatedAsyncioTestCase):
     async def test_hover_cancellation_releases_lease(self):
         """Cancellation unwinds the held RPC context."""
         task = asyncio.create_task(self.navigation.hover(self.source.as_uri(), Position(0, 2)))
-        await self.session.rpc.started.wait()
+        await asyncio.wait_for(self.session.rpc.started.wait(), 10)
         task.cancel()
         with self.assertRaises(asyncio.CancelledError):
             await task

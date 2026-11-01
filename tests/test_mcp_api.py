@@ -52,7 +52,7 @@ class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
         from gz_mcp_lsp.mcp_api import create_server
 
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = Path(directory).resolve()
             source = root / "main.py"
             source.write_bytes(b"answer = 42\n")
             session = StubSession()

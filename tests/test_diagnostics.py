@@ -26,7 +26,7 @@ class DiagnosticsTests(unittest.IsolatedAsyncioTestCase):
             self.fail(f"Pull diagnostics absent: {error}")
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
+        self.root = Path(temporary.name).resolve()
         self.source = self.root / "main.py"
         self.dependency = self.root / "dependency.py"
         self.source.write_bytes(b"answer = 42\n")

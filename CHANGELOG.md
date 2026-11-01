@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Canonicalize temporary test roots and bound barrier waits; keep short deadlines
+  only in explicit timeout controls. Cap CI jobs so portability failures cannot
+  leave the suite waiting indefinitely. Production runtime behavior is unchanged.
+
 - Add the T7 handoff with bounded-session execution, T8 transaction/recovery
   contracts, remaining acceptance gaps and branch synchronization instructions.
 

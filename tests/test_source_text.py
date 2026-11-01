@@ -20,7 +20,7 @@ class SourceTextTests(unittest.TestCase):
         self.declaration = declaration
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
+        self.root = Path(temporary.name).resolve()
         self.source = self.root / "module.py"
         self.workspace = Workspace(Config(self.root, self.source))
 

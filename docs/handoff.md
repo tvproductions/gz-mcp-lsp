@@ -86,3 +86,14 @@ The existing worktree's ignored .superpowers/sdd/2026-10-28-reference-parity/ ho
 the complete task ledger/rulings, local handoff, native probe and Linux gate helper.
 These are local aids, not sole project authority. Fresh checkouts provision tools/
 fixtures from tracked sources. Never publish private transcripts or local paths.
+
+## First synchronization: portable test-harness correction
+
+The initial push passed Linux CI but stalled in the macOS/Windows test step and
+was cancelled. An existing document test reproduced OUTSIDE_WORKSPACE under a
+symlinked temporary parent; a delayed scan reproduced a 150 ms fixture timeout
+before an unbounded barrier. Fixtures now canonicalize temporary roots, ordinary
+reads use a realistic test budget, barrier waits are bounded, and short deadlines
+remain explicit negative controls. CI jobs are capped at ten minutes. No product
+runtime code or T8 implementation changed. Determine final hosted results from
+the exact current commit, rather than the cancelled initial run.

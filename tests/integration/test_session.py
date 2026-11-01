@@ -26,7 +26,7 @@ class ActualSessionTests(unittest.IsolatedAsyncioTestCase):
         self.session_type = Session
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
-        self.root = Path(self.temporary.name)
+        self.root = Path(self.temporary.name).resolve()
         self.ty = Path(sys.executable).parent / ("ty.exe" if os.name == "nt" else "ty")
         self.assertTrue(self.ty.is_file(), "Pinned ty must be provisioned before tests")
 

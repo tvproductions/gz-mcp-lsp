@@ -21,7 +21,7 @@ class InstalledHoverTests(unittest.IsolatedAsyncioTestCase):
     def setUpClass(cls):
         cls.temporary = tempfile.TemporaryDirectory()
         cls.addClassCleanup(cls.temporary.cleanup)
-        cls.outside = Path(cls.temporary.name)
+        cls.outside = Path(cls.temporary.name).resolve()
         cls.checkout = Path(__file__).resolve().parents[2]
         cls.python, cls.ty = install_adapter(cls.checkout, cls.outside)
 

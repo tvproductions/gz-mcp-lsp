@@ -24,7 +24,7 @@ class SessionTests(unittest.IsolatedAsyncioTestCase):
         self.session_type = Session
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
-        self.root = Path(self.temporary.name)
+        self.root = Path(self.temporary.name).resolve()
         self.record = self.root / "events.jsonl"
         self.children: list[asyncio.subprocess.Process] = []
         self.config = Config(

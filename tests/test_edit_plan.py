@@ -25,7 +25,7 @@ class EditPlanTests(unittest.TestCase):
         self.plan_workspace_edit = plan_workspace_edit
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
+        self.root = Path(temporary.name).resolve()
         self.source = self.root / "a.py"
         self.source.write_bytes(b"abcdef\n")
         self.workspace = Workspace(Config(self.root, self.source))

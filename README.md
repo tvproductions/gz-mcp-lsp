@@ -70,7 +70,8 @@ complete authorized declaration source and saved-byte generation checks. See
 [pull-diagnostic evidence](docs/evidence/2026-11-01-diagnostics.md). See the [T4 receipt](docs/evidence/2026-11-01-documents-hover.md)
 and [actual Codex checkpoint](docs/evidence/2026-11-01-codex-feasibility.md).
 There is no published installation, PyPI release or tag. Local Windows x86_64
-and Linux x86_64 gates pass; macOS runtime and new-branch hosted CI remain unverified.
+and Linux x86_64 gates pass; verify hosted platform results for the exact branch
+commit through the Actions link in the handoff.
 
 ## Codex registration (development)
 

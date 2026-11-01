@@ -3,7 +3,7 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation underway at T1.
+**Status: plan approved on 2026-11-01; implementation underway at T2.
 No accepted MCP capabilities exist yet.**
 
 The intended path is:

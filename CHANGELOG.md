@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Implement T2 bounded LSP byte framing, response correlation, callbacks,
+  cancellation/deadlines and failure cleanup; add eleven controlled-stream tests.
+  Real-server and MCP interoperability remain unaccepted.
+
 - Implement T1 JSON settings, strict coordinates, contained UTF-8 snapshots and
   bounded byte-based workspace manifests; Windows writes remain unsupported.
   Add exact-byte portability regression coverage for subprocess diagnostics.

@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is in progress.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is in progress.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
@@ -164,9 +164,9 @@ Reader loop starts/stops under Session; no product subprocess launched by transp
 
 **Test assertion anchors:** `self.assertEqual(result_by_id, {1: "first", 2: "second"})` despite reversed response arrival; `self.assertEqual(client.pending_count, 0)` after timeout/EOF (pending_count is a test observation, not a public API).
 
-- [ ] Write IsolatedAsyncioTestCase tests `test_fragmented_unicode_frame`, `test_two_writers_do_not_interleave`, `test_out_of_order_ids`, `test_cancel_late_response`, `test_eof_fails_all_waiters`, `test_invalid_or_oversized_frame`. Assert UTF-8 byte count, exact ID correlation, deadlines bounded and pending map empty after cancel/EOF; invalid duplicate Content-Length closes session.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_lsp_transport.py -v`, verify red, implement serialization/reader/dispatch/deadline ownership, then run green. Do not copy generated Go protocol classes.
-- [ ] Run routine gate and commit. Gate: C2/C4 transport assertions, not yet real-server interoperability.
+- [x] Write IsolatedAsyncioTestCase tests `test_fragmented_unicode_frame`, `test_two_writers_do_not_interleave`, `test_out_of_order_ids`, `test_cancel_late_response`, `test_eof_fails_all_waiters`, `test_invalid_or_oversized_frame`. Assert UTF-8 byte count, exact ID correlation, deadlines bounded and pending map empty after cancel/EOF; invalid duplicate Content-Length closes session.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_lsp_transport.py -v`, verify red, implement serialization/reader/dispatch/deadline ownership, then run green. Do not copy generated Go protocol classes.
+- [x] Run routine gate and commit. Gate: C2/C4 transport assertions, not yet real-server interoperability.
 
 ### T3: One ty process, official SDK composition and minimal public path
 

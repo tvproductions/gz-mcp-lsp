@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; T9 is complete; execution stops before T10.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; T9 is complete; T10 is complete; execution stops before T11.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -95,6 +95,12 @@ explicitly retaining this verified T9 runtime and preserving the independent
 read-first implementation separately. No T10 runtime is added by the merge.
 
 ## Bounded-session handoff
+
+The next continuation implemented T10 on the retained main tree. See
+[symbol-extension evidence](2026-11-01-symbols.md) for test-first controls,
+installed real-ty results, review correction and current platform limits.
+The current resume point is T11; the T9 stopping statements below describe
+their earlier checkpoint.
 
 After the user's concern about continuous execution, resume one bounded stage
 per session. The user resumed T8 and then T9 in separate bounded sessions.

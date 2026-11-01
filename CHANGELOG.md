@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Implement T10 document_symbols, workspace_symbols and implementations with
+  preserved hierarchy/duplicates, honest unresolved ranges, advertised resolution,
+  external scope metadata and generation-pinned search/resolve. Add installed
+  real-ty hierarchy/override/empty/changed-workspace checks and nine-tool catalog
+  assertions. Stop before T11 host acceptance.
+
 - Consolidate both implementation histories on main using the explicitly selected
   verified T9 runtime. Preserve the independent read-first tree, pending planning
   files and execution records; retire the linked worktree after verification.

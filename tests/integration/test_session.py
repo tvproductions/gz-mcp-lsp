@@ -90,10 +90,13 @@ class ActualSessionTests(unittest.IsolatedAsyncioTestCase):
                     [
                         "definition",
                         "diagnostics",
+                        "document_symbols",
                         "edit_file",
                         "hover",
+                        "implementations",
                         "references",
                         "rename_symbol",
+                        "workspace_symbols",
                     ],
                 )
         # Structured SDK parsing would fail if arbitrary log bytes entered stdout.

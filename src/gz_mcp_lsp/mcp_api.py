@@ -46,7 +46,7 @@ def _error(operation: str, error: AdapterError) -> types.CallToolResult:
 
 def _position_arguments(operation: str, value: object) -> bool:
     allowed = {"uri", "position"}
-    if operation != "hover":
+    if operation in {"definition", "references"}:
         allowed.add("context_lines")
     if operation == "references":
         allowed.add("include_declaration")
@@ -113,6 +113,20 @@ def _mutation_arguments(name: str, value: object) -> bool:
 async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> HandlerResult:
     if ctx.method == "tools/call" and ctx.params is not None:
         name = ctx.params.get("name")
+        if isinstance(name, str) and name in {"document_symbols", "workspace_symbols"}:
+            arguments = ctx.params.get("arguments")
+            valid = isinstance(arguments, dict)
+            if valid and name == "document_symbols":
+                valid = set(arguments) == {"uri"} and isinstance(arguments["uri"], str)
+            elif isinstance(arguments, dict):
+                valid = (
+                    "query" in arguments
+                    and arguments.keys() <= {"query", "resolve"}
+                    and isinstance(arguments["query"], str)
+                    and type(arguments.get("resolve", False)) is bool
+                )
+            if not valid:
+                return _error(name, AdapterError("INVALID_INPUT", "Invalid symbol arguments"))
         if (
             isinstance(name, str)
             and name in {"rename_symbol", "edit_file"}
@@ -134,7 +148,7 @@ async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> H
                 )
         if (
             isinstance(name, str)
-            and name in {"hover", "definition", "references"}
+            and name in {"hover", "definition", "references", "implementations"}
             and not _position_arguments(name, ctx.params.get("arguments"))
         ):
             return _error(
@@ -220,6 +234,25 @@ def create_server(config: Config, session: Session) -> MCPServer:
     annotations = types.ToolAnnotations(
         read_only_hint=False, destructive_hint=True, open_world_hint=False
     )
+
+    @server.tool(annotations=_read_annotations(), structured_output=True)
+    async def document_symbols(uri: str) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """List document symbols with hierarchy and distinct full/identifier ranges."""
+        return await _run("document_symbols", navigation.document_symbols(uri))
+
+    @server.tool(annotations=_read_annotations(), structured_output=True)
+    async def workspace_symbols(
+        query: str, resolve: bool = False
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """Discover ambiguous names; resolve URI-only symbols only when advertised."""
+        return await _run("workspace_symbols", navigation.workspace_symbols(query, resolve))
+
+    @server.tool(annotations=_read_annotations(), structured_output=True)
+    async def implementations(
+        uri: str, position: Position
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """Find ty subclass or member overrides at an exact identifier position."""
+        return await _run("implementations", navigation.implementations(uri, position))
 
     @server.tool(annotations=annotations, structured_output=True)
     async def rename_symbol(

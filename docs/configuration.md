@@ -76,10 +76,31 @@ untracked configuration. See [T4 evidence](evidence/2026-11-01-documents-hover.m
 for its dated evidence; current platform conclusions require exact-commit CI.
 
 
+## Symbol and implementation requests
+
+`document_symbols(uri)` returns result.symbols with hierarchy, full range and
+selection_range. Flat server symbols retain selection_range=null. Names, kinds,
+detail, containers and server data remain available; duplicates are preserved.
+
+`workspace_symbols(query, resolve=false)` searches without opening a synthetic
+document. URI-only results retain range=null and selection_range=null. Explicit
+resolve=true requires advertised server resolution; a returned location range
+still does not imply an identifier selection. Search, resolution, normalization
+and final workspace validation share one generation lease. Changed workspaces
+return STALE_DOCUMENT rather than old-generation symbols.
+
+`implementations(uri, position)` forwards exact UTF-16 positions and returns
+result.locations with separate full/selection ranges where supplied by ty.
+Pinned ty includes the queried declaration with its subclass/member overrides.
+Empty results are successful; absent advertised capability returns UNSUPPORTED.
+External targets remain marked metadata without external source reads.
+See [T10 evidence](evidence/2026-11-01-symbols.md).
+
 ## Mutation requests
 
 The catalog includes definition, references, diagnostics, hover, rename_symbol
-and edit_file. Both mutation tools remain destructive in their MCP annotations,
+and edit_file, plus document_symbols, workspace_symbols and implementations.
+Both mutation tools remain destructive in their MCP annotations,
 including preview requests. They require enabled operator authority even for
 preview. Model-supplied approval flags are rejected.
 

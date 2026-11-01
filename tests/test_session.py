@@ -69,6 +69,12 @@ class SessionTests(unittest.IsolatedAsyncioTestCase):
                 "logLevel": "warn",
             },
         )
+        capabilities = json.loads(json.dumps(session._initialize_params()))["capabilities"]
+        self.assertEqual(
+            capabilities["workspace"]["symbol"]["resolveSupport"],
+            {"properties": ["location.range"]},
+        )
+        self.assertEqual(capabilities["textDocument"]["implementation"], {"linkSupport": True})
         events = self.events()
         self.assertEqual(sum(item.get("method") == "initialize" for item in events), 1)
         self.assertEqual(sum(item.get("method") == "initialized" for item in events), 1)

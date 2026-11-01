@@ -122,6 +122,7 @@ class Session:
                 "workspace": {
                     "configuration": True,
                     "applyEdit": False,
+                    "symbol": {"resolveSupport": {"properties": ["location.range"]}},
                     "workspaceEdit": {
                         "documentChanges": True,
                         "resourceOperations": [],
@@ -131,6 +132,7 @@ class Session:
                 "textDocument": {
                     "synchronization": {"dynamicRegistration": False},
                     "definition": {"linkSupport": True},
+                    "implementation": {"linkSupport": True},
                     "rename": {"prepareSupport": True},
                     "diagnostic": {"dynamicRegistration": False, "relatedDocumentSupport": True},
                     "publishDiagnostics": {

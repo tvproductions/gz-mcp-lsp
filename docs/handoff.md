@@ -1,67 +1,69 @@
-# Fresh implementation handoff — 2026-11-01
+# Implementation handoff — 2026-11-01
 
-**T0-T9 complete. T10 unstarted in the retained implementation.** The user
-consolidated both branch histories on main and chose the verified T9 runtime;
-the independent read-first implementation is preserved separately. This request
-performs integration, cleanup and Git sync only; do not begin T10.
-The remaining specification/plan are approved; resume one bounded stage on the
-user's next continuation, then stop at that stage boundary.
+**T0-T10 complete. Resume T11 only on the next continuation.** The user's
+continuation executed the approved T10 symbol extensions on main. Stop at this
+stage boundary; installed/native host acceptance belongs to T11.
 
-## Verified checkpoint and workspace
+## Workspace and verified checkpoints
 
-Continue on **main in the primary checkout**, with no linked worktree required.
-See the [consolidation record](evidence/2026-11-01-main-consolidation.md) for both
-branch SHAs, the explicit runtime choice and recovery archives. The original
-pending planning files are retained in a verified backup and Git stash; do not
-reapply their superseded pre-execution status over the current documents.
+Continue on **main in the primary checkout**, without creating a linked worktree.
+T10 starts at consolidation commit `0dbd303`; the stage commit is identified in
+Git history and the final response. This continuation authorizes the bounded
+stage commit, not a new push, tag or release. Local/remote alignment therefore
+must be reported separately. No T10 exact-commit hosted CI is claimed here.
 
-The final T9 implementation is **5a2d662ab0a60b6771fefef4ff7b37e4c83ac928**.
-[Exact-commit CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
-passed Linux x86_64, macOS arm64 and Windows AMD64, including the final shared
-success-envelope correction. This supersedes the earlier T9 implementation and
-documentation checkpoints as runtime verification evidence.
+The retained T9 runtime is `5a2d662ab0a60b6771fefef4ff7b37e4c83ac928`;
+[its CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
+passed Linux x86_64, macOS arm64 and Windows AMD64. That result does not certify
+T10 changes. See [T10 evidence](evidence/2026-11-01-symbols.md) for local verification.
+The [consolidation record](evidence/2026-11-01-main-consolidation.md) preserves
+both histories, the independent read-first tree, original pending planning files
+and archived execution ledgers. Do not restore superseded planning status.
 
-The consolidation retains both histories but preserves the T9 source/test tree.
-Verify the exact pushed main commit's CI; the final sync response identifies its
-SHA and cleanup result. The user authorized main integration and worktree removal.
-No force-push, tag or release is authorized.
+## Implemented behavior and seams
 
-## Shipped behavior and important seams
-
-The catalog is **definition, references, diagnostics, hover, rename_symbol,
-edit_file**. Exactly three semantic extensions remain for T10.
+The catalog is exactly definition, references, diagnostics, hover, rename_symbol,
+edit_file, document_symbols, workspace_symbols and implementations.
 
 - Documents owns saved-file generations, reader admission, exclusive draining,
-  generation validation and post-commit synchronization/invalidation.
-- Navigation supplies definition/references/hover and internal document-symbol
-  support for declaration source extraction. Reuse this support in T10.
-- Diagnostics supplies current pull reports and identity-bound result caching.
-- EditPlan values are immutable; the planner validates the entire WorkspaceEdit
-  and computes after-images without filesystem IO.
+  final manifest validation and post-commit synchronization/invalidation.
+- Navigation reuses one document-symbol RPC for declaration extraction and the
+  public symbol tool. Hierarchy, duplicates and full/selection ranges survive.
+  Flat and URI-only symbols never acquire invented identifier selections.
+- Workspace search holds Documents.generation() through search, advertised
+  resolution, normalization, scope classification and final validation. Empty
+  workspaces need no document/didOpen. Changed search/resolve rejects stale results.
+- Implementations forwards exact UTF-16 positions. Pinned ty includes the queried
+  declaration as well as subclasses/member overrides. External targets are marked
+  metadata. No external source is opened by the three extensions.
+- Diagnostics uses current pull reports and identity-bound caching. EditPlan
+  values are immutable; the planner validates complete WorkspaceEdits without IO.
 - Transactions owns private journals, same-filesystem staging, state locking,
   exact bytes/modes, safe rollback, durable receipts and conservative recovery.
-- Mutations owns bounded retained previews and composes those services.
-  Production MCP lifespan finishes authorized recovery before mutation admission.
+- Mutations composes those services with retained bounded previews. Production
+  lifespan finishes authorized recovery before mutation admission.
 
 All successes use schema_version, operation, position_encoding, result,
-workspace_generation, documents and complete. **Preview metadata is under result**:
-use result.plan_id, result.files and result.annotations. Apply result is the
-durable disk receipt; semantic_state is separate. Never misreport a committed
-disk outcome as rolled back because later LSP synchronization failed.
+workspace_generation, documents and complete. Preview metadata is under result:
+result.plan_id, result.files and result.annotations. Apply result is the durable
+disk receipt; semantic_state is separate. Never report committed disk writes as
+rolled back because later LSP synchronization failed.
 
-Mutation tools remain destructive even for preview. Writes default to disabled
-and require explicit operator roots plus private same-filesystem state on Linux
-x86_64/macOS arm64. Windows writes are unsupported. Model approval flags are
-rejected; plan identity is not authenticated human consent. Independent writers
-are not serialized by the private adapter lock; a quiescent workspace is required.
+Writes default to disabled. Enabled writes require bounded operator roots plus
+private same-filesystem state on Linux x86_64/macOS arm64; Windows writes are
+unsupported. Model approval flags are rejected; a plan token is not authenticated
+human consent. Independent writers are not serialized by the private adapter
+lock; a quiescent workspace is required.
 
 ## Verification baseline
 
-The suite discovers **165 tests**. Complete Windows/native Linux gates, C901
-source ceiling 20 and scoped portability audit passed for the final T9 code.
-Hosted CI independently passed the complete gate on all three platforms.
-Windows runs disabled/unsupported startup denials with **25 POSIX-only tests
-not applicable**. POSIX lanes skip only the Windows-specific startup denial.
+T10 discovers **181 tests**. The Windows gate passes with **25 POSIX-only tests
+not applicable**. Installed outside-checkout MCP/real-ty tests cover hierarchy,
+duplicate names, subclass/member implementation locations, empty workspaces and
+fresh search after creation. A real-ty search changed before final validation
+returns STALE_DOCUMENT; controlled fake barriers prove search and resolve races.
+The focused review's external-symbol scope finding was fixed with a failing
+regression test. This is a T10 review, not T13's fresh whole-branch review.
 
 Keep CPython **3.14.10**, uv **0.13.6**, MCP SDK **2.3.0** and ty **0.0.95**.
 Nested hooks must resolve the same uv. Required gate:
@@ -77,44 +79,41 @@ The four hooks remain Ruff check, Ruff format, ty and unittest. No pytest.
 No application environment overrides, request-time installation, Backplane,
 second server, generic filesystem operations or unsolicited LSP applyEdit.
 
-## Next authorized implementation stage: T10 only
+## Next authorized stage: T11 only
 
-On the next continuation:
+Read README.md, AGENTS.md, AGENTS.skills-first.md, current design-revision evidence,
+adopted engineering policies, the approved specification/plan and acceptance matrix.
+Use the [T11 brief](superpowers/plans/2026-10-28-reference-parity.md#t11-installed-distribution-and-actual-codex-host-acceptance).
 
-1. Verify main branch/status and read README.md, AGENTS.md, AGENTS.skills-first.md,
-   current design-revision evidence and adopted engineering policies.
-2. Read the [T10 brief](superpowers/plans/2026-10-28-reference-parity.md#t10-public-document-symbols-workspace-symbols-and-implementations),
-   [specification](superpowers/specs/2026-10-28-semantic-navigation-design.md)
-   and [acceptance matrix](discovery/acceptance-matrix.md).
-3. Continue the adopted executing-plans/test-driven workflow and task ledger.
-   Add exactly document_symbols, workspace_symbols and implementations.
-   Reuse existing normalization; preserve hierarchy, duplicates, and distinct
-   full/selection ranges. Never invent positions for URI-only workspace symbols.
-4. Hold Documents.generation() through workspace search, advertised resolution,
-   normalization and final validation, without choosing a synthetic document.
-   Prove empty-workspace, changed-search and changed-resolve cases.
-5. Complete real-ty integration, required gate and reviewed stage commit, then
-   hand back before T11. No T10 implementation is included in this handoff.
+1. Extend artifact/installed-server checks to the full nine-tool contract, actual
+   ty and runtime-only clean environments. Preserve source independence and origin
+   checks; do not confuse a catalog assertion with semantic acceptance.
+2. Obtain fresh Linux x86_64/macOS arm64 write evidence and Windows read/unsupported
+   write evidence for the exact changed tree, including platform skip inventory.
+3. Use actual Codex to exercise all read tools, disabled mutation denials, enabled
+   previews, host-approved apply and a denied host mutation with unchanged hashes.
+   Native host approval is separate from operator authority and preview identity.
+4. Capture host timeout/ty death/EOF and reaping. H1-H3 require actual host evidence;
+   direct SDK integration is insufficient. If approval interaction is unavailable,
+   keep H2 UNKNOWN. Complete the stage gate/review/commit, then stop before T12.
 
 ## Remaining acceptance gaps
 
-- T10 extensions; T11 final installed/native nine-tool and mutation approval
-  acceptance; T12 deeper engineering; T13 fresh whole-branch review, acceptance
-  and deliberate stop. No fresh whole-branch review has occurred yet.
-- T4 Codex 0.166.0 programmatic accept/deny is partial H1–H3 evidence, not GUI/
-  human-click or full native mutation acceptance. Windows-host/Linux-adapter
-  bridging and operator-enabled native mutation scenarios remain unverified.
-- Final fixtures must include shared_runtime/run_shared_cli and three importing/
+- T11 full installed/native nine-tool and host mutation approval acceptance;
+  T12 deeper engineering; T13 fresh whole-branch review, acceptance and stop.
+- No T10 Linux/macOS rerun or exact-commit hosted CI is claimed in this session.
+- T4 Codex programmatic allow/deny remains partial H1-H3 evidence, not GUI/human
+  mutation approval. Windows-host/Linux-adapter bridging remains unverified.
+- Final fixtures still need shared_runtime/run_shared_cli and three importing/
   calling packages with independently enumerated positions.
 - Cognitive qualification remains UNKNOWN; complexipy is not a passing authority.
   Native discovery retains duplicate/global-scope FAIL. Preserve caches/defaults.
-  Git synchronization neither waives these gaps nor accepts a release.
+  Routine gates and Git synchronization do not waive strict acceptance gaps.
 
 Use the [execution record](evidence/2026-11-01-execution.md),
-[T9 evidence](evidence/2026-11-01-mutations.md) and
-[configuration/request guide](configuration.md#mutation-requests).
-The removed worktree's ledger/rulings and execution records are retained locally
-in Git-common handoffs/2026-11-01-main-consolidation-f0e26cc/feature-execution-records/.
-These are continuation aids, not sole authority; archived helper paths may require
-adjustment for main. Fresh checkouts use tracked fixtures. Use gh for GitHub reads
-and authorized writes. Never publish private source, journals or transcripts.
+[T9 mutation evidence](evidence/2026-11-01-mutations.md),
+[T10 evidence](evidence/2026-11-01-symbols.md) and
+[configuration/request guide](configuration.md). The current ignored task ledger
+is `.superpowers/sdd/2026-10-28-reference-parity/progress.md`; fresh clones use
+tracked evidence and fixtures. Use gh for GitHub reads/authorized writes. Never
+publish private source, journals or transcripts.

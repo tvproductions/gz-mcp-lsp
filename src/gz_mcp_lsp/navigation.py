@@ -66,6 +66,84 @@ class Navigation:
             envelope = self._envelope("hover", context, result, {uri: _provenance(read.snapshot)})
         return envelope
 
+    async def _document_symbols(self, context: GenerationContext, uri: str) -> Json:
+        self._require("documentSymbolProvider")
+        return await self._request(
+            context, "textDocument/documentSymbol", {"textDocument": {"uri": uri}}
+        )
+
+    async def document_symbols(self, uri: str) -> Result:
+        """Preserve document hierarchy and distinguish full and identifier ranges."""
+        async with self.documents.read(uri) as read:
+            context = GenerationContext(read.generation, read.rpc)
+            raw = await self._document_symbols(context, uri)
+            symbols = _symbols(raw, uri=uri)
+            await self._symbol_scopes(symbols)
+            value = self._envelope(
+                "document_symbols", context, {"symbols": symbols}, {uri: _provenance(read.snapshot)}
+            )
+        return value
+
+    async def workspace_symbols(self, query: str, resolve: bool = False) -> Result:
+        """Search one saved workspace generation without inventing identifier positions."""
+        if not isinstance(query, str) or type(resolve) is not bool:
+            raise AdapterError("INVALID_INPUT", "Expected a string query and boolean resolve")
+        async with self.documents.generation() as context:
+            self._require("workspaceSymbolProvider")
+            provider = self.session.capabilities["workspaceSymbolProvider"]
+            if resolve and not (
+                isinstance(provider, dict) and provider.get("resolveProvider") is True
+            ):
+                raise AdapterError("UNSUPPORTED", "Workspace symbol resolution is not advertised")
+            raw = await self._request(context, "workspace/symbol", {"query": query})
+            self._bounded(raw)
+            # Validate before forwarding opaque server data to its advertised resolver.
+            _symbols(raw)
+            if resolve and isinstance(raw, list):
+                resolved: list[Json] = []
+                for symbol in raw:
+                    item = cast("dict[str, Json]", symbol)
+                    location = cast("dict[str, Json]", item["location"])
+                    if "range" not in location:
+                        item = cast(
+                            "dict[str, Json]",
+                            await self._request(context, "workspaceSymbol/resolve", item),
+                        )
+                    resolved.append(item)
+                    self._bounded(resolved)
+                raw = resolved
+            symbols = _symbols(raw)
+            await self._symbol_scopes(symbols)
+            value = self._envelope("workspace_symbols", context, {"symbols": symbols}, {})
+        return value
+
+    async def _symbol_scopes(self, symbols: list[Json]) -> None:
+        for value in symbols:
+            symbol = cast("dict[str, Json]", value)
+            await self._scope(symbol)
+            await self._symbol_scopes(cast("list[Json]", symbol["children"]))
+
+    async def implementations(self, uri: str, position: Position) -> Result:
+        """Return server implementation locations at the unchanged UTF-16 position."""
+        async with self.documents.read(uri) as read:
+            context = GenerationContext(read.generation, read.rpc)
+            self.documents.workspace.offset(read.snapshot, position)
+            self._require("implementationProvider")
+            raw = await self._request(
+                context, "textDocument/implementation", _params(uri, position)
+            )
+            locations = _locations(raw, links=True)
+            self._bounded(locations)
+            for location in locations:
+                await self._scope(location)
+            value = self._envelope(
+                "implementations",
+                context,
+                {"locations": cast("list[Json]", locations)},
+                {uri: _provenance(read.snapshot)},
+            )
+        return value
+
     async def definition(self, uri: str, position: Position, context_lines: int = 0) -> Result:
         """Resolve exact identifier positions and attach complete authorized declarations."""
 
@@ -149,9 +227,7 @@ class Navigation:
                     symbols = None
                     provider = self.session.capabilities.get("documentSymbolProvider")
                     if provider is True or isinstance(provider, dict):
-                        symbols = await self._request(
-                            context, "textDocument/documentSymbol", {"textDocument": {"uri": uri}}
-                        )
+                        symbols = await self._document_symbols(context, uri)
                     source = await _owned_io(declaration, snapshot, extent, symbols)
                     location["source"] = source
                     location["source_scope"] = source["source_scope"]
@@ -174,6 +250,65 @@ def _context_lines(value: int) -> None:
         raise AdapterError(
             "INVALID_INPUT", "context_lines must be an integer from zero through twenty"
         )
+
+
+def _symbols(value: Json, *, uri: str | None = None) -> list[Json]:
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        raise AdapterError("PROTOCOL_ERROR", "Invalid symbols list")
+    symbols = [_symbol(item, uri=uri) for item in value]
+    return sorted(symbols, key=lambda item: json.dumps(item, sort_keys=True, ensure_ascii=False))
+
+
+def _symbol(value: Json, *, uri: str | None) -> dict[str, Json]:
+    if (
+        not isinstance(value, dict)
+        or not isinstance(value.get("name"), str)
+        or type(value.get("kind")) is not int
+        or not 1 <= cast("int", value["kind"]) <= 26
+    ):
+        raise AdapterError("PROTOCOL_ERROR", "Invalid symbol identity")
+    item: dict[str, Json] = {"name": value["name"], "kind": value["kind"]}
+    for key in ("detail", "containerName", "tags", "deprecated", "data"):
+        if key in value:
+            item[key] = value[key]
+    if uri is not None and "selectionRange" in value:
+        full, selection = parse_range(value.get("range")), parse_range(value["selectionRange"])
+        if (
+            _range_key(selection)[:2] < _range_key(full)[:2]
+            or _range_key(selection)[2:] > _range_key(full)[2:]
+        ):
+            raise AdapterError("PROTOCOL_ERROR", "Symbol selection is outside its full range")
+        item.update(
+            {
+                "uri": uri,
+                "range": range_json(full),
+                "selection_range": range_json(selection),
+                "children": _symbols(value.get("children"), uri=uri),
+            }
+        )
+    else:
+        location = value.get("location")
+        if (
+            not isinstance(location, dict)
+            or not isinstance(location.get("uri"), str)
+            or not location["uri"]
+        ):
+            raise AdapterError("PROTOCOL_ERROR", "Symbol requires a location URI")
+        if uri is not None and "range" not in location:
+            raise AdapterError("PROTOCOL_ERROR", "Flat document symbol requires a range")
+        item.update(
+            {
+                "uri": location["uri"],
+                "range": range_json(parse_range(location["range"]))
+                if "range" in location
+                else None,
+                "selection_range": None,
+                "children": [],
+            }
+        )
+    return item
 
 
 def _params(uri: str, position: Position) -> dict[str, Json]:

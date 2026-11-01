@@ -66,10 +66,13 @@ class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
                     [
                         "definition",
                         "diagnostics",
+                        "document_symbols",
                         "edit_file",
                         "hover",
+                        "implementations",
                         "references",
                         "rename_symbol",
+                        "workspace_symbols",
                     ],
                 )
                 assert tools[0].annotations is not None

@@ -8,3 +8,4 @@ dist/
 .pre-commit-cache/
 .coverage
 .import_linter_cache/
+.superpowers/

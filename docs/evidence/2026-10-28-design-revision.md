@@ -10,8 +10,8 @@ updates the draft specification, plan and acceptance wording to those selected i
 Functional design and all pending approvals remain unchanged.
 
 Execution follow-up: the revised plan was later approved on November 1.
-T0-T9 are implemented; the [bounded handoff](../handoff.md) and
-[T9 receipt](2026-11-01-mutations.md) identify the current stage. Earlier
+T0-T10 are implemented; the [bounded handoff](../handoff.md) and
+[T10 receipt](2026-11-01-symbols.md) identify the current stage. Earlier
 planning-only conclusions below remain historical.
 
 ## Authorized work and result

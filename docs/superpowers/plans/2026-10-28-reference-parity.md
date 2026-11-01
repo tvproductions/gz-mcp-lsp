@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is complete; T6 is complete; T7 is complete; execution stops at this stage boundary. T8-T13 are pending.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0-T9 are complete with the named acceptance gaps retained. T10-T13 remain pending in the retained T9 implementation. Both histories are consolidated on main; the independent read-first implementation is preserved separately.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).

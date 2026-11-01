@@ -81,6 +81,10 @@ explicit authorization. Initialization is not release acceptance.
 
 ## Git synchronization
 
+Use `gh` for GitHub reads and authorized writes, including `gh api`; use `git`
+for repository operations, fetch and push. Prefer this CLI workflow over GitHub
+connectors/browser automation unless the user requests otherwise.
+
 Follow the starter's preserved Git synchronization ritual in
 `docs/STARTER-AGENTS.md#git-synchronization-ritual`: inspect/fetch and review the
 complete diff, run the gate with matching uv in nested hooks, commit without

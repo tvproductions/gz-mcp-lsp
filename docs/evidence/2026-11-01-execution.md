@@ -89,7 +89,10 @@ regression failed for preview/apply before correction. Final T9 commit
 5a2d662ab0a60b6771fefef4ff7b37e4c83ac928 and its
 [passing CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
 cover the corrected 165-test tree on all three platforms. T10 has not started.
-The subsequent handoff refresh and Git sync change documentation only.
+The subsequent handoff refresh changed documentation only. The user then
+[consolidated both branch histories on main](2026-11-01-main-consolidation.md),
+explicitly retaining this verified T9 runtime and preserving the independent
+read-first implementation separately. No T10 runtime is added by the merge.
 
 ## Bounded-session handoff
 
@@ -97,9 +100,9 @@ After the user's concern about continuous execution, resume one bounded stage
 per session. The user resumed T8 and then T9 in separate bounded sessions.
 Execution stops after T9; T10 has not started.
 Existing implementation approval persists;
-this handoff does not require reapproval of the remaining scope. Keep the isolated
-feat/reference-parity worktree and its ignored task ledger. The user subsequently
-authorized branch synchronization and a durable handoff; see
-[the current resume point](../handoff.md). No merge/tag/release is authorized.
+this handoff does not require reapproval of the remaining scope. The user then
+authorized merging all branch histories to main and removing linked worktrees.
+The original ledger is archived in Git-common recovery material. Continue on main
+from [the current resume point](../handoff.md). No tag/release is authorized.
 Native discovery/cognitive qualification and full H1-H3 remain unresolved;
 macOS/hosted CI conclusions depend on the exact pushed commit's result.

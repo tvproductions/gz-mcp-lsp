@@ -1,7 +1,9 @@
 # Documentation scope
 
 The [implementation handoff](handoff.md) is the current resume point: T0-T9 complete,
-T10 next, one bounded stage per session. Git sync does not waive acceptance gaps.
+T10 next on main, one bounded stage per session. The
+[consolidation record](evidence/2026-11-01-main-consolidation.md) preserves both
+branch histories and the user-selected runtime. Git sync does not waive gaps.
 
 [Application settings](configuration.md) documents JSON settings and the implemented six-tool mutation contract.
 

@@ -12,7 +12,9 @@ work and partial Windows/Linux/native-host evidence are recorded in the
 October 28 initialization state, not the current implementation. Final T9 runtime
 checkpoint 5a2d662ab0a60b6771fefef4ff7b37e4c83ac928 passed
 [three-platform CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112);
-the fresh handoff leaves T10 unstarted.
+the fresh handoff leaves T10 unstarted. The later user-authorized
+[main consolidation](2026-11-01-main-consolidation.md) preserves both independent
+histories while retaining that T9 runtime; initialization conclusions stay historical.
 
 ## Conclusions and authorized boundary
 

@@ -1,15 +1,19 @@
 # Fresh implementation handoff — 2026-11-01
 
-**T0–T9 complete. T10 unstarted.** This session refreshes the handoff and
-synchronizes Git only. Do not begin T10 as part of this request.
+**T0-T9 complete. T10 unstarted in the retained implementation.** The user
+consolidated both branch histories on main and chose the verified T9 runtime;
+the independent read-first implementation is preserved separately. This request
+performs integration, cleanup and Git sync only; do not begin T10.
 The remaining specification/plan are approved; resume one bounded stage on the
 user's next continuation, then stop at that stage boundary.
 
 ## Verified checkpoint and workspace
 
-Continue on **feat/reference-parity** in the existing isolated implementation
-worktree. The original main checkout has preserved pending planning documents;
-do not reset, overwrite or include them in the feature-branch sync.
+Continue on **main in the primary checkout**, with no linked worktree required.
+See the [consolidation record](evidence/2026-11-01-main-consolidation.md) for both
+branch SHAs, the explicit runtime choice and recovery archives. The original
+pending planning files are retained in a verified backup and Git stash; do not
+reapply their superseded pre-execution status over the current documents.
 
 The final T9 implementation is **5a2d662ab0a60b6771fefef4ff7b37e4c83ac928**.
 [Exact-commit CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
@@ -17,10 +21,10 @@ passed Linux x86_64, macOS arm64 and Windows AMD64, including the final shared
 success-envelope correction. This supersedes the earlier T9 implementation and
 documentation checkpoints as runtime verification evidence.
 
-The fresh handoff commit changes documentation only. Observe its own exact-commit
-CI through completion when synchronizing; do not create another commit solely to
-record that result. The sync response and branch history identify the final SHA.
-Ordinary feature-branch push is authorized. No main merge, force-push, tag or release.
+The consolidation retains both histories but preserves the T9 source/test tree.
+Verify the exact pushed main commit's CI; the final sync response identifies its
+SHA and cleanup result. The user authorized main integration and worktree removal.
+No force-push, tag or release is authorized.
 
 ## Shipped behavior and important seams
 
@@ -77,7 +81,7 @@ second server, generic filesystem operations or unsolicited LSP applyEdit.
 
 On the next continuation:
 
-1. Verify branch/status and read README.md, AGENTS.md, AGENTS.skills-first.md,
+1. Verify main branch/status and read README.md, AGENTS.md, AGENTS.skills-first.md,
    current design-revision evidence and adopted engineering policies.
 2. Read the [T10 brief](superpowers/plans/2026-10-28-reference-parity.md#t10-public-document-symbols-workspace-symbols-and-implementations),
    [specification](superpowers/specs/2026-10-28-semantic-navigation-design.md)
@@ -109,7 +113,8 @@ On the next continuation:
 Use the [execution record](evidence/2026-11-01-execution.md),
 [T9 evidence](evidence/2026-11-01-mutations.md) and
 [configuration/request guide](configuration.md#mutation-requests).
-The ignored .superpowers/sdd/2026-10-28-reference-parity/ retains the complete
-local task ledger/rulings and execution helpers. These are continuation aids,
-not sole authority; fresh checkouts use tracked fixtures. Never publish private
-source, journals, transcripts or machine-specific scratch locations.
+The removed worktree's ledger/rulings and execution records are retained locally
+in Git-common handoffs/2026-11-01-main-consolidation-f0e26cc/feature-execution-records/.
+These are continuation aids, not sole authority; archived helper paths may require
+adjustment for main. Fresh checkouts use tracked fixtures. Use gh for GitHub reads
+and authorized writes. Never publish private source, journals or transcripts.

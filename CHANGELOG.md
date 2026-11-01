@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Consolidate both implementation histories on main using the explicitly selected
+  verified T9 runtime. Preserve the independent read-first tree, pending planning
+  files and execution records; retire the linked worktree after verification.
+
 - Refresh the T9 handoff with its final verified implementation SHA/CI,
   shared mutation-result contract, validation baseline and bounded T10 resume
   checklist. Preserve outstanding acceptance gaps; no T10 implementation.

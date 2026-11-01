@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Implement T8 internal guarded POSIX transactions, exact-byte/mode rollback,
+  private durable journals/receipts and conservative crash recovery. Add actual
+  process-death tests; Windows writes remain rejected. T9 mutation tools and
+  production startup recovery remain pending.
+
 - Canonicalize temporary test roots and bound barrier waits; keep short deadlines
   only in explicit timeout controls. Cap CI jobs so portability failures cannot
   leave the suite waiting indefinitely. Production runtime behavior is unchanged.

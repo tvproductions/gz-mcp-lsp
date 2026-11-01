@@ -243,6 +243,14 @@ class Documents:
             self._exclusive = False
             self._admission.release()
 
+    async def validate_generation(self, generation: str) -> None:
+        """Validate a retained plan under exclusive ownership without restarting ty."""
+        if not self._exclusive or self._active:
+            raise AdapterError(
+                "WORKSPACE_BUSY", "Generation validation requires exclusive ownership"
+            )
+        await self._validate(GenerationContext(generation, self.session.rpc))
+
     async def committed(self, snapshots: Sequence[Snapshot]) -> None:
         """Synchronize saved changes under exclusive authority; invalidate for next read."""
 
@@ -303,6 +311,10 @@ async def _owned_io[T](call: Callable[..., T], *args) -> T:
             await asyncio.shield(task)
         except asyncio.CancelledError:
             cancelled = True
+        except Exception:
+            if not cancelled:
+                raise
+            break
     if cancelled:
         with suppress(Exception):
             task.result()

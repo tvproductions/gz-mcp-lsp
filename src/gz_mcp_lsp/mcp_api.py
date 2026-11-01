@@ -3,7 +3,7 @@
 import json
 from collections.abc import AsyncGenerator, Awaitable
 from contextlib import asynccontextmanager
-from typing import Annotated
+from typing import Annotated, Literal
 
 from mcp import types
 from mcp.server.context import CallNext, HandlerResult, ServerRequestContext
@@ -12,7 +12,9 @@ from mcp.server.mcpserver import MCPServer
 from gz_mcp_lsp.config import Config
 from gz_mcp_lsp.diagnostics import Diagnostics
 from gz_mcp_lsp.documents import Documents
-from gz_mcp_lsp.models import AdapterError, Json, Position, Result
+from gz_mcp_lsp.filesystem import Transactions
+from gz_mcp_lsp.models import AdapterError, Json, Position, Result, TextEdit
+from gz_mcp_lsp.mutations import Mutations
 from gz_mcp_lsp.navigation import Navigation
 from gz_mcp_lsp.session import Session
 from gz_mcp_lsp.workspace import Workspace
@@ -70,9 +72,53 @@ def _position_arguments(operation: str, value: object) -> bool:
     )
 
 
+def _mutation_arguments(name: str, value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    action = value.get("action")
+    if action == "apply":
+        return set(value) == {"action", "plan_id"} and isinstance(value["plan_id"], str)
+    if action != "preview" or not isinstance(value.get("uri"), str):
+        return False
+    if name == "rename_symbol":
+        return (
+            set(value) == {"action", "uri", "position", "new_name"}
+            and isinstance(value["new_name"], str)
+            and _position_arguments("hover", {"uri": value["uri"], "position": value["position"]})
+        )
+    if (
+        set(value) != {"action", "uri", "edits", "expected_hash"}
+        or not isinstance(value["expected_hash"], str)
+        or not isinstance(value["edits"], list)
+    ):
+        return False
+    for edit in value["edits"]:
+        if (
+            not isinstance(edit, dict)
+            or set(edit) != {"range", "new_text"}
+            or not isinstance(edit["new_text"], str)
+        ):
+            return False
+        span = edit["range"]
+        if not isinstance(span, dict) or set(span) != {"start", "end"}:
+            return False
+        if not all(
+            _position_arguments("hover", {"uri": value["uri"], "position": span[key]})
+            for key in ("start", "end")
+        ):
+            return False
+    return True
+
+
 async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> HandlerResult:
     if ctx.method == "tools/call" and ctx.params is not None:
         name = ctx.params.get("name")
+        if (
+            isinstance(name, str)
+            and name in {"rename_symbol", "edit_file"}
+            and not _mutation_arguments(name, ctx.params.get("arguments"))
+        ):
+            return _error(name, AdapterError("INVALID_INPUT", "Invalid tagged mutation arguments"))
         if name == "diagnostics":
             arguments = ctx.params.get("arguments")
             if (
@@ -99,7 +145,10 @@ async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> H
 
 async def _run(operation: str, task: Awaitable[Result]) -> types.CallToolResult:
     try:
-        return _result(await task)
+        value = await task
+        if operation in {"rename_symbol", "edit_file"}:
+            value = value | {"operation": operation}
+        return _result(value)
     except AdapterError as error:
         return _error(operation, error)
     except Exception:
@@ -116,9 +165,12 @@ def create_server(config: Config, session: Session) -> MCPServer:
     documents = Documents(Workspace(config), session)
     navigation = Navigation(documents, session)
     diagnostic_service = Diagnostics(documents, session)
+    transactions = Transactions(config, documents.workspace)
+    mutations = Mutations(config, documents, session, transactions)
 
     @asynccontextmanager
     async def lifespan(server: MCPServer) -> AsyncGenerator[dict[str, Json]]:
+        await mutations.start()
         await documents.start()
         async with session:
             try:
@@ -164,5 +216,39 @@ def create_server(config: Config, session: Session) -> MCPServer:
     ) -> Annotated[types.CallToolResult, dict[str, Json]]:
         """Pull the full current diagnostics list for a saved file, with identity provenance."""
         return await _run("diagnostics", diagnostic_service.diagnostics(uri, context_lines))
+
+    annotations = types.ToolAnnotations(
+        read_only_hint=False, destructive_hint=True, open_world_hint=False
+    )
+
+    @server.tool(annotations=annotations, structured_output=True)
+    async def rename_symbol(
+        action: Literal["preview", "apply"],
+        uri: str | None = None,
+        position: Position | None = None,
+        new_name: str | None = None,
+        plan_id: str | None = None,
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """Preview an exact-position rename or apply its retained plan under operator authority."""
+        if action == "apply":
+            assert plan_id is not None
+            return await _run("rename_symbol", mutations.apply(plan_id))
+        assert uri is not None and position is not None and new_name is not None
+        return await _run("rename_symbol", mutations.preview_rename(uri, position, new_name))
+
+    @server.tool(annotations=annotations, structured_output=True)
+    async def edit_file(
+        action: Literal["preview", "apply"],
+        uri: str | None = None,
+        edits: list[TextEdit] | None = None,
+        expected_hash: str | None = None,
+        plan_id: str | None = None,
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """Preview explicit existing-file edits with an exact base hash or apply a retained plan."""
+        if action == "apply":
+            assert plan_id is not None
+            return await _run("edit_file", mutations.apply(plan_id))
+        assert uri is not None and edits is not None and expected_hash is not None
+        return await _run("edit_file", mutations.preview_edit(uri, edits, expected_hash))
 
     return server

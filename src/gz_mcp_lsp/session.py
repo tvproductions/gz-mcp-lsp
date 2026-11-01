@@ -119,10 +119,19 @@ class Session:
             "clientInfo": {"name": "gz-mcp-lsp", "version": "0.1.0"},
             "capabilities": {
                 "general": {"positionEncodings": ["utf-16"]},
-                "workspace": {"configuration": True, "applyEdit": False},
+                "workspace": {
+                    "configuration": True,
+                    "applyEdit": False,
+                    "workspaceEdit": {
+                        "documentChanges": True,
+                        "resourceOperations": [],
+                        "changeAnnotationSupport": {"groupsOnLabel": False},
+                    },
+                },
                 "textDocument": {
                     "synchronization": {"dynamicRegistration": False},
                     "definition": {"linkSupport": True},
+                    "rename": {"prepareSupport": True},
                     "diagnostic": {"dynamicRegistration": False, "relatedDocumentSupport": True},
                     "publishDiagnostics": {
                         "relatedInformation": True,

@@ -1,8 +1,7 @@
 # Application settings
 
-T1 implements the JSON loader and workspace primitives; T3 adds the stdio CLI and
-single-child lifecycle. The intermediate catalog remains empty until T4 adds hover. Application settings
-have no environment-variable overrides. Native Codex TOML remains a separate format.
+Application settings are project-owned JSON with no environment-variable overrides.
+The stdio CLI supervises one ty process. Native Codex TOML remains a separate format.
 
 Required keys:
 
@@ -30,8 +29,8 @@ Unknown or duplicate keys, bool-as-integer values, nonfinite numbers and escapin
 scope paths are rejected. Settings input is bounded to 64 KiB. Enabling mutations
 requires explicit contained existing writable directories and state storage;
 Windows and other unsupported write platforms return UNSUPPORTED. This loader
-creates no state, launches no process and writes no source. T8/T9 must separately
-prove guarded application and startup recovery on supported POSIX systems.
+creates no state, launches no process and writes no source. The runtime's T8/T9
+transaction and startup-recovery evidence is recorded separately.
 
 | limits key | Default |
 | --- | --- |
@@ -74,4 +73,39 @@ dependency environments must remain immutable during a session. ty runs in
 untrusted mode with uv integration disabled. No environment variable overrides
 product settings; native ty configuration locations are checked only to reject
 untracked configuration. See [T4 evidence](evidence/2026-11-01-documents-hover.md)
-for local Windows/Linux verification and remaining macOS/hosted-CI gaps.
+for its dated evidence; current platform conclusions require exact-commit CI.
+
+
+## Mutation requests
+
+The catalog includes definition, references, diagnostics, hover, rename_symbol
+and edit_file. Both mutation tools remain destructive in their MCP annotations,
+including preview requests. They require enabled operator authority even for
+preview. Model-supplied approval flags are rejected.
+
+Use action=preview with these exact fields:
+
+- rename_symbol: uri, position and new_name.
+- edit_file: uri, expected_hash and edits, where each edit has range and new_text.
+  Ranges address the original saved file; an empty new_text deletes, a zero-width
+  range inserts, and an explicit EOF range appends.
+
+Apply uses only action=apply and plan_id, with no preview fields. Previews return
+all affected files, base/post hashes, diffs, annotations and an expiry. A plan
+token identifies content; it does not authenticate human approval. Configure
+native host approval policies separately. Apply never silently replans a stale
+preview. Restart expires in-memory previews but preserves durable receipts.
+
+For enabled writes, recovery runs before mutation admission. The private state
+directory and sources must share a verified durable local filesystem. Linux
+x86_64 and macOS arm64 are supported; Windows writes remain unsupported.
+A quiescent workspace is required. Changes are recoverable, without a cross-file
+atomicity promise. External writer conflicts require operator recovery.
+
+Apply returns the disk receipt in result and semantic_state separately. A
+committed receipt remains committed even if semantic_state is unavailable;
+the old semantic transport is invalidated. Retrying the same plan retrieves its
+receipt before expiry/session checks. Receipts are retained for explicit operator
+acknowledgment/cleanup; quota exhaustion rejects new writes. Disabled startup
+never restores source merely because recovery files exist.
+

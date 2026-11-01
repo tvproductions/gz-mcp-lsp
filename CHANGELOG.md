@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Implement T9 rename_symbol/edit_file preview/apply tools, production recovery
+  admission, immutable retained previews and coordinated disk/semantic outcomes.
+  Preserve durable receipts through cancellation and restart; add installed
+  actual-ty mutation/recovery tests. Windows writes remain unsupported.
+
 - Implement T8 internal guarded POSIX transactions, exact-byte/mode rollback,
   private durable journals/receipts and conservative crash recovery. Add actual
   process-death tests; Windows writes remain rejected. T9 mutation tools and

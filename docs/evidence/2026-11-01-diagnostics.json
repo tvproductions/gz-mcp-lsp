@@ -1,0 +1,60 @@
+{
+  "python": "3.14.10",
+  "uv": "0.13.6",
+  "mcp": "2.3.0",
+  "ty": "0.0.95",
+  "source_sha256": {
+    "__init__.py": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+    "__main__.py": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a",
+    "cli.py": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a",
+    "config.py": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a",
+    "diagnostics.py": "928d3ff1211662eb73bcf27fc409566ffdfb3fe7e08233e039c50cc2fe5f4865",
+    "documents.py": "49b81bffd3362dccb6fa6002c8ce712eb8adda07e8c7dea7cee9ad5cacfcaefc",
+    "lsp_transport.py": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334",
+    "mcp_api.py": "90efe193a99675f66523544cba5e8c73108cf211c233def53fedc96630f3b9b4",
+    "models.py": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33",
+    "navigation.py": "c25aff6eca75be975a958dd80c06a09bf2b9b37dfa4602f10f47307159133d70",
+    "results.py": "cbe8c5d9f54e12936d60a6adb319508765fea3e9660799694a5bf17465492334",
+    "session.py": "8fa9c658cfd7393fab85f23740e85100ca3793c2228286df06336cc69993b691",
+    "source_text.py": "dcd651ac884dc710d5c1d279877c89b81767ea6222d78a141fbcbad260f0b655",
+    "workspace.py": "df535627991df49e6e88be4acc0d432813e011c5943580ca0d9761414f4119c4"
+  },
+  "fixture_sha256": "a863b6e68f81e2d20dba006b28520b085103e5ab6176bfc9aaff6ac44958ac21",
+  "wheel_sha256": "dbac669af29919601de8505e5b1ecc85b0b907b16909a78d896b19fe78264058",
+  "unit_discovery_count": 106,
+  "diagnostic_unit_tests": 9,
+  "installed_actual_ty_scenarios": 2,
+  "windows_full_gate": "PASS",
+  "linux_x86_64_wsl_native_filesystem_full_gate": "PASS",
+  "C901_src": "PASS",
+  "scoped_portability": "PASS",
+  "expected_error": {
+    "code": "invalid-assignment",
+    "severity": 1,
+    "source": "ty",
+    "range": {
+      "start": {
+        "line": 0,
+        "character": 13
+      },
+      "end": {
+        "line": 0,
+        "character": 20
+      }
+    }
+  },
+  "repaired_items": [],
+  "dependency_change_range": {
+    "start": {
+      "line": 2,
+      "character": 13
+    },
+    "end": {
+      "line": 2,
+      "character": 21
+    }
+  },
+  "macos_runtime": "UNKNOWN",
+  "hosted_CI": "UNKNOWN",
+  "full_H1_H3": "NOT ACCEPTED"
+}

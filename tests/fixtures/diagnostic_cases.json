@@ -1,0 +1,31 @@
+{
+  "error_source": "value: int = 'wrong'\n",
+  "repair_source": "value: int = 1\n",
+  "dependency_source": "def answer() -> int:\n    return 1\n",
+  "consumer_source": "from diagnostic_dependency import answer\n\nvalue: int = answer()\n",
+  "changed_dependency": "def answer() -> str:\n    return 'changed'\n",
+  "expected": {
+    "code": "invalid-assignment",
+    "severity": 1,
+    "error_range": {
+      "start": {
+        "line": 0,
+        "character": 13
+      },
+      "end": {
+        "line": 0,
+        "character": 20
+      }
+    },
+    "dependency_range": {
+      "start": {
+        "line": 2,
+        "character": 13
+      },
+      "end": {
+        "line": 2,
+        "character": 21
+      }
+    }
+  }
+}

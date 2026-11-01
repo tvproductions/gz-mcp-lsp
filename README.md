@@ -3,8 +3,8 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation underway at T5.
-Definition, references and hover pass installed MCP/ty checks; the full milestone remains unaccepted.**
+**Status: plan approved on 2026-11-01; implementation underway at T6.
+Definition, references, diagnostics and hover pass installed MCP/ty checks; the full milestone remains unaccepted.**
 
 The intended path is:
 
@@ -62,9 +62,10 @@ analysis remains outside routine hooks and CI; see the evidence record.
 Install the development wheel with
 `uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.1.0-py3-none-any.whl`.
 The development package declares official mcp==2.3.0 and provides the stdio CLI
-`gz-mcp-lsp --config /absolute/path/to/settings.json`. T5 implements definition, references and hover with exact URI/UTF-16 positions,
+`gz-mcp-lsp --config /absolute/path/to/settings.json`. T6 implements definition, references, diagnostics and hover with exact URI/UTF-16 positions,
 complete authorized declaration source and saved-byte generation checks. See
-[navigation evidence](docs/evidence/2026-11-01-navigation.md). See the [T4 receipt](docs/evidence/2026-11-01-documents-hover.md)
+[navigation evidence](docs/evidence/2026-11-01-navigation.md) and
+[pull-diagnostic evidence](docs/evidence/2026-11-01-diagnostics.md). See the [T4 receipt](docs/evidence/2026-11-01-documents-hover.md)
 and [actual Codex checkpoint](docs/evidence/2026-11-01-codex-feasibility.md).
 There is no published installation, PyPI release or tag. Local Windows x86_64
 and Linux x86_64 gates pass; macOS runtime and new-branch hosted CI remain unverified.

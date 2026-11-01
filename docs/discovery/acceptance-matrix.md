@@ -19,6 +19,9 @@ unaccepted. See [T4 evidence](../evidence/2026-11-01-documents-hover.md) and the
 T5 adds local Windows/Linux P1/P2/P4/S1/S5 development evidence in the
 [navigation receipt](../evidence/2026-11-01-navigation.md). Cross-platform/native
 host completion and all later capabilities remain gated.
+T6 adds local Windows/Linux P3/S6 diagnostic development evidence in the
+[pull-diagnostic receipt](../evidence/2026-11-01-diagnostics.md); full native and
+platform acceptance remains incomplete.
 The [specification](../superpowers/specs/2026-10-28-semantic-navigation-design.md)
 and [plan](../superpowers/plans/2026-10-28-reference-parity.md) are approved for execution.
 

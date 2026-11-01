@@ -123,6 +123,13 @@ class Session:
                 "textDocument": {
                     "synchronization": {"dynamicRegistration": False},
                     "definition": {"linkSupport": True},
+                    "diagnostic": {"dynamicRegistration": False, "relatedDocumentSupport": True},
+                    "publishDiagnostics": {
+                        "relatedInformation": True,
+                        "tagSupport": {"valueSet": [1, 2]},
+                        "codeDescriptionSupport": True,
+                        "dataSupport": False,
+                    },
                     "documentSymbol": {"hierarchicalDocumentSymbolSupport": True},
                 },
             },

@@ -54,7 +54,8 @@ class InstalledHoverTests(unittest.IsolatedAsyncioTestCase):
             async with Client(params) as client:
                 tools = (await client.list_tools()).tools
                 self.assertEqual(
-                    sorted(tool.name for tool in tools), ["definition", "hover", "references"]
+                    sorted(tool.name for tool in tools),
+                    ["definition", "diagnostics", "hover", "references"],
                 )
                 first = await client.call_tool("hover", arguments)
                 self.assertFalse(first.is_error, first.content)

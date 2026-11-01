@@ -314,6 +314,25 @@ class DocumentsTests(unittest.IsolatedAsyncioTestCase):
             await self._generation_value()
         self.assertEqual(raised.exception.code, "UNSUPPORTED")
 
+    async def test_same_manifest_restart_still_changes_generation(self):
+        """A new transport never reuses resultIds from an unchanged manifest."""
+        before = await self._generation_value()
+        note = self.root / "note.txt"
+        async with self.documents.exclusive():
+            note.write_bytes(b"saved outside Python indexing\n")
+            await self.documents.committed([self.documents.workspace.read(note.as_uri())])
+        after = await self._generation_value()
+        self.assertNotEqual(before, after)
+
+    async def test_untracked_semantic_document_is_unsupported(self):
+        """Semantic leases never pretend unscanned file bytes share the manifest."""
+        note = self.root / "note.txt"
+        note.write_bytes(b"answer = 1\n")
+        with self.assertRaises(AdapterError) as raised:
+            async with self.documents.read(note.as_uri()):
+                pass
+        self.assertEqual(raised.exception.code, "UNSUPPORTED")
+
     async def test_failed_replacement_is_not_retried_by_later_reads(self):
         """A failed new child is not hidden behind the old invalidation marker."""
 

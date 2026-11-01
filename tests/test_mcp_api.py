@@ -62,7 +62,8 @@ class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
                 self.assertTrue(session.entered)
                 tools = (await client.list_tools()).tools
                 self.assertEqual(
-                    sorted(tool.name for tool in tools), ["definition", "hover", "references"]
+                    sorted(tool.name for tool in tools),
+                    ["definition", "diagnostics", "hover", "references"],
                 )
                 assert tools[0].annotations is not None
                 self.assertTrue(tools[0].annotations.read_only_hint)
@@ -107,4 +108,16 @@ class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
                     )
                     self.assertTrue(result.is_error)
                     self.assertEqual(result.structured_content["error"]["code"], "INVALID_INPUT")
+                result = await client.call_tool(
+                    "diagnostics",
+                    {
+                        "uri": source.as_uri(),
+                        "context_lines": True,
+                    },
+                )
+                self.assertTrue(result.is_error)
+                self.assertEqual(result.structured_content["error"]["code"], "INVALID_INPUT")
+                result = await client.call_tool("diagnostics", {"uri": source.as_uri()})
+                self.assertTrue(result.is_error)
+                self.assertEqual(result.structured_content["error"]["code"], "UNSUPPORTED")
             self.assertTrue(session.closed)

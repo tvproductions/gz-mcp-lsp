@@ -2,10 +2,11 @@
 
 import json
 from typing import cast
-from urllib.parse import urlsplit
 
 from gz_mcp_lsp.documents import Documents, GenerationContext, _owned_io
 from gz_mcp_lsp.models import AdapterError, Json, Position, Range, Result, Snapshot
+from gz_mcp_lsp.results import bounded, envelope
+from gz_mcp_lsp.results import provenance as _provenance
 from gz_mcp_lsp.session import Session
 from gz_mcp_lsp.source_text import (
     declaration,
@@ -34,9 +35,7 @@ class Navigation:
         )
 
     def _bounded(self, value: object) -> None:
-        size = len(json.dumps(value, ensure_ascii=False, allow_nan=False).encode("utf-8"))
-        if size > self.documents.workspace.config.limits.result_bytes:
-            raise AdapterError("RESULT_LIMIT", "Semantic result exceeds its byte budget")
+        bounded(value, self.documents.workspace.config.limits.result_bytes)
 
     def _accumulate(self, used: int, value: Json) -> int:
         total = used + len(json.dumps(value, ensure_ascii=False, allow_nan=False).encode("utf-8"))
@@ -47,17 +46,13 @@ class Navigation:
     def _envelope(
         self, operation: str, context: GenerationContext, result: Json, documents: dict[str, Json]
     ) -> Result:
-        envelope: Result = {
-            "schema_version": 1,
-            "operation": operation,
-            "position_encoding": "utf-16",
-            "result": result,
-            "workspace_generation": context.generation,
-            "documents": [documents[uri] for uri in sorted(documents)],
-            "complete": True,
-        }
-        self._bounded(envelope)
-        return envelope
+        return envelope(
+            operation,
+            context.generation,
+            result,
+            documents,
+            self.documents.workspace.config.limits.result_bytes,
+        )
 
     async def hover(self, uri: str, position: Position) -> Result:
         """Return original legal Hover content forms or null, with saved provenance."""
@@ -134,29 +129,10 @@ class Navigation:
 
     async def _scope(self, location: dict[str, Json]) -> bool:
         uri = cast("str", location["uri"])
-        try:
-            parsed = urlsplit(uri)
-        except ValueError as error:
-            raise AdapterError("PROTOCOL_ERROR", "Malformed target URI") from error
-        if parsed.scheme != "file" or parsed.netloc:
-            location.update(
-                {"source_scope": "external", "source_status": "external", "source": None}
-            )
+        scope = await _owned_io(self.documents.workspace.source_scope, uri)
+        if scope != "workspace":
+            location.update({"source_scope": scope, "source_status": scope, "source": None})
             return False
-        try:
-            await _owned_io(self.documents.workspace.path, uri)
-        except AdapterError as error:
-            if error.code == "OUTSIDE_WORKSPACE":
-                location.update(
-                    {"source_scope": "external", "source_status": "external", "source": None}
-                )
-                return False
-            if error.code in {"SOURCE_UNAVAILABLE", "INVALID_INPUT"}:
-                location.update(
-                    {"source_scope": "unavailable", "source_status": "unavailable", "source": None}
-                )
-                return False
-            raise
         location["source_scope"] = "workspace"
         return True
 
@@ -191,10 +167,6 @@ class Navigation:
                     ) from error
                 raise
             return snapshot
-
-
-def _provenance(snapshot: Snapshot) -> Json:
-    return {"uri": snapshot.uri, "sha256": snapshot.sha256, "version": snapshot.version}
 
 
 def _context_lines(value: int) -> None:

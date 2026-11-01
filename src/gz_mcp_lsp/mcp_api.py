@@ -10,6 +10,7 @@ from mcp.server.context import CallNext, HandlerResult, ServerRequestContext
 from mcp.server.mcpserver import MCPServer
 
 from gz_mcp_lsp.config import Config
+from gz_mcp_lsp.diagnostics import Diagnostics
 from gz_mcp_lsp.documents import Documents
 from gz_mcp_lsp.models import AdapterError, Json, Position, Result
 from gz_mcp_lsp.navigation import Navigation
@@ -72,6 +73,19 @@ def _position_arguments(operation: str, value: object) -> bool:
 async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> HandlerResult:
     if ctx.method == "tools/call" and ctx.params is not None:
         name = ctx.params.get("name")
+        if name == "diagnostics":
+            arguments = ctx.params.get("arguments")
+            if (
+                not isinstance(arguments, dict)
+                or "uri" not in arguments
+                or not arguments.keys() <= {"uri", "context_lines"}
+                or not isinstance(arguments["uri"], str)
+                or type(arguments.get("context_lines", 0)) is not int
+                or not 0 <= arguments.get("context_lines", 0) <= 20
+            ):
+                return _error(
+                    "diagnostics", AdapterError("INVALID_INPUT", "Invalid diagnostic arguments")
+                )
         if (
             isinstance(name, str)
             and name in {"hover", "definition", "references"}
@@ -101,6 +115,7 @@ def create_server(config: Config, session: Session) -> MCPServer:
 
     documents = Documents(Workspace(config), session)
     navigation = Navigation(documents, session)
+    diagnostic_service = Diagnostics(documents, session)
 
     @asynccontextmanager
     async def lifespan(server: MCPServer) -> AsyncGenerator[dict[str, Json]]:
@@ -142,5 +157,12 @@ def create_server(config: Config, session: Session) -> MCPServer:
         return await _run(
             "references", navigation.references(uri, position, include_declaration, context_lines)
         )
+
+    @server.tool(annotations=_read_annotations(), structured_output=True)
+    async def diagnostics(
+        uri: str, context_lines: int = 0
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """Pull the full current diagnostics list for a saved file, with identity provenance."""
+        return await _run("diagnostics", diagnostic_service.diagnostics(uri, context_lines))
 
     return server

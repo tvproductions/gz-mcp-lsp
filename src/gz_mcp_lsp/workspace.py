@@ -91,6 +91,24 @@ class Workspace:
                 "SOURCE_UNAVAILABLE", "Unable to read a valid source path"
             ) from error
 
+    def source_scope(self, uri: str) -> str:
+        """Classify target metadata without ever reading an external source."""
+        try:
+            parsed = urlsplit(uri)
+        except ValueError as error:
+            raise AdapterError("PROTOCOL_ERROR", "Malformed target URI") from error
+        if parsed.scheme != "file" or parsed.netloc:
+            return "external"
+        try:
+            self.path(uri)
+        except AdapterError as error:
+            if error.code == "OUTSIDE_WORKSPACE":
+                return "external"
+            if error.code in {"SOURCE_UNAVAILABLE", "INVALID_INPUT"}:
+                return "unavailable"
+            raise
+        return "workspace"
+
     def canonical_uri(self, uri: str) -> str:
         """Normalize encoded aliases for identity keys, preserving caller URI in snapshots."""
         path = self.path(uri).resolve(strict=True)
@@ -128,6 +146,17 @@ class Workspace:
                 "SOURCE_UNAVAILABLE", "Source is unavailable or not UTF-8"
             ) from error
 
+    def tracked(self, path: Path) -> bool:
+        """One predicate defines both scan membership and semantic document admission."""
+        if not path.is_relative_to(self.root):
+            return False
+        relative = path.relative_to(self.root)
+        return not self._excluded(relative) and (
+            path.suffix in {".py", ".pyi"}
+            or path.name in {"pyproject.toml", "ty.toml", ".gitignore", ".ignore"}
+            or relative.as_posix() in self.config.project_config_files
+        )
+
     def _eligible(self) -> Iterator[Path]:
         pending = [self.root]
         deadline = time.monotonic() + self.config.request_timeout_seconds
@@ -147,11 +176,7 @@ class Workspace:
                         pending.append(path)
                         if len(pending) > self.config.limits.workspace_files:
                             raise AdapterError("LIMIT_EXCEEDED", "Too many source directories")
-                    elif (
-                        path.suffix in {".py", ".pyi"}
-                        or path.name in {"pyproject.toml", "ty.toml", ".gitignore", ".ignore"}
-                        or relative.as_posix() in (self.config.project_config_files)
-                    ):
+                    elif self.tracked(path):
                         yield path
 
     def manifest(self) -> str:

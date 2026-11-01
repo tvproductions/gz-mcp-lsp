@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Implement T6 current pull diagnostics with saved-identity resultId caching,
+  full-list unchanged handling, related-document scope and bounded source context.
+  Verify actual installed error/repair/dependency behavior; distinguish every
+  replacement transport by generation epoch and reject untracked semantic inputs.
+
 - Implement T5 definition/references and complete authorized declaration source,
   preserving caller UTF-16 positions, distinct ranges and original hover forms.
   Verify three-consumer/decoy, decorated/nested/async/constant and Unicode fixtures

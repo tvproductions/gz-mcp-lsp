@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is complete; T6 is in progress.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is complete; T6 is complete; T7 is in progress.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
@@ -294,9 +294,9 @@ URI+generation; returns normalized current full list even for valid unchanged re
 
 **Test assertion anchors:** `self.assertEqual(repaired["result"]["items"], [])`; `self.assertEqual(error.code, "PROTOCOL_ERROR")` for unmatched unchanged reports; `self.assertNotEqual(dependency_generation, previous_generation)`.
 
-- [ ] Write `test_full_and_unchanged_resultid`, `test_unchanged_without_cache_is_protocol_error`, `test_pull_error_is_not_empty_success`, `test_repair_and_dependency_change`. Assert cache invalidates on generation change, full current diagnostics used, codes/severity/ranges preserved, related-document external reads denied.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_diagnostics.py -v` red, implement capability-bound pull handling and SDK wrapper, then green. No sleeps or push-cache fallback.
-- [ ] Run same-pattern real integration suite to prove error→repair→empty and dependency edits through actual ty/MCP. Gate P3/S6 diagnostic portion; routine gate, commit.
+- [x] Write `test_full_and_unchanged_resultid`, `test_unchanged_without_cache_is_protocol_error`, `test_pull_error_is_not_empty_success`, `test_repair_and_dependency_change`. Assert cache invalidates on generation change, full current diagnostics used, codes/severity/ranges preserved, related-document external reads denied.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_diagnostics.py -v` red, implement capability-bound pull handling and SDK wrapper, then green. No sleeps or push-cache fallback.
+- [x] Run same-pattern real integration suite to prove error→repair→empty and dependency edits through actual ty/MCP. Gate P3/S6 diagnostic portion; routine gate, commit.
 
 ### T7: Pure immutable edit plans and preview identity
 

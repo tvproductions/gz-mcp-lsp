@@ -1,6 +1,7 @@
 """Bounded generation leases and saved-file synchronization for one ty session."""
 
 import asyncio
+import hashlib
 import re
 from collections import OrderedDict
 from collections.abc import AsyncGenerator, Callable, Sequence
@@ -45,6 +46,8 @@ class Documents:
         self._closed = False
         self._failed_transition = False
         self._generation = ""
+        self._manifest_digest = ""
+        self._epoch = 0
         self._opened: OrderedDict[str, Snapshot] = OrderedDict()
         self._users: dict[str, int] = {}
 
@@ -57,7 +60,8 @@ class Documents:
     async def start(self) -> None:
         """Seed scope before starting the child, without choosing a document."""
 
-        self._generation = await self._manifest()
+        self._manifest_digest = await self._manifest()
+        self._generation = _generation_token(self._manifest_digest, self._epoch)
         self.session.generation = self._generation
 
     async def _manifest(self) -> str:
@@ -74,19 +78,23 @@ class Documents:
         ):
             raise AdapterError("SERVER_EXITED", "Language-server session exited unexpectedly")
         manifest = await self._manifest()
-        if manifest != self._generation:
+        if manifest != self._manifest_digest:
             self._invalidate()
         if self.invalidated.is_set():
             async with self._drained:
                 await self._drained.wait_for(lambda: self._active == 0)
+            next_epoch = self._epoch + 1
+            generation = _generation_token(manifest, next_epoch)
             try:
-                await self.session.restart(manifest)
+                await self.session.restart(generation)
             except BaseException:
                 self._failed_transition = True
                 raise
             self._opened.clear()
             self._users.clear()
-            self._generation = manifest
+            self._manifest_digest = manifest
+            self._epoch = next_epoch
+            self._generation = generation
             self.invalidated.clear()
         elif self.session.state != "READY":
             raise AdapterError("SERVER_EXITED", "Language-server session is not ready")
@@ -106,7 +114,7 @@ class Documents:
     async def _validate(self, context: GenerationContext) -> None:
         if context.generation != self._generation or self.invalidated.is_set():
             raise AdapterError("STALE_DOCUMENT", "Semantic result belongs to an old generation")
-        if await self._manifest() != context.generation:
+        if await self._manifest() != self._manifest_digest:
             self._invalidate()
             raise AdapterError("STALE_DOCUMENT", "Workspace changed during the semantic operation")
         if self.session.state != "READY":
@@ -153,6 +161,11 @@ class Documents:
         await self._validate(context)
         if context.rpc is not self.session.rpc:
             raise AdapterError("STALE_DOCUMENT", "Document lease belongs to an old transport")
+        path = await _owned_io(self.workspace.path, uri)
+        if not self.workspace.tracked(path):
+            raise AdapterError(
+                "UNSUPPORTED", "Semantic document is outside the tracked source scope"
+            )
         key = await _owned_io(self.workspace.canonical_uri, uri)
         async with self._open_lock:
             snapshot = await _owned_io(self.workspace.read, uri)
@@ -274,6 +287,10 @@ class Documents:
                             "textDocument/didClose", {"textDocument": {"uri": uri}}
                         )
             self._opened.clear()
+
+
+def _generation_token(manifest: str, epoch: int) -> str:
+    return hashlib.sha256(f"{manifest}:{epoch}".encode("ascii")).hexdigest()
 
 
 async def _owned_io[T](call: Callable[..., T], *args) -> T:

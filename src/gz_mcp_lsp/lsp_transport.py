@@ -64,6 +64,7 @@ class RpcClient:
         self._callbacks: set[asyncio.Task[None]] = set()
         self._reader_task: asyncio.Task[None] | None = None
         self._error: AdapterError | None = None
+        self._failed = asyncio.Event()
         self._next_id = 0
         self._closed = False
 
@@ -90,6 +91,13 @@ class RpcClient:
             if not future.done():
                 future.set_exception(AdapterError(self._error.code, self._error.message))
         self._pending.clear()
+        self._failed.set()
+
+    async def wait_failure(self) -> AdapterError:
+        """Allow the session to supervise wire failure even when no request is active."""
+        await self._failed.wait()
+        assert self._error is not None
+        return self._error
 
     def _check(self) -> None:
         if self._error is not None:

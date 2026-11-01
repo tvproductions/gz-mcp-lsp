@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Implement T3 one-child ty lifecycle and official SDK stdio CLI, rejecting
+  unsolicited edits and unreaped-child replacement. Verify actual ty startup,
+  MCP framing/EOF and installed command behavior; semantic catalog awaits T4.
+
 - Implement T2 bounded LSP byte framing, response correlation, callbacks,
   cancellation/deadlines and failure cleanup; add eleven controlled-stream tests.
   Real-server and MCP interoperability remain unaccepted.

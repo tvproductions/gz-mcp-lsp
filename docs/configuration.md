@@ -1,7 +1,7 @@
 # Application settings
 
-T1 implements the JSON loader and workspace primitives. The MCP CLI/lifecycle is
-not yet available; the examples become launchable at T3/T4. Application settings
+T1 implements the JSON loader and workspace primitives; T3 adds the stdio CLI and
+single-child lifecycle. The intermediate catalog remains empty until T4 adds hover. Application settings
 have no environment-variable overrides. Native Codex TOML remains a separate format.
 
 Required keys:

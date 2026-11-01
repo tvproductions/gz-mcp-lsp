@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is in progress.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 is in progress.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
@@ -186,9 +186,9 @@ T3's lifecycle tests do not certify recovery before that integration exists.
 
 **Test assertion anchors:** `self.assertEqual(fake.initialize_count, 1)`; `self.assertEqual(fake.initialized_count, 1)`; `self.assertFalse(reply["applied"])`; `self.assertIsNotNone(child.returncode)` after cleanup.
 
-- [ ] Write `test_initialize_once_handlers_ready`, `test_applyedit_denied`, `test_startup_failure_reaped`, `test_parent_eof_and_shutdown_timeout`, `test_stdio_no_log_bytes`, SDK initialize/tools/list/call tests. Assert callbacks before initialized, correct configuration cardinality, UTF-16 negotiation and no leaked child after repeated cleanup. Use fake subprocess, never a readiness sleep.
-- [ ] Run those suites red, implement lifecycle/stdio composition and missing cleanup; keep no semantic success stubs. Update artifact tests to exercise installed `--help`/bad config and package origin without source-path injection.
-- [ ] Verify actual pinned ty initialization through the transport and record negotiated capabilities. Do not claim an MCP semantic read at T3. T4 owns the production hover wrapper/operation and fixture required for the first actual installed MCP→adapter→ty read. Routine gate and commit; phase 1 remains unaccepted until T4 passes G1.
+- [x] Write `test_initialize_once_handlers_ready`, `test_applyedit_denied`, `test_startup_failure_reaped`, `test_parent_eof_and_shutdown_timeout`, `test_stdio_no_log_bytes`, SDK initialize/tools/list/call tests. Assert callbacks before initialized, correct configuration cardinality, UTF-16 negotiation and no leaked child after repeated cleanup. Use fake subprocess, never a readiness sleep.
+- [x] Run those suites red, implement lifecycle/stdio composition and missing cleanup; keep no semantic success stubs. Update artifact tests to exercise installed `--help`/bad config and package origin without source-path injection.
+- [x] Verify actual pinned ty initialization through the transport and record negotiated capabilities. Do not claim an MCP semantic read at T3. T4 owns the production hover wrapper/operation and fixture required for the first actual installed MCP→adapter→ty read. Routine gate and commit; phase 1 remains unaccepted until T4 passes G1.
 
 ### T4: Saved-file documents, bounded generations and real interoperability fixture
 

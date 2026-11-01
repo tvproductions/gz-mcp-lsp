@@ -3,7 +3,7 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation underway at T2.
+**Status: plan approved on 2026-11-01; implementation underway at T3.
 No accepted MCP capabilities exist yet.**
 
 The intended path is:
@@ -61,15 +61,17 @@ analysis remains outside routine hooks and CI; see the evidence record.
 
 Install only the scaffold wheel for packaging inspection with
 `uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.1.0-py3-none-any.whl`.
-The scaffold declares the reviewed official mcp==2.3.0 dependency. There is no usable
-MCP command or published installation yet. No PyPI release or
-tag has been published. Development was observed on macOS arm64; CI verifies
-Linux. Windows runtime support remains a proposed validation target.
+The development package declares official mcp==2.3.0 and provides the stdio CLI
+`gz-mcp-lsp --config /absolute/path/to/settings.json`. T3 proves startup and cleanup;
+the intermediate tool catalog is empty until T4 adds hover. There is no published installation yet. No PyPI release or
+tag has been published. Historical scaffold evidence covers macOS/Linux; current
+T0-T3 lifecycle, SDK and packaging checks ran on Windows x86_64. Linux/macOS runtime
+and Windows semantic acceptance remain future platform evidence.
 
-## Codex registration proposal
+## Codex registration (development)
 
-The following is a **future example**, not an executable installation instruction.
-It assumes the review approves a `gz-mcp-lsp --config` command and settings schema.
+The CLI and JSON schema exist locally; semantic tools and real Codex acceptance
+remain under implementation. This example requires a separately installed development wheel.
 Provision the adapter and ty before registration; do not use request-time `uvx`
 or another launcher that may fetch dependencies.
 
@@ -81,7 +83,7 @@ startup_timeout_sec = 30
 tool_timeout_sec = 60
 ```
 
-Example proposed application `settings.json`:
+Example application `settings.json`:
 
 ```json
 {
@@ -92,11 +94,11 @@ Example proposed application `settings.json`:
 }
 ```
 
-The T1 settings loader implements this JSON contract, without environment-variable
-overrides; see [configuration](docs/configuration.md). The MCP CLI is not yet implemented. Codex's native TOML remains its own contract.
+The settings loader implements this JSON contract without environment-variable
+overrides; see [configuration](docs/configuration.md). The CLI fixes transport to stdio. Codex's native TOML remains its own contract.
 The host supports stdio launch commands in trusted project `.codex/config.toml`;
 see [official Codex MCP documentation](https://learn.chatgpt.com/docs/extend/mcp).
-Do not add this hypothetical entry to the adopted engineering plugin configuration yet.
+Do not add this development entry to the adopted engineering plugin configuration yet.
 
 ## Contribution and security
 

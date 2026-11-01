@@ -9,6 +9,7 @@ import tarfile
 import tempfile
 import tomllib
 import zipfile
+from configparser import ConfigParser
 from email.parser import Parser
 from pathlib import Path
 
@@ -37,6 +38,15 @@ def verify_archives(wheel: Path, sdist: Path, version: str) -> None:
         if any(name.startswith(("skills_first_starter/", "tests/", "tools/")) for name in names):
             raise ValueError("Wheel includes starter runtime or development files")
         info = archive.read(f"gz_mcp_lsp-{version}.dist-info/METADATA").decode()
+        entries = ConfigParser()
+        entry_path = f"gz_mcp_lsp-{version}.dist-info/entry_points.txt"
+        if entry_path not in names:
+            raise ValueError("Missing CLI entry point")
+        entries.read_string(archive.read(entry_path).decode("utf-8"))
+        if "console_scripts" not in entries or dict(entries["console_scripts"]) != {
+            "gz-mcp-lsp": "gz_mcp_lsp.cli:main"
+        }:
+            raise ValueError("Unexpected CLI entry points")
         message = Parser().parsestr(info)
         if message["Name"] != "gz-mcp-lsp" or message["Version"] != version:
             raise ValueError("Unexpected distribution identity")
@@ -76,6 +86,22 @@ def main() -> None:
             "'sdk_version': importlib.metadata.version('mcp')}))",
             cwd=directory,
         )
+        command = scripts / ("gz-mcp-lsp.exe" if os.name == "nt" else "gz-mcp-lsp")
+        run(str(command), "--help", cwd=directory)
+        invalid = subprocess.run(
+            [str(python), "-I", "-m", "gz_mcp_lsp", "--config", str(directory / "missing.json")],
+            cwd=directory,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
+            timeout=30,
+        )
+        if invalid.returncode != 2 or invalid.stdout:
+            raise ValueError("Installed CLI did not reject missing configuration cleanly")
+        if json.loads(invalid.stderr)["error"]["code"] != "INVALID_INPUT":
+            raise ValueError("Installed CLI did not return its typed configuration error")
         installed = json.loads(result.stdout)
         if installed["version"] != version:
             raise ValueError("Installed version differs from metadata")

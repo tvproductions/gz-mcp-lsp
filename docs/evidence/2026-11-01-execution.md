@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is in progress.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 is in progress.
 No runtime tool is accepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -43,3 +43,7 @@ acceptance follows. The portability regression brings the total suite to 28 test
 T2: [transport evidence](2026-11-01-transport.md) records eleven passing byte-stream
 tests; the full suite now has 39 passing tests. Real ty/MCP interoperability is
 not yet accepted.
+
+T3: [lifecycle/CLI evidence](2026-11-01-session-cli.md) records 54 passing tests,
+actual pinned-ty initialization/reaping, real MCP stdio startup/EOF and clean
+installed CLI behavior. G1 still requires T4's production hover and generations.

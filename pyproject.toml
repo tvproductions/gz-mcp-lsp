@@ -1,7 +1,7 @@
 [project]
 name = "gz-mcp-lsp"
 version = "0.1.0"
-description = "LSP-to-MCP semantic navigation and guarded source changes (design stage)"
+description = "LSP-to-MCP semantic navigation and guarded source changes (in development)"
 readme = "README.md"
 requires-python = ">=3.14,<3.15"
 license = "MIT"
@@ -9,6 +9,9 @@ license-files = ["LICENSE", "NOTICE"]
 dependencies = [
     "mcp==2.3.0",
 ]
+
+[project.scripts]
+gz-mcp-lsp = "gz_mcp_lsp.cli:main"
 
 [build-system]
 requires = ["uv_build==0.13.6"]

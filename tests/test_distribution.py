@@ -25,6 +25,11 @@ class DistributionGuardTests(unittest.TestCase):
             )
         self.assertEqual(result.stdout, "\ufffd")
 
+    def test_console_entry_point_is_required(self):
+        """A runtime distribution must provide its one approved stdio command."""
+        with self.assertRaisesRegex(ValueError, "entry"):
+            self.check_artifacts(entry_points="")
+
     def test_sdk_metadata_is_accepted(self):
         """The declared official SDK is the sole allowed runtime requirement."""
         try:
@@ -97,6 +102,7 @@ class DistributionGuardTests(unittest.TestCase):
         metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\nRequires-Dist: mcp==2.3.0\n",
         extra_wheel_file=None,
         extra_source_file=None,
+        entry_points="[console_scripts]\ngz-mcp-lsp = gz_mcp_lsp.cli:main\n",
     ):
         """Build invented archives to test acceptance and failure behavior."""
         with tempfile.TemporaryDirectory() as temporary:
@@ -105,6 +111,7 @@ class DistributionGuardTests(unittest.TestCase):
             with zipfile.ZipFile(wheel, "w") as archive:
                 archive.writestr("gz_mcp_lsp/py.typed", "")
                 archive.writestr("gz_mcp_lsp-0.1.0.dist-info/METADATA", metadata)
+                archive.writestr("gz_mcp_lsp-0.1.0.dist-info/entry_points.txt", entry_points)
                 if extra_wheel_file:
                     archive.writestr(extra_wheel_file, "")
             with tarfile.open(sdist, "w:gz") as archive:

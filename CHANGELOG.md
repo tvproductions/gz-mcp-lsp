@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Complete T11 installed nine-tool coverage with shared_runtime/run_shared_cli
+  and three importing packages, exact artifact origin and stronger license/resource
+  guards. Record actual Codex model-driven reads, native mutation accept/decline,
+  unchanged denied hashes and timeout/death/EOF reaping over the Windows-to-Linux
+  bridge. Print CI platform skip inventories and add isolated registration examples.
+  Preserve programmatic-approval limits and T12/T13 acceptance gaps.
+
 - Implement T10 document_symbols, workspace_symbols and implementations with
   preserved hierarchy/duplicates, honest unresolved ranges, advertised resolution,
   external scope metadata and generation-pinned search/resolve. Add installed

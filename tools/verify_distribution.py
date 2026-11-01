@@ -35,6 +35,11 @@ def verify_archives(wheel: Path, sdist: Path, version: str) -> None:
         names = archive.namelist()
         if "gz_mcp_lsp/py.typed" not in names:
             raise ValueError("Wheel is missing the typing marker")
+        if "gz_mcp_lsp/cli.py" not in names:
+            raise ValueError("Wheel is missing its CLI module")
+        for notice in ("LICENSE", "NOTICE"):
+            if f"gz_mcp_lsp-{version}.dist-info/licenses/{notice}" not in names:
+                raise ValueError(f"Wheel is missing {notice}")
         if any(name.startswith(("skills_first_starter/", "tests/", "tools/")) for name in names):
             raise ValueError("Wheel includes starter runtime or development files")
         info = archive.read(f"gz_mcp_lsp-{version}.dist-info/METADATA").decode()
@@ -56,6 +61,9 @@ def verify_archives(wheel: Path, sdist: Path, version: str) -> None:
             raise ValueError("Unexpected runtime dependencies; require exactly mcp==2.3.0")
     with tarfile.open(sdist) as archive:
         names = archive.getnames()
+        for notice in ("LICENSE", "NOTICE"):
+            if f"gz_mcp_lsp-{version}/{notice}" not in names:
+                raise ValueError(f"Source archive is missing {notice}")
         if any("/.venv/" in name for name in names):
             raise ValueError("Source archive contains a development environment")
         if not any(name.endswith("/tests/README.md") for name in names):

@@ -1,11 +1,13 @@
 # Documentation scope
 
-The [implementation handoff](handoff.md) is the current resume point: T0-T10 complete,
-T11 next on main, one bounded stage per session. The
+The [implementation handoff](handoff.md) is the current resume point: T0-T11 implemented,
+T12 next on main after the final exact-commit platform gate, one bounded stage per session. The
 [consolidation record](evidence/2026-11-01-main-consolidation.md) preserves both
 branch histories and the user-selected runtime. Git sync does not waive gaps.
 
 [Application settings](configuration.md) documents JSON settings, all nine tools and the mutation contract.
+The [T11 native receipt](evidence/2026-11-01-codex-acceptance.md) records installed
+and actual Codex evidence; its final synchronization response identifies exact-commit CI.
 
 The [November 1 execution record](evidence/2026-11-01-execution.md) records the
 user's subsequent approval and current T0-T13 execution state. The planning-only

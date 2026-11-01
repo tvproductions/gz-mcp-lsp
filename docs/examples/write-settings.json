@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "workspace_root": "/home/operator/gz-acceptance/workspace",
+  "ty_executable": "/home/operator/gz-tools/bin/ty",
+  "state_directory": "/home/operator/gz-acceptance/private-state",
+  "mutations": {
+    "enabled": true,
+    "writable_roots": ["/home/operator/gz-acceptance/workspace"]
+  }
+}

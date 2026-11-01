@@ -18,7 +18,8 @@ Read `docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`,
 `docs/superpowers/plans/2026-10-28-reference-parity.md`. They are approved execution
 artifacts; see `docs/evidence/2026-11-01-execution.md` for approval, progress and
 remaining acceptance gaps. Resume through docs/handoff.md, one bounded stage
-per session; T10 is complete and T11 is next. Earlier planning-only receipts remain historical.
+per session; T11 is implemented with native host evidence and T12 is next after
+the exact-commit platform gate. Earlier planning-only receipts remain historical.
 
 Use adopted Superpowers for feature design and gz-skills gzs-router for portable
 engineering selection. The user explicitly selected lite through gzs-project-setup.
@@ -67,8 +68,9 @@ uv run --locked python tools/verify_distribution.py
 
 The four hooks are Ruff check, Ruff format, ty and unittest. The unittest hook
 runs tests/, including distribution, protocol, semantic/installed integrations
-and pure edit-planning tests. T0-T10 are implemented; runtime mutations remain
-disabled by default and unsupported on Windows. T11 host acceptance is pending.
+and pure edit-planning tests. T0-T11 are implemented; runtime mutations remain
+disabled by default and unsupported on Windows. The final sync response records
+T11's exact-commit three-platform CI; T12/T13 strict acceptance remains pending.
 Inherited utility tests remain outside routine CI and run explicitly:
 `uv run --locked --group hygiene python -m unittest discover -s tools/engineering -p 'test_*.py' -v`.
 Verify relevant effective configuration, interpreter/tool provenance and artifacts

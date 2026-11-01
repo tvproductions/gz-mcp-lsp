@@ -3,8 +3,8 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation complete through T10; paused at a stage boundary.
-All nine tools have implementation evidence, including installed MCP/ty symbol extensions on Windows;
+**Status: plan approved on 2026-11-01; implementation and native host evidence complete through T11; paused at a stage boundary.
+All nine tools have installed MCP/ty evidence and actual Codex invocation/approval checks;
 the full milestone remains unaccepted.**
 
 The intended path is:
@@ -26,8 +26,9 @@ server or general-purpose LSP framework is planned. The complete milestone is
 accepted parity, semantic corrections/extensions, real Codex interoperability,
 engineering evidence, then a deliberate stop.
 
-Continue from the [bounded implementation handoff](docs/handoff.md); T11 is next.
-See [T10 symbol-extension evidence](docs/evidence/2026-11-01-symbols.md) for current verification limits.
+Continue from the [bounded implementation handoff](docs/handoff.md); T12 is next
+after the final exact-commit platform gate. See
+[T11 acceptance evidence](docs/evidence/2026-11-01-codex-acceptance.md) for verification limits.
 
 Read the [revised architectural specification](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),
 [version-pinned parity assessment](docs/discovery/reference-parity.md),
@@ -57,7 +58,7 @@ uv run --locked python tools/verify_distribution.py
 If machine uv differs, use `uv tool run --from uv==0.13.6 uv ...`; ensure nested
 hooks resolve uv 0.13.6 too. Do not bypass the project version check.
 The four routine hooks run Ruff check/format, ty and unittest, including actual
-pinned-ty and outside-checkout installed hover integration tests. Fixture setup
+pinned-ty and outside-checkout installed nine-tool integration tests. Fixture setup
 uses the exported runtime lock graph before MCP calls. Packaging checks alone
 are not semantic acceptance. Inherited
 engineering utility tests run separately, outside the routine gate. Deeper adoption/release
@@ -77,8 +78,10 @@ commit through the Actions link in the handoff.
 
 ## Codex registration (development)
 
-The CLI and JSON schema exist locally; semantic tools and real Codex acceptance
-remain under implementation. This example requires a separately installed development wheel.
+The CLI, JSON schema and all nine tools exist in the development package.
+The [T11 acceptance record](docs/evidence/2026-11-01-codex-acceptance.md) distinguishes
+installed/runtime checks, native host approval protocol evidence and platform results.
+This example requires a separately installed development wheel.
 Provision the adapter and ty before registration; do not use request-time `uvx`
 or another launcher that may fetch dependencies.
 
@@ -88,6 +91,12 @@ command = "/absolute/path/to/preinstalled/bin/gz-mcp-lsp"
 args = ["--config", "/absolute/path/to/settings.json"]
 startup_timeout_sec = 30
 tool_timeout_sec = 60
+
+[mcp_servers.gz_mcp_lsp.tools.rename_symbol]
+approval_mode = "prompt"
+
+[mcp_servers.gz_mcp_lsp.tools.edit_file]
+approval_mode = "prompt"
 ```
 
 Example application `settings.json`:
@@ -106,6 +115,8 @@ overrides; see [configuration](docs/configuration.md). The CLI fixes transport t
 The host supports stdio launch commands in trusted project `.codex/config.toml`;
 see [official Codex MCP documentation](https://learn.chatgpt.com/docs/extend/mcp).
 Do not add this development entry to the adopted engineering plugin configuration yet.
+For a supported Linux adapter launched by a Windows host, see the
+[isolated WSL registration example](docs/examples/codex-wsl.toml).
 
 ## Contribution and security
 

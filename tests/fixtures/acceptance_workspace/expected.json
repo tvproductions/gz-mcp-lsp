@@ -1,0 +1,13 @@
+{
+  "definition": {"file": "shared_runtime/__init__.py", "line": 0, "character": 4},
+  "calls": [
+    {"file": "package_a/__init__.py", "line": 2, "character": 9},
+    {"file": "package_b/__init__.py", "line": 2, "character": 9},
+    {"file": "package_c/__init__.py", "line": 2, "character": 9}
+  ],
+  "imports": [
+    {"file": "package_a/__init__.py", "line": 0, "character": 27},
+    {"file": "package_b/__init__.py", "line": 0, "character": 27},
+    {"file": "package_c/__init__.py", "line": 0, "character": 27}
+  ]
+}

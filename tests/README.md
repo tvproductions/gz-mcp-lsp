@@ -1,7 +1,11 @@
 # Product tests
 
-T0/T1 tests JSON configuration, workspace identity/coordinates and dependency-aware distribution guards and the selected official SDK's
-Python 3.14 dataclass schema, structured results, raw-input middleware and incoming
-cancellation. They do not certify adapter semantics or ty interoperability.
-Real-server integration tests will enter ordinary discovery as runtime tasks land.
+The ordinary unittest suite covers configuration, workspace identity/UTF-16
+coordinates, framing, lifecycle, saved generations, all nine tools, mutation
+planning/transactions/recovery and the official SDK boundary. Integration tests
+provision pinned ty before requests and install runtime-only wheels outside the
+checkout. The acceptance workspace has shared_runtime/run_shared_cli, three
+importing packages and independent expected coordinates. POSIX write tests have
+explicit Windows exclusions; Windows disabled/unsupported mutation denials run.
+These SDK tests do not substitute for native Codex approval/denial transcripts.
 Inherited engineering-tool tests live in `tools/engineering/` and run separately.

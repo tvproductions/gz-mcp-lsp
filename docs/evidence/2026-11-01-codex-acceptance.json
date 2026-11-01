@@ -1,0 +1,140 @@
+{
+  "stage": "T11",
+  "runtime_base_commit": "a71bcd445f47dac46a43812b9c996cb87b71bfd0",
+  "host_version": "codex-cli 0.166.0",
+  "python_version": "3.14.10",
+  "uv_version": "0.13.6",
+  "ty_version": "0.0.95",
+  "mcp_version": "2.3.0",
+  "bridge": "Windows AMD64 Codex app-server -> wsl.exe -> Linux x86_64 native-local installed console -> ty",
+  "installed_origin_outside_checkout": true,
+  "runtime_only_environment": true,
+  "source_sha256": {
+    "src/gz_mcp_lsp/__init__.py": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+    "src/gz_mcp_lsp/__main__.py": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a",
+    "src/gz_mcp_lsp/_posix_files.py": "1967c7e9c6b8aad7c4902d7c2bb8f674e252936655487205a172f89ac1c13821",
+    "src/gz_mcp_lsp/cli.py": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a",
+    "src/gz_mcp_lsp/config.py": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a",
+    "src/gz_mcp_lsp/diagnostics.py": "928d3ff1211662eb73bcf27fc409566ffdfb3fe7e08233e039c50cc2fe5f4865",
+    "src/gz_mcp_lsp/documents.py": "2964e1f085e30ca359e787da80b20ae0b1b26b99130aa53593759a0c6c098106",
+    "src/gz_mcp_lsp/edit_plan.py": "ff8efbb0d5c289c9dbbc5d363829836ab917e0429ef31304e0cb89845eee5523",
+    "src/gz_mcp_lsp/filesystem.py": "9bcd796d10685526d5f8ead16452446657712de59daedf2c93c4d6f7688d75f0",
+    "src/gz_mcp_lsp/lsp_transport.py": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334",
+    "src/gz_mcp_lsp/mcp_api.py": "d494cdab3f01a6276b919a143ef873ab825d1d657d928b85ed81c8c2216dad22",
+    "src/gz_mcp_lsp/models.py": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33",
+    "src/gz_mcp_lsp/mutations.py": "c1f9aa37f8e1a29a7887d1ef5628b6dff46c18780a95636eec20f2b82ab6e269",
+    "src/gz_mcp_lsp/navigation.py": "b168a5f7e4d671319fcb9425064617efefd88858fd897bbbd4ea242aaa026918",
+    "src/gz_mcp_lsp/results.py": "cbe8c5d9f54e12936d60a6adb319508765fea3e9660799694a5bf17465492334",
+    "src/gz_mcp_lsp/session.py": "fb164b8acd45efc845e783ce4ef7f344ef6dd43af4e3d9415017971b975a7db4",
+    "src/gz_mcp_lsp/source_text.py": "dcd651ac884dc710d5c1d279877c89b81767ea6222d78a141fbcbad260f0b655",
+    "src/gz_mcp_lsp/workspace.py": "df535627991df49e6e88be4acc0d432813e011c5943580ca0d9761414f4119c4"
+  },
+  "fixture_sha256": {
+    "tests/fixtures/acceptance_workspace/decoy.py": "7e4bc7832df8cf5aecf9af47aca51f75bb64e69fa48399f45eeb25df155df759",
+    "tests/fixtures/acceptance_workspace/expected.json": "2c2b5a21ffa78b0dc6c2fcaa21e813e1d9244dc66796bd291d24706daefe04d4",
+    "tests/fixtures/acceptance_workspace/package_a/__init__.py": "c0532ffed93e16958e47af0121a16002c1040380c34699595292453ec5a1deb4",
+    "tests/fixtures/acceptance_workspace/package_b/__init__.py": "4bb4e17598ec5c1e52703a15fbe96ae63a7be1f227e7daa3580b5b5afee5afa2",
+    "tests/fixtures/acceptance_workspace/package_c/__init__.py": "f492ff4acbba6117c3e38358d7ab0b4961e8a7b070050355ffde5c78b94cbd42",
+    "tests/fixtures/acceptance_workspace/pyproject.toml": "8d6d383420282e7c096eb7d68b3a36b2f86646b1dadea63e640b05a5785aef32",
+    "tests/fixtures/acceptance_workspace/shared_runtime/__init__.py": "ab4679f6ea9061e1ffd40272c2aceb7a679e3812defee2f8a34bf4d217eac485"
+  },
+  "tools": [
+    "definition",
+    "diagnostics",
+    "document_symbols",
+    "edit_file",
+    "hover",
+    "implementations",
+    "references",
+    "rename_symbol",
+    "workspace_symbols"
+  ],
+  "model_driven_reads": {
+    "model_driven_read_tools": [
+      "definition",
+      "diagnostics",
+      "document_symbols",
+      "hover",
+      "implementations",
+      "references",
+      "workspace_symbols"
+    ],
+    "semantic_assertions": "PASS",
+    "adapter_and_ty_reaped": true
+  },
+  "disabled_mutations": "PASS: both denied; all recursive file hashes unchanged",
+  "approval_interface": "Actual native mcpServer/elicitation/request; disposable test client supplies decisions; no GUI/human-click claim",
+  "approval_decisions": [
+    "accept",
+    "decline",
+    "accept",
+    "accept",
+    "accept"
+  ],
+  "mutation_assertions": {
+    "rename_preview_zero_writes": true,
+    "rename_changes_definition_three_imports_three_calls_only": true,
+    "decoy_preserved": true,
+    "denied_apply_zero_adapter_calls": true,
+    "denied_apply_all_hashes_unchanged": true,
+    "edit_preview_zero_writes": true,
+    "edit_exact_after_bytes": true,
+    "post_apply_definition_fresh": true
+  },
+  "failure_cases": [
+    {
+      "scenario": "timeout",
+      "outcome": {
+        "native_error": "{'code': -32603, 'message': 'tool call failed for `gz_acceptance/hover`: timed out awaiting tools/call after 2s'}"
+      },
+      "elapsed_seconds": 2.02,
+      "unchanged_hashes": true,
+      "adapter_and_ty_reaped": true,
+      "app_server_exit": 0
+    },
+    {
+      "scenario": "ty-death",
+      "outcome": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"schema_version\": 1, \"operation\": \"hover\", \"error\": {\"code\": \"SERVER_EXITED\", \"message\": \"Language-server session exited unexpectedly\", \"retryable\": false, \"details\": {}}}"
+          }
+        ],
+        "structuredContent": {
+          "schema_version": 1,
+          "operation": "hover",
+          "error": {
+            "code": "SERVER_EXITED",
+            "message": "Language-server session exited unexpectedly",
+            "retryable": false,
+            "details": {}
+          }
+        },
+        "isError": true
+      },
+      "elapsed_seconds": 0.0,
+      "unchanged_hashes": true,
+      "adapter_and_ty_reaped": true,
+      "app_server_exit": 0
+    },
+    {
+      "scenario": "adapter-death",
+      "outcome": {
+        "native_error": "{'code': -32603, 'message': 'tool call failed for `gz_acceptance/hover`: Transport closed'}"
+      },
+      "elapsed_seconds": 0.02,
+      "unchanged_hashes": true,
+      "adapter_and_ty_reaped": true,
+      "app_server_exit": 0
+    }
+  ],
+  "normal_eof_adapter_and_ty_reaped": true,
+  "private_transcript_sha256": {
+    "t11-native-raw.json": "ac349d3ba0d967090cfbf96b720541c2ac655f45dc0741be1613d57d5b08d2e2",
+    "t11-native-model-reads-raw.json": "bb05105c261691533281bcd077fc0b1801184b429fb762fb61af5323ad168266",
+    "t11-native-failures-raw.json": "3c7499ac20f07435bad2cf91cecef7ec018283ed6a2ca668027d95f2344c8e02"
+  },
+  "platform_evidence": "Windows and Linux local gates; final exact-commit three-platform CI identified in the stage sync response",
+  "milestone_acceptance": "NOT CLAIMED: T12/T13 engineering and whole-branch review remain"
+}

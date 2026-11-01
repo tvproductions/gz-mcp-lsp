@@ -15,8 +15,14 @@ rename/edit are included in the revised parity objective; they require authority
 
 New semantic capabilities need red/green tests at their public seam, deterministic
 structured results, Unicode/URI edge cases, real pinned-ty fixture evidence and
-an installed-artifact check. The current unittest hook runs distribution guards. Semantic tests must join
-the routine gate with approved implementation.
+an installed-artifact check. The unittest hook includes distribution guards,
+actual pinned-ty and runtime-only outside-checkout tests of all nine tools.
+The acceptance fixture contains shared_runtime/run_shared_cli and three importing
+packages with independently enumerated identifier positions. Platform-specific
+write tests run on Linux x86_64/macOS arm64; Windows verifies reads and mutation
+denial. Keep skip inventories visible in CI. Native host acceptance additionally
+requires real Codex transcripts and approval/denial evidence; direct SDK tests
+cannot substitute for it. See [T11 acceptance](docs/evidence/2026-11-01-codex-acceptance.md).
 Deeper analysis runs at adoption/release acceptance separately from routine CI.
 See the initialization record for unresolved requirements.
 

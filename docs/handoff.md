@@ -1,69 +1,83 @@
 # Implementation handoff — 2026-11-01
 
-**T0-T10 complete. Resume T11 only on the next continuation.** The user's
-continuation executed the approved T10 symbol extensions on main. Stop at this
-stage boundary; installed/native host acceptance belongs to T11.
+**T0-T11 implemented, with actual installed/native host evidence. Stop before T12.**
+The final synchronization response must report the exact final commit's platform
+CI before T11 is treated as accepted. The user requested T11 completion and
+instructed that accepted branches/worktrees be merged to main and removed.
 
 ## Workspace and verified checkpoints
 
-Continue on **main in the primary checkout**, without creating a linked worktree.
-T10 starts at consolidation commit `0dbd303`; the stage commit is identified in
-Git history and the final response. This continuation authorizes the bounded
-stage commit, not a new push, tag or release. Local/remote alignment therefore
-must be reported separately. No T10 exact-commit hosted CI is claimed here.
+Continue on **main in the primary checkout** after the final acceptance sync.
+T10 is `a71bcd445f47dac46a43812b9c996cb87b71bfd0`; T11 adds tests, distribution
+checks, host examples and evidence without changing that runtime source tree.
+The final response identifies the T11 commit, exact-commit three-platform CI,
+local/remote SHA alignment and branch cleanup. No tag or release is authorized.
 
-The retained T9 runtime is `5a2d662ab0a60b6771fefef4ff7b37e4c83ac928`;
-[its CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
-passed Linux x86_64, macOS arm64 and Windows AMD64. That result does not certify
-T10 changes. See [T10 evidence](evidence/2026-11-01-symbols.md) for local verification.
-The [consolidation record](evidence/2026-11-01-main-consolidation.md) preserves
-both histories, the independent read-first tree, original pending planning files
-and archived execution ledgers. Do not restore superseded planning status.
+[T11 evidence](evidence/2026-11-01-codex-acceptance.md) and its
+[sanitized native receipt](evidence/2026-11-01-codex-acceptance.json) record actual
+observations. Raw host transcripts remain private and untracked. The
+[consolidation record](evidence/2026-11-01-main-consolidation.md) preserves both
+older histories, the independent read-first implementation and archived planning
+files/ledgers. Do not restore superseded status over current evidence.
 
-## Implemented behavior and seams
+## Implemented contracts and seams
 
 The catalog is exactly definition, references, diagnostics, hover, rename_symbol,
 edit_file, document_symbols, workspace_symbols and implementations.
 
-- Documents owns saved-file generations, reader admission, exclusive draining,
+- Documents owns saved-file generation admission, reader/exclusive draining,
   final manifest validation and post-commit synchronization/invalidation.
-- Navigation reuses one document-symbol RPC for declaration extraction and the
-  public symbol tool. Hierarchy, duplicates and full/selection ranges survive.
-  Flat and URI-only symbols never acquire invented identifier selections.
-- Workspace search holds Documents.generation() through search, advertised
-  resolution, normalization, scope classification and final validation. Empty
-  workspaces need no document/didOpen. Changed search/resolve rejects stale results.
-- Implementations forwards exact UTF-16 positions. Pinned ty includes the queried
-  declaration as well as subclasses/member overrides. External targets are marked
-  metadata. No external source is opened by the three extensions.
+- Navigation preserves exact identifier positions, hierarchy, duplicate symbols,
+  full/selection ranges and honest unresolved URI-only symbols. Workspace search
+  holds generation() through advertised resolution, normalization and final checks;
+  it never opens a synthetic document. External targets are marked metadata.
 - Diagnostics uses current pull reports and identity-bound caching. EditPlan
-  values are immutable; the planner validates complete WorkspaceEdits without IO.
+  values are immutable; complete WorkspaceEdits are validated without planner IO.
 - Transactions owns private journals, same-filesystem staging, state locking,
   exact bytes/modes, safe rollback, durable receipts and conservative recovery.
-- Mutations composes those services with retained bounded previews. Production
-  lifespan finishes authorized recovery before mutation admission.
+- Mutations retains bounded previews and composes those services. Production
+  startup finishes authorized recovery before mutation admission.
 
 All successes use schema_version, operation, position_encoding, result,
 workspace_generation, documents and complete. Preview metadata is under result:
 result.plan_id, result.files and result.annotations. Apply result is the durable
-disk receipt; semantic_state is separate. Never report committed disk writes as
-rolled back because later LSP synchronization failed.
+disk receipt; semantic_state is separate. A semantic synchronization failure
+cannot relabel committed disk writes as rolled back.
 
-Writes default to disabled. Enabled writes require bounded operator roots plus
-private same-filesystem state on Linux x86_64/macOS arm64; Windows writes are
-unsupported. Model approval flags are rejected; a plan token is not authenticated
-human consent. Independent writers are not serialized by the private adapter
-lock; a quiescent workspace is required.
+Writes default to disabled. Enabled writes require bounded operator roots and
+private same-filesystem state on Linux x86_64/macOS arm64; Windows writes remain
+unsupported. Plan identity is not authenticated human consent. Model approval
+flags are rejected. Native host approval is separate from operator authority.
+The adapter lock does not serialize independent writers; use a quiescent workspace.
 
-## Verification baseline
+## T11 verification and host proof
 
-T10 discovers **181 tests**. The Windows gate passes with **25 POSIX-only tests
-not applicable**. Installed outside-checkout MCP/real-ty tests cover hierarchy,
-duplicate names, subclass/member implementation locations, empty workspaces and
-fresh search after creation. A real-ty search changed before final validation
-returns STALE_DOCUMENT; controlled fake barriers prove search and resolve races.
-The focused review's external-symbol scope finding was fixed with a failing
-regression test. This is a T10 review, not T13's fresh whole-branch review.
+The suite discovers **186 tests**. Windows excludes **26 POSIX-only tests**;
+POSIX excludes the one Windows-only unsupported-write test. Local Windows/Linux
+four-hook gates, source-independent build, outside-source distribution verification
+and scoped C901 pass. Hosted CI prints the complete platform skip inventory;
+verify the exact final SHA's Linux x86_64/macOS arm64/Windows AMD64 results using
+the immutable run link in the final response. Missing ty is never a passing skip.
+
+Installed runtime-only tests assert exact import origin, no development masking,
+all seven read outcomes, both disabled denials, and supported POSIX rename/edit
+bytes followed by fresh semantics. The shared_runtime/run_shared_cli fixture has
+three importing/calling packages with independent positions and a same-name decoy.
+
+Actual codex-cli 0.166.0 on Windows launches the installed Linux adapter through
+WSL Ubuntu-26.04 with native-local workspace/state. Fresh actual model turns
+invoke all seven read tools and semantically assert results. Native mutation
+preview/apply receives accept/decline/accept/accept/accept: declined apply leaves
+recursive hashes unchanged and sends zero additional adapter tool calls. Both
+accepted mutations have exact after-bytes and fresh post-edit declaration source.
+These are real native protocol decisions supplied by the test client, **not GUI
+or human-click evidence**. No direct SDK test is relabeled as native host proof.
+
+Actual host timeout (2 seconds), ty death, adapter death and normal unsubscribe/
+parent EOF leave hashes unchanged where appropriate and reap the adapter and ty.
+All observed app-server exits are zero. Persistent host config, native caches,
+Backplane and unrelated defaults remain unchanged. Isolated examples live under
+docs/examples/; no engineering plugin registration was added.
 
 Keep CPython **3.14.10**, uv **0.13.6**, MCP SDK **2.3.0** and ty **0.0.95**.
 Nested hooks must resolve the same uv. Required gate:
@@ -75,45 +89,41 @@ uv build --no-sources
 uv run --locked python tools/verify_distribution.py
 ```
 
-The four hooks remain Ruff check, Ruff format, ty and unittest. No pytest.
-No application environment overrides, request-time installation, Backplane,
-second server, generic filesystem operations or unsolicited LSP applyEdit.
+The four hooks remain Ruff check, Ruff format, ty and unittest. No pytest,
+application environment overrides, request-time installation, second server,
+generic filesystem operations or unsolicited LSP applyEdit.
 
-## Next authorized stage: T11 only
+## Next authorized stage: T12 only
 
 Read README.md, AGENTS.md, AGENTS.skills-first.md, current design-revision evidence,
-adopted engineering policies, the approved specification/plan and acceptance matrix.
-Use the [T11 brief](superpowers/plans/2026-10-28-reference-parity.md#t11-installed-distribution-and-actual-codex-host-acceptance).
+adopted engineering policies, specification/plan and acceptance matrix. Use the
+[T12 brief](superpowers/plans/2026-10-28-reference-parity.md#t12-full-affected-input-engineering-acceptance-and-plan-reconciliation).
 
-1. Extend artifact/installed-server checks to the full nine-tool contract, actual
-   ty and runtime-only clean environments. Preserve source independence and origin
-   checks; do not confuse a catalog assertion with semantic acceptance.
-2. Obtain fresh Linux x86_64/macOS arm64 write evidence and Windows read/unsupported
-   write evidence for the exact changed tree, including platform skip inventory.
-3. Use actual Codex to exercise all read tools, disabled mutation denials, enabled
-   previews, host-approved apply and a denied host mutation with unchanged hashes.
-   Native host approval is separate from operator authority and preview identity.
-4. Capture host timeout/ty death/EOF and reaping. H1-H3 require actual host evidence;
-   direct SDK integration is insufficient. If approval interaction is unavailable,
-   keep H2 UNKNOWN. Complete the stage gate/review/commit, then stop before T12.
+1. Run effective interpreter/tool/source provenance and the complete required gate.
+2. Run the adopted deeper analyzers against explicit actual runtime/test scopes:
+   C901, qualified cognitive scoring, Lizard, cohesion, Interrogate, Vulture,
+   Bandit, statement/branch coverage, bounded Cosmic Ray, deptry, pip-audit and
+   Import Linter. Add reviewed import boundary contracts; no new capabilities.
+3. Recheck upstream cognitive qualification and execution-host native discovery/
+   configured Git-source refresh. If required closure is unavailable, retain
+   UNKNOWN/FAIL with owner and external condition; withhold strict acceptance.
+4. Map every P/S/C/D/W/H/E row to observed evidence, inventory platform exclusions,
+   finish stage gate/review/sync, then stop before T13.
 
 ## Remaining acceptance gaps
 
-- T11 full installed/native nine-tool and host mutation approval acceptance;
-  T12 deeper engineering; T13 fresh whole-branch review, acceptance and stop.
-- No T10 Linux/macOS rerun or exact-commit hosted CI is claimed in this session.
-- T4 Codex programmatic allow/deny remains partial H1-H3 evidence, not GUI/human
-  mutation approval. Windows-host/Linux-adapter bridging remains unverified.
-- Final fixtures still need shared_runtime/run_shared_cli and three importing/
-  calling packages with independently enumerated positions.
+- T12 deeper engineering and unresolved cognitive qualification/native discovery;
+  T13 fresh whole-branch review, full milestone acceptance and deliberate stop.
 - Cognitive qualification remains UNKNOWN; complexipy is not a passing authority.
   Native discovery retains duplicate/global-scope FAIL. Preserve caches/defaults.
-  Routine gates and Git synchronization do not waive strict acceptance gaps.
+- Native approval evidence is programmatic actual-host protocol interaction;
+  no GUI/human-action claim is made. No release is accepted or published.
 
 Use the [execution record](evidence/2026-11-01-execution.md),
 [T9 mutation evidence](evidence/2026-11-01-mutations.md),
-[T10 evidence](evidence/2026-11-01-symbols.md) and
-[configuration/request guide](configuration.md). The current ignored task ledger
-is `.superpowers/sdd/2026-10-28-reference-parity/progress.md`; fresh clones use
-tracked evidence and fixtures. Use gh for GitHub reads/authorized writes. Never
-publish private source, journals or transcripts.
+[T10 evidence](evidence/2026-11-01-symbols.md),
+[T11 evidence](evidence/2026-11-01-codex-acceptance.md) and
+[request guide](configuration.md). The ignored task ledger and private native
+transcripts are under .superpowers/sdd/2026-10-28-reference-parity. Fresh clones
+use tracked evidence/fixtures and exact-commit CI. Use gh for GitHub reads and
+authorized writes. Never publish private source, journals or raw host transcripts.

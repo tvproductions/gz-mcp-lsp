@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; T9 is complete; T10 is complete; execution stops before T11.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; T9 is complete; T10 is complete; T11 implementation and native-host evidence are complete. Final platform acceptance requires the exact-commit gate reported in the synchronization response; execution stops before T12.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -95,6 +95,14 @@ explicitly retaining this verified T9 runtime and preserving the independent
 read-first implementation separately. No T10 runtime is added by the merge.
 
 ## Bounded-session handoff
+
+The user then requested T11 completion and directed consolidation of accepted
+branches/worktrees onto main. [T11 evidence](2026-11-01-codex-acceptance.md) records
+runtime-only installed nine-tool checks, actual native/model-driven tool use,
+mutation approval/denial and failure cleanup. A temporary acceptance branch
+obtains exact-commit platform CI before main consolidation; the final response
+records the accepted commit/run and cleanup. This supersedes T10's local-only
+continuation boundary. T12/T13 remain pending; no release is authorized.
 
 The next continuation implemented T10 on the retained main tree. See
 [symbol-extension evidence](2026-11-01-symbols.md) for test-first controls,

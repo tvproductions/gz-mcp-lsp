@@ -26,6 +26,7 @@ jobs:
       - run: uv sync --locked --all-groups
       - name: Verify required interpreter and architecture
         run: uv run --locked python -c "import platform, sys; assert platform.python_version() == '3.14.10'; assert platform.machine() == '${{ matrix.architecture }}'; print(sys.executable, platform.platform())"
-      - run: uv run --locked pre-commit run --all-files
+      - name: Run four hooks with test and platform-skip evidence
+        run: uv run --locked pre-commit run --all-files --verbose
       - run: uv build --no-sources
       - run: uv run --locked python tools/verify_distribution.py

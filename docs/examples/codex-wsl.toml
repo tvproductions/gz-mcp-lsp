@@ -1,0 +1,16 @@
+# Example only: provision the adapter and ty beforehand on native Linux storage.
+# Replace all absolute paths. Keep this out of the project's engineering config.
+[mcp_servers.gz_mcp_lsp]
+command = "wsl.exe"
+args = ["--distribution", "Ubuntu-26.04", "--exec",
+        "/home/operator/gz-runtime/bin/gz-mcp-lsp",
+        "--config", "/home/operator/gz-acceptance/settings.json"]
+startup_timeout_sec = 30
+tool_timeout_sec = 60
+required = true
+
+[mcp_servers.gz_mcp_lsp.tools.rename_symbol]
+approval_mode = "prompt"
+
+[mcp_servers.gz_mcp_lsp.tools.edit_file]
+approval_mode = "prompt"

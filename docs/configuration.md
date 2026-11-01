@@ -108,4 +108,3 @@ the old semantic transport is invalidated. Retrying the same plan retrieves its
 receipt before expiry/session checks. Receipts are retained for explicit operator
 acknowledgment/cleanup; quota exhaustion rejects new writes. Disabled startup
 never restores source merely because recovery files exist.
-

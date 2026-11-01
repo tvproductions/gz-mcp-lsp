@@ -1,65 +1,68 @@
 # Implementation handoff — 2026-11-01
 
-T0–T8 are implemented. **Stop before T9**, as requested by the user.
-Resume one bounded stage per session; the specification and remaining scope
+T0–T9 are implemented. **Stop before T10.**
+Resume one bounded stage per session; the remaining specification and plan
 are approved. Do not restart design review or execute the whole remaining plan.
 
 ## Branch and verification
 
-Use feat/reference-parity and its existing isolated implementation worktree.
+Use feat/reference-parity in its existing isolated implementation worktree.
 The original checkout's pending planning documents remain preserved.
-T8 started from 22fb1ddb9af949aba9a3a91d23cd4ef522ad7d0f; its adapter checkpoint
-ea02dfabb4b31df7672e88d4016d10b25e644441 passed all three hosted lanes in
-[CI 41333910261](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41333910261).
-The final follow-up adds strict lockout-schema validation and explicit UTF-8
-subprocess diagnostic decoding. Obtain its exact SHA/CI result from the final
-sync response or the [branch's Actions runs](https://github.com/tvproductions/gz-mcp-lsp/actions?query=branch%3Afeat%2Freference-parity).
-Do not substitute the checkpoint's CI for a later commit.
+T9 starts from f08cdd77f4f9258d6e967a94a28947863ee6ea81. Implementation checkpoint
+058be37da9d54e310202881ab38f433fb4a70a3e passed all three hosted lanes in
+[CI 41353143416](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41353143416),
+including installed startup recovery and real ty mutation tests on macOS arm64
+and Linux x86_64. The follow-up updates stage progress and this handoff.
+Obtain its exact SHA/CI result from the final sync response or the
+[branch Actions runs](https://github.com/tvproductions/gz-mcp-lsp/actions?query=branch%3Afeat%2Freference-parity).
+A checkpoint's CI does not substitute for the final commit's CI.
 
-The final local suite discovers 131 tests. The complete Windows and native
-Linux/WSL gates, C901 source ceiling 20 and scoped portability audit pass.
-Windows runs zero-write denial and marks 16 POSIX-only tests not applicable.
+The full suite discovers 164 tests. Complete local Windows/native Linux gates,
+C901 source ceiling 20 and scoped portability audit pass. Windows runs explicit
+disabled/unsupported startup denials; 25 POSIX-only tests are not applicable.
+POSIX lanes skip only the Windows-specific unsupported-startup control.
 Pins remain CPython 3.14.10, uv 0.13.6, MCP SDK 2.3.0 and ty 0.0.95.
 Ordinary feature-branch sync is authorized; no merge, force-push, tag or release.
 
 ## Delivered and next stage
 
-T0–T7 provide the official SDK boundary, JSON/workspace primitives, bounded
-transport, one-ty lifecycle/CLI, saved generations/read/exclusive leases,
-definition/references/diagnostics/hover and immutable edit plans.
-T8 adds internal Transactions(config, workspace): recover(), apply(plan),
-receipt(plan_id), private journal/state locking, all-target preflight,
-descriptor-relative no-follow staging/replacement, verified rollback and
-durable recovery/retry receipts. See the [T8 receipt](evidence/2026-11-01-transactions.md).
-Writes are disabled by default and supported only on guarded local Linux
-x86_64/macOS arm64 filesystems. Windows writes are rejected.
+The catalog is **definition, references, diagnostics, hover, rename_symbol,
+edit_file**. T9 supplies strict preview/apply schemas, destructive annotations,
+bounded immutable previews, production startup recovery admission, reader-draining
+apply, cancellation ownership, durable receipt lookup and semantic invalidation.
+See the [T9 receipt](evidence/2026-11-01-mutations.md) and
+[request/configuration guide](configuration.md#mutation-requests).
 
-The public catalog remains **definition, references, diagnostics, hover**.
-T9 has not started: production startup recovery, mutation admission and
-rename/edit MCP wrappers are absent. Start only on the user's next continuation.
-Read the [T9 brief](superpowers/plans/2026-10-28-reference-parity.md#t9-renameedit-mcp-tools-and-post-commit-semantics),
-write-safety specification, acceptance matrix and current project policies.
-Use Documents.exclusive() to drain readers before preflight, coordinate recovery
-before mutation admission, shield commit/rollback, and invalidate semantic
-generations after disk outcomes. A durable committed receipt must never be
-reported as rolled back because later LSP synchronization fails.
+Writes remain disabled by default. Enabled writes require bounded operator roots
+and private same-filesystem recovery storage on Linux x86_64/macOS arm64.
+Windows writes are rejected. A model-supplied approval flag is never authority.
+The source-free durable receipt is result; semantic_state is separate. A committed
+disk transaction must never be reported rolled back because later LSP sync failed.
+
+T10 has not started. Start only on the user's next continuation. Read its
+[brief](superpowers/plans/2026-10-28-reference-parity.md#t10-public-document-symbols-workspace-symbols-and-implementations),
+the specification, acceptance matrix and current policies.
+Add exactly document_symbols, workspace_symbols and implementations, reusing T5's
+internal symbol normalization. Keep workspace search/resolve under the existing
+generation lease without selecting a synthetic URI. Preserve hierarchy, duplicates
+and full/selection range distinctions; never invent positions for URI-only symbols.
 
 ## Remaining acceptance gaps
 
-- T9 mutation/startup integration; T10 bounded semantic extensions; T11 installed
-  nine-tool/native mutation approval; T12 deeper engineering; T13 fresh whole-branch
-  review, acceptance and deliberate stop. No whole-branch review is claimed now.
-- T4 Codex 0.166.0 programmatic accept/deny proof is partial H1–H3 evidence,
-  not GUI/human-click or full mutation acceptance.
+- T10 semantic extensions; T11 final installed/native nine-tool and mutation approval
+  acceptance; T12 deeper engineering; T13 fresh whole-branch review, acceptance and
+  deliberate stop. No fresh whole-branch review is claimed at this stage.
+- T4 Codex 0.166.0 programmatic accept/deny proof remains partial H1–H3 evidence,
+  not GUI/human-click or full native mutation acceptance.
 - Windows-host/Linux-adapter bridging and operator-enabled native mutation
   scenarios remain unverified.
 - Final fixtures must include shared_runtime/run_shared_cli and three importing/
   calling packages with independently enumerated positions.
 - Cognitive qualification remains UNKNOWN; complexipy is not a passing authority.
-  Native discovery retains duplicate/global-scope FAIL. Keep Backplane disabled
-  and preserve caches/defaults. Git sync does not waive these gaps.
+  Native discovery retains duplicate/global-scope FAIL. Keep Backplane disabled,
+  preserve caches/defaults, and do not treat Git sync as acceptance.
 
 Use the [execution record](evidence/2026-11-01-execution.md), per-stage receipts
 and ignored .superpowers/sdd/2026-10-28-reference-parity/ ledger/rulings.
 Local helpers are not sole project authority; fresh checkouts use tracked fixtures.
-Private source, journals and transcripts must never enter this public repository.
+Never publish private source, journals or transcripts.

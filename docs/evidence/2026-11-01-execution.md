@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; execution stops before T9.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; T9 is complete; execution stops before T10.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -76,14 +76,21 @@ transactions and T8-T13 were then pending.
 T8: [transaction/recovery evidence](2026-11-01-transactions.md) records all-target
 preflight, no-follow POSIX replacement, safe rollback and durable recovery/retry.
 The final local 131-test suite and Windows/Linux gates pass; hosted Linux/macOS/
-Windows passed the adapter checkpoint. Exact final-commit CI remains required.
-T9 production startup admission and mutation tools have not started.
+Windows passed its checkpoint; final T8 CI 41334254312 also passed. T9 was
+pending at that checkpoint.
+
+T9: [mutation/startup evidence](2026-11-01-mutations.md) records six public tools,
+operator authority, retained preview/apply, production recovery admission,
+coordinated cancellation and post-commit semantic invalidation. The 164-test suite
+with documented platform exclusions and complete three-platform gate passed checkpoint
+058be37da9d54e310202881ab38f433fb4a70a3e in CI 41353143416. The final documentation
+checkpoint still requires its own exact-commit CI. T10 has not started.
 
 ## Bounded-session handoff
 
 After the user's concern about continuous execution, resume one bounded stage
-per session. The user subsequently authorized T8 only, with a stop on completion.
-T8 internal transactions/recovery are implemented; T9 has not started.
+per session. The user resumed T8 and then T9 in separate bounded sessions.
+Execution stops after T9; T10 has not started.
 Existing implementation approval persists;
 this handoff does not require reapproval of the remaining scope. Keep the isolated
 feat/reference-parity worktree and its ignored task ledger. The user subsequently

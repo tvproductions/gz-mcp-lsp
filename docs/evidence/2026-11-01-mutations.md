@@ -5,6 +5,15 @@ f08cdd77f4f9258d6e967a94a28947863ee6ea81. Stop before T10.
 The official SDK now exposes all six parity tools; mutation tools always carry
 readOnlyHint=false, destructiveHint=true and openWorldHint=false.
 
+## Pre-execution alignment
+
+| Comparison | Evidence | Assessment |
+| --- | --- | --- |
+| Intent to scope | [Write-safety specification](../superpowers/specs/2026-10-28-semantic-navigation-design.md#write-authorization-and-transaction-safety), [W1-W8 matrix](../discovery/acceptance-matrix.md) | Aligned: bounded operator authority, preview/apply, durable recovery and semantic consistency |
+| Scope to plan | [T9 brief](../superpowers/plans/2026-10-28-reference-parity.md#t9-renameedit-mcp-tools-and-post-commit-semantics) | Aligned: service, production lifespan, coordinator tests and installed CLI/ty evidence; no T10 work |
+
+Plan audit: PASS for this bounded stage; broader acceptance gaps remain below.
+
 ## Delivered contracts
 
 Mutations owns bounded in-memory previews and composes Documents, Session and
@@ -65,13 +74,15 @@ conservatively reserves the complete eventual receipt response budget.
 - Test provisioning remains before requests. No runtime installation, application
   environment settings, generic filesystem operations or second server was added.
 
-Full local Windows/Linux gates pass on the implementation; the final SDK
-cancellation control also passes on Windows. The suite discovers 164 tests.
-Ruff, ty, C901 source ceiling 20 and scoped portability audit pass.
-Hosted macOS arm64 and exact-commit three-platform CI remain required before
-reporting T9 complete. The final bounded handoff will identify the completion
-checkpoint without a CI receipt-only commit chain.
+The suite discovers 164 tests. Complete Windows/Linux local gates, Ruff, ty,
+C901 source ceiling 20 and scoped portability audit pass. Implementation checkpoint
+058be37da9d54e310202881ab38f433fb4a70a3e passed the full gate on Linux x86_64,
+macOS arm64 and Windows AMD64 in
+[CI 41353143416](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41353143416).
+The documentation follow-up updates the bounded handoff/plan; its exact commit
+and CI outcome are recorded in the final sync response. No source or protocol
+change follows this verified checkpoint.
 
-G2 software parity evidence does not waive native host H1-H3, T10 extensions,
+T9 software parity evidence does not waive native host H1-H3, T10 extensions,
 T11 final fixtures/installed acceptance, T12 engineering gaps or T13 final review.
 Cognitive qualification/native discovery remain unresolved. No release is accepted.

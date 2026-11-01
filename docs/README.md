@@ -1,10 +1,9 @@
 # Documentation scope
 
-The [implementation handoff](handoff.md) is the current resume point: T0-T8 complete,
-T9 next, one bounded stage per session. Git sync does not waive acceptance gaps.
+The [implementation handoff](handoff.md) is the current resume point: T0-T9 complete,
+T10 next, one bounded stage per session. Git sync does not waive acceptance gaps.
 
-[Application settings](configuration.md) documents the implemented T1 JSON loader
-and its currently tested scope.
+[Application settings](configuration.md) documents JSON settings and the implemented six-tool mutation contract.
 
 The [November 1 execution record](evidence/2026-11-01-execution.md) records the
 user's subsequent approval and current T0-T13 execution state. The planning-only

@@ -84,7 +84,9 @@ operator authority, retained preview/apply, production recovery admission,
 coordinated cancellation and post-commit semantic invalidation. The 164-test suite
 with documented platform exclusions and complete three-platform gate passed checkpoint
 058be37da9d54e310202881ab38f433fb4a70a3e in CI 41353143416. The final documentation
-checkpoint still requires its own exact-commit CI. T10 has not started.
+checkpoint required its own exact-commit CI. A final shared-success-envelope
+regression failed for preview/apply before correction; the current 165-test tree
+and its exact-commit CI supersede that checkpoint. T10 has not started.
 
 ## Bounded-session handoff
 

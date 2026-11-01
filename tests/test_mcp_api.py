@@ -339,7 +339,7 @@ class MutationLifecycleTests(unittest.IsolatedAsyncioTestCase):
                 },
             )
             self.assertFalse(preview.is_error, preview.content)
-            plan_id = preview.structured_content["plan_id"]
+            plan_id = preview.structured_content["result"]["plan_id"]
             self.tx.release.clear()
             self.addCleanup(self.tx.release.set)
             pending = asyncio.create_task(

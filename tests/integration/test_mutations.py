@@ -39,13 +39,13 @@ class ActualMutationTests(InstalledMutationCase):
                 },
             )
             self.assertEqual(
-                {f["uri"] for f in preview["files"]}, {module.as_uri(), consumer.as_uri()}
+                {f["uri"] for f in preview["result"]["files"]}, {module.as_uri(), consumer.as_uri()}
             )
             self.assertEqual(before, self.images())
-            committed = await self.apply(client, preview["plan_id"], "rename_symbol")
+            committed = await self.apply(client, preview["result"]["plan_id"], "rename_symbol")
             self.assertEqual(committed["result"]["status"], "committed")
             inode = module.stat().st_ino
-            retry = await self.apply(client, preview["plan_id"], "rename_symbol")
+            retry = await self.apply(client, preview["result"]["plan_id"], "rename_symbol")
             self.assertEqual(retry["result"], committed["result"])
             self.assertEqual(module.stat().st_ino, inode)
             self.assertEqual(
@@ -82,7 +82,7 @@ class ActualMutationTests(InstalledMutationCase):
             )
             self.assertIn("renamed", str(hover["result"]["contents"]))
         async with self.client() as client:
-            retry = await self.apply(client, preview["plan_id"], "rename_symbol")
+            retry = await self.apply(client, preview["result"]["plan_id"], "rename_symbol")
             self.assertEqual(retry["result"], committed["result"])
             self.assertEqual(module.stat().st_ino, inode)
 
@@ -100,7 +100,7 @@ class ActualMutationTests(InstalledMutationCase):
                     edit_range(1, 0, 1, 0, "added = value\r\n"),
                 ],
             )
-            applied = await self.apply(client, preview["plan_id"])
+            applied = await self.apply(client, preview["result"]["plan_id"])
             self.assertEqual(applied["result"]["status"], "committed")
             self.assertEqual(source.read_bytes(), b"# inserted\r\nvalue = 2\r\nadded = value\r\n")
             hover = await self.call(
@@ -117,7 +117,7 @@ class ActualMutationTests(InstalledMutationCase):
                 {"line": 1, "character": 0},
             )
             deletion = await self.edit(client, source, [edit_range(2, 0, 3, 0, "")])
-            await self.apply(client, deletion["plan_id"])
+            await self.apply(client, deletion["result"]["plan_id"])
             self.assertEqual(source.read_bytes(), b"# inserted\r\nvalue = 2\r\n")
             diagnostic = await self.call(client, "diagnostics", {"uri": source.as_uri()})
             self.assertEqual(diagnostic["result"]["items"], [])
@@ -151,7 +151,7 @@ class ActualMutationTests(InstalledMutationCase):
             source.write_bytes(b"value = 99\n")
             changed = self.images()
             result = await client.call_tool(
-                "edit_file", {"action": "apply", "plan_id": preview["plan_id"]}
+                "edit_file", {"action": "apply", "plan_id": preview["result"]["plan_id"]}
             )
             self.assertTrue(result.is_error)
             self.assertEqual(result.structured_content["error"]["code"], "STALE_DOCUMENT")
@@ -165,12 +165,12 @@ class ActualMutationTests(InstalledMutationCase):
             preview = await self.edit(client, source, [edit_range(0, 8, 0, 9, "2")])
         async with self.client() as client:
             stale = await client.call_tool(
-                "edit_file", {"action": "apply", "plan_id": preview["plan_id"]}
+                "edit_file", {"action": "apply", "plan_id": preview["result"]["plan_id"]}
             )
             self.assertEqual(stale.structured_content["error"]["code"], "PLAN_EXPIRED")
             noop = await self.edit(client, source, [])
             inode = source.stat().st_ino
-            applied = await self.apply(client, noop["plan_id"])
+            applied = await self.apply(client, noop["result"]["plan_id"])
             self.assertEqual(applied["result"]["status"], "no_op")
             self.assertEqual(source.stat().st_ino, inode)
             self.assertEqual(source.read_bytes(), b"value = 1\n")

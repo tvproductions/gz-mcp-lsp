@@ -17,7 +17,7 @@ class StartupRecoveryTests(InstalledMutationCase):
         self.assertEqual((self.root / "a.py").read_bytes(), b"first = 10\r\n")
         async with self.client() as client:
             preview = await self.edit(client, self.root / "a.py", [])
-            self.assertTrue(preview["no_op"])
+            self.assertTrue(preview["result"]["no_op"])
             self.assertEqual((self.root / "a.py").read_bytes(), b"first = 1\r\n")
             self.assertEqual((self.root / "b.py").read_bytes(), b"second = 2\n")
             receipt = await self.apply(client, plan_id)

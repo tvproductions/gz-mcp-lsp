@@ -74,14 +74,18 @@ conservatively reserves the complete eventual receipt response budget.
 - Test provisioning remains before requests. No runtime installation, application
   environment settings, generic filesystem operations or second server was added.
 
-The suite discovers 164 tests. Complete Windows/Linux local gates, Ruff, ty,
+The suite now discovers 165 tests. Complete Windows/Linux local gates, Ruff, ty,
 C901 source ceiling 20 and scoped portability audit pass. Implementation checkpoint
 058be37da9d54e310202881ab38f433fb4a70a3e passed the full gate on Linux x86_64,
 macOS arm64 and Windows AMD64 in
 [CI 41353143416](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41353143416).
-The documentation follow-up updates the bounded handoff/plan; its exact commit
-and CI outcome are recorded in the final sync response. No source or protocol
-change follows this verified checkpoint.
+A final contract regression then found both mutation actions lacked required
+shared success-envelope fields. Both cases failed before correction. Preview
+metadata now resides under result, alongside common UTF-16, generation, saved
+preimage provenance and completeness fields; apply wraps the stable disk receipt
+in the same envelope. Installed success assertions enforce this schema. The final
+correction's exact commit and three-platform CI outcome are recorded in the final
+sync response; the earlier checkpoint is not its verification receipt.
 
 T9 software parity evidence does not waive native host H1-H3, T10 extensions,
 T11 final fixtures/installed acceptance, T12 engineering gaps or T13 final review.

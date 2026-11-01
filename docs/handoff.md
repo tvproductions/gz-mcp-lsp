@@ -12,12 +12,14 @@ T9 starts from f08cdd77f4f9258d6e967a94a28947863ee6ea81. Implementation checkpoi
 058be37da9d54e310202881ab38f433fb4a70a3e passed all three hosted lanes in
 [CI 41353143416](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41353143416),
 including installed startup recovery and real ty mutation tests on macOS arm64
-and Linux x86_64. The follow-up updates stage progress and this handoff.
+and Linux x86_64. The follow-up updates stage progress and this handoff. A final contract correction
+uses the shared success envelope for both mutation actions, with preview metadata
+under result and complete UTF-16/generation/document provenance.
 Obtain its exact SHA/CI result from the final sync response or the
 [branch Actions runs](https://github.com/tvproductions/gz-mcp-lsp/actions?query=branch%3Afeat%2Freference-parity).
 A checkpoint's CI does not substitute for the final commit's CI.
 
-The full suite discovers 164 tests. Complete local Windows/native Linux gates,
+The full suite discovers 165 tests. Complete local Windows/native Linux gates,
 C901 source ceiling 20 and scoped portability audit pass. Windows runs explicit
 disabled/unsupported startup denials; 25 POSIX-only tests are not applicable.
 POSIX lanes skip only the Windows-specific unsupported-startup control.

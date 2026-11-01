@@ -90,8 +90,10 @@ Use action=preview with these exact fields:
   Ranges address the original saved file; an empty new_text deletes, a zero-width
   range inserts, and an explicit EOF range appends.
 
-Apply uses only action=apply and plan_id, with no preview fields. Previews return
-all affected files, base/post hashes, diffs, annotations and an expiry. A plan
+Apply uses only action=apply and plan_id, with no preview fields. Successes use
+the common schema_version/operation/position_encoding/result/workspace_generation/
+documents/complete envelope. Preview metadata is under result: read result.plan_id
+for apply, with affected files, base/post hashes, diffs, annotations and expiry. A plan
 token identifies content; it does not authenticate human approval. Configure
 native host approval policies separately. Apply never silently replans a stale
 preview. Restart expires in-memory previews but preserves durable receipts.

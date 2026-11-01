@@ -16,7 +16,7 @@ from gz_mcp_lsp.documents import Documents, _owned_io
 from gz_mcp_lsp.edit_plan import EditPlan, _documents, plan_payload, plan_workspace_edit
 from gz_mcp_lsp.filesystem import Transactions
 from gz_mcp_lsp.models import AdapterError, Json, Position, Result, Snapshot, TextEdit
-from gz_mcp_lsp.results import bounded
+from gz_mcp_lsp.results import bounded, envelope, provenance
 from gz_mcp_lsp.session import Session
 from gz_mcp_lsp.source_text import parse_range, range_json
 
@@ -115,19 +115,21 @@ class Mutations:
                     "edits": [cast("Json", asdict(edit)) for edit in file.edits],
                 }
             )
-        result: Result = {
-            "schema_version": 1,
-            "operation": operation,
+        preview: Json = {
             "action": "preview",
             "plan_id": plan.plan_id,
-            "workspace_generation": plan.generation,
             "expires_at": plan.expires_at,
             "files": files,
             "annotations": [cast("Json", asdict(a)) for a in plan.annotations],
             "no_op": plan.no_op,
-            "complete": True,
         }
-        bounded(result, self.config.limits.result_bytes)
+        result = envelope(
+            operation,
+            plan.generation,
+            preview,
+            {file.uri: provenance(file.before) for file in plan.files},
+            self.config.limits.result_bytes,
+        )
         self.plans[plan.plan_id] = plan
         return result
 
@@ -290,14 +292,11 @@ class Mutations:
         return self._outcome(receipt, semantic)
 
     def _outcome(self, receipt: dict[str, Json], semantic: str) -> Result:
-        value: Result = {
-            "schema_version": 1,
-            "operation": "apply",
-            "action": "apply",
-            "result": receipt,
-            "semantic_state": semantic,
-        }
-        bounded(value, self.config.limits.result_bytes)
+        value = envelope(
+            "apply", self.session.generation, receipt, {}, self.config.limits.result_bytes
+        )
+        value.update({"action": "apply", "semantic_state": semantic})
+        bounded(value | {"operation": "rename_symbol"}, self.config.limits.result_bytes)
         return value
 
 

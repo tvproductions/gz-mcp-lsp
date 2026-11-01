@@ -64,6 +64,10 @@ class InstalledMutationCase(unittest.IsolatedAsyncioTestCase):
         response = await client.call_tool(tool, arguments)
         self.assertFalse(response.is_error, response.content)
         self.assertIsNotNone(response.structured_content)
+        self.assertEqual(response.structured_content["position_encoding"], "utf-16")
+        self.assertTrue(response.structured_content["complete"])
+        self.assertIn("documents", response.structured_content)
+        self.assertIn("workspace_generation", response.structured_content)
         return response.structured_content
 
     async def edit(self, client, path, edits):

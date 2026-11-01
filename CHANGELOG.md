@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Use the common success envelope for both mutation actions; retain preview
+  metadata under result with UTF-16, generation and saved-document provenance.
+
 - Implement T9 rename_symbol/edit_file preview/apply tools, production recovery
   admission, immutable retained previews and coordinated disk/semantic outcomes.
   Preserve durable receipts through cancellation and restart; add installed

@@ -144,12 +144,12 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         preview = await self.preview()
         self.assertEqual(before, self.hashes())
         self.assertNotIn("apply", self.transactions.calls)
-        self.assertIn("-value = 1", preview["files"][0]["diff"])
-        preview["files"][0]["diff"] = "forged"
-        applied = await self.mutations.apply(preview["plan_id"])
+        self.assertIn("-value = 1", preview["result"]["files"][0]["diff"])
+        preview["result"]["files"][0]["diff"] = "forged"
+        applied = await self.mutations.apply(preview["result"]["plan_id"])
         self.assertEqual(applied["result"]["status"], "committed")
         self.assertEqual(self.a.read_bytes(), b"value = 9\n")
-        retry = await self.mutations.apply(preview["plan_id"])
+        retry = await self.mutations.apply(preview["result"]["plan_id"])
         self.assertEqual(retry["result"], applied["result"])
         self.assertEqual(self.transactions.calls.count("apply"), 1)
 
@@ -158,7 +158,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         self.b.write_bytes(b"changed = True\n")
         before = self.hashes()
         with self.assertRaises(AdapterError) as stale:
-            await self.mutations.apply(preview["plan_id"])
+            await self.mutations.apply(preview["result"]["plan_id"])
         self.assertEqual(stale.exception.code, "STALE_DOCUMENT")
         self.assertEqual(before, self.hashes())
         self.assertNotIn("apply", self.transactions.calls)
@@ -176,7 +176,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
             }
         }
         preview = await self.mutations.preview_rename(self.a.as_uri(), Position(0, 0), "renamed")
-        self.assertEqual(len(preview["files"]), 1)
+        self.assertEqual(len(preview["result"]["files"]), 1)
         self.assertEqual(
             [m for m, _ in self.rpc.requests],
             ["textDocument/prepareRename", "textDocument/rename"],
@@ -209,13 +209,13 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
             "changeAnnotations": {"review": {"label": "Review rename", "needsConfirmation": True}},
         }
         preview = await self.mutations.preview_rename(self.a.as_uri(), Position(0, 0), "renamed")
-        self.assertTrue(preview["annotations"][0]["needs_confirmation"])
+        self.assertTrue(preview["result"]["annotations"][0]["needs_confirmation"])
         self.assertNotIn("apply", self.transactions.calls)
 
     async def test_apply_drains_readers_before_preflight(self):
         preview = await self.preview()
         async with self.documents.generation():
-            apply = asyncio.create_task(self.mutations.apply(preview["plan_id"]))
+            apply = asyncio.create_task(self.mutations.apply(preview["result"]["plan_id"]))
             await until(lambda: self.documents._exclusive)
             self.assertFalse(self.transactions.started.is_set())
             self.assertEqual(self.a.read_bytes(), b"value = 1\n")
@@ -224,7 +224,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
     async def test_read_admission_blocked_during_commit_and_no_restart(self):
         preview = await self.preview()
         self.transactions.release.clear()
-        apply = asyncio.create_task(self.mutations.apply(preview["plan_id"]))
+        apply = asyncio.create_task(self.mutations.apply(preview["result"]["plan_id"]))
         self.addCleanup(self.transactions.release.set)
         await until(self.transactions.started.is_set)
         with self.assertRaises(AdapterError) as busy:
@@ -243,7 +243,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         async with self.documents.generation():
             self.documents.workspace.config = replace(self.config, request_timeout_seconds=0.05)
             with self.assertRaises(AdapterError) as timeout:
-                await self.mutations.apply(preview["plan_id"])
+                await self.mutations.apply(preview["result"]["plan_id"])
             self.assertEqual(timeout.exception.code, "WORKSPACE_BUSY")
         self.assertFalse(self.transactions.started.is_set())
         self.assertEqual(before, self.hashes())
@@ -253,7 +253,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
     async def test_cancel_while_draining_releases_admission_without_writes(self):
         preview = await self.preview()
         async with self.documents.generation():
-            apply = asyncio.create_task(self.mutations.apply(preview["plan_id"]))
+            apply = asyncio.create_task(self.mutations.apply(preview["result"]["plan_id"]))
             await until(lambda: self.documents._exclusive)
             apply.cancel()
             with self.assertRaises(asyncio.CancelledError):
@@ -267,7 +267,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         preview = await self.preview()
         self.transactions.release.clear()
         self.addCleanup(self.transactions.release.set)
-        apply = asyncio.create_task(self.mutations.apply(preview["plan_id"]))
+        apply = asyncio.create_task(self.mutations.apply(preview["result"]["plan_id"]))
         await until(self.transactions.started.is_set)
         apply.cancel()
         await asyncio.sleep(0)
@@ -275,9 +275,9 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         self.transactions.release.set()
         with self.assertRaises(asyncio.CancelledError):
             await apply
-        receipt = self.transactions.receipt(preview["plan_id"])
+        receipt = self.transactions.receipt(preview["result"]["plan_id"])
         self.assertEqual(receipt["status"], "committed")
-        retry = await self.mutations.apply(preview["plan_id"])
+        retry = await self.mutations.apply(preview["result"]["plan_id"])
         self.assertEqual(retry["result"], receipt)
 
     async def test_committed_but_sync_failed_is_not_rollback(self):
@@ -289,7 +289,7 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
             raise AdapterError("SERVER_EXITED", "Synthetic synchronization failure")
 
         with patch.object(self.documents, "committed", side_effect=fail):
-            applied = await self.mutations.apply(preview["plan_id"])
+            applied = await self.mutations.apply(preview["result"]["plan_id"])
         self.assertEqual(applied["result"]["status"], "committed")
         self.assertEqual(applied["semantic_state"], "unavailable")
         self.assertTrue(self.documents.invalidated.is_set())
@@ -303,11 +303,11 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(AdapterError) as full:
             await self.preview()
         self.assertEqual(full.exception.code, "LIMIT_EXCEEDED")
-        self.mutations.plans[first["plan_id"]] = replace(
-            self.mutations.plans[first["plan_id"]], expires_at=0
+        self.mutations.plans[first["result"]["plan_id"]] = replace(
+            self.mutations.plans[first["result"]["plan_id"]], expires_at=0
         )
         with self.assertRaises(AdapterError) as expired:
-            await self.mutations.apply(first["plan_id"])
+            await self.mutations.apply(first["result"]["plan_id"])
         self.assertEqual(expired.exception.code, "PLAN_EXPIRED")
         before = self.hashes()
         for edits, expected in (
@@ -378,3 +378,23 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(before, self.hashes())
                 self.assertEqual(outside.read_bytes(), b"private = 1\n")
         self.assertNotIn("apply", self.transactions.calls)
+
+    async def test_mutation_successes_follow_common_result_envelope(self):
+        preview = await self.preview()
+        applied = await self.mutations.apply(preview["result"]["plan_id"])
+        for response in (preview, applied):
+            with self.subTest(action=response.get("action")):
+                self.assertTrue(
+                    {
+                        "schema_version",
+                        "operation",
+                        "position_encoding",
+                        "result",
+                        "workspace_generation",
+                        "documents",
+                        "complete",
+                    }
+                    <= response.keys()
+                )
+                self.assertEqual(response["position_encoding"], "utf-16")
+                self.assertTrue(response["complete"])

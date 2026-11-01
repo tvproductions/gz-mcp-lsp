@@ -1,5 +1,9 @@
 # Documentation scope
 
+The [November 1 execution record](evidence/2026-11-01-execution.md) records the
+user's subsequent approval and current T0-T13 execution state. The planning-only
+boundaries in earlier dated receipts below are historical.
+
 Product authorities: root README/AGENTS/CONTRIBUTING/SECURITY, the revised design and plan in
 `superpowers/specs/`, discovery reviews in `discovery/`, and
 `evidence/2026-10-28-design-revision.md`. Initialization evidence is historical;
@@ -9,6 +13,20 @@ its observed results.
 The [October 31 dependency-update receipt](evidence/2026-10-31-dependency-update.md)
 supersedes earlier tool/plugin freshness conclusions for its changed inputs.
 It does not approve the specification or implementation plan.
+
+The [November 1 prerequisite reconciliation audit](evidence/2026-11-01-plan-prerequisites.md)
+records the corresponding corrections in the unapproved specification, plan and
+acceptance matrix, with execution-host verification and cognitive qualification
+still required.
+
+The [targeted execution-plan audit](evidence/2026-11-01-plan-execution-corrections.md)
+records four subsequent corrections to task ordering, concurrency coordination,
+platform verification and early Codex feasibility. The implementation boundary
+and pending design decisions remain unchanged.
+
+The [second-review correction audit](evidence/2026-11-01-plan-second-review-corrections.md)
+records production startup-recovery assignment, workspace generation leases and
+dependency-test ordering, with updated plan/matrix hashes. No execution is approved.
 
 Engineering policies, adoption guidance, update procedures and engineering
 utilities were inherited from gz-skills-first-starter v0.7.1. They remain binding

@@ -1,5 +1,9 @@
 # Plan alignment audit — 2026-10-28
 
+Historical audit of the artifact hashes below. The
+[November 1 prerequisite reconciliation audit](2026-11-01-plan-prerequisites.md)
+supersedes its current prerequisite assessment without rewriting these observations.
+
 Workflow: adopted gzs-plan-audit, supporting the user's design/planning assignment.
 Intent is the latest user direction, captured by specification revision 2's objective;
 scoped requirements are the parity/acceptance matrices and specification; plan is

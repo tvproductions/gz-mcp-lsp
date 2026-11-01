@@ -6,29 +6,58 @@
 
 **Architecture:** Official MCP Python SDK stdio adapter over narrow semantic operations, document/workspace identity, independent JSON-RPC transport and a single ty lifecycle owner. Rename and edit share pure planning and a guarded filesystem/recovery boundary; no general LSP framework.
 
-**Tech Stack:** Managed CPython 3.14.10, uv/uv_build 0.13.6, Ruff 0.17.3, ty 0.0.93, pre-commit 4.7.0, unittest; proposed runtime mcp 2.3.0 and stdlib.
+**Tech Stack:** Managed CPython 3.14.10, uv/uv_build 0.13.6, Ruff 0.17.3, ty 0.0.95, pre-commit 4.7.0, unittest; proposed runtime mcp 2.3.0 and stdlib.
+
+Prerequisites reconciled 2026-11-01 against the
+[October 31 update receipt](../../evidence/2026-10-31-dependency-update.md).
+Functional design, task completion state and pending approval are unchanged.
+Execution details corrected 2026-11-01: production hover at T4, explicit generation
+coordination, platform verification lanes and early Codex feasibility. See the
+[targeted correction audit](../../evidence/2026-11-01-plan-execution-corrections.md).
+Second-review corrections assign production startup recovery, separate workspace
+generation leases from document snapshots, and order T0's negative control before
+guard/dependency changes. See the [second-review audit](../../evidence/2026-11-01-plan-second-review-corrections.md).
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: UNAPPROVED PLAN. Every task below is future work. No runtime task has started.**
-The user expressly requested planning before approval, overriding the usual workflow
-ordering for plan preparation only. It does not approve the approach, public schema,
-write guarantees or execution. Resolve the specification's four review decisions
-and obtain human approval before executing even T0. Do not invoke execution skills now.
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 is in progress.**
+Approval: the user stated "plan is approved, proceed" after review of this plan and
+its linked specification. Execute the stated contracts; required evidence and
+strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
+The earlier planning-only boundary is superseded by that approval. Historical
+review/audit receipts retain their original observations. Execution uses the
+approved behavioral schemas, guarded recoverable writes, rescan/restart consistency
+and OS boundary; runtime and engineering acceptance require observed evidence.
 
 ## Global Constraints
 
-- Python 3.14 family, selected managed CPython 3.14.10; uv/uv_build 0.13.6, Ruff 0.17.3, ty 0.0.93, pre-commit 4.7.0, unittest, src packaging and project lock.
-- Official MCP SDK candidate mcp 2.3.0 (`2118f14f8a19bc158d8a1cf90af58d85d187f849`); ty candidate 0.0.93 (`3db5e4df7becd3ca55fd06c78e98bf7c8a38e469`). Test/review changes to these inputs; do not float latest during tests.
+- Python 3.14 family, selected managed CPython 3.14.10; uv/uv_build 0.13.6, Ruff 0.17.3, ty 0.0.95, pre-commit 4.7.0, unittest, src packaging and project lock.
+- Official MCP SDK candidate mcp 2.3.0 (`2118f14f8a19bc158d8a1cf90af58d85d187f849`); ty candidate 0.0.95 matches pyproject.toml/uv.lock. T0 records its source revision and executable provenance; the former 0.0.93 SHA does not identify this candidate. Test/review these inputs; do not float latest during tests.
 - Go baseline v0.1.1 (`46e2950b7969334780675e7797e13f140d2d42ac`), assessed main `e4395849a52e18555361abab60a060802c06bf50`; independent implementation, no copied source/tests/media.
 - One canonical workspace, one live ty process, MCP/LSP stdio only, saved-disk inputs. No second server, install during requests, code actions, execute command, listener or framework.
 - No Makefile or environment-variable application configuration. Application JSON; preserve native host formats and selected lite profile/disabled Backplane.
 - UTF-16 code-unit zero-based positions and end-exclusive ranges. Exact caller positions, no workspace-symbol-range-start or fixed-column inference.
 - All P1–P6 and S1–S6 are required; final catalog is six reference names plus document_symbols, workspace_symbols, implementations. No silent removal or indefinite deferral.
 - Mutations disabled by default, explicit operator writable roots, preview/apply, bounded preflight and recovery. No portable atomic multi-file filesystem transaction is claimed.
-- Required FAIL/UNKNOWN/stale acceptance evidence blocks the terminal milestone; cognitive qualification and gz-skills reconciliation are not waived.
+- Required FAIL/UNKNOWN/stale acceptance evidence blocks the terminal milestone; cognitive qualification and execution-host verification of the completed gz-skills reconciliation are not waived.
 - Initial claimed write platforms: macOS arm64 and Linux x86_64 local filesystems; unsupported Windows writes disabled until equivalent safety proof.
 - Routine hook set remains Ruff check/format, ty and unittest; deeper analyses stay outside routine hooks/CI. No tag/release publication.
+
+## Platform verification lanes
+
+T4 establishes Linux x86_64, macOS arm64 and Windows x86_64 verification lanes in
+the existing workflow, using the same exact tool/interpreter selections and four-hook gate.
+Record actual OS, architecture and filesystem; a runner label alone is not proof.
+T8 adds real guarded filesystem/crash tests to both lanes as they are introduced.
+Both supported write lanes must pass their required tests before write acceptance.
+
+Windows runs portable unit/protocol/coordinate tests, actual ty read integrations
+and explicit unsupported-write rejection tests. Only tests requiring the POSIX
+write adapter may use a narrowly scoped platform skip; label them not applicable
+to the proposed Windows write scope, never as passed write evidence. Missing ty,
+failed setup or missing safety features on a claimed POSIX write platform must
+fail rather than skip. T12 inventories skips per lane and keeps any unavailable
+required platform evidence UNKNOWN. No Windows write support is added.
 
 ## Review Focus
 
@@ -36,7 +65,7 @@ and obtain human approval before executing even T0. Do not invoke execution skil
 2. Percent-encoded aliases, symlinked parents and hardlinks must never bypass write containment or duplicate-target checks — T1/T7/T8 tests.
 3. Cancellation or process death at the commit/receipt boundary must produce durable exactly-once outcome or explicit recovery, never an apparent empty success — T8/T9 tests.
 4. Emoji before a target, CRLF/mixed newline and AST UTF-8 offsets must not shift semantic positions or corrupt replacement bytes — T1/T5/T7 tests.
-5. Host approval denial and a model's claimed approval must leave targets unchanged; real Codex calls are required in addition to SDK tests — T9/T11 tests.
+5. Host approval denial and a model's claimed approval must leave targets unchanged; early Codex feasibility at T4 and full real mutation calls at T9/T11 prevent SDK-only acceptance.
 
 ---
 
@@ -88,19 +117,23 @@ behavior, not environment/setup failure.
 
 **Files:** modify pyproject.toml, uv.lock, tools/verify_distribution.py,
 tests/test_distribution.py, README.md; add tests/integration/__init__.py and
-`docs/evidence/<date>-runtime-inputs.md`. Reviewed gz-skills reconciliation may
-change only owning catalogs/config/managed records through documented procedures.
+`docs/evidence/<date>-runtime-inputs.md`. gz-skills reconciliation is already
+recorded in the October 31 receipt; this task verifies retained evidence and
+execution-host discovery. Newly observed drift routes through the owning
+maintenance workflow rather than automatically repeating installation.
 
 **Interfaces:** produces verified runtime dependency metadata/SDK schema contract
 and exact test/server executable provenance; no adapter tool behavior yet.
 
 **Test assertion anchors:** `self.assertEqual(requirements, {"mcp==2.3.0"})`; `self.assertNotIn("tools/", wheel_payload)` (dependency comparison normalizes packaging spelling).
 
-- [ ] Read selected SDK tag's actual MCPServer/stdio/lifespan/tool schemas and Python 3.14 annotation behavior. Review direct/transitive licenses, compatibility and resource cost. Resolve official SDK with `uv add 'mcp==2.3.0'` only after updating the design-stage no-dependency guard to the intended dependency allowlist.
-- [ ] Add distribution tests asserting the intended Requires-Dist and rejection of unintended requirements, while retaining source/test leakage failures. Run `uv run --locked python -m unittest discover -s tests -p test_distribution.py -v`; verify red on the old dependency policy, then update the verifier and obtain green. No blanket removal of dependency checks.
-- [ ] Use gzs-update-dependencies and starter/native documented reconciliation for gz-skills 0.8.0→reviewed current release; inventory duplicates, compare source bytes, fresh-session discovery and outside-project control. Preserve old provenance/rollback. Do not edit native cache or relabel old SHA. Record failure as an explicit gate, not an upgrade claim.
+- [ ] Read selected SDK tag's actual MCPServer/stdio/lifespan/tool schemas and Python 3.14 annotation behavior. Review direct/transitive licenses, compatibility and resource cost. Leave the verifier, dependency declarations and lock unchanged during this inspection.
+- [ ] Add distribution-policy tests using synthetic wheel metadata declaring exactly `mcp==2.3.0`, plus missing/unintended requirement rejection cases and retained source/test leakage guards. Run `uv run --locked python -m unittest discover -s tests -p test_distribution.py -v` against the existing verifier. Record assertion-level red because the intended SDK metadata is rejected; import/setup failure is not the negative control. Do not add the SDK or update the verifier before observing this result.
+- [ ] Update the verifier to enforce the intended exact dependency allowlist and update obsolete no-runtime-dependency fixture expectations. Rerun the same synthetic distribution suite green; continue rejecting missing/unintended requirements and payload leakage. This checks archive policy, not the still-unchanged project's actual dependency metadata.
+- [ ] Run `uv add 'mcp==2.3.0'` to update project metadata and regenerate the lock through uv, then `uv sync --locked --all-groups`. Build with `uv build --no-sources` and run `uv run --locked python tools/verify_distribution.py` to prove the actual wheel's Requires-Dist matches the allowlist and its outside-source installation succeeds. Rerun the distribution tests. Never edit uv.lock manually or treat synthetic-policy green as actual SDK adoption evidence.
+- [ ] Verify the completed gz-skills 0.8.3 reconciliation against the October 31 receipt and retained rollback/provenance. Check catalog/source agreement, duplicates, fresh execution-host discovery and outside-project control. Confirm the configured Git-source refresh separately: the receipt defers that observation to the final handoff, which must be located or re-observed. Do not infer success from the prepublication local-catalog probe. Route new drift through gzs-update-dependencies and starter/native procedures; do not edit native caches or repeat installation without cause.
 - [ ] Obtain selected cognitive engine availability/qualification evidence via its owning workflow. If unavailable, record owner/blocked condition; strict E3/E4 and final milestone remain closed. Do not substitute complexipy or invent a local scorer. Dependency qualification may proceed in parallel only if the maintainer explicitly permits it; no strict completion claim follows.
-- [ ] Verify exact managed interpreter, SDK schema/result/cancellation smoke tests, pinned ty executable/version, lock and isolated artifact build. Commit reviewed setup changes with normal hooks. Gate G0: runtime inputs tested and remaining engineering blockers individually recorded.
+- [ ] Verify exact managed interpreter, SDK schema/result/cancellation smoke tests, pinned ty 0.0.95 executable/version and source revision, lock and isolated artifact build. Test actual LSP compatibility rather than substituting the earlier 0.0.93 source assessment. Commit reviewed setup changes with normal hooks. Gate G0: runtime inputs tested and remaining engineering blockers individually recorded.
 
 ## Phase 1 — reliable MCP–LSP interoperability
 
@@ -146,36 +179,94 @@ point `gz-mcp-lsp = 'gz_mcp_lsp.cli:main'`, distribution verifier/tests.
 `async restart(generation:str)->None`; `create_server(config:Config,session:Session)->MCPServer`;
 `main(argv:Sequence[str]|None=None)->int` for `--config PATH` only.
 Intermediate catalog exposes implemented tools only; do not stub success for remaining tools.
+T3 owns composition and lifecycle; the first public production tool is hover in
+T4, after document identity and generation coordination exist.
+T9 later extends this same MCP lifespan/composition with the startup recovery gate;
+T3's lifecycle tests do not certify recovery before that integration exists.
 
 **Test assertion anchors:** `self.assertEqual(fake.initialize_count, 1)`; `self.assertEqual(fake.initialized_count, 1)`; `self.assertFalse(reply["applied"])`; `self.assertIsNotNone(child.returncode)` after cleanup.
 
 - [ ] Write `test_initialize_once_handlers_ready`, `test_applyedit_denied`, `test_startup_failure_reaped`, `test_parent_eof_and_shutdown_timeout`, `test_stdio_no_log_bytes`, SDK initialize/tools/list/call tests. Assert callbacks before initialized, correct configuration cardinality, UTF-16 negotiation and no leaked child after repeated cleanup. Use fake subprocess, never a readiness sleep.
 - [ ] Run those suites red, implement lifecycle/stdio composition and missing cleanup; keep no semantic success stubs. Update artifact tests to exercise installed `--help`/bad config and package origin without source-path injection.
-- [ ] Verify actual pinned ty initialization through the transport and a minimal SDK stdio read path using the T4 fixture, recording negotiated capabilities. T3 may be committed before this joint integration gate, but phase 1 is not accepted until T4 supplies it. Routine gate and commit.
+- [ ] Verify actual pinned ty initialization through the transport and record negotiated capabilities. Do not claim an MCP semantic read at T3. T4 owns the production hover wrapper/operation and fixture required for the first actual installed MCP→adapter→ty read. Routine gate and commit; phase 1 remains unaccepted until T4 passes G1.
 
 ### T4: Saved-file documents, bounded generations and real interoperability fixture
 
-**Files:** create documents.py, tests/test_documents.py,
+**Files:** create documents.py, navigation.py, tests/test_documents.py,
+tests/test_navigation.py,
 tests/integration/test_interoperability.py and synthetic semantic_workspace package
-metadata/source; extend workspace.py/session.py only for their owned responsibilities.
+metadata/source; extend mcp_api.py with production hover, tests/test_mcp_api.py,
+workspace.py/session.py only for their owned responsibilities,
+.github/workflows/check.yml for platform lanes, and
+docs/evidence/<date>-codex-feasibility.md. No temporary probe tool is exposed.
 
 **Interfaces:** `Documents(workspace:Workspace,session:Session)` with
-`async prepare(uri:str)->Snapshot`, `async finish(generation:str)->None`,
-`async committed(snapshots:Sequence[Snapshot])->None`; prepare does serialized
-manifest reconciliation/restart/open, finish rejects changed generation.
+`generation()->AsyncContextManager[GenerationContext]` for workspace-wide operations,
+`read(uri:str)->AsyncContextManager[ReadContext]` and
+`exclusive()->AsyncContextManager[None]` for the T9 apply boundary, plus
+`async committed(snapshots:Sequence[Snapshot])->None`;
+`GenerationContext(generation:str,rpc:RpcClient)` and
+`ReadContext(snapshot:Snapshot,generation:str,rpc:RpcClient)` are internal immutable
+values defined in documents.py. Documents.generation() reconciles and pins
+the workspace generation/client without choosing a document URI, taking a document-specific snapshot or
+sending didOpen (manifest hashing still reads eligible source bytes). Documents.read(uri) composes that same lease with validated
+snapshot/open handling; it consumes one admission slot, not nested/double admission.
+All semantic operations hold a generation lease through every RPC, including
+workspace-symbol resolution, source/context extraction and final manifest validation;
+document operations additionally hold their snapshot. Cancellation and exceptions
+release the lease in a finally path. Navigation gains
+`Navigation(documents:Documents,session:Session)` and
+`async hover(uri:str,position:Position)->Result`, using the final public schema.
+T5 extends these same production modules rather than replacing a temporary path.
 Tests use an independently authored fixture manifest with explicit expected calls/imports.
+
+**Generation coordination:** Documents owns admission and active read contexts,
+bounded to eight. The context pins one generation and its RpcClient; requests
+never switch clients mid-call. Serialized reconciliation precedes admission;
+document snapshot/open handling is serialized under that same lease and checked
+for invalidation before returning a ReadContext. A detected manifest change closes admission, invalidates the old
+generation and cancels its active RPC waiters with STALE_DOCUMENT; no old-context
+result may be returned. Context release does not wait on the restart it enables.
+After all old contexts drain, one transition owner reaps the old ty before starting
+the replacement. A new caller waits within its request deadline or gets
+WORKSPACE_BUSY/TIMEOUT; caller cancellation remains CANCELLED. Unexpected child
+death remains SERVER_EXITED, not a semantic restart. Late replies cannot revive
+invalid contexts. No unbounded wait or automatic semantic retry.
+
+T9 apply uses Documents.exclusive() before final preflight, drains active reads
+within the configured request budget and holds exclusivity through commit/rollback
+and semantic invalidation. Failure to drain returns WORKSPACE_BUSY with zero target
+writes. New reads cannot observe an adapter commit in progress. If external changes
+invalidate readers while draining, the same stale-result rule applies; no generation
+restart runs concurrently with the exclusive commit. T9 tests the shared boundary.
 
 **Test assertion anchors:** `self.assertNotEqual(before_generation, after_generation)` after an unopened-file byte change; `self.assertLessEqual(max_live_children, 1)`; `self.assertEqual(error.code, "STALE_DOCUMENT")` for a mid-query change.
 
 - [ ] Write tests `test_open_once_close_eviction`, `test_negotiated_change_versions`, `test_generation_restart_reaps_before_spawn`, `test_unopened_change_create_delete_rename`, `test_midquery_manifest_change_rejected`. Verify exactly one live child, new saved contents visible, no mtime-only shortcut and STALE_DOCUMENT on result races. Use spies/fake server for sync forms plus actual ty for indexing outcomes.
-- [ ] Run unit tests red then implement document/session generation behavior; run `uv run --locked python -m unittest discover -s tests/integration -p test_interoperability.py -v`. Missing ty is a hard failure, not skipped acceptance. Assert actual hover/definition request to ty through initialized session, including unopened consumer/config changes and restart consistency.
-- [ ] Run routine gate and installed stdio smoke, record G1 actual MCP→adapter→ty response with correct fixture result, commit. Proving SDK communication alone does not pass G1.
+- [ ] Add deterministic `test_two_readers_change_restart`, `test_cancel_releases_read_context`, `test_restart_admission_deadline` and `test_late_reply_cannot_publish_old_generation` using barriers/events, not sleeps. Hold reader A's reply, change a source, admit reader B's reconciliation, and assert A fails STALE_DOCUMENT, its waiter/context is released, the replacement starts only after old-child reaping, and B receives the new-generation result or an explicit bounded error. Assert max live children ≤1 and no pending waiter/context leak.
+- [ ] Add `test_generation_lease_without_document` and `test_document_read_uses_one_lease`: assert an empty workspace can acquire/release a generation without a fabricated URI, source snapshot or didOpen; document reads consume one of the same eight slots; invalidation/cancellation drains both lease forms without leaks. T10 tests actual workspace-symbol behavior on this primitive.
+- [ ] Write production hover forwarding/schema/content tests red; implement document/session coordination, Navigation.hover and its real SDK wrapper. Run unit suites and `uv run --locked python -m unittest discover -s tests/integration -p test_interoperability.py -v`. Missing ty fails. Assert actual tools/call hover through installed stdio, preserved fixture type text, correct URI/position, and reopened dependency/config visibility. Extend the existing workflow with the platform lanes above and include integrations in ordinary unittest discovery as they are introduced.
+- [ ] Build/install outside the checkout, run the routine gate in the owning lanes and record G1 actual MCP→adapter→ty hover with correct fixture result. G1 does not require the definition wrapper scheduled in T5. Perform the early Codex checkpoint below, then commit reviewed changes. SDK communication alone does not pass G1.
+
+**Early Codex feasibility checkpoint (before T5):** In an actual Codex session,
+register the installed production adapter in a disposable synthetic workspace,
+invoke hover through ty, and record host version, launch command, executable origin
+and redacted transcript. Verify that this host exposes an approval interaction by
+requiring approval for that existing hover tool in a disposable host profile;
+observe one allowed invocation and one denial with no adapter call on denial.
+Keep hover's read-only annotation unchanged; no temporary mutation/probe tool or
+invented consent field. This proves the available approval workflow, not safe
+mutation or H2. Record how T11 will exercise approvals for rename/edit on a supported
+write host. If installed invocation, interactive denial or access to that write host
+cannot be established, record UNKNOWN and pause before T5 for a human decision on
+continued implementation; never waive final H1–H3. Full nine-tool and mutation-host
+acceptance remains T11.
 
 ## Phase 2 — all six reference capabilities, with required corrections
 
 ### T5: Definition, references and hover with precise positions and source parity
 
-**Files:** create navigation.py, source_text.py, tests/test_navigation.py,
+**Files:** extend T4 navigation.py and tests/test_navigation.py; create source_text.py,
 tests/test_source_text.py, tests/integration/test_navigation.py; extend mcp_api.py
 and fixture decoy/decorated/nested/async/constant/Unicode cases.
 
@@ -189,7 +280,7 @@ in source_text.py returns full/selection/source scope, not a new semantic positi
 **Test assertion anchors:** `self.assertEqual(sent_params["position"], {"line": 0, "character": 4})` for the invented one-line definition; `self.assertEqual(expected_call_sites, observed_call_sites)`; `self.assertNotIn(decoy_uri, reference_uris)`.
 
 - [ ] Write `test_forwarded_position_is_exact`, `test_locationlink_ranges_remain_distinct`, `test_full_decorated_nested_source`, `test_ast_utf8_columns_differ_from_utf16`, `test_external_source_not_read`, `test_null_hover_variants`. Assert every envelope/schema and no declaration-start substitution.
-- [ ] Run unit suites red; implement mapping/source extraction/normalization and three SDK tool wrappers using canonical signatures; run green. Preserve complete source behavior for supported P1 fixtures, not just locations.
+- [ ] Run unit suites red; add definition/references mapping, source extraction and their SDK wrappers, and complete hover normalization/edge cases on the T4 production path. Run green; retain T4's hover regression and canonical signatures. Preserve complete source behavior for supported P1 fixtures, not just locations.
 - [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_navigation.py -v`; direct ty identifier and adapter calls must agree on exact expected call sites/imports, exclude same-name decoy, include declarations only when requested. Record keyword control and caller-provided coordinate provenance; do not add +4 to inputs. Verify empty/limits/source statuses and changed dependencies. Gate P1/P2/P4/S1/S5; routine gate, commit.
 
 ### T6: Current pull diagnostics, including unchanged/dependency behavior
@@ -237,12 +328,14 @@ and changed files match spec; no SDK/LSP imports. Supports macOS/Linux guarded l
 
 - [ ] Write `test_denied_target_changes_zero_files`, `test_parent_symlink_swap_and_hardlink`, `test_preflight_all_targets_before_replace`, `test_failure_at_each_replace_rolls_back`, `test_external_change_during_rollback_requires_recovery`, `test_lost_response_replay_once`, `test_state_quota_and_corrupt_journal`. Assert complete byte/mode hashes and exact statuses, not only exceptions.
 - [ ] Run unit suite red, implement no-follow directory-relative validation, all-file staging/verified before-images, durable transitions and rollback rules. Recovery receipts survive preview expiry/session restart. Lookup committed receipts before ordinary expired-plan checks; no replay of an incomplete journal.
-- [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_recovery.py -v` with disposable subprocess crash at journal/replace/receipt boundaries. Actual process exit and restart must restore safe states or lock mutations with per-file recovery status. Unsupported platform/filesystem capabilities fail closed. Gate W4–W7; run routine gate/commit. Do not claim cross-file atomicity from per-file replace.
+- [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_recovery.py -v` with disposable subprocess crash at journal/replace/receipt boundaries on both Linux x86_64 and macOS arm64 lanes. Actual exit/restart must restore safe states or lock mutations with per-file recovery status. Add these tests to the existing lane gates now. On Windows run explicit unsupported-write rejection with unchanged source hashes; only POSIX-adapter tests may be marked platform-not-applicable. Missing required POSIX safety capabilities fail their lane. Gate W4–W7 requires separate passing evidence for both claimed write platforms; run routine gate/commit. Do not claim cross-file atomicity from per-file replace.
 
 ### T9: Rename/edit MCP tools and post-commit semantics
 
 **Files:** create mutations.py, tests/test_mutations.py,
-tests/integration/test_mutations.py; extend mcp_api.py/documents.py only at their public seams.
+tests/integration/test_mutations.py and tests/integration/test_startup_recovery.py;
+extend mcp_api.py for MCP lifespan/composition and mutation wrappers,
+tests/test_mcp_api.py for recovery admission, and documents.py only at its public seams.
 
 **Interfaces:** `Mutations(config:Config,documents:Documents,session:Session,transactions:Transactions)`;
 `async preview_rename(uri:str,position:Position,new_name:str)->Result`,
@@ -250,12 +343,34 @@ tests/integration/test_mutations.py; extend mcp_api.py/documents.py only at thei
 `async apply(plan_id:str)->Result` (receipt lookup first).
 SDK wrappers use action preview/apply and validate mutually exclusive fields.
 
+**Production startup recovery:** The mcp_api.py lifespan/composition constructs
+Transactions and invokes recover() under its transaction-owned state lock, after
+validating platform and operator authority but before yielding mutation admission.
+No preview or apply may run while startup recovery is pending. For enabled writes
+on a supported host, successful recovery completes before admitting mutations;
+any recovery_required receipt or corrupt/unreadable state becomes a persistent
+RECOVERY_REQUIRED mutation lockout. Do not silently treat an exception as an empty
+recovery result. The lifespan may expose tool schemas after reaching that locked
+state, but all mutation calls must return the lockout without new target writes.
+Pending recovery keeps startup admission closed; startup cancellation releases
+the lock through bounded cleanup or leaves durable recoverable state.
+
+Disabled mutations or an unsupported write platform must never trigger automatic
+source restoration merely by starting the server. Retain the mutation denial and
+require valid operator authority before recovery writes; changed writable roots
+or unsafe recovery targets fail closed. This preserves disabled-mode zero writes.
+Recovery journal contents remain untrusted and subject to the T8 filesystem policy.
+The startup gate is production wiring, not a test-only call to recover().
+
 **Test assertion anchors:** `self.assertEqual(error.code, "MUTATIONS_DISABLED")`; `self.assertEqual(before_hashes, rejected_after_hashes)`; `self.assertEqual(retry_receipt, committed_receipt)` after restart.
 
 - [ ] Write `test_disabled_and_claimed_approval_denied`, `test_preview_immutable_no_write`, `test_stale_apply_is_not_replanned`, `test_rename_prepare_and_null`, `test_annotations_remain_destructive`, `test_cancel_during_apply_does_not_lose_receipt`, `test_committed_but_sync_failed_is_not_rollback`. Assert new_name identifier/keyword rules and all denied cases leave source hashes unchanged.
-- [ ] Run unit tests red; implement prepareRename when advertised, real rename response planning, bounded retained previews (32/10 minutes), authority checks and shared transaction application. A committed disk transaction followed by sync failure returns committed status with semantic_state unavailable and blocks stale reads; never misreports disk rollback. Shield commit/rollback and durably record its outcome; if the SDK has already
+- [ ] Add `test_apply_drains_readers_before_preflight`, `test_read_admission_blocked_during_commit`, `test_apply_drain_timeout_writes_nothing` and `test_no_restart_during_commit` against T4's coordinator. Use barriers to hold a read and a commit separately; assert no target replacement while reads remain, no semantic result during partial commit, no concurrent restart and bounded WORKSPACE_BUSY on drain timeout. Assert cancellation releases admission and post-commit reads use a fresh generation or fail explicitly.
+- [ ] Write `test_lifespan_recovers_before_mutation_admission`, `test_recovery_lockout_rejects_all_mutations` and `test_disabled_or_unsupported_startup_never_restores_source`. Hold recovery with a test barrier and assert the actual production lifespan cannot admit mutation calls; release it and assert admission only after verified recovery. Inject corrupt state/unsafe targets and assert RECOVERY_REQUIRED with no additional target writes; disabled/unsupported startup preserves source hashes even with an incomplete journal.
+- [ ] Run unit tests red; implement the production lifespan recovery gate and mutation wrappers together with prepareRename when advertised, real rename response planning, bounded retained previews (32/10 minutes), authority checks and shared transaction application. Obtain unit green before installed startup tests. A committed disk transaction followed by sync failure returns committed status with semantic_state unavailable and blocks stale reads; never misreports disk rollback. Shield commit/rollback and durably record its outcome; if the SDK has already
   returned cancellation, retry of the same plan_id reports the receipt rather than
   implying zero writes or reapplying.
+- [ ] Build/install outside the checkout, then run `uv run --locked python -m unittest discover -s tests/integration -p test_startup_recovery.py -v` on both POSIX write lanes. Seed an incomplete journal via a disposable adapter subprocess crash, launch the installed CLI over real stdio without a test calling recover(), and assert safe restoration precedes the first accepted mutation. With an externally changed target or corrupt journal, assert real rename/edit previews and apply remain locked out and source hashes do not change further. Verify cleanup/restart after pending-recovery cancellation. Windows runs the zero-restoration denial case; POSIX recovery cases remain explicitly not applicable there.
 - [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_mutations.py -v`: real ty multi-module rename, local edit insert/replace/delete/EOF, complete rejected-set and post-edit definitions/references/diagnostics/hover. Lost response/retry stable; restart expires previews but returns prior receipt. Gate G2 = all P1–P6, W1–W8 and required protocol rows pass; routine gate/commit. Safe write behavior is required parity, not deferred polish.
 
 ## Phase 3 — bounded ty navigation extensions
@@ -270,10 +385,14 @@ tests/integration/test_symbols.py; extend class hierarchy and duplicate-symbol f
 `async workspace_symbols(query:str,resolve:bool=False)->Result`,
 `async implementations(uri:str,position:Position)->Result`.
 Internal document-symbol source support from T5 is reused, not duplicated.
+workspace_symbols holds Documents.generation() across search, any advertised
+resolve requests, normalization and final validation. It never selects an arbitrary
+document to obtain a lease. Document symbols/implementations use Documents.read(uri).
 
 **Test assertion anchors:** `self.assertEqual(set(tool_names), {"definition", "references", "diagnostics", "hover", "rename_symbol", "edit_file", "document_symbols", "workspace_symbols", "implementations"})`; `self.assertIsNone(unresolved["selection_range"])`.
 
 - [ ] Write `test_nested_symbol_ranges`, `test_uri_only_symbol_never_guesses_position`, `test_duplicate_names_preserved`, `test_implementation_supported_empty_unsupported`, `test_exact_final_tool_catalog`. Assert nine expected names and no additional mutation/execute tools.
+- [ ] Add `test_empty_workspace_symbols_needs_no_uri`, `test_workspace_change_during_symbol_search` and `test_workspace_change_during_symbol_resolve`. Assert successful empty search without a synthetic document/didOpen, and use barriers to change the workspace during search/resolve: return STALE_DOCUMENT, discard all old-generation results and release the generation lease. Include the empty-workspace and changed-workspace cases in real-ty integration evidence; fake barriers independently prove the precise race.
 - [ ] Run unit suite red, implement exact methods/capability checks and SDK wrappers, then green. Preserve hierarchy, stable order and actual resolved ranges only.
 - [ ] Run real-ty symbols/implementation suite with known subclass/member overrides and duplicate names. Gate G3 = S2/S3/S4 plus previous parity still green; routine gate/commit. No declaration/type-definition/call-hierarchy tool added.
 
@@ -294,8 +413,8 @@ No new framework/host launcher product API.
 **Test assertion anchors:** `self.assertEqual(installed_origin_root, clean_environment_root)` after resolving origin; `self.assertEqual(before_hashes, host_denied_after_hashes)`; each of nine host calls has asserted semantic/result content, not only a non-error flag.
 
 - [ ] Extend artifact guard tests red for missing entry point/resources/notices/declared SDK deps; build `uv build --no-sources`, install wheel in clean outside-source runtime-only environment and verify all six capabilities/extensions over stdio with actual ty. Verify source independence/import origin and no development dependency masking.
-- [ ] Add required pinned-ty integration tests to ordinary unittest/CI scope; install dependencies at CI setup, never during MCP requests. Preserve four-hook set. Missing ty fails, no acceptance skip. Observe macOS/Linux separately; do not enable Windows writes.
-- [ ] In disposable synthetic workspace, use actual Codex version/trust/stdio registration to discover and invoke all nine tools. First read-only startup: read successes and both mutation rejections; then operator write-enabled profile: previews and approved rename/edit apply, exact file assertions and fresh follow-up semantics. Configure mutation tool approval policy using current official host docs, not invented consent metadata.
+- [ ] Complete installed-server coverage in the platform lanes established at T4 and extended at T8/T9; integration tests already participate in ordinary unittest discovery. Install dependencies at CI setup, never during MCP requests. Preserve four hooks. Missing ty or skipped required tests fail claimed-platform acceptance. Retain separate Linux x86_64/macOS arm64 write receipts, and Windows read/unsupported-write evidence with narrowly identified POSIX-only not-applicable tests; never enable Windows writes.
+- [ ] Revisit T4's host-feasibility receipt and resolve any recorded limitation. In a disposable synthetic workspace on a supported write host, use actual Codex version/trust/stdio registration to discover and invoke all nine tools. First read-only startup: read successes and both mutation rejections; then operator write-enabled profile: previews and approved rename/edit apply, exact file assertions and fresh follow-up semantics. Configure mutation tool approval policy using current official host docs, not invented consent metadata. Early hover approval/denial does not substitute for actual rename/edit approvals and denial here.
 - [ ] Observe a **denied host mutation approval** and compare before/after hashes; inspect actual host transcript, not only direct SDK results. If this harness cannot exercise approval interaction, H2 remains UNKNOWN and host acceptance is not passed. Capture timeout/ty death/EOF cleanup and PID reaping. Gate G4 = H1–H3/E2 measured; routine gate/commit with sanitized receipts.
 
 ### T12: Full affected-input engineering acceptance and plan reconciliation
@@ -308,8 +427,8 @@ semantic→port direction and filesystem isolation in pyproject.toml.
 
 - [ ] Run effective interpreter/tool/source provenance and required gate: `uv sync --locked --all-groups`; `uv run --locked pre-commit run --all-files`; `uv build --no-sources`; `uv run --locked python tools/verify_distribution.py`. Observe CI for exact candidate SHA when synchronization is authorized.
 - [ ] Run applicable separate C901, independently qualified cognitive scorer, Lizard, cohesion, Interrogate, Vulture, Bandit, statement/branch coverage, bounded Cosmic Ray, deptry, pip-audit and Import Linter against actual runtime and meaningful tests. Document reviewed findings/survivors/timeouts and scopes; no inherited score floor, weakened ceiling or known-broken scorer PASS.
-- [ ] Close T0 cognitive/gz-skills evidence with correct sources/native discovery and current pins. If unavailable, list owner/external condition and explicitly withhold strict E3/E4/terminal acceptance; do not describe partial work as full accepted parity milestone.
-- [ ] Use gzs-plan-audit/intent comparison to map each P/S/C/D/W/H/E row to exact observed evidence. All required rows need observed PASS or a human-approved scope revision before any altered claim; an exception does not silently become strict conformance. Gate G5: engineering acceptance complete; routine gate/commit.
+- [ ] Close T0 cognitive qualification and execution-host verification of the completed gz-skills reconciliation with correct sources/native discovery and selected pins. If unavailable, list owner/external condition and explicitly withhold strict E3/E4/terminal acceptance; do not describe partial work as full accepted parity milestone.
+- [ ] Use gzs-plan-audit/intent comparison to map each P/S/C/D/W/H/E row to exact observed evidence and inventory every skipped test by platform/reason. A Windows POSIX-only not-applicable entry cannot satisfy Linux/macOS write evidence, and missing required lane evidence stays UNKNOWN. All required rows need observed PASS or a human-approved scope revision before any altered claim; an exception does not silently become strict conformance. Gate G5: engineering acceptance complete; routine gate/commit.
 
 ### T13: Accept the bounded milestone and stop
 
@@ -325,7 +444,10 @@ semantic→port direction and filesystem isolation in pyproject.toml.
 
 Coverage: P1/P2/P4→T5, P3→T6, P5/P6→T7–T9; S1/S5→T5,
 S2–S4→T10, S6→T6/T9; protocol C→T2–T4/T8, workspace D→T1/T4/T5,
-write W→T7–T9, host H→T11, engineering E→T0/T11/T12, STOP→T13.
+write W→T7–T9, early host feasibility→T4, full host H→T11,
+engineering E→T0/T4/T8/T11/T12, STOP→T13. Production hover starts at T4;
+P4/S5 acceptance still requires T5/T11. Platform lanes and concurrency tests
+are assigned before dependent write/host acceptance, not deferred to the last gate.
 Shared type/signature names and five Review Focus cases have owning tests above.
 Tasks produce meaningful independently reviewable results; related setup belongs
 to its deliverable, and all six tools remain in the finite phase-2 gate.
@@ -335,7 +457,6 @@ boundaries permit review without converting transport or transaction helpers int
 public general-purpose libraries. Gate evidence, not task checkbox counts, controls
 acceptance. This plan contains decisions/tests/signatures, no runtime implementation.
 
-Human review is required now. Choose/confirm an execution workflow only after the
-specification and plan are accepted. Neither Superpowers execution sub-skill is
-invoked by this document. The next authorized action in this assignment is handoff,
-not T0 or code generation.
+Human review and execution approval were received on 2026-11-01. Use the approved
+plan in an isolated implementation branch; retain every required gate and the
+T4 host-feasibility checkpoint. No merge, push, tag or release follows automatically.

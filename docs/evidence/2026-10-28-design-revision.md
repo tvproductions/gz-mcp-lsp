@@ -5,6 +5,10 @@ supersedes this receipt's current tool/plugin freshness selections and tracks
 independent gz-skills reconciliation. The source assessment, unapproved design
 and implementation boundary below remain unchanged.
 
+The [November 1 prerequisite reconciliation audit](2026-11-01-plan-prerequisites.md)
+updates the draft specification, plan and acceptance wording to those selected inputs.
+Functional design and all pending approvals remain unchanged.
+
 ## Authorized work and result
 
 User direction: revise the architecture and prepare a Superpowers implementation

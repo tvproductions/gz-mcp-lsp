@@ -1,10 +1,17 @@
 # gz-mcp-lsp reference parity and semantic-navigation specification
 
-Revision 2, 2026-10-28. **DRAFT FOR HUMAN APPROVAL — implementation prohibited.**
+Revision 2, 2026-10-28. **APPROVED FOR EXECUTION with its implementation plan on 2026-11-01.**
+The user directed "plan is approved, proceed" after reviewing the linked contracts.
+See [execution evidence](../../evidence/2026-11-01-execution.md); this approval does
+not waive required acceptance evidence.
+Prerequisites reconciled 2026-11-01 against the
+[October 31 update receipt](../../evidence/2026-10-31-dependency-update.md).
+Functional design and pending human decisions are unchanged; this correction
+does not approve execution or establish new upstream freshness evidence.
 The latest user direction supersedes revision 1's read-only scope: all six Go
 reference tools, including diagnostics, rename and editing, are required functional
 scope. This document and the [implementation plan](../plans/2026-10-28-reference-parity.md)
-are review artifacts, not acceptance or permission to execute. Lite governance,
+are approved execution artifacts, not evidence of delivered runtime acceptance. Lite governance,
 Superpowers design/planning, project/starter gates and disabled Backplane remain.
 
 ## Objective, baseline and deliberate stop
@@ -24,13 +31,15 @@ S1–S6 traceability; [reference receipt](../../evidence/2026-10-28-reference-as
 records hashes/observed tests. No Go/ty or Python runtime acceptance has occurred.
 
 Baseline: Python 3.14 family, selected managed CPython 3.14.10; uv/uv_build 0.13.6,
-Ruff 0.17.3, ty 0.0.93, pre-commit 4.7.0, unittest, src packaging and project lock.
+Ruff 0.17.3, ty 0.0.95, pre-commit 4.7.0, unittest, src packaging and project lock.
 No Makefile or environment-variable application configuration. Official MCP SDK
 candidate **mcp 2.3.0**, source `2118f14f8a19bc158d8a1cf90af58d85d187f849`;
-ty integration candidate **0.0.93**, source `3db5e4df7becd3ca55fd06c78e98bf7c8a38e469`.
-These versions were checked against official release sources; compatibility and
-the SDK dependency graph remain to be tested after approval. No runtime dependency
-or toolchain pin changes are made in this design assignment.
+ty integration candidate **0.0.95**, matching pyproject.toml and uv.lock after the
+October 31 update. The old 0.0.93 source identity remains historical, not the
+identity of 0.0.95. T0 must record the selected ty source revision and executable
+provenance, and test its actual LSP behavior. The SDK remains the October 28
+candidate; SDK compatibility and its dependency graph remain to be tested after
+approval. No runtime dependency or toolchain pin changes are made in this correction.
 
 ## Approach and responsibilities
 
@@ -322,12 +331,20 @@ license checks remain on-demand acceptance, not additional routine hooks. Update
 distribution guards (currently enforce no runtime dependencies) with SDK adoption;
 never bypass them. Runtime imports must come from installed src package.
 
-Cognitive qualification remains UNKNOWN/blocked: starter issue #1 is still open;
-complexipy 8.3.0 failed keyword-condition qualification. gz-skills 0.8.0 selection
-versus released 0.8.3 reconciliation remains open. Use gzs-update-dependencies
-and canonical starter/native procedures for a separately reviewed reconciliation;
-do not hand-edit cache/provenance or silently waive strict acceptance. Keep both
-as named work packages with completion gates, owner tvproductions/maintainer.
+Cognitive qualification remains UNKNOWN/blocked under the recorded evidence:
+complexipy 8.3.0 failed keyword-condition qualification, and the October 31 receipt
+records starter issue #1 as open with no qualified shared engine. T0/T12 must
+recheck the owning workflow; owner tvproductions/maintainer. Strict acceptance
+remains blocked until qualification is demonstrated.
+
+gz-skills 0.8.0→0.8.3 reconciliation was completed in the October 31 scoped update,
+including catalogs/provenance and native prepublication discovery evidence. T0/T12
+must verify the retained selection, loaded source and scope in the execution host,
+and separately confirm the configured Git-source refresh; the receipt leaves that
+post-publication observation to the final handoff. Do not repeat an upgrade solely
+because the original draft scheduled one, edit native caches, or treat prior-host
+discovery as evidence for every host. New drift requires the owning maintenance
+workflow, not an incidental prerequisite rewrite.
 
 Python 3.14: verify SDK annotation/schema introspection on actual CPython; use
 asyncio task/subprocess cleanup, stdlib context managers/dataclasses/path handling
@@ -347,8 +364,10 @@ is verified. Do not claim universal portability from one host.
    concurrent noncooperating writers require redesign before implementation.
 3. Approve conservative rescan/restart saved-file consistency, external-target
    metadata-only policy, proposed size/time budgets and initial OS matrix.
-4. Resolve ownership/availability of the qualified cognitive engine and approve
-   the gz-skills reconciliation before claiming strict engineering acceptance.
+4. Confirm ownership/availability of the qualified cognitive engine and require
+   verification of the completed gz-skills reconciliation in the execution host
+   before claiming strict engineering acceptance. The dated update is not a waiver
+   of qualification or host-discovery evidence.
 
 The implementation plan covers all six tools and three extensions in finite phases;
 no indefinite deferral. Terminal milestone: accepted reference parity, corrected

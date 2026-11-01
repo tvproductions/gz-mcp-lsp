@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+- Record approval of the revised plan and linked specification; begin T0 on an
+  isolated implementation branch. Runtime acceptance remains evidence-gated.
+
+- Correct second-review plan gaps: wire startup recovery before mutation admission,
+  separate workspace generation leases from document snapshots, and place T0's
+  failing dependency-policy test before verifier and SDK changes. Planning only.
+- Correct four execution details in the unapproved plan: production hover at T4,
+  coordinated concurrent reads/restarts/commits, explicit platform verification
+  lanes and an early actual Codex feasibility checkpoint. Architecture and scope
+  remain unchanged; no runtime task started.
+- Reconcile unapproved design/plan prerequisites with ty 0.0.95 and the completed
+  gz-skills 0.8.3 update; retain execution-host verification, unresolved cognitive
+  qualification and all pending human decisions. No implementation authorized.
 - Set the product's initial development version to 0.1.0 at user direction;
   no tag or release publication.
 - Update ty to 0.0.95 and six transitive development/hygiene dependencies;

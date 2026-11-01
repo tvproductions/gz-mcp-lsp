@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; execution stops at this stage boundary.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; execution stops before T9.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -70,14 +70,21 @@ acceptance remain pending.
 
 T7: [immutable edit-plan evidence](2026-11-01-edit-plans.md) records eight passing
 pure-planner tests and exact content identities. All 114 tests, full Windows/
-Linux gates, C901 and scoped portability pass. No filesystem transaction or
-mutation tool is implemented. T8-T13 remain pending.
+Linux gates, C901 and scoped portability passed at that checkpoint; filesystem
+transactions and T8-T13 were then pending.
+
+T8: [transaction/recovery evidence](2026-11-01-transactions.md) records all-target
+preflight, no-follow POSIX replacement, safe rollback and durable recovery/retry.
+The final local 131-test suite and Windows/Linux gates pass; hosted Linux/macOS/
+Windows passed the adapter checkpoint. Exact final-commit CI remains required.
+T9 production startup admission and mutation tools have not started.
 
 ## Bounded-session handoff
 
-After the user's concern about continuous execution, stop after T7 and resume
-future stages in separate bounded work sessions. T8 (guarded POSIX transactions
-and durable recovery) has not started. Existing implementation approval persists;
+After the user's concern about continuous execution, resume one bounded stage
+per session. The user subsequently authorized T8 only, with a stop on completion.
+T8 internal transactions/recovery are implemented; T9 has not started.
+Existing implementation approval persists;
 this handoff does not require reapproval of the remaining scope. Keep the isolated
 feat/reference-parity worktree and its ignored task ledger. The user subsequently
 authorized branch synchronization and a durable handoff; see

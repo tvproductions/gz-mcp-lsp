@@ -9,6 +9,11 @@ The [November 1 prerequisite reconciliation audit](2026-11-01-plan-prerequisites
 updates the draft specification, plan and acceptance wording to those selected inputs.
 Functional design and all pending approvals remain unchanged.
 
+Execution follow-up: the revised plan was later approved on November 1.
+T0-T8 are implemented; the [bounded handoff](../handoff.md) and
+[T8 receipt](2026-11-01-transactions.md) identify the current stage. Earlier
+planning-only conclusions below remain historical.
+
 ## Authorized work and result
 
 User direction: revise the architecture and prepare a Superpowers implementation

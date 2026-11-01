@@ -16,7 +16,9 @@ before/after/restore identities and survive expiry/session replacement.
 
 Eight initial Linux assertions failed before the adapter existed. Additional
 source-change-after-intent and malformed-receipt tests reproduced defects before
-their fixes. All 16 T8 tests now pass on native Linux x86_64; disposable workers
+their fixes. A malformed persistent lockout also reproduced false recovery
+success before strict schema validation was added. All 17 T8 tests now pass on
+native Linux x86_64; disposable workers
 exit with code 73 at prepared, replacement intent, replacement, replaced,
 rolling-back, restore intent, restored, rolled-back, committed and receipt
 boundaries. An unpublished journal fails closed. Recovery never replays an
@@ -26,9 +28,10 @@ hardlinks, parent symlink swaps, quota, corrupt state and no-op inode preservati
 
 Both complete local Windows and native Linux gates passed: locked all-group sync,
 the four pre-commit hooks, source build and outside-checkout distribution check.
-C901 source checks at 20 and ty pass. Windows executes the explicit disabled/
-unsupported denial, creates no state and changes no source; the 15 POSIX-only
-tests are not applicable there. The full suite discovers 130 tests.
+C901 source checks at 20, ty and scoped portability audit pass. Windows executes
+the explicit disabled/
+unsupported denial, creates no state and changes no source; the 16 POSIX-only
+tests are not applicable there. The full suite discovers 131 tests.
 
 ## Portability decisions and limits
 
@@ -49,7 +52,13 @@ tests are not applicable there. The full suite discovers 130 tests.
 - Unsafe/corrupt unidentifiable metadata leaves operator recovery required;
   source-free generic status is used when trustworthy file identities are absent.
 
-Hosted macOS arm64 safety remains pending at this checkpoint. T8 closes only after
-both supported write lanes pass on the actual candidate. W4/W6/W7 also contain
+The adapter checkpoint ea02dfabb4b31df7672e88d4016d10b25e644441 passed
+Linux x86_64, macOS arm64 and Windows AMD64 in
+[CI 41333910261](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41333910261).
+The follow-up rejects malformed lockout metadata and explicitly decodes test-child
+diagnostics as UTF-8 with replacement; its 17 T8 tests pass on Linux. The final
+sync response records its exact commit and three-platform CI result. Final CI
+must pass before this session reports T8 complete; no receipt-only chain follows.
+W4/W6/W7 also contain
 T9 production coordination/startup requirements; these are not claimed here.
 The remaining cognitive qualification/native-host/final milestone gaps persist.

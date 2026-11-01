@@ -3,7 +3,7 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation complete through T7; paused at a stage boundary.
+**Status: plan approved on 2026-11-01; implementation complete through T8; paused at a stage boundary.
 Definition, references, diagnostics and hover pass installed MCP/ty checks; the full milestone remains unaccepted.**
 
 The intended path is:
@@ -25,7 +25,7 @@ server or general-purpose LSP framework is planned. The complete milestone is
 accepted parity, semantic corrections/extensions, real Codex interoperability,
 engineering evidence, then a deliberate stop.
 
-Continue from the [bounded implementation handoff](docs/handoff.md); T8 is next.
+Continue from the [bounded implementation handoff](docs/handoff.md); T9 is next.
 
 Read the [revised architectural specification](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),
 [version-pinned parity assessment](docs/discovery/reference-parity.md),

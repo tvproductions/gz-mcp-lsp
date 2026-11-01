@@ -650,6 +650,15 @@ class Transactions:
         with self._state() as state:
             blocked = self._read_json(state, "blocked.json")
             if blocked is not None:
+                if (
+                    blocked.get("schema_version") != 1
+                    or blocked.get("workspace_root") != str(self.workspace.root)
+                    or blocked.get("status") != "recovery_required"
+                    or not isinstance(blocked.get("plan_id"), str)
+                    or (blocked["plan_id"] != "unknown" and not _ID.fullmatch(blocked["plan_id"]))
+                    or blocked.get("files") != []
+                ):
+                    raise AdapterError("RECOVERY_REQUIRED", "Corrupt mutation lockout metadata")
                 return [blocked]
             try:
                 self._usage(state)

@@ -37,6 +37,8 @@ class RecoveryTests(unittest.TestCase):
             [sys.executable, "-m", "tests.support.crash_transaction", str(base), point],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=30,
             check=False,
         )

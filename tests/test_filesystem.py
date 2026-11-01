@@ -294,6 +294,16 @@ class FilesystemTests(TransactionFixture):
                 self.assertEqual(error.exception.code, "RECOVERY_REQUIRED")
                 self.assertEqual(self.images(), before)
 
+    def test_invalid_lockout_metadata_is_never_recovery_success(self):
+        adapter = self.transactions()
+        with adapter._state() as state:
+            adapter._atomic_json(state, "blocked.json", {"status": "committed"})
+        before = self.images()
+        with self.assertRaises(AdapterError) as corrupt:
+            adapter.recover()
+        self.assertEqual(corrupt.exception.code, "RECOVERY_REQUIRED")
+        self.assertEqual(self.images(), before)
+
     def test_no_op_preserves_target_identity(self):
         from gz_mcp_lsp.edit_plan import PlannedFile, plan_digest
 

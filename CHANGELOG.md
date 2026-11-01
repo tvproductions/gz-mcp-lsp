@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add the T7 handoff with bounded-session execution, T8 transaction/recovery
+  contracts, remaining acceptance gaps and branch synchronization instructions.
+
 - Implement T7 immutable, zero-IO edit plans with original UTF-16 ranges,
   byte-exact after-images, alias/overlap/resource-operation rejection and
   content-bound preview identities. Mutation tools and filesystem writes remain pending.

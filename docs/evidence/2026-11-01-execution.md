@@ -79,6 +79,8 @@ After the user's concern about continuous execution, stop after T7 and resume
 future stages in separate bounded work sessions. T8 (guarded POSIX transactions
 and durable recovery) has not started. Existing implementation approval persists;
 this handoff does not require reapproval of the remaining scope. Keep the isolated
-feat/reference-parity worktree and its ignored task ledger. No push/merge/tag/
-release has occurred. Native discovery/cognitive qualification, macOS/hosted CI
-and full H1-H3 remain independent unresolved acceptance gaps.
+feat/reference-parity worktree and its ignored task ledger. The user subsequently
+authorized branch synchronization and a durable handoff; see
+[the current resume point](../handoff.md). No merge/tag/release is authorized.
+Native discovery/cognitive qualification and full H1-H3 remain unresolved;
+macOS/hosted CI conclusions depend on the exact pushed commit's result.

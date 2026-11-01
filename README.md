@@ -25,6 +25,8 @@ server or general-purpose LSP framework is planned. The complete milestone is
 accepted parity, semantic corrections/extensions, real Codex interoperability,
 engineering evidence, then a deliberate stop.
 
+Continue from the [bounded implementation handoff](docs/handoff.md); T8 is next.
+
 Read the [revised architectural specification](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),
 [version-pinned parity assessment](docs/discovery/reference-parity.md),
 [acceptance matrix](docs/discovery/acceptance-matrix.md), and

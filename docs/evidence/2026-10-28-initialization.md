@@ -5,9 +5,10 @@ changes tool/plugin selections and the project's native marketplace source.
 The initialization measurements below remain historical, including its 0.8.0
 discovery and outstanding freshness conclusion at that time.
 
-Current execution follow-up: the plan was approved on 2026-11-01; T0-T4 runtime
+Current execution follow-up: the plan was approved on 2026-11-01; T0-T7 runtime
 work and partial Windows/Linux/native-host evidence are recorded in the
-[execution receipt](2026-11-01-execution.md). The conclusions below describe the
+[execution receipt](2026-11-01-execution.md) and current
+[bounded handoff](../handoff.md). The conclusions below describe the
 October 28 initialization state, not the current implementation.
 
 ## Conclusions and authorized boundary

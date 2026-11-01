@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Implement T5 definition/references and complete authorized declaration source,
+  preserving caller UTF-16 positions, distinct ranges and original hover forms.
+  Verify three-consumer/decoy, decorated/nested/async/constant and Unicode fixtures
+  through direct ty and an installed MCP adapter; enforce aggregate result limits.
+
 - Implement T4 production hover, saved-file generation/read/exclusive leases,
   stale-result rejection, bounded document synchronization and fail-closed ty scope.
   Verify installed hover and local gates on Windows/Linux; actual Codex allows

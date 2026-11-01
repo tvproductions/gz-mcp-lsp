@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is in progress.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is complete; T6 is in progress.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
@@ -279,9 +279,9 @@ in source_text.py returns full/selection/source scope, not a new semantic positi
 
 **Test assertion anchors:** `self.assertEqual(sent_params["position"], {"line": 0, "character": 4})` for the invented one-line definition; `self.assertEqual(expected_call_sites, observed_call_sites)`; `self.assertNotIn(decoy_uri, reference_uris)`.
 
-- [ ] Write `test_forwarded_position_is_exact`, `test_locationlink_ranges_remain_distinct`, `test_full_decorated_nested_source`, `test_ast_utf8_columns_differ_from_utf16`, `test_external_source_not_read`, `test_null_hover_variants`. Assert every envelope/schema and no declaration-start substitution.
-- [ ] Run unit suites red; add definition/references mapping, source extraction and their SDK wrappers, and complete hover normalization/edge cases on the T4 production path. Run green; retain T4's hover regression and canonical signatures. Preserve complete source behavior for supported P1 fixtures, not just locations.
-- [ ] Run `uv run --locked python -m unittest discover -s tests/integration -p test_navigation.py -v`; direct ty identifier and adapter calls must agree on exact expected call sites/imports, exclude same-name decoy, include declarations only when requested. Record keyword control and caller-provided coordinate provenance; do not add +4 to inputs. Verify empty/limits/source statuses and changed dependencies. Gate P1/P2/P4/S1/S5; routine gate, commit.
+- [x] Write `test_forwarded_position_is_exact`, `test_locationlink_ranges_remain_distinct`, `test_full_decorated_nested_source`, `test_ast_utf8_columns_differ_from_utf16`, `test_external_source_not_read`, `test_null_hover_variants`. Assert every envelope/schema and no declaration-start substitution.
+- [x] Run unit suites red; add definition/references mapping, source extraction and their SDK wrappers, and complete hover normalization/edge cases on the T4 production path. Run green; retain T4's hover regression and canonical signatures. Preserve complete source behavior for supported P1 fixtures, not just locations.
+- [x] Run `uv run --locked python -m unittest discover -s tests/integration -p test_navigation.py -v`; direct ty identifier and adapter calls must agree on exact expected call sites/imports, exclude same-name decoy, include declarations only when requested. Record keyword control and caller-provided coordinate provenance; do not add +4 to inputs. Verify empty/limits/source statuses and changed dependencies. Gate P1/P2/P4/S1/S5; routine gate, commit.
 
 ### T6: Current pull diagnostics, including unchanged/dependency behavior
 

@@ -143,17 +143,26 @@ class Documents:
     async def read(self, uri: str) -> AsyncGenerator[ReadContext]:
         """Compose one generation lease with serialized validated snapshot/open."""
 
-        async with self.generation() as context:
-            key = await _owned_io(self.workspace.canonical_uri, uri)
-            async with self._open_lock:
-                snapshot = await _owned_io(self.workspace.read, uri)
-                await self._open(key, snapshot, context.rpc)
-                self._users[key] = self._users.get(key, 0) + 1
-            try:
-                await self._validate(context)
-                yield ReadContext(snapshot, context.generation, context.rpc)
-            finally:
-                self._users[key] -= 1
+        async with self.generation() as context, self.document(context, uri) as snapshot:
+            yield ReadContext(snapshot, context.generation, context.rpc)
+
+    @asynccontextmanager
+    async def document(self, context: GenerationContext, uri: str) -> AsyncGenerator[Snapshot]:
+        """Open another authorized source under an existing lease, without nested admission."""
+
+        await self._validate(context)
+        if context.rpc is not self.session.rpc:
+            raise AdapterError("STALE_DOCUMENT", "Document lease belongs to an old transport")
+        key = await _owned_io(self.workspace.canonical_uri, uri)
+        async with self._open_lock:
+            snapshot = await _owned_io(self.workspace.read, uri)
+            await self._open(key, snapshot, context.rpc)
+            self._users[key] = self._users.get(key, 0) + 1
+        try:
+            await self._validate(context)
+            yield snapshot
+        finally:
+            self._users[key] -= 1
 
     async def _open(self, key: str, snapshot: Snapshot, rpc: RpcClient) -> None:
         if key in self._opened:

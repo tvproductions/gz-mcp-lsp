@@ -1,0 +1,102 @@
+{
+  "definition": {
+    "file": "library.py",
+    "identifier": {
+      "line": 5,
+      "character": 4
+    },
+    "selection_end": {
+      "line": 5,
+      "character": 10
+    },
+    "full_start": {
+      "line": 4,
+      "character": 0
+    },
+    "full_end": {
+      "line": 9,
+      "character": 23
+    },
+    "source": "@mark\ndef shared(\n    name: str,\n) -> str:\n    \"\"\"Synthetic reusable declaration.\"\"\"\n    return name.upper()"
+  },
+  "query": {
+    "file": "consumer_a.py",
+    "position": {
+      "line": 2,
+      "character": 13
+    },
+    "keyword_control": {
+      "line": 5,
+      "character": 0
+    }
+  },
+  "calls": [
+    {
+      "file": "consumer_a.py",
+      "line": 2,
+      "character": 11
+    },
+    {
+      "file": "consumer_b.py",
+      "line": 2,
+      "character": 11
+    },
+    {
+      "file": "consumer_c.py",
+      "line": 2,
+      "character": 18
+    }
+  ],
+  "imports": [
+    {
+      "file": "consumer_a.py",
+      "line": 0,
+      "character": 44
+    },
+    {
+      "file": "consumer_b.py",
+      "line": 0,
+      "character": 44
+    },
+    {
+      "file": "consumer_c.py",
+      "line": 0,
+      "character": 44
+    }
+  ],
+  "decoy": "decoy.py",
+  "source_cases": [
+    {
+      "position": {
+        "line": 3,
+        "character": 14
+      },
+      "expected_text": "SHARED_CONSTANT = (\n    \"saved\",\n    \"value\",\n)"
+    },
+    {
+      "position": {
+        "line": 4,
+        "character": 12
+      },
+      "expected_text": "class Outer:\n    @staticmethod\n    async def nested(\n        item: str,\n    ) -> str:\n        return item.lower()"
+    },
+    {
+      "position": {
+        "line": 4,
+        "character": 19
+      },
+      "expected_text": "@staticmethod\n    async def nested(\n        item: str,\n    ) -> str:\n        return item.lower()"
+    }
+  ],
+  "unicode_query": {
+    "file": "consumer_c.py",
+    "position": {
+      "line": 2,
+      "character": 20
+    },
+    "surrogate_split": {
+      "line": 2,
+      "character": 14
+    }
+  }
+}

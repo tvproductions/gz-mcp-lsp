@@ -120,7 +120,11 @@ class Session:
             "capabilities": {
                 "general": {"positionEncodings": ["utf-16"]},
                 "workspace": {"configuration": True, "applyEdit": False},
-                "textDocument": {"synchronization": {"dynamicRegistration": False}},
+                "textDocument": {
+                    "synchronization": {"dynamicRegistration": False},
+                    "definition": {"linkSupport": True},
+                    "documentSymbol": {"hierarchicalDocumentSymbolSupport": True},
+                },
             },
             "initializationOptions": {
                 "untrustedWorkspace": True,

@@ -4,10 +4,13 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from typing import cast
+from unittest.mock import AsyncMock
 
 from mcp import types
 from mcp.client import Client
+from mcp.server.context import ServerRequestContext
 
 from gz_mcp_lsp.config import Config
 from gz_mcp_lsp.session import Session
@@ -33,6 +36,17 @@ class StubSession(FakeSession):
 class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
     """The SDK exposes only the implemented production tool."""
 
+    async def test_malformed_tool_name_delegates_to_sdk_validation(self):
+        """Product middleware leaves malformed protocol envelopes to the SDK."""
+        from gz_mcp_lsp.mcp_api import _strict_arguments
+
+        context = cast(
+            "ServerRequestContext", SimpleNamespace(method="tools/call", params={"name": []})
+        )
+        next_handler = AsyncMock(return_value=types.CallToolResult(content=[]))
+        await _strict_arguments(context, next_handler)
+        next_handler.assert_awaited_once_with(context)
+
     async def test_lifespan_schema_hover_and_strict_raw_arguments(self):
         """Typed SDK result includes equivalent JSON text; coercions are rejected."""
         from gz_mcp_lsp.mcp_api import create_server
@@ -47,7 +61,9 @@ class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
             async with Client(server) as client:
                 self.assertTrue(session.entered)
                 tools = (await client.list_tools()).tools
-                self.assertEqual([tool.name for tool in tools], ["hover"])
+                self.assertEqual(
+                    sorted(tool.name for tool in tools), ["definition", "hover", "references"]
+                )
                 assert tools[0].annotations is not None
                 self.assertTrue(tools[0].annotations.read_only_hint)
                 self.assertIsNotNone(tools[0].output_schema)
@@ -76,4 +92,19 @@ class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
                     self.assertTrue(result.is_error)
                     self.assertEqual(result.structured_content["error"]["code"], "INVALID_INPUT")
                 self.assertEqual(len(session.rpc.notifications), before)
+                for name, extra in (
+                    ("definition", {"context_lines": True}),
+                    ("definition", {"context_lines": 21}),
+                    ("references", {"include_declaration": "true"}),
+                ):
+                    result = await client.call_tool(
+                        name,
+                        {
+                            "uri": source.as_uri(),
+                            "position": {"line": 0, "character": 2},
+                            **extra,
+                        },
+                    )
+                    self.assertTrue(result.is_error)
+                    self.assertEqual(result.structured_content["error"]["code"], "INVALID_INPUT")
             self.assertTrue(session.closed)

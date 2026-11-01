@@ -95,3 +95,149 @@ class NavigationTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(asyncio.CancelledError):
             await task
         self.assertEqual(self.documents.active_count, 0)
+
+    async def test_forwarded_position_is_exact(self):
+        """One-line definition caller coordinates are never shifted by a keyword length."""
+        self.source.write_bytes(b"def item(): pass\n")
+        await self.documents.start()
+        self.session.capabilities.update({"definitionProvider": True, "referencesProvider": True})
+        self.session.rpc.request = AsyncMock(return_value=None)
+        await self.navigation.definition(self.source.as_uri(), Position(0, 4))
+        sent_params = self.session.rpc.request.call_args.args[1]
+        self.assertEqual(sent_params["position"], {"line": 0, "character": 4})
+        self.assertEqual(sent_params["textDocument"]["uri"], self.source.as_uri())
+
+    async def test_locationlink_ranges_remain_distinct(self):
+        """Origin, target full range and target identifier range remain separate."""
+        self.session.capabilities.update(
+            {"definitionProvider": True, "documentSymbolProvider": True}
+        )
+        full = {"start": {"line": 0, "character": 0}, "end": {"line": 0, "character": 11}}
+        selection = {"start": {"line": 0, "character": 0}, "end": {"line": 0, "character": 6}}
+        origin = {"start": {"line": 0, "character": 1}, "end": {"line": 0, "character": 3}}
+
+        async def request(method, params, *, timeout):
+            if method == "textDocument/definition":
+                return [
+                    {
+                        "targetUri": self.source.as_uri(),
+                        "targetRange": full,
+                        "targetSelectionRange": selection,
+                        "originSelectionRange": origin,
+                    }
+                ]
+            if method == "textDocument/documentSymbol":
+                return []
+            raise AssertionError(method)
+
+        self.session.rpc.request = AsyncMock(side_effect=request)
+        result = json.loads(
+            json.dumps(await self.navigation.definition(self.source.as_uri(), Position(0, 2)))
+        )
+        target = result["result"]["locations"][0]
+        self.assertEqual(target["range"], full)
+        self.assertEqual(target["selection_range"], selection)
+        self.assertEqual(target["origin_selection_range"], origin)
+        self.assertEqual(target["source"]["text"], "answer = 42")
+        self.assertEqual(self.documents.active_count, 0)
+
+    async def test_external_source_not_read(self):
+        """External definition metadata never causes an external snapshot or symbol query."""
+        external = (self.root.parent / "must-not-open.py").as_uri()
+        self.session.capabilities["definitionProvider"] = True
+        extent = {"start": {"line": 0, "character": 0}, "end": {"line": 0, "character": 4}}
+        self.session.rpc.request = AsyncMock(return_value={"uri": external, "range": extent})
+        original = self.documents.workspace.read
+
+        def read(uri):
+            self.assertNotEqual(uri, external)
+            return original(uri)
+
+        from unittest.mock import patch
+
+        with patch.object(self.documents.workspace, "read", side_effect=read):
+            result = json.loads(
+                json.dumps(await self.navigation.definition(self.source.as_uri(), Position(0, 2)))
+            )
+        target = result["result"]["locations"][0]
+        self.assertEqual(target["source_scope"], "external")
+        self.assertIsNone(target["source"])
+        self.assertEqual(self.session.rpc.request.await_count, 1)
+
+    async def test_references_order_context_and_flag(self):
+        """Reference order is deterministic and the declaration flag is forwarded exactly."""
+        self.session.capabilities["referencesProvider"] = True
+        first = {"start": {"line": 0, "character": 0}, "end": {"line": 0, "character": 1}}
+        second = {"start": {"line": 0, "character": 2}, "end": {"line": 0, "character": 3}}
+        self.session.rpc.request = AsyncMock(
+            return_value=[
+                {"uri": self.source.as_uri(), "range": second},
+                {"uri": self.source.as_uri(), "range": first},
+            ]
+        )
+        result = json.loads(
+            json.dumps(
+                await self.navigation.references(
+                    self.source.as_uri(), Position(0, 2), include_declaration=True, context_lines=1
+                )
+            )
+        )
+        sent = self.session.rpc.request.call_args.args[1]
+        self.assertEqual(sent["context"], {"includeDeclaration": True})
+        items = result["result"]["locations"]
+        self.assertEqual([item["range"] for item in items], [first, second])
+        self.assertEqual(items[0]["context"]["text"], "answer = 42\n")
+
+    async def test_source_budget_stops_before_reading_all_targets(self):
+        """Growing source attachments must fail before materializing an oversized whole set."""
+        from dataclasses import replace
+
+        from gz_mcp_lsp.config import Limits
+
+        self.source.write_bytes(("answer = '" + "x" * 400 + "'\n").encode())
+        self.documents.workspace.config = replace(self.config, limits=Limits(result_bytes=2500))
+        await self.documents.start()
+        self.session.capabilities["definitionProvider"] = True
+        extent = {"start": {"line": 0, "character": 0}, "end": {"line": 0, "character": 6}}
+        self.session.rpc.request = AsyncMock(
+            return_value=[{"uri": self.source.as_uri(), "range": extent} for _ in range(4)]
+        )
+        self.navigation._source = AsyncMock(wraps=self.navigation._source)
+        with self.assertRaises(AdapterError) as raised:
+            await self.navigation.definition(self.source.as_uri(), Position(0, 2))
+        self.assertEqual(raised.exception.code, "RESULT_LIMIT")
+        self.assertLess(self.navigation._source.await_count, 4)
+
+    async def test_external_reference_metadata_without_context(self):
+        """External references remain marked even when no source context was requested."""
+        self.session.capabilities["referencesProvider"] = True
+        extent = {"start": {"line": 0, "character": 0}, "end": {"line": 0, "character": 4}}
+        self.session.rpc.request = AsyncMock(
+            return_value=[{"uri": "https://example.invalid/external.py", "range": extent}]
+        )
+        result = json.loads(
+            json.dumps(await self.navigation.references(self.source.as_uri(), Position(0, 2)))
+        )
+        target = result["result"]["locations"][0]
+        self.assertEqual(target["source_scope"], "external")
+        self.assertIsNone(target["source"])
+
+    async def test_null_hover_variants(self):
+        """Each legal original form survives without type-text normalization."""
+        variants = [
+            None,
+            {"contents": "plain"},
+            {"contents": {"language": "python", "value": "answer: int"}},
+            {"contents": [{"language": "python", "value": "answer: int"}, "doc"]},
+            {"contents": {"kind": "markdown", "value": "**answer**"}},
+        ]
+        for value in variants:
+            self.session.rpc.request = AsyncMock(return_value=value)
+            result = await self.navigation.hover(self.source.as_uri(), Position(0, 2))
+            self.assertEqual(result["result"], value)
+        self.session.rpc.request = AsyncMock(
+            return_value={"contents": {"kind": [], "value": "malformed"}}
+        )
+        with self.assertRaises(AdapterError) as raised:
+            await self.navigation.hover(self.source.as_uri(), Position(0, 2))
+        self.assertEqual(raised.exception.code, "PROTOCOL_ERROR")

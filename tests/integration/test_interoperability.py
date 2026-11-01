@@ -2,10 +2,7 @@
 
 import asyncio
 import json
-import os
 import shutil
-import subprocess
-import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,6 +10,8 @@ from pathlib import Path
 from mcp import types
 from mcp.client import Client
 from mcp.client.stdio import StdioServerParameters
+
+from tests.integration.support import install_adapter
 
 
 class InstalledHoverTests(unittest.IsolatedAsyncioTestCase):
@@ -24,68 +23,7 @@ class InstalledHoverTests(unittest.IsolatedAsyncioTestCase):
         cls.addClassCleanup(cls.temporary.cleanup)
         cls.outside = Path(cls.temporary.name)
         cls.checkout = Path(__file__).resolve().parents[2]
-        cls.ty = Path(sys.executable).parent / ("ty.exe" if os.name == "nt" else "ty")
-        if not cls.ty.is_file():
-            raise AssertionError("Required pinned ty executable is missing")
-        cls.prefix = cls.outside / "installed"
-        cls.python = cls.prefix / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-        commands = [
-            ["uv", "build", "--no-sources", "--wheel", "--out-dir", str(cls.outside / "dist")],
-            ["uv", "venv", "--python", sys.executable, str(cls.prefix)],
-            [
-                "uv",
-                "export",
-                "--locked",
-                "--no-dev",
-                "--no-emit-project",
-                "--format",
-                "pylock.toml",
-                "--output-file",
-                str(cls.outside / "pylock.toml"),
-            ],
-            [
-                "uv",
-                "pip",
-                "sync",
-                "--offline",
-                "--python",
-                str(cls.python),
-                str(cls.outside / "pylock.toml"),
-            ],
-        ]
-        for command in commands:
-            result = subprocess.run(
-                command,
-                cwd=cls.checkout,
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                check=False,
-            )
-            if result.returncode:
-                raise AssertionError(result.stderr)
-        wheel = next((cls.outside / "dist").glob("*.whl"))
-        result = subprocess.run(
-            [
-                "uv",
-                "pip",
-                "install",
-                "--offline",
-                "--no-deps",
-                "--python",
-                str(cls.python),
-                str(wheel),
-            ],
-            cwd=cls.outside,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            check=False,
-        )
-        if result.returncode:
-            raise AssertionError(result.stderr)
+        cls.python, cls.ty = install_adapter(cls.checkout, cls.outside)
 
     @classmethod
     def tearDownClass(cls):
@@ -115,7 +53,9 @@ class InstalledHoverTests(unittest.IsolatedAsyncioTestCase):
         async with asyncio.timeout(30):
             async with Client(params) as client:
                 tools = (await client.list_tools()).tools
-                self.assertEqual([tool.name for tool in tools], ["hover"])
+                self.assertEqual(
+                    sorted(tool.name for tool in tools), ["definition", "hover", "references"]
+                )
                 first = await client.call_tool("hover", arguments)
                 self.assertFalse(first.is_error, first.content)
                 before = first.structured_content

@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is next.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is next.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -54,3 +54,9 @@ full local Windows/Linux gates. The [native host checkpoint](2026-11-01-codex-fe
 observes programmatic native allow/deny with zero denied adapter calls and
 supported Linux host access. Full H1-H3, macOS and new-branch hosted CI remain
 unverified. T5 continues on this same production path.
+
+T5: [navigation evidence](2026-11-01-navigation.md) records installed exact-position
+definition/references/hover, complete saved declaration source and independently
+expected three-consumer/import/decoy/Unicode controls. All 93 tests and full local
+Windows/Linux gates pass. C901/scoped portability pass; macOS/new-branch CI and
+complete nine-tool/native mutation acceptance remain unverified.

@@ -1,0 +1,66 @@
+{
+  "python": "3.14.10",
+  "uv": "0.13.6",
+  "mcp": "2.3.0",
+  "ty": "0.0.95",
+  "source_sha256": {
+    "__init__.py": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+    "__main__.py": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a",
+    "cli.py": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a",
+    "config.py": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a",
+    "documents.py": "9dca31db12b75882b626aa806f79156bcb8aa2b1e7329c999b0b5fa3b9354fe2",
+    "lsp_transport.py": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334",
+    "mcp_api.py": "f79b99c0b1d03676614988cbe27dcb28d3239af3859677d267ff342fb4667603",
+    "models.py": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33",
+    "navigation.py": "69c53fd47856678ce95faae280e4603039566348574fa6825f41326b8db194e5",
+    "session.py": "b47c5e70803c15f47bc1434b140f72629031ea7e6d3760bc7fc0fdaa29f50079",
+    "source_text.py": "dcd651ac884dc710d5c1d279877c89b81767ea6222d78a141fbcbad260f0b655",
+    "workspace.py": "209a90e839a272dfb260aa45268282e180a473bf166d87cce2e99b6d3140c6aa"
+  },
+  "fixture_sha256": {
+    "consumer_a.py": "0e9578822aef5f720659e7a6b21d27e9c0416726ee7128ea4cc8b61b5e8c0dc5",
+    "consumer_b.py": "1c3d959ee80352eb56b052bbce18455be1379cf409f0884979e84664c4b2b3a0",
+    "consumer_c.py": "0b83e92910d6ce3e85f0bf7f67966d65123b0a96d65cc6d060e1eb508a2390bf",
+    "decoy.py": "dc91052508bf3331593f076ce65bb4363803ffe363023c530d8a0bf483fcf7e7",
+    "dependency.py": "7ca5abf65adee67782e5c831d9ee108b323c5a9d9fda11f97a9910b18f6b1bdc",
+    "expected.json": "545971a5ec5f93b0790a032c3f5f6927c80b894d884993ebf6572d405991daa6",
+    "library.py": "653babc023ccc33585cb6ddc20d7cc9bb78659edf5b3adea99e5c2607bc9590f",
+    "main.py": "02a4ec9722264a6576ef8c4e97dbcfcf315dd27faa3706ecf2a821e2d3fb48e2",
+    "navigation_expected.json": "8c76c1d9a1ef5ebf874d1946e3246c43173022590e6f18a7e760093de2f96a52",
+    "pyproject.toml": "dd2210e3a96d424e3e4649c2160f9ac5ccaaf405482a400ffec2710e4b720a6e"
+  },
+  "wheel_sha256": "a643d52ffb83d5fc88b293ef2c5f882936835b040df8cb51438a11727836a381",
+  "unit_discovery_count": 93,
+  "windows_full_gate": "PASS",
+  "linux_x86_64_wsl_native_filesystem_full_gate": "PASS",
+  "installed_navigation_scenarios": 4,
+  "call_sites": 3,
+  "imports_with_include_declaration_true": 3,
+  "original_declaration": 1,
+  "raw_identifier_query": {
+    "file": "consumer_a.py",
+    "position": {
+      "line": 2,
+      "character": 13
+    }
+  },
+  "keyword_control": {
+    "file": "library.py",
+    "position": {
+      "line": 5,
+      "character": 0
+    },
+    "locations": []
+  },
+  "unicode_query": {
+    "file": "consumer_c.py",
+    "position": {
+      "line": 2,
+      "character": 20
+    },
+    "surrogate_split_rejected": 14
+  },
+  "macos_runtime": "UNKNOWN",
+  "hosted_CI": "UNKNOWN",
+  "full_H1_H3": "NOT ACCEPTED"
+}

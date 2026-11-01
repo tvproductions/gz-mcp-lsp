@@ -86,6 +86,7 @@ class ActualSessionTests(unittest.IsolatedAsyncioTestCase):
         async with asyncio.timeout(15):
             async with Client(params) as client:
                 self.assertEqual(
-                    [tool.name for tool in (await client.list_tools()).tools], ["hover"]
+                    sorted(tool.name for tool in (await client.list_tools()).tools),
+                    ["definition", "hover", "references"],
                 )
         # Structured SDK parsing would fail if arbitrary log bytes entered stdout.

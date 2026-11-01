@@ -1,8 +1,7 @@
 """Official SDK composition and strict raw input validation before SDK coercion."""
 
-import asyncio
 import json
-from collections.abc import AsyncGenerator
+from collections.abc import AsyncGenerator, Awaitable
 from contextlib import asynccontextmanager
 from typing import Annotated
 
@@ -42,30 +41,59 @@ def _error(operation: str, error: AdapterError) -> types.CallToolResult:
     )
 
 
-def _hover_arguments(value: object) -> bool:
-    if not isinstance(value, dict) or set(value) != {"uri", "position"}:
+def _position_arguments(operation: str, value: object) -> bool:
+    allowed = {"uri", "position"}
+    if operation != "hover":
+        allowed.add("context_lines")
+    if operation == "references":
+        allowed.add("include_declaration")
+    if (
+        not isinstance(value, dict)
+        or not {"uri", "position"} <= value.keys()
+        or not value.keys() <= allowed
+    ):
         return False
     position = value["position"]
-    return (
+    if not (
         isinstance(value["uri"], str)
         and isinstance(position, dict)
         and set(position) == {"line", "character"}
         and all(type(item) is int and item >= 0 for item in position.values())
+    ):
+        return False
+    lines = value.get("context_lines", 0)
+    return (
+        type(lines) is int
+        and 0 <= lines <= 20
+        and type(value.get("include_declaration", False)) is bool
     )
 
 
 async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> HandlerResult:
-    if (
-        ctx.method == "tools/call"
-        and ctx.params is not None
-        and ctx.params.get("name") == "hover"
-        and not _hover_arguments(ctx.params.get("arguments"))
-    ):
-        return _error(
-            "hover",
-            AdapterError("INVALID_INPUT", "Hover requires an exact URI and integer position"),
-        )
+    if ctx.method == "tools/call" and ctx.params is not None:
+        name = ctx.params.get("name")
+        if (
+            isinstance(name, str)
+            and name in {"hover", "definition", "references"}
+            and not _position_arguments(name, ctx.params.get("arguments"))
+        ):
+            return _error(
+                name, AdapterError("INVALID_INPUT", "Invalid exact-position tool arguments")
+            )
     return await call_next(ctx)
+
+
+async def _run(operation: str, task: Awaitable[Result]) -> types.CallToolResult:
+    try:
+        return _result(await task)
+    except AdapterError as error:
+        return _error(operation, error)
+    except Exception:
+        return _error(operation, AdapterError("PROTOCOL_ERROR", "Semantic operation failed"))
+
+
+def _read_annotations() -> types.ToolAnnotations:
+    return types.ToolAnnotations(read_only_hint=True, destructive_hint=False, open_world_hint=False)
 
 
 def create_server(config: Config, session: Session) -> MCPServer:
@@ -92,23 +120,27 @@ def create_server(config: Config, session: Session) -> MCPServer:
         middleware=[_strict_arguments],
     )
 
-    @server.tool(
-        annotations=types.ToolAnnotations(
-            read_only_hint=True,
-            destructive_hint=False,
-            open_world_hint=False,
-        ),
-        structured_output=True,
-    )
+    @server.tool(annotations=_read_annotations(), structured_output=True)
     async def hover(
         uri: str, position: Position
     ) -> Annotated[types.CallToolResult, dict[str, Json]]:
-        """Inspect the server's original hover text at an exact saved-file position."""
-        try:
-            return _result(await navigation.hover(uri, position))
-        except AdapterError as error:
-            return _error("hover", error)
-        except asyncio.CancelledError:
-            raise
+        """Inspect original hover text at an exact saved-file position."""
+        return await _run("hover", navigation.hover(uri, position))
+
+    @server.tool(annotations=_read_annotations(), structured_output=True)
+    async def definition(
+        uri: str, position: Position, context_lines: int = 0
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """Resolve exact identifier definitions with complete authorized declaration source."""
+        return await _run("definition", navigation.definition(uri, position, context_lines))
+
+    @server.tool(annotations=_read_annotations(), structured_output=True)
+    async def references(
+        uri: str, position: Position, include_declaration: bool = False, context_lines: int = 0
+    ) -> Annotated[types.CallToolResult, dict[str, Json]]:
+        """List complete exact-position references and optional saved source context."""
+        return await _run(
+            "references", navigation.references(uri, position, include_declaration, context_lines)
+        )
 
     return server

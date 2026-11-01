@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is in progress.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is in progress.
 No runtime tool is accepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -35,3 +35,7 @@ The upstream [cognitive-engine issue](https://github.com/tvproductions/gz-skills
 was rechecked OPEN. No qualified shared engine is available in its recorded
 workflow; complexipy remains a defect reproducer. This remains an explicit
 T0/T12 strict-acceptance blocker, not a substitute implementation task or waiver.
+
+T1: [configuration/workspace evidence](2026-11-01-workspace-config.md) records
+15 passing behavior tests and exact URI/byte/UTF-16 boundaries; no semantic or write
+acceptance follows. The portability regression brings the total suite to 28 tests.

@@ -1,17 +1,29 @@
 """Exercise distribution guard failures without depending on generated build output."""
 
 import io
+import sys
 import tarfile
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
 
-from tools.verify_distribution import verify_archives
+from tools.verify_distribution import run, verify_archives
 
 
 class DistributionGuardTests(unittest.TestCase):
     """Keep starter payloads and unintended runtime requirements out of the wheel."""
+
+    def test_child_output_decoding_is_explicit_and_nonfatal(self):
+        """Malformed UTF-8 diagnostics cannot break subprocess cleanup/reporting."""
+        with tempfile.TemporaryDirectory() as temporary:
+            result = run(
+                sys.executable,
+                "-c",
+                "import sys; sys.stdout.buffer.write(bytes([255]))",
+                cwd=Path(temporary),
+            )
+        self.assertEqual(result.stdout, "\ufffd")
 
     def test_sdk_metadata_is_accepted(self):
         """The declared official SDK is the sole allowed runtime requirement."""

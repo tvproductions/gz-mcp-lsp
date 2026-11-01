@@ -17,7 +17,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def run(*command: str, cwd: Path) -> subprocess.CompletedProcess[str]:
     """Run an artifact check with explicit arguments and failure propagation."""
-    return subprocess.run(command, cwd=cwd, text=True, capture_output=True, check=True)
+    return subprocess.run(
+        command,
+        cwd=cwd,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        capture_output=True,
+        check=True,
+    )
 
 
 def verify_archives(wheel: Path, sdist: Path, version: str) -> None:

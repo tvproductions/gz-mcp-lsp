@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is in progress.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is in progress.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
@@ -148,9 +148,9 @@ Offset is a UTF-8 byte offset for safe byte slicing; no disk writes in this task
 
 **Test assertion anchors:** `self.assertFalse(config.mutations_enabled)`; `self.assertEqual(workspace.offset(snapshot, Position(0, 3)), 5)`; `with self.assertRaises(AdapterError): workspace.offset(snapshot, Position(0, 2))` for `a😀b\r\n`.
 
-- [ ] Write `test_mutations_default_disabled`, `test_reject_unknown_config_and_env_override`, `test_uri_containment_aliases`, `test_utf16_offsets`. Assert mutations false; traversal/remote/query/fragment/NUL denied; for text `a😀b\r\n`, Position(0,3) maps to byte 5 and Position(0,2) raises INVALID_INPUT; bool/fraction positions rejected.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p 'test_workspace.py' -v` and the config suite; establish behavior-red, then implement exact signatures/defaults/limits from spec using stdlib only. Include file identity, excluded scope and manifest limits.
-- [ ] Run both suites green, routine gate and commit. Gate: identity/coordinate tests pass before LSP can query or edit anything.
+- [x] Write `test_mutations_default_disabled`, `test_reject_unknown_config_and_env_override`, `test_uri_containment_aliases`, `test_utf16_offsets`. Assert mutations false; traversal/remote/query/fragment/NUL denied; for text `a😀b\r\n`, Position(0,3) maps to byte 5 and Position(0,2) raises INVALID_INPUT; bool/fraction positions rejected.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p 'test_workspace.py' -v` and the config suite; establish behavior-red, then implement exact signatures/defaults/limits from spec using stdlib only. Include file identity, excluded scope and manifest limits.
+- [x] Run both suites green, routine gate and commit. Gate: identity/coordinate tests pass before LSP can query or edit anything.
 
 ### T2: Bounded independent JSON-RPC transport
 

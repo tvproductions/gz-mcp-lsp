@@ -3,7 +3,7 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation underway at T0.
+**Status: plan approved on 2026-11-01; implementation underway at T1.
 No accepted MCP capabilities exist yet.**
 
 The intended path is:
@@ -92,8 +92,8 @@ Example proposed application `settings.json`:
 }
 ```
 
-No settings loader exists. Application configuration will use JSON, without
-environment-variable overrides. Codex's native TOML remains its own contract.
+The T1 settings loader implements this JSON contract, without environment-variable
+overrides; see [configuration](docs/configuration.md). The MCP CLI is not yet implemented. Codex's native TOML remains its own contract.
 The host supports stdio launch commands in trusted project `.codex/config.toml`;
 see [official Codex MCP documentation](https://learn.chatgpt.com/docs/extend/mcp).
 Do not add this hypothetical entry to the adopted engineering plugin configuration yet.

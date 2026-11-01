@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Implement T1 JSON settings, strict coordinates, contained UTF-8 snapshots and
+  bounded byte-based workspace manifests; Windows writes remain unsupported.
+  Add exact-byte portability regression coverage for subprocess diagnostics.
+
 - Adopt official mcp==2.3.0 for T0; enforce its exact wheel requirement, retain
   distribution leakage guards and verify Python 3.14 SDK schema/results/cancellation.
   Record native plugin scope failure and unresolved cognitive qualification.

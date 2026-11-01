@@ -1,5 +1,8 @@
 # Documentation scope
 
+[Application settings](configuration.md) documents the implemented T1 JSON loader
+and its currently tested scope.
+
 The [November 1 execution record](evidence/2026-11-01-execution.md) records the
 user's subsequent approval and current T0-T13 execution state. The planning-only
 boundaries in earlier dated receipts below are historical.

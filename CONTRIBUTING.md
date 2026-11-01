@@ -1,7 +1,8 @@
 # Contributing
 
-The adapter is in design revision and implementation planning. Discuss substantial changes in an issue and
-obtain design approval before implementing runtime behavior. Keep PRs small and
+The revised implementation plan was approved on 2026-11-01 and execution has begun.
+Discuss substantial scope changes in an issue and obtain approval before changing
+the approved runtime contracts. Keep PRs small and
 link the owning intent, relevant acceptance cases, actual checks and limitations.
 Use the PR template. Public issues must use synthetic reproductions.
 
@@ -10,8 +11,7 @@ pre-commit locally; CI uses the same four routine checks plus artifact verificat
 Use unittest, current Python 3.14 idioms, narrow domain/adapter boundaries and
 explicit lifecycle/error contracts. Do not add pytest, Makefiles, environment
 application settings, runtime auto-installation or copied upstream source. Diagnostics and guarded
-rename/edit are included in the revised parity objective; they still require design
-approval, authority/conflict/recovery tests and real ty/host evidence before acceptance.
+rename/edit are included in the revised parity objective; they require authority/conflict/recovery tests and real ty/host evidence before acceptance.
 
 New semantic capabilities need red/green tests at their public seam, deterministic
 structured results, Unicode/URI edge cases, real pinned-ty fixture evidence and

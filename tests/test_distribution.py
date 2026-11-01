@@ -13,8 +13,28 @@ from tools.verify_distribution import verify_archives
 class DistributionGuardTests(unittest.TestCase):
     """Keep starter payloads and unintended runtime requirements out of the wheel."""
 
-    def test_design_stage_artifacts_are_accepted(self):
-        """A correctly identified minimal package passes the archive guard."""
+    def test_sdk_metadata_is_accepted(self):
+        """The declared official SDK is the sole allowed runtime requirement."""
+        try:
+            self.check_artifacts(
+                metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\nRequires-Dist: mcp==2.3.0\n"
+            )
+        except ValueError as error:
+            self.fail(f"Intended SDK metadata was rejected: {error}")
+
+    def test_missing_sdk_is_rejected(self):
+        """A runtime wheel must not silently omit the official MCP SDK."""
+        with self.assertRaisesRegex(ValueError, "dependencies"):
+            self.check_artifacts(metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\n")
+
+    def test_normalized_sdk_requirement_is_accepted(self):
+        """Equivalent casing and whitespace retain the exact SDK requirement."""
+        self.check_artifacts(
+            metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\nRequires-Dist: McP (== 2.3.0)\n"
+        )
+
+    def test_sdk_artifacts_are_accepted(self):
+        """A correctly identified SDK-dependent package passes the archive guard."""
         self.check_artifacts()
 
     def test_wrong_identity_is_rejected(self):
@@ -23,9 +43,31 @@ class DistributionGuardTests(unittest.TestCase):
             self.check_artifacts(metadata="Name: skills-first-starter\n")
 
     def test_undeclared_runtime_surface_is_rejected(self):
-        """A scaffold must not accidentally ship runtime dependency requirements."""
+        """Unreviewed runtime requirements must not slip into a wheel."""
         with self.assertRaisesRegex(ValueError, "dependencies"):
-            self.check_artifacts(metadata="Name: gz-mcp-lsp\nRequires-Dist: unexpected\n")
+            self.check_artifacts(
+                metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\nRequires-Dist: unexpected\n"
+            )
+
+    def test_sdk_requirement_must_be_exact_and_unique(self):
+        """Reject changed versions, markers, extras and duplicate requirements."""
+        for requirements in [
+            "mcp>=2.3.0",
+            "mcp==2.3.1",
+            "mcp[cli]==2.3.0",
+            "mcp==2.3.0; sys_platform == 'win32'",
+            "mcp==2.3.0\nRequires-Dist: mcp==2.3.0",
+            "mcp==2.3.0\nRequires-Dist: unexpected",
+        ]:
+            with (
+                self.subTest(requirements=requirements),
+                self.assertRaisesRegex(ValueError, "dependencies"),
+            ):
+                self.check_artifacts(
+                    metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\nRequires-Dist: "
+                    + requirements
+                    + "\n"
+                )
 
     def test_starter_or_development_payload_is_rejected(self):
         """Inherited helper code and development files are not runtime payloads."""
@@ -40,7 +82,7 @@ class DistributionGuardTests(unittest.TestCase):
 
     def check_artifacts(
         self,
-        metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\n",
+        metadata="Name: gz-mcp-lsp\nVersion: 0.1.0\nRequires-Dist: mcp==2.3.0\n",
         extra_wheel_file=None,
         extra_source_file=None,
     ):

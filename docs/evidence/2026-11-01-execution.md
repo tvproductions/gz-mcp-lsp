@@ -19,7 +19,10 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 in progress; no runtime tool is accepted. Baseline locked sync and the four
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is in progress.
+No runtime tool is accepted.
+See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
+SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
 hooks passed on managed CPython 3.14.10 / uv 0.13.6 in the isolated worktree.
 
 Selected SDK tag v2.3.0 resolves 2118f14f8a19bc158d8a1cf90af58d85d187f849.

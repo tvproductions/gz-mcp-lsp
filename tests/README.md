@@ -1,6 +1,7 @@
 # Product tests
 
-The initial suite tests distribution guard acceptance and rejection behavior.
-No MCP/LSP runtime or semantic tests exist during design discovery.
-Synthetic semantic acceptance cases are proposed in the design document.
+T0 tests dependency-aware distribution guards and the selected official SDK's
+Python 3.14 dataclass schema, structured results, raw-input middleware and incoming
+cancellation. They do not certify adapter semantics or ty interoperability.
+Real-server integration tests will enter ordinary discovery as runtime tasks land.
 Inherited engineering-tool tests live in `tools/engineering/` and run separately.

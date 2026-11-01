@@ -52,15 +52,17 @@ uv run --locked python tools/verify_distribution.py
 
 If machine uv differs, use `uv tool run --from uv==0.13.6 uv ...`; ensure nested
 hooks resolve uv 0.13.6 too. Do not bypass the project version check.
-The four routine hooks run Ruff check/format, ty and unittest. At this stage,
-the unittest hook runs distribution guard tests. There are no semantic runtime
-tests yet; packaging tests are not semantic adapter acceptance. Inherited
+The four routine hooks run Ruff check/format, ty and unittest. At T0,
+the unittest hook runs dependency-aware distribution guards and SDK contract
+probes. There are no semantic adapter tests yet; SDK/packaging tests are not
+semantic adapter acceptance. Inherited
 engineering utility tests run separately, outside the routine gate. Deeper adoption/release
 analysis remains outside routine hooks and CI; see the evidence record.
 
 Install only the scaffold wheel for packaging inspection with
 `uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.1.0-py3-none-any.whl`.
-There is no usable MCP command or published installation yet. No PyPI release or
+The scaffold declares the reviewed official mcp==2.3.0 dependency. There is no usable
+MCP command or published installation yet. No PyPI release or
 tag has been published. Development was observed on macOS arm64; CI verifies
 Linux. Windows runtime support remains a proposed validation target.
 

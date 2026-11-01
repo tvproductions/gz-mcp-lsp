@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Adopt official mcp==2.3.0 for T0; enforce its exact wheel requirement, retain
+  distribution leakage guards and verify Python 3.14 SDK schema/results/cancellation.
+  Record native plugin scope failure and unresolved cognitive qualification.
+
 - Record approval of the revised plan and linked specification; begin T0 on an
   isolated implementation branch. Runtime acceptance remains evidence-gated.
 

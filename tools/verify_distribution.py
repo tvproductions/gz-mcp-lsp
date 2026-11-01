@@ -1,13 +1,15 @@
-"""Verify the design-stage distribution outside its source checkout."""
+"""Verify product archives and a clean installation outside the source checkout."""
 
 import json
 import os
+import re
 import subprocess
 import sys
 import tarfile
 import tempfile
 import tomllib
 import zipfile
+from email.parser import Parser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,8 +29,13 @@ def verify_archives(wheel: Path, sdist: Path, version: str) -> None:
         if any(name.startswith(("skills_first_starter/", "tests/", "tools/")) for name in names):
             raise ValueError("Wheel includes starter runtime or development files")
         info = archive.read(f"gz_mcp_lsp-{version}.dist-info/METADATA").decode()
-        if "Name: gz-mcp-lsp\n" not in info or "Requires-Dist:" in info:
-            raise ValueError("Unexpected design-stage distribution identity or dependencies")
+        message = Parser().parsestr(info)
+        if message["Name"] != "gz-mcp-lsp" or message["Version"] != version:
+            raise ValueError("Unexpected distribution identity")
+        requirements = message.get_all("Requires-Dist", [])
+        normalized = [re.sub(r"\s+", "", item).lower() for item in requirements]
+        if len(normalized) != 1 or normalized[0] not in {"mcp==2.3.0", "mcp(==2.3.0)"}:
+            raise ValueError("Unexpected runtime dependencies; require exactly mcp==2.3.0")
     with tarfile.open(sdist) as archive:
         names = archive.getnames()
         if any("/.venv/" in name for name in names):
@@ -55,14 +62,17 @@ def main() -> None:
             str(python),
             "-I",
             "-c",
-            "import gz_mcp_lsp, importlib.metadata, json; "
+            "import gz_mcp_lsp, importlib.metadata, json, mcp.server.mcpserver; "
             "print(json.dumps({'origin': gz_mcp_lsp.__file__, "
-            "'version': importlib.metadata.version('gz-mcp-lsp')}))",
+            "'version': importlib.metadata.version('gz-mcp-lsp'), "
+            "'sdk_version': importlib.metadata.version('mcp')}))",
             cwd=directory,
         )
         installed = json.loads(result.stdout)
         if installed["version"] != version:
             raise ValueError("Installed version differs from metadata")
+        if installed["sdk_version"] != "2.3.0":
+            raise ValueError("Installed SDK version differs from the reviewed requirement")
         if not Path(installed["origin"]).is_relative_to(environment):
             raise ValueError("Import did not originate from the clean environment")
     print(

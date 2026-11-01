@@ -85,6 +85,11 @@ partial application as success: redesign precedes implementation.
 | E5 | License/dependency review and Isaac Phi attribution retained; public synthetic fixtures only; Linux x86_64/macOS arm64 write evidence separate, Windows x86_64 reads and unsupported-write rejection measured; inventory platform skips, no missing ty/required POSIX safety test skipped as acceptance, unsupported Windows writes disabled | T0/T4/T8/T11/T12 |
 | STOP | All P/S/C/D/W/H/E required rows accepted, material decisions closed, evidence linked, no required skipped/unknown gate; record terminal milestone and stop with no release/additional server/capability work | T13 |
 
+T0 observed SDK compatibility and packaging evidence in the
+[runtime-input record](../evidence/2026-11-01-runtime-inputs.md). These do not pass
+semantic/host rows. Current Windows native discovery has duplicate/global scope
+FAIL despite matching source bytes; E4 remains incomplete.
+
 Current engineering evidence from initialization is historical scaffold evidence.
 This design change does not convert it into runtime acceptance. Cognitive qualification
 remains unresolved under the recorded evidence. gz-skills reconciliation was completed

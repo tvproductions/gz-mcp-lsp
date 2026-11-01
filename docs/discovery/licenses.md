@@ -1,27 +1,23 @@
-# License and attribution review — 2026-10-28
+# License and attribution review
 
-This is a bounded engineering review of observed licenses, not a completed audit
-of a future runtime dependency graph. No MCP runtime dependency is declared yet.
+The [October 28 source review](../evidence/2026-10-28-reference-assessment.json) and
+retained notices cover independently authored product/starter material (MIT),
+Isaac Phi's reference project (BSD-3-Clause, reference only; no source port) and
+separately provisioned ty (MIT). Product/starter licensing does not relicense
+dependencies or imply affiliation.
 
-| Material | Observed license | Disposition |
-| --- | --- | --- |
-| Starter v0.7.1 LICENSE | MIT, Copyright (c) 2026 tvproductions | Retain for copied engineering material and independently authored product; permissive public distribution fits the stated project |
-| Starter NOTICE and analysis fixtures | Upstream ownership plus MIT gzkit example notice, Copyright 2026 g0 | Preserve verbatim required notices; utilities/fixtures remain engineering assets, not adapter runtime |
-| mcp-language-server v0.1.1 and assessed main e4395849 | BSD-3-Clause; root copyright text says 2025 Phil Isaac; ATTRIBUTION also identifies Go Authors protocol generator | Reference only, no copied material. Acknowledge Isaac Phi/project accurately without rewriting upstream copyright or inheriting its generated code |
-| Official MCP Python SDK | MIT, Copyright (c) 2024 Anthropic, PBC | Compatible candidate for independent adapter; retain relevant notices if redistributing it; inspect selected v2.3.0 dependency graph before runtime adoption |
-| Astral ty | MIT, Copyright (c) 2025 Astral Software Inc. | Launch separately provisioned executable; no source or binary redistributed. Any future bundled delivery needs its own notices/license audit |
-| Superpowers/gz-skills/Backplane | Independently maintained native plugin sources | Not vendored into product distributions; preserve source ownership and installed manager boundaries |
+T0 adopted official MCP Python SDK 2.3.0 (MIT) at
+2118f14f8a19bc158d8a1cf90af58d85d187f849 after reading its source/metadata.
+The [runtime-input review](../evidence/2026-11-01-runtime-inputs.md) and
+[package inventory](../evidence/2026-11-01-runtime-inputs.json) record all 30
+conditionally reachable runtime nodes, including requested crypto extras and
+published license metadata. MIT/MIT-0/BSD/Apache/PSF-family notices remain owned by
+their respective packages. No dependency source or binary is vendored into the
+product wheel; retain those notices if a future delivery redistributes dependencies.
 
-Sources inspected directly: starter LICENSE/NOTICE at the adopted commit;
-[reference LICENSE](https://github.com/isaacphi/mcp-language-server/blob/v0.1.1/LICENSE)
-and [ATTRIBUTION](https://github.com/isaacphi/mcp-language-server/blob/v0.1.1/ATTRIBUTION);
-[SDK LICENSE](https://github.com/modelcontextprotocol/python-sdk/blob/main/LICENSE);
-[ty LICENSE](https://github.com/astral-sh/ty/blob/main/LICENSE).
-The SDK license was also verified at v2.3.0 and ty at 0.0.93, with the same
-MIT copyright notices. Runtime dependency acceptance still needs the dependency graph audit. Tool dependency licenses/transitive packages are
-not relicensed by the project MIT file. No affiliation or endorsement is implied.
-
-Revision-2 assessment rechecked LICENSE and ATTRIBUTION at exact main
-`e4395849a52e18555361abab60a060802c06bf50`; neither differs from v0.1.1.
-Functional counterpart design does not change independent implementation or MIT
-product/starter licensing. The six-tool scope does not authorize source copying.
+Sources: [SDK at the selected revision](https://github.com/modelcontextprotocol/python-sdk/blob/2118f14f8a19bc158d8a1cf90af58d85d187f849/LICENSE),
+[reference license](https://github.com/isaacphi/mcp-language-server/blob/v0.1.1/LICENSE),
+[reference attribution](https://github.com/isaacphi/mcp-language-server/blob/v0.1.1/ATTRIBUTION),
+[ty license](https://github.com/astral-sh/ty/blob/48c5ea1baf6144dc9918ae60040aaa4198b251ce/LICENSE).
+Each runtime inventory row links its version-specific published PyPI metadata.
+This bounded license review does not substitute for T12 dependency/security acceptance.

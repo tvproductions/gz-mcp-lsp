@@ -1,6 +1,6 @@
 # Parity, semantic and interoperability acceptance gates
 
-Design revision 2, 2026-10-28. **All runtime rows are NOT RUN / NOT ACCEPTED.**
+Design revision 2, 2026-10-28. **Execution is partial; the full milestone is NOT ACCEPTED.**
 Prerequisite wording reconciled 2026-11-01 against the
 [October 31 update receipt](../evidence/2026-10-31-dependency-update.md);
 no runtime row or human decision is accepted by this correction.
@@ -12,7 +12,10 @@ The [second-review correction audit](../evidence/2026-11-01-plan-second-review-c
 assigns production startup recovery, workspace-wide generation leases and T0's
 dependency-policy negative control. These are future checks, not accepted results.
 Implementation was approved on 2026-11-01. This matrix defines required evidence;
-all unexecuted runtime rows remain NOT RUN.
+all unexecuted runtime rows remain NOT RUN. T4 supplies partial G1 evidence on
+Windows/Linux and the early Codex checkpoint; full P4/H1-H3 and macOS remain
+unaccepted. See [T4 evidence](../evidence/2026-11-01-documents-hover.md) and the
+[host receipt](../evidence/2026-11-01-codex-feasibility.md).
 The [specification](../superpowers/specs/2026-10-28-semantic-navigation-design.md)
 and [plan](../superpowers/plans/2026-10-28-reference-parity.md) are approved for execution.
 

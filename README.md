@@ -3,8 +3,8 @@
 An independent Python counterpart to Isaac Phi’s mcp-language-server, focused on
 reliable ty-backed semantic navigation for Codex through MCP.
 
-**Status: plan approved on 2026-11-01; implementation underway at T3.
-No accepted MCP capabilities exist yet.**
+**Status: plan approved on 2026-11-01; implementation underway at T4.
+Production hover passes installed MCP/ty and early Codex checks; the full milestone remains unaccepted.**
 
 The intended path is:
 
@@ -52,21 +52,21 @@ uv run --locked python tools/verify_distribution.py
 
 If machine uv differs, use `uv tool run --from uv==0.13.6 uv ...`; ensure nested
 hooks resolve uv 0.13.6 too. Do not bypass the project version check.
-The four routine hooks run Ruff check/format, ty and unittest. At T0,
-the unittest hook runs dependency-aware distribution guards and SDK contract
-probes. There are no semantic adapter tests yet; SDK/packaging tests are not
-semantic adapter acceptance. Inherited
+The four routine hooks run Ruff check/format, ty and unittest, including actual
+pinned-ty and outside-checkout installed hover integration tests. Fixture setup
+uses the exported runtime lock graph before MCP calls. Packaging checks alone
+are not semantic acceptance. Inherited
 engineering utility tests run separately, outside the routine gate. Deeper adoption/release
 analysis remains outside routine hooks and CI; see the evidence record.
 
-Install only the scaffold wheel for packaging inspection with
+Install the development wheel with
 `uv pip install --python /path/to/clean/venv/bin/python dist/gz_mcp_lsp-0.1.0-py3-none-any.whl`.
 The development package declares official mcp==2.3.0 and provides the stdio CLI
-`gz-mcp-lsp --config /absolute/path/to/settings.json`. T3 proves startup and cleanup;
-the intermediate tool catalog is empty until T4 adds hover. There is no published installation yet. No PyPI release or
-tag has been published. Historical scaffold evidence covers macOS/Linux; current
-T0-T3 lifecycle, SDK and packaging checks ran on Windows x86_64. Linux/macOS runtime
-and Windows semantic acceptance remain future platform evidence.
+`gz-mcp-lsp --config /absolute/path/to/settings.json`. T4 adds the production hover tool with exact URI/UTF-16 positions and saved-byte
+generation checks. See the [T4 receipt](docs/evidence/2026-11-01-documents-hover.md)
+and [actual Codex checkpoint](docs/evidence/2026-11-01-codex-feasibility.md).
+There is no published installation, PyPI release or tag. Local Windows x86_64
+and Linux x86_64 gates pass; macOS runtime and new-branch hosted CI remain unverified.
 
 ## Codex registration (development)
 

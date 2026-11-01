@@ -19,8 +19,8 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 is in progress.
-No runtime tool is accepted.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is next.
+Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
 hooks passed on managed CPython 3.14.10 / uv 0.13.6 in the isolated worktree.
@@ -47,3 +47,10 @@ not yet accepted.
 T3: [lifecycle/CLI evidence](2026-11-01-session-cli.md) records 54 passing tests,
 actual pinned-ty initialization/reaping, real MCP stdio startup/EOF and clean
 installed CLI behavior. G1 still requires T4's production hover and generations.
+
+T4: [documents/hover receipt](2026-11-01-documents-hover.md) records saved-byte
+leases, stale-result controls, actual installed hover/dependency visibility and
+full local Windows/Linux gates. The [native host checkpoint](2026-11-01-codex-feasibility.md)
+observes programmatic native allow/deny with zero denied adapter calls and
+supported Linux host access. Full H1-H3, macOS and new-branch hosted CI remain
+unverified. T5 continues on this same production path.

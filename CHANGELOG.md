@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Implement T4 production hover, saved-file generation/read/exclusive leases,
+  stale-result rejection, bounded document synchronization and fail-closed ty scope.
+  Verify installed hover and local gates on Windows/Linux; actual Codex allows
+  hover and denies it without an adapter call. Add three-platform CI lanes;
+  macOS/hosted CI and final mutation/host acceptance remain pending.
+
 - Implement T3 one-child ty lifecycle and official SDK stdio CLI, rejecting
   unsolicited edits and unreaped-child replacement. Verify actual ty startup,
   MCP framing/EOF and installed command behavior; semantic catalog awaits T4.

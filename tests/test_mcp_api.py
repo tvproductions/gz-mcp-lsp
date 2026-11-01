@@ -1,20 +1,26 @@
-"""Exercise production SDK composition without inventing semantic stub tools."""
+"""Actual SDK composition, strict raw arguments and production hover results."""
 
+import json
+import tempfile
 import unittest
 from pathlib import Path
 from typing import cast
 
+from mcp import types
 from mcp.client import Client
 
 from gz_mcp_lsp.config import Config
+from gz_mcp_lsp.session import Session
+from tests.test_documents import FakeSession
 
 
-class StubSession:
-    """Observe the lifespan boundary; real child behavior belongs to SessionTests."""
+class StubSession(FakeSession):
+    """Observe lifecycle without changing production semantic registration."""
 
     def __init__(self):
-        self.entered = False
-        self.closed = False
+        super().__init__()
+        self.entered = self.closed = False
+        self.capabilities["hoverProvider"] = True
 
     async def __aenter__(self):
         self.entered = True
@@ -25,20 +31,49 @@ class StubSession:
 
 
 class MCPCompositionTests(unittest.IsolatedAsyncioTestCase):
-    """The first composition owns SDK negotiation and exposes only implemented tools."""
+    """The SDK exposes only the implemented production tool."""
 
-    async def test_lifespan_and_empty_intermediate_catalog(self):
-        """Initialize/list works without exposing unimplemented success stubs."""
-        try:
-            from gz_mcp_lsp.mcp_api import create_server
-            from gz_mcp_lsp.session import Session
-        except ImportError as error:
-            self.fail(f"MCP composition is not implemented: {error}")
-        session = StubSession()
-        server = create_server(Config(Path.cwd(), Path(__file__)), cast("Session", session))
-        async with Client(server) as client:
-            self.assertTrue(session.entered)
-            self.assertEqual((await client.list_tools()).tools, [])
-            result = await client.session.call_tool("unimplemented", {})
-            self.assertTrue(result.is_error)
-        self.assertTrue(session.closed)
+    async def test_lifespan_schema_hover_and_strict_raw_arguments(self):
+        """Typed SDK result includes equivalent JSON text; coercions are rejected."""
+        from gz_mcp_lsp.mcp_api import create_server
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "main.py"
+            source.write_bytes(b"answer = 42\n")
+            session = StubSession()
+            session.rpc.release.set()
+            server = create_server(Config(root, source), cast("Session", session))
+            async with Client(server) as client:
+                self.assertTrue(session.entered)
+                tools = (await client.list_tools()).tools
+                self.assertEqual([tool.name for tool in tools], ["hover"])
+                assert tools[0].annotations is not None
+                self.assertTrue(tools[0].annotations.read_only_hint)
+                self.assertIsNotNone(tools[0].output_schema)
+                result = await client.call_tool(
+                    "hover",
+                    {
+                        "uri": source.as_uri(),
+                        "position": {"line": 0, "character": 2},
+                    },
+                )
+                self.assertFalse(result.is_error)
+                self.assertEqual(result.structured_content["operation"], "hover")
+                assert isinstance(result.content[0], types.TextContent)
+                self.assertEqual(json.loads(result.content[0].text), result.structured_content)
+                before = len(session.rpc.notifications)
+                for invalid in (
+                    {"line": True, "character": 0},
+                    {"line": "0", "character": 0},
+                    {"line": 0.0, "character": 0},
+                    '{"line":0,"character":0}',
+                    {"line": 0, "character": 0, "extra": 1},
+                ):
+                    result = await client.call_tool(
+                        "hover", {"uri": source.as_uri(), "position": invalid}
+                    )
+                    self.assertTrue(result.is_error)
+                    self.assertEqual(result.structured_content["error"]["code"], "INVALID_INPUT")
+                self.assertEqual(len(session.rpc.notifications), before)
+            self.assertTrue(session.closed)

@@ -122,6 +122,11 @@ class Session:
                 "workspace": {"configuration": True, "applyEdit": False},
                 "textDocument": {"synchronization": {"dynamicRegistration": False}},
             },
+            "initializationOptions": {
+                "untrustedWorkspace": True,
+                "experimental": {"useUv": "off"},
+                "logLevel": "warn",
+            },
             "trace": "off",
         }
 

@@ -61,6 +61,14 @@ class SessionTests(unittest.IsolatedAsyncioTestCase):
         async with session:
             self.assertEqual(session.state, "READY")
             self.assertEqual(session.capabilities["positionEncoding"], "utf-16")
+        self.assertEqual(
+            session._initialize_params()["initializationOptions"],
+            {
+                "untrustedWorkspace": True,
+                "experimental": {"useUv": "off"},
+                "logLevel": "warn",
+            },
+        )
         events = self.events()
         self.assertEqual(sum(item.get("method") == "initialize" for item in events), 1)
         self.assertEqual(sum(item.get("method") == "initialized" for item in events), 1)

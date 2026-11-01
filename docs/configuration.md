@@ -66,6 +66,12 @@ offsets and surrogate splits fail rather than clamp. Snapshots retain original
 URI and exact UTF-8/newline bytes. Canonical URI identity uses checked resolved
 filesystem spelling rather than blanket lowercasing.
 
-Current T1 evidence is Windows-only. The later platform lanes must independently
-validate Linux/macOS behavior and real ty/host semantics. Configuration/workspace
-tests do not certify semantic freshness or write safety.
+T4 implements production hover and conservative session freshness. Nested project
+configuration and ignore files are tracked. Unsupported external ty configuration,
+custom typeshed, escaping roots/patterns, untracked baselines and custom adapter
+exclusions fail closed until their indexing scope can be reconciled. Provisioned
+dependency environments must remain immutable during a session. ty runs in
+untrusted mode with uv integration disabled. No environment variable overrides
+product settings; native ty configuration locations are checked only to reject
+untracked configuration. See [T4 evidence](evidence/2026-11-01-documents-hover.md)
+for local Windows/Linux verification and remaining macOS/hosted-CI gaps.

@@ -1,0 +1,50 @@
+{
+  "host_version": "codex-cli 0.166.0",
+  "sdk_version": "2.3.0",
+  "ty_version": "0.0.95",
+  "python_version": "3.14.10",
+  "uv_version": "0.13.6",
+  "source_sha256": {
+    "__init__.py": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+    "__main__.py": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a",
+    "cli.py": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a",
+    "config.py": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a",
+    "documents.py": "d3c2f0886f3b5ae4fc70c6d68d7adf812c1694e219c427c423ced7d46deac345",
+    "lsp_transport.py": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334",
+    "mcp_api.py": "08c45e6bd87fd08f679c4f76b08c087817f1a7c5561c3b58ae98706248cb86c3",
+    "models.py": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33",
+    "navigation.py": "a2d7306070fd872755e8c04440a6542728c5edfc6ecda02423f3912f621f473a",
+    "session.py": "679f7a12e287b4672f1865adf0a653c342a3ea9cc4439c255136138eb0426482",
+    "workspace.py": "209a90e839a272dfb260aa45268282e180a473bf166d87cce2e99b6d3140c6aa"
+  },
+  "fixture_sha256": {
+    "dependency.py": "7ca5abf65adee67782e5c831d9ee108b323c5a9d9fda11f97a9910b18f6b1bdc",
+    "expected.json": "545971a5ec5f93b0790a032c3f5f6927c80b894d884993ebf6572d405991daa6",
+    "main.py": "02a4ec9722264a6576ef8c4e97dbcfcf315dd27faa3706ecf2a821e2d3fb48e2",
+    "pyproject.toml": "dd2210e3a96d424e3e4649c2160f9ac5ccaaf405482a400ffec2710e4b720a6e"
+  },
+  "wheel_sha256": "50df5baadcb25e1ef3d9a4f304686e82dc2f2df257fce9c3e804824e486238e8",
+  "installed_origin_outside_checkout": true,
+  "native_inventory": [
+    {
+      "name": "gz_checkpoint",
+      "tools": [
+        "hover"
+      ]
+    }
+  ],
+  "approval": "PASS (programmatic native approval client; not GUI click evidence)",
+  "approval_decisions_observed": [
+    "accept",
+    "decline"
+  ],
+  "adapter_calls_before_denial": 2,
+  "adapter_calls_after_denial": 2,
+  "app_server_exit": 0,
+  "probe_error": null,
+  "approval_interface": "Actual app-server request/response, programmatic test client; no GUI claim",
+  "supported_write_host_access": "Linux x86_64 WSL2 native filesystem, runtime provisioned; T11 bridge/mutations pending",
+  "full_H1_H3": "NOT ACCEPTED",
+  "macos_runtime": "UNKNOWN",
+  "hosted_CI": "UNKNOWN"
+}

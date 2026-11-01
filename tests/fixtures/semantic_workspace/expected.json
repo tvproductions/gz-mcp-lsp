@@ -1,0 +1,13 @@
+{
+  "hover": {
+    "uri_path": "main.py",
+    "position": {
+      "line": 2,
+      "character": 2
+    },
+    "initial_text": "int",
+    "changed_text": "str"
+  },
+  "dependency": "dependency.py",
+  "notes": "Independently authored: only answer() -> int supplies value's inferred type."
+}

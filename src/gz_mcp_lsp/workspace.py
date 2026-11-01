@@ -5,6 +5,7 @@ import os
 import re
 import stat
 import time
+import tomllib
 from collections.abc import Iterator
 from pathlib import Path
 from urllib.parse import unquote_to_bytes, urlsplit
@@ -146,8 +147,10 @@ class Workspace:
                         pending.append(path)
                         if len(pending) > self.config.limits.workspace_files:
                             raise AdapterError("LIMIT_EXCEEDED", "Too many source directories")
-                    elif path.suffix in {".py", ".pyi"} or relative.as_posix() in (
-                        self.config.project_config_files
+                    elif (
+                        path.suffix in {".py", ".pyi"}
+                        or path.name in {"pyproject.toml", "ty.toml", ".gitignore", ".ignore"}
+                        or relative.as_posix() in (self.config.project_config_files)
                     ):
                         yield path
 
@@ -170,6 +173,93 @@ class Workspace:
                 "WORKSPACE_BUSY", "Workspace scope changed or cannot be scanned"
             ) from error
         return hashlib.sha256(repr(sorted(records)).encode("utf-8")).hexdigest()
+
+    def semantic_manifest(self) -> str:
+        """Reject ty scope we cannot reconcile before claiming semantic freshness."""
+
+        if self.config.exclusions:
+            raise AdapterError(
+                "UNSUPPORTED", "Custom source exclusions are not reconciled with ty indexing"
+            )
+        # These locate ty's native configuration, never product settings overrides.
+        if os.name == "nt":
+            native_base = Path(os.environ.get("APPDATA", str(Path.home() / "AppData/Roaming")))
+        else:
+            native_base = Path(os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config")))
+        external = [native_base / "ty/ty.toml"]
+        for parent in self.root.parents:
+            external.extend((parent / "ty.toml", parent / "pyproject.toml"))
+        if any(path.exists() or path.is_symlink() for path in external):
+            raise AdapterError(
+                "UNSUPPORTED", "Inherited or user ty configuration is outside the tracked scope"
+            )
+        total = 0
+        count = 0
+        for path in self._eligible():
+            if path.name not in {"pyproject.toml", "ty.toml"}:
+                continue
+            snapshot = self.read(path.as_uri())
+            count += 1
+            total += len(snapshot.data)
+            if (
+                count > self.config.limits.workspace_files
+                or total > self.config.limits.workspace_bytes
+            ):
+                raise AdapterError(
+                    "LIMIT_EXCEEDED", "Project configuration exceeds its scope budget"
+                )
+            try:
+                raw = tomllib.loads(snapshot.data.decode("utf-8"))
+                settings = raw if path.name == "ty.toml" else raw.get("tool", {}).get("ty", {})
+                self._check_ty_roots(settings, path.parent)
+            except (tomllib.TOMLDecodeError, AttributeError, TypeError) as error:
+                raise AdapterError(
+                    "UNSUPPORTED", "Unable to establish project configuration scope"
+                ) from error
+        return self.manifest()
+
+    def _check_ty_roots(self, settings: object, base: Path) -> None:
+        if not isinstance(settings, dict):
+            raise AdapterError("UNSUPPORTED", "Invalid ty project configuration")
+        source = settings.get("src", {})
+        if not isinstance(source, dict):
+            raise AdapterError("UNSUPPORTED", "Invalid ty source configuration")
+        for field in ("include", "exclude"):
+            patterns = source.get(field, [])
+            if not isinstance(patterns, list):
+                raise AdapterError("UNSUPPORTED", "Invalid ty source patterns")
+            for pattern in patterns:
+                if (
+                    not isinstance(pattern, str)
+                    or Path(pattern).is_absolute()
+                    or ".." in pattern.split("/")
+                    or "\\" in pattern
+                    or "$" in pattern
+                    or "~" in pattern
+                ):
+                    raise AdapterError("UNSUPPORTED", "Untracked ty source pattern")
+        baseline = settings.get("baseline")
+        if baseline is not None and baseline not in self.config.project_config_files:
+            raise AdapterError(
+                "UNSUPPORTED", "Baseline must be an explicitly tracked configuration input"
+            )
+        environment = settings.get("environment", {})
+        if not isinstance(environment, dict):
+            raise AdapterError("UNSUPPORTED", "Invalid ty environment configuration")
+        for key in ("root", "extra-paths"):
+            values = environment.get(key, [])
+            if not isinstance(values, list):
+                raise AdapterError("UNSUPPORTED", "Invalid ty source roots")
+            for value in values:
+                if not isinstance(value, str) or any(char in value for char in "$~"):
+                    raise AdapterError("UNSUPPORTED", "Unresolved ty source root")
+                candidate = (base / value).resolve()
+                if not candidate.is_relative_to(self.root) or self._excluded(
+                    candidate.relative_to(self.root)
+                ):
+                    raise AdapterError("UNSUPPORTED", "Untracked ty first-party source root")
+        if environment.get("typeshed") is not None:
+            raise AdapterError("UNSUPPORTED", "Custom typeshed scope is not tracked")
 
     @staticmethod
     def offset(snapshot: Snapshot, position: Position) -> int:

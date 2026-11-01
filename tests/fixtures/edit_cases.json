@@ -1,0 +1,121 @@
+[
+  {
+    "name": "mixed-newline-replace",
+    "before": "a\rb\r\nc\n",
+    "edits": [
+      {
+        "start": [
+          1,
+          0
+        ],
+        "end": [
+          1,
+          1
+        ],
+        "text": "B"
+      }
+    ],
+    "after": "a\rB\r\nc\n"
+  },
+  {
+    "name": "append-no-final-newline",
+    "before": "abc",
+    "edits": [
+      {
+        "start": [
+          0,
+          3
+        ],
+        "end": [
+          0,
+          3
+        ],
+        "text": "\r\nnew"
+      }
+    ],
+    "after": "abc\r\nnew"
+  },
+  {
+    "name": "append-after-final-newline",
+    "before": "abc\n",
+    "edits": [
+      {
+        "start": [
+          1,
+          0
+        ],
+        "end": [
+          1,
+          0
+        ],
+        "text": "new"
+      }
+    ],
+    "after": "abc\nnew"
+  },
+  {
+    "name": "delete-entire-content",
+    "before": "abc\n",
+    "edits": [
+      {
+        "start": [
+          0,
+          0
+        ],
+        "end": [
+          1,
+          0
+        ],
+        "text": ""
+      }
+    ],
+    "after": ""
+  },
+  {
+    "name": "insert-at-replacement-boundary",
+    "before": "ab",
+    "edits": [
+      {
+        "start": [
+          0,
+          0
+        ],
+        "end": [
+          0,
+          1
+        ],
+        "text": "A"
+      },
+      {
+        "start": [
+          0,
+          1
+        ],
+        "end": [
+          0,
+          1
+        ],
+        "text": "X"
+      }
+    ],
+    "after": "AXb"
+  },
+  {
+    "name": "empty-file",
+    "before": "",
+    "edits": [
+      {
+        "start": [
+          0,
+          0
+        ],
+        "end": [
+          0,
+          0
+        ],
+        "text": "new\n"
+      }
+    ],
+    "after": "new\n"
+  }
+]

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Implement T7 immutable, zero-IO edit plans with original UTF-16 ranges,
+  byte-exact after-images, alias/overlap/resource-operation rejection and
+  content-bound preview identities. Mutation tools and filesystem writes remain pending.
+
 - Implement T6 current pull diagnostics with saved-identity resultId caching,
   full-list unchanged handling, related-document scope and bounded source context.
   Verify actual installed error/repair/dependency behavior; distinguish every

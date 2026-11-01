@@ -19,7 +19,7 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
-T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is next.
+T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; execution stops at this stage boundary.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,
 SDK/dependency adoption, actual compatibility checks and native discovery failure. Baseline locked sync and the four
@@ -67,3 +67,18 @@ assertions. Replacement epochs and tracked-document admission regressions are
 corrected. All 106 tests and both Windows/Linux gates pass; C901/scoped
 portability pass. Mutations, semantic extensions and final native/platform
 acceptance remain pending.
+
+T7: [immutable edit-plan evidence](2026-11-01-edit-plans.md) records eight passing
+pure-planner tests and exact content identities. All 114 tests, full Windows/
+Linux gates, C901 and scoped portability pass. No filesystem transaction or
+mutation tool is implemented. T8-T13 remain pending.
+
+## Bounded-session handoff
+
+After the user's concern about continuous execution, stop after T7 and resume
+future stages in separate bounded work sessions. T8 (guarded POSIX transactions
+and durable recovery) has not started. Existing implementation approval persists;
+this handoff does not require reapproval of the remaining scope. Keep the isolated
+feat/reference-parity worktree and its ignored task ledger. No push/merge/tag/
+release has occurred. Native discovery/cognitive qualification, macOS/hosted CI
+and full H1-H3 remain independent unresolved acceptance gaps.

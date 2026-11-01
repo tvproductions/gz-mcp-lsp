@@ -20,7 +20,7 @@ guard/dependency changes. See the [second-review audit](../../evidence/2026-11-0
 
 **Spec:** [Revision 2 specification](../specs/2026-10-28-semantic-navigation-design.md), [pinned parity matrix](../../discovery/reference-parity.md), [acceptance matrix](../../discovery/acceptance-matrix.md).
 
-**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is complete; T6 is complete; T7 is in progress.**
+**STATUS: APPROVED FOR EXECUTION on 2026-11-01. T0 runtime-input work is complete with named acceptance gaps; T1 is complete; T2 is complete; T3 is complete; T4 implementation/early host checkpoint is verified with named platform gaps; T5 is complete; T6 is complete; T7 is complete; execution stops at this stage boundary. T8-T13 are pending.**
 Approval: the user stated "plan is approved, proceed" after review of this plan and
 its linked specification. Execute the stated contracts; required evidence and
 strict acceptance are not waived. See [execution evidence](../../evidence/2026-11-01-execution.md).
@@ -310,9 +310,9 @@ No filesystem side effects or random approval flags inside the planner.
 
 **Test assertion anchors:** `self.assertEqual(plan_edits(snapshot, edits), b"axb\r\n")` for replacing the emoji range; `self.assertEqual(before_hashes, after_preview_hashes)`; `self.assertEqual(error.code, "CONFLICT")` for overlapping ranges.
 
-- [ ] Write `test_edits_use_original_snapshot`, `test_adjacent_legal_overlap_rejected`, `test_duplicate_aliases_rejected`, `test_utf16_crlf_eof_bytes`, `test_resource_op_rejects_entire_edit`, `test_versions_and_digest`. Assert Position(0,1)..(0,3) on `a😀b\r\n` replaced by `x` yields exactly `axb\r\n`; coincident inserts fail; annotations/base hashes are bound to digest.
-- [ ] Run `uv run --locked python -m unittest discover -s tests -p test_edit_plan.py -v` red then implement pure planning with exact preimages, no clamping, count/byte bounds and both text WorkspaceEdit forms. Contradictory changes/documentChanges fail before any IO.
-- [ ] Run green plus zero-write spy tests, routine gate and commit. Gate W2/W3; preview tokens are content identity, not human consent.
+- [x] Write `test_edits_use_original_snapshot`, `test_adjacent_legal_overlap_rejected`, `test_duplicate_aliases_rejected`, `test_utf16_crlf_eof_bytes`, `test_resource_op_rejects_entire_edit`, `test_versions_and_digest`. Assert Position(0,1)..(0,3) on `a😀b\r\n` replaced by `x` yields exactly `axb\r\n`; coincident inserts fail; annotations/base hashes are bound to digest.
+- [x] Run `uv run --locked python -m unittest discover -s tests -p test_edit_plan.py -v` red then implement pure planning with exact preimages, no clamping, count/byte bounds and both text WorkspaceEdit forms. Contradictory changes/documentChanges fail before any IO.
+- [x] Run green plus zero-write spy tests, routine gate and commit. Gate W2/W3; preview tokens are content identity, not human consent.
 
 ### T8: Guarded POSIX filesystem transactions and durable recovery
 

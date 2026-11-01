@@ -9,7 +9,10 @@ Current execution follow-up: the plan was approved on 2026-11-01; T0-T9 runtime
 work and partial Windows/Linux/native-host evidence are recorded in the
 [execution receipt](2026-11-01-execution.md) and current
 [bounded handoff](../handoff.md). The conclusions below describe the
-October 28 initialization state, not the current implementation.
+October 28 initialization state, not the current implementation. Final T9 runtime
+checkpoint 5a2d662ab0a60b6771fefef4ff7b37e4c83ac928 passed
+[three-platform CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112);
+the fresh handoff leaves T10 unstarted.
 
 ## Conclusions and authorized boundary
 

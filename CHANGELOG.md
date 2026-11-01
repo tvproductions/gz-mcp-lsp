@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Refresh the T9 handoff with its final verified implementation SHA/CI,
+  shared mutation-result contract, validation baseline and bounded T10 resume
+  checklist. Preserve outstanding acceptance gaps; no T10 implementation.
+
 - Use the common success envelope for both mutation actions; retain preview
   metadata under result with UTF-16, generation and saved-document provenance.
 

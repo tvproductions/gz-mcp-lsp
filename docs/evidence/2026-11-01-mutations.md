@@ -84,8 +84,11 @@ shared success-envelope fields. Both cases failed before correction. Preview
 metadata now resides under result, alongside common UTF-16, generation, saved
 preimage provenance and completeness fields; apply wraps the stable disk receipt
 in the same envelope. Installed success assertions enforce this schema. The final
-correction's exact commit and three-platform CI outcome are recorded in the final
-sync response; the earlier checkpoint is not its verification receipt.
+correction is 5a2d662ab0a60b6771fefef4ff7b37e4c83ac928; its
+[exact-commit CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
+passed Linux x86_64, macOS arm64 and Windows AMD64. This is the final T9 runtime
+verification receipt; earlier checkpoints do not include the correction. The
+[fresh handoff](../handoff.md) is the current continuation authority.
 
 T9 software parity evidence does not waive native host H1-H3, T10 extensions,
 T11 final fixtures/installed acceptance, T12 engineering gaps or T13 final review.

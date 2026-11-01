@@ -85,8 +85,11 @@ coordinated cancellation and post-commit semantic invalidation. The 164-test sui
 with documented platform exclusions and complete three-platform gate passed checkpoint
 058be37da9d54e310202881ab38f433fb4a70a3e in CI 41353143416. The final documentation
 checkpoint required its own exact-commit CI. A final shared-success-envelope
-regression failed for preview/apply before correction; the current 165-test tree
-and its exact-commit CI supersede that checkpoint. T10 has not started.
+regression failed for preview/apply before correction. Final T9 commit
+5a2d662ab0a60b6771fefef4ff7b37e4c83ac928 and its
+[passing CI 41354004112](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41354004112)
+cover the corrected 165-test tree on all three platforms. T10 has not started.
+The subsequent handoff refresh and Git sync change documentation only.
 
 ## Bounded-session handoff
 

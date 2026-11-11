@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Preserve the post-maintenance handoff with exact-commit three-platform results,
+  completed native source reconciliation and concrete T12 entry work. Keep
+  remaining engineering/cognitive/native-behavior gaps and the stop before T13.
+  Record intermittent local integration timeouts and unchanged focused passes
+  without weakening verification deadlines.
+
 - Update the adopted starter to v0.9.0 and independently select Superpowers
   v7.0.2, gz-skills v0.10.1 and disabled Backplane v0.2.0. Reconcile released
   adoption/release-scope policies while preserving the product's uv minimum,

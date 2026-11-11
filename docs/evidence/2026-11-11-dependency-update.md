@@ -90,9 +90,15 @@ entire cached tree against a GitHub archive of its published full SHA: all
 236 Superpowers, 115 gz-skills and 542 Backplane files match byte-for-byte;
 no missing, differing or extra files. This establishes source-content identity,
 not merely a version label. No shared cache was edited or plugin reinstalled.
-The user's configuration hash remains unchanged. Native metadata refresh and
-fresh project/outside discovery are final synchronization checks; their observed
-result is reported with the final Git/CI response.
+The user's configuration hash remains unchanged. After pushing maintenance
+commit `1f8b16e`, `codex plugin marketplace upgrade skills-first-starter --json`
+completed with no errors. The native manager's installed source refs match all
+three selected full SHAs and retain enabled/enabled/disabled scope for
+Superpowers/gz-skills/Backplane. Fresh project discovery still reports 20
+gz-skills 0.10.1 entries with zero duplicates/errors. Outside discovery remains
+20 standalone 0.8.3 entries, and user configuration is byte-unchanged. No plugin
+reinstallation or activation change was needed. This closes the observed source
+mismatch, not changed-runtime native model/approval acceptance.
 
 ## Verification and retained acceptance gaps
 
@@ -139,8 +145,8 @@ on upstream availability; revisit during T12 before strict acceptance.
 Final-ty unittest execution passed all 186 discovered tests with one expected
 Windows-only skip. Ruff check/format and ty check pass. An intermediate hook run
 correctly rejected documentation edited concurrently with its passing tests;
-the rerun on a frozen full diff passes all four hooks. Normal commit hooks run
-again before synchronizing. `uv build --no-sources` and the outside-source distribution check
+the rerun on a frozen full diff passes all four hooks. Normal commit hooks also
+passed. `uv build --no-sources` and the outside-source distribution check
 pass on the final dependency set. All 103 final exact selections audit cleanly
 with no skips. `uv pip list --outdated` reports no installed outdated packages.
 Second resolution of the refreshed lock is unchanged; final lock validation passes.
@@ -148,8 +154,13 @@ Second resolution of the refreshed lock is unchanged; final lock validation pass
 Independent review against `397d48d` found and corrected the project uv floor/CI
 wording and the product-versus-starter Lizard command context. Its focused
 timeout test and diff checks pass; no introduced runtime defect was found.
-Native metadata refresh and hosted exact-commit results are reported in the
-final synchronization response, without manufacturing a receipt-only commit.
+Maintenance commit `1f8b16e28c452e1367e666e02963b750a6a4ec81` was pushed to
+main with a clean, aligned worktree.
+[Exact-commit CI](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43035668745)
+passed all four hooks, build and distribution checks on Linux x86_64, macOS arm64
+and Windows AMD64. All discovered 186 tests; expected skips were 1/1/26 for
+Linux/macOS/Windows. This completion is preserved with the user's subsequent
+explicit handoff request, not a self-generated CI receipt commit chain.
 Passing routine checks cannot waive the
 retained engineering findings or establish fresh native model/approval behavior
 for the changed runtime. T12/T13 and strict adoption/release acceptance remain

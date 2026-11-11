@@ -1006,7 +1006,7 @@
       "status": "passed"
     },
     "routine_static_hooks": "Ruff check, Ruff format, ty passed",
-    "pre_commit": "all four hooks passed on the frozen full diff; normal commit hooks run again before sync",
+    "pre_commit": "all four hooks and normal commit hooks passed on maintenance commit 1f8b16e",
     "build": "uv build --no-sources passed",
     "distribution": "outside-source installed import and wheel/sdist identity passed",
     "outdated_installed_packages": [],
@@ -1045,5 +1045,54 @@
       "errors": []
     }
   ],
-  "lock_sha256": "661be0f45f7934a3e7c62ad1bc5477fd0aae877d509a31d8ddccf6f0558503a3"
+  "lock_sha256": "661be0f45f7934a3e7c62ad1bc5477fd0aae877d509a31d8ddccf6f0558503a3",
+  "git_sync": {
+    "commit": "1f8b16e28c452e1367e666e02963b750a6a4ec81",
+    "branch": "main",
+    "local_remote_aligned": true,
+    "worktree": "clean at maintenance closeout",
+    "ci_url": "https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43035668745",
+    "ci_status": "passed",
+    "platforms": [
+      {
+        "os": "Linux",
+        "architecture": "x86_64",
+        "tests": 186,
+        "expected_skips": 1
+      },
+      {
+        "os": "macOS",
+        "architecture": "arm64",
+        "tests": 186,
+        "expected_skips": 1
+      },
+      {
+        "os": "Windows",
+        "architecture": "AMD64",
+        "tests": 186,
+        "expected_skips": 26
+      }
+    ]
+  },
+  "native_source_reconciliation": {
+    "status": "passed on observed Codex host after maintenance push",
+    "manager_operation": "codex plugin marketplace upgrade skills-first-starter --json",
+    "manager_errors": [],
+    "installed_refs_match_selected_revisions": true,
+    "backplane_enabled": false,
+    "user_config_byte_unchanged": true,
+    "project_discovery": {
+      "count": 20,
+      "duplicates": 0,
+      "errors": 0,
+      "source": "skills-first-starter/gz-skills/0.10.1"
+    },
+    "outside_discovery": {
+      "count": 20,
+      "duplicates": 0,
+      "errors": 0,
+      "source": "gz-skills/gz-skills/0.8.3"
+    },
+    "changed_runtime_model_approval_acceptance": "pending T12"
+  }
 }

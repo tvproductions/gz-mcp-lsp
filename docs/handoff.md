@@ -2,19 +2,34 @@
 
 ## Resume here: T12 after dependency maintenance
 
-The user requested **update all** after the November 11 freshness review.
-Maintenance starts at `397d48d` on main in the primary checkout. The full
+The latest user request is to **write the handoff and Git-sync it** after
+dependency maintenance and identifying T12 as the next backlog item. Work is
+on **main in the primary checkout**, based on maintenance commit
+`1f8b16e28c452e1367e666e02963b750a6a4ec81`. This save point changes documentation
+and evidence only; it does not execute T12 or authorize T13.
+
+The preceding user-authorized full update started at `397d48d`. The full
 [maintenance receipt](evidence/2026-11-11-dependency-update.md) and
 [version/source inventory](evidence/2026-11-11-dependency-update.json) record
-selected inputs, checks, rollback and remaining engineering findings. The final
-response supplies Git synchronization and exact-commit CI results, without
-receipt-only follow-up commits.
+selected inputs, checks, rollback and remaining engineering findings.
+Maintenance commit `1f8b16e` passed
+[exact-commit Linux/macOS/Windows CI](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43035668745).
+Each platform discovered 186 tests; Linux/macOS skipped the one Windows-only
+test, and Windows skipped 26 POSIX-only tests. Local gates, normal commit hooks,
+source-independent build and outside-source distribution verification passed.
+The final response supplies this handoff commit's own Git/CI results; do not
+create a follow-up commit solely to record that response.
 
 Current selections: starter **0.9.0**, Superpowers **7.0.2**, gz-skills **0.10.1**,
 and **disabled Backplane 0.2.0**. The lite profile, product-owned marketplace,
 standalone-source exclusion and user defaults are preserved. Complete cached
-source trees match the three published target revisions; source metadata refresh
-and fresh discovery are verified separately during final synchronization.
+source trees match the three published target revisions. The native manager's
+scoped marketplace refresh completed without errors; installed source refs now
+match all three project selections. Fresh discovery finds 20 project gz-skills
+entries from starter 0.10.1, zero duplicate names and zero errors. Outside-project
+discovery remains 20 standalone 0.8.3 entries. User configuration is byte-unchanged.
+Source reconciliation is closed for this observed Codex host; it does not prove
+fresh model/approval behavior on the changed runtime set.
 
 Managed Python remains **3.14.10** and runtime MCP remains **2.3.0**. The project
 accepts uv **>=0.13.6** and tests **0.13.7**; uv_build is **0.13.7**. Ruff is
@@ -36,6 +51,27 @@ This maintenance does not complete T12/T13 or turn historical native model/appro
 proof into fresh proof for the changed ty/dependency set. Continue with the
 existing T12 brief below and preserve all required UNKNOWN/FAIL results.
 
+**First next-session action:** read the T12 brief and current acceptance matrix,
+inspect actual module imports, then add reviewed Import Linter contracts for
+the SDK-only boundary, semantic-to-port direction and filesystem isolation.
+Continue within T12: correct/review the five Lizard ceiling failures, review
+Bandit/Vulture/cohesion/docstring findings, collect final-input statement/branch
+coverage and bounded product mutation evidence, and reconcile every acceptance
+row with current observations. The maintenance Cosmic Ray proof used disposable
+fixtures, and its 90% coverage run used the earlier ty 0.0.100 candidate; neither
+is final-input T12 acceptance. Recheck the shared cognitive engine upstream;
+if unavailable, name its owner/external condition and retain UNKNOWN rather
+than substituting complexipy. Stop before T13.
+
+Handoff verification also observed intermittent local timing failures: the first
+normal commit hook completed 186 tests in 501 seconds with timeouts in diagnostics,
+typed child startup and empty/changed-workspace symbol negotiation. All three
+passed unchanged in a focused 50-second rerun. Host load exceeded 129 on ten
+logical CPUs; contention is a correlation, not a demonstrated root cause. No
+deadline, assertion or runtime code was changed. Retain this observation for
+T12 if it recurs; the complete normal hooks must pass before this save point
+is synchronized, and its final CI result belongs in the final response.
+
 ## Retained implementation checkpoint — 2026-11-01
 
 **T0-T11 implemented, with actual installed/native host evidence. Stop before T12.**
@@ -46,8 +82,8 @@ instructed that accepted branches/worktrees be merged to main and removed.
 
 ## Workspace and verified checkpoints
 
-Continue on **main in the primary checkout** after the final acceptance sync.
-T10 is `a71bcd445f47dac46a43812b9c996cb87b71bfd0`; T11 adds tests, distribution
+Continue on **main in the primary checkout** from the maintenance checkpoint above.
+Historically, T10 is `a71bcd445f47dac46a43812b9c996cb87b71bfd0`; T11 adds tests, distribution
 checks, host examples and evidence without changing that runtime source tree.
 The final response identifies the T11 commit, exact-commit three-platform CI,
 local/remote SHA alignment and branch cleanup. No tag or release is authorized.
@@ -154,11 +190,12 @@ adopted engineering policies, specification/plan and acceptance matrix. Use the
 ## Remaining acceptance gaps
 
 - November 11 maintenance reconciles current project component selections with
-  verified installed source content. Fresh project discovery and source metadata
-  are checked during synchronization; the maintenance receipt records their scope.
+  verified installed source content, refreshed native refs and fresh project
+  discovery; the maintenance receipt records the completed observations and scope.
   Native model/approval behavior on the changed runtime set remains T12 evidence.
 
-- T12 deeper engineering and unresolved cognitive qualification/native discovery;
+- T12 deeper engineering, unresolved cognitive qualification and changed-runtime
+  native behavior evidence;
   T13 fresh whole-branch review, full milestone acceptance and deliberate stop.
 - Cognitive qualification remains UNKNOWN; complexipy is not a passing authority.
   Historical duplicate/global

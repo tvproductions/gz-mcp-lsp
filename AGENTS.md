@@ -42,7 +42,7 @@ No private source or project data in this public repository.
 ## Engineering and configuration
 
 Python 3.14 family; exact verified managed patch 3.14.10 in `.python-version` and CI.
-uv >=0.13.6 (CI tests 0.13.6), project-owned lock, src packaging and uv_build.
+uv >=0.13.6 (CI tests 0.13.7), project-owned lock, src packaging and uv_build.
 Centralize Python/tool metadata in pyproject.toml. Application settings will be project-owned JSON;
 **no environment-variable-based application configuration**. This explicit product
 rule overrides inherited suggestions for environment overrides. Native host config
@@ -75,7 +75,7 @@ Inherited utility tests remain outside routine CI and run explicitly:
 `uv run --locked --group hygiene python -m unittest discover -s tools/engineering -p 'test_*.py' -v`.
 Verify relevant effective configuration, interpreter/tool provenance and artifacts
 outside the checkout. Use the separate published starter checkout for helper
-validation/configuration/status, with its own uv 0.13.5; never relabel product HEAD
+validation/configuration/status, with its own supported uv; never relabel product HEAD
 as a starter revision. Product runtime has no starter dependency.
 
 Every major including 1.0.0 requires a new PRD. Use SemVer for the eventual

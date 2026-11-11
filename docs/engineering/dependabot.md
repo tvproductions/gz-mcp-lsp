@@ -6,8 +6,8 @@ This product has root uv and GitHub Actions jobs only; the X-Plane/helper
 descriptions below remain inherited starter context. Its November 9
 [uv scan failed](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/42641967556)
 because updater uv 0.13.7 could not satisfy exact required-version ==0.13.6.
-The project now accepts >=0.13.6, backporting the released starter v0.9.0 policy;
-CI continues to test 0.13.6. Package/backend pins remain independent. See the
+The project now accepts >=0.13.6 under the adopted starter v0.9.0 policy;
+CI tests 0.13.7. Package/backend pins remain independent. See the
 [compatibility receipt](../evidence/2026-11-11-uv-compatibility.md).
 Fresh hosted scanning on the corrected default branch must be observed separately;
 local compatibility checks alone do not prove a hosted repair.
@@ -45,19 +45,33 @@ the full Astral acceptance proof and host-specific testing.
 | --- | --- | --- |
 | `uv_build` | Package requirement in the root build-system and X-Plane dev group | Verify the root build-only update path in an actual bot PR; reconcile any affected execution references |
 | Python `.python-version` and CI Python inputs | No configured updater | Check latest patches within each approved family; synchronize exact selections and test them |
-| `[tool.uv].required-version` and CI uv inputs | No configured updater | Review uv releases and reconcile execution pins separately; do not add a fake runtime dependency to make them visible |
+| `[tool.uv].required-version` and CI uv inputs | No configured updater | Maintain the uv compatibility minimum separately from CI's tested version; do not add a fake runtime dependency to make them visible |
 | Local pre-commit hooks | Tool packages are scanned through their uv groups | Preserve the four commands; there are no external hook repos to update |
 | SP, gz-skills, deferred SP-BP, both native catalogs | Outside these ecosystems | Use the existing stack-maintenance workflow and reconcile full SHAs, catalogs and generated resources |
 | Required deeper tools absent from manifests | Not discoverable as package dependencies | Finish the existing adoption/release-analysis work; absence of PRs cannot establish completeness |
 | XPPython3/X-Plane installation and embedded Python | Outside package scanning | Inspect actual host runtime and test plugin behavior separately |
 
-Build-only dependencies are supported by the current upstream uv updater source,
-but published GitHub documentation still lists uv 0.11 while this checkout pins
-0.13.5. Upstream's current updater Dockerfile already selects 0.13.5. The initial
-hosted jobs successfully scanned both uv directories and Actions; actual
-update-PR generation and lock changes remain unverified. Preserve required
-uv pins and inspect the actual job logs for both directories. Do not weaken
-locked execution, downgrade uv or change Python families to conceal a bot failure.
+The November 7 [diagnosis and resolution](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-11-07-dependabot-uv-compatibility.md)
+supersedes the initial scan observations: both November 2 uv jobs failed because
+their preinstalled uv 0.13.5 could not satisfy the former exact 0.13.6
+requirement. The Actions scan succeeded. Reviewed upstream source selects
+0.13.7, which also failed that former requirement in local read-only controls;
+source state does not establish the deployed hosted image. Hosted configuration
+offers no documented uv-version override. Successful initial scans do not prove
+current reliability, update-PR generation or lock changes.
+
+The maintainer subsequently authorized minimum-only uv compatibility. Both
+baselines now accept `>=0.13.5` without an upper bound; CI remains on tested
+0.13.6. This removes the demonstrated version-only rejection without replacing
+Dependabot or changing package locks. Keep executable provenance, locked execution
+and separate Python families. Newer uv admission does not prove every future
+release compatible; investigate actual behavioral failures on their merits.
+Fresh scans on `e918dbb` now pass for both Python projects and Actions. Both
+Python logs report actual uv 0.13.7, and ten real PRs show the expected manifest/
+lock updates with green CI. Their scopes were inspected; no upgrade was merged.
+The receipt records exact PR heads, CI links and remaining compatibility review.
+The root build-only uv_build PR path remains unverified. See the
+[uv compatibility policy](../baseline-policy.md#uv-executable-compatibility).
 
 An update to root `uv_build` may need an additional X-Plane PR, and vice versa.
 Review each against its own environment; they are not one shared resolution.
@@ -73,17 +87,18 @@ enable a remote service through an API. After merge, inspect GitHub's dependency
 update logs for both uv jobs and the Actions job. Verify their manifest paths,
 actual updater versions, preserved runtime constraints, generated locks and CI
 results on a real update PR. The initial hosted scans completed successfully;
-that does not establish the unobserved PR/update paths.
+the later uv failures and November 7 recovery above supersede that observation
+for current reliability. Actual PR generation and CI are now observed; merging
+still requires applicable compatibility checks.
 
-The first Linux CI attempt could not provision 3.12.16 because uv 0.13.5's
-embedded download list predates that patch. The X-Plane project's centralized uv
-configuration therefore pins Astral's official download manifest at full commit
-`68677f5439c027db17b4db7821882a9881d376f6`, including archive checksums.
-This documented uv setting permits the selected managed interpreter without
-changing uv or the Python patch. The maintainer should revisit the manifest pin
-at the next Python/uv refresh and remove the override once the selected uv's
-embedded metadata supplies the runtime. This pin requires manual review alongside
-execution pins; Dependabot does not update it.
+Historically, the first Linux CI attempt could not provision 3.12.16 because uv
+0.13.5's embedded download list predated that patch. The X-Plane project used an
+official Astral download manifest pinned at commit
+`68677f5439c027db17b4db7821882a9881d376f6`, including checksums. Release 0.8.0
+adopted uv 0.13.6 and removed that override after provisioning succeeded with
+its embedded metadata. See the [release receipt](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-10-31-0.8.0-release.md).
+Do not restore the historical override to address an unrelated bot version
+mismatch. Python and uv execution pins still need separate manual review.
 
 The [October 26 receipt](../evidence/2026-10-26-dependabot.md) records the initial
 inputs, official sources, local checks and remaining UNKNOWNs. This receipt is

@@ -40,10 +40,10 @@ See the [license review](docs/discovery/licenses.md) for attribution/dependency 
 
 ## Development
 
-Use uv >=0.13.6 and managed CPython 3.14.10. CI tests uv 0.13.6. The exact interpreter
+Use uv >=0.13.6 and managed CPython 3.14.10. CI tests uv 0.13.7. The exact interpreter
 is in `.python-version`; dependencies and tools are resolved in `uv.lock`. This is a
 standalone `src/gz_mcp_lsp` package using uv_build. Version `0.1.0` identifies the
-unreleased development package, independent of starter version 0.7.1.
+unreleased development package, independent of starter version 0.9.0.
 
 ```bash
 git clone https://github.com/tvproductions/gz-mcp-lsp.git
@@ -137,21 +137,21 @@ upstream continuation, and is not affiliated with Astral or OpenAI.
 
 This repository was generated directly from
 [tvproductions/gz-skills-first-starter](https://github.com/tvproductions/gz-skills-first-starter).
-Its adopted published baseline is v0.7.1 at
-`27594dbaec853e6bde037b0aaf3f0427a3f053f9`, recorded in
+Its adopted published baseline is v0.9.0 at
+`3f76acf0038b030bf5abd85ce4a419e890d3e420`, recorded in
 `.skills-first/bundle.lock.json`. The inherited policy and analysis tools retain
 their provenance and notices. Historical starter documents describe that project,
 not delivered adapter behavior; see [documentation scope](docs/README.md).
 Superpowers and gz-skills remain independently owned native plugins; Backplane
 is deferred and disabled. The user selected the lite lane.
 
-The project independently selects gz-skills v0.8.3 while retaining the adopted
-starter v0.7.1. Its existing `skills-first-starter` marketplace identity now reads
+The project independently selects Superpowers v7.0.2 and gz-skills v0.10.1 with
+starter v0.9.0. Backplane v0.2.0 remains disabled. The existing
+`skills-first-starter` marketplace identity reads
 this repository's project-owned catalog on `main`; every component in that catalog
-has an immutable full commit pin. This reconciles the newer plugin without a
-second discovery source or a shared-starter update. See the
-[dependency-update receipt](docs/evidence/2026-10-31-dependency-update.md) for
-rollback pins, verification and native loading evidence.
+has an immutable full commit pin. See the
+[November 11 maintenance receipt](docs/evidence/2026-11-11-dependency-update.md)
+for rollback pins, source reconciliation, verification and remaining acceptance gaps.
 
 Original project work and inherited starter material use the [MIT license](LICENSE).
 Upstream projects and future dependencies retain their own licenses; see [NOTICE](NOTICE).

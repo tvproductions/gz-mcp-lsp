@@ -14,7 +14,7 @@ dependencies = [
 gz-mcp-lsp = "gz_mcp_lsp.cli:main"
 
 [build-system]
-requires = ["uv_build==0.13.6"]
+requires = ["uv_build==0.13.7"]
 build-backend = "uv_build"
 
 [tool.uv]
@@ -39,8 +39,8 @@ select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM", "RUF"]
 # Routine tools and explicit on-demand analysis stay out of runtime dependencies.
 [dependency-groups]
 dev = [
-    "ruff==0.17.3",
-    "ty==0.0.95",
+    "ruff==0.17.4",
+    "ty==0.0.101",
     "pre-commit==4.7.0",
 ]
 hygiene = [
@@ -48,12 +48,12 @@ hygiene = [
     "cohesion==1.2.0",
     # Defect reproducer only; not qualified as cognitive acceptance authority.
     "complexipy==8.3.0",
-    "cosmic-ray==8.7.0",
-    "coverage==7.17.0",
+    "cosmic-ray==8.9.0",
+    "coverage==7.17.2",
     "deptry==0.25.1",
-    "import-linter==2.15",
+    "import-linter==2.16",
     "interrogate==1.7.0",
-    "lizard==1.24.3",
+    "lizard==1.26.0",
     "pip-audit==2.10.1",
     "vulture==2.16",
 ]

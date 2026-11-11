@@ -12,7 +12,7 @@ still configures files only; it does not automatically enforce acceptance.
 This document guides adoption; it does not replace the three upstream workflows.
 Read [the adoption guide](adoption.md) for native host loading,
 compatibility checks, updates, and rollback. The helper is
-[starter.py](../starter.py); use its CLI help for current options.
+[starter.py](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/starter.py); use its CLI help for current options.
 
 For structural adoption in an existing project, read
 [backport guidance](backport.md). Run the read-only assessment, map
@@ -39,6 +39,13 @@ Before choosing versions, use the adoption guide's “Getting current SP and
 gz-skills” procedure. Check latest published releases, distinguish development
 main from a release, and record reviewed full SHAs. The starter pins are a
 baseline, not an instruction to keep SP behind because Backplane is deferred.
+Allow `0.0.0` only as an unpublished bare-scaffold placeholder. As soon as any
+original implementation, tests, documentation or configuration is added, set
+the initial project version to **0.1.0**. Do not release project-owned work as
+`0.0.0`. Correct unpublished `0.0.0` projects containing original work and align
+runtime version output and release records. Verify this before accepting
+adoption. Preserve existing published
+versions and tags; follow the mandatory [versioning policy](versioning.md).
 Also use its “Maintaining the adopted stack” procedure for the starter template,
 SP, SP-BP and gz-skills at adoption and scoped maintenance. Compare recorded
 provenance with upstream releases/commits, preserve app additions and overrides,
@@ -47,7 +54,7 @@ enabling it while readiness and explicit adoption remain pending.
 Generic maintenance routes to gz-skills `gzs-update-dependencies` for authorized
 updates and `gzs-dependency-risk-audit` for risk assessments. Keep the starter's
 role to policy and adoption bindings; do not add a competing local maintenance
-skill. The pinned gz-skills v0.8.0 maintenance skill also supports freshness-only
+skill. The project-selected gz-skills v0.10.1 maintenance skill also supports freshness-only
 reviews and starter/plugin inventory without changing pins or environments.
 Preserve approved starter Python policy over upstream profile defaults; choosing
 a profile remains explicit and separate from helper configuration, but is
@@ -73,10 +80,21 @@ other installations or use a force overwrite to make it pass. Existing AGENTS
 stays untouched: review the generated fragment and add a pointer within scope.
 Profile choice is separate; do not infer lite/heavy from the components selected.
 
-Native installation is a separate, explicit operation. Follow only the guide for
-the active host; preserve project scope and existing upstream versions. For a
+Native installation is a separate, explicit operation. Require repository/project
+scope for installation, marketplace registration and enablement. Do not install
+globally/at user scope or use unscoped commands that alter user defaults. Shared
+native download caches do not imply user-wide activation. If the host cannot
+preserve repository scope, record the limitation instead of falling back to a
+global/user install. Follow only the guide for the active host and preserve
+existing upstream versions. For a
 configuration-only request, stop after configuration and identify installation
-as pending. OpenCode is deferred until Backplane's upstream adapter is ready.
+as pending. OpenCode v2 supports the active SP/gz-skills pair through its upstream
+adapters; Backplane's OpenCode lifecycle remains deferred.
+Keep installation, version updates and enablement separate. An update request
+does not authorize widening activation. Codex CLI 0.166.0 `plugin add` enables
+the plugin user-wide even from a project-local marketplace; do not use it as
+a project update or reinstall command. Record and verify revisions, project
+enablement and unchanged user defaults independently.
 
 SP-BP is an expected addition to the target stack and is disabled by default. Preserve existing backlog/handoff practice; do not
 install or activate Backplane as part of ordinary adoption. Its future activation

@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+- Update the adopted starter to v0.9.0 and independently select Superpowers
+  v7.0.2, gz-skills v0.10.1 and disabled Backplane v0.2.0. Reconcile released
+  adoption/release-scope policies while preserving the product's uv minimum,
+  lite profile, native activation scope and engineering ceilings. Verify cached
+  plugin content against complete published source snapshots.
+- Refresh uv/uv_build to 0.13.7, Ruff to 0.17.4, ty to 0.0.101, Coverage to
+  7.17.2, Import Linter to 2.16, Cosmic Ray to 8.9.0 and Lizard to 1.26.0;
+  regenerate the full uv lock. Requalify Lizard's existing counting contract
+  without changing thresholds or concealing existing findings. Keep Python
+  3.14.10, MCP SDK 2.3.0 and the unpublished product target 0.1.0.
+- Restore the normal request budget after the mutation drain-timeout assertion,
+  preventing its 50 ms test setting from timing out an unrelated final read.
+
 - Disable the inherited gz-skills marketplace identity only in this project,
   eliminating duplicate skill discovery while preserving global activation.
   Record fresh inside/outside probes and the separate installed-version drift.

@@ -242,9 +242,12 @@ class MutationTests(unittest.IsolatedAsyncioTestCase):
         before = self.hashes()
         async with self.documents.generation():
             self.documents.workspace.config = replace(self.config, request_timeout_seconds=0.05)
-            with self.assertRaises(AdapterError) as timeout:
-                await self.mutations.apply(preview["result"]["plan_id"])
-            self.assertEqual(timeout.exception.code, "WORKSPACE_BUSY")
+            try:
+                with self.assertRaises(AdapterError) as timeout:
+                    await self.mutations.apply(preview["result"]["plan_id"])
+                self.assertEqual(timeout.exception.code, "WORKSPACE_BUSY")
+            finally:
+                self.documents.workspace.config = self.config
         self.assertFalse(self.transactions.started.is_set())
         self.assertEqual(before, self.hashes())
         async with self.documents.generation():

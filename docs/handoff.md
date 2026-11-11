@@ -1,50 +1,40 @@
 # Project handoff — 2026-11-11
 
-## Resume here: native source reconciliation before T12
+## Resume here: T12 after dependency maintenance
 
-The latest user request is to preserve this handoff and Git-sync the project
-skill deduplication fix. Work is on **main in the primary checkout**. The base
-for this save point is `5e74aeacd5f318062eb9b0b4c0877da5c6861bf0`; the final
-sync response identifies the new commit and exact-commit CI. No T12 execution,
-plugin update, full starter upgrade, tag or release is part of this save point.
+The user requested **update all** after the November 11 freshness review.
+Maintenance starts at `397d48d` on main in the primary checkout. The full
+[maintenance receipt](evidence/2026-11-11-dependency-update.md) and
+[version/source inventory](evidence/2026-11-11-dependency-update.json) record
+selected inputs, checks, rollback and remaining engineering findings. The final
+response supplies Git synchronization and exact-commit CI results, without
+receipt-only follow-up commits.
 
-Completed maintenance:
+Current selections: starter **0.9.0**, Superpowers **7.0.2**, gz-skills **0.10.1**,
+and **disabled Backplane 0.2.0**. The lite profile, product-owned marketplace,
+standalone-source exclusion and user defaults are preserved. Complete cached
+source trees match the three published target revisions; source metadata refresh
+and fresh discovery are verified separately during final synchronization.
 
-- Backported minimum-only uv compatibility at `5e74aea`: accept >=0.13.6,
-  retain CI 0.13.6. Local full gate/normal hooks passed with uv 0.13.7, and
-  [exact-commit CI](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43022296870)
-  passed all three platforms. [Receipt](evidence/2026-11-11-uv-compatibility.md).
-- Added a project-only enabled=false override for gz-skills@gz-skills while
-  keeping gz-skills@skills-first-starter enabled. Fresh actual Codex discovery
-  drops from 40 entries/20 duplicated names to 20 entries/zero duplicates.
-  Outside-project discovery remains 20 standalone entries; user configuration
-  is byte-unchanged. [Receipt](evidence/2026-11-11-skill-discovery.md).
-- Source-independent build and outside-source distribution verification passed
-  after the exclusion. This sync reruns the routine gate and normal hooks;
-  final Git/CI results belong in the final response, without receipt-only commits.
+Managed Python remains **3.14.10** and runtime MCP remains **2.3.0**. The project
+accepts uv **>=0.13.6** and tests **0.13.7**; uv_build is **0.13.7**. Ruff is
+**0.17.4**, ty **0.0.101**, Coverage **7.17.2**, Import Linter **2.16**, Cosmic Ray
+**8.9.0** and Lizard **1.26.0**. The full uv lock was regenerated. A late PyPI ty
+release superseded the initial 0.0.100 candidate during verification.
 
-**First next-session action:** start a fresh session and perform a read-only
-native plugin/source inventory. Compare the installed starter-marketplace
-gz-skills 0.10.1 with the repository's recorded 0.8.3 selection in
-`.skills-first/bundle.lock.json` and both native catalogs. Use OpenAI Docs,
-the project update-gz-template skill and gzs-update-dependencies as appropriate.
-Expected result: one active source, with actual installed identity versus intended
-pin explicitly established. The source mismatch remains open; deduplication is
-not evidence of pin agreement. Do not silently rewrite provenance to match the
-cache or change native installations/defaults without scoped update authority.
-Preserve global activation elsewhere and leave cache management to the manager.
+The Lizard counting contract is preserved after identical old/new measurements
+on 70 Python files and the 29 utility regressions. Its five existing function
+ceiling failures remain failures. Bandit, documentation coverage, Vulture and
+missing import-boundary contracts remain explicit T12 work; the cognitive
+engine is still unavailable. No threshold was weakened and no product runtime
+capability was added. The mutation timeout test now restores its normal budget
+before a subsequent read; the 50 ms drain assertion remains intact.
 
-The current conversation may retain its already injected duplicate catalog;
-fresh app-server skills/list with forceReload verified the corrected project
-configuration. Raw local probes are not tracked and are unnecessary to resume;
-the sanitized receipt above preserves counts, source versions and limitations.
-Starter provenance remains v0.7.1 with the explicit uv-policy backport.
-Fresh hosted Dependabot scanning against corrected inputs remains unverified.
-
-T12/T13 remain unfinished. Once source reconciliation is understood, use the
-existing T12 brief below within its approved stage boundary, preserve required
-UNKNOWN/FAIL results and stop before T13. This handoff does not itself authorize
-a plugin upgrade or waive cognitive/native acceptance gaps.
+The first unpublished product release remains **0.1.0**, with finite scope and
+remaining gates in [ROADMAP.md](../ROADMAP.md). No tag or release is authorized.
+This maintenance does not complete T12/T13 or turn historical native model/approval
+proof into fresh proof for the changed ty/dependency set. Continue with the
+existing T12 brief below and preserve all required UNKNOWN/FAIL results.
 
 ## Retained implementation checkpoint — 2026-11-01
 
@@ -128,8 +118,8 @@ All observed app-server exits are zero. Persistent host config, native caches,
 Backplane and unrelated defaults remain unchanged. Isolated examples live under
 docs/examples/; no engineering plugin registration was added.
 
-Keep CPython **3.14.10**, MCP SDK **2.3.0** and ty **0.0.95**.
-uv accepts **>=0.13.6**, with CI testing **0.13.6**; supported callers need not
+Keep CPython **3.14.10**, MCP SDK **2.3.0** and ty **0.0.101**.
+uv accepts **>=0.13.6**, with CI testing **0.13.7**; supported callers need not
 match CI. Nested hooks must resolve the selected uv consistently. See the
 [compatibility backport](evidence/2026-11-11-uv-compatibility.md). Required gate:
 
@@ -163,18 +153,17 @@ adopted engineering policies, specification/plan and acceptance matrix. Use the
 
 ## Remaining acceptance gaps
 
-- November 11: [project skill deduplication](evidence/2026-11-11-skill-discovery.md)
-  now yields 20 gz-skills entries with zero duplicates, preserving global defaults.
-  Installed starter gz-skills 0.10.1 still differs from recorded 0.8.3; E4 source
-  reconciliation remains open. Historical duplicate observations below predate
-  the project exclusion.
+- November 11 maintenance reconciles current project component selections with
+  verified installed source content. Fresh project discovery and source metadata
+  are checked during synchronization; the maintenance receipt records their scope.
+  Native model/approval behavior on the changed runtime set remains T12 evidence.
 
 - T12 deeper engineering and unresolved cognitive qualification/native discovery;
   T13 fresh whole-branch review, full milestone acceptance and deliberate stop.
 - Cognitive qualification remains UNKNOWN; complexipy is not a passing authority.
-  Native source/version reconciliation remains open; historical duplicate/global
-  scope findings are bounded by the November 11 observations above. Preserve
-  caches/defaults.
+  Historical duplicate/global
+  scope findings remain bounded by the November 11 observations above. Preserve
+  caches/defaults and distinguish source discovery from native behavior acceptance.
 - Native approval evidence is programmatic actual-host protocol interaction;
   no GUI/human-action claim is made. No release is accepted or published.
 

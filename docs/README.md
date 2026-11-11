@@ -38,7 +38,9 @@ records production startup-recovery assignment, workspace generation leases and
 dependency-test ordering, with updated plan/matrix hashes. No execution is approved.
 
 Engineering policies, adoption guidance, update procedures and engineering
-utilities were inherited from gz-skills-first-starter v0.7.1. They remain binding
+utilities originated with gz-skills-first-starter v0.7.1. The
+[November 11 update](evidence/2026-11-11-dependency-update.md) reconciles the
+released v0.9.0 policies with product-owned overrides. They remain binding
 where applicable. Starter evidence predating this product is historical upstream
 evidence, not measurements of gz-mcp-lsp. `STARTER-README.md` and
 `STARTER-AGENTS.md` preserve original context; their relative links were written

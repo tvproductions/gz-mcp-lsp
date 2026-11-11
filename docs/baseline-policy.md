@@ -121,6 +121,8 @@ pin cannot be used to declare a stale tool current. Review release changes and
 compatibility, adopt the newest stable selection, then retain exact pins/locks.
 The explicit Python/embedded-host families above remain separate runtime policy.
 
+## Retained tooling and exceptions
+
 An older tool is permitted only as an explicit compatibility exception with
 evidence, an owner, accepted-by authority and a dated revisit. It remains
 noncurrent/conditional; do not claim strict freshness acceptance. Missing latest
@@ -138,8 +140,8 @@ override this baseline or the project's existing authorities.
 
 ## uv executable compatibility
 
-The project backports starter v0.9.0's minimum-only uv rule: require >=0.13.6
-without an upper bound; CI's 0.13.6 is a tested reference, not an exclusive caller
+The project adopts starter v0.9.0's minimum-only uv rule: require >=0.13.6
+without an upper bound; CI's 0.13.7 is a tested reference, not an exclusive caller
 requirement. This section supersedes inherited exact-uv matching guidance,
 including the historical Git ritual. Keep nested hooks on the selected executable
 and record its actual version. Verify behavior rather than rejecting newer uv
@@ -150,7 +152,8 @@ The project floor retains its previously verified 0.13.6 selection. Starter
 v0.9.0 uses 0.13.5; that lower floor is not adopted here. Compatibility is separate
 from latest-stable review, and accepting future versions does not prove all of
 them work. See the [source and validation receipt](evidence/2026-11-11-uv-compatibility.md).
-The adopted starter identity remains v0.7.1; this is a scoped policy backport.
+The adopted starter is now v0.9.0; the earlier scoped backport remains historical.
+See the [maintenance receipt](evidence/2026-11-11-dependency-update.md).
 
 ## Code must follow its Python version
 
@@ -245,7 +248,8 @@ Keep Python dependencies and supported tool configuration in each baseline's
 Use independent projects/environments for these incompatible runtime families,
 not one shared workspace resolution. Do not duplicate app-specific X-Plane
 dependencies from another adopter; application dependencies remain project-owned.
-Track Python and uv execution pins and GitHub Actions revisions in their native
+Track exact Python selections, uv's compatibility minimum and tested CI version,
+and GitHub Actions revisions in their native
 files as part of coverage. Plugin/catalog inventory remains separately required;
 a package scan does not establish plugin freshness or native discovery.
 

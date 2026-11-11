@@ -109,7 +109,7 @@ Generic maintenance workflows belong in gz-skills. Use its discovered
 `gzs-update-dependencies` for authorized dependency/tool updates and
 `gzs-dependency-risk-audit` for risk assessments. This document supplies project
 policy and source locations. The starter supplies no competing maintenance skill
-or generic freshness-report command. The pinned gz-skills v0.8.0 maintenance
+or generic freshness-report command. The project-selected gz-skills v0.10.1 maintenance
 skill supports freshness-only review and template/plugin source inventory.
 Review mode leaves pins and environments unchanged; updates require scoped
 authorization. Apply the guidance below as this project's binding, preserving
@@ -142,6 +142,14 @@ they are not established oldest-supported versions or a claim to be latest.
 Do not turn them into unbounded `>=` requirements without testing the intended
 support range. Adopters may add bounded requirements and retain exact resolutions
 in their own lock; shared baseline changes do not automatically migrate them.
+
+The uv executable is explicitly different: use a minimum-only compatibility
+requirement, currently `>=0.13.6` here, with CI's tested 0.13.7 recorded separately.
+Do not force supported local or hosted uv to match CI. The minimum and tested
+patches have compatibility evidence; admission of newer versions is a policy
+choice, not a claim that every future release was tested. See the
+[uv policy](baseline-policy.md#uv-executable-compatibility). Exact Python and
+package/build-backend locks remain unchanged.
 
 At setup/adoption, before each release, scoped tool upgrades and quarterly
 on-demand maintenance:

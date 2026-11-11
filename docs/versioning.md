@@ -1,8 +1,19 @@
 # Template versioning
 
-The current template release is **0.7.1**; the initial release
-was **0.1.0**. The 0.3
-adoption contract removes starter-authored skills; see [migration](migration-0.3.md).
+The current template release is **0.9.0**; the initial release was **0.1.0**.
+Its minimum-only uv policy
+change governs the minor increment, alongside compatible corrections recorded
+in the [release-planning audit](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-11-01-release-planning-audit.md).
+The [starter release-scope record](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/handoffs/2026-10-24-session-close.md#november-8-git-synchronization-and-release-scope)
+supersedes the audit's earlier patch-only target after upstream reconciliation.
+The [0.9.0 receipt](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-11-08-0.9.0-release.md) records the authorized
+publication and acceptance inputs. Verify its immutable tag and GitHub release
+before treating this metadata as publication evidence.
+The adopting product's independent pending release scope is in [ROADMAP.md](../ROADMAP.md).
+The 0.3 adoption contract removes starter-authored skills; see [migration](migration-0.3.md).
+Release 0.8.0 bundles three-host repository configuration, brownfield scope repair
+and mandatory adopter discipline. Its [release receipt](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-10-31-0.8.0-release.md)
+records independent execution-pin refreshes and retained acceptance limitations.
 Release 0.7.1 ships the consumer-side preparation and a compatible Ruff patch.
 The maintainer explicitly directed publication without waiting for the engine.
 Actual cognitive integration remains open and unscheduled in
@@ -42,6 +53,31 @@ validation remains unimplemented; release notes disclose acceptance gaps.
 Future publication remains a separately authorized operation.
 
 ## Ecosystem policy authority and consistency
+
+### Initial adopter project version
+
+The first substantive release is the first versioned commitment to the project's
+public contract. Declare that contract and issue the release as **0.1.0**.
+This establishes a versioned baseline; the contract may evolve under the required
+0.x compatibility rules. It does not assert the stability required for 1.0.0.
+
+Permit `0.0.0` only as an unpublished placeholder for a bare scaffold. As soon
+as any original implementation, tests, documentation or configuration is added,
+set the initial adopter project version to **0.1.0**. Do not release project-owned
+work as `0.0.0`. Align package metadata, runtime version output and release
+records, and verify agreement before accepting adoption. Correct an unpublished
+`0.0.0` project containing original work to `0.1.0`; preserve published versions
+and immutable tags, and
+advance an existing released project from its actual current version. Never
+reset a released project to `0.1.0` or rewrite a published `0.0.0` release.
+
+This is a mandatory starter policy. SemVer permits zero-valued components, but
+its [initial-development guidance](https://semver.org/spec/v2.0.0.html#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase)
+recommends starting at `0.1.0`. Do not mistake syntax validity for acceptance
+under this template. The adopter's initial version is independent of the
+starter and upstream plugin versions.
+
+### Shared authority
 
 This repository is the authoritative alignment source for the maintainer's
 shared engineering and release policy. This document owns the SemVer and
@@ -89,7 +125,149 @@ and policy alignment remain separate from installed readiness or full starter
 conformance. Keep existing project authorities until the relevant Backplane
 workflow is ready and explicitly adopted.
 
+Each companion owns the explicit binding for its own development environment.
+The maintainer's current Python rule is 3.14 for ordinary projects and supported
+3.12 for X-Plane/XPPython3-bound code; the starter owns that rule for its adopters.
+gz-skills workflows consume the governing project's policy instead of maintaining
+a competing family/tool/package baseline. Publisher-side choices do not become
+blanket constraints for unrelated skill or Backplane consumers. A corrected
+source candidate must still be released and explicitly selected before installed
+alignment can be claimed; source bindings are not native installation evidence.
+
 ## Version contract
+
+### Plan releases from their governing work
+
+Use this hierarchy for this starter, adopting projects and the bound companion
+repositories: **PRDs guide major releases; selected work and requirements drive
+minor releases; fixes drive patch releases.** Apply compatibility analysis to
+that scope before selecting the number. A version bump alone is not a release
+plan, and an individual task, commit or completed issue is not a release unit.
+
+| Release | Governing scope | Required planning evidence |
+| --- | --- | --- |
+| Major, including 1.0.0 | A newly written PRD defines the intended product outcomes, requirements and boundaries for that major. | Link the new PRD, acceptance criteria and migration/compatibility decisions. Do not reuse an earlier major's PRD. |
+| Minor | A coherent selected bundle of work and requirements advances the product within its governing direction. | Link the included requirements/work items, exclusions, dependencies and acceptance criteria in the existing backlog/release authority. |
+| Patch | Corrections restore existing commitments, including compatible clarifications. | Link the defects or incorrect commitments, expected corrected behavior and verification. New capability or obligations do not become fixes by labeling them maintenance. |
+
+Before implementation planning, identify which release scope the work serves.
+Before accepting a completed change, reconcile its disposition into that scope:
+included, deferred or excluded, with evidence. Keep a current release-scope record
+in the project's existing backlog, roadmap or release authority; do not create a
+parallel lifecycle. Record all of the following:
+
+1. The actual last published version/tag and exact revision, or explicit evidence
+   that this is the first unpublished release. Distinguish that baseline from
+   current development metadata and the adopted starter/plugin versions.
+2. The proposed next version and governing PRD, selected requirements/work or
+   fixes. State why that scope requires major, minor or patch. Review the complete
+   scope since the published baseline; the largest required increment wins.
+3. Included completed work, included remaining work, deferred work and measurable
+   release acceptance gates. Do not treat the whole future backlog as one release
+   or require unrelated future work to finish before every release.
+4. Compatibility impact and required migration, plus outstanding decisions and
+   the evidence needed to resolve them. Unresolved scope/version decisions remain
+   explicit; agents MUST NOT silently shrink an approved release to publish sooner.
+
+Maintain the pending version, metadata/runtime mirrors, lock metadata where
+affected, and changelog together once the release scope is selected. Multiple
+changes in one planned release share its pending version; do not increment once
+per task. Before release preparation passes, verify that the selected work and
+actual diff agree, all required evidence exists, and the version matches that
+scope. Missing scope or classification evidence blocks that claim.
+
+For example, after released `0.4.2`, selected new reporting requirements drive
+`0.5.0`; a correction to an existing report drives `0.4.3`. After `1.4.2`, a
+compatible new reporting bundle drives `1.5.0`; its compatible defect correction
+drives `1.4.3`. A new PRD guiding `2.0.0` must identify that major's outcomes and
+requirements; incompatible changes cannot be hidden in `1.5.0`. A PRD does not
+automatically make every implementation task a major release. During 0.x,
+requirements and incompatible changes advance minor under the rules below;
+the first stable `1.0.0` still needs its own newly written PRD.
+
+An unpublished initial `0.1.0` may cover an explicitly selected first-release
+scope. It is not evidence of a versioning defect merely because many tasks are
+complete. Conversely, "unreleased" is not permission to accumulate unrelated
+requirements indefinitely: review scope growth and record whether it belongs
+in the first release or a later minor. Preserve existing approved release gates
+until a scope change is approved. Published tags and release history stay immutable.
+
+These are planning and acceptance obligations, not publication authorization.
+Backplane retains workflow ownership; until ready and explicitly adopted, each
+project's existing authorities execute them. Both lite and heavy follow this rule.
+
+### Required version decision procedure
+
+Agents MUST perform this procedure when accepting requirements, planning work,
+and closing a change. Do not defer it until someone asks to publish a release.
+
+1. **Establish the baseline.** Read project metadata, runtime version output,
+   changelog, published tags/releases and current release scope. Verify their
+   identities. Record missing publication evidence as UNKNOWN; do not infer it
+   from a version string or silently assume there were no previous releases.
+2. **Identify the governing commitment.** Link the new major's PRD, the selected
+   minor requirements/work bundle, or the existing commitment being corrected.
+   A patch needs an identifiable defect or compatible clarification. New required
+   behavior is minor work even when its ticket or commit says "fix".
+3. **Classify the complete pending scope.** Use the highest required increment,
+   with compatibility constraints below. A stable breaking change requires a
+   major and its newly written PRD before implementation planning can pass.
+   Never suppress that consequence to avoid writing the PRD. A new PRD can guide
+   several minor bundles within its major; it does not make each task a major.
+4. **Select one target and reconcile it now.** Calculate it from the last
+   published baseline, resetting lower components as shown below. Reuse a valid
+   existing pending target. If new work exceeds it, revise the target and scope
+   together; do not increment once per pending task. Update metadata/runtime
+   mirrors, affected lock metadata and the unreleased changelog in the same
+   change. Routine classification and version-file reconciliation are part of
+   authorized work; do not ask the maintainer to choose a number agents can
+   derive from this policy.
+5. **Keep the bundle bounded.** State the release outcome, included requirement
+   IDs, exclusions and measurable completion gate. An initial 0.1.0 needs that
+   finite scope too. Assign unrelated/new future requirements to later minor
+   bundles; do not append the whole roadmap to the active release. Changing an
+   approved product outcome or gate requires a scope decision, not a guessed
+   version. Ask only for the unresolved product decision and record the blocker.
+6. **Verify and report.** Review the actual change against the governing work,
+   check all version mirrors and prove the relevant acceptance criteria. Report
+   `published baseline -> pending target`, release kind, source requirements or
+   defects, included/remaining/deferred work and publication status. A closeout
+   MUST NOT claim versioning complete without that evidence. Missing PRDs,
+   scope, classification or inconsistent versions fail the applicable planning,
+   closeout and release-preparation checks; configuration is not acceptance.
+
+| Published baseline | Selected scope | Pending target |
+| --- | --- | --- |
+| No previous release, verified | Bounded first usable scope | 0.1.0 |
+| 0.4.2 | Compatible fixes only | 0.4.3 |
+| 0.4.2 | New requirements, including a bundle also containing fixes | 0.5.0 |
+| 1.4.2 | Compatible fixes only | 1.4.3 |
+| 1.4.2 | Compatible new requirements or public deprecations | 1.5.0 |
+| 1.4.2 | Incompatible public contract, guided by a newly written PRD | 2.0.0 |
+
+Use this compact decision record in the existing release/backlog authority;
+equivalent existing fields are sufficient. Do not introduce a second tracker.
+
+```text
+Published baseline: version, tag and exact revision; or verified first release
+Pending target / kind: version / major | minor | patch
+Governing source: new major PRD | selected requirements/work | corrected defects
+Release outcome and acceptance gate:
+Included completed work / evidence:
+Included remaining work:
+Deferred or excluded work:
+Compatibility / migration / version-mirror checks:
+Unresolved product decisions: none, or decision owner and blocked action
+Publication: unpublished | published with immutable identity
+```
+
+Selecting a version does not assert readiness or authorize publishing it. Tool
+updates and refactors are classified by their effect on the public contract;
+commit prefixes, effort, elapsed time and the upstream dependency's own version
+do not determine this project's bump. Preserve published identities and approved
+scope. Do not manufacture past releases to make development progress look older.
+
+### Classify compatibility within the selected scope
 
 Use [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for the template's
 public adoption contract: CLI commands and outputs, managed-file formats,

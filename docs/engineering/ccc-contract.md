@@ -1,6 +1,9 @@
 # C/C/C contract: lizard-functions-v1
 
-The starter's on-demand checker uses pinned Lizard 1.24.3, not Radon/Xenon.
+The project's on-demand checker uses pinned Lizard 1.26.0, not Radon/Xenon.
+The [November 11 qualification](../evidence/2026-11-11-dependency-update.md)
+retains the contract after identical 70-file measurements against 1.24.3 and
+passing positive/negative counting fixtures. Existing ceiling failures remain failures.
 Three ceilings are fixed at 20: each function score, each module's arithmetic
 mean of function scores, and the overall function-weighted mean. Values of 20
 pass; greater values fail. Means are never rounded before comparison. This
@@ -39,11 +42,11 @@ Compile/parse, decoding, missing-tool/version and discovery errors produce exit
 remain failures, not waived passes. With equal ceilings and populations, maximum
 already bounds the means; retain all three independently reported checks.
 
-From a reviewed starter checkout, use an unused temporary REPORT_DIR:
+From this product checkout, use an unused temporary REPORT_DIR:
 
 ```bash
-uv run --managed-python --python 3.14.9 --group hygiene python tools/engineering/complexity_check.py --root PROJECT_ROOT --paths src --output REPORT_DIR/ccc.json
-uv run --managed-python --python 3.14.9 --group hygiene python -m unittest discover -s tools/engineering -p 'test_*.py' -v
+uv run --locked --group hygiene python tools/engineering/complexity_check.py --root PROJECT_ROOT --paths src --output REPORT_DIR/ccc.json
+uv run --locked --group hygiene python -m unittest discover -s tools/engineering -p 'test_*.py' -v
 ```
 
 The checker does not run Ruff/complexipy or import application code. Run those

@@ -1,0 +1,1049 @@
+{
+  "date": "2026-11-11",
+  "mode": "update",
+  "rollback": "397d48d",
+  "python": {
+    "family": ">=3.14,<3.15",
+    "pin": "3.14.10",
+    "upstream": "3.15.2",
+    "decision": "retain approved N-1 family"
+  },
+  "packages": [
+    {
+      "name": "aiohappyeyeballs",
+      "before": "2.7.1",
+      "after": "2.7.1",
+      "source": "https://pypi.org/pypi/aiohappyeyeballs/2.7.1/json"
+    },
+    {
+      "name": "aiohttp",
+      "before": "3.14.5",
+      "after": "3.14.5",
+      "source": "https://pypi.org/pypi/aiohttp/3.14.5/json"
+    },
+    {
+      "name": "aiosignal",
+      "before": "1.4.0",
+      "after": "1.4.0",
+      "source": "https://pypi.org/pypi/aiosignal/1.4.0/json"
+    },
+    {
+      "name": "annotated-types",
+      "before": "0.8.0",
+      "after": "0.8.0",
+      "source": "https://pypi.org/pypi/annotated-types/0.8.0/json"
+    },
+    {
+      "name": "anybadge",
+      "before": "1.16.0",
+      "after": "1.18.0",
+      "source": "https://pypi.org/pypi/anybadge/1.18.0/json"
+    },
+    {
+      "name": "anyio",
+      "before": "4.16.0",
+      "after": "4.16.0",
+      "source": "https://pypi.org/pypi/anyio/4.16.0/json"
+    },
+    {
+      "name": "attrs",
+      "before": "26.1.0",
+      "after": "26.1.0",
+      "source": "https://pypi.org/pypi/attrs/26.1.0/json"
+    },
+    {
+      "name": "bandit",
+      "before": "1.9.4",
+      "after": "1.9.4",
+      "source": "https://pypi.org/pypi/bandit/1.9.4/json"
+    },
+    {
+      "name": "boolean-py",
+      "before": "5.0",
+      "after": "5.0",
+      "source": "https://pypi.org/pypi/boolean-py/5.0/json"
+    },
+    {
+      "name": "cachecontrol",
+      "before": "0.14.4",
+      "after": "0.14.4",
+      "source": "https://pypi.org/pypi/cachecontrol/0.14.4/json"
+    },
+    {
+      "name": "certifi",
+      "before": "2026.10.23",
+      "after": "2026.10.23",
+      "source": "https://pypi.org/pypi/certifi/2026.10.23/json"
+    },
+    {
+      "name": "cffi",
+      "before": "2.1.1",
+      "after": "2.1.1",
+      "source": "https://pypi.org/pypi/cffi/2.1.1/json"
+    },
+    {
+      "name": "cfgv",
+      "before": "3.5.0",
+      "after": "3.5.0",
+      "source": "https://pypi.org/pypi/cfgv/3.5.0/json"
+    },
+    {
+      "name": "charset-normalizer",
+      "before": "3.5.2",
+      "after": "3.5.2",
+      "source": "https://pypi.org/pypi/charset-normalizer/3.5.2/json"
+    },
+    {
+      "name": "click",
+      "before": "8.5.0",
+      "after": "8.5.1",
+      "source": "https://pypi.org/pypi/click/8.5.1/json"
+    },
+    {
+      "name": "cohesion",
+      "before": "1.2.0",
+      "after": "1.2.0",
+      "source": "https://pypi.org/pypi/cohesion/1.2.0/json"
+    },
+    {
+      "name": "colorama",
+      "before": "0.4.6",
+      "after": "0.4.6",
+      "source": "https://pypi.org/pypi/colorama/0.4.6/json"
+    },
+    {
+      "name": "complexipy",
+      "before": "8.3.0",
+      "after": "8.3.0",
+      "source": "https://pypi.org/pypi/complexipy/8.3.0/json"
+    },
+    {
+      "name": "cosmic-ray",
+      "before": "8.7.0",
+      "after": "8.9.0",
+      "source": "https://pypi.org/pypi/cosmic-ray/8.9.0/json"
+    },
+    {
+      "name": "coverage",
+      "before": "7.17.0",
+      "after": "7.17.2",
+      "source": "https://pypi.org/pypi/coverage/7.17.2/json"
+    },
+    {
+      "name": "cryptography",
+      "before": "50.0.2",
+      "after": "50.0.2",
+      "source": "https://pypi.org/pypi/cryptography/50.0.2/json"
+    },
+    {
+      "name": "cyclonedx-python-lib",
+      "before": "11.12.0",
+      "after": "11.12.0",
+      "source": "https://pypi.org/pypi/cyclonedx-python-lib/11.12.0/json"
+    },
+    {
+      "name": "decorator",
+      "before": "5.3.1",
+      "after": "5.3.1",
+      "source": "https://pypi.org/pypi/decorator/5.3.1/json"
+    },
+    {
+      "name": "defusedxml",
+      "before": "0.7.1",
+      "after": "0.7.1",
+      "source": "https://pypi.org/pypi/defusedxml/0.7.1/json"
+    },
+    {
+      "name": "deptry",
+      "before": "0.25.1",
+      "after": "0.25.1",
+      "source": "https://pypi.org/pypi/deptry/0.25.1/json"
+    },
+    {
+      "name": "distlib",
+      "before": "0.4.4",
+      "after": "0.4.4",
+      "source": "https://pypi.org/pypi/distlib/0.4.4/json"
+    },
+    {
+      "name": "exit-codes",
+      "before": "1.3.0",
+      "after": "1.3.0",
+      "source": "https://pypi.org/pypi/exit-codes/1.3.0/json"
+    },
+    {
+      "name": "filelock",
+      "before": "4.2.6",
+      "after": "4.2.10",
+      "source": "https://pypi.org/pypi/filelock/4.2.10/json"
+    },
+    {
+      "name": "frozenlist",
+      "before": "1.8.0",
+      "after": "1.8.0",
+      "source": "https://pypi.org/pypi/frozenlist/1.8.0/json"
+    },
+    {
+      "name": "gitdb",
+      "before": "4.0.12",
+      "after": "4.0.12",
+      "source": "https://pypi.org/pypi/gitdb/4.0.12/json"
+    },
+    {
+      "name": "gitpython",
+      "before": "3.2.1",
+      "after": "3.2.1",
+      "source": "https://pypi.org/pypi/gitpython/3.2.1/json"
+    },
+    {
+      "name": "grimp",
+      "before": "3.18",
+      "after": "3.19",
+      "source": "https://pypi.org/pypi/grimp/3.19/json"
+    },
+    {
+      "name": "h11",
+      "before": "0.16.0",
+      "after": "0.16.0",
+      "source": "https://pypi.org/pypi/h11/0.16.0/json"
+    },
+    {
+      "name": "httpcore2",
+      "before": "2.16.0",
+      "after": "2.16.0",
+      "source": "https://pypi.org/pypi/httpcore2/2.16.0/json"
+    },
+    {
+      "name": "httpx2",
+      "before": "2.16.0",
+      "after": "2.16.0",
+      "source": "https://pypi.org/pypi/httpx2/2.16.0/json"
+    },
+    {
+      "name": "httpx2-jsfetch",
+      "before": "1.0",
+      "after": "1.0",
+      "source": "https://pypi.org/pypi/httpx2-jsfetch/1.0/json"
+    },
+    {
+      "name": "identify",
+      "before": "2.6.20",
+      "after": "2.6.20",
+      "source": "https://pypi.org/pypi/identify/2.6.20/json"
+    },
+    {
+      "name": "idna",
+      "before": "3.20",
+      "after": "3.20",
+      "source": "https://pypi.org/pypi/idna/3.20/json"
+    },
+    {
+      "name": "import-linter",
+      "before": "2.15",
+      "after": "2.16",
+      "source": "https://pypi.org/pypi/import-linter/2.16/json"
+    },
+    {
+      "name": "interrogate",
+      "before": "1.7.0",
+      "after": "1.7.0",
+      "source": "https://pypi.org/pypi/interrogate/1.7.0/json"
+    },
+    {
+      "name": "jsonschema",
+      "before": "4.26.0",
+      "after": "4.26.0",
+      "source": "https://pypi.org/pypi/jsonschema/4.26.0/json"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "before": "2025.9.1",
+      "after": "2025.9.1",
+      "source": "https://pypi.org/pypi/jsonschema-specifications/2025.9.1/json"
+    },
+    {
+      "name": "license-expression",
+      "before": "30.4.4",
+      "after": "30.4.4",
+      "source": "https://pypi.org/pypi/license-expression/30.4.4/json"
+    },
+    {
+      "name": "lizard",
+      "before": "1.24.3",
+      "after": "1.26.0",
+      "source": "https://pypi.org/pypi/lizard/1.26.0/json"
+    },
+    {
+      "name": "markdown-it-py",
+      "before": "4.2.0",
+      "after": "4.3.0",
+      "source": "https://pypi.org/pypi/markdown-it-py/4.3.0/json"
+    },
+    {
+      "name": "mcp",
+      "before": "2.3.0",
+      "after": "2.3.0",
+      "source": "https://pypi.org/pypi/mcp/2.3.0/json"
+    },
+    {
+      "name": "mcp-types",
+      "before": "2.3.0",
+      "after": "2.3.0",
+      "source": "https://pypi.org/pypi/mcp-types/2.3.0/json"
+    },
+    {
+      "name": "mdurl",
+      "before": "0.1.2",
+      "after": "0.1.2",
+      "source": "https://pypi.org/pypi/mdurl/0.1.2/json"
+    },
+    {
+      "name": "msgpack",
+      "before": "1.2.4",
+      "after": "1.2.4",
+      "source": "https://pypi.org/pypi/msgpack/1.2.4/json"
+    },
+    {
+      "name": "multidict",
+      "before": "7.2.1",
+      "after": "7.2.1",
+      "source": "https://pypi.org/pypi/multidict/7.2.1/json"
+    },
+    {
+      "name": "nodeenv",
+      "before": "1.12.0",
+      "after": "1.12.0",
+      "source": "https://pypi.org/pypi/nodeenv/1.12.0/json"
+    },
+    {
+      "name": "opentelemetry-api",
+      "before": "1.45.2",
+      "after": "1.45.2",
+      "source": "https://pypi.org/pypi/opentelemetry-api/1.45.2/json"
+    },
+    {
+      "name": "packageurl-python",
+      "before": "0.17.6",
+      "after": "0.17.6",
+      "source": "https://pypi.org/pypi/packageurl-python/0.17.6/json"
+    },
+    {
+      "name": "packaging",
+      "before": "26.3",
+      "after": "26.3",
+      "source": "https://pypi.org/pypi/packaging/26.3/json"
+    },
+    {
+      "name": "parso",
+      "before": "0.8.7",
+      "after": "0.8.7",
+      "source": "https://pypi.org/pypi/parso/0.8.7/json"
+    },
+    {
+      "name": "pathspec",
+      "before": "1.1.1",
+      "after": "1.1.1",
+      "source": "https://pypi.org/pypi/pathspec/1.1.1/json"
+    },
+    {
+      "name": "pip",
+      "before": "26.2.2",
+      "after": "26.3",
+      "source": "https://pypi.org/pypi/pip/26.3/json"
+    },
+    {
+      "name": "pip-api",
+      "before": "0.0.35",
+      "after": "0.0.35",
+      "source": "https://pypi.org/pypi/pip-api/0.0.35/json"
+    },
+    {
+      "name": "pip-audit",
+      "before": "2.10.1",
+      "after": "2.10.1",
+      "source": "https://pypi.org/pypi/pip-audit/2.10.1/json"
+    },
+    {
+      "name": "pip-requirements-parser",
+      "before": "32.0.1",
+      "after": "32.0.1",
+      "source": "https://pypi.org/pypi/pip-requirements-parser/32.0.1/json"
+    },
+    {
+      "name": "platformdirs",
+      "before": "4.14.2",
+      "after": "4.14.5",
+      "source": "https://pypi.org/pypi/platformdirs/4.14.5/json"
+    },
+    {
+      "name": "pre-commit",
+      "before": "4.7.0",
+      "after": "4.7.0",
+      "source": "https://pypi.org/pypi/pre-commit/4.7.0/json"
+    },
+    {
+      "name": "propcache",
+      "before": "0.5.4",
+      "after": "0.5.4",
+      "source": "https://pypi.org/pypi/propcache/0.5.4/json"
+    },
+    {
+      "name": "py",
+      "before": "1.11.0",
+      "after": "1.11.0",
+      "source": "https://pypi.org/pypi/py/1.11.0/json"
+    },
+    {
+      "name": "py-serializable",
+      "before": "2.1.0",
+      "after": "2.2.0",
+      "source": "https://pypi.org/pypi/py-serializable/2.2.0/json"
+    },
+    {
+      "name": "pycparser",
+      "before": "3.12",
+      "after": "3.12",
+      "source": "https://pypi.org/pypi/pycparser/3.12/json"
+    },
+    {
+      "name": "pydantic",
+      "before": "2.14.2",
+      "after": "2.14.3",
+      "source": "https://pypi.org/pypi/pydantic/2.14.3/json"
+    },
+    {
+      "name": "pydantic-core",
+      "before": "2.50.2",
+      "after": "2.50.4",
+      "source": "https://pypi.org/pypi/pydantic-core/2.50.4/json"
+    },
+    {
+      "name": "pygments",
+      "before": "2.21.0",
+      "after": "2.21.0",
+      "source": "https://pypi.org/pypi/pygments/2.21.0/json"
+    },
+    {
+      "name": "pyjwt",
+      "before": "2.15.1",
+      "after": "2.15.1",
+      "source": "https://pypi.org/pypi/pyjwt/2.15.1/json"
+    },
+    {
+      "name": "pyparsing",
+      "before": "3.3.3",
+      "after": "3.3.3",
+      "source": "https://pypi.org/pypi/pyparsing/3.3.3/json"
+    },
+    {
+      "name": "python-discovery",
+      "before": "1.9.0",
+      "after": "1.9.5",
+      "source": "https://pypi.org/pypi/python-discovery/1.9.5/json"
+    },
+    {
+      "name": "python-multipart",
+      "before": "0.0.33",
+      "after": "0.0.33",
+      "source": "https://pypi.org/pypi/python-multipart/0.0.33/json"
+    },
+    {
+      "name": "pywin32",
+      "before": "312",
+      "after": "312",
+      "source": "https://pypi.org/pypi/pywin32/312/json"
+    },
+    {
+      "name": "pyyaml",
+      "before": "6.0.3",
+      "after": "6.0.3",
+      "source": "https://pypi.org/pypi/pyyaml/6.0.3/json"
+    },
+    {
+      "name": "referencing",
+      "before": "0.37.0",
+      "after": "0.37.0",
+      "source": "https://pypi.org/pypi/referencing/0.37.0/json"
+    },
+    {
+      "name": "requests",
+      "before": "2.34.2",
+      "after": "2.34.2",
+      "source": "https://pypi.org/pypi/requests/2.34.2/json"
+    },
+    {
+      "name": "requirements-parser",
+      "before": "0.13.1",
+      "after": "0.13.1",
+      "source": "https://pypi.org/pypi/requirements-parser/0.13.1/json"
+    },
+    {
+      "name": "rich",
+      "before": "15.0.0",
+      "after": "15.0.0",
+      "source": "https://pypi.org/pypi/rich/15.0.0/json"
+    },
+    {
+      "name": "rpds-py",
+      "before": "2026.9.1",
+      "after": "2026.9.1",
+      "source": "https://pypi.org/pypi/rpds-py/2026.9.1/json"
+    },
+    {
+      "name": "ruff",
+      "before": "0.17.3",
+      "after": "0.17.4",
+      "source": "https://pypi.org/pypi/ruff/0.17.4/json"
+    },
+    {
+      "name": "smmap",
+      "before": "5.0.3",
+      "after": "5.0.3",
+      "source": "https://pypi.org/pypi/smmap/5.0.3/json"
+    },
+    {
+      "name": "sortedcontainers",
+      "before": "2.4.0",
+      "after": "2.4.0",
+      "source": "https://pypi.org/pypi/sortedcontainers/2.4.0/json"
+    },
+    {
+      "name": "sqlalchemy",
+      "before": "2.1.6",
+      "after": "2.1.8",
+      "source": "https://pypi.org/pypi/sqlalchemy/2.1.8/json"
+    },
+    {
+      "name": "sse-starlette",
+      "before": "3.6.0",
+      "after": "3.7.0",
+      "source": "https://pypi.org/pypi/sse-starlette/3.7.0/json"
+    },
+    {
+      "name": "starlette",
+      "before": "1.10.0",
+      "after": "1.10.0",
+      "source": "https://pypi.org/pypi/starlette/1.10.0/json"
+    },
+    {
+      "name": "stevedore",
+      "before": "5.9.1",
+      "after": "5.9.1",
+      "source": "https://pypi.org/pypi/stevedore/5.9.1/json"
+    },
+    {
+      "name": "tabulate",
+      "before": "0.10.0",
+      "after": "0.10.0",
+      "source": "https://pypi.org/pypi/tabulate/0.10.0/json"
+    },
+    {
+      "name": "toml",
+      "before": "0.10.2",
+      "after": "0.10.2",
+      "source": "https://pypi.org/pypi/toml/0.10.2/json"
+    },
+    {
+      "name": "tomli",
+      "before": "2.5.0",
+      "after": "2.5.0",
+      "source": "https://pypi.org/pypi/tomli/2.5.0/json"
+    },
+    {
+      "name": "tomli-w",
+      "before": "1.2.0",
+      "after": "1.2.0",
+      "source": "https://pypi.org/pypi/tomli-w/1.2.0/json"
+    },
+    {
+      "name": "truststore",
+      "before": "0.10.5",
+      "after": "0.10.5",
+      "source": "https://pypi.org/pypi/truststore/0.10.5/json"
+    },
+    {
+      "name": "ty",
+      "before": "0.0.95",
+      "after": "0.0.101",
+      "source": "https://pypi.org/pypi/ty/0.0.101/json"
+    },
+    {
+      "name": "typing-extensions",
+      "before": "4.16.0",
+      "after": "4.16.0",
+      "source": "https://pypi.org/pypi/typing-extensions/4.16.0/json"
+    },
+    {
+      "name": "typing-inspection",
+      "before": "0.4.4",
+      "after": "0.4.5",
+      "source": "https://pypi.org/pypi/typing-inspection/0.4.5/json"
+    },
+    {
+      "name": "urllib3",
+      "before": "2.8.0",
+      "after": "2.8.0",
+      "source": "https://pypi.org/pypi/urllib3/2.8.0/json"
+    },
+    {
+      "name": "uvicorn",
+      "before": "0.54.0",
+      "after": "0.54.0",
+      "source": "https://pypi.org/pypi/uvicorn/0.54.0/json"
+    },
+    {
+      "name": "virtualenv",
+      "before": "21.15.2",
+      "after": "21.15.6",
+      "source": "https://pypi.org/pypi/virtualenv/21.15.6/json"
+    },
+    {
+      "name": "vulture",
+      "before": "2.16",
+      "after": "2.16",
+      "source": "https://pypi.org/pypi/vulture/2.16/json"
+    },
+    {
+      "name": "yarl",
+      "before": "1.25.1",
+      "after": "1.25.1",
+      "source": "https://pypi.org/pypi/yarl/1.25.1/json"
+    },
+    {
+      "name": "yattag",
+      "before": "1.16.1",
+      "after": "1.16.1",
+      "source": "https://pypi.org/pypi/yattag/1.16.1/json"
+    },
+    {
+      "name": "uv",
+      "before": "0.13.6",
+      "after": "0.13.7",
+      "source": "https://pypi.org/pypi/uv/0.13.7/json"
+    },
+    {
+      "name": "uv_build",
+      "before": "0.13.6",
+      "after": "0.13.7",
+      "source": "https://pypi.org/pypi/uv_build/0.13.7/json"
+    }
+  ],
+  "native_sources": [
+    {
+      "component": "superpowers",
+      "release": "7.0.2",
+      "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+      "upstream_files": 236,
+      "cache_missing": [],
+      "cache_different": [],
+      "cache_extra": []
+    },
+    {
+      "component": "gz-skills",
+      "release": "0.10.1",
+      "revision": "4c836e3db6d43c495863a2090daaea56585a6ea9",
+      "upstream_files": 115,
+      "cache_missing": [],
+      "cache_different": [],
+      "cache_extra": []
+    },
+    {
+      "component": "superpowers-backplane",
+      "release": "0.2.0",
+      "revision": "0b18e34e65379e729d8fece97151a1bb8604b461",
+      "upstream_files": 542,
+      "cache_missing": [],
+      "cache_different": [],
+      "cache_extra": []
+    }
+  ],
+  "strict_acceptance": "incomplete; cognitive qualification, legacy findings and T12/T13 remain open",
+  "lizard_qualification": {
+    "old_version": "1.24.3",
+    "new_version": "1.26.0",
+    "pre_adaptation_comparison_files": 70,
+    "differences": 0,
+    "pre_adaptation_population": [
+      {
+        "file": "src/gz_mcp_lsp/__init__.py",
+        "sha256": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960"
+      },
+      {
+        "file": "src/gz_mcp_lsp/__main__.py",
+        "sha256": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a"
+      },
+      {
+        "file": "src/gz_mcp_lsp/_posix_files.py",
+        "sha256": "1967c7e9c6b8aad7c4902d7c2bb8f674e252936655487205a172f89ac1c13821"
+      },
+      {
+        "file": "src/gz_mcp_lsp/cli.py",
+        "sha256": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a"
+      },
+      {
+        "file": "src/gz_mcp_lsp/config.py",
+        "sha256": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a"
+      },
+      {
+        "file": "src/gz_mcp_lsp/diagnostics.py",
+        "sha256": "928d3ff1211662eb73bcf27fc409566ffdfb3fe7e08233e039c50cc2fe5f4865"
+      },
+      {
+        "file": "src/gz_mcp_lsp/documents.py",
+        "sha256": "2964e1f085e30ca359e787da80b20ae0b1b26b99130aa53593759a0c6c098106"
+      },
+      {
+        "file": "src/gz_mcp_lsp/edit_plan.py",
+        "sha256": "ff8efbb0d5c289c9dbbc5d363829836ab917e0429ef31304e0cb89845eee5523"
+      },
+      {
+        "file": "src/gz_mcp_lsp/filesystem.py",
+        "sha256": "9bcd796d10685526d5f8ead16452446657712de59daedf2c93c4d6f7688d75f0"
+      },
+      {
+        "file": "src/gz_mcp_lsp/lsp_transport.py",
+        "sha256": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334"
+      },
+      {
+        "file": "src/gz_mcp_lsp/mcp_api.py",
+        "sha256": "d494cdab3f01a6276b919a143ef873ab825d1d657d928b85ed81c8c2216dad22"
+      },
+      {
+        "file": "src/gz_mcp_lsp/models.py",
+        "sha256": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33"
+      },
+      {
+        "file": "src/gz_mcp_lsp/mutations.py",
+        "sha256": "c1f9aa37f8e1a29a7887d1ef5628b6dff46c18780a95636eec20f2b82ab6e269"
+      },
+      {
+        "file": "src/gz_mcp_lsp/navigation.py",
+        "sha256": "b168a5f7e4d671319fcb9425064617efefd88858fd897bbbd4ea242aaa026918"
+      },
+      {
+        "file": "src/gz_mcp_lsp/results.py",
+        "sha256": "cbe8c5d9f54e12936d60a6adb319508765fea3e9660799694a5bf17465492334"
+      },
+      {
+        "file": "src/gz_mcp_lsp/session.py",
+        "sha256": "fb164b8acd45efc845e783ce4ef7f344ef6dd43af4e3d9415017971b975a7db4"
+      },
+      {
+        "file": "src/gz_mcp_lsp/source_text.py",
+        "sha256": "dcd651ac884dc710d5c1d279877c89b81767ea6222d78a141fbcbad260f0b655"
+      },
+      {
+        "file": "src/gz_mcp_lsp/workspace.py",
+        "sha256": "df535627991df49e6e88be4acc0d432813e011c5943580ca0d9761414f4119c4"
+      },
+      {
+        "file": "tests/fixtures/acceptance_workspace/decoy.py",
+        "sha256": "7e4bc7832df8cf5aecf9af47aca51f75bb64e69fa48399f45eeb25df155df759"
+      },
+      {
+        "file": "tests/fixtures/acceptance_workspace/package_a/__init__.py",
+        "sha256": "c0532ffed93e16958e47af0121a16002c1040380c34699595292453ec5a1deb4"
+      },
+      {
+        "file": "tests/fixtures/acceptance_workspace/package_b/__init__.py",
+        "sha256": "4bb4e17598ec5c1e52703a15fbe96ae63a7be1f227e7daa3580b5b5afee5afa2"
+      },
+      {
+        "file": "tests/fixtures/acceptance_workspace/package_c/__init__.py",
+        "sha256": "f492ff4acbba6117c3e38358d7ab0b4961e8a7b070050355ffde5c78b94cbd42"
+      },
+      {
+        "file": "tests/fixtures/acceptance_workspace/shared_runtime/__init__.py",
+        "sha256": "ab4679f6ea9061e1ffd40272c2aceb7a679e3812defee2f8a34bf4d217eac485"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/consumer_a.py",
+        "sha256": "0e9578822aef5f720659e7a6b21d27e9c0416726ee7128ea4cc8b61b5e8c0dc5"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/consumer_b.py",
+        "sha256": "1c3d959ee80352eb56b052bbce18455be1379cf409f0884979e84664c4b2b3a0"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/consumer_c.py",
+        "sha256": "0b83e92910d6ce3e85f0bf7f67966d65123b0a96d65cc6d060e1eb508a2390bf"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/decoy.py",
+        "sha256": "dc91052508bf3331593f076ce65bb4363803ffe363023c530d8a0bf483fcf7e7"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/dependency.py",
+        "sha256": "7ca5abf65adee67782e5c831d9ee108b323c5a9d9fda11f97a9910b18f6b1bdc"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/hierarchy.py",
+        "sha256": "042c1012cdc81a0b1e2d5f35a0c45b1bcbdfeb021295f089afee53c162c9aa37"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/library.py",
+        "sha256": "653babc023ccc33585cb6ddc20d7cc9bb78659edf5b3adea99e5c2607bc9590f"
+      },
+      {
+        "file": "tests/fixtures/semantic_workspace/main.py",
+        "sha256": "02a4ec9722264a6576ef8c4e97dbcfcf315dd27faa3706ecf2a821e2d3fb48e2"
+      },
+      {
+        "file": "tests/integration/__init__.py",
+        "sha256": "c0112efa6eb127af97ed1a59f35b5d96197501d415c31cc62897304fe5c1e733"
+      },
+      {
+        "file": "tests/integration/mutation_support.py",
+        "sha256": "85959307f1dddbdb0524e10bf777442a22ae533ded272555138be5daaef4caa9"
+      },
+      {
+        "file": "tests/integration/support.py",
+        "sha256": "e00d43260d33f84ae5055e776490d85ca8de35f0f4fd7a124860125690785ac4"
+      },
+      {
+        "file": "tests/integration/test_diagnostics.py",
+        "sha256": "73972b9917d6d96d9d0e75ea242245af9ebb78c752788f65a6bc84b7eea0bef8"
+      },
+      {
+        "file": "tests/integration/test_installed_server.py",
+        "sha256": "268c36c60d07c2abfc78a6377ea71304ff0f722f3e92ea0f3c727c6698090c5d"
+      },
+      {
+        "file": "tests/integration/test_interoperability.py",
+        "sha256": "8f2447f1444e845781fcb2d7deb030beeb03630de7ab2836a72f1916d2fc1b77"
+      },
+      {
+        "file": "tests/integration/test_mutations.py",
+        "sha256": "4ca56e2a253ca4f39c5d6e21bbf367654e6264742f0ce42411911122f95b38de"
+      },
+      {
+        "file": "tests/integration/test_navigation.py",
+        "sha256": "a04e48a7d07c9960957063a680e924b60af9093cffe07338a48b2fdcb13666cb"
+      },
+      {
+        "file": "tests/integration/test_recovery.py",
+        "sha256": "14e9b902424fd9e12f5f14e0d25d6ee8c6555e42bb6841bf57ccb9488d8f8d4b"
+      },
+      {
+        "file": "tests/integration/test_session.py",
+        "sha256": "b760116d443729e2975502c034976e1bba2b1b80a51afe10f1b2ec11840a1c59"
+      },
+      {
+        "file": "tests/integration/test_startup_recovery.py",
+        "sha256": "795471ff4ee01b245293d9248e97d2f60f8915b3dbf7aebcbebc6dafc9c3e9bc"
+      },
+      {
+        "file": "tests/integration/test_symbols.py",
+        "sha256": "bc8943b5515c7cb74ace41cf26b00a067d15bac0027ce53b4e1ed7e040c33c79"
+      },
+      {
+        "file": "tests/support/__init__.py",
+        "sha256": "51448cde2614868f4fa24c18f0ef54472fd36f47cccb989251f780857cd60de7"
+      },
+      {
+        "file": "tests/support/crash_transaction.py",
+        "sha256": "8606323f8455a85aa81de8fe5e1070d29e27a53804a748d223b4609bea0b3bc2"
+      },
+      {
+        "file": "tests/support/fake_lsp.py",
+        "sha256": "5834429d74afc25732332ae2814521e75e101b7b21e90b80eeee583ca67f8a9d"
+      },
+      {
+        "file": "tests/test_config.py",
+        "sha256": "e043c44ad480bdbe88a1529311e5067846209bafe3a3dac954e92e7e675e9358"
+      },
+      {
+        "file": "tests/test_diagnostics.py",
+        "sha256": "157425d14d02ab36ea6aa35eb7b9161cb04004f97453e47d0bc91f542dd65f94"
+      },
+      {
+        "file": "tests/test_distribution.py",
+        "sha256": "bbd7ccca0ff68725f56fe9758004dab48d09997b0d92604eb576ee0ed1b7e4ad"
+      },
+      {
+        "file": "tests/test_documents.py",
+        "sha256": "8018262747437495fe8e9cf1909d1d5a9753c2a22d42ba7f8fb5578be63a91ea"
+      },
+      {
+        "file": "tests/test_edit_plan.py",
+        "sha256": "980632509229a843fb98cde3123c50cb1896ecf28e13bbf956f1f20bd989942f"
+      },
+      {
+        "file": "tests/test_filesystem.py",
+        "sha256": "d1be52165f9a46302307a8abba6a86133c629c9797761cb4435c8cee5d047a23"
+      },
+      {
+        "file": "tests/test_lsp_transport.py",
+        "sha256": "4dcfabd5e2fd2f7ad3f434284c2579c64119894860c727e84de2233744bdd98b"
+      },
+      {
+        "file": "tests/test_mcp_api.py",
+        "sha256": "7464adeca37e3b5aceac4872bb251662067eddca225b44ca84ee1f7449398c2e"
+      },
+      {
+        "file": "tests/test_mutations.py",
+        "sha256": "2c0aa29c03f74f54f697aaabaa513a4e421a40d8031cb50dce410a4030969be2"
+      },
+      {
+        "file": "tests/test_navigation.py",
+        "sha256": "a6a85bc211ee61f07fd8ed801bcbb4367fa9988f8e92e5af877a9cd5f9fcd01f"
+      },
+      {
+        "file": "tests/test_sdk_contract.py",
+        "sha256": "63c0f1ab22193b7fbd88d57241dbf9ef7df0c3a63fdb7d408ee1d575257a650b"
+      },
+      {
+        "file": "tests/test_session.py",
+        "sha256": "2cb332350f29810d0f7171ee5f80ec902eafbad8731d44aa1805e3851d0d5b45"
+      },
+      {
+        "file": "tests/test_source_text.py",
+        "sha256": "4c3aeeb487b840c6c21c05546eb4f82c96040eb76d92eae53ef90f9defbb4401"
+      },
+      {
+        "file": "tests/test_symbols.py",
+        "sha256": "c4ef9d7877680412fd662402646c7e2473c81ea7f7f7c243031733355dbd640b"
+      },
+      {
+        "file": "tests/test_workspace.py",
+        "sha256": "f3c332978d8dc7dd263676e3a5b0438b62f00b2ac4a2e382f0ba3f6c62f1189d"
+      },
+      {
+        "file": "tools/engineering/cognitive_check.py",
+        "sha256": "11d6c04a851d2a42da78a774eb8c99c35ab452fb826fc0c3225f04933df946fe"
+      },
+      {
+        "file": "tools/engineering/cognitive_qualification.py",
+        "sha256": "deeb0810e5a53ceecb423356c5244987f65f1cfd10904322c447c3eeb2d88b9e"
+      },
+      {
+        "file": "tools/engineering/complexity_check.py",
+        "sha256": "e469a03cf647d09a5df4e6afef4538e5aaacadfbc0dde8c435a8d759adf399b3"
+      },
+      {
+        "file": "tools/engineering/evaluate_complexity.py",
+        "sha256": "d39c19e4d2070e5a81c145aca9e81aa6e91193c90d44f072338b7e4c0a8f6155"
+      },
+      {
+        "file": "tools/engineering/evaluate_cosmic_ray.py",
+        "sha256": "e40cfa370a454506a4b2eb36b50b7f0073f0f532b8c5fa90af7ac142aeb936d8"
+      },
+      {
+        "file": "tools/engineering/test_cognitive_check.py",
+        "sha256": "34770798fd0d4a476e8d17b09895fd412f603e15a5fc971740dac82cd528eb73"
+      },
+      {
+        "file": "tools/engineering/test_cognitive_qualification.py",
+        "sha256": "8ae4d27142a8fb441ae31796b967685b2de392425e59518dddf35918b3307c1b"
+      },
+      {
+        "file": "tools/engineering/test_complexity_check.py",
+        "sha256": "6464467a10610831f1bd17bc18c133c5f6414c599bb574150d4a6ab17de84d91"
+      },
+      {
+        "file": "tools/engineering/test_evaluate_complexity.py",
+        "sha256": "d39e02195d21d0c3dbde594887a102bbc39292512ed9ab89fb092724579101d7"
+      }
+    ],
+    "final_aggregate": {
+      "functions": 638,
+      "maximum": 27,
+      "overall_mean": 3.2288401253918497
+    },
+    "final_violations": [
+      {
+        "kind": "function",
+        "file": "src/gz_mcp_lsp/edit_plan.py",
+        "name": "plan_workspace_edit",
+        "line": 252,
+        "complexity": 25
+      },
+      {
+        "kind": "function",
+        "file": "src/gz_mcp_lsp/filesystem.py",
+        "name": "_record",
+        "line": 328,
+        "complexity": 27
+      },
+      {
+        "kind": "function",
+        "file": "src/gz_mcp_lsp/mcp_api.py",
+        "name": "_strict_arguments",
+        "line": 113,
+        "complexity": 26
+      },
+      {
+        "kind": "function",
+        "file": "src/gz_mcp_lsp/workspace.py",
+        "name": "_check_ty_roots",
+        "line": 246,
+        "complexity": 24
+      },
+      {
+        "kind": "function",
+        "file": "tests/support/fake_lsp.py",
+        "name": "main",
+        "line": 31,
+        "complexity": 22
+      }
+    ],
+    "contract": "lizard-functions-v1",
+    "utility_regressions": 29
+  },
+  "vulnerability_audit": {
+    "exact_hashed_selections": 103,
+    "skips": [],
+    "known_vulnerabilities": 0,
+    "scope": "all locked platforms plus uv and uv_build; no second dependency resolver"
+  },
+  "verification": {
+    "interpreter": "3.14.10",
+    "resolver": "0.13.7",
+    "ty": "0.0.101",
+    "final_ty_unittest": {
+      "discovered": 186,
+      "expected_platform_skips": 1,
+      "status": "passed"
+    },
+    "routine_static_hooks": "Ruff check, Ruff format, ty passed",
+    "pre_commit": "all four hooks passed on the frozen full diff; normal commit hooks run again before sync",
+    "build": "uv build --no-sources passed",
+    "distribution": "outside-source installed import and wheel/sdist identity passed",
+    "outdated_installed_packages": [],
+    "c901": "passed; ceiling20",
+    "deptry": "passed;18 runtime files",
+    "cosmic_ray": {
+      "version": "8.9.0",
+      "compatibility": "passed",
+      "killed": 2,
+      "survived": 2,
+      "source_restored": true
+    },
+    "import_linter": "failed: no contracts; T12",
+    "bandit": "nine LOW findings; T12",
+    "interrogate": "40.6%; below tool default80%; T12",
+    "vulture": "four60%-confidence candidates; T12",
+    "coverage": "pre-final-ty0.0.100 run:186tests,1skip,90%combined; not final-ty coverage"
+  },
+  "native_discovery_before_metadata_refresh": [
+    {
+      "scope": "project",
+      "gz_skills_count": 20,
+      "duplicates": [],
+      "sources": [
+        "skills-first-starter/gz-skills/0.10.1"
+      ],
+      "errors": []
+    },
+    {
+      "scope": "outside",
+      "gz_skills_count": 20,
+      "duplicates": [],
+      "sources": [
+        "gz-skills/gz-skills/0.8.3"
+      ],
+      "errors": []
+    }
+  ],
+  "lock_sha256": "661be0f45f7934a3e7c62ad1bc5477fd0aae877d509a31d8ddccf6f0558503a3"
+}

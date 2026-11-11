@@ -14,6 +14,12 @@ configuration and current evidence; preserve unrelated work and operational
 contracts. In an existing project, report gaps before proposing a bounded
 adoption change. This policy does not authorize a broad application refactor.
 
+Use direct `gh` commands for GitHub operations and direct `git` commands for
+repository operations. Do not wrap routine CLI calls in Python. Use Python when
+substantive processing is actually needed, through the prescribed uv-managed
+environment. Run that Python with `uv run --locked python`, honoring the project's
+exact interpreter pin and required uv version.
+
 ## Runtime and version-aware decisions
 
 ### Latest stable within the selected family
@@ -47,7 +53,7 @@ Refresh during authorized setup/maintenance rather than resolving “latest” o
 every invocation. A check-only request reports a stale pin without upgrading it.
 
 For the uv executable, the project [minimum-only policy](../baseline-policy.md#uv-executable-compatibility)
-supersedes exact matching: accept >=0.13.6 while CI tests 0.13.6. Supported local
+supersedes exact matching: accept >=0.13.6 while CI tests 0.13.7. Supported local
 and hosted versions need not match CI. Record the selected executable/version,
 keep nested hooks consistent and verify behavior. Exact Python and package/backend
 locks remain required; compatibility does not establish freshness.
@@ -276,7 +282,7 @@ no known advisories is not proof of absence of vulnerabilities. Do not run
 ### Complexity policy: Ruff, complexipy and Lizard
 
 Historically, Ruff 0.15.18 and complexipy 8.0.1 passed focused Python 3.14.8
-syntax, threshold-boundary and invalid-syntax checks. The current cyclomatic toolchain selects Lizard 1.24.3 and retires both Xenon and
+syntax, threshold-boundary and invalid-syntax checks. The current cyclomatic toolchain selects Lizard 1.26.0 and retires both Xenon and
 Radon. The saved two-tool receipt is historical; use the new three-tool receipt
 for Lizard evidence. Ruff measures cyclomatic branching;
 complexipy adds cognitive costs such as nesting. Use cyclomatic 20 and cognitive
@@ -373,8 +379,13 @@ updates to `gzs-update-dependencies` and dependency-risk assessments to
 `gzs-dependency-risk-audit`, preserving project scope and authorities. This policy
 binds those workflows to the selected Python family, tool choices and verification
 requirements; it does not duplicate their inventory, resolution or audit process.
-The pinned gz-skills v0.8.0 maintenance skill supports freshness-only review and
+The project-selected gz-skills v0.10.1 maintenance skill supports freshness-only review and
 template/plugin inventory. Review mode leaves pins and environments unchanged.
+End freshness reviews with a concrete recommended upgrade batch and an explicit
+offer to apply it. Strongly recommend supported updates under project policy;
+name targets, benefits, compatibility risks and required checks. An inventory
+alone is incomplete. Perform already-authorized updates without asking again;
+explain evidenced deferrals or state that no upgrade is needed.
 Preserve this starter's Python 3.14 family and retired Xenon/Radon decisions over
 upstream profile defaults; the pin update does not select a lite/heavy profile.
 

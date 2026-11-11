@@ -31,7 +31,7 @@ older unversioned locks require reviewed reconciliation. See
 Review existing `AGENTS.md`, skill discovery surfaces, plugin configuration,
 and gzkit ownership. Existing project authorities remain in place. A conflict
 is a request for reconciliation, not permission to remove an existing install.
-The starter does not select a gz-skills profile. The pinned gz-skills v0.8.0
+The starter does not select a gz-skills profile. The pinned gz-skills v0.8.3
 supplies `gzs-project-setup`; invoking it and choosing lite/heavy remain separate
 explicit adopter decisions required before completed adoption. Neither absent
 nor null selection is a completed lane. Preserve starter Python policy over
@@ -46,7 +46,58 @@ does not rewrite these files or resolve Python packages. Review baseline
 freshness at adoption; changing a shared baseline does not migrate existing
 adopters automatically.
 
+## Repository-owned installation and brownfield repair
+
+Agents MUST use repository-owned settings for all three hosts. Existing global
+or user installations MAY remain; they do not own the project's selected versions,
+activation or commands. Agents MUST NOT uninstall global copies, rewrite user
+defaults or broaden activation as a shortcut. Installation, version updates and
+enablement are separate operations. Shared native caches and installation
+registries are storage; project activation must remain local.
+
+From a reviewed starter checkout, select the adopter's host on configure:
+
+```bash
+uv run --locked skills-first-starter configure --project /path/to/project --host codex --starter-ref FULL_STARTER_SHA
+uv run --locked skills-first-starter configure --project /path/to/project --host codex --starter-ref FULL_STARTER_SHA --apply
+```
+
+Use `claude` or `opencode` for that host. The managed lock records non-Codex host
+selection; legacy records without `host` retain Codex semantics. Status checks
+the recorded host. This capability starts with 0.8.0.
+Configure preserves existing compatible settings and refuses conflicting adoption
+records. It does not install plugins or certify discovery.
+
+For brownfield activation repair, use the separate project-only command:
+
+```bash
+uv run --locked skills-first-starter localize --project /path/to/project --host codex --starter-ref FULL_STARTER_SHA
+uv run --locked skills-first-starter localize --project /path/to/project --host codex --starter-ref FULL_STARTER_SHA --apply
+```
+
+Repeat for each client the project uses. `localize` reads user plugin identities
+for Codex/Claude and writes project overrides: the starter source is active,
+inherited duplicate sources are disabled locally, and Backplane stays disabled.
+Claude's existing local settings layer is repaired too. OpenCode receives local
+ID exclusions before its pinned package targets. The command preserves existing
+project marketplace sources, unrelated settings, adoption records and adopted
+component pins; an unadopted project uses the reviewed starter's component pins.
+It does not edit user settings or uninstall anything. OpenCode JSONC is updated
+in place while preserving comments and unrelated fields. Ambiguous simultaneous
+JSON/JSONC files and v1 adapters require explicit reconciliation.
+
+Agents MUST inspect the preview and diff, run the applicable native procedure
+below, and verify inside-project activation plus an outside-project control.
+Record actual installed revisions independently of declared refs. Do not call
+adoption complete while required runtime evidence is missing or mismatched.
+See the [three-host evidence](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-10-31-three-host-repo-scope.md).
+
 ## Codex
+
+Repository/project scope is required for this stack's installation, marketplace
+registration and enablement. Do not use global/user-level installation as the
+default or as a fallback. Native download caches may live under the user's home;
+that storage location does not authorize user-wide installation or activation.
 
 After configure preview/apply, `.codex/config.toml` registers the shared Git
 marketplace at your reviewed starter SHA and enables SP and gz-skills for that
@@ -74,20 +125,23 @@ sources before adding duplicates. The helper can catch repository-local copies
 and configuration conflicts, but cannot inventory another host's session.
 
 When the correct marketplace is loaded and duplicate discovery has been ruled
-out, explicitly install its components through the native manager:
+out, let the native runtime resolve the pair selected by the project's
+`.codex/config.toml`, then inspect `codex plugin list --json`. This path has
+verified native discovery without an unscoped installation command; see the
+[development discovery receipt](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-10-31-native-development-skills.md).
 
-```bash
-codex plugin add superpowers@skills-first-starter
-codex plugin add gz-skills@skills-first-starter
-codex plugin list --json
-```
-
-These are user-run native installation commands, not actions performed by the
-helper. Native manager commands may alter user-level installation state; inspect
-the resulting configuration and keep project enablement in the adopting repo.
-Installing the bundle here does not authorize global enablement for unrelated
-projects. If this host cannot maintain the intended project scope, stop and
-record that limitation rather than claiming project-only activation.
+Codex CLI 0.166.0's `plugin add` unconditionally enables the plugin in
+user-wide configuration, even when invoked from a project with a local
+marketplace. Running it from the repository does not make it project-scoped.
+Do not use it for project installation, updates or reinstalls. Do not run
+unscoped `codex plugin marketplace add` either. The verified CLI 0.166.0 has no
+project-scope option for those commands. Use project-owned native configuration
+instead. Keep installation, version updates and enablement as separate
+operations; authorization to update a version does not authorize activation or
+a change of enablement scope.
+If a host requires a separate installation action, use it only with verified
+repository/project scope. Otherwise record installation/discovery as pending;
+do not substitute a global/user install. Preserve existing user defaults.
 
 Start a fresh session. Confirm the actual discovered identities:
 
@@ -134,40 +188,93 @@ installation. An `UNKNOWN` is not a passing combined-stack claim.
 
 The `.claude-plugin/marketplace.json` catalog references the same three immutable
 sources. From the adopting project, inspect the current manager and existing
-installations first. Then use Claude's project scope:
+installations first. Register the reviewed marketplace through project-owned
+settings using the host's verified current syntax, then use Claude's project
+scope for installation:
 
-```text
-/plugin marketplace add tvproductions/gz-skills-first-starter
-/plugin install superpowers@skills-first-starter --scope project
-/plugin install gz-skills@skills-first-starter --scope project
+```bash
+claude plugin marketplace add /path/to/reviewed-starter --scope project
+claude plugin install superpowers@skills-first-starter --scope project
+claude plugin install gz-skills@skills-first-starter --scope project
 ```
 
-The displayed catalog pins component source revisions. The command above obtains
-the current starter marketplace; for repeatable adoption, use a reviewed checkout
-at a recorded full SHA and `/plugin marketplace add /path/to/reviewed-starter`
-instead. Check the manager's current syntax before executing. Restart and verify
-actual SP and gz-skills discovery. Backplane remains deferred.
+These exact scope options were checked with Claude Code 2.1.316 CLI help.
+Run them from the adopting project's root. Inspect project settings afterward;
+do not omit `--scope project`, whose default is user scope. End-to-end Claude
+installation and fresh-session discovery still require host verification.
+
+The displayed catalog pins component source revisions. For repeatable adoption,
+register a reviewed marketplace checkout at a recorded full SHA in project-owned
+settings. Do not use an unscoped marketplace-add command that writes user/global
+settings. Check the manager's current syntax and actual scope before executing;
+if project registration is unsupported or unverified, report that gap instead
+of installing globally/at user scope. Restart and verify actual SP and gz-skills
+discovery. Backplane remains deferred.
 Marketplace syntax validation
 alone is not a completed installation or lifecycle proof.
 
-This starter does not automate Claude project settings or claim end-to-end
-Claude verification. Backplane Claude lifecycle acceptance remains upstream work.
+The 0.8.0 helper generates project settings with `--host claude`; it does not
+run the native installer. The scoped install and activation checks are recorded
+in the three-host receipt. Fresh desktop/model invocation and Backplane Claude
+lifecycle acceptance remain separate requirements.
 
 ## OpenCode
 
-Do not generate a guessed adapter or claim readiness. Backplane's OpenCode
-implementation/acceptance is pending. The bundle can add an OpenCode adapter
-when those upstream contracts and negative cases have been demonstrated.
+Use OpenCode v2. The pinned SP 7.0.1 and gz-skills 0.8.3 releases already own
+their v2 adapters; this starter configures them and authors no competing adapter.
+Generate project `opencode.json` using `configure --host opencode`, or repair
+existing activation using `localize --host opencode`. The project `plugins`
+array contains full-SHA Git package specifications for the active pair.
+Backplane's OpenCode lifecycle remains deferred and MUST NOT be activated.
+
+Do NOT run `opencode plugin add` or `plugin remove`: the 2.2.0 CLI defines those
+as global configuration operations. Maintain version selections by reviewing
+the repository's config/lock and using its upstream maintenance workflow.
+On OpenCode 2.2.0, repository configuration alone cannot override an inherited
+plugin with the same ID: native resolution retains the earlier source and marks
+the project copy as a duplicate. Agents MUST use the starter's scoped launcher:
+
+```bash
+uv run --locked skills-first-starter run-opencode --project /path/to/project
+uv run --locked skills-first-starter run-opencode --project /path/to/project -- plugin list
+uv run --locked skills-first-starter run-opencode --project /path/to/project -- api skill.list
+```
+
+Run these from the reviewed starter environment. The launcher performs substantive
+configuration reconciliation: it retains ordinary user preferences, excludes
+inherited plugin declarations, uses the repo's config directory and explicit
+project file, restores explicit project skill paths, and starts a private server.
+It writes no user settings and persists no copied preferences/secrets. It blocks
+global plugin add/remove and attachment to a shared server. This is a native
+environment workaround, not a patched OpenCode distribution. System-managed
+policy still applies. Existing global plugins remain installed for other projects.
+The tested inherited-source fixture loads the correct local pin through this
+route; plain native startup failed that brownfield test. Do not claim plain
+startup is scope-correct on this host version.
+
+Keep the server running while missing
+packages install in the background. An immediate one-shot list may be empty
+before loading completes. Inspect the native state after startup:
+
+```bash
+uv run --locked skills-first-starter run-opencode --project /path/to/project -- plugin list
+uv run --locked skills-first-starter run-opencode --project /path/to/project -- api skill.list
+```
+
+Require SP and gz-skills to be active, verify their source targets and entry
+skills, then inspect an outside project. Its state must retain the user's own
+defaults. The tested 2.2.0 server reports the exact pinned package SHAs and no
+starter skill leakage outside. See
+[OpenCode v2 configuration](https://dev.opencode.ai/v2/docs/plugins).
 
 ## Getting current SP and gz-skills
 
 Check upstream at adoption time rather than assuming this template's baseline
-is newest. SP's latest stable release is **v7.0.0**, checked October 11, 2026,
-and selected at full SHA `bb92a77741419a4ab5f06e711a283343f1ada0c3` in the
-0.3.2 development template. The starter also pins gz-skills v0.8.0, checked against the latest official
-release on October 18, 2026. It adds explicit-only release support; adopting
-it does not authorize release publication. These observations expire as
-releases change. Read the [SP update assessment](evidence/2026-10-11-superpowers-7.0.0.md).
+is newest. The October 31, 2026 release review selects SP **v7.0.1** at
+`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` and gz-skills **v0.8.3** at
+`d6acc26e28ca1c4f43e5bb46d8973021d7d006c3`. These observations expire as
+releases change. See the [0.8.0 release review](https://github.com/tvproductions/gz-skills-first-starter/blob/3f76acf0038b030bf5abd85ce4a419e890d3e420/docs/evidence/2026-10-31-0.8.0-release.md).
+Explicit-only release support does not authorize publication by adoption.
 Backplane remains disabled and does not constrain active SP version selection;
 review its readiness and compatibility before any future enablement.
 
@@ -240,10 +347,20 @@ Route authorized dependency/tool updates through gz-skills'
 `gzs-update-dependencies` and dependency-risk reviews through
 `gzs-dependency-risk-audit`, subject to project scope and authorities. The source
 inventory and native adoption requirements below are the starter's binding to
-those portable workflows. The pinned gz-skills v0.8.0 maintenance skill supplies
+those portable workflows. The pinned gz-skills v0.8.3 maintenance skill supplies
 freshness-only reporting and template/plugin inventory. Review mode leaves pins
 and environments unchanged. This starter adds no competing command and does not
 select a lite/heavy profile or invoke setup as part of a bundle update.
+
+Treat this as a freshen-up workflow. End every freshness review with a concrete
+recommended upgrade batch and an explicit offer to apply it. Strongly recommend
+supported policy-compliant updates; identify targets, benefits, compatibility
+risks and required checks. An inventory or adopt/defer table alone is incomplete.
+In review mode, leave dependency state unchanged until updates are authorized.
+When updates are already authorized, perform and verify them without asking
+again. Explain evidenced deferrals; if everything is current, state that no
+upgrade is needed. This is the starter's binding to the upstream skill, not a
+claim that the pinned skill already requires this closing behavior.
 
 1. Read `.skills-first/bundle.lock.json`, project configuration and native manager
    inventory. Record the adopted starter SHA, component SHAs, selected versions
@@ -284,6 +401,19 @@ the upstream plugins to impose them.
 
 ## Updates and rollback
 
+Before any native plugin update, record the selected and actual installed
+revisions, project enablement, user defaults and any duplicate-source overrides.
+Choose a version-update operation that preserves those settings. Inspect its
+side effects before execution; an install/reinstall command is not automatically
+a scope-preserving updater. In Codex CLI 0.166.0, do not substitute `plugin add`:
+it enables the plugin user-wide regardless of the project's local marketplace.
+Use reviewed project configuration and native resolution, then compare actual
+installed revisions and effective enablement with the recorded state. Verify
+outside-project behavior too. A requested update must leave disabled plugins
+disabled and project-only plugins project-only. If native resolution cannot
+deliver the requested revision without changing scope, report the update as
+pending; do not broaden activation or claim success from an advertised ref.
+
 Components remain separately owned. Do not update upstream Superpowers as a
 side effect of a Backplane update. Review candidate revisions and compatibility,
 change `bundle.json` and both catalogs together, then run the repository checks
@@ -292,7 +422,7 @@ and affected host tests before publishing the starter change.
 The configure helper intentionally refuses an existing different lock or
 marketplace revision. For an adopter update, review a diff of the new lock,
 marketplace ref and instructions fragment; commit the accepted configuration
-change, then use the native manager's supported update/reinstall route. No
+change, then use a verified scope-preserving native version-update route. No
 force-overwrite or automatic update command is shipped. Preserve the prior refs
 and restore the prior reviewed configuration and plugin revisions if verification
 fails. Recheck discovery after either update or rollback.

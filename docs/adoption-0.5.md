@@ -34,6 +34,17 @@ fields there. Missing settings or `profile: null` means lane selection is pendin
 The starter helper preserves a valid explicit choice and does not make it for you.
 
 Both lanes require the same applicable Python/Astral foundation and analysis.
+Reconcile a project-owned release-scope record under the
+[release-planning rule](versioning.md#plan-releases-from-their-governing-work):
+PRDs guide majors, selected work/requirements drive minors, and fixes drive
+patches. Record the published baseline, proposed version, governing work,
+completed/remaining/deferred scope, compatibility impact and acceptance gates
+in the existing planning authority. Require this at adoption and release
+preparation; a version string or copied starter policy is insufficient.
+Execute the [required decision procedure](versioning.md#required-version-decision-procedure)
+at requirements intake, planning and closeout. Verify the concrete release target,
+governing work and aligned version mirrors; unresolved required evidence blocks
+those completion claims. Do not defer version decisions to publication.
 Both version their own public contract using SemVer and require a newly written
 PRD for every major, including 1.0.0. Refer to
 [Backplane's mode definitions](https://github.com/tvproductions/superpowers-backplane/blob/main/docs/superpowers-backplane/modes.md)

@@ -40,8 +40,8 @@ See the [license review](docs/discovery/licenses.md) for attribution/dependency 
 
 ## Development
 
-Use uv 0.13.6 and its managed CPython 3.14.10. The exact interpreter is in
-`.python-version`; dependencies and tools are resolved in `uv.lock`. This is a
+Use uv >=0.13.6 and managed CPython 3.14.10. CI tests uv 0.13.6. The exact interpreter
+is in `.python-version`; dependencies and tools are resolved in `uv.lock`. This is a
 standalone `src/gz_mcp_lsp` package using uv_build. Version `0.1.0` identifies the
 unreleased development package, independent of starter version 0.7.1.
 
@@ -55,8 +55,10 @@ uv build --no-sources
 uv run --locked python tools/verify_distribution.py
 ```
 
-If machine uv differs, use `uv tool run --from uv==0.13.6 uv ...`; ensure nested
-hooks resolve uv 0.13.6 too. Do not bypass the project version check.
+Supported local and hosted uv versions need not match CI. Record the actual
+executable/version and ensure nested hooks resolve it consistently. If uv is below
+the minimum, use `uv tool run --from uv==0.13.6 uv ...` or another supported version.
+See the [compatibility policy](docs/baseline-policy.md#uv-executable-compatibility).
 The four routine hooks run Ruff check/format, ty and unittest, including actual
 pinned-ty and outside-checkout installed nine-tool integration tests. Fixture setup
 uses the exported runtime lock graph before MCP calls. Packaging checks alone

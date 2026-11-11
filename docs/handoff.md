@@ -79,8 +79,10 @@ All observed app-server exits are zero. Persistent host config, native caches,
 Backplane and unrelated defaults remain unchanged. Isolated examples live under
 docs/examples/; no engineering plugin registration was added.
 
-Keep CPython **3.14.10**, uv **0.13.6**, MCP SDK **2.3.0** and ty **0.0.95**.
-Nested hooks must resolve the same uv. Required gate:
+Keep CPython **3.14.10**, MCP SDK **2.3.0** and ty **0.0.95**.
+uv accepts **>=0.13.6**, with CI testing **0.13.6**; supported callers need not
+match CI. Nested hooks must resolve the selected uv consistently. See the
+[compatibility backport](evidence/2026-11-11-uv-compatibility.md). Required gate:
 
 ```text
 uv sync --locked --all-groups

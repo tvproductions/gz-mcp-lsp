@@ -42,8 +42,8 @@ No private source or project data in this public repository.
 ## Engineering and configuration
 
 Python 3.14 family; exact verified managed patch 3.14.10 in `.python-version` and CI.
-uv 0.13.6, project-owned lock, src packaging and uv_build. Centralize Python/tool
-metadata in pyproject.toml. Application settings will be project-owned JSON;
+uv >=0.13.6 (CI tests 0.13.6), project-owned lock, src packaging and uv_build.
+Centralize Python/tool metadata in pyproject.toml. Application settings will be project-owned JSON;
 **no environment-variable-based application configuration**. This explicit product
 rule overrides inherited suggestions for environment overrides. Native host config
 retains its own format. No Makefile. unittest only, never pytest.
@@ -90,7 +90,7 @@ connectors/browser automation unless the user requests otherwise.
 
 Follow the starter's preserved Git synchronization ritual in
 `docs/STARTER-AGENTS.md#git-synchronization-ritual`: inspect/fetch and review the
-complete diff, run the gate with matching uv in nested hooks, commit without
-bypass, push without force, observe exact-commit CI, and verify local/remote SHA
+complete diff, run the gate with supported uv resolved consistently in nested
+hooks, commit without bypass, push without force, observe exact-commit CI, and verify local/remote SHA
 alignment. Report remaining gaps independently of Git sync. Keep changelog and
 initialization evidence current. Do not manufacture CI receipt-only commit chains.

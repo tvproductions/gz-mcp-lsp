@@ -18,7 +18,7 @@ requires = ["uv_build==0.13.6"]
 build-backend = "uv_build"
 
 [tool.uv]
-required-version = "==0.13.6"
+required-version = ">=0.13.6"
 python-preference = "only-managed"
 python-downloads-json-url = "https://raw.githubusercontent.com/astral-sh/uv/68677f5439c027db17b4db7821882a9881d376f6/crates/uv-python-managed/download-metadata.json"
 

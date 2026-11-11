@@ -1,5 +1,19 @@
 # Dependabot coverage
 
+## Current product compatibility correction — November 11, 2026
+
+This product has root uv and GitHub Actions jobs only; the X-Plane/helper
+descriptions below remain inherited starter context. Its November 9
+[uv scan failed](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/42641967556)
+because updater uv 0.13.7 could not satisfy exact required-version ==0.13.6.
+The project now accepts >=0.13.6, backporting the released starter v0.9.0 policy;
+CI continues to test 0.13.6. Package/backend pins remain independent. See the
+[compatibility receipt](../evidence/2026-11-11-uv-compatibility.md).
+Fresh hosted scanning on the corrected default branch must be observed separately;
+local compatibility checks alone do not prove a hosted repair.
+
+## Historical starter coverage
+
 The repository's `.github/dependabot.yml` proposes updates weekly on Mondays
 at 09:00 America/Chicago. It has three independent jobs:
 

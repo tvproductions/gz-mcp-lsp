@@ -46,6 +46,12 @@ environments. A pin makes runs reproducible; it does not prove ongoing freshness
 Refresh during authorized setup/maintenance rather than resolving “latest” on
 every invocation. A check-only request reports a stale pin without upgrading it.
 
+For the uv executable, the project [minimum-only policy](../baseline-policy.md#uv-executable-compatibility)
+supersedes exact matching: accept >=0.13.6 while CI tests 0.13.6. Supported local
+and hosted versions need not match CI. Record the selected executable/version,
+keep nested hooks consistent and verify behavior. Exact Python and package/backend
+locks remain required; compatibility does not establish freshness.
+
 If the newest release has a demonstrated compatibility problem or a host imposes
 another version, record the selected version, evidence, reason, checked date and
 revisit condition. Report that as an exception, not a current baseline claim.

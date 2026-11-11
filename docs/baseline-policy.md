@@ -136,6 +136,22 @@ Select updates independently under reviewed compatibility decisions; SP-BP stays
 disabled until readiness and explicit adoption. An upstream default does not
 override this baseline or the project's existing authorities.
 
+## uv executable compatibility
+
+The project backports starter v0.9.0's minimum-only uv rule: require >=0.13.6
+without an upper bound; CI's 0.13.6 is a tested reference, not an exclusive caller
+requirement. This section supersedes inherited exact-uv matching guidance,
+including the historical Git ritual. Keep nested hooks on the selected executable
+and record its actual version. Verify behavior rather than rejecting newer uv
+solely for a version mismatch. Exact Python, package locks and uv_build remain
+separate reproducibility inputs.
+
+The project floor retains its previously verified 0.13.6 selection. Starter
+v0.9.0 uses 0.13.5; that lower floor is not adopted here. Compatibility is separate
+from latest-stable review, and accepting future versions does not prove all of
+them work. See the [source and validation receipt](evidence/2026-11-11-uv-compatibility.md).
+The adopted starter identity remains v0.7.1; this is a scoped policy backport.
+
 ## Code must follow its Python version
 
 gz-skills owns runtime discovery for Python workflows. Require it to honor the

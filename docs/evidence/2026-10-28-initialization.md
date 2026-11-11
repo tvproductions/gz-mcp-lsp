@@ -1,5 +1,9 @@
 # Initialization and design discovery receipt — 2026-10-28
 
+November 11 follow-up: the [uv compatibility backport](2026-11-11-uv-compatibility.md)
+separates the supported executable minimum from CI's tested version. Exact-uv
+requirements in this historical receipt no longer govern current execution.
+
 Follow-up: the [October 31 dependency update](2026-10-31-dependency-update.md)
 changes tool/plugin selections and the project's native marketplace source.
 The initialization measurements below remain historical, including its 0.8.0

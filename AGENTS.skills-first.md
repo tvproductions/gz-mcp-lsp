@@ -19,6 +19,14 @@ installed-package imports, application entry points and py.typed for typed
 libraries. Centralize Python metadata and uv/Ruff/ty configuration in
 pyproject.toml; use standard dependency-groups, a committed uv.lock and exact
 .python-version, ignored .venv, and locked uv execution shared by hooks and CI.
+
+For the uv executable, use an evidenced minimum without an upper bound:
+this project accepts >=0.13.6 while CI tests 0.13.6. Supported callers need not
+match CI. Record actual provenance and verify affected behavior; admission of
+newer uv versions is not universal compatibility proof. Preserve exact Python,
+package/backend locks and locked commands. See the project
+[uv policy](docs/baseline-policy.md#uv-executable-compatibility).
+
 Use Cargo-style uv workspaces for compatible interconnected packages: one root
 lock/environment, explicit member dependencies and editable workspace sources.
 Record project-root versus non-project coordinator semantics; select members or

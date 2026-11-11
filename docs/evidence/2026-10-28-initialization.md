@@ -1,5 +1,10 @@
 # Initialization and design discovery receipt — 2026-10-28
 
+November 11 native discovery follow-up: the project-only exclusion now removes
+duplicate gz-skills entries while preserving user defaults. The
+[deduplication receipt](2026-11-11-skill-discovery.md) and
+[current handoff](../handoff.md) retain the separate installed-version mismatch.
+
 November 11 follow-up: the [uv compatibility backport](2026-11-11-uv-compatibility.md)
 separates the supported executable minimum from CI's tested version. Exact-uv
 requirements in this historical receipt no longer govern current execution.

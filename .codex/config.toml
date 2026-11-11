@@ -12,3 +12,7 @@ enabled = false
 
 [plugins."gz-skills@skills-first-starter"]
 enabled = true
+
+# Keep the project's selected source; suppress the inherited duplicate here only.
+[plugins."gz-skills@gz-skills"]
+enabled = false

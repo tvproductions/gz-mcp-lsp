@@ -1,8 +1,57 @@
-# Implementation handoff — 2026-11-01
+# Project handoff — 2026-11-11
+
+## Resume here: native source reconciliation before T12
+
+The latest user request is to preserve this handoff and Git-sync the project
+skill deduplication fix. Work is on **main in the primary checkout**. The base
+for this save point is `5e74aeacd5f318062eb9b0b4c0877da5c6861bf0`; the final
+sync response identifies the new commit and exact-commit CI. No T12 execution,
+plugin update, full starter upgrade, tag or release is part of this save point.
+
+Completed maintenance:
+
+- Backported minimum-only uv compatibility at `5e74aea`: accept >=0.13.6,
+  retain CI 0.13.6. Local full gate/normal hooks passed with uv 0.13.7, and
+  [exact-commit CI](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43022296870)
+  passed all three platforms. [Receipt](evidence/2026-11-11-uv-compatibility.md).
+- Added a project-only enabled=false override for gz-skills@gz-skills while
+  keeping gz-skills@skills-first-starter enabled. Fresh actual Codex discovery
+  drops from 40 entries/20 duplicated names to 20 entries/zero duplicates.
+  Outside-project discovery remains 20 standalone entries; user configuration
+  is byte-unchanged. [Receipt](evidence/2026-11-11-skill-discovery.md).
+- Source-independent build and outside-source distribution verification passed
+  after the exclusion. This sync reruns the routine gate and normal hooks;
+  final Git/CI results belong in the final response, without receipt-only commits.
+
+**First next-session action:** start a fresh session and perform a read-only
+native plugin/source inventory. Compare the installed starter-marketplace
+gz-skills 0.10.1 with the repository's recorded 0.8.3 selection in
+`.skills-first/bundle.lock.json` and both native catalogs. Use OpenAI Docs,
+the project update-gz-template skill and gzs-update-dependencies as appropriate.
+Expected result: one active source, with actual installed identity versus intended
+pin explicitly established. The source mismatch remains open; deduplication is
+not evidence of pin agreement. Do not silently rewrite provenance to match the
+cache or change native installations/defaults without scoped update authority.
+Preserve global activation elsewhere and leave cache management to the manager.
+
+The current conversation may retain its already injected duplicate catalog;
+fresh app-server skills/list with forceReload verified the corrected project
+configuration. Raw local probes are not tracked and are unnecessary to resume;
+the sanitized receipt above preserves counts, source versions and limitations.
+Starter provenance remains v0.7.1 with the explicit uv-policy backport.
+Fresh hosted Dependabot scanning against corrected inputs remains unverified.
+
+T12/T13 remain unfinished. Once source reconciliation is understood, use the
+existing T12 brief below within its approved stage boundary, preserve required
+UNKNOWN/FAIL results and stop before T13. This handoff does not itself authorize
+a plugin upgrade or waive cognitive/native acceptance gaps.
+
+## Retained implementation checkpoint — 2026-11-01
 
 **T0-T11 implemented, with actual installed/native host evidence. Stop before T12.**
-The final synchronization response must report the exact final commit's platform
-CI before T11 is treated as accepted. The user requested T11 completion and
+T11 commit `05aa14b9885e511f04340e422298d784e8a74174` passed
+[three-platform CI](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/41358262222).
+The user requested T11 completion and
 instructed that accepted branches/worktrees be merged to main and removed.
 
 ## Workspace and verified checkpoints
@@ -114,10 +163,18 @@ adopted engineering policies, specification/plan and acceptance matrix. Use the
 
 ## Remaining acceptance gaps
 
+- November 11: [project skill deduplication](evidence/2026-11-11-skill-discovery.md)
+  now yields 20 gz-skills entries with zero duplicates, preserving global defaults.
+  Installed starter gz-skills 0.10.1 still differs from recorded 0.8.3; E4 source
+  reconciliation remains open. Historical duplicate observations below predate
+  the project exclusion.
+
 - T12 deeper engineering and unresolved cognitive qualification/native discovery;
   T13 fresh whole-branch review, full milestone acceptance and deliberate stop.
 - Cognitive qualification remains UNKNOWN; complexipy is not a passing authority.
-  Native discovery retains duplicate/global-scope FAIL. Preserve caches/defaults.
+  Native source/version reconciliation remains open; historical duplicate/global
+  scope findings are bounded by the November 11 observations above. Preserve
+  caches/defaults.
 - Native approval evidence is programmatic actual-host protocol interaction;
   no GUI/human-action claim is made. No release is accepted or published.
 

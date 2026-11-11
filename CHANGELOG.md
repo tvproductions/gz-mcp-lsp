@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Disable the inherited gz-skills marketplace identity only in this project,
+  eliminating duplicate skill discovery while preserving global activation.
+  Record fresh inside/outside probes and the separate installed-version drift.
+
 - Backport starter v0.9.0's minimum-only uv compatibility policy: accept uv
   >=0.13.6 while retaining tested CI uv 0.13.6. Remove the version-only rejection
   of newer local/Dependabot executables; preserve Python and package/backend pins.

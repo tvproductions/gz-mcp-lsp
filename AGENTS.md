@@ -18,8 +18,8 @@ Read `docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`,
 `docs/superpowers/plans/2026-10-28-reference-parity.md`. They are approved execution
 artifacts; see `docs/evidence/2026-11-01-execution.md` for approval, progress and
 remaining acceptance gaps. Resume through docs/handoff.md, one bounded stage
-per session; T11 is implemented with native host evidence and T12 is next after
-the exact-commit platform gate. Earlier planning-only receipts remain historical.
+per session; T11 is implemented; T12 measurements and current native evidence are recorded,
+but G5 remains incomplete pending shared cognitive qualification. Stop before T13. Earlier planning-only receipts remain historical.
 
 Use adopted Superpowers for feature design and gz-skills gzs-router for portable
 engineering selection. The user explicitly selected lite through gzs-project-setup.

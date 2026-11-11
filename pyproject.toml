@@ -77,7 +77,50 @@ include = ["src", "tests", "tools"]
 
 [tool.importlinter]
 root_packages = ["gz_mcp_lsp"]
-# Dependency-direction contracts will be added with reviewed runtime modules.
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "MCP SDK stays at the MCP boundary"
+type = "forbidden"
+source_modules = [
+    "gz_mcp_lsp.config", "gz_mcp_lsp.models", "gz_mcp_lsp.results",
+    "gz_mcp_lsp.workspace", "gz_mcp_lsp.source_text", "gz_mcp_lsp.edit_plan",
+    "gz_mcp_lsp.documents", "gz_mcp_lsp.navigation", "gz_mcp_lsp.diagnostics",
+    "gz_mcp_lsp.mutations", "gz_mcp_lsp.filesystem", "gz_mcp_lsp._posix_files",
+    "gz_mcp_lsp.session", "gz_mcp_lsp.lsp_transport",
+]
+forbidden_modules = ["mcp"]
+
+[[tool.importlinter.contracts]]
+name = "Semantic operations use session and document seams"
+type = "forbidden"
+source_modules = ["gz_mcp_lsp.navigation", "gz_mcp_lsp.diagnostics"]
+forbidden_modules = [
+    "gz_mcp_lsp.lsp_transport", "gz_mcp_lsp.filesystem",
+    "gz_mcp_lsp._posix_files", "gz_mcp_lsp.mcp_api", "subprocess",
+]
+# The existing Session/Documents seams own transport and saved-file effects.
+allow_indirect_imports = true
+
+[[tool.importlinter.contracts]]
+name = "Filesystem transactions have no semantic or protocol dependencies"
+type = "forbidden"
+source_modules = ["gz_mcp_lsp.filesystem", "gz_mcp_lsp._posix_files"]
+forbidden_modules = [
+    "gz_mcp_lsp.navigation", "gz_mcp_lsp.diagnostics", "gz_mcp_lsp.mutations",
+    "gz_mcp_lsp.documents", "gz_mcp_lsp.session", "gz_mcp_lsp.lsp_transport",
+    "gz_mcp_lsp.mcp_api", "mcp", "subprocess",
+]
+
+[[tool.importlinter.contracts]]
+name = "Edit planning cannot reach transaction or protocol effects"
+type = "forbidden"
+source_modules = ["gz_mcp_lsp.edit_plan"]
+forbidden_modules = [
+    "gz_mcp_lsp.filesystem", "gz_mcp_lsp._posix_files", "gz_mcp_lsp.mutations",
+    "gz_mcp_lsp.documents", "gz_mcp_lsp.session", "gz_mcp_lsp.lsp_transport",
+    "gz_mcp_lsp.mcp_api", "mcp", "subprocess",
+]
 
 [tool.deptry]
 known_first_party = ["gz_mcp_lsp"]

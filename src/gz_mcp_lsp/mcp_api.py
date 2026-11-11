@@ -110,42 +110,53 @@ def _mutation_arguments(name: str, value: object) -> bool:
     return True
 
 
+def _symbol_arguments(name: str, arguments: object) -> bool:
+    """Validate symbol requests before the SDK can coerce their raw values."""
+
+    if not isinstance(arguments, dict):
+        return False
+    if name == "document_symbols":
+        return set(arguments) == {"uri"} and isinstance(arguments["uri"], str)
+    return (
+        "query" in arguments
+        and arguments.keys() <= {"query", "resolve"}
+        and isinstance(arguments["query"], str)
+        and type(arguments.get("resolve", False)) is bool
+    )
+
+
+def _diagnostic_arguments(arguments: object) -> bool:
+    """Keep diagnostic URI and context values strict at the raw MCP boundary."""
+
+    return (
+        isinstance(arguments, dict)
+        and "uri" in arguments
+        and arguments.keys() <= {"uri", "context_lines"}
+        and isinstance(arguments["uri"], str)
+        and type(arguments.get("context_lines", 0)) is int
+        and 0 <= arguments.get("context_lines", 0) <= 20
+    )
+
+
 async def _strict_arguments(ctx: ServerRequestContext, call_next: CallNext) -> HandlerResult:
     if ctx.method == "tools/call" and ctx.params is not None:
         name = ctx.params.get("name")
-        if isinstance(name, str) and name in {"document_symbols", "workspace_symbols"}:
-            arguments = ctx.params.get("arguments")
-            valid = isinstance(arguments, dict)
-            if valid and name == "document_symbols":
-                valid = set(arguments) == {"uri"} and isinstance(arguments["uri"], str)
-            elif isinstance(arguments, dict):
-                valid = (
-                    "query" in arguments
-                    and arguments.keys() <= {"query", "resolve"}
-                    and isinstance(arguments["query"], str)
-                    and type(arguments.get("resolve", False)) is bool
-                )
-            if not valid:
-                return _error(name, AdapterError("INVALID_INPUT", "Invalid symbol arguments"))
+        if (
+            isinstance(name, str)
+            and name in {"document_symbols", "workspace_symbols"}
+            and not _symbol_arguments(name, ctx.params.get("arguments"))
+        ):
+            return _error(name, AdapterError("INVALID_INPUT", "Invalid symbol arguments"))
         if (
             isinstance(name, str)
             and name in {"rename_symbol", "edit_file"}
             and not _mutation_arguments(name, ctx.params.get("arguments"))
         ):
             return _error(name, AdapterError("INVALID_INPUT", "Invalid tagged mutation arguments"))
-        if name == "diagnostics":
-            arguments = ctx.params.get("arguments")
-            if (
-                not isinstance(arguments, dict)
-                or "uri" not in arguments
-                or not arguments.keys() <= {"uri", "context_lines"}
-                or not isinstance(arguments["uri"], str)
-                or type(arguments.get("context_lines", 0)) is not int
-                or not 0 <= arguments.get("context_lines", 0) <= 20
-            ):
-                return _error(
-                    "diagnostics", AdapterError("INVALID_INPUT", "Invalid diagnostic arguments")
-                )
+        if name == "diagnostics" and not _diagnostic_arguments(ctx.params.get("arguments")):
+            return _error(
+                "diagnostics", AdapterError("INVALID_INPUT", "Invalid diagnostic arguments")
+            )
         if (
             isinstance(name, str)
             and name in {"hover", "definition", "references", "implementations"}

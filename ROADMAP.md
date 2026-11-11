@@ -12,9 +12,10 @@ Codex interoperability, engineering acceptance and a deliberate stop.
 
 T0–T11 implementation and historical host proof are included completed work;
 the November 11 dependency/template reconciliation maintains that same scope.
-T12 engineering/native closure and T13 final review/acceptance remain included
-unfinished work. Required cognitive qualification and changed-input host proof
-remain explicit gaps. Hosted infrastructure, another language server, generic
+T12 engineering measurements and changed-input native proof are recorded in the
+[November 11 receipt](docs/evidence/2026-11-11-engineering-acceptance.md). Required
+qualified cognitive closure still blocks G5; T13 final review/acceptance remains
+included unfinished work. Hosted infrastructure, another language server, generic
 LSP expansion and Backplane activation are excluded from this release.
 
 This maintenance adds no product capability or public schema change and does

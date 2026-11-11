@@ -54,6 +54,21 @@ def _bad_constant(value: str):
     raise ValueError("Nonfinite state number")
 
 
+def _validate_plan_binding(file: object, original: object) -> None:
+    """Bind every journal target image and identity to the immutable saved plan."""
+
+    if (
+        not isinstance(file, dict)
+        or not isinstance(original, dict)
+        or file.get("uri") != original.get("uri")
+        or file.get("before_hash") != original.get("before_hash")
+        or file.get("before_hash") != original.get("before_image_hash")
+        or file.get("after_hash") != original.get("after_hash")
+        or file.get("before_identity") != original.get("identity")
+    ):
+        raise AdapterError("RECOVERY_REQUIRED", "Journal images are not bound to the plan")
+
+
 class Transactions:
     """One private state lock owns staging, commit/rollback and startup recovery."""
 
@@ -351,16 +366,7 @@ class Transactions:
         if not isinstance(planned, list) or len(planned) != len(value["files"]):
             raise AdapterError("RECOVERY_REQUIRED", "Journal target set is inconsistent")
         for file, original in zip(value["files"], planned, strict=True):
-            if (
-                not isinstance(file, dict)
-                or not isinstance(original, dict)
-                or file.get("uri") != original.get("uri")
-                or file.get("before_hash") != original.get("before_hash")
-                or file.get("before_hash") != original.get("before_image_hash")
-                or file.get("after_hash") != original.get("after_hash")
-                or file.get("before_identity") != original.get("identity")
-            ):
-                raise AdapterError("RECOVERY_REQUIRED", "Journal images are not bound to the plan")
+            _validate_plan_binding(file, original)
             _validate_receipt_file(file, journal=True)
             for key in ("before_identity", "after_identity"):
                 _validate_identity(file.get(key))

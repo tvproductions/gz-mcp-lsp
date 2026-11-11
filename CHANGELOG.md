@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Measure T12 engineering acceptance, enforce four reviewed import contracts and
+  remove five existing Lizard ceiling violations without changing public behavior.
+  Add three result-budget/JSON regressions; bounded product mutation kills 13/13.
+  Record current installed Codex read/mutation/approval and process-failure proof,
+  coverage and reviewed deeper findings. Keep required cognitive qualification
+  UNKNOWN, G5 incomplete and T13 unexecuted; no release or threshold waiver.
+
 - Preserve the post-maintenance handoff with exact-commit three-platform results,
   completed native source reconciliation and concrete T12 entry work. Keep
   remaining engineering/cognitive/native-behavior gaps and the stop before T13.

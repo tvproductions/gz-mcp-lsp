@@ -288,12 +288,9 @@ def plan_workspace_edit(
         physical = identity.device, identity.inode
         if key in seen_uris or physical in seen_identities:
             raise AdapterError("CONFLICT", "Duplicate physical mutation targets or URI aliases")
-        if not stat.S_ISREG(identity.mode) or identity.links != 1 or identity.inode == 0:
-            raise AdapterError("UNSUPPORTED", "Mutation preimage lacks safe single-file identity")
+        _preimage(snapshot, version)
         seen_uris.add(key)
         seen_identities.add(physical)
-        if version is not None and version != snapshot.version:
-            raise AdapterError("CONFLICT", "WorkspaceEdit document version differs from preimage")
         edits = _edits(raw, {annotation.annotation_id for annotation in annotations})
         edit_count += len(edits)
         if edit_count > limits.mutation_edits:
@@ -309,6 +306,16 @@ def plan_workspace_edit(
         files.append(PlannedFile(uri, snapshot, after, edits))
     plan = EditPlan("", generation, tuple(files), float(expiry), annotations)
     return replace(plan, plan_id=plan_digest(plan))
+
+
+def _preimage(snapshot: Snapshot, version: int | None) -> None:
+    """Require the exact saved version and safe physical identity for one target."""
+
+    identity = snapshot.identity
+    if not stat.S_ISREG(identity.mode) or identity.links != 1 or identity.inode == 0:
+        raise AdapterError("UNSUPPORTED", "Mutation preimage lacks safe single-file identity")
+    if version is not None and version != snapshot.version:
+        raise AdapterError("CONFLICT", "WorkspaceEdit document version differs from preimage")
 
 
 def plan_payload(plan: EditPlan) -> dict[str, Json]:

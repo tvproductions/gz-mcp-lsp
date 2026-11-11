@@ -1,7 +1,7 @@
 # Documentation scope
 
 The [implementation handoff](handoff.md) is the current resume point: T0-T11 implemented,
-T12 next on main after the final exact-commit platform gate, one bounded stage per session. The
+T12 measured on main but G5 blocked on qualified cognitive scoring; stop before T13. The
 [consolidation record](evidence/2026-11-01-main-consolidation.md) preserves both
 branch histories and the user-selected runtime. Git sync does not waive gaps.
 

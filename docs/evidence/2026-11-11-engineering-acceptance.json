@@ -1,0 +1,568 @@
+{
+  "stage": "T12",
+  "base_commit": "ee2e86e84af24559b288ece169fac728093c23c8",
+  "status": "G5 incomplete; qualified cognitive UNKNOWN; T13 NOT RUN",
+  "python": "3.14.10",
+  "machine": "arm64",
+  "versions": {
+    "mcp": "2.3.0",
+    "ty": "0.0.101",
+    "ruff": "0.17.4",
+    "coverage": "7.17.2",
+    "lizard": "1.26.0",
+    "import-linter": "2.16",
+    "cosmic-ray": "8.9.0"
+  },
+  "source_sha256": {
+    "src/gz_mcp_lsp/__init__.py": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+    "src/gz_mcp_lsp/__main__.py": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a",
+    "src/gz_mcp_lsp/_posix_files.py": "1967c7e9c6b8aad7c4902d7c2bb8f674e252936655487205a172f89ac1c13821",
+    "src/gz_mcp_lsp/cli.py": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a",
+    "src/gz_mcp_lsp/config.py": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a",
+    "src/gz_mcp_lsp/diagnostics.py": "928d3ff1211662eb73bcf27fc409566ffdfb3fe7e08233e039c50cc2fe5f4865",
+    "src/gz_mcp_lsp/documents.py": "2964e1f085e30ca359e787da80b20ae0b1b26b99130aa53593759a0c6c098106",
+    "src/gz_mcp_lsp/edit_plan.py": "c02f825ac7c9fa7bee400bcbc7cd0c1d98399085e6f741c502cbc4202c0578b9",
+    "src/gz_mcp_lsp/filesystem.py": "c93cdb110baa058efbd087894f6733680ba8507956f047ec0c283cc5adce2f03",
+    "src/gz_mcp_lsp/lsp_transport.py": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334",
+    "src/gz_mcp_lsp/mcp_api.py": "79a1640b4f43a4c0cd20c10a8f8973f46df6704b73ba589d19f3dfb1e91fcbee",
+    "src/gz_mcp_lsp/models.py": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33",
+    "src/gz_mcp_lsp/mutations.py": "c1f9aa37f8e1a29a7887d1ef5628b6dff46c18780a95636eec20f2b82ab6e269",
+    "src/gz_mcp_lsp/navigation.py": "b168a5f7e4d671319fcb9425064617efefd88858fd897bbbd4ea242aaa026918",
+    "src/gz_mcp_lsp/results.py": "cbe8c5d9f54e12936d60a6adb319508765fea3e9660799694a5bf17465492334",
+    "src/gz_mcp_lsp/session.py": "fb164b8acd45efc845e783ce4ef7f344ef6dd43af4e3d9415017971b975a7db4",
+    "src/gz_mcp_lsp/source_text.py": "dcd651ac884dc710d5c1d279877c89b81767ea6222d78a141fbcbad260f0b655",
+    "src/gz_mcp_lsp/workspace.py": "614c2806a1516e8d61246dcdb43ab5e33baac9b2a6f9e263eea58ec765291bde"
+  },
+  "lock_sha256": "661be0f45f7934a3e7c62ad1bc5477fd0aae877d509a31d8ddccf6f0558503a3",
+  "complexity": {
+    "functions": 648,
+    "maximum": 20,
+    "overall_mean": 3.1944444444444446
+  },
+  "coverage": {
+    "covered_lines": 2371,
+    "num_statements": 2720,
+    "percent_covered": 83.77358490566037,
+    "percent_covered_display": "84",
+    "missing_lines": 349,
+    "excluded_lines": 0,
+    "percent_statements_covered": 87.16911764705883,
+    "percent_statements_covered_display": "87",
+    "num_branches": 990,
+    "num_partial_branches": 215,
+    "covered_branches": 737,
+    "missing_branches": 253,
+    "percent_branches_covered": 74.44444444444444,
+    "percent_branches_covered_display": "74"
+  },
+  "import_controls": [
+    {
+      "control": "sdk",
+      "exit": 1,
+      "detected": true
+    },
+    {
+      "control": "semantic",
+      "exit": 1,
+      "detected": true
+    },
+    {
+      "control": "filesystem",
+      "exit": 1,
+      "detected": true
+    },
+    {
+      "control": "planner",
+      "exit": 1,
+      "detected": true
+    },
+    {
+      "control": "restored",
+      "exit": 0,
+      "contracts_kept": 4
+    }
+  ],
+  "mutation": {
+    "scope": "src/gz_mcp_lsp/results.py",
+    "sha256": "cbe8c5d9f54e12936d60a6adb319508765fea3e9660799694a5bf17465492334",
+    "test_command": "python -B -m unittest tests.test_diagnostics tests.test_navigation tests.test_symbols tests.test_results -q",
+    "counts": {
+      "killed": 13
+    },
+    "results": [
+      [
+        {
+          "job_id": "7016e51ede974f399ccbb501232529f6",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_Eq",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size == limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "dcb9e09c119142d3b1480c115293a19a",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_NotEq",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size != limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "b83a1a31e649468da53b0eac0b555044",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_Lt",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size < limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "f73fa3326a914861b54f5c298135b03b",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_LtE",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size <= limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "8f0e6ade776d4d6d801519b1463ba22c",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_GtE",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size >= limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "69baff209cdd4266bb5288e89857c1a4",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_Is",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size is limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "966e35bc7e124c76a59578f3ac049498",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceComparisonOperator_Gt_IsNot",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                12
+              ],
+              "end_pos": [
+                18,
+                13
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if size is not limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "883ff436ce0347fd9cca71d35f0ea638",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/AddNot",
+              "occurrence": 0,
+              "start_pos": [
+                18,
+                7
+              ],
+              "end_pos": [
+                18,
+                19
+              ],
+              "operator_args": {},
+              "definition_name": "bounded"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -15,7 +15,7 @@\n     \"\"\"Fail before publishing a result whose contents exceed operator authority.\"\"\"\n \n     size = encoded_size(value)\n-    if size > limit:\n+    if not size > limit:\n         raise AdapterError(\"RESULT_LIMIT\", \"Semantic result exceeds its byte budget\")\n     return size\n "
+        }
+      ],
+      [
+        {
+          "job_id": "055bb9f49130479496462f566a1bef82",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceTrueWithFalse",
+              "occurrence": 0,
+              "start_pos": [
+                41,
+                20
+              ],
+              "end_pos": [
+                41,
+                24
+              ],
+              "operator_args": {},
+              "definition_name": "envelope"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -38,7 +38,7 @@\n         \"result\": result,\n         \"workspace_generation\": generation,\n         \"documents\": [documents[uri] for uri in sorted(documents)],\n-        \"complete\": True,\n+        \"complete\": False,\n     }\n     bounded(value, limit)\n     return value"
+        }
+      ],
+      [
+        {
+          "job_id": "8d79437e64de4f5c968a92c936b21b99",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceFalseWithTrue",
+              "occurrence": 0,
+              "start_pos": [
+                11,
+                46
+              ],
+              "end_pos": [
+                11,
+                51
+              ],
+              "operator_args": {},
+              "definition_name": "encoded_size"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -8,7 +8,7 @@\n def encoded_size(value: object) -> int:\n     \"\"\"Count the complete untruncated UTF-8 JSON value.\"\"\"\n \n-    return len(json.dumps(value, ensure_ascii=False, allow_nan=False).encode(\"utf-8\"))\n+    return len(json.dumps(value, ensure_ascii=True, allow_nan=False).encode(\"utf-8\"))\n \n \n def bounded(value: object, limit: int) -> int:"
+        }
+      ],
+      [
+        {
+          "job_id": "ae305313066e48a7bc8f5157b5b1d553",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/ReplaceFalseWithTrue",
+              "occurrence": 1,
+              "start_pos": [
+                11,
+                63
+              ],
+              "end_pos": [
+                11,
+                68
+              ],
+              "operator_args": {},
+              "definition_name": "encoded_size"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -8,7 +8,7 @@\n def encoded_size(value: object) -> int:\n     \"\"\"Count the complete untruncated UTF-8 JSON value.\"\"\"\n \n-    return len(json.dumps(value, ensure_ascii=False, allow_nan=False).encode(\"utf-8\"))\n+    return len(json.dumps(value, ensure_ascii=False, allow_nan=True).encode(\"utf-8\"))\n \n \n def bounded(value: object, limit: int) -> int:"
+        }
+      ],
+      [
+        {
+          "job_id": "916c88a6f5444733bdcbfc51abfee9e6",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/NumberReplacer",
+              "occurrence": 0,
+              "start_pos": [
+                35,
+                26
+              ],
+              "end_pos": [
+                35,
+                27
+              ],
+              "operator_args": {},
+              "definition_name": "envelope"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -32,7 +32,7 @@\n     \"\"\"Serialize one schema across independently owned semantic operations.\"\"\"\n \n     value: Result = {\n-        \"schema_version\": 1,\n+        \"schema_version\": 2,\n         \"operation\": operation,\n         \"position_encoding\": \"utf-16\",\n         \"result\": result,"
+        }
+      ],
+      [
+        {
+          "job_id": "45e616e2477f4fa79d6765b774298ef9",
+          "mutations": [
+            {
+              "module_path": "src/gz_mcp_lsp/results.py",
+              "operator_name": "core/NumberReplacer",
+              "occurrence": 1,
+              "start_pos": [
+                35,
+                26
+              ],
+              "end_pos": [
+                35,
+                27
+              ],
+              "operator_args": {},
+              "definition_name": "envelope"
+            }
+          ]
+        },
+        {
+          "worker_outcome": "normal",
+          "test_outcome": "killed",
+          "diff": "--- mutation diff ---\n--- a/src/gz_mcp_lsp/results.py\n+++ b/src/gz_mcp_lsp/results.py\n@@ -32,7 +32,7 @@\n     \"\"\"Serialize one schema across independently owned semantic operations.\"\"\"\n \n     value: Result = {\n-        \"schema_version\": 1,\n+        \"schema_version\": 0,\n         \"operation\": operation,\n         \"position_encoding\": \"utf-16\",\n         \"result\": result,"
+        }
+      ]
+    ],
+    "source_restored": true,
+    "origin_outside_checkout": true
+  },
+  "native": {
+    "host": "codex-cli 0.167.1",
+    "platform": "macOS arm64",
+    "mcp": "2.3.0",
+    "ty": "0.0.101",
+    "discovery_observed": true,
+    "model": "gpt-6.1-sol",
+    "model_read_tools": [
+      "definition",
+      "diagnostics",
+      "document_symbols",
+      "hover",
+      "implementations",
+      "references",
+      "workspace_symbols"
+    ],
+    "read_semantic_assertions": "PASS",
+    "disabled_mutations": "PASS",
+    "mutation_assertions": "PASS exact bytes, denied unchanged, fresh declaration source",
+    "approval_decisions": [
+      "accept",
+      "decline",
+      "accept",
+      "accept",
+      "accept"
+    ],
+    "app_server_exit": 0,
+    "user_config_unchanged": true
+  },
+  "native_failures": [
+    {
+      "scenario": "ty_death",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    },
+    {
+      "scenario": "adapter_death",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    },
+    {
+      "scenario": "host_timeout",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    },
+    {
+      "scenario": "parent_eof",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    }
+  ],
+  "audit": {
+    "packages": 99,
+    "known_vulnerabilities": 0,
+    "skips": 0
+  },
+  "routine_gate": "189 tests pass with one Windows-only skip; pre-commit detected concurrent documentation edits, so aggregate gate requires settled-tree rerun",
+  "test_source_sha256": {
+    "tests/fixtures/acceptance_workspace/decoy.py": "7e4bc7832df8cf5aecf9af47aca51f75bb64e69fa48399f45eeb25df155df759",
+    "tests/fixtures/acceptance_workspace/package_a/__init__.py": "c0532ffed93e16958e47af0121a16002c1040380c34699595292453ec5a1deb4",
+    "tests/fixtures/acceptance_workspace/package_b/__init__.py": "4bb4e17598ec5c1e52703a15fbe96ae63a7be1f227e7daa3580b5b5afee5afa2",
+    "tests/fixtures/acceptance_workspace/package_c/__init__.py": "f492ff4acbba6117c3e38358d7ab0b4961e8a7b070050355ffde5c78b94cbd42",
+    "tests/fixtures/acceptance_workspace/shared_runtime/__init__.py": "ab4679f6ea9061e1ffd40272c2aceb7a679e3812defee2f8a34bf4d217eac485",
+    "tests/fixtures/semantic_workspace/consumer_a.py": "0e9578822aef5f720659e7a6b21d27e9c0416726ee7128ea4cc8b61b5e8c0dc5",
+    "tests/fixtures/semantic_workspace/consumer_b.py": "1c3d959ee80352eb56b052bbce18455be1379cf409f0884979e84664c4b2b3a0",
+    "tests/fixtures/semantic_workspace/consumer_c.py": "0b83e92910d6ce3e85f0bf7f67966d65123b0a96d65cc6d060e1eb508a2390bf",
+    "tests/fixtures/semantic_workspace/decoy.py": "dc91052508bf3331593f076ce65bb4363803ffe363023c530d8a0bf483fcf7e7",
+    "tests/fixtures/semantic_workspace/dependency.py": "7ca5abf65adee67782e5c831d9ee108b323c5a9d9fda11f97a9910b18f6b1bdc",
+    "tests/fixtures/semantic_workspace/hierarchy.py": "042c1012cdc81a0b1e2d5f35a0c45b1bcbdfeb021295f089afee53c162c9aa37",
+    "tests/fixtures/semantic_workspace/library.py": "653babc023ccc33585cb6ddc20d7cc9bb78659edf5b3adea99e5c2607bc9590f",
+    "tests/fixtures/semantic_workspace/main.py": "02a4ec9722264a6576ef8c4e97dbcfcf315dd27faa3706ecf2a821e2d3fb48e2",
+    "tests/integration/__init__.py": "c0112efa6eb127af97ed1a59f35b5d96197501d415c31cc62897304fe5c1e733",
+    "tests/integration/mutation_support.py": "85959307f1dddbdb0524e10bf777442a22ae533ded272555138be5daaef4caa9",
+    "tests/integration/support.py": "e00d43260d33f84ae5055e776490d85ca8de35f0f4fd7a124860125690785ac4",
+    "tests/integration/test_diagnostics.py": "73972b9917d6d96d9d0e75ea242245af9ebb78c752788f65a6bc84b7eea0bef8",
+    "tests/integration/test_installed_server.py": "268c36c60d07c2abfc78a6377ea71304ff0f722f3e92ea0f3c727c6698090c5d",
+    "tests/integration/test_interoperability.py": "8f2447f1444e845781fcb2d7deb030beeb03630de7ab2836a72f1916d2fc1b77",
+    "tests/integration/test_mutations.py": "4ca56e2a253ca4f39c5d6e21bbf367654e6264742f0ce42411911122f95b38de",
+    "tests/integration/test_navigation.py": "a04e48a7d07c9960957063a680e924b60af9093cffe07338a48b2fdcb13666cb",
+    "tests/integration/test_recovery.py": "14e9b902424fd9e12f5f14e0d25d6ee8c6555e42bb6841bf57ccb9488d8f8d4b",
+    "tests/integration/test_session.py": "b760116d443729e2975502c034976e1bba2b1b80a51afe10f1b2ec11840a1c59",
+    "tests/integration/test_startup_recovery.py": "795471ff4ee01b245293d9248e97d2f60f8915b3dbf7aebcbebc6dafc9c3e9bc",
+    "tests/integration/test_symbols.py": "bc8943b5515c7cb74ace41cf26b00a067d15bac0027ce53b4e1ed7e040c33c79",
+    "tests/support/__init__.py": "51448cde2614868f4fa24c18f0ef54472fd36f47cccb989251f780857cd60de7",
+    "tests/support/crash_transaction.py": "8606323f8455a85aa81de8fe5e1070d29e27a53804a748d223b4609bea0b3bc2",
+    "tests/support/fake_lsp.py": "6b94979766393e6a40e2b94a0972c4bc1fcfaaae30ad6649b797a59e29825ff2",
+    "tests/test_config.py": "e043c44ad480bdbe88a1529311e5067846209bafe3a3dac954e92e7e675e9358",
+    "tests/test_diagnostics.py": "157425d14d02ab36ea6aa35eb7b9161cb04004f97453e47d0bc91f542dd65f94",
+    "tests/test_distribution.py": "bbd7ccca0ff68725f56fe9758004dab48d09997b0d92604eb576ee0ed1b7e4ad",
+    "tests/test_documents.py": "8018262747437495fe8e9cf1909d1d5a9753c2a22d42ba7f8fb5578be63a91ea",
+    "tests/test_edit_plan.py": "980632509229a843fb98cde3123c50cb1896ecf28e13bbf956f1f20bd989942f",
+    "tests/test_filesystem.py": "d1be52165f9a46302307a8abba6a86133c629c9797761cb4435c8cee5d047a23",
+    "tests/test_lsp_transport.py": "4dcfabd5e2fd2f7ad3f434284c2579c64119894860c727e84de2233744bdd98b",
+    "tests/test_mcp_api.py": "7464adeca37e3b5aceac4872bb251662067eddca225b44ca84ee1f7449398c2e",
+    "tests/test_mutations.py": "a10d8302ee12e91a15f665a7c219118fca242d04c46f8ebc0ca4b6d1e2f6ed78",
+    "tests/test_navigation.py": "a6a85bc211ee61f07fd8ed801bcbb4367fa9988f8e92e5af877a9cd5f9fcd01f",
+    "tests/test_results.py": "dd8db5e68a3ff04540ed8f15c7b3913886fab717d491bb9df46d7c2b08c4ae33",
+    "tests/test_sdk_contract.py": "63c0f1ab22193b7fbd88d57241dbf9ef7df0c3a63fdb7d408ee1d575257a650b",
+    "tests/test_session.py": "2cb332350f29810d0f7171ee5f80ec902eafbad8731d44aa1805e3851d0d5b45",
+    "tests/test_source_text.py": "4c3aeeb487b840c6c21c05546eb4f82c96040eb76d92eae53ef90f9defbb4401",
+    "tests/test_symbols.py": "c4ef9d7877680412fd662402646c7e2473c81ea7f7f7c243031733355dbd640b",
+    "tests/test_workspace.py": "f3c332978d8dc7dd263676e3a5b0438b62f00b2ac4a2e382f0ba3f6c62f1189d"
+  },
+  "native_discovery": {
+    "project_gz_skills": 20,
+    "unique_names": 20,
+    "errors": 0,
+    "version": "0.10.1",
+    "configured_git_refresh": {
+      "selectedMarketplaces": [
+        "skills-first-starter"
+      ],
+      "upgradedRoots": [],
+      "errors": []
+    }
+  }
+}

@@ -53,6 +53,28 @@ def main():
             }
         )
 
+    def initialize(message):
+        nonlocal initialize_id
+        if mode == "exit-initialize":
+            raise SystemExit(7)
+        if mode == "hang-initialize":
+            return
+        if mode == "stderr-flood":
+            sys.stderr.buffer.write(b"x" * 1024 * 1024)
+            sys.stderr.buffer.flush()
+        if mode == "early-requests":
+            initialize_id = message["id"]
+            send(
+                {
+                    "jsonrpc": "2.0",
+                    "id": "configuration",
+                    "method": "workspace/configuration",
+                    "params": {"items": [{}, {}]},
+                }
+            )
+        else:
+            initialized(message["id"])
+
     while (message := read()) is not None:
         method = message.get("method")
         if method:
@@ -75,25 +97,7 @@ def main():
             initialized(initialize_id)
             continue
         if method == "initialize":
-            if mode == "exit-initialize":
-                raise SystemExit(7)
-            if mode == "hang-initialize":
-                continue
-            if mode == "stderr-flood":
-                sys.stderr.buffer.write(b"x" * 1024 * 1024)
-                sys.stderr.buffer.flush()
-            if mode == "early-requests":
-                initialize_id = message["id"]
-                send(
-                    {
-                        "jsonrpc": "2.0",
-                        "id": "configuration",
-                        "method": "workspace/configuration",
-                        "params": {"items": [{}, {}]},
-                    }
-                )
-            else:
-                initialized(message["id"])
+            initialize(message)
             continue
         if method == "hold":
             continue

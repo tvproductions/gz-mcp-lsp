@@ -1,5 +1,9 @@
 # Initialization and design discovery receipt — 2026-10-28
 
+November 11 T12 follow-up: [engineering acceptance evidence](2026-11-11-engineering-acceptance.md)
+records current measurements/native proof and unresolved cognitive qualification.
+This receipt remains historical initialization evidence.
+
 November 11 dependency follow-up: the [authorized full update](2026-11-11-dependency-update.md)
 supersedes current dependency/template/plugin selections and reconciles installed
 source content with published revisions. Measurements below remain historical.

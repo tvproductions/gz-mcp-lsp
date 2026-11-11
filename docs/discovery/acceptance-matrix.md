@@ -106,3 +106,14 @@ in the October 31 update; execution-host verification and configured Git-source 
 evidence remain required at T0/T12. Prior-host discovery does not certify another host.
 These work packages have explicit closure requirements and are not indefinite removals
 from the milestone.
+
+
+## November 11 current-input reconciliation
+
+The [T12 receipt](../evidence/2026-11-11-engineering-acceptance.md#acceptance-traceability)
+maps every row above to current unit/installed/native observations and preserves
+platform exclusions, tool findings and evidence limits. November 11 maintenance
+supersedes the historical duplicate/global native-discovery finding above for
+this execution host; current native behavior is independently remeasured.
+G5/E3/E4 remain incomplete because qualified cognitive scoring is unavailable.
+STOP/T13 remains NOT RUN; row coverage alone is not terminal acceptance.

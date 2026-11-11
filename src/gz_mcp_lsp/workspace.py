@@ -246,7 +246,18 @@ class Workspace:
     def _check_ty_roots(self, settings: object, base: Path) -> None:
         if not isinstance(settings, dict):
             raise AdapterError("UNSUPPORTED", "Invalid ty project configuration")
-        source = settings.get("src", {})
+        self._check_ty_patterns(settings.get("src", {}))
+        baseline = settings.get("baseline")
+        if baseline is not None and baseline not in self.config.project_config_files:
+            raise AdapterError(
+                "UNSUPPORTED", "Baseline must be an explicitly tracked configuration input"
+            )
+        self._check_ty_environment(settings.get("environment", {}), base)
+
+    @staticmethod
+    def _check_ty_patterns(source: object) -> None:
+        """Reject source globs that can escape or expand outside tracked inputs."""
+
         if not isinstance(source, dict):
             raise AdapterError("UNSUPPORTED", "Invalid ty source configuration")
         for field in ("include", "exclude"):
@@ -263,12 +274,10 @@ class Workspace:
                     or "~" in pattern
                 ):
                     raise AdapterError("UNSUPPORTED", "Untracked ty source pattern")
-        baseline = settings.get("baseline")
-        if baseline is not None and baseline not in self.config.project_config_files:
-            raise AdapterError(
-                "UNSUPPORTED", "Baseline must be an explicitly tracked configuration input"
-            )
-        environment = settings.get("environment", {})
+
+    def _check_ty_environment(self, environment: object, base: Path) -> None:
+        """Keep first-party roots confined and custom typeshed outside the contract."""
+
         if not isinstance(environment, dict):
             raise AdapterError("UNSUPPORTED", "Invalid ty environment configuration")
         for key in ("root", "extra-paths"):

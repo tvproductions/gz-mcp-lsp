@@ -19,6 +19,12 @@ Inline execution uses test-first task boundaries and a plan-specific local ledge
 
 ## Current state
 
+November 11 T12 follow-up: [engineering evidence](2026-11-11-engineering-acceptance.md)
+records import contracts, corrected complexity, deeper measurements, current
+native Codex behavior and full acceptance traceability. G5 remains incomplete
+because the required shared cognitive engine is unavailable; T13 is not run.
+The T0–T11 paragraphs below retain historical checkpoint results.
+
 T0 runtime-input work is complete with native/cognitive gaps retained; T1 is complete; T2 is complete; T3 is complete; T4 implementation and its early Codex checkpoint are verified; T5 is complete; T6 is complete; T7 is complete; T8 is complete; T9 is complete; T10 is complete; T11 implementation and native-host evidence are complete. Final platform acceptance requires the exact-commit gate reported in the synchronization response; execution stops before T12.
 Partial production hover evidence exists; the complete runtime milestone is unaccepted.
 See [runtime-input evidence](2026-11-01-runtime-inputs.md) for negative control,

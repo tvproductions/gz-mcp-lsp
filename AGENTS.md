@@ -42,7 +42,7 @@ No private source or project data in this public repository.
 ## Engineering and configuration
 
 Python 3.14 family; exact verified managed patch 3.14.10 in `.python-version` and CI.
-uv >=0.13.6 (CI tests 0.13.7), project-owned lock, src packaging and uv_build.
+uv >=0.13.6 (CI tests 0.13.8), project-owned lock, src packaging and uv_build.
 Centralize Python/tool metadata in pyproject.toml. Application settings will be project-owned JSON;
 **no environment-variable-based application configuration**. This explicit product
 rule overrides inherited suggestions for environment overrides. Native host config
@@ -51,7 +51,7 @@ retains its own format. No Makefile. unittest only, never pytest.
 Preserve routine Ruff selection E4/E7/E9/F/I/UP/B/SIM/RUF and ceilings: C901 20,
 qualified cognitive 15, Lizard function/module/overall 20. C901 and deeper checks
 remain outside routine hooks/CI. Cognitive qualification is unresolved upstream;
-complexipy is a defect reproducer, never passing cognitive authority.
+complexipy is an unqualified comparison tool, never passing cognitive authority.
 Freshness, configuration, native discovery, Python acceptance and product
 capability acceptance are separate conclusions. Missing evidence stays UNKNOWN.
 Required missing/failed/stale results block strict adoption/release acceptance.

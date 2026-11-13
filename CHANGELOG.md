@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Refresh uv/uv_build to 0.13.8, Ruff to 0.17.5, ty to 0.0.103, Coverage to
+  7.17.3, complexipy to 9.0.0 and transitive stevedore to 5.10.0. Refresh
+  immutable managed-Python build metadata while retaining Python 3.14.10.
+  Keep complexipy unqualified and G5/T12 incomplete; no T13 or release.
+  Refresh the bounded handoff with the completed upstream starter correction,
+  current verification, local provisioning details and exact next resume step.
+
 - Measure T12 engineering acceptance, enforce four reviewed import contracts and
   remove five existing Lizard ceiling violations without changing public behavior.
   Add three result-budget/JSON regressions; bounded product mutation kills 13/13.

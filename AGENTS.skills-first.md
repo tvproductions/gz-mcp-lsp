@@ -73,7 +73,7 @@ pyproject.toml; use standard dependency-groups, a committed uv.lock and exact
 .python-version, ignored .venv, and locked uv execution shared by hooks and CI.
 
 For the uv executable, use an evidenced minimum without an upper bound:
-this project accepts >=0.13.6 while CI tests 0.13.7. Supported callers need not
+this project accepts >=0.13.6 while CI tests 0.13.8. Supported callers need not
 match CI. Record actual provenance and verify affected behavior; admission of
 newer uv versions is not universal compatibility proof. Preserve exact Python,
 package/backend locks and locked commands. See the project

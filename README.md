@@ -40,7 +40,7 @@ See the [license review](docs/discovery/licenses.md) for attribution/dependency 
 
 ## Development
 
-Use uv >=0.13.6 and managed CPython 3.14.10. CI tests uv 0.13.7. The exact interpreter
+Use uv >=0.13.6 and managed CPython 3.14.10. CI tests uv 0.13.8. The exact interpreter
 is in `.python-version`; dependencies and tools are resolved in `uv.lock`. This is a
 standalone `src/gz_mcp_lsp` package using uv_build. Version `0.1.0` identifies the
 unreleased development package, independent of starter version 0.9.0.

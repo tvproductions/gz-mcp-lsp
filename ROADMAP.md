@@ -11,7 +11,8 @@ The finite outcome is nine accepted tools, bounded mutation safety, installed
 Codex interoperability, engineering acceptance and a deliberate stop.
 
 T0–T11 implementation and historical host proof are included completed work;
-the November 11 dependency/template reconciliation maintains that same scope.
+the November 11 dependency/template reconciliation and November 13 dependency
+refresh maintain that same scope.
 T12 engineering measurements and changed-input native proof are recorded in the
 [November 11 receipt](docs/evidence/2026-11-11-engineering-acceptance.md). Required
 qualified cognitive closure still blocks G5; T13 final review/acceptance remains

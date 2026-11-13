@@ -141,7 +141,7 @@ override this baseline or the project's existing authorities.
 ## uv executable compatibility
 
 The project adopts starter v0.9.0's minimum-only uv rule: require >=0.13.6
-without an upper bound; CI's 0.13.7 is a tested reference, not an exclusive caller
+without an upper bound; CI's 0.13.8 is a tested reference, not an exclusive caller
 requirement. This section supersedes inherited exact-uv matching guidance,
 including the historical Git ritual. Keep nested hooks on the selected executable
 and record its actual version. Verify behavior rather than rejecting newer uv

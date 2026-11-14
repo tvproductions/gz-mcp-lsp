@@ -1,196 +1,112 @@
 # Project handoff — 2026-11-14
 
-After synchronization, the user requested the next backlog item. The
-[native acceptance refresh](evidence/2026-11-14-native-acceptance.md) now records
-actual Codex 0.169.0/default gpt-6.1-sol with ty 0.0.104: all seven model reads,
-disabled mutations, preview/decline/approved rename and edit, exact byte maps,
-fresh semantics and four process-failure/EOF scenarios pass on macOS arm64.
-The installed adapter was rebuilt in a fresh outside-checkout runtime-only
-environment. User/native configuration is unchanged. This closes the current-ty
-native evidence gap; qualified cognitive UNKNOWN still blocks G5/T12. T13 is not
-run. This follow-up changes evidence only. The user subsequently invoked
-`gzs-git-sync`; its final response records the exact evidence commit, hosted CI
-and local/remote alignment without creating a CI-receipt-only follow-up commit.
+## Resume point: pre-1.0 release readiness; cognitive gap stays open
 
-November 14 maintenance follow-up: the user authorized the dependency update.
-The [current receipt](evidence/2026-11-14-dependency-update.md) records ty
-**0.0.104**, transitive Grimp **3.20**, the complete live inventory, source-pin
-checks through `gh`, and fresh local verification. The user subsequently invoked
-`gzs-git-sync` to commit and push this complete maintenance unit. The final
-synchronization response records its exact commit, hosted CI and remote alignment;
-that maintenance checkpoint did not claim fresh native Codex acceptance. The
-November 13 synchronization and measurements below remain historical. G5/T12 is
-still incomplete; stop before T13.
+Observed **2026-11-14 22:24 UTC**, clean primary checkout **main**, from
+`a0a0e5184558031fe6911b0e3e8d42ef326616f9`, aligned with origin/main before
+this handoff. The user requested evaluation of making the working server
+consumable through **PyPI, GitHub releases, GitHub Pages and Read the Docs**,
+then requested this handoff and Git sync. The final synchronization response
+records this save point's commit, gate, hosted CI and alignment; do not create
+a CI-receipt-only follow-up commit.
 
-The T12 resume check on November 14 at 18:01 UTC found the owning shared-engine
-issue still OPEN and unscheduled, with no candidate identified in its current
-integration workflow or published starter releases. Cognitive qualification stays
-UNKNOWN. No T12 analysis was repeated and T13 was not started.
+**First action:** read the [releasability assessment](evidence/2026-11-14-releasability-assessment.md)
+and resume Superpowers brainstorming at the unresolved docs-hosting choice.
+The agent recommended Pages for discovery/quickstart and RTD as the canonical
+versioned manual; a full manual on both is the alternative. **The user has not
+selected either.** Expected next result: a bounded design and actionable readiness
+backlog, separating user decisions from recommendations. This is a design
+continuation, not approval to implement/publish or create external projects.
 
-## Resume point: T12 cognitive qualification; stop before T13
+The user explicitly said this is **not 1.0**, the version should advance to
+**at least 0.2.0**, and cognitive qualification should stay open. Package/lock
+metadata remains **0.1.0**; no bump was applied in this documentation save point.
+Version completed backlog items appropriately; do not freeze every future item
+in one unpublished bundle. The starter is already handling the shared versioning
+correction separately. Preserve its adopted v0.9.0 provenance, independent plugin
+selections/caches and disabled Backplane; do not repeat upstream changes here.
 
-Observed at **2026-11-13 18:00 UTC**, on **main in the primary checkout**, from
-product base `53b3841af1d6050cd58e97418689a3796c89b808`. The user requested a fresh
-handoff and Git synchronization after the complete dependency migration and the
-separate upstream starter correction. The final synchronization response identifies
-this save point's exact commit, hosted CI and remote alignment; do not create a
-CI-receipt-only follow-up commit.
+**T0–T11 implemented; T12 engineering/native evidence recorded; strict G5/E3/E4
+incomplete because qualified cognitive is UNKNOWN; T13 NOT RUN.** The user now
+directs independent consumability work with that gap retained. This supersedes
+the earlier handoff's stop-all-continuation instruction at the unavailable engine.
+Do not poll the unchanged cognitive issue as the first action, substitute
+complexipy, weaken ceiling 15, mark G5 PASS or claim strict acceptance. T13 is
+the final capability/evidence report, not a runtime feature or release permission.
+No tag or public publication is authorized.
 
-**T0–T11 are implemented. G5/T12 remains incomplete. T13 is NOT RUN.** The first
-permissible next action is to check the [shared-engine owning issue](https://github.com/tvproductions/gz-skills-first-starter/issues/1)
-and its workflow for an independently versioned candidate. The issue was observed
-OPEN/unscheduled at this handoff. No qualified shared engine is selected or
-installed here. Owner: project/starter maintainer; external prerequisite: an
-available versioned engine/API that can pass the 42 independent qualification
-fixtures and the actual corpus at cognitive ceiling **15**.
+## Findings and proposed work
 
-If a candidate exists, verify ownership, release/API and installed provenance,
-then run the qualification and corpus gates documented in
-[the consumer contract](engineering/cognitive-integration.md). Recheck acceptance
-inputs affected by that candidate. Expected result: a complete qualified
-measurement, or explicit failed/unknown evidence. If the prerequisite is still
-unavailable, preserve UNKNOWN and stop; do not repeat completed T12 work merely
-to rediscover the same condition. No substitute scorer, whole-gzkit lifecycle
-dependency, threshold waiver or early T13 acceptance is authorized.
+The [assessment](evidence/2026-11-14-releasability-assessment.md) contains source
+references, service observations and recommendations. Carry forward:
 
-## Completed dependency migration
+- No product tags/releases, publishing workflows, docs generator, Pages deployment
+  or RTD configuration. Pages is disabled. PyPI/RTD public lookups returned 404;
+  names/ownership/accounts remain unverified. No deployment environments returned;
+  review release protections rather than assuming they are established.
+- Clean product wheel; metadata/URLs/registry-facing README need work. Ty requires
+  separate provisioning. Consumer dependency resolution does not follow uv.lock
+  automatically; prove a clean install through an actual Codex query.
+- Create maintained onboarding/tool/configuration/recovery/support docs. Host
+  roles, generator/theme and exact docs dependency pins remain undecided.
+- GitHub's read-only description and package awaiting-approval docstring are stale.
+  Review sdist historical handoffs/engineering config while retaining notices,
+  source-build and meaningful-test requirements. Consider a direct --version CLI.
+- Proposed order: authority/version reconciliation; installation/package polish;
+  documentation; publication automation; rehearsal and registry-installed proof.
+  These are recommendations, not completed or implementation-approved backlog.
 
-The [November 13 receipt](evidence/2026-11-13-dependency-update.md) and
-[complete inventory](evidence/2026-11-13-dependency-update.json) record the
-latest-stable review, before/after selections, compatibility and verification.
-No product runtime source or test assertion changed in this maintenance unit.
+## Existing evidence and boundaries
 
-| Input | Current selection |
-| --- | --- |
-| Python execution/support | Managed CPython **3.14.10**, build **20261110**; `>=3.14,<3.15` |
-| uv execution/CI target; compatibility floor | **0.13.8**; **>=0.13.6**, no upper bound |
-| uv_build | **0.13.8** |
-| Official MCP SDK | **2.3.0** |
-| ty / Ruff | **0.0.104** / **0.17.5** |
-| Coverage / complexipy | **7.17.3** / **9.0.0** |
-| stevedore, used by Bandit/Cosmic Ray | **5.10.0** |
-| Adopted published starter | **0.9.0**, `3f76acf0038b030bf5abd85ce4a419e890d3e420` |
-| Independent plugins | Superpowers **7.0.2**, gz-skills **0.10.1**, disabled Backplane **0.2.0** |
-| Pending unpublished product | **0.1.0**, existing bounded [first-release scope](../ROADMAP.md) |
+- [Current native receipt](evidence/2026-11-14-native-acceptance.md) and JSON:
+  Codex 0.169.0/default gpt-6.1-sol with ty 0.0.104; fresh runtime-only installation
+  outside checkout; seven model reads, disabled denials, five mutation calls with
+  programmatic approval/denial, exact bytes/fresh semantics and four failure/EOF
+  scenarios pass on macOS arm64. User config unchanged; no GUI-click claim.
+- [Exact native-evidence base CI](https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43626902632)
+  passed a0a0e5184558031fe6911b0e3e8d42ef326616f9 on Linux x86_64, macOS arm64,
+  Windows AMD64: 189 tests per lane, POSIX skip 1, Windows skip 26. Windows writes
+  remain unsupported. This prior CI does not certify this new handoff commit.
+- [November 14 dependencies](evidence/2026-11-14-dependency-update.md): ty 0.0.104,
+  Grimp 3.20, 103-entry universal inventory, local gate, 29 utility regressions,
+  import-contract controls and zero-known-vulnerability audit at observed inputs.
+- [November 13 maintenance](evidence/2026-11-13-dependency-update.md) and
+  [November 11 engineering acceptance](evidence/2026-11-11-engineering-acceptance.md)
+  preserve deeper measurements, findings, coverage, bounded mutation and acceptance
+  traceability. Reuse unchanged-input evidence; do not reissue dated freshness.
+- [Shared cognitive issue](https://github.com/tvproductions/gz-skills-first-starter/issues/1)
+  was last checked OPEN/unscheduled November 14 with no versioned candidate in
+  its integration workflow. Owner: starter maintainer/upstream engine delivery.
+  The [consumer contract](engineering/cognitive-integration.md) requires 42
+  independent fixtures and actual corpus ceiling 15 when available.
 
-All 101 locked registry packages plus uv and the isolated backend matched the
-latest stable registry releases at the recorded check. A second upgrade resolution
-had no version churn; the installed outdated query was empty. The existing action
-SHAs remain current. No native cache, global uv/Python default, application
-configuration mechanism or plugin activation changed. Lite remains selected.
-
-Complexipy 9.0.0 now gives the independently expected **9** for both tuple and
-keyword-argument conditional canaries. Preserve the historical 8.3.0 failure;
-the new focused compatibility result is **not shared cognitive qualification**.
-Its comparison scope still reports `verify_archives` at 18. No threshold or
-acceptance authority was changed to accommodate the new scoring semantics.
-
-## Starter-wide correction is upstream and finished
-
-The user ruled that dependency maintenance must fully migrate to the **most
-current stable versions**, including newer families, and rejected fixing this
-only through a local product default. The correction was made in the starter
-itself and pushed to its upstream **main** as
-[`d82e1b8c785043845a23f52fd4e51dbd57fba921`](https://github.com/tvproductions/gz-skills-first-starter/commit/d82e1b8c785043845a23f52fd4e51dbd57fba921).
-Its [exact-commit CI](https://github.com/tvproductions/gz-skills-first-starter/actions/runs/43436348970)
-passed both standard and X-Plane baseline jobs. The starter checkout was clean,
-with local/remote SHA alignment and ahead/behind 0/0. **No further starter work
-is underway or required by this handoff.**
-
-The mandatory rule is front-loaded in its README and maintainer/adopter
-instructions, carried through policy/maintenance guides and packaged copies,
-and applies to every adopter in both lanes. A bare `gzs-update-dependencies`
-invocation executes migration and verification; review-only requires an explicit
-check/assessment/no-changes request. Python N-1/embedded-host policy, product
-contracts, thresholds and demonstrated compatibility exceptions remain binding.
-
-This is an upstream source correction included in pending starter **0.10.0**,
-not a new published release or automatic adopter migration. This product retains
-its recorded published **0.9.0** adoption and independent plugin pins. Do not
-relabel product HEAD or unpublished starter main as adopted starter provenance,
-repeat the starter edits, modify native caches or activate Backplane.
-
-## Verification and limits
-
-The November 13 candidate passed the full local four-hook gate, source-independent
-sdist/wheel build and outside-checkout installed verification before this handoff
-refresh. The fresh frozen-tree gate and exact-commit hosted result for this save
-point are reported by the final synchronization response.
-
-Observed on the current package set:
-
-- **189 product tests pass**, including installed MCP/ty navigation, diagnostics,
-  mutations and crash/startup recovery; macOS arm64 skips the one Windows-only
-  unsupported-write rejection. Windows's established 26 POSIX-only exclusions
-  do not become passing Windows write evidence.
-- **29 analyzer regressions pass**. Ruff C901 passes at 20; Lizard retains its
-  counting contract with 648 functions, maximum 20, weighted mean
-  3.1944444444444446 and passing 20/20/20 ceilings.
-- Coverage measures **87.1691% statements / 74.4444% branches**, zero exclusions,
-  parent process only. Child behavior is functionally tested separately.
-- Exact hashed all-group export plus resolver/backend audits **101 applicable
-  selections**, zero skips and zero known vulnerabilities. This is distinct
-  from the 103 universal inventory selections.
-- Bandit retains nine LOWs, no MEDIUM/HIGH findings or analyzer errors. Cosmic
-  Ray's changed stevedore consumer passes disposable two-killed/two-survived
-  controls; it is not a new product mutation-coverage claim.
-- Independent bounded review found no consequential defect in the maintenance
-  diff. No hook, safety rule, deadline, test assertion or ceiling was weakened.
-
-The [November 11 T12 receipt](evidence/2026-11-11-engineering-acceptance.md) retains
-import-contract negative controls, reviewed deeper findings and bounded product
-mutation evidence. Its actual Codex model/approval/failure proof used ty 0.0.101;
-it is not reissued as current-ty acceptance. The separate
-[November 14 native receipt](evidence/2026-11-14-native-acceptance.md) now proves
-the observed current-ty/current-host scenarios on macOS arm64. Affected acceptance
-evidence must stay current before terminal acceptance. Local installed tests,
-native checks and green CI cannot waive G5/E3/E4 or T13.
-
-## Reproducing the selected local environment
-
-Run the project commands through `uv tool run --from uv==0.13.8 uv ...`, with
-nested hooks resolving that same uv. The existing `.venv/pyvenv.cfg` identifies
-an outside-checkout project-specific managed-Python installation. Preserve its
-installation-root setting in `UV_PYTHON_INSTALL_DIR` throughout commands and
-nested hooks when reproducing build 20261110. This is package-manager provisioning,
-not environment-based application configuration. Omitting that location can
-cause uv to recreate the environment against the older shared managed build;
-resynchronize **all groups** before checking. Do not replace shared defaults.
-The local installation and raw temporary probe files are not promised to exist
-in another workspace; a new clone must provision its own managed environment
-from the pinned metadata and lock.
-
-Required gate, after consistent executable/interpreter selection:
-
-```text
-uv sync --locked --all-groups
-uv run --locked pre-commit run --all-files
-uv build --no-sources
-uv run --locked python tools/verify_distribution.py
-```
-
-The four hooks remain Ruff check, Ruff format, ty and unittest. Analyzer utility
-tests stay separate and were already rerun for this migration. No blanket
-rerun of deeper T12 analysis is needed without changed inputs or new concerns.
-
-## Authorities and workspace boundary
-
-Resume through the approved [specification](superpowers/specs/2026-10-28-semantic-navigation-design.md),
+The runtime [specification](superpowers/specs/2026-10-28-semantic-navigation-design.md),
 [plan](superpowers/plans/2026-10-28-reference-parity.md),
-[acceptance matrix](discovery/acceptance-matrix.md),
-[execution record](evidence/2026-11-01-execution.md), and current receipts above.
-[T11 evidence](evidence/2026-11-01-codex-acceptance.md) retains its original
-installed/native/platform observations; historical stopping statements do not
-supersede this resume point.
+[acceptance matrix](discovery/acceptance-matrix.md) and
+[execution evidence](evidence/2026-11-01-execution.md) retain their existing-behavior
+contracts. [ROADMAP.md](../ROADMAP.md) records the newer readiness direction and
+current metadata separately from the unimplemented target.
 
-Continue only on main in the primary product checkout. A separate linked
-`implementation/reference-parity` worktree at `fc3fb7d` was observed and left
-untouched; it is not this session's execution target or cleanup scope. The save
-point contains the complete dependency/configuration/evidence/handoff unit;
-unrelated histories and native state are preserved.
+## Environment and verification
 
-Use gh for GitHub and git for repository operations. No tag/release, new product
-capability, second server, generic filesystem operation, application environment
-override, Windows write enablement or Backplane activation is authorized. After
-G5 closes, a later bounded session may proceed to the already approved T13 review
-and deliberate stop; this handoff itself grants no additional authority.
+Managed CPython **3.14.10**, standalone build **20261110**; uv/uv_build **0.13.8**,
+uv minimum **>=0.13.6**; MCP **2.3.0**; Ruff **0.17.5**. Preserve the existing
+outside-checkout managed-Python installation root from `.venv/pyvenv.cfg` in
+`UV_PYTHON_INSTALL_DIR`; nested hooks must resolve the same supported uv.
+That is tool provisioning, not application environment configuration. New clones
+provision their own environment; ignored private probes/install paths are not
+portable prerequisites.
+
+Required gate: `uv sync --locked --all-groups`, four pre-commit hooks,
+`uv build --no-sources`, `uv run --locked python tools/verify_distribution.py`.
+Documentation-only sync may reuse checks on unchanged relevant inputs; normal
+commit hooks stay enabled. The final synchronization response records fresh checks
+and exact-commit CI. Deeper analysis stays outside the four hooks/routine CI.
+
+Continue on main in the primary checkout. Linked implementation/reference-parity
+at fc3fb7dfbecd6258c1141d6c300e04c1d8e90fa9 was observed and left untouched.
+Use gh for GitHub and git for repository operations. Preserve native caches,
+unrelated defaults, one-workspace/one-ty stdio, JSON application configuration,
+no request-time installation, explicit operator writes/recovery and POSIX-only
+writes. No hosted runtime, second server, generic LSP expansion or incidental
+cleanup. Public package/docs hosting is the newly discussed delivery scope.

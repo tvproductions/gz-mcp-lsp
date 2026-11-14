@@ -19,7 +19,16 @@ Read `docs/superpowers/specs/2026-10-28-semantic-navigation-design.md`,
 artifacts; see `docs/evidence/2026-11-01-execution.md` for approval, progress and
 remaining acceptance gaps. Resume through docs/handoff.md, one bounded stage
 per session; T11 is implemented; T12 measurements and current native evidence are recorded,
-but G5 remains incomplete pending shared cognitive qualification. Stop before T13. Earlier planning-only receipts remain historical.
+but strict G5 remains incomplete pending shared cognitive qualification. T13 is not run.
+On November 14 the user directed pre-1.0 consumability discussion/design for PyPI,
+GitHub releases, GitHub Pages and Read the Docs, with a version of at least 0.2.0
+and cognitive qualification retained as an open gap. Resume that discussion from
+the handoff; do not stop independent readiness work at the unavailable engine or
+claim strict G5 passed. Metadata remains 0.1.0 until the bump is implemented.
+The user expects version advancement at completed backlog boundaries; the starter
+is handling its own shared policy correction separately. No starter changes,
+new publication implementation, tag or release follows from this handoff request.
+Earlier planning-only receipts remain historical.
 
 Use adopted Superpowers for feature design and gz-skills gzs-router for portable
 engineering selection. The user explicitly selected lite through gzs-project-setup.

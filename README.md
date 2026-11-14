@@ -26,8 +26,11 @@ server or general-purpose LSP framework is planned. The complete milestone is
 accepted parity, semantic corrections/extensions, real Codex interoperability,
 engineering evidence, then a deliberate stop.
 
-Continue from the [bounded implementation handoff](docs/handoff.md); T12 measurements and current native evidence are recorded; required cognitive
-qualification still blocks G5. Stop before T13. See
+Continue from the [project handoff](docs/handoff.md). The current discussion is
+pre-1.0 release readiness for PyPI, GitHub releases, GitHub Pages and Read the Docs,
+with a proposed version of at least 0.2.0; package metadata remains 0.1.0.
+Cognitive qualification stays an open gap and strict G5 is incomplete. T13 is not run.
+See the [releasability assessment](docs/evidence/2026-11-14-releasability-assessment.md) and
 [T11 acceptance evidence](docs/evidence/2026-11-01-codex-acceptance.md) for verification limits.
 
 Read the [revised architectural specification](docs/superpowers/specs/2026-10-28-semantic-navigation-design.md),

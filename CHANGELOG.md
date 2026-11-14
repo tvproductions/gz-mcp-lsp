@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Preserve the pre-1.0 release-readiness evaluation and new resume point for
+  PyPI, GitHub releases, GitHub Pages and Read the Docs. Record the user's
+  at-least-0.2.0 direction, current unchanged 0.1.0 metadata, unresolved docs
+  choices and cognitive qualification as an open gap; no publication performed.
+
 - Refresh native Codex acceptance on ty 0.0.104 and Codex 0.169.0: all nine
   tools, mutation approval/denial, exact file changes and failure cleanup have
   fresh macOS evidence. Keep cognitive qualification UNKNOWN and G5/T12 incomplete.

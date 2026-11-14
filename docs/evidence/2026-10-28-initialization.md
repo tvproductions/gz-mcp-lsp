@@ -1,5 +1,11 @@
 # Initialization and design discovery receipt — 2026-10-28
 
+November 14 consumability follow-up: the [releasability review](2026-11-14-releasability-assessment.md)
+and [handoff](../handoff.md) record the user's pre-1.0, at-least-0.2.0 direction
+for public packages/releases/docs while cognitive qualification stays open.
+The bump and delivery infrastructure are not yet implemented; initialization
+and earlier acceptance receipts retain their original inputs and conclusions.
+
 November 14 native follow-up: the [current host receipt](2026-11-14-native-acceptance.md)
 records fresh nine-tool/approval/failure checks on ty 0.0.104 and Codex 0.169.0.
 Qualified cognitive acceptance remains UNKNOWN; initialization results below

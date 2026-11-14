@@ -1,5 +1,9 @@
 # Initialization and design discovery receipt — 2026-10-28
 
+November 14 dependency follow-up: the [bounded update](2026-11-14-dependency-update.md)
+selects ty 0.0.104 and Grimp 3.20, with fresh maintenance verification. The
+initialization and prior native-host measurements retain their original inputs.
+
 November 13 dependency follow-up: the [latest-stable migration](2026-11-13-dependency-update.md)
 refreshes package and managed-build selections without changing the approved
 Python family or accepting cognitive qualification. Historical results below

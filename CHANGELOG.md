@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Update ty to 0.0.104 and transitive Grimp to 3.20; verify the installed
+  semantic integrations and import-contract controls. Retain Python 3.14.10,
+  the existing plugin selections and unresolved G5/T12 qualification.
+
 - Refresh uv/uv_build to 0.13.8, Ruff to 0.17.5, ty to 0.0.103, Coverage to
   7.17.3, complexipy to 9.0.0 and transitive stevedore to 5.10.0. Refresh
   immutable managed-Python build metadata while retaining Python 3.14.10.

@@ -1,4 +1,18 @@
-# Project handoff — 2026-11-13
+# Project handoff — 2026-11-14
+
+November 14 maintenance follow-up: the user authorized the dependency update.
+The [current receipt](evidence/2026-11-14-dependency-update.md) records ty
+**0.0.104**, transitive Grimp **3.20**, the complete live inventory, source-pin
+checks through `gh`, and fresh local verification. The user subsequently invoked
+`gzs-git-sync` to commit and push this complete maintenance unit. The final
+synchronization response records its exact commit, hosted CI and remote alignment;
+no fresh native Codex acceptance is claimed. The November 13 synchronization and
+measurements below remain historical. G5/T12 is still incomplete; stop before T13.
+
+The T12 resume check on November 14 at 18:01 UTC found the owning shared-engine
+issue still OPEN and unscheduled, with no candidate identified in its current
+integration workflow or published starter releases. Cognitive qualification stays
+UNKNOWN. No T12 analysis was repeated and T13 was not started.
 
 ## Resume point: T12 cognitive qualification; stop before T13
 
@@ -39,7 +53,7 @@ No product runtime source or test assertion changed in this maintenance unit.
 | uv execution/CI target; compatibility floor | **0.13.8**; **>=0.13.6**, no upper bound |
 | uv_build | **0.13.8** |
 | Official MCP SDK | **2.3.0** |
-| ty / Ruff | **0.0.103** / **0.17.5** |
+| ty / Ruff | **0.0.104** / **0.17.5** |
 | Coverage / complexipy | **7.17.3** / **9.0.0** |
 | stevedore, used by Bandit/Cosmic Ray | **5.10.0** |
 | Adopted published starter | **0.9.0**, `3f76acf0038b030bf5abd85ce4a419e890d3e420` |

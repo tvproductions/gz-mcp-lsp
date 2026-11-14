@@ -1,13 +1,26 @@
 # Project handoff — 2026-11-14
 
+After synchronization, the user requested the next backlog item. The
+[native acceptance refresh](evidence/2026-11-14-native-acceptance.md) now records
+actual Codex 0.169.0/default gpt-6.1-sol with ty 0.0.104: all seven model reads,
+disabled mutations, preview/decline/approved rename and edit, exact byte maps,
+fresh semantics and four process-failure/EOF scenarios pass on macOS arm64.
+The installed adapter was rebuilt in a fresh outside-checkout runtime-only
+environment. User/native configuration is unchanged. This closes the current-ty
+native evidence gap; qualified cognitive UNKNOWN still blocks G5/T12. T13 is not
+run. This follow-up changes evidence only. The user subsequently invoked
+`gzs-git-sync`; its final response records the exact evidence commit, hosted CI
+and local/remote alignment without creating a CI-receipt-only follow-up commit.
+
 November 14 maintenance follow-up: the user authorized the dependency update.
 The [current receipt](evidence/2026-11-14-dependency-update.md) records ty
 **0.0.104**, transitive Grimp **3.20**, the complete live inventory, source-pin
 checks through `gh`, and fresh local verification. The user subsequently invoked
 `gzs-git-sync` to commit and push this complete maintenance unit. The final
 synchronization response records its exact commit, hosted CI and remote alignment;
-no fresh native Codex acceptance is claimed. The November 13 synchronization and
-measurements below remain historical. G5/T12 is still incomplete; stop before T13.
+that maintenance checkpoint did not claim fresh native Codex acceptance. The
+November 13 synchronization and measurements below remain historical. G5/T12 is
+still incomplete; stop before T13.
 
 The T12 resume check on November 14 at 18:01 UTC found the owning shared-engine
 issue still OPEN and unscheduled, with no candidate identified in its current
@@ -127,9 +140,11 @@ Observed on the current package set:
 The [November 11 T12 receipt](evidence/2026-11-11-engineering-acceptance.md) retains
 import-contract negative controls, reviewed deeper findings and bounded product
 mutation evidence. Its actual Codex model/approval/failure proof used ty 0.0.101;
-it is **not reissued as current-ty 0.0.103 native acceptance**. Fresh native host
-proof and affected acceptance evidence must be established before terminal
-acceptance. Local installed tests and green CI cannot waive G5/E3/E4 or T13.
+it is not reissued as current-ty acceptance. The separate
+[November 14 native receipt](evidence/2026-11-14-native-acceptance.md) now proves
+the observed current-ty/current-host scenarios on macOS arm64. Affected acceptance
+evidence must stay current before terminal acceptance. Local installed tests,
+native checks and green CI cannot waive G5/E3/E4 or T13.
 
 ## Reproducing the selected local environment
 

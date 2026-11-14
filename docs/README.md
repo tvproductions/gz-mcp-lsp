@@ -8,6 +8,8 @@ branch histories and the user-selected runtime. Git sync does not waive gaps.
 [Application settings](configuration.md) documents JSON settings, all nine tools and the mutation contract.
 The [T11 native receipt](evidence/2026-11-01-codex-acceptance.md) records installed
 and actual Codex evidence; its final synchronization response identifies exact-commit CI.
+The [November 14 native refresh](evidence/2026-11-14-native-acceptance.md) measures
+the same bounded contracts on ty 0.0.104 and Codex 0.169.0, with G5 still incomplete.
 
 The [November 1 execution record](evidence/2026-11-01-execution.md) records the
 user's subsequent approval and current T0-T13 execution state. The planning-only

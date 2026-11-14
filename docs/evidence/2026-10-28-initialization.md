@@ -1,5 +1,10 @@
 # Initialization and design discovery receipt — 2026-10-28
 
+November 14 native follow-up: the [current host receipt](2026-11-14-native-acceptance.md)
+records fresh nine-tool/approval/failure checks on ty 0.0.104 and Codex 0.169.0.
+Qualified cognitive acceptance remains UNKNOWN; initialization results below
+retain their historical scope.
+
 November 14 dependency follow-up: the [bounded update](2026-11-14-dependency-update.md)
 selects ty 0.0.104 and Grimp 3.20, with fresh maintenance verification. The
 initialization and prior native-host measurements retain their original inputs.

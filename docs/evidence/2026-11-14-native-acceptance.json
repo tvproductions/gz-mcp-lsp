@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-14T18:21:19.524537+00:00",
+  "scope": "Approved T12 affected-input native H1/H2/H3 refresh; no T13 or release acceptance",
+  "native": {
+    "host": "codex-cli 0.169.0",
+    "platform": "macOS arm64",
+    "mcp": "2.3.0",
+    "ty": "0.0.104",
+    "product_commit": "2a7ae8023903b5f8fdc1c1f6b55a0286f25de3e4",
+    "discovery_observed": true,
+    "installed_provenance": {
+      "outside_checkout": true,
+      "version": "0.1.0",
+      "sdk": "2.3.0",
+      "development_tools": [],
+      "origin_ok": true
+    },
+    "model": "gpt-6.1-sol",
+    "model_read_tools": [
+      "definition",
+      "diagnostics",
+      "document_symbols",
+      "hover",
+      "implementations",
+      "references",
+      "workspace_symbols"
+    ],
+    "read_semantic_assertions": "PASS",
+    "disabled_mutations": "PASS",
+    "mutation_assertions": "PASS exact bytes, denied unchanged, fresh declaration source",
+    "approval_decisions": [
+      "accept",
+      "decline",
+      "accept",
+      "accept",
+      "accept"
+    ],
+    "app_server_exit": 0,
+    "user_config_unchanged": true
+  },
+  "actual_ty_version": "ty 0.0.104 (b4bb5b2c8 2026-11-13)",
+  "ty_executable_sha256": "045516afd1c9b1433069cea524363d54e38bca064474e9a5921c0870026595ed",
+  "installed_wheel_sha256": "67530dc3a8e41846bb047b5b11f55593f8cdf6e368f915a035b69d4fd41c3bcf",
+  "exact_host_catalog": [
+    "definition",
+    "diagnostics",
+    "document_symbols",
+    "edit_file",
+    "hover",
+    "implementations",
+    "references",
+    "rename_symbol",
+    "workspace_symbols"
+  ],
+  "model_tool_counts": {
+    "read": 7,
+    "mutation": 5,
+    "unexpected_tool_items": 0
+  },
+  "model_read_arguments_exact_and_sequential": true,
+  "semantic_controls": {
+    "definition": "Exact shared URI/selection start and complete declaration source",
+    "references": "Three exact expected package calls, decoy excluded",
+    "hover": "Shared callable signature retained",
+    "diagnostics": "Current empty report",
+    "document_symbols": "Shared callable identity",
+    "workspace_symbols": "Shared and decoy identities both retained",
+    "implementations": "Expected member locations 4,9,14"
+  },
+  "mutation_controls": {
+    "operator_disabled": "Both tools return MUTATIONS_DISABLED; recursive complete bytes unchanged",
+    "preview": "Both previews preserve recursive complete bytes",
+    "host_decline": "Rename apply denied; recursive complete bytes unchanged",
+    "rename_apply": "Exactly shared declaration and three importing packages renamed",
+    "edit_apply": "Only expected value + 1 to value + 2 change",
+    "post_write_semantics": "Fresh definition returns renamed identifier and edited expression",
+    "approval_boundary": "Programmatic actual-host accept/decline decisions; no GUI/human-click claim"
+  },
+  "native_failures": [
+    {
+      "scenario": "ty_death",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    },
+    {
+      "scenario": "adapter_death",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    },
+    {
+      "scenario": "host_timeout",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    },
+    {
+      "scenario": "parent_eof",
+      "app_server_exit": 0,
+      "adapter_and_ty_reaped": true,
+      "workspace_hashes_unchanged": true
+    }
+  ],
+  "failure_controls": {
+    "host_timeout_seconds": 2,
+    "signals": {
+      "ty_death": "SIGKILL ty",
+      "adapter_death": "SIGKILL adapter",
+      "host_timeout": "SIGSTOP ty",
+      "parent_eof": "Close app-server stdin"
+    },
+    "dead_request_replayed": false
+  },
+  "collector_corrections": [
+    "Initial final-audit filter omitted the normal userMessage item; corrected collector still rejects unexpected tool items.",
+    "ty --version includes its build commit/date suffix; compare the version tokens and retain the entire observed string. Native probe assertions were unaffected by these collector corrections."
+  ],
+  "input_sha256": {
+    "pyproject.toml": "3453f4810fa34f67da4d1101b6907876f40643d2d1ab352eac00323d980ed90c",
+    "uv.lock": "139ee6860494fb0022fa65425774ce257fad728d2ec818bbaa60491ed216d186",
+    ".python-version": "4f4c88910b6d485ae689143880e5e81b595a48a51ecb391b2f14feaec106d180",
+    "src/gz_mcp_lsp/__init__.py": "2cd898f6127e65fcaab701c1be292d5aba33f182f394a4a3e68ca1b8c4efd960",
+    "src/gz_mcp_lsp/__main__.py": "1b8eb0dafa78623235eb19444a4941ca6dcd8b50de64165b49fa7588ba051f4a",
+    "src/gz_mcp_lsp/_posix_files.py": "1967c7e9c6b8aad7c4902d7c2bb8f674e252936655487205a172f89ac1c13821",
+    "src/gz_mcp_lsp/cli.py": "dd8e16be1e3dba469f5b59ffb5baf0b07dd0b68eb12e5789dae7acb224c2a09a",
+    "src/gz_mcp_lsp/config.py": "542ee355912e828fa5bb7df0360e78557a8dced139363058c13464ced339560a",
+    "src/gz_mcp_lsp/diagnostics.py": "928d3ff1211662eb73bcf27fc409566ffdfb3fe7e08233e039c50cc2fe5f4865",
+    "src/gz_mcp_lsp/documents.py": "2964e1f085e30ca359e787da80b20ae0b1b26b99130aa53593759a0c6c098106",
+    "src/gz_mcp_lsp/edit_plan.py": "c02f825ac7c9fa7bee400bcbc7cd0c1d98399085e6f741c502cbc4202c0578b9",
+    "src/gz_mcp_lsp/filesystem.py": "c93cdb110baa058efbd087894f6733680ba8507956f047ec0c283cc5adce2f03",
+    "src/gz_mcp_lsp/lsp_transport.py": "218f5c2103b2bb222b82b9cac6387d0ba47c5f6686c7c1f495a6a4dd6d2ed334",
+    "src/gz_mcp_lsp/mcp_api.py": "79a1640b4f43a4c0cd20c10a8f8973f46df6704b73ba589d19f3dfb1e91fcbee",
+    "src/gz_mcp_lsp/models.py": "27b9f84ad654446e25910420c13700c3ac8646d4dd6af4a46d94a2ae3cb13e33",
+    "src/gz_mcp_lsp/mutations.py": "c1f9aa37f8e1a29a7887d1ef5628b6dff46c18780a95636eec20f2b82ab6e269",
+    "src/gz_mcp_lsp/navigation.py": "b168a5f7e4d671319fcb9425064617efefd88858fd897bbbd4ea242aaa026918",
+    "src/gz_mcp_lsp/results.py": "cbe8c5d9f54e12936d60a6adb319508765fea3e9660799694a5bf17465492334",
+    "src/gz_mcp_lsp/session.py": "fb164b8acd45efc845e783ce4ef7f344ef6dd43af4e3d9415017971b975a7db4",
+    "src/gz_mcp_lsp/source_text.py": "dcd651ac884dc710d5c1d279877c89b81767ea6222d78a141fbcbad260f0b655",
+    "src/gz_mcp_lsp/workspace.py": "614c2806a1516e8d61246dcdb43ab5e33baac9b2a6f9e263eea58ec765291bde",
+    "tests/fixtures/acceptance_workspace/decoy.py": "7e4bc7832df8cf5aecf9af47aca51f75bb64e69fa48399f45eeb25df155df759",
+    "tests/fixtures/acceptance_workspace/expected.json": "2c2b5a21ffa78b0dc6c2fcaa21e813e1d9244dc66796bd291d24706daefe04d4",
+    "tests/fixtures/acceptance_workspace/package_a/__init__.py": "c0532ffed93e16958e47af0121a16002c1040380c34699595292453ec5a1deb4",
+    "tests/fixtures/acceptance_workspace/package_b/__init__.py": "4bb4e17598ec5c1e52703a15fbe96ae63a7be1f227e7daa3580b5b5afee5afa2",
+    "tests/fixtures/acceptance_workspace/package_c/__init__.py": "f492ff4acbba6117c3e38358d7ab0b4961e8a7b070050355ffde5c78b94cbd42",
+    "tests/fixtures/acceptance_workspace/pyproject.toml": "8d6d383420282e7c096eb7d68b3a36b2f86646b1dadea63e640b05a5785aef32",
+    "tests/fixtures/acceptance_workspace/shared_runtime/__init__.py": "ab4679f6ea9061e1ffd40272c2aceb7a679e3812defee2f8a34bf4d217eac485",
+    "tests/fixtures/semantic_workspace/hierarchy.py": "042c1012cdc81a0b1e2d5f35a0c45b1bcbdfeb021295f089afee53c162c9aa37"
+  },
+  "probe_sha256": {
+    "native_probe.py": "d05474bd5bced8af9fd0ea316d9ffb71db9d946fceedffcff2867a588a904565",
+    "native_failures.py": "d4efe7b5bd7634fb92e18fff7f405aff86c360c5e29cd4d59fa8d734d36c167f",
+    "collect.py": "862924778a055cb7130f1eea8641353b5efe50f76c1946db75aaec18617ffc19"
+  },
+  "host_schema_sha256": {
+    "ClientRequest.json": "b47eb1e37bf93ba91e01df12ed56ddd55c23d1f31ea04f91c77aa812bda9fd3a",
+    "ServerRequest.json": "84fe84cb202d1036f764d32dfc87a1edba50f85172e2a3224a33796f979008bb",
+    "McpServerElicitationRequestResponse.json": "792a012fdfe53ac211575a6c37ffbd492be848d15cb313d1bb4b534ade1f54ac",
+    "v2/ThreadStartParams.json": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de",
+    "v2/ListMcpServerStatusParams.json": "30b978c6502b37c9f0002aeba241f41c91d4c6adf0f92d89242b62ffde415a2d",
+    "v2/McpServerToolCallParams.json": "7039a7583a1cbf38e9e0f5fe6398ff3711acd4d654b81b0be562514087fce6ba"
+  },
+  "private_evidence_sha256": {
+    "native-adapter_death-response-private.json": "4f97488b45acc41bb3ebd084ad6f8af9b96107f35305ec28d89f656415fab947",
+    "native-disabled-edit_file-private.json": "53ec6e1a82e69f62a53fdf309df69c2836e98c149fd9b18e9911d88716dbd6d8",
+    "native-disabled-rename_symbol-private.json": "5cbcc1a584eaa3b67b5621de60914e916565cfec75045cdd3c0c1f6e87332761",
+    "native-discovery-private.json": "0c32f2a25f9b44d8369bfe0ce95e467b70270056951e60928204113d6f9da9b3",
+    "native-host_timeout-response-private.json": "31c027ceb5037157040be1065ff6a55c2eacf6191149f59f1fab829a79d98359",
+    "native-inventory-private.json": "6262b66fc50e40b91b596ca34f82f539dcfff555ce91b0d612cadd47b557f5f3",
+    "native-mutation-items-private.jsonl": "f5d2ea15e70f1fcbb3ccd5c41038658f1ccfe69603e6bd9ba580ced6d812f7a8",
+    "native-private.jsonl": "ad672acb2905623ab7a5b9a0ea663c749411f89ca5bb931bcf88b3aae19f122c",
+    "native-read-items-private.json": "e689917fdda79b538e7f40034159efee8fac5a37776028d305bbca58aa11ac4f",
+    "native-ty_death-response-private.json": "c95b3382bb151335cb92170b69db9fee583237835375af4a618b7e8301bfb730"
+  },
+  "platform_scope": "macOS arm64 native proof only; no new Windows write support or other-host native proof",
+  "ci_reference": {
+    "commit": "2a7ae8023903b5f8fdc1c1f6b55a0286f25de3e4",
+    "url": "https://github.com/tvproductions/gz-mcp-lsp/actions/runs/43625053546",
+    "result": "success on Linux x86_64, macOS arm64, Windows AMD64; preceding synchronized tree"
+  },
+  "acceptance": {
+    "H1": "PASS on observed native host",
+    "H2": "PASS on observed native host; programmatic approval boundary",
+    "H3": "PASS on observed native host",
+    "qualified_cognitive": "UNKNOWN",
+    "G5_T12": "incomplete",
+    "T13": "NOT RUN",
+    "runtime_changes": false,
+    "dependency_changes": false,
+    "release_publication": false
+  }
+}

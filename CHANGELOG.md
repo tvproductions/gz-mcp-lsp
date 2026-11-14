@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Refresh native Codex acceptance on ty 0.0.104 and Codex 0.169.0: all nine
+  tools, mutation approval/denial, exact file changes and failure cleanup have
+  fresh macOS evidence. Keep cognitive qualification UNKNOWN and G5/T12 incomplete.
+
 - Update ty to 0.0.104 and transitive Grimp to 3.20; verify the installed
   semantic integrations and import-contract controls. Retain Python 3.14.10,
   the existing plugin selections and unresolved G5/T12 qualification.

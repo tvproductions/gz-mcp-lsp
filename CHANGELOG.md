@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Clarify existing release planning: PRDs guide majors, selected work and
+  requirements drive minors, and fixes drive patches. Require explicit scope,
+  version rationale and acceptance evidence; preserve current release gates.
+
 - Preserve the pre-1.0 release-readiness evaluation and new resume point for
   PyPI, GitHub releases, GitHub Pages and Read the Docs. Record the user's
   at-least-0.2.0 direction, current unchanged 0.1.0 metadata, unresolved docs

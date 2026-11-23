@@ -51,7 +51,7 @@ hygiene = [
     "cosmic-ray==8.9.0",
     "coverage==7.17.3",
     "deptry==0.25.1",
-    "import-linter==2.16",
+    "import-linter==2.17",
     "interrogate==1.7.0",
     "lizard==1.26.0",
     "pip-audit==2.10.1",
